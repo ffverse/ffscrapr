@@ -2,24 +2,20 @@
 % Please edit documentation in R/mfl.R
 \name{mfl_get_league}
 \alias{mfl_get_league}
-\title{Read MFL league}
+\title{Read MFL league settings}
 \usage{
-mfl_get_league(season = NULL, leagueID = NULL, APIKEY = NULL)
+mfl_get_league(conn_object)
 }
 \arguments{
-\item{season}{Get data for specified league year - if missing, will warn that season is being chosen by sys}
-
-\item{leagueID}{Identifier for league - generally a five digit number found in the homepage URL}
-
-\item{APIKEY}{APIKEY - grants access to views as the user in question, optional for public leagues}
+\item{conn_object}{the list object created by \code{mfl_connect()}}
 }
 \value{
 the league endpoint for MFL
 }
 \description{
-Read MFL league
+Get MFL league settings endpoint based on the predefined terms in mfl_connect()
 }
 \examples{
-mfl_get_league(season = 2020, leagueID = 54040, APIKEY = NULL)
+mfl_connect(season = 2020, leagueID = 54040) \%>\% mfl_get_league()
 
 }
