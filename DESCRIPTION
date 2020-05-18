@@ -1,7 +1,7 @@
 Package: fantasyscrapr
 Type: Package
 Title: FantasyScrapR - R Interface for Fantasy Football League APIs
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: person("Tan", "Ho", email = "tan@tanho.ca", role = c("aut", "cre"))
 Description: Generalizing frequently-used fantasy league connection code as a package, both for personal and external use!
 License: MIT + file
@@ -12,4 +12,5 @@ Depends: R (>= 3.0.0)
 Imports:
   httr  (>= 1.4.0),
   purrr (>= 0.3.0),
-  glue (>= 1.4.0)
+  glue (>= 1.4.0),
+  utils

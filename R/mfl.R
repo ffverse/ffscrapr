@@ -46,6 +46,7 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
   format(Sys.Date()-365.25,"%Y")
 }
 
+# DO NOT EXPORT
 #' Get MFL Login Cookie
 #'
 #' Gets login cookie for MFL based on username/password
