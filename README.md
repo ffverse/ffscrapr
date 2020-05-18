@@ -1,7 +1,7 @@
 # fantasyscrapr
 *An R Interface for Fantasy Football League APIs*
 
-The goal of this package is to abstract the code required to call various Fantasy APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that return tidy and predictable data. This package is designed to make it easier to build league-analysis scripts by making it easier to connect roster data to DynastyProcess/FantasyPros etc.
+The goal of this package is to abstract the code required to call various Fantasy APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handle any authentication required, forms appropriate calls, and returns tidy and predictable data which can be easily connected to DynastyProcess (and FantasyPros) information.
 
 ## Installation
 Install from GitHub with:
@@ -20,4 +20,4 @@ Loose roadmap:
 - Get standings data (standings, potential-points, all-play, ?)
 
 ## Changelog
-2020-05-18 - initial commit and roadmap
+2020-05-18 - initial commit and roadmap generated
