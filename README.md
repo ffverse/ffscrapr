@@ -12,12 +12,17 @@ remotes::install_github("dynastyprocess/fantasyscrapr")
 
 ## Functions List
 Loose roadmap:
-- Create connection to x league platform
-- Get league settings
+
+- Create connection to x league platform i.e.
+  - `mfl_connect()`, `sleeper_connect()`, `fleaflicker_connect()`, `espn_connect()`, `yahoo_connect()`
+- Get league settings (i.e. number of teams, roster spots, starting-positions, number of QBs, IDPs, best ball etc?)
+- Get scoring settings (PPR, PP1D, positional-scoring)
 - Get franchise data
+- Get draft/draft_picks
 - Get player data
 - Get transaction data
 - Get standings data (standings, potential-points, all-play, ?)
+- Get raw API endpoint (how do I construct argument calls from dots?)
 
 ## Changelog
-2020-05-18 - initial commit and roadmap generated
+2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions
