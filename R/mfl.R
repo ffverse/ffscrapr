@@ -20,7 +20,7 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
     message(glue::glue("No season supplied - choosing {season} based on system date."))
   }
 
-  m_cookie <- NA
+  m_cookie <- NULL
 
   if(!is.null(username) && is.null(password)){message("Username supplied but no password - skipping login cookie call!")}
   if(!is.null(password) && is.null(username)){message("Password supplied but no username - skipping login cookie call!")}
@@ -88,11 +88,13 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 #' @return the league endpoint for MFL
 #'
 #' @examples
-#' mfl_connect(season = 2020, leagueID = 54040) %>% mfl_get_league()
+#' mfl_connect(season = 2020, leagueID = 54040) %>% mfl_endpoint_league()
 #'
-#' @export mfl_get_league
+#' @export
 
-mfl_get_league <- function(conn_object){
+mfl_endpoint_league <- function(conn_object){
+
+  # if(is.null(conn_object$leagueID) || !is.numeric(as.numeric(conn_object$leagueID)))
 
   arg_apikey <- ifelse(!is.null(conn_object$APIKEY),glue("&APIKEY={conn_object$APIKEY}"),"")
 
@@ -104,6 +106,5 @@ mfl_get_league <- function(conn_object){
 
   response <- jsonlite::parse_json(response)
 
-  response <- purrr::pluck(response,"league")
-
+  purrr::pluck(response,"league")
 }
