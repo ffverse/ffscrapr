@@ -11,19 +11,23 @@
 #' @export
 #' @return a list that stores MFL connection objects
 
-mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NULL,password = NULL){
+mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NULL,password = NULL, user_agent = NULL){
+
+  if(is.null(user_agent)){user_agent <- glue::glue("fantasyscrapR/{utils::packageVersion('fantasyscrapr')}")}
 
   if(is.null(season) || is.na(season)){
     season <- .mfl_choose_season()
     message(glue::glue("No season supplied - choosing {season} based on system date."))
   }
 
+  m_cookie <- NA
+
   if(!is.null(username) && is.null(password)){message("Username supplied but no password - skipping login cookie call!")}
   if(!is.null(password) && is.null(username)){message("Password supplied but no username - skipping login cookie call!")}
 
   if(!is.null(username) && !is.null(password)){
-    message('Has both user and password - trying login!')
-    m_cookie <- .mfl_logincookie(username,password,season)
+    # message('Has both user and password - trying login!')
+    m_cookie <- .mfl_logincookie(username,password,season,user_agent)
   }
 
   list(
@@ -31,6 +35,7 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
     season = season,
     leagueID = leagueID,
     APIKEY = APIKEY,
+    user_agent = httr::user_agent(user_agent),
     auth_cookie = m_cookie)
 }
 
@@ -62,10 +67,10 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 #'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
-.mfl_logincookie <- function(username,password,season){
+.mfl_logincookie <- function(username,password,season,user_agent){
 
   m_cookie <- httr::GET(glue::glue(
-    "https://api.myfantasyleague.com/{season}/login?USERNAME={username}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"))
+    "https://api.myfantasyleague.com/{season}/login?USERNAME={username}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),httr::user_agent(user_agent))
 
   m_cookie <- purrr::pluck(m_cookie,'cookies','value')
 
@@ -88,4 +93,17 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 #' @export mfl_get_league
 
 mfl_get_league <- function(conn_object){
+
+  arg_apikey <- ifelse(!is.null(conn_object$APIKEY),glue("&APIKEY={conn_object$APIKEY}"),"")
+
+  request <- httr::GET(glue::glue("https://www03.myfantasyleague.com/{conn_object$season}",
+                 "/export?TYPE=league&L={conn_object$leagueID}{arg_apikey}",
+                 "&JSON=1"),conn_object$user_agent,conn_object$auth_cookie)
+
+  response <- httr::content(request,'text')
+
+  response <- jsonlite::parse_json(response)
+
+  response <- purrr::pluck(response,"league")
+
 }

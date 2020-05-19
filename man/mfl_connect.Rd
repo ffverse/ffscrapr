@@ -9,7 +9,8 @@ mfl_connect(
   leagueID = NULL,
   APIKEY = NULL,
   username = NULL,
-  password = NULL
+  password = NULL,
+  user_agent = NULL
 )
 }
 \arguments{
