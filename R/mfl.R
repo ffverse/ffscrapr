@@ -22,6 +22,7 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
   if(!is.null(password) && is.null(username)){message("Password supplied but no username - skipping login cookie call!")}
 
   if(!is.null(username) && !is.null(password)){
+    message('Has both user and password - trying login!')
     m_cookie <- .mfl_logincookie(username,password,season)
   }
 
@@ -70,8 +71,6 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 
   if(is.null(m_cookie)){stop("No login cookie available - please recheck username/password/season variables again!")}
 
-  m_cookie <- utils::URLencode(m_cookie,reserved=TRUE)
-
   httr::set_cookies("MFL_USER_ID"=m_cookie[[1]],"MFL_PW_SEQ"=m_cookie[[2]])
 }
 
@@ -89,5 +88,4 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 #' @export mfl_get_league
 
 mfl_get_league <- function(conn_object){
-
 }
