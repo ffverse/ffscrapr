@@ -11,9 +11,11 @@
 #' @export
 #' @return a list that stores MFL connection objects
 
+
 mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NULL,password = NULL, user_agent = NULL){
 
   if(is.null(user_agent)){user_agent <- glue::glue("https://github.com/dynastyprocess/fantasyscrapr/{utils::packageVersion('fantasyscrapr')}")}
+
 
   if(is.null(season) || is.na(season)){
     season <- .mfl_choose_season()
@@ -25,18 +27,22 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
   if(!is.null(username) && is.null(password)){message("Username supplied but no password - skipping login cookie call!")}
   if(!is.null(password) && is.null(username)){message("Password supplied but no username - skipping login cookie call!")}
 
+
   if(!is.null(username) && !is.null(password)){
     # message('Has both user and password - trying login!')
     m_cookie <- .mfl_logincookie(username,password,season,user_agent)
   }
 
+
   structure(
+
   list(
     platform = "MFL",
     season = season,
     leagueID = leagueID,
     APIKEY = APIKEY,
     user_agent = httr::user_agent(user_agent),
+
     auth_cookie = m_cookie),
   class = 'mfl_conn')
 }
@@ -46,6 +52,7 @@ print.mfl_conn <- function(x, ...) {
   cat("<MFL connection ",x$season,"_",x$leagueID, ">\n", sep = "")
   str(x)
   invisible(x)
+
 }
 
 #' Choose current MFL season
@@ -60,6 +67,7 @@ print.mfl_conn <- function(x, ...) {
 
   format(Sys.Date()-365.25,"%Y")
 }
+
 
 # DO NOT EXPORT
 #' Get MFL Login Cookie
@@ -146,4 +154,3 @@ print.mfl_api <- function(x, ...) {
   str(x$content)
   invisible(x)
 }
-

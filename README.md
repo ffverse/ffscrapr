@@ -17,6 +17,7 @@ Loose roadmap:
   - `mfl_connect()`, `sleeper_connect()`, `fleaflicker_connect()`, `espn_connect()`, `yahoo_connect()`
   - Wrap said functions into `league_connect(platform,leagueID,...)`
 - Get raw API endpoint (how do I construct argument calls from dots?)
+
 - Get league settings (i.e. number of teams, roster spots, starting-positions, number of QBs, IDPs, best ball etc?)
 - Get scoring settings (PPR, PP1D, positional-scoring)
 - Get franchise data
@@ -24,8 +25,10 @@ Loose roadmap:
 - Get player data
 - Get transaction data
 - Get standings data (standings, potential-points, all-play, ?)
+- Get raw API endpoint (how do I construct argument calls from dots?)
 
 
 ## Changelog
 2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions
 2020-05-19 - following httr API vignette and created generic call to MFL API via `get_mfl_endpoint()`
+
