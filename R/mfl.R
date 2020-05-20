@@ -148,8 +148,6 @@ get_mfl_endpoint <- function(conn,endpoint,...){
 
 }
 
-
-
 print.mfl_api <- function(x, ...) {
 
   cat("<MFL - GET ",x$query,">\n", sep = "")
