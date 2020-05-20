@@ -15,12 +15,12 @@ get_mfl_endpoint(conn, endpoint, ...)
 the league endpoint for MFL
 }
 \description{
-Create a GET request to any MFL export endpoint, using the parameters defined in \code {mfl_connect()}
+Create a GET request to any MFL export endpoint, using the parameters defined in \code{mfl_connect()}
 }
 \examples{
 get_mfl_endpoint(conn,endpoint,...)
 
 }
 \seealso{
-\url {https://api.myfantasyleague.com/2020/api_info?STATE=details}
+\url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 }
