@@ -98,12 +98,12 @@ print.mfl_conn <- function(x, ...) {
 
 #' GET any MFL endpoint
 #'
-#' Create a GET request to any MFL export endpoint, using the parameters defined in \code {mfl_connect()}
+#' Create a GET request to any MFL export endpoint, using the parameters defined in \code{mfl_connect()}
 #'
 #' @param conn the list object created by \code{mfl_connect()}
 #' @param endpoint a string defining which endpoint to return from the API
 #'
-#' @seealso \url {https://api.myfantasyleague.com/2020/api_info?STATE=details}
+#' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
 #' @return the league endpoint for MFL
 #'
