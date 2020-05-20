@@ -13,7 +13,7 @@
 
 mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NULL,password = NULL, user_agent = NULL){
 
-  if(is.null(user_agent)){user_agent <- glue::glue("fantasyscrapR/{utils::packageVersion('fantasyscrapr')}")}
+  if(is.null(user_agent)){user_agent <- glue::glue("https://github.com/dynastyprocess/fantasyscrapr/{utils::packageVersion('fantasyscrapr')}")}
 
   if(is.null(season) || is.na(season)){
     season <- .mfl_choose_season()
@@ -30,16 +30,25 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
     m_cookie <- .mfl_logincookie(username,password,season,user_agent)
   }
 
+  structure(
   list(
     platform = "MFL",
     season = season,
     leagueID = leagueID,
     APIKEY = APIKEY,
     user_agent = httr::user_agent(user_agent),
-    auth_cookie = m_cookie)
+    auth_cookie = m_cookie),
+  class = 'mfl_conn')
 }
 
-#' Choose correct MFL season
+print.mfl_conn <- function(x, ...) {
+
+  cat("<MFL connection ",x$season,"_",x$leagueID, ">\n", sep = "")
+  str(x)
+  invisible(x)
+}
+
+#' Choose current MFL season
 #'
 #' A helper function to return the current year if March or later, otherwise assume previous year
 #' @noRd
@@ -79,32 +88,62 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
   httr::set_cookies("MFL_USER_ID"=m_cookie[[1]],"MFL_PW_SEQ"=m_cookie[[2]])
 }
 
-#' Read MFL league settings
+#' GET any MFL endpoint
 #'
-#' Get MFL league settings endpoint based on the predefined terms in mfl_connect()
+#' Create a GET request to any MFL export endpoint, using the parameters defined in \code {mfl_connect()}
 #'
-#' @param conn_object the list object created by \code{mfl_connect()}
+#' @param conn the list object created by \code{mfl_connect()}
+#' @param endpoint a string defining which endpoint to return from the API
+#'
+#' @seealso \url {https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
 #' @return the league endpoint for MFL
 #'
 #' @examples
-#' mfl_connect(season = 2020, leagueID = 54040) %>% mfl_endpoint_league()
+#' get_mfl_endpoint(conn,endpoint,...)
 #'
 #' @export
 
-mfl_endpoint_league <- function(conn_object){
+get_mfl_endpoint <- function(conn,endpoint,...){
 
-  # if(is.null(conn_object$leagueID) || !is.numeric(as.numeric(conn_object$leagueID)))
+  url_query <- httr::modify_url(url = glue::glue("https://www03.myfantasyleague.com/{conn$season}/export"),
+                                   query = list("TYPE"='league',
+                                                "L" = conn$leagueID,
+                                                'APIKEY'=conn$APIKEY,
+                                                # ...,
+                                                "JSON"=1))
 
-  arg_apikey <- ifelse(!is.null(conn_object$APIKEY),glue("&APIKEY={conn_object$APIKEY}"),"")
+  response <- httr::GET(url_query,conn$user_agent,conn$auth_cookie)
 
-  request <- httr::GET(glue::glue("https://www03.myfantasyleague.com/{conn_object$season}",
-                 "/export?TYPE=league&L={conn_object$leagueID}{arg_apikey}",
-                 "&JSON=1"),conn_object$user_agent,conn_object$auth_cookie)
+  if (httr::http_type(response) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
 
-  response <- httr::content(request,'text')
+  parsed <- jsonlite::parse_json(httr::content(response,"text"))
 
-  response <- jsonlite::parse_json(response)
+  if (httr::http_error(response)) {
+    stop(glue::glue("MFL API request failed [{httr::status_code(response)}]\n",
+        parsed$message
+      ),
+      call. = FALSE
+    )
+  }
 
-  purrr::pluck(response,"league")
+  structure(
+    list(
+      content = parsed,
+      query = url_query,
+      response = response
+    ),
+    class = "mfl_api"
+  )
+
 }
+
+print.mfl_api <- function(x, ...) {
+
+  cat("<MFL - GET ",x$query,">\n", sep = "")
+  str(x$content)
+  invisible(x)
+}
+
