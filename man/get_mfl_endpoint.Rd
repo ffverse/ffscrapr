@@ -10,12 +10,14 @@ get_mfl_endpoint(conn, endpoint, ...)
 \item{conn}{the list object created by \code{mfl_connect()}}
 
 \item{endpoint}{a string defining which endpoint to return from the API}
+
+\item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
 }
 \value{
 the league endpoint for MFL
 }
 \description{
-Create a GET request to any MFL export endpoint, using the parameters defined in \code{mfl_connect()}
+Create a GET request to any MFL export endpoint
 }
 \examples{
 get_mfl_endpoint(conn,endpoint,...)

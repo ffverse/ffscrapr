@@ -35,7 +35,6 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 
 
   structure(
-
   list(
     platform = "MFL",
     season = season,
@@ -47,6 +46,8 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
   class = 'mfl_conn')
 }
 
+#' @noRd
+#' @export
 print.mfl_conn <- function(x, ...) {
 
   cat("<MFL connection ",x$season,"_",x$leagueID, ">\n", sep = "")
@@ -98,10 +99,11 @@ print.mfl_conn <- function(x, ...) {
 
 #' GET any MFL endpoint
 #'
-#' Create a GET request to any MFL export endpoint, using the parameters defined in \code{mfl_connect()}
+#' Create a GET request to any MFL export endpoint
 #'
 #' @param conn the list object created by \code{mfl_connect()}
 #' @param endpoint a string defining which endpoint to return from the API
+#' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #'
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
@@ -114,8 +116,8 @@ print.mfl_conn <- function(x, ...) {
 
 get_mfl_endpoint <- function(conn,endpoint,...){
 
-  url_query <- httr::modify_url(url = glue::glue("https://www03.myfantasyleague.com/{conn$season}/export"),
-                                   query = list("TYPE"='league',
+  url_query <- httr::modify_url(url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
+                                   query = list("TYPE"=endpoint,
                                                 "L" = conn$leagueID,
                                                 'APIKEY'=conn$APIKEY,
                                                 # ...,
@@ -148,9 +150,12 @@ get_mfl_endpoint <- function(conn,endpoint,...){
 
 }
 
+#' @noRd
+#' @export
 print.mfl_api <- function(x, ...) {
 
   cat("<MFL - GET ",x$query,">\n", sep = "")
   str(x$content)
   invisible(x)
+
 }

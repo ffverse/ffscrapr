@@ -4,10 +4,10 @@
 \alias{league_connect}
 \title{Connect to a League}
 \usage{
-league_connect(platform = "MFL", leagueID, ...)
+league_connect(platform = "mfl", leagueID, ...)
 }
 \arguments{
-\item{platform}{one of MFL, (future - Sleeper, Flea, ESPN, Yahoo in approximate priority order)}
+\item{platform}{one of MFL, (future - Sleeper, Fleaflicker, ESPN, Yahoo in approximate priority order)}
 
 \item{leagueID}{LeagueID (currently assuming one league at a time)}
 }
