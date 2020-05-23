@@ -7,40 +7,74 @@
 #' @param APIKEY APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)
 #' @param username MFL username - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token
 #' @param password MFL password - optional - when supplied in conjunction with username, will attempt to retrieve authentication token
+#' @param user_agent A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token
+#' @param rate_limit_toggle TRUE by default, pass FALSE to turn off rate limiting
+#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds
+#' @param rate_limit_seconds number of seconds as denominator for rate_limit
 #'
-#' @export
+#' @export mfl_connect
 #' @return a list that stores MFL connection objects
 
 
-mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NULL,password = NULL, user_agent = NULL){
+mfl_connect <- function(season = NULL,
+                        leagueID=NULL,
+                        APIKEY = NULL,
+                        username = NULL,
+                        password = NULL,
+                        user_agent = NULL,
+                        rate_limit_toggle = TRUE,
+                        rate_limit_number = 60,
+                        rate_limit_seconds = 60){
 
-  if(is.null(user_agent)){user_agent <- glue::glue("https://github.com/dynastyprocess/fantasyscrapr/{utils::packageVersion('fantasyscrapr')}")}
+  ## USER AGENT ##
+  # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
+  # See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
 
+  if(is.null(user_agent)){
+    user_agent <- glue::glue("https://github.com/dynastyprocess/fantasyscrapr/",
+                             "{utils::packageVersion('fantasyscrapr')}")}
+
+  user_agent <- httr::user_agent(user_agent)
+
+  ## RATE LIMIT ##
+  # For more info, see: https://api.myfantasyleague.com/2020/api_info
+
+  if(!is.logical(rate_limit_toggle)){stop("rate_limit_toggle should be logical")}
+
+  .get <- .fn_get(rate_limit_toggle,rate_limit_number,rate_limit_seconds)
+
+
+  ## Season ##
+  # MFL organizes things by league year and tends to roll over around February.
+  # Sensible default seems to be calling the current year if in March or later, otherwise previous year if in Jan/Feb
 
   if(is.null(season) || is.na(season)){
-    season <- .mfl_choose_season()
+    season <- .choose_season()
     message(glue::glue("No season supplied - choosing {season} based on system date."))
   }
 
+  ## Username/Password Login ##
   m_cookie <- NULL
 
-  if(!is.null(username) && is.null(password)){message("Username supplied but no password - skipping login cookie call!")}
-  if(!is.null(password) && is.null(username)){message("Password supplied but no username - skipping login cookie call!")}
-
+  if(!is.null(username) && is.null(password)){
+    message("Username supplied but no password - skipping login cookie call!")}
+  if(!is.null(password) && is.null(username)){
+    message("Password supplied but no username - skipping login cookie call!")}
 
   if(!is.null(username) && !is.null(password)){
-    # message('Has both user and password - trying login!')
-    m_cookie <- .mfl_logincookie(username,password,season,user_agent)
-  }
+    m_cookie <- .mfl_logincookie(username,password,season,user_agent)}
 
+
+  ## Collect all of the connection pieces and store in an S3 object ##
 
   structure(
   list(
     platform = "MFL",
+    get = .get,
     season = season,
     leagueID = leagueID,
     APIKEY = APIKEY,
-    user_agent = httr::user_agent(user_agent),
+    user_agent = ,
 
     auth_cookie = m_cookie),
   class = 'mfl_conn')
@@ -49,26 +83,10 @@ mfl_connect <- function(season = NULL,leagueID=NULL,APIKEY = NULL,username = NUL
 #' @noRd
 #' @export
 print.mfl_conn <- function(x, ...) {
-
   cat("<MFL connection ",x$season,"_",x$leagueID, ">\n", sep = "")
   str(x)
   invisible(x)
-
 }
-
-#' Choose current MFL season
-#'
-#' A helper function to return the current year if March or later, otherwise assume previous year
-#' @noRd
-#' @keywords internal
-
-.mfl_choose_season <- function(){
-
-  if(as.numeric(format(Sys.Date(),"%m"))>2){return(format(Sys.Date(),"%Y"))}
-
-  format(Sys.Date()-365.25,"%Y")
-}
-
 
 # DO NOT EXPORT
 #' Get MFL Login Cookie
@@ -85,10 +103,13 @@ print.mfl_conn <- function(x, ...) {
 #'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
-.mfl_logincookie <- function(username,password,season,user_agent){
+.mfl_logincookie <- function(fn_get,username,password,season,user_agent){
 
-  m_cookie <- httr::GET(glue::glue(
-    "https://api.myfantasyleague.com/{season}/login?USERNAME={username}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),httr::user_agent(user_agent))
+  m_cookie <- fn_get(
+    glue::glue(
+      "https://api.myfantasyleague.com/{season}/login?",
+      "USERNAME={username}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
+    user_agent)
 
   m_cookie <- purrr::pluck(m_cookie,'cookies','value')
 
@@ -123,7 +144,7 @@ get_mfl_endpoint <- function(conn,endpoint,...){
                                                 # ...,
                                                 "JSON"=1))
 
-  response <- httr::GET(url_query,conn$user_agent,conn$auth_cookie)
+  response <- conn$get(url_query,conn$user_agent,conn$auth_cookie)
 
   if (httr::http_type(response) != "application/json") {
     stop("API did not return json", call. = FALSE)
