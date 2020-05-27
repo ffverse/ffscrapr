@@ -6,11 +6,14 @@
 \usage{
 mfl_connect(
   season = NULL,
-  leagueID = NULL,
+  league_id = NULL,
   APIKEY = NULL,
-  username = NULL,
+  user_name = NULL,
   password = NULL,
-  user_agent = NULL
+  user_agent = NULL,
+  rate_limit = TRUE,
+  rate_limit_number = 60,
+  rate_limit_seconds = 60
 )
 }
 \arguments{
@@ -18,15 +21,28 @@ mfl_connect(
 
 \item{APIKEY}{APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)}
 
-\item{username}{MFL username - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token}
+\item{user_name}{MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token}
 
-\item{password}{MFL password - optional - when supplied in conjunction with username, will attempt to retrieve authentication token}
+\item{password}{MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token}
 
-\item{league}{LeagueID (currently assuming one league at a time)}
+\item{user_agent}{A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token}
+
+\item{rate_limit}{TRUE by default, pass FALSE to turn off rate limiting}
+
+\item{rate_limit_number}{number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds}
+
+\item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
+
+\item{league}{league_id (currently assuming one league at a time)}
 }
 \value{
 a list that stores MFL connection objects
 }
 \description{
 This function creates a connection object which stores parameters and gets a login-cookie if available.
+}
+\examples{
+mfl_connect(season = 2020, league_id = 54040)
+mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
+
 }

@@ -2,6 +2,10 @@
 
 S3method(print,mfl_api)
 S3method(print,mfl_conn)
+S3method(print,sleeper_api)
+S3method(print,sleeper_conn)
+export(ff_connect)
 export(get_mfl_endpoint)
-export(league_connect)
+export(get_sleeper_endpoint)
 export(mfl_connect)
+export(sleeper_connect)
