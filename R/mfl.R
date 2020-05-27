@@ -70,7 +70,7 @@ mfl_connect <- function(season = NULL,
     message("Password supplied but no user_name - skipping login cookie call!")}
 
   if(!is.null(user_name) && !is.null(password)){
-    m_cookie <- .mfl_logincookie(user_name,password,season,user_agent)}
+    m_cookie <- .mfl_logincookie(.get,user_name,password,season,user_agent)}
 
 
   ## Collect all of the connection pieces and store in an S3 object ##
