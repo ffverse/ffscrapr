@@ -57,7 +57,7 @@ mfl_connect <- function(season = NULL,
   # Sensible default seems to be calling the current year if in March or later, otherwise previous year if in Jan/Feb
 
   if(is.null(season) || is.na(season)){
-    season <- .choose_season()
+    season <- .fn_choose_season()
     message(glue::glue("No season supplied - choosing {season} based on system date."))
   }
 
