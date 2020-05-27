@@ -82,7 +82,7 @@ mfl_connect <- function(season = NULL,
     season = season,
     league_id = league_id,
     APIKEY = APIKEY,
-    user_agent = ,
+    user_agent = user_agent,
 
     auth_cookie = m_cookie),
   class = 'mfl_conn')
