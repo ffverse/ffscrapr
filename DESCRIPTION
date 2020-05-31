@@ -1,19 +1,23 @@
 Package: ffscrapr
 Type: Package
 Title: FFscrapR - R Client for Fantasy Football League APIs
-Version: 0.0.4.6
+Version: 0.0.4.7
 Authors@R: person("Tan", "Ho", email = "tan@tanho.ca", role = c("aut", "cre"))
-Description: The goal of this package is to abstract the code required to call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) and create methods that handle any authentication required, form appropriate calls, and return tidy & predictable data which can be easily connected to DynastyProcess and FantasyPros information.
+Description: This package abstracts the code required to call various Fantasy Football APIs 
+    (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) and create methods that handle any authentication required, 
+    form appropriate calls, and return tidy & predictable dataframes which can be easily connected to other sources.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
 Depends: R (>= 3.0.0)
 Imports:
-  httr  (>= 1.4.0),
-  purrr (>= 0.3.0),
-  glue (>= 1.3.0),
-  jsonlite (>= 1.5.0), 
-  ratelimitr (>= 0.4.0)
+    httr  (>= 1.4.0),
+    purrr (>= 0.3.0),
+    glue (>= 1.3.0),
+    jsonlite (>= 1.5.0), 
+    ratelimitr (>= 0.4.0),
+    tibble (>= 3.0.0),
+    dplyr (>= 0.8.0)
 Suggests: 
     testthat

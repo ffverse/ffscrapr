@@ -33,13 +33,13 @@ mfl_connect(
 
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
 
-\item{league}{league_id (currently assuming one league at a time)}
+\item{league}{league_id Numeric ID parameter for each league, typically found in the URL}
 }
 \value{
 a list that stores MFL connection objects
 }
 \description{
-This function creates a connection object which stores parameters and gets a login-cookie if available.
+This function creates a connection object which stores parameters and gets a login-cookie if available
 }
 \examples{
 mfl_connect(season = 2020, league_id = 54040)
