@@ -5,18 +5,21 @@
   [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
   <!-- badges: end -->
 
-The goal of this package is to abstract the code required to call various Fantasy APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handles required authentication, forms appropriate calls, and returns tidy and predictable data which can be easily connected to other data sources.
+
+The goal of this package is to abstract the code required to call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handles required authentication, forms appropriate calls, and returns tidy and predictable data which can be easily connected to other data sources.
+
 
 ## Installation
 Install from GitHub with:
 ``` r
-# install.packages("devtools") OR install.packages("remotes") 
+# install.packages("devtools") OR install.packages("remotes")
 ## remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
 
 ## Functions List
 Loose roadmap:
+
 
 - Create connection to x league platform
 - Get raw API endpoints
