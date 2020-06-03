@@ -172,7 +172,7 @@ mfl_getendpoint <- function(conn,endpoint,...){
   }
 
   if(!is.null(parsed$error)){
-    warn(glue::glue("MFL says: {parsed$error[[1]]}"),
+    warning(glue::glue("MFL says: {parsed$error[[1]]}"),
          call. = FALSE)
   }
 
@@ -214,22 +214,25 @@ print.mfl_api <- function(x, ...) {
 mfl_league_summary <- function(conn){
 
   league_endpoint <- mfl_getendpoint(conn,endpoint = "league")
-
   league_endpoint <- purrr::pluck(league_endpoint,"content","league")
+
+  scoring_endpoint <- mfl_getendpoint(conn,"rules")
+  scoring_endpoint <- purrr::pluck(scoring_endpoint,"content","rules","positionRules")
+  scoring_endpoint <- purrr::map_dfr(scoring_endpoint,tibble::as_tibble)
 
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$name,
     franchise_count = league_endpoint$franchises$count,
-    qb_type = .is_qbtype(league_endpoint)$type,
-    idp = .is_idp(league_endpoint),
+    qb_type = .mfl_is_qbtype(league_endpoint)$type,
+    idp = .mfl_is_idp(league_endpoint),
     scoring_type = NA,
-    best_ball = league_endpoint$bestLineup,
-    salary_cap = league_endpoint$usesSalaries,
-    player_copies = league_endpoint$rostersPerPlayer,
-    years_active = .years_active(league_endpoint),
-    qb_count = .is_qbtype(league_endpoint)$count,
-    roster_size = .roster_size(league_endpoint),
+    best_ball = .mfl_is_bestball(league_endpoint),
+    salary_cap = .mfl_is_salcap(league_endpoint),
+    player_copies = as.numeric(league_endpoint$rostersPerPlayer),
+    years_active = .mfl_years_active(league_endpoint),
+    qb_count = .mfl_is_qbtype(league_endpoint)$count,
+    roster_size = .mfl_roster_size(league_endpoint),
     league_depth = as.numeric(roster_size) * as.numeric(franchise_count) / as.numeric(player_copies)
   )
 
@@ -237,11 +240,11 @@ mfl_league_summary <- function(conn){
 
 ## League Summary Helper Functions ##
 #' @noRd
-.is_idp <- function(league_endpoint){
+.mfl_is_idp <- function(league_endpoint){
   ifelse(is.null(league_endpoint$starters$idp_starters) || league_endpoint$starters$idp_starters=="",FALSE,TRUE)
 }
 #' @noRd
-.is_qbtype <- function(league_endpoint){
+.mfl_is_qbtype <- function(league_endpoint){
 
   starters <- purrr::pluck(league_endpoint,"starters","position")
 
@@ -257,19 +260,29 @@ mfl_league_summary <- function(conn){
        type = qb_type)
 }
 #' @noRd
-.roster_size <- function(league_endpoint) {
+.mfl_roster_size <- function(league_endpoint) {
   as.numeric(league_endpoint$rosterSize)+as.numeric(league_endpoint$taxiSquad)+as.numeric(league_endpoint$injuredReserve)
 }
 #' @noRd
-.years_active <- function(league_endpoint){
+.mfl_years_active <- function(league_endpoint){
   years_active <- league_endpoint$history$league
   years_active <- dplyr::bind_rows(years_active)
   years_active <- dplyr::arrange(years_active,year)
   years_active <- dplyr::slice(years_active,1,nrow(years_active))
-  glue::glue_collapse(years_active$year,sep = "-")
+  paste(years_active$year,collapse = "-")
+}
+#' @noRd
+.mfl_is_bestball <- function(league_endpoint){
+  league_endpoint$bestLineup=="Yes"
+}
+#' @noRd
+.mfl_is_salcap <- function(league_endpoint){
+  league_endpoint$usesSalaries == "1"
 }
 
 # ff_settings_scoring ----
+
+
 
 # ff_settings_roster ----
 
