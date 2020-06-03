@@ -205,13 +205,14 @@ print.mfl_api <- function(x, ...) {
 #' This function returns a data frame of common league settings - things like "1QB" or "2QB", best ball, team count etc
 #'
 #' @param conn the list object created by \code{mfl_connect()}
+#' @param detail TRUE to return a full list of details (questioning?)
 #'
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
 #' @return the league endpoint for MFL
 #' @export
 
-mfl_league_summary <- function(conn){
+mfl_league_summary <- function(conn, detail = FALSE){
 
   league_endpoint <- mfl_getendpoint(conn,endpoint = "league")
   league_endpoint <- purrr::pluck(league_endpoint,"content","league")
@@ -282,7 +283,36 @@ mfl_league_summary <- function(conn){
 
 # ff_settings_scoring ----
 
+#' Get a dataframe of scoring settings
+#'
+#' @param conn the list object created by \code{mfl_connect()}
+#'
+#' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
+#'
+#' @return the league endpoint for MFL
+#' @export
 
+mfl_scoring_settings <- function(conn){
+
+  rules <- mfl_getendpoint(conn,"rules")
+  rules <- purrr::pluck(rules,"content","rules","positionRules")
+  rules <- tibble::tibble(rules)
+  rules <- tidyr::unnest_wider(rules,1)
+  rules <- dplyr::mutate(rules,
+                         vec_depth = map_dbl(rule,vec_depth),
+                         rule = case_when(vec_depth == 3 ~ map_depth(rule,2,`[[`,1),
+                                          vec_depth == 4 ~ map_depth(rule,-2,`[[`,1)),
+                         rule = case_when(vec_depth == 4 ~ map(rule,bind_rows),
+                                          TRUE ~ rule))
+  rules <- dplyr::select(rules,-vec_depth)
+  rules <- tidyr::unnest_wider(rules, rule)
+  rules <- tidyr::unnest(rules, c(points,event,range))
+  rules <- tidyr::separate_rows(rules, positions,sep = "\\|")
+  rules <- dplyr::left_join(rules,rule_library_mfl, by = c('event'='abbrev'))
+  rules <- dplyr::mutate_at(rules, vars(is_player,is_team,is_coach),~as.logical(as.numeric(.x)))
+
+  rules
+}
 
 # ff_settings_roster ----
 

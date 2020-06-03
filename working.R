@@ -11,13 +11,7 @@ library(dplyr)
 library(tidyr)
 library(purrr)
 
-rule_library <- ffscrapr::mfl_getendpoint(ffscrapr::mfl_connect(2020),"allRules") %>%
-  pluck("content","allRules","rule") %>%
-  tibble() %>%
-  hoist(1,"abbrev"="abbreviation","desc" = "shortDescription","long_desc" = "detailedDescription") %>%
-  select(abbrev,desc,long_desc) %>%
-  modify_depth(2,`[[`,1) %>%
-  mutate_all(as.character)
+
 
 scoring_endpoint <- mfl_getendpoint(conn,"rules") %>%
   purrr::pluck("content","rules","positionRules") %>%
@@ -32,4 +26,4 @@ scoring_endpoint <- mfl_getendpoint(conn,"rules") %>%
   unnest_wider(rule) %>%
   unnest(c(points,event,range)) %>%
   separate_rows(positions,sep = "\\|") %>%
-  left_join(rule_library, by = c('event'='abbrev'))
+  left_join(rule_library_mfl, by = c('event'='abbrev'))
