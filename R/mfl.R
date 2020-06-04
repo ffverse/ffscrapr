@@ -245,7 +245,9 @@ mfl_league_summary <- function(conn, detail = FALSE){
 
   first_down <- .mfl_check_firstdown(df_rules)
 
-  flags <- paste(ppr_flag,te_prem,first_down,sep = ", ")
+  flags <- list(ppr_flag,te_prem,first_down)
+
+  flags <- paste(flags[!is.na(flags)],collapse = ", ")
 
   return(flags)
 }
