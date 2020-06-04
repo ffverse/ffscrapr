@@ -277,7 +277,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 
 #' @noRd
 .mfl_check_firstdown <- function(df_rules){
-  first_downs <- dplyr::filter(df_rules,grepl("First 2Down", short_desc))
+  first_downs <- dplyr::filter(df_rules,grepl("First Down", short_desc))
   ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
 }
 
