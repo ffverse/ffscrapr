@@ -333,7 +333,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 #'
 #' @return the league endpoint for MFL
 #'
-#' @export mfl_settings_scoring
+#' @export mfl_scoring_settings
 
 mfl_scoring_settings <- function(conn){
 
