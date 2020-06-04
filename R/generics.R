@@ -34,6 +34,26 @@ ff_connect <- function(platform = "mfl",league_id,...){
 }
 
 # ff_league - summarises common league details
+
+#' Get League Summary
+#'
+#' This function returns a dataframe summarizing common league settings.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#'
+#' @export ff_league
+#' @return a dataframe of stuff
+
+ff_league <- function(conn){
+
+  if(conn$platform!= 'mfl'){stop("Only MFL right now!")}
+
+  switch(conn$platform,
+         "mfl" = mfl_league_summary(conn),
+         "sleeper" = sleeper_league_summary(conn))
+
+}
+
 # ff_settings_scoring - summarises all available scoring setting details
 # ff_settings_rosters - summarises all available roster setting details
 # ff_franchises - summarises team-level details (FAAB, salary, waiver order?)

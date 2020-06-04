@@ -4,10 +4,12 @@
 \alias{mfl_league_summary}
 \title{Get a summary of common league settings}
 \usage{
-mfl_league_summary(conn)
+mfl_league_summary(conn, detail = FALSE)
 }
 \arguments{
 \item{conn}{the list object created by \code{mfl_connect()}}
+
+\item{detail}{TRUE to return a full list of details (questioning?)}
 }
 \value{
 the league endpoint for MFL
