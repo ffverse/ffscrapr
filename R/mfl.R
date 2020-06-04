@@ -217,17 +217,13 @@ mfl_league_summary <- function(conn, detail = FALSE){
   league_endpoint <- mfl_getendpoint(conn,endpoint = "league")
   league_endpoint <- purrr::pluck(league_endpoint,"content","league")
 
-  scoring_endpoint <- mfl_getendpoint(conn,"rules")
-  scoring_endpoint <- purrr::pluck(scoring_endpoint,"content","rules","positionRules")
-  scoring_endpoint <- purrr::map_dfr(scoring_endpoint,tibble::as_tibble)
-
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$name,
     franchise_count = league_endpoint$franchises$count,
     qb_type = .mfl_is_qbtype(league_endpoint)$type,
     idp = .mfl_is_idp(league_endpoint),
-    scoring_type = NA,
+    scoring_flags = .mfl_flag_scoring(conn),
     best_ball = .mfl_is_bestball(league_endpoint),
     salary_cap = .mfl_is_salcap(league_endpoint),
     player_copies = as.numeric(league_endpoint$rostersPerPlayer),
@@ -236,10 +232,53 @@ mfl_league_summary <- function(conn, detail = FALSE){
     roster_size = .mfl_roster_size(league_endpoint),
     league_depth = as.numeric(roster_size) * as.numeric(franchise_count) / as.numeric(player_copies)
   )
-
 }
 
 ## League Summary Helper Functions ##
+.mfl_flag_scoring <- function(conn){
+
+  df_rules <- mfl_scoring_settings(conn)
+
+  ppr_flag <- .mfl_check_ppr(df_rules)
+
+  te_prem <- .mfl_check_teprem(df_rules)
+
+  first_down <- .mfl_check_firstdown(df_rules)
+
+  flags <- paste(ppr_flag,te_prem,first_down,sep = ", ")
+
+  return(flags)
+}
+
+#' @noRd
+.mfl_check_ppr <- function(df_rules){
+
+  ppr <- dplyr::filter(df_rules,grepl("Receptions", short_desc))
+
+  if(nrow(ppr)==0) return("zero_ppr")
+
+  ppr <- dplyr::filter(ppr,positions=="WR")$points
+
+  return(paste0(ppr,"_ppr"))
+}
+#' @noRd
+.mfl_check_teprem <- function(df_rules){
+
+  te_prem <- dplyr::group_by(df_rules,positions)
+  te_prem <- dplyr::summarise(te_prem,point_sum = sum(points))
+
+  ifelse(
+    te_prem$point_sum[te_prem$positions=="TE"] > te_prem$point_sum[te_prem$positions=="WR"],
+    "TEPrem",
+    NA_character_)
+}
+
+#' @noRd
+.mfl_check_firstdown <- function(df_rules){
+  first_downs <- dplyr::filter(df_rules,grepl("First 2Down", short_desc))
+  ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
+}
+
 #' @noRd
 .mfl_is_idp <- function(league_endpoint){
   ifelse(is.null(league_endpoint$starters$idp_starters) || league_endpoint$starters$idp_starters=="",FALSE,TRUE)
@@ -264,6 +303,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 .mfl_roster_size <- function(league_endpoint) {
   as.numeric(league_endpoint$rosterSize)+as.numeric(league_endpoint$taxiSquad)+as.numeric(league_endpoint$injuredReserve)
 }
+
 #' @noRd
 .mfl_years_active <- function(league_endpoint){
   years_active <- league_endpoint$history$league
@@ -272,10 +312,12 @@ mfl_league_summary <- function(conn, detail = FALSE){
   years_active <- dplyr::slice(years_active,1,nrow(years_active))
   paste(years_active$year,collapse = "-")
 }
+
 #' @noRd
 .mfl_is_bestball <- function(league_endpoint){
   league_endpoint$bestLineup=="Yes"
 }
+
 #' @noRd
 .mfl_is_salcap <- function(league_endpoint){
   league_endpoint$usesSalaries == "1"
@@ -290,7 +332,8 @@ mfl_league_summary <- function(conn, detail = FALSE){
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
 #' @return the league endpoint for MFL
-#' @export
+#'
+#' @export ff_settings_scoring
 
 mfl_scoring_settings <- function(conn){
 
@@ -299,19 +342,36 @@ mfl_scoring_settings <- function(conn){
   rules <- tibble::tibble(rules)
   rules <- tidyr::unnest_wider(rules,1)
   rules <- dplyr::mutate(rules,
-                         vec_depth = map_dbl(rule,vec_depth),
-                         rule = case_when(vec_depth == 3 ~ map_depth(rule,2,`[[`,1),
-                                          vec_depth == 4 ~ map_depth(rule,-2,`[[`,1)),
-                         rule = case_when(vec_depth == 4 ~ map(rule,bind_rows),
+                         vec_depth = purrr::map_dbl(rule,purrr::vec_depth),
+                         rule = dplyr::case_when(vec_depth == 3 ~ purrr::map_depth(rule,2,`[[`,1),
+                                          vec_depth == 4 ~ purrr::map_depth(rule,-2,`[[`,1)),
+                         rule = dplyr::case_when(vec_depth == 4 ~ purrr::map(rule,dplyr::bind_rows),
                                           TRUE ~ rule))
   rules <- dplyr::select(rules,-vec_depth)
-  rules <- tidyr::unnest_wider(rules, rule)
-  rules <- tidyr::unnest(rules, c(points,event,range))
-  rules <- tidyr::separate_rows(rules, positions,sep = "\\|")
+  rules <- tidyr::unnest_wider(rules, 'rule')
+  rules <- tidyr::unnest(rules, c('points','event','range'))
+  rules <- tidyr::separate_rows(rules, 'positions', sep = "\\|")
   rules <- dplyr::left_join(rules,rule_library_mfl, by = c('event'='abbrev'))
-  rules <- dplyr::mutate_at(rules, vars(is_player,is_team,is_coach),~as.logical(as.numeric(.x)))
+  rules <- dplyr::mutate_at(rules, c('is_player','is_team','is_coach'),~as.logical(as.numeric(.x)))
+  rules <- dplyr::mutate(rules, points = purrr::map_if(points,grepl("\\/",points),.fn_parsedivide),
+                                points = purrr::map_if(points,grepl("\\*",points),.fn_parsemultiply),
+                                points = as.double(points))
 
   rules
+}
+
+#' @noRd
+.fn_parsemultiply <- function(points){
+  as.numeric(gsub("\\*","",points))
+}
+
+#' @noRd
+.fn_parsedivide <- function(points) {
+
+  x <- strsplit(points,"/")
+  x <- unlist(x)
+  x <- as.numeric(x)
+  return(x[[1]]/x[[2]])
 }
 
 # ff_settings_roster ----
