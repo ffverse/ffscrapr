@@ -7,7 +7,4 @@ conn_dlf <- ffscrapr::mfl_connect(2020,37920)
 
 df <- purrr::map_dfr(list(conn_ssb,conn_48,conn_fog,conn_dlf),mfl_league_summary)
 
-conn <- conn_dlf
-
-df <- purrr::map_dfr(list(conn_ssb,conn_48,conn_fog,conn_dlf),mfl_league_summary)
-
+# conn <- conn_dlf
