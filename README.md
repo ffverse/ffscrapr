@@ -4,6 +4,7 @@
   <!-- badges: start -->
   [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
   [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/master/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=master)
+  [![R build status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
   <!-- badges: end -->
 
 
@@ -46,3 +47,4 @@ League-specific functions are prefixed with the league - i.e. `mfl_`, `sleeper_`
 - 2020-05-23 - adding rate limiting and beginnings of Sleeper connection code
 - 2020-05-27 - adding test folder, renamed main-level functions to "ff_" prefix for ease of autocomplete later
 - 2020-05-30 - add start of league summary code
+- 2020-06-07 - taking a big whack at testing stuff
