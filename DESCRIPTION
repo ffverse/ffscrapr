@@ -13,13 +13,15 @@ RoxygenNote: 7.1.0
 Depends: R (>= 3.0.0)
 Imports:
     httr  (>= 1.4.0),
+    ratelimitr (>= 0.4.0),
+    lubridate(>= 1.5.0),
+    jsonlite (>= 1.5.0),
     purrr (>= 0.3.0),
     glue (>= 1.3.0),
-    jsonlite (>= 1.5.0), 
-    ratelimitr (>= 0.4.0),
     tibble (>= 3.0.0),
     dplyr (>= 0.8.0),
     tidyr (>= 1.0.0)
 Suggests: 
     testthat,
-    covr
+    covr,
+    httptest

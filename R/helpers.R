@@ -8,11 +8,16 @@
 #' @noRd
 #' @keywords internal
 
-.fn_choose_season <- function(){
+.fn_choose_season <- function(date = NULL){
 
-  if(as.numeric(format(Sys.Date(),"%m"))>2){return(format(Sys.Date(),"%Y"))}
+  if(is.null(date)){date <- Sys.Date()}
 
-  format(Sys.Date()-365.25,"%Y")
+  if(class(date)!="Date") {date <- as.Date(date)}
+
+  if(as.numeric(format(date,"%m"))>2){return(format(date,"%Y"))}
+
+  return(format(date-365.25,"%Y"))
+
 }
 
 #' Rate limited httr::GET
