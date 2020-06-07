@@ -19,6 +19,8 @@ mfl_connect(
 \arguments{
 \item{season}{Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)}
 
+\item{league_id}{league_id Numeric ID parameter for each league, typically found in the URL}
+
 \item{APIKEY}{APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)}
 
 \item{user_name}{MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token}
@@ -32,8 +34,6 @@ mfl_connect(
 \item{rate_limit_number}{number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds}
 
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
-
-\item{league}{league_id Numeric ID parameter for each league, typically found in the URL}
 }
 \value{
 a list that stores MFL connection objects

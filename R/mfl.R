@@ -7,7 +7,7 @@
 #'
 #' This function creates a connection object which stores parameters and gets a login-cookie if available
 #' @param season Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)
-#' @param league league_id Numeric ID parameter for each league, typically found in the URL
+#' @param league_id league_id Numeric ID parameter for each league, typically found in the URL
 #' @param APIKEY APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)
 #' @param user_name MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token
 #' @param password MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token
@@ -230,7 +230,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
     years_active = .mfl_years_active(league_endpoint),
     qb_count = .mfl_is_qbtype(league_endpoint)$count,
     roster_size = .mfl_roster_size(league_endpoint),
-    league_depth = as.numeric(roster_size) * as.numeric(franchise_count) / as.numeric(player_copies)
+    league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies)
   )
 }
 
@@ -255,19 +255,19 @@ mfl_league_summary <- function(conn, detail = FALSE){
 #' @noRd
 .mfl_check_ppr <- function(df_rules){
 
-  ppr <- dplyr::filter(df_rules,grepl("Receptions", short_desc))
+  ppr <- dplyr::filter(df_rules,grepl("Receptions", .data$short_desc))
 
   if(nrow(ppr)==0) return("zero_ppr")
 
-  ppr <- dplyr::filter(ppr,positions=="WR")$points
+  ppr <- dplyr::filter(ppr,.data$positions=="WR")$points
 
   return(paste0(ppr,"_ppr"))
 }
 #' @noRd
 .mfl_check_teprem <- function(df_rules){
 
-  te_prem <- dplyr::group_by(df_rules,positions)
-  te_prem <- dplyr::summarise(te_prem,point_sum = sum(points))
+  te_prem <- dplyr::group_by(df_rules,.data$positions)
+  te_prem <- dplyr::summarise(te_prem,point_sum = sum(.data$points))
 
   ifelse(
     te_prem$point_sum[te_prem$positions=="TE"] > te_prem$point_sum[te_prem$positions=="WR"],
@@ -277,7 +277,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 
 #' @noRd
 .mfl_check_firstdown <- function(df_rules){
-  first_downs <- dplyr::filter(df_rules,grepl("First Down", short_desc))
+  first_downs <- dplyr::filter(df_rules,grepl("First Down", .data$short_desc))
   ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
 }
 
@@ -292,7 +292,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 
   starters <- dplyr::bind_rows(starters)
 
-  qb_count <- dplyr::filter(starters,name == "QB")[["limit"]]
+  qb_count <- dplyr::filter(starters,.data$name == "QB")[["limit"]]
 
   qb_type <- dplyr::case_when(qb_count == "1" ~ "1QB",
                    qb_count == "1-2" ~ "2QB/SF",
@@ -310,7 +310,7 @@ mfl_league_summary <- function(conn, detail = FALSE){
 .mfl_years_active <- function(league_endpoint){
   years_active <- league_endpoint$history$league
   years_active <- dplyr::bind_rows(years_active)
-  years_active <- dplyr::arrange(years_active,year)
+  years_active <- dplyr::arrange(years_active,.data$year)
   years_active <- dplyr::slice(years_active,1,nrow(years_active))
   paste(years_active$year,collapse = "-")
 }
@@ -344,20 +344,20 @@ mfl_scoring_settings <- function(conn){
   rules <- tibble::tibble(rules)
   rules <- tidyr::unnest_wider(rules,1)
   rules <- dplyr::mutate(rules,
-                         vec_depth = purrr::map_dbl(rule,purrr::vec_depth),
-                         rule = dplyr::case_when(vec_depth == 3 ~ purrr::map_depth(rule,2,`[[`,1),
-                                          vec_depth == 4 ~ purrr::map_depth(rule,-2,`[[`,1)),
-                         rule = dplyr::case_when(vec_depth == 4 ~ purrr::map(rule,dplyr::bind_rows),
-                                          TRUE ~ rule))
-  rules <- dplyr::select(rules,-vec_depth)
+                         vec_depth = purrr::map_dbl(.data$rule,purrr::vec_depth),
+                         rule = dplyr::case_when(.data$vec_depth == 3 ~ purrr::map_depth(.data$rule,2,`[[`,1),
+                                                 .data$vec_depth == 4 ~ purrr::map_depth(.data$rule,-2,`[[`,1)),
+                         rule = dplyr::case_when(.data$vec_depth == 4 ~ purrr::map(.data$rule,dplyr::bind_rows),
+                                          TRUE ~ .data$rule))
+  rules <- dplyr::select(rules,-.data$vec_depth)
   rules <- tidyr::unnest_wider(rules, 'rule')
   rules <- tidyr::unnest(rules, c('points','event','range'))
   rules <- tidyr::separate_rows(rules, 'positions', sep = "\\|")
   rules <- dplyr::left_join(rules,rule_library_mfl, by = c('event'='abbrev'))
   rules <- dplyr::mutate_at(rules, c('is_player','is_team','is_coach'),~as.logical(as.numeric(.x)))
-  rules <- dplyr::mutate(rules, points = purrr::map_if(points,grepl("\\/",points),.fn_parsedivide),
-                                points = purrr::map_if(points,grepl("\\*",points),.fn_parsemultiply),
-                                points = as.double(points))
+  rules <- dplyr::mutate(rules, points = purrr::map_if(.data$points,grepl("\\/",.data$points),.fn_parsedivide),
+                                points = purrr::map_if(.data$points,grepl("\\*",.data$points),.fn_parsemultiply),
+                                points = as.double(.data$points))
 
   rules
 }

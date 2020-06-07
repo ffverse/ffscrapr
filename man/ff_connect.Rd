@@ -11,19 +11,23 @@ ff_connect(platform = "mfl", league_id, ...)
 
 \item{league_id}{league_id (currently assuming one league at a time)}
 
-\item{rate_limit}{Defaults to TRUE. Pass \code{FALSE} to turn off. Pass \code{rate_limit_number} and \code{rate_limit_seconds} to configure further.}
+\item{...}{other parameters passed to the connect function for each specific platform.
 
-\item{APIKEY}{MFL-specific - grants access to perform something as a user in a specific league}
+\code{rate_limit} Defaults to TRUE. Pass \code{FALSE} to turn off.
 
-\item{user_name}{Collects user_name field for leagues that support it (MFL, Sleeper so far)}
+\code{rate_limit_number} number of attempts to try in \code{rate_limit_seconds}.
 
-\item{password}{Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY}
+\code{APIKEY} MFL-specific - grants access to perform something as a user in a specific league
 
-\item{user_agent}{Identifies user scraping the data}
+\code{user_name} Collects user_name field for leagues that support it (MFL, Sleeper so far)
+
+\code{password} Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY
+
+\code{user_agent} Identifies user scraping the data}
 }
 \value{
 a list that stores MFL connection objects
 }
 \description{
-This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler
+This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.
 }

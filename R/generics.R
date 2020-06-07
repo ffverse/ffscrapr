@@ -4,15 +4,26 @@
 
 #' Connect to a League
 #'
-#' This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler
+#' This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.
+#'
+#'
 #'
 #' @param platform one of MFL or Sleeper (Fleaflicker, ESPN, Yahoo in approximate priority order going forward)
 #' @param league_id league_id (currently assuming one league at a time)
-#' @param rate_limit Defaults to TRUE. Pass \code{FALSE} to turn off. Pass \code{rate_limit_number} and \code{rate_limit_seconds} to configure further.
-#' @param APIKEY MFL-specific - grants access to perform something as a user in a specific league
-#' @param user_name Collects user_name field for leagues that support it (MFL, Sleeper so far)
-#' @param password Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY
-#' @param user_agent Identifies user scraping the data
+#' @param ... other parameters passed to the connect function for each specific platform.
+#'
+#' \code{rate_limit} Defaults to TRUE. Pass \code{FALSE} to turn off.
+#'
+#' \code{rate_limit_number} number of attempts to try in \code{rate_limit_seconds}.
+#'
+#' \code{APIKEY} MFL-specific - grants access to perform something as a user in a specific league
+#'
+#' \code{user_name} Collects user_name field for leagues that support it (MFL, Sleeper so far)
+#'
+#' \code{password} Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY
+#'
+#' \code{user_agent} Identifies user scraping the data
+#'
 #'
 #' @export ff_connect
 #' @return a list that stores MFL connection objects
@@ -49,8 +60,9 @@ ff_league <- function(conn){
   if(conn$platform!= 'mfl'){stop("Only MFL right now!")}
 
   switch(conn$platform,
-         "mfl" = mfl_league_summary(conn),
-         "sleeper" = sleeper_league_summary(conn))
+         "mfl" = mfl_league_summary(conn)
+         # "sleeper" = sleeper_league_summary(conn),
+         )
 
 }
 

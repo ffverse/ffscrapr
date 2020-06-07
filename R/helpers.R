@@ -1,5 +1,10 @@
 #### Helpers ####
 
+#' @keywords internal
+#' @importFrom rlang .data
+#' @importFrom utils str
+
+NULL
 
 #' Choose current season
 #'
