@@ -3,6 +3,7 @@
 
   <!-- badges: start -->
   [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+  [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/master/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=master)
   <!-- badges: end -->
 
 
