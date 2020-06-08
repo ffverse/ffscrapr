@@ -1,7 +1,7 @@
 Package: ffscrapr
 Type: Package
 Title: FFscrapR - R Client for Fantasy Football League APIs
-Version: 0.0.4.9
+Version: 0.0.4.10
 Authors@R: person("Tan", "Ho", email = "tan@tanho.ca", role = c("aut", "cre"))
 Description: This package abstracts the code required to call various Fantasy Football APIs 
     (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) and create methods that handle any authentication required, 
