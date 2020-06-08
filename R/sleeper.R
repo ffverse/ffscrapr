@@ -128,7 +128,7 @@ print.sleeper_conn <- function(x, ...) {
 #'
 #' @export
 
-get_sleeper_endpoint <- function(conn,endpoint,...){
+sleeper_getendpoint <- function(conn,endpoint,...){
 
   url_query <- httr::modify_url(url = glue::glue("https://api.sleeper.app/v1/"),
                                 query = list("TYPE"=endpoint,

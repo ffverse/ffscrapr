@@ -50,3 +50,4 @@ Internal functions are prefixed with a `.fn_` if intended for cross-platform and
 - 2020-05-27 - adding test folder, renamed main-level functions to "ff_" prefix for ease of autocomplete later
 - 2020-05-30 - add start of league summary code
 - 2020-06-07 - taking a big whack at testing stuff
+- 2020-06-08 - add pkgdown site
