@@ -32,4 +32,5 @@ usethis::use_version("dev")
 devtools::check(document = TRUE)
 
 # REBUILD PKGDOWN
-pkgdown::build_site()
+# pkgdown::build_site()
+pkgdown::deploy_to_branch()
