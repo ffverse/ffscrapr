@@ -1,28 +1,35 @@
-Package: ffscrapr
 Type: Package
+Package: ffscrapr
 Title: FFscrapR - R Client for Fantasy Football League APIs
 Version: 0.0.4.10
-Authors@R: person("Tan", "Ho", email = "tan@tanho.ca", role = c("aut", "cre"))
-Description: This package abstracts the code required to call various Fantasy Football APIs 
-    (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) and create methods that handle any authentication required, 
-    form appropriate calls, and return tidy & predictable dataframes which can be easily connected to other sources.
+Authors@R: 
+    person(given = "Tan",
+           family = "Ho",
+           role = c("aut", "cre"),
+           email = "tan@tanho.ca")
+Description: This package abstracts the code required to
+    call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker,
+    ESPN, Yahoo) and create methods that handle any authentication
+    required, form appropriate calls, and return tidy & predictable
+    dataframes which can be easily connected to other sources.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 3.0.0)
+Imports:
+    dplyr (>= 0.8.0),
+    glue (>= 1.3.0),
+    httr (>= 1.4.0),
+    jsonlite (>= 1.6.0),
+    lubridate (>= 1.5.0),
+    purrr (>= 0.3.0),
+    ratelimitr (>= 0.4.0),
+    rlang (>= 0.4.0),
+    tibble (>= 3.0.0),
+    tidyr (>= 1.0.0)
+Suggests: 
+    covr (>= 3.0.0),
+    httptest (>= 3.0.0),
+    testthat (>= 2.0.0)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
-Depends: R (>= 3.0.0)
-Imports:
-    httr  (>= 1.4.0),
-    ratelimitr (>= 0.4.0),
-    lubridate(>= 1.5.0),
-    rlang (>= 0.4.0),
-    jsonlite (>= 1.5.0),
-    purrr (>= 0.3.0),
-    glue (>= 1.3.0),
-    tibble (>= 3.0.0),
-    dplyr (>= 0.8.0),
-    tidyr (>= 1.0.0)
-Suggests: 
-    testthat,
-    covr,
-    httptest

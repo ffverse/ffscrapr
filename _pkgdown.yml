@@ -1,0 +1,15 @@
+destination: docs
+reference:
+- title: ffscrapr reference
+- subtitle: FF (main)
+  desc: The main interface - these functions are designed to wrap the platform-specific functions so that you don't need to worry about them.
+- contents:
+  - starts_with("ff_")
+- subtitle: MFL
+  desc: The functions designed specifically for the MyFantasyLeague.com platform.
+  contents:
+  - starts_with("mfl_")
+- subtitle: Sleeper
+  desc: The functions designed specifically for the Sleeper platform.
+  contents:
+  - starts_with("sleeper_")
