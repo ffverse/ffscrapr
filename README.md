@@ -36,9 +36,11 @@ Loose roadmap:
 
 ## Nomenclature decisions log
 
-Ordinary user functions are prefixed with `ff_` for easy autocomplete and wrap the corresponding function for each platform.
+Ordinary user functions are prefixed with `ff_` for easy autocomplete/search and wrap the corresponding function for each platform.
 
 League-specific functions are prefixed with the league - i.e. `mfl_`, `sleeper_`, `espn_`, `yahoo_` etc.
+
+Internal functions are prefixed with a `.fn_` if intended for cross-platform and otherwise with `.mfl_` and `.sleeper_` for platform specific.
 
 ## Changelog
 

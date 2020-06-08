@@ -3,6 +3,7 @@
 #' @keywords internal
 #' @importFrom rlang .data
 #' @importFrom utils str
+#' @importFrom dplyr `%>%`
 
 NULL
 
