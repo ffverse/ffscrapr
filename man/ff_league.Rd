@@ -21,8 +21,6 @@ This function returns a dataframe summarizing common league settings.
 This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
 }
 \examples{
-ff_connect(platform = "mfl",league_id = 54040,season = 2020) \%>\%
-ff_league() \%>\%
-str()
+ff_connect(platform = "mfl",league_id = 54040,season = 2020) \%>\% ff_league() \%>\% str()
 
 }
