@@ -2,17 +2,17 @@
 
 #' Get a summary of common league settings
 #'
-#' This function returns a data frame of common league settings - things like "1QB" or "2QB", best ball, team count etc
+#' This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
 #'
-#' @param conn the list object created by \code{mfl_connect()}
-#' @param detail TRUE to return a full list of details (questioning?)
+#' @param conn the connection object created by \code{mfl_connect()}
 #'
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #'
-#' @return the league endpoint for MFL
+#' @return A tibble of length one.
 #' @export
 
-mfl_league_summary <- function(conn, detail = FALSE){
+
+ff_league.mfl_conn <- function(conn){
 
   league_endpoint <- mfl_getendpoint(conn,endpoint = "league")
   league_endpoint <- purrr::pluck(league_endpoint,"content","league")

@@ -10,8 +10,13 @@ ff_league(conn)
 \item{conn}{a conn object created by \code{ff_connect()}}
 }
 \value{
-a dataframe of stuff
+a dataframe of common scoring settings
 }
 \description{
 This function returns a dataframe summarizing common league settings.
+}
+\examples{
+mfl_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ff_league(mfl_conn)
+
 }
