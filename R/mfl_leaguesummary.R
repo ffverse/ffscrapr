@@ -7,13 +7,10 @@
 #' @param conn the connection object created by \code{mfl_connect()}
 #'
 #' @examples
-#' ff_connect(platform = "mfl",league_id = 54040,season = 2020) %>%
-#' ff_league() %>%
-#' str()
+#' ff_connect(platform = "mfl",league_id = 54040,season = 2020) %>% ff_league() %>% str()
 #'
 #' @rdname ff_league
 #' @export
-
 
 ff_league.mfl_conn <- function(conn){
 
