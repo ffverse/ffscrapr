@@ -1,6 +1,6 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
+# test_that("multiplication works", {
+#   expect_equal(2 * 2, 4)
+# })
 
 test_that("ff_connect returns an S3 obj for each platform currently programmed",{
   expect_s3_class(ff_connect("mfl",54040),"mfl_conn")
@@ -14,4 +14,13 @@ test_that("ff_connect returns an S3 obj for each platform currently programmed",
   expect_error(ff_connect("flea"))
 })
 
-test_that("ff_league gets a league",{NULL})
+with_mock_api({
+test_that("ff_league returns a tibble for each platform currently programmed",{
+  dlf_conn <- ff_connect("mfl",37920,season = 2020)
+  dlf_league <- ff_league(dlf_conn)
+
+  expect_s3_class(dlf_league,class = "tbl_df")
+  expect_equal(nrow(dlf_league),1)
+  expect_true(Reduce(`&`,!is.na(dlf_league)),label = "Test ff_league(dlf) for NA values")
+})
+})
