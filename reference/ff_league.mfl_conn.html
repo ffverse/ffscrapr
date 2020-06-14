@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connect to a League — ff_connect • ffscrapr</title>
+<title>Get a summary of common league settings — ff_league.mfl_conn • ffscrapr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Connect to a League — ff_connect" />
-<meta property="og:description" content="This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler." />
+<meta property="og:title" content="Get a summary of common league settings — ff_league.mfl_conn" />
+<meta property="og:description" content="This function returns a tibble of common league settings - things like &quot;1QB&quot; or &quot;2QB&quot;, best ball, team count etc" />
 
 
 
@@ -106,43 +106,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connect to a League</h1>
+    <h1>Get a summary of common league settings</h1>
     
-    <div class="hidden name"><code>ff_connect.Rd</code></div>
+    <div class="hidden name"><code>ff_league.mfl_conn.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.</p>
+    <p>This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='no'>league_id</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for mfl_conn</span>
+<span class='fu'><a href='ff_league.html'>ff_league</a></span>(<span class='no'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>platform</th>
-      <td><p>one of MFL or Sleeper (Fleaflicker, ESPN, Yahoo in approximate priority order going forward)</p></td>
-    </tr>
-    <tr>
-      <th>league_id</th>
-      <td><p>league_id (currently assuming one league at a time)</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other parameters passed to the connect function for each specific platform.</p>
-<p><code>rate_limit</code> Defaults to TRUE. Pass <code>FALSE</code> to turn off.</p>
-<p><code>rate_limit_number</code> number of attempts to try in <code>rate_limit_seconds</code>.</p>
-<p><code>APIKEY</code> MFL-specific - grants access to perform something as a user in a specific league</p>
-<p><code>user_name</code> Collects user_name field for leagues that support it (MFL, Sleeper so far)</p>
-<p><code>password</code> Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY</p>
-<p><code>user_agent</code> Identifies user scraping the data</p></td>
+      <th>conn</th>
+      <td><p>the connection object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list that stores MFL connection objects</p>
+    <p>A tibble of length one.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
