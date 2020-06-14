@@ -6,9 +6,12 @@
 #'
 #' @param conn the connection object created by \code{mfl_connect()}
 #'
-#' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
+#' @examples
+#' ff_connect(platform = "mfl",league_id = 54040,season = 2020) %>%
+#' ff_league() %>%
+#' str()
 #'
-#' @return A tibble of length one.
+#' @rdname ff_league
 #' @export
 
 
@@ -20,7 +23,7 @@ ff_league.mfl_conn <- function(conn){
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$name,
-    franchise_count = league_endpoint$franchises$count,
+    franchise_count = as.numeric(league_endpoint$franchises$count),
     qb_type = .mfl_is_qbtype(league_endpoint)$type,
     idp = .mfl_is_idp(league_endpoint),
     scoring_flags = .mfl_flag_scoring(conn),
