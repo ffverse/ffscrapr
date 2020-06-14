@@ -53,15 +53,13 @@ ff_connect <- function(platform = "mfl",league_id,...){
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @export ff_league
-#'
-#' @examples
-#' mfl_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
-#' ff_league(mfl_conn)
-#'
-#' @return a dataframe of common scoring settings
-
+#' @return A one-row tibble of scoring settings.
 ff_league <- function(conn){
   UseMethod("ff_league")
+}
+
+ff_league.default <- function(conn){
+  stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
 }
 
 # ff_settings_scoring - summarises all available scoring setting details

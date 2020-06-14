@@ -1,4 +1,4 @@
-# FFscrapR
+# ffscrapr <a href='ffscrapr.dynastyprocess.com'><img src='man/figures/logo.png' align="right" height="120" /></a>
 *An R Client for Fantasy Football League APIs*
 
   <!-- badges: start -->

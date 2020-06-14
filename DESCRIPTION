@@ -1,6 +1,6 @@
 Type: Package
 Package: ffscrapr
-Title: FFscrapR - R Client for Fantasy Football League APIs
+Title: ffscrapr - R Client for Fantasy Football League APIs
 Version: 0.0.4.12
 Authors@R: 
     person(given = "Tan",
@@ -25,7 +25,8 @@ Imports:
     ratelimitr (>= 0.4.0),
     rlang (>= 0.4.0),
     tibble (>= 3.0.0),
-    tidyr (>= 1.0.0)
+    tidyr (>= 1.0.0),
+    magrittr
 Suggests: 
     covr (>= 3.0.0),
     httptest (>= 3.0.0),
