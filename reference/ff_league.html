@@ -8,6 +8,13 @@
 
 <title>Get League Summary — ff_league • ffscrapr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,7 +47,9 @@
 
 
 <meta property="og:title" content="Get League Summary — ff_league" />
-<meta property="og:description" content="This function returns a dataframe summarizing common league settings." />
+<meta property="og:description" content="This function returns a dataframe summarizing common league settings.
+This function returns a tibble of common league settings - things like &quot;1QB&quot; or &quot;2QB&quot;, best ball, team count etc" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
 
@@ -113,26 +122,31 @@
 
     <div class="ref-description">
     <p>This function returns a dataframe summarizing common league settings.</p>
+<p>This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_league</span>(<span class='no'>conn</span>)</pre>
+    <pre class="usage"><span class='fu'>ff_league</span>(<span class='no'>conn</span>)
+
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_league</span>(<span class='no'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
+      <td><p>the connection object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe of common scoring settings</p>
+    <p>A one-row tibble of scoring settings.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mfl_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_league</span>(<span class='no'>mfl_conn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ff_league(mfl_conn): Only MFL right now!</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>) <span class='kw'>%&gt;%</span>
+<span class='fu'>ff_league</span>() <span class='kw'>%&gt;%</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error in ff_connect(platform = "mfl", league_id = 54040, season = 2020) %&gt;%     ff_league() %&gt;% str(): could not find function "%&gt;%"</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
