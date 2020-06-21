@@ -2,11 +2,12 @@
 
 # This series of functions are designed to be the main functions - all are prefixed with "ff_" for easy of autocomplete
 
+
+#### ff_connect ####
+
 #' Connect to a League
 #'
 #' This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.
-#'
-#'
 #'
 #' @param platform one of MFL or Sleeper (Fleaflicker, ESPN, Yahoo in approximate priority order going forward)
 #' @param league_id league_id (currently assuming one league at a time)
@@ -39,12 +40,12 @@ ff_connect <- function(platform = "mfl",league_id,...){
          # 'flea' = fleaflicker_connect(league_id = league_id,...),
          # 'espn' = espn_connect(league_id = league_id,...),
          # 'yahoo' = yahoo_connect(league_id = league_id,...)
-         "mfl" = mfl_connect(league_id=league_id,...),
-         "sleeper" = sleeper_connect(league_id = league_id, ...)
+         "sleeper" = sleeper_connect(league_id = league_id, ...),
+         "mfl" = mfl_connect(league_id=league_id,...)
          )
 }
 
-# ff_league - summarises common league details
+#### ff_league ####
 
 #' Get League Summary
 #'
@@ -58,17 +59,53 @@ ff_league <- function(conn){
   UseMethod("ff_league")
 }
 
+#' @export
 ff_league.default <- function(conn){
   stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
 }
 
 # ff_settings_scoring - summarises all available scoring setting details
+
+#' Get League Scoring settings
+#'
+#' This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#'
+#' @export ff_scoring
+#' @return A tibble of league scoring rules for each position defined.
+
+ff_scoring <- function(conn){
+  UseMethod("ff_scoring")
+}
+
+#' @export
+ff_scoring.default <- function(conn){
+  stop(glue::glue("No method of ff_scoring found for platform: {conn$platform}."))
+}
+
 # ff_settings_rosters - summarises all available roster setting details
+
 # ff_franchises - summarises team-level details (FAAB, salary, waiver order?)
+
 # ff_rosters - summarises rosters
+
+ff_rosters <- function(conn){
+  UseMethod("ff_league")
+}
+
+#' @export
+ff_rosters.default <- function(conn){
+  stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
+}
+
 # ff_standings - summarises standings, potential points, all-play
+
 # ff_schedule - summarises matchups in a flat table
+
 # ff_draft_picks - summarises current and future year draft picks
-# ff_auction_settings -
-# ff_auction_details -
+
+# ff_auction_settings
+
+# ff_auction_details
 

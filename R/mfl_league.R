@@ -14,8 +14,8 @@
 
 ff_league.mfl_conn <- function(conn){
 
-  league_endpoint <- mfl_getendpoint(conn,endpoint = "league")
-  league_endpoint <- purrr::pluck(league_endpoint,"content","league")
+  league_endpoint <- mfl_getendpoint(conn,endpoint = "league") %>%
+    purrr::pluck("content","league")
 
   tibble::tibble(
     league_id = conn$league_id,
@@ -37,7 +37,7 @@ ff_league.mfl_conn <- function(conn){
 ## League Summary Helper Functions ##
 .mfl_flag_scoring <- function(conn){
 
-  df_rules <- mfl_scoring_settings(conn)
+  df_rules <- ff_scoring(conn)
 
   ppr_flag <- .mfl_check_ppr(df_rules)
 
@@ -59,25 +59,27 @@ ff_league.mfl_conn <- function(conn){
 
   if(nrow(ppr)==0) return("zero_ppr")
 
-  ppr <- dplyr::filter(ppr,.data$positions=="WR")$points
+  ppr <- dplyr::filter(ppr,pos=="WR")$points
 
   return(paste0(ppr,"_ppr"))
 }
 #' @noRd
 .mfl_check_teprem <- function(df_rules){
 
-  te_prem <- dplyr::group_by(df_rules,.data$positions)
-  te_prem <- dplyr::summarise(te_prem,point_sum = sum(.data$points))
+  te_prem <- dplyr::group_by(df_rules,pos) %>%
+    dplyr::summarise(point_sum = sum(.data$points))
 
   ifelse(
-    te_prem$point_sum[te_prem$positions=="TE"] > te_prem$point_sum[te_prem$positions=="WR"],
+    te_prem$point_sum[te_prem$pos=="TE"] > te_prem$point_sum[te_prem$pos=="WR"],
     "TEPrem",
     NA_character_)
 }
 
 #' @noRd
 .mfl_check_firstdown <- function(df_rules){
-  first_downs <- dplyr::filter(df_rules,grepl("First Down", .data$short_desc))
+  first_downs <- df_rules %>%
+    dplyr::filter(grepl("First Down", .data$short_desc))
+
   ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
 }
 
@@ -88,9 +90,8 @@ ff_league.mfl_conn <- function(conn){
 #' @noRd
 .mfl_is_qbtype <- function(league_endpoint){
 
-  starters <- purrr::pluck(league_endpoint,"starters","position")
-
-  starters <- dplyr::bind_rows(starters)
+  starters <- purrr::pluck(league_endpoint,"starters","position") %>%
+    dplyr::bind_rows()
 
   qb_count <- dplyr::filter(starters,.data$name == "QB")[["limit"]]
 
@@ -103,15 +104,18 @@ ff_league.mfl_conn <- function(conn){
 }
 #' @noRd
 .mfl_roster_size <- function(league_endpoint) {
-  as.numeric(league_endpoint$rosterSize)+as.numeric(league_endpoint$taxiSquad)+as.numeric(league_endpoint$injuredReserve)
+  as.numeric(league_endpoint$rosterSize) +
+    # as.numeric(league_endpoint$injuredReserve) +
+    as.numeric(league_endpoint$taxiSquad)
 }
 
 #' @noRd
 .mfl_years_active <- function(league_endpoint){
-  years_active <- league_endpoint$history$league
-  years_active <- dplyr::bind_rows(years_active)
-  years_active <- dplyr::arrange(years_active,.data$year)
-  years_active <- dplyr::slice(years_active,1,nrow(years_active))
+  years_active <- league_endpoint$history$league %>%
+    dplyr::bind_rows() %>%
+    dplyr::arrange(.data$year) %>%
+    dplyr::slice(1,nrow(.))
+
   paste(years_active$year,collapse = "-")
 }
 

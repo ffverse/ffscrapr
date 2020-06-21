@@ -5,6 +5,7 @@
 usethis::use_package("httr", type = "Imports", min_version = '1.4.0')
 usethis::use_package("ratelimitr", type = "Imports", min_version = '0.4.0')
 usethis::use_package("jsonlite", type = "Imports", min_version = '1.6.0')
+usethis::use_package("memoise",type = "Imports", min_version = '1.1.0')
 
 # Manipulation
 usethis::use_package("dplyr", type = "Imports", min_version = '0.8.0')
@@ -33,4 +34,4 @@ devtools::check(document = TRUE)
 
 # REBUILD PKGDOWN
 # pkgdown::build_site()
-pkgdown::deploy_to_branch()
+pkgdown::deploy_to_branch(devel = TRUE)

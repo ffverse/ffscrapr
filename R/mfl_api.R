@@ -52,6 +52,6 @@ print.mfl_api <- function(x, ...) {
 
   cat("<MFL - GET ",x$query,">\n", sep = "")
   str(x$content)
-  invisible(x)
 
+  invisible(x)
 }
