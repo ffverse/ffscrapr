@@ -67,12 +67,14 @@ ff_scoring.mfl_conn <- function(conn){
 #' @noRd
 #' @keywords internal
 .mfl_allrules <- memoise::memoise(function() {
-  mfl_connect(.fn_choose_season()) %>%
+  df <- mfl_connect(.fn_choose_season()) %>%
     mfl_getendpoint("allRules") %>%
     purrr::pluck("content", "allRules", "rule") %>%
     tibble::tibble() %>%
-    tidyr::unnest_wider(1)  %>%
-    purrr::modify_depth(2, `[[`, 1) %>%
+    tidyr::unnest_wider(1) %>%
+    purrr::map_depth(-2, unname, 1,.ragged = TRUE) %>%
+    purrr::map_depth(2,`[[`,1) %>%
+    dplyr::as_tibble() %>%
     dplyr::mutate_all(as.character) %>%
     dplyr::select(
       abbrev = abbreviation,
