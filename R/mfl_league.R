@@ -7,9 +7,8 @@
 #' @param conn the connection object created by \code{mfl_connect()}
 #'
 #' @examples
-#' ff_connect(platform = "mfl",league_id = 54040,season = 2020) %>%
-#' ff_league() %>%
-#' str()
+#' ff_connect(platform = "mfl",league_id = 54040, season = 2020) %>%
+#'   ff_league()
 #'
 #' @rdname ff_league
 #' @export
@@ -62,14 +61,14 @@ ff_league.mfl_conn <- function(conn){
 
   if(nrow(ppr)==0) return("zero_ppr")
 
-  ppr <- dplyr::filter(ppr,pos=="WR")$points
+  ppr <- dplyr::filter(ppr,.data$pos=="WR")$points
 
   return(paste0(ppr,"_ppr"))
 }
 #' @noRd
 .mfl_check_teprem <- function(df_rules){
 
-  te_prem <- dplyr::group_by(df_rules,pos) %>%
+  te_prem <- dplyr::group_by(df_rules,.data$pos) %>%
     dplyr::summarise(point_sum = sum(.data$points))
 
   ifelse(
@@ -117,7 +116,7 @@ ff_league.mfl_conn <- function(conn){
   years_active <- league_endpoint$history$league %>%
     dplyr::bind_rows() %>%
     dplyr::arrange(.data$year) %>%
-    dplyr::slice(1,nrow(.))
+    dplyr::slice(1,nrow(.data))
 
   paste(years_active$year,collapse = "-")
 }
