@@ -2,15 +2,18 @@ destination: docs
 reference:
 - title: ffscrapr reference
 - subtitle: FF (main)
-  desc: The main interface - these functions are designed to wrap the platform-specific functions so that you don't need to worry about them.
+  desc: The main interface - these functions are designed to wrap the platform-specific methods to return generic input.
 - contents:
   - starts_with("ff_")
 - subtitle: MFL
-  desc: The functions designed specifically for the MyFantasyLeague.com platform.
+  desc: Additional functions designed/optimized for the MFL platform.
   contents:
   - starts_with("mfl_")
 - subtitle: Sleeper
-  desc: The functions designed specifically for the Sleeper platform.
+  desc: Additional functions designed/optimized for the Sleeper platform.
   contents:
   - starts_with("sleeper_")
 url: ffscrapr.dynastyprocess.com
+authors:
+  Tan Ho:
+    href: https://twitter.com/_TanHo
