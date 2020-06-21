@@ -45,6 +45,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 
 <meta property="og:title" content="Get League Scoring settings — ff_scoring" />
 <meta property="og:description" content="This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points." />
@@ -100,7 +102,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/dynastyprocess/ffscrapr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -115,7 +122,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League Scoring settings</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_scoring.R'><code>R/mfl_scoring.R</code></a></small>
     <div class="hidden name"><code>ff_scoring.Rd</code></div>
     </div>
 
@@ -145,8 +152,8 @@
     <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>) <span class='kw'>%&gt;%</span>
-<span class='fu'>ff_scoring</span>()</div><div class='output co'>#&gt; <span class='error'>Error in ff_connect(platform = "mfl", league_id = 54040, season = 2020) %&gt;%     ff_scoring(): could not find function "%&gt;%"</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
+<span class='fu'>ff_scoring</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ff_scoring(ssb_conn): could not find function "ff_scoring"</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
