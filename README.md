@@ -51,3 +51,5 @@ Internal functions are prefixed with a `.fn_` if intended for cross-platform and
 - 2020-05-30 - add start of league summary code
 - 2020-06-07 - taking a big whack at testing stuff
 - 2020-06-08 - add pkgdown site
+- 2020-06-13 - switch to S3 methods and using memoise
+- 2020-06-21 - add ff_rosters and ff_franchises
