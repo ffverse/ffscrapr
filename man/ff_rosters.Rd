@@ -13,10 +13,10 @@ ff_rosters(conn)
 \item{conn}{a conn object created by \code{ff_connect()}}
 }
 \value{
-A tibble of rosters
+A tibble of rosters, joined to basic player information and basic franchise information
 }
 \description{
-This function returns a dataframe summarizing common league settings.
+This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
 }
 \examples{
 ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)

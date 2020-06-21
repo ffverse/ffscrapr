@@ -14,25 +14,31 @@
 
 mfl_getendpoint <- function(conn,endpoint,...){
 
-  url_query <- httr::modify_url(url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
-                                query = list("TYPE"=endpoint,
-                                             "L" = conn$league_id,
-                                             'APIKEY'=conn$APIKEY,
-                                             ...,
-                                             "JSON"=1))
+  url_query <- httr::modify_url(
+    url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
+    query = list("TYPE"=endpoint,
+                 "L" = conn$league_id,
+                 'APIKEY'=conn$APIKEY,
+                 ...,
+                 "JSON"=1))
 
   response <- conn$get(url_query,conn$user_agent,conn$auth_cookie)
 
-  if (httr::http_type(response) != "application/json") {
-    stop("MFL API did not return json", call. = FALSE) }
+  # message(url_query)
 
-  parsed <- jsonlite::parse_json(httr::content(response,"text"))
+  if (httr::http_type(response) != "application/json") {
+    warning(glue::glue("MFL API did not return json while calling {url_query}"),
+            call. = FALSE) }
+
+  if(httr::http_type(response)== "application/json"){
+    parsed <- jsonlite::parse_json(httr::content(response,"text"))}
 
   if (httr::http_error(response)) {
-    stop(glue::glue("MFL API request failed [{httr::status_code(response)}]\n", parsed$message),call. = FALSE) }
+    warning(glue::glue("MFL API request failed [{httr::status_code(response)}]\n",
+                       parsed$message),call. = FALSE)}
 
   if(!is.null(parsed$error)){
-    warning(glue::glue("MFL says: {parsed$error[[1]]}"), call. = FALSE) }
+    warning(glue::glue("MFL says: {parsed$error[[1]]}"),call. = FALSE)}
 
   structure(
     list(

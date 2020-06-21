@@ -1,4 +1,4 @@
-## ff_rosters (MFL) ##
+#### ff_rosters (MFL) ####
 
 #' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
 #' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
@@ -31,15 +31,22 @@ ff_rosters.mfl_conn <- function(conn){
   players_endpoint <- mfl_players() %>%
     dplyr::select("player_id","player_name","pos","team","age","draft_year","draft_round")
 
+  franchises_endpoint <- ff_franchises(conn) %>%
+    dplyr::select("franchise_id","franchise_name")
+
   rosters_endpoint %>%
-    dplyr::left_join(players_endpoint, by = "player_id")
+    dplyr::left_join(franchises_endpoint,by = "franchise_id") %>%
+    dplyr::left_join(players_endpoint, by = "player_id") %>%
+    dplyr::select("franchise_id","franchise_name",
+                  "player_id","player_name","pos","team","age",
+                  dplyr::everything())
 
  }
 
 #' MFL players library
 #'
 #' A cached table of MFL players. Will store in memory for each session!
-#' (via memoise)
+#' (via memoise in zzz.R)
 #'
 #' @examples
 #' player_list <- mfl_players()
@@ -48,7 +55,7 @@ ff_rosters.mfl_conn <- function(conn){
 #' @return a dataframe containing all ~2000+ players in the MFL database
 #' @export
 
-mfl_players <- memoise::memoise(function() {
+mfl_players <- function() {
   mfl_connect(.fn_choose_season()) %>%
     mfl_getendpoint("players",DETAILS = 1) %>%
     purrr::pluck("content", "players", "player") %>%
@@ -66,5 +73,5 @@ mfl_players <- memoise::memoise(function() {
       dplyr::starts_with("draft_"),
       dplyr::ends_with("_id"),
       dplyr::everything())
-  })
+  }
 

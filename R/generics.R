@@ -49,12 +49,14 @@ ff_connect <- function(platform = "mfl",league_id,...){
 
 #' Get League Summary
 #'
-#' This function returns a dataframe summarizing common league settings.
+#' This function returns a tibble of common league settings, including details like "1QB" or "2QB/SF", best ball, team count etc
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @export ff_league
-#' @return A one-row tibble of scoring settings.
+#'
+#' @return A one-row tibble of league settings.
+
 ff_league <- function(conn){
   UseMethod("ff_league")
 }
@@ -64,7 +66,7 @@ ff_league.default <- function(conn){
   stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
 }
 
-# ff_settings_scoring - summarises all available scoring setting details
+#### ff_scoring ####
 
 #' Get League Scoring settings
 #'
@@ -84,20 +86,17 @@ ff_scoring.default <- function(conn){
   stop(glue::glue("No method of ff_scoring found for platform: {conn$platform}."))
 }
 
-# ff_settings_rosters - summarises all available roster setting details
-
-# ff_franchises - summarises team-level details (FAAB, salary, waiver order?)
-
 #### ff_rosters ####
 
 #' Get League Rosters
 #'
-#' This function returns a dataframe summarizing common league settings.
+#' This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @export ff_rosters
-#' @return A tibble of rosters
+#'
+#' @return A tibble of rosters, joined to basic player information and basic franchise information
 
 ff_rosters <- function(conn){
   UseMethod("ff_rosters")
@@ -107,6 +106,29 @@ ff_rosters <- function(conn){
 ff_rosters.default <- function(conn){
   stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
+
+#### ff_franchises ####
+
+#' Get League Franchises
+#'
+#' This function returns a tibble of franchise details (id, name, abbrev etc)
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#'
+#' @export ff_franchises
+#'
+#' @return A tibble of franchises
+
+ff_franchises <- function(conn){
+  UseMethod("ff_franchises")
+}
+
+#' @export
+ff_franchises.default <- function(conn){
+  stop(glue::glue("No method of ff_franchises found for platform: {conn$platform}."))
+}
+
+# ff_settings_rosters - summarises all available roster setting details
 
 # ff_standings - summarises standings, potential points, all-play
 

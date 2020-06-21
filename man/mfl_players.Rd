@@ -11,7 +11,7 @@ a dataframe containing all ~2000+ players in the MFL database
 }
 \description{
 A cached table of MFL players. Will store in memory for each session!
-(via memoise)
+(via memoise in zzz.R)
 }
 \examples{
 player_list <- mfl_players()
