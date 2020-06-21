@@ -88,7 +88,16 @@ ff_scoring.default <- function(conn){
 
 # ff_franchises - summarises team-level details (FAAB, salary, waiver order?)
 
-# ff_rosters - summarises rosters
+#### ff_rosters ####
+
+#' Get League Rosters
+#'
+#' This function returns a dataframe summarizing common league settings.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#'
+#' @export ff_rosters
+#' @return A tibble of rosters
 
 ff_rosters <- function(conn){
   UseMethod("ff_rosters")
