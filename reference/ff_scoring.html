@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connect to MFL League — mfl_connect • ffscrapr</title>
+<title>Get League Scoring settings — ff_scoring • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Connect to MFL League — mfl_connect" />
-<meta property="og:description" content="This function creates a connection object which stores parameters and gets a login-cookie if available" />
+<meta property="og:title" content="Get League Scoring settings — ff_scoring" />
+<meta property="og:description" content="This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -114,113 +114,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connect to MFL League</h1>
+    <h1>Get League Scoring settings</h1>
     
-    <div class="hidden name"><code>mfl_connect.Rd</code></div>
+    <div class="hidden name"><code>ff_scoring.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function creates a connection object which stores parameters and gets a login-cookie if available</p>
+    <p>This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_connect</span>(
-  <span class='kw'>season</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>APIKEY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>password</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_agent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rate_limit_number</span> <span class='kw'>=</span> <span class='fl'>60</span>,
-  <span class='kw'>rate_limit_seconds</span> <span class='kw'>=</span> <span class='fl'>60</span>
-)</pre>
+    <pre class="usage"><span class='fu'>ff_scoring</span>(<span class='no'>conn</span>)
+
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_scoring</span>(<span class='no'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>season</th>
-      <td><p>Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)</p></td>
-    </tr>
-    <tr>
-      <th>league_id</th>
-      <td><p>league_id Numeric ID parameter for each league, typically found in the URL</p></td>
-    </tr>
-    <tr>
-      <th>APIKEY</th>
-      <td><p>APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)</p></td>
-    </tr>
-    <tr>
-      <th>user_name</th>
-      <td><p>MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token</p></td>
-    </tr>
-    <tr>
-      <th>password</th>
-      <td><p>MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token</p></td>
-    </tr>
-    <tr>
-      <th>user_agent</th>
-      <td><p>A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit</th>
-      <td><p>TRUE by default, pass FALSE to turn off rate limiting</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is 60 calls per 60 seconds</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_seconds</th>
-      <td><p>number of seconds as denominator for rate_limit</p></td>
+      <th>conn</th>
+      <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list that stores MFL connection objects</p>
+    <p>A tibble of league scoring rules for each position defined.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mfl_connect</span>(<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>)</div><div class='output co'>#&gt; &lt;MFL connection 2020_54040&gt;
-#&gt; List of 7
-#&gt;  $ platform   : chr "MFL"
-#&gt;  $ get        :function (url = NULL, config = list(), ..., handle = NULL)  
-#&gt;   ..- attr(*, "func")=function (url = NULL, config = list(), ..., handle = NULL)  
-#&gt;   ..- attr(*, "info")=function ()  
-#&gt;   ..- attr(*, "class")= chr [1:2] "rate_limited_function" "function"
-#&gt;  $ season     : num 2020
-#&gt;  $ league_id  : chr "54040"
-#&gt;  $ APIKEY     : NULL
-#&gt;  $ user_agent :List of 7
-#&gt;   ..$ method    : NULL
-#&gt;   ..$ url       : NULL
-#&gt;   ..$ headers   : NULL
-#&gt;   ..$ fields    : NULL
-#&gt;   ..$ options   :List of 1
-#&gt;   .. ..$ useragent: 'glue' chr "ffscrapr/0.0.4.8 API client package https://github.com/dynastyprocess/ffscrapr"
-#&gt;   ..$ auth_token: NULL
-#&gt;   ..$ output    : NULL
-#&gt;   ..- attr(*, "class")= chr "request"
-#&gt;  $ auth_cookie: NULL
-#&gt;  - attr(*, "class")= chr "mfl_conn"</div><div class='input'><span class='fu'>mfl_connect</span>(<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;MFL connection 2019_54040&gt;
-#&gt; List of 7
-#&gt;  $ platform   : chr "MFL"
-#&gt;  $ get        :function (url = NULL, config = list(), ..., handle = NULL)  
-#&gt;  $ season     : num 2019
-#&gt;  $ league_id  : chr "54040"
-#&gt;  $ APIKEY     : NULL
-#&gt;  $ user_agent :List of 7
-#&gt;   ..$ method    : NULL
-#&gt;   ..$ url       : NULL
-#&gt;   ..$ headers   : NULL
-#&gt;   ..$ fields    : NULL
-#&gt;   ..$ options   :List of 1
-#&gt;   .. ..$ useragent: 'glue' chr "ffscrapr/0.0.4.8 API client package https://github.com/dynastyprocess/ffscrapr"
-#&gt;   ..$ auth_token: NULL
-#&gt;   ..$ output    : NULL
-#&gt;   ..- attr(*, "class")= chr "request"
-#&gt;  $ auth_cookie: NULL
-#&gt;  - attr(*, "class")= chr "mfl_conn"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>) <span class='kw'>%&gt;%</span>
+<span class='fu'>ff_scoring</span>()</div><div class='output co'>#&gt; <span class='error'>Error in ff_connect(platform = "mfl", league_id = 54040, season = 2020) %&gt;%     ff_scoring(): could not find function "%&gt;%"</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
