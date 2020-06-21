@@ -13,7 +13,7 @@
 #' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
 #'
 #' @rdname ff_scoring
-#' @export ff_scoring.mfl_conn
+#' @export
 
 ff_scoring.mfl_conn <- function(conn){
 
@@ -36,7 +36,7 @@ ff_scoring.mfl_conn <- function(conn){
     dplyr::mutate(points = purrr::map_if(.data$points,grepl("\\/",.data$points),.fn_parsedivide),
                   points = purrr::map_if(.data$points,grepl("\\*",.data$points),.fn_parsemultiply),
                   points = as.double(.data$points)) %>%
-    dplyr::select(pos = positions, points, range, event, short_desc, long_desc)
+    dplyr::select('pos' = .data$positions, .data$points, .data$range, .data$event, .data$short_desc, .data$long_desc)
 
 }
 

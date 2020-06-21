@@ -72,7 +72,7 @@ ff_league.default <- function(conn){
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
-#' @export ff_scoring
+#' @export
 #' @return A tibble of league scoring rules for each position defined.
 
 ff_scoring <- function(conn){
