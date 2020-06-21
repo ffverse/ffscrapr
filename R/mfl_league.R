@@ -7,8 +7,8 @@
 #' @param conn the connection object created by \code{ff_connect()}
 #'
 #' @examples
-#' ff_connect(platform = "mfl",league_id = 54040, season = 2020) %>%
-#'   ff_league()
+#' ssb_conn <- ff_connect(platform = "mfl",league_id = 54040, season = 2020)
+#' ff_league(ssb_conn)
 #'
 #' @rdname ff_league
 #' @export
