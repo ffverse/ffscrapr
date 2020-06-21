@@ -28,3 +28,17 @@ test_that("ff_league returns a tibble for each platform currently programmed",{
 
 })
 })
+
+with_mock_api({
+  test_that("ff_league returns a tibble for each platform currently programmed",{
+    dlf_conn <- ff_connect("mfl",37920,season = 2020)
+    dlf_rosters <- ff_rosters(dlf_conn)
+
+    expect_s3_class(dlf_rosters,class = "tbl_df")
+    expect_gt(nrow(dlf_rosters),1)
+
+    sleeper_conn <- ff_connect("sleeper",527362181635997696,season = 2020)
+    expect_error(ff_league(sleeper_conn))
+
+  })
+})

@@ -6,8 +6,4 @@
 
 # ff_rosters ----
 
-ff_rosters.mfl <- function(conn){
 
-df <- mfl_getendpoint(conn,"rosters")
-
-}

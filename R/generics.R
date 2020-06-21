@@ -91,12 +91,12 @@ ff_scoring.default <- function(conn){
 # ff_rosters - summarises rosters
 
 ff_rosters <- function(conn){
-  UseMethod("ff_league")
+  UseMethod("ff_rosters")
 }
 
 #' @export
 ff_rosters.default <- function(conn){
-  stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
+  stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
 
 # ff_standings - summarises standings, potential points, all-play
