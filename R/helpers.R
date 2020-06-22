@@ -41,3 +41,4 @@ NULL
   if(!toggle){return(httr::GET)}
 
 }
+
