@@ -7,7 +7,7 @@
 \usage{
 ff_franchises(conn)
 
-\method{ff_franchises}{mfl_conn}(conn)
+ff_franchises.mfl_conn(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
@@ -17,6 +17,8 @@ A tibble of franchises
 }
 \description{
 This function returns a tibble of franchise details (id, name, abbrev etc)
+
+Returns a tidy dataframe of franchises and any relevant information
 }
 \examples{
 ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)

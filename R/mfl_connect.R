@@ -31,8 +31,8 @@ mfl_connect <- function(season = NULL,
                         password = NULL,
                         user_agent = NULL,
                         rate_limit = NULL,
-                        rate_limit_number = 60,
-                        rate_limit_seconds = 60){
+                        rate_limit_number = 4,
+                        rate_limit_seconds = 5){
 
   ## LEAGUE ID ##
 

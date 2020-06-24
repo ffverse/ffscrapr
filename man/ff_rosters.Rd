@@ -7,7 +7,7 @@
 \usage{
 ff_rosters(conn)
 
-\method{ff_rosters}{mfl_conn}(conn)
+ff_rosters.mfl_conn(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}

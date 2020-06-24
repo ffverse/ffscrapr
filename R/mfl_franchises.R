@@ -2,6 +2,8 @@
 
 #' Get a dataframe of franchise information
 #'
+#'
+#' Returns a tidy dataframe of franchises and any relevant information
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
