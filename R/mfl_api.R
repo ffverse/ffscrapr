@@ -26,16 +26,15 @@ mfl_getendpoint <- function(conn,endpoint,...){
 
   # message(url_query)
 
+  if(httr::http_error(response)) {
+    stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n while calling <{url_query}>"),call. = FALSE)}
+
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("MFL API did not return json while calling {url_query}"),
             call. = FALSE) }
 
   if(httr::http_type(response)== "application/json"){
     parsed <- jsonlite::parse_json(httr::content(response,"text"))}
-
-  if (httr::http_error(response)) {
-    warning(glue::glue("MFL API request failed [{httr::status_code(response)}]\n",
-                       parsed$message),call. = FALSE)}
 
   if(!is.null(parsed$error)){
     warning(glue::glue("MFL says: {parsed$error[[1]]}"),call. = FALSE)}
