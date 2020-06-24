@@ -128,6 +128,28 @@ ff_franchises.default <- function(conn){
   stop(glue::glue("No method of ff_franchises found for platform: {conn$platform}."))
 }
 
+#### ff_transactions ####
+
+#' Get League Transactions
+#'
+#' This function returns a tibble of transactions
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args
+#'
+#' @export ff_transactions
+#'
+#' @return A tibble of franchises
+
+ff_transactions <- function(conn,...){
+  UseMethod("ff_transactions")
+}
+
+#' @export
+ff_transactions.default <- function(conn,...){
+  stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
+}
+
 # ff_settings_rosters - summarises all available roster setting details
 
 # ff_standings - summarises standings, potential points, all-play

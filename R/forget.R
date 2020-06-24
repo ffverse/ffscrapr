@@ -6,5 +6,4 @@
 #' @rdname forget
 #' @export
 #' @importFrom memoise forget
-#' @usage forget(ff_franchises)
 NULL
