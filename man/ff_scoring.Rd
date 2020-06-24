@@ -7,7 +7,7 @@
 \usage{
 ff_scoring(conn)
 
-ff_scoring.mfl_conn(conn)
+\method{ff_scoring}{mfl_conn}(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}

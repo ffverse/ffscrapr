@@ -7,7 +7,7 @@
 \usage{
 ff_league(conn)
 
-ff_league.mfl_conn(conn)
+\method{ff_league}{mfl_conn}(conn)
 }
 \arguments{
 \item{conn}{the connection object created by \code{ff_connect()}}

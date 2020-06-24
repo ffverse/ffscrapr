@@ -3,9 +3,6 @@
 \name{forget}
 \alias{forget}
 \title{Clear memoised cache}
-\usage{
-forget(ff_franchises)
-}
 \description{
 See \code{memoise::\link[memoise:forget]{forget}} for details.
 }

@@ -7,7 +7,7 @@
 \usage{
 ff_franchises(conn)
 
-ff_franchises.mfl_conn(conn)
+\method{ff_franchises}{mfl_conn}(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
