@@ -26,6 +26,10 @@ mfl_getendpoint <- function(conn,endpoint,...){
 
   # message(url_query)
 
+  if(httr::http_error(response) && httr::status_code(response)==429) {
+    stop(glue::glue("You've hit the MFL rate limit wall! Please adjust the built-in rate_limit arguments in mfl_connect()!"))
+  }
+
   if(httr::http_error(response)) {
     stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n while calling <{url_query}>"),call. = FALSE)}
 
