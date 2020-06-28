@@ -1,0 +1,32 @@
+---
+title: "mfl_basics"
+author: Tan Ho
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mfl_basics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ffscrapr)
+```
+
+
+
+```{r}
+ssb <- ff_connect(platform = "mfl",league_id = 54040, season = 2020)
+```
+
+```{r}
+rosters <- ff_rosters(ssb)
+```
+
