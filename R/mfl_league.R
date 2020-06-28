@@ -114,10 +114,12 @@ ff_league.mfl_conn <- function(conn){
 .mfl_years_active <- function(league_endpoint){
   years_active <- league_endpoint$history$league %>%
     dplyr::bind_rows() %>%
-    dplyr::arrange(.data$year) %>%
-    dplyr::slice(1,nrow(.data))
+    dplyr::arrange(.data$year)
 
-  paste(years_active$year,collapse = "-")
+  years_active %>%
+    dplyr::slice(1,nrow(years_active)) %>%
+    dplyr::pull("year") %>%
+    paste(collapse = "-")
 }
 
 #' @noRd
