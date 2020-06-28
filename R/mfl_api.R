@@ -26,22 +26,30 @@ mfl_getendpoint <- function(conn,endpoint,...){
 
   # message(url_query)
 
+  # nocov start
+
   if(httr::http_error(response) && httr::status_code(response)==429) {
-    stop(glue::glue("You've hit the MFL rate limit wall! Please adjust the built-in rate_limit arguments in mfl_connect()!"))
+    stop(glue::glue("You've hit the MFL rate limit wall! Please adjust the
+                    built-in rate_limit arguments in mfl_connect()!"),call. = FALSE)
   }
 
   if(httr::http_error(response)) {
-    stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n while calling <{url_query}>"),call. = FALSE)}
+    stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n
+                    while calling <{url_query}>"),call. = FALSE)}
+
+
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("MFL API did not return json while calling {url_query}"),
             call. = FALSE) }
 
+
   if(httr::http_type(response)== "application/json"){
     parsed <- jsonlite::parse_json(httr::content(response,"text"))}
 
-  if(!is.null(parsed$error)){
-    warning(glue::glue("MFL says: {parsed$error[[1]]}"),call. = FALSE)}
+  if(!is.null(parsed$error)){ warning(glue::glue("MFL says: {parsed$error[[1]]}"),call. = FALSE)}
+
+  # nocov end
 
   structure(
     list(
@@ -57,10 +65,15 @@ mfl_getendpoint <- function(conn,endpoint,...){
 ## PRINT METHOD MFL_API OBJ ##
 #' @noRd
 #' @export
+#'
 print.mfl_api <- function(x, ...) {
+
+  # nocov start
 
   cat("<MFL - GET ",x$query,">\n", sep = "")
   str(x$content)
 
   invisible(x)
+
+  # nocov end
 }
