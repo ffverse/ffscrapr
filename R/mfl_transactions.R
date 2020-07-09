@@ -29,7 +29,8 @@ ff_transactions.mfl_conn <- function(conn,...){
     trade = .mfl_transactions_trade
   )
 
-  purrr::map_dfr(transaction_functions,rlang::exec,df_transactions)
+  purrr::map_dfr(transaction_functions,rlang::exec,df_transactions) %>%
+    arrange(desc(.data$timestamp))
 
 }
 
@@ -46,9 +47,14 @@ ff_transactions.mfl_conn <- function(conn,...){
 
   auction_transactions %>%
     dplyr::select('timestamp','type','franchise','transaction') %>%
-    tidyr::separate('transaction',into = c('player_id','bid_amount','auction_note'),sep = "\\|") %>%
-    dplyr::mutate('auction_note' = ifelse(stringr::str_length(.data$auction_note)==0
-                                          ,NA_character_,.data$auction_note))
+    tidyr::separate('transaction',into = c('player_id','bid_amount','comments'),sep = "\\|") %>%
+    dplyr::mutate('comments' = ifelse(stringr::str_length(.data$comments)==0,
+                                      NA_character_,
+                                      .data$comments)) %>%
+    dplyr::left_join(
+      dplyr::select(mfl_players(),'player_id','player_name','pos','age','team'),
+      by = 'player_id'
+    )
   }
 
 ## TRADE ##
@@ -64,11 +70,14 @@ ff_transactions.mfl_conn <- function(conn,...){
   if(nrow(trade_transactions)==0){return(NULL)}
 
   parsed_trades <- trade_transactions %>%
-    dplyr::select('timestamp','type','franchise','franchise1_gave_up','franchise2','franchise2_gave_up','comments') %>%
+    dplyr::select('timestamp','type',
+                  'franchise','franchise1_gave_up',
+                  'franchise2','franchise2_gave_up',
+                  'comments') %>%
     dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_replace(.x,",$","")) %>%
     dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_split(.x,","))
 
-  dplyr::select(parsed_trades,
+  df <- dplyr::select(parsed_trades,
                 .data$timestamp,
                 .data$type,
                 'franchise'=.data$franchise2,
@@ -77,7 +86,11 @@ ff_transactions.mfl_conn <- function(conn,...){
                 'franchise2_gave_up'=.data$franchise1_gave_up,
                 .data$comments) %>%
     dplyr::bind_rows(parsed_trades) %>%
+    dplyr::rename('trade_partner' = .data$franchise2,
+                  'traded_for' = .data$franchise2_gave_up,
+                  'traded_away' = .data$franchise1_gave_up) %>%
     dplyr::arrange(desc(.data$timestamp))
+
 
 }
 
