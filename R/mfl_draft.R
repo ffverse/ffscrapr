@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl",league_id = 65443,season = 2020)
-#' ff_draft(ssb_conn)
+#' ff_draft(ssb_conn,...)
 #'
 #' @rdname ff_draft
 #' @export
