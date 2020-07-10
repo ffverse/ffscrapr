@@ -26,12 +26,14 @@ ff_draft.mfl_conn <- function(conn,...){
     if(is.null(df_draftresults)) return(NULL)
 
     df_draftresults <- df_draftresults %>%
-      dplyr::left_join(ff_franchises(conn) %>%
-                  select('franchise_id','franchise_name'),
-                by = c('franchise_id')) %>%
-      dplyr::left_join(mfl_players() %>%
-                         dplyr::select('player_id','player_name','pos','age','team'),
-                       by = c('player_id')) %>%
+      dplyr::left_join(
+        ff_franchises(conn) %>%
+          dplyr::select('franchise_id','franchise_name'),
+        by = c('franchise_id')) %>%
+      dplyr::left_join(
+        mfl_players() %>%
+          dplyr::select('player_id','player_name','pos','age','team'),
+        by = c('player_id')) %>%
       dplyr::transmute(
         'timestamp' = lubridate::as_datetime(as.numeric(.data$timestamp)),
         .data$round,
@@ -51,12 +53,14 @@ ff_draft.mfl_conn <- function(conn,...){
       if(is.null(df_draftresults)) return(NULL)
 
       df_draftresults <- df_draftresults %>%
-        dplyr::left_join(ff_franchises(conn) %>%
-                    dplyr::select('franchise_id','division','division_name','franchise_name'),
-                  by = c("franchise_id")) %>%
-        dplyr::left_join(mfl_players() %>%
-                           dplyr::select('player_id','player_name','pos','age','team'),
-                         by = c('player_id')) %>%
+        dplyr::left_join(
+          ff_franchises(conn) %>%
+            dplyr::select('franchise_id','division','division_name','franchise_name'),
+          by = c("franchise_id")) %>%
+        dplyr::left_join(
+          mfl_players() %>%
+            dplyr::select('player_id','player_name','pos','age','team'),
+          by = c('player_id')) %>%
         dplyr::transmute(
           'timestamp' = lubridate::as_datetime(as.numeric(.data$timestamp)),
           .data$division,
