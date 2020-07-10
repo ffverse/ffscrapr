@@ -7,6 +7,12 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_connect.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_draft.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_franchises.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_league.html</loc>
   </url>
   <url>
@@ -14,6 +20,12 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_scoring.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_transactions.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/forget.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/mfl_connect.html</loc>
@@ -32,5 +44,8 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/mfl_basics.html</loc>
   </url>
 </urlset>

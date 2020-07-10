@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get League Rosters — ff_rosters • ffscrapr</title>
+<title>Get League Franchises — ff_franchises • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get League Rosters — ff_rosters" />
-<meta property="og:description" content="This function returns a tibble of common league settings - things like &quot;1QB&quot; or &quot;2QB&quot;, best ball, team count etc" />
+<meta property="og:title" content="Get League Franchises — ff_franchises" />
+<meta property="og:description" content="This function returns a tibble of franchise details (id, name, abbrev etc)
+Returns a tidy dataframe of franchises and any relevant information" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -133,19 +134,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get League Rosters</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_rosters.R'><code>R/mfl_rosters.R</code></a></small>
-    <div class="hidden name"><code>ff_rosters.Rd</code></div>
+    <h1>Get League Franchises</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_franchises.R'><code>R/mfl_franchises.R</code></a></small>
+    <div class="hidden name"><code>ff_franchises.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc</p>
+    <p>This function returns a tibble of franchise details (id, name, abbrev etc)</p>
+<p>Returns a tidy dataframe of franchises and any relevant information</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_rosters</span>(<span class='no'>conn</span>)
+    <pre class="usage"><span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_rosters</span>(<span class='no'>conn</span>)</pre>
+<span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,35 +160,34 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of rosters, joined to basic player information and basic franchise information</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
+    <p>A tibble of franchises</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_rosters</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `...` is not empty.</span>
+<span class='fu'>ff_franchises</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `...` is not empty.</span>
 #&gt; <span class='warning'></span>
 #&gt; <span class='warning'>We detected these problematic arguments:</span>
 #&gt; <span class='warning'>* `needs_dots`</span>
 #&gt; <span class='warning'></span>
 #&gt; <span class='warning'>These dots only exist to allow future extensions and should be empty.</span>
-#&gt; <span class='warning'>Did you misspecify an argument?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 423 x 11</span><span>
-#&gt;    franchise_id franchise_name player_id player_name pos   team    age
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.6
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  
-#&gt; </span><span style='color: #555555;'> 5</span><span> 0001         Team Pikachu   13155     Ross, John  WR    CIN    24.6
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.6
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.2
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.2
-#&gt; </span><span style='color: #555555;'> 9</span><span> 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3
-#&gt; </span><span style='color: #555555;'>10</span><span> 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.3
-#&gt; </span><span style='color: #555555;'># ... with 413 more rows, and 4 more variables: roster_status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   drafted </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-
+#&gt; <span class='warning'>Did you misspecify an argument?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 7</span><span>
+#&gt;    franchise_id franchise_name logo  icon  abbrev bbidAvailableBa~
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   http~ http~ PIKA   200.00          
+#&gt; </span><span style='color: #555555;'> 2</span><span> 0002         Team Simon Be~ http~ http~ SIMN   200.00          
+#&gt; </span><span style='color: #555555;'> 3</span><span> 0003         Team Captain ~ http~ http~ CFCN   200.00          
+#&gt; </span><span style='color: #555555;'> 4</span><span> 0004         Team Ice Clim~ http~ http~ ICE    158.00          
+#&gt; </span><span style='color: #555555;'> 5</span><span> 0005         Team Dr. Mario http~ http~ DRM    200.00          
+#&gt; </span><span style='color: #555555;'> 6</span><span> 0006         Team King Ded~ http~ http~ KDDD   200.00          
+#&gt; </span><span style='color: #555555;'> 7</span><span> 0007         Team Kirby     http~ http~ KRBY   198.00          
+#&gt; </span><span style='color: #555555;'> 8</span><span> 0008         Team Fox       http~ http~ FOX    200.00          
+#&gt; </span><span style='color: #555555;'> 9</span><span> 0009         Team Link      http~ http~ LINK   200.00          
+#&gt; </span><span style='color: #555555;'>10</span><span> 0010         Team Yoshi     http~ http~ YSHI   173.00          
+#&gt; </span><span style='color: #555555;'>11</span><span> 0011         Team Diddy Ko~ http~ http~ DDY    200.00          
+#&gt; </span><span style='color: #555555;'>12</span><span> 0012         Team Mewtwo    http~ http~ MEW2   200.00          
+#&gt; </span><span style='color: #555555;'>13</span><span> 0013         Team Ness      http~ http~ </span><span style='color: #BB0000;'>NA</span><span>     179.00          
+#&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi     http~ http~ LUIG   191.00          
+#&gt; </span><span style='color: #555555;'># ... with 1 more variable: waiverSortOrder </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
