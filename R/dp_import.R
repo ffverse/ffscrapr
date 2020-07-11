@@ -11,6 +11,7 @@
 #' @examples
 #' dp_values()
 #'
+#' @importFrom utils read.csv
 #' @return a tibble of trade values
 #' @export
 
@@ -20,7 +21,7 @@ dp_values <- function(file = c("values.csv","values-players.csv","values-picks.c
 
   read.csv(glue::glue("https://github.com/DynastyProcess/data/raw/master/files/{file_name}"),
            stringsAsFactors = FALSE) %>%
-    dplyr::mutate(scrape_date = lubridate::as_date(scrape_date)) %>%
+    dplyr::mutate(scrape_date = lubridate::as_date(.data$scrape_date)) %>%
     dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")),as.character) %>%
     tibble::tibble()
 
