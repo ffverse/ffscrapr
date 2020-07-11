@@ -32,7 +32,7 @@ Imports:
 Suggests: 
     covr (>= 3.0.0),
     httptest (>= 3.0.0),
-    testthat (>= 2.0.0),
+    testthat (>= 2.1.0),
     knitr,
     rmarkdown
 Encoding: UTF-8

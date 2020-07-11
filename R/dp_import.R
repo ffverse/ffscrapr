@@ -8,6 +8,9 @@
 #'
 #' @seealso \url{https://github.com/DynastyProcess/data}
 #'
+#' @examples
+#' dp_values()
+#'
 #' @return a tibble of trade values
 #' @export
 
@@ -18,6 +21,29 @@ dp_values <- function(file = c("values.csv","values-players.csv","values-picks.c
   read.csv(glue::glue("https://github.com/DynastyProcess/data/raw/master/files/{file_name}"),
            stringsAsFactors = FALSE) %>%
     dplyr::mutate(scrape_date = lubridate::as_date(scrape_date)) %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")),as.character)
+    dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")),as.character) %>%
+    tibble::tibble()
 
+}
+
+#' Import latest DynastyProcess player IDs
+#'
+#' Fetches a copy of the latest DynastyProcess player IDs csv
+#'
+#' @examples
+#' dp_playerids()
+#'
+#' @seealso \url{https://github.com/DynastyProcess/data}
+#'
+#' @return a tibble of trade values
+#' @export
+
+
+dp_playerids <- function(){
+
+  read.csv(
+    glue::glue("https://github.com/DynastyProcess/data/raw/master/files/db_playerids.csv"),
+           stringsAsFactors = FALSE) %>%
+    dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")),as.character) %>%
+    tibble::tibble()
 }
