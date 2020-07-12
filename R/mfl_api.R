@@ -14,6 +14,8 @@
 
 mfl_getendpoint <- function(conn,endpoint,...){
 
+  env <- get(".ffscrapr_env",inherits = TRUE)
+
   url_query <- httr::modify_url(
     url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
     query = list("TYPE"=endpoint,
@@ -22,7 +24,7 @@ mfl_getendpoint <- function(conn,endpoint,...){
                  ...,
                  "JSON"=1))
 
-  response <- conn$get(url_query,conn$user_agent,conn$auth_cookie)
+  response <- env$get(url_query,env$user_agent,conn$auth_cookie)
 
   # message(url_query)
 
@@ -36,8 +38,6 @@ mfl_getendpoint <- function(conn,endpoint,...){
   if(httr::http_error(response)) {
     stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n
                     while calling <{url_query}>"),call. = FALSE)}
-
-
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("MFL API did not return json while calling {url_query}"),

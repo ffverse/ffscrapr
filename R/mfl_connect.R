@@ -30,37 +30,29 @@ mfl_connect <- function(season = NULL,
                         user_name = NULL,
                         password = NULL,
                         user_agent = NULL,
-                        rate_limit = NULL,
+                        rate_limit = TRUE,
                         rate_limit_number = 4,
                         rate_limit_seconds = 5){
-
-  ## LEAGUE ID ##
-
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
   # See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
 
-  if(is.null(user_agent)){
-    user_agent <- glue::glue("ffscrapr/",
-                             "{utils::packageVersion('ffscrapr')}",
-                             " API client package",
-                             " https://github.com/dynastyprocess/ffscrapr")}
+  if(length(user_agent)>1){stop("user_agent must be a character vector of length one!")}
 
-  user_agent <- httr::user_agent(user_agent)
+  if(!is.null(user_agent)){ .fn_set_useragent(user_agent) }
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
-  if(is.null(rate_limit)){rate_limit <- TRUE}
-
   if(!is.logical(rate_limit)){stop("rate_limit should be logical")}
 
-  .get <- .fn_get(rate_limit,rate_limit_number,rate_limit_seconds)
+  .fn_set_ratelimit(rate_limit,rate_limit_number,rate_limit_seconds)
 
   ## SEASON ##
   # MFL organizes things by league year and tends to roll over around February.
-  # Sensible default seems to be calling the current year if in March or later, otherwise previous year if in Jan/Feb
+  # Sensible default seems to be calling the current year if in March or later,
+  # otherwise previous year if in Jan/Feb
 
   if(is.null(season) || is.na(season)){
     season <- .fn_choose_season()
@@ -70,23 +62,22 @@ mfl_connect <- function(season = NULL,
   ## Username/Password Login ##
   m_cookie <- NULL
 
-  if(!is.null(user_name) && is.null(password)){message("User_name supplied but no password - skipping login cookie call!")}
-  if(!is.null(password) && is.null(user_name)){message("Password supplied but no user_name - skipping login cookie call!")}
+  if(!is.null(user_name) && is.null(password)){
+    message("User_name supplied but no password - skipping login cookie call!")}
+  if(!is.null(password) && is.null(user_name)){
+    message("Password supplied but no user_name - skipping login cookie call!")}
 
   if(!is.null(user_name) && !is.null(password)){
-    m_cookie <- .mfl_logincookie(.get,user_name,password,season,user_agent)}
+    m_cookie <- .mfl_logincookie(user_name,password,season)}
 
   ## Collect all of the connection pieces and store in an S3 object ##
 
   structure(
     list(
       platform = "MFL",
-      get = .get,
       season = season,
       league_id = as.character(league_id),
       APIKEY = APIKEY,
-      user_agent = user_agent,
-
       auth_cookie = m_cookie),
     class = 'mfl_conn')
 }
@@ -118,13 +109,15 @@ print.mfl_conn <- function(x, ...) {
 #'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
-.mfl_logincookie <- function(fn_get,user_name,password,season,user_agent){
+.mfl_logincookie <- function(user_name,password,season){
 
-  m_cookie <- fn_get(
+  env <- get(".ffscrapr_env",inherits = TRUE)
+
+  m_cookie <- env$get(
     glue::glue(
       "https://api.myfantasyleague.com/{season}/login?",
       "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
-    user_agent)
+    env$user_agent)
 
   m_cookie <- purrr::pluck(m_cookie,'cookies','value')
 

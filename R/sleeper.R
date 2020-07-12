@@ -22,22 +22,19 @@ sleeper_connect <- function(season = NULL,
                             rate_limit_seconds = 60){
 
   ## USER AGENT ##
-  # Self-identifying is mostly about being polite!
+  # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
+  # See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
 
-  if(is.null(user_agent)){
-    user_agent <- glue::glue("FFscrapR/",
-                             "{utils::packageVersion('ffscrapr')}",
-                             " API client package",
-                             " https://github.com/dynastyprocess/ffscrapr")}
+  if(length(user_agent)>1){stop("user_agent must be a character vector of length one!")}
 
-  user_agent <- httr::user_agent(user_agent)
+  if(!is.null(user_agent)){ .fn_set_useragent(user_agent) }
 
   ## RATE LIMIT ##
-  # For more info, see: https://docs.sleeper.app
+  # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
   if(!is.logical(rate_limit)){stop("rate_limit should be logical")}
 
-  .get <- .fn_get(rate_limit,rate_limit_number,rate_limit_seconds)
+  .fn_set_ratelimit(rate_limit,rate_limit_number,rate_limit_seconds)
 
   ## Season ##
   # Sleeper organizes things by league year and tends to roll over around February.
@@ -53,17 +50,18 @@ sleeper_connect <- function(season = NULL,
   user_id <- NULL
 
   if(!is.null(user_name)){
-    user_id <- .sleeper_userid(.get,user_name,user_agent)}
+    user_id <- .sleeper_userid(user_name)}
 
   structure(
     list(
       platform = "Sleeper",
-      get = .get,
+      # get = .get,
+      # user_agent = user_agent
       season = season,
       league_id = league_id,
       user_name = user_name,
-      user_id = user_id,
-      user_agent = user_agent),
+      user_id = user_id
+      ),
     class = 'sleeper_conn')
 }
 
@@ -90,9 +88,11 @@ print.sleeper_conn <- function(x, ...) {
 #'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
-.sleeper_userid <- function(fn_get,user_name,user_agent){
+.sleeper_userid <- function(user_name){
 
-  user_object <- fn_get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"),user_agent)
+  env <- get(".ffscrapr_env",inherits = TRUE)
+
+  user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"),env$user_agent)
 
   if (httr::http_type(user_object) != "application/json") {
     stop("API call for user_name object did not return JSON", call. = FALSE)
@@ -128,49 +128,49 @@ print.sleeper_conn <- function(x, ...) {
 #'
 #' @export
 
-sleeper_getendpoint <- function(conn,endpoint,...){
-
-  url_query <- httr::modify_url(url = glue::glue("https://api.sleeper.app/v1/"),
-                                query = list("TYPE"=endpoint,
-                                             "L" = conn$league_id,
-                                             'APIKEY'=conn$APIKEY,
-                                             # ...,
-                                             "JSON"=1))
-
-  response <- .fn_get(url_query,conn$user_agent,conn$auth_cookie)
-
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  parsed <- jsonlite::parse_json(httr::content(response,"text"))
-
-  if (httr::http_error(response)) {
-    stop(glue::glue("Sleeper API request failed [{httr::status_code(response)}]\n",
-                    parsed$message
-    ),
-    call. = FALSE
-    )
-  }
-
-  structure(
-    list(
-      content = parsed,
-      query = url_query,
-      response = response
-    ),
-    class = "sleeper_api"
-  )
-
-}
-
-#' @noRd
-#' @export
-print.sleeper_api <- function(x, ...) {
-
-  cat("<Sleeper - GET ",x$query,">\n", sep = "")
-  str(x$content)
-  invisible(x)
-
-}
+#' sleeper_getendpoint <- function(conn,endpoint,...){
+#'
+#'   url_query <- httr::modify_url(url = glue::glue("https://api.sleeper.app/v1/"),
+#'                                 query = list("TYPE"=endpoint,
+#'                                              "L" = conn$league_id,
+#'                                              'APIKEY'=conn$APIKEY,
+#'                                              # ...,
+#'                                              "JSON"=1))
+#'
+#'   response <- .fn_get(url_query,conn$user_agent,conn$auth_cookie)
+#'
+#'   if (httr::http_type(response) != "application/json") {
+#'     stop("API did not return json", call. = FALSE)
+#'   }
+#'
+#'   parsed <- jsonlite::parse_json(httr::content(response,"text"))
+#'
+#'   if (httr::http_error(response)) {
+#'     stop(glue::glue("Sleeper API request failed [{httr::status_code(response)}]\n",
+#'                     parsed$message
+#'     ),
+#'     call. = FALSE
+#'     )
+#'   }
+#'
+#'   structure(
+#'     list(
+#'       content = parsed,
+#'       query = url_query,
+#'       response = response
+#'     ),
+#'     class = "sleeper_api"
+#'   )
+#'
+#' }
+#'
+#' #' @noRd
+#' #' @export
+#' print.sleeper_api <- function(x, ...) {
+#'
+#'   cat("<Sleeper - GET ",x$query,">\n", sep = "")
+#'   str(x$content)
+#'   invisible(x)
+#'
+#' }
 
