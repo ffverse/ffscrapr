@@ -43,7 +43,7 @@ NULL
 
   if(!toggle){f <- (httr::GET)}
 
-  .ffscrapr_env$get <<- f
+  assign("get",f,envir = .ffscrapr_env)
 
   invisible(f)
 
@@ -59,9 +59,9 @@ NULL
 
 .fn_set_useragent <- function(user_agent){
 
-   user_agent <- httr::user_agent(user_agent)
+  user_agent <- httr::user_agent(user_agent)
 
-  .ffscrapr_env$user_agent <<- user_agent
+  assign("user_agent",user_agent,envir = .ffscrapr_env)
 
   invisible(user_agent)
 

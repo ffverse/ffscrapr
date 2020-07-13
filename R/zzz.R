@@ -7,7 +7,7 @@
   mfl_players <<- memoise::memoise(mfl_players,~ memoise::timeout(86400))
   mfl_allrules <<- memoise::memoise(mfl_allrules,~ memoise::timeout(86400))
 
-  .ffscrapr_env <<- rlang::env(
+  env <-  rlang::env(
     user_agent = glue::glue(
       "ffscrapr/{utils::packageVersion('ffscrapr')} API client package",
       " https://github.com/dynastyprocess/ffscrapr") %>%
@@ -15,4 +15,8 @@
     get = ratelimitr::limit_rate(httr::GET,ratelimitr::rate(60,60))
   )
 
+  assign(".ffscrapr_env",env,envir = baseenv())
+
 }
+
+

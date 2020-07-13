@@ -14,7 +14,9 @@
 
 mfl_getendpoint <- function(conn,endpoint,...){
 
-  env <- get(".ffscrapr_env",inherits = TRUE)
+  fn_get <- get("get",envir = .ffscrapr_env,inherits = TRUE)
+
+  user_agent <- get("user_agent",envir = .ffscrapr_env,inherits = TRUE)
 
   url_query <- httr::modify_url(
     url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
@@ -24,9 +26,7 @@ mfl_getendpoint <- function(conn,endpoint,...){
                  ...,
                  "JSON"=1))
 
-  response <- env$get(url_query,env$user_agent,conn$auth_cookie)
-
-  # message(url_query)
+  response <- fn_get(url_query,user_agent,conn$auth_cookie)
 
   # nocov start
 
