@@ -11,7 +11,7 @@ mfl_connect(
   user_name = NULL,
   password = NULL,
   user_agent = NULL,
-  rate_limit = NULL,
+  rate_limit = TRUE,
   rate_limit_number = 4,
   rate_limit_seconds = 5
 )
