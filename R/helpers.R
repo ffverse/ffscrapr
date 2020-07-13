@@ -25,9 +25,11 @@ NULL
 
 }
 
-#' Rate limited httr::GET
+#' Set rate limit
 #'
-#' A helper function wrapping rate limit if toggled TRUE
+#' A helper function that creates a new copy of the httr::GET function and stores it
+#' in the .ffscrapr_env hidden object
+#'
 #' @param toggle a logical to turn on rate_limiting if TRUE and off if FALSE
 #' @param rate_number number of calls per \code{rate_seconds}
 #' @param rate_seconds number of seconds
@@ -35,10 +37,32 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.fn_get <- function(toggle = TRUE,rate_number,rate_seconds){
+.fn_set_ratelimit <- function(toggle = TRUE,rate_number,rate_seconds){
 
-  if(toggle){return(ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds)))}
-  if(!toggle){return(httr::GET)}
+  if(toggle){f <- (ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds)))}
+
+  if(!toggle){f <- (httr::GET)}
+
+  assign("get",f,envir = .ffscrapr_env)
+
+  invisible(f)
 
 }
 
+#' Set user agent
+#'
+#' Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
+#' See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
+#'
+#' @noRd
+#' @keywords internal
+
+.fn_set_useragent <- function(user_agent){
+
+  user_agent <- httr::user_agent(user_agent)
+
+  assign("user_agent",user_agent,envir = .ffscrapr_env)
+
+  invisible(user_agent)
+
+}

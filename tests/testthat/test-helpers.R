@@ -6,8 +6,8 @@ test_that("choose season returns a character representation of a year",{
 })
 
 with_mock_api({
-  test_that(".fn_get returns a 'GET' function",{
-    expect_is(.fn_get(TRUE,1,1)("http://httpbin.org"),"response")
-    expect_is(.fn_get(FALSE)("http://httpbin.org"),"response")
+  test_that(".fn_set_ratelimit creates a 'GET' function",{
+    expect_is(.fn_set_ratelimit(TRUE,1,1)("http://httpbin.org"),"response")
+    expect_is(.fn_set_ratelimit(FALSE)("http://httpbin.org"),"response")
                 })
               })
