@@ -17,10 +17,20 @@
 
 ff_scoring.mfl_conn <- function(conn){
 
-  mfl_getendpoint(conn,"rules") %>%
-    purrr::pluck("content","rules","positionRules") %>%
-    tibble::tibble() %>%
-    tidyr::unnest_wider(1) %>%
+  df <- mfl_getendpoint(conn,"rules") %>%
+    purrr::pluck("content","rules","positionRules")
+
+  if(is.null(df$positions)) {
+    df <- df %>%
+      tibble::tibble() %>%
+      tidyr::unnest_wider(1)
+  }
+
+  if(!is.null(df$positions)){
+    df <- df %>% tibble::as_tibble()
+  }
+
+  df <- df %>%
     dplyr::mutate(
       vec_depth = purrr::map_dbl(.data$rule,purrr::vec_depth),
       rule = dplyr::case_when(.data$vec_depth == 3 ~ purrr::map_depth(.data$rule,2,`[[`,1),
