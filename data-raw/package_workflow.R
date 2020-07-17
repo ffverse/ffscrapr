@@ -34,4 +34,7 @@ devtools::check(document = TRUE)
 
 # REBUILD PKGDOWN
 # pkgdown::build_site()
-pkgdown::deploy_to_branch(devel = TRUE)
+remotes::install_local()
+pkgdown::deploy_to_branch()
+
+
