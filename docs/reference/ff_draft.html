@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GET any MFL endpoint — mfl_getendpoint • ffscrapr</title>
+<title>Get Draft Results — ff_draft • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="GET any MFL endpoint — mfl_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint" />
+<meta property="og:title" content="Get Draft Results — ff_draft" />
+<meta property="og:description" content="This function returns a tibble of draft results" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -133,41 +133,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GET any MFL endpoint</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_api.R'><code>R/mfl_api.R</code></a></small>
-    <div class="hidden name"><code>mfl_getendpoint.Rd</code></div>
+    <h1>Get Draft Results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_draft.R'><code>R/mfl_draft.R</code></a></small>
+    <div class="hidden name"><code>ff_draft.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint</p>
+    <p>This function returns a tibble of draft results</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ff_draft</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_draft</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>the list object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>endpoint</th>
-      <td><p>a string defining which endpoint to return from the API</p></td>
+      <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments which will be passed as "argumentname = argument" in an HTTP query parameter</p></td>
+      <td><p>not sure if there'll be other params yet!</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>output from the specified MFL API endpoint</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>A tibble of draft results</p>
 
-    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p></div>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>65443</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
+<span class='fu'>ff_draft</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2,112 x 12</span><span>
+#&gt;    timestamp           division division_name round pick  franchise_id
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2020-07-06 </span><span style='color: #555555;'>14:00:05</span><span> 00       Vortex        01    01    0001        
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2020-07-06 </span><span style='color: #555555;'>14:00:05</span><span> 00       Vortex        01    02    0009        
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2020-07-06 </span><span style='color: #555555;'>14:25:51</span><span> 00       Vortex        01    03    0003        
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2020-07-06 </span><span style='color: #555555;'>14:25:51</span><span> 00       Vortex        01    04    0002        
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2020-07-06 </span><span style='color: #555555;'>14:25:51</span><span> 00       Vortex        01    05    0007        
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2020-07-06 </span><span style='color: #555555;'>14:26:45</span><span> 00       Vortex        01    06    0010        
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2020-07-06 </span><span style='color: #555555;'>15:34:53</span><span> 00       Vortex        01    07    0006        
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2020-07-06 </span><span style='color: #555555;'>16:31:09</span><span> 00       Vortex        01    08    0004        
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2020-07-06 </span><span style='color: #555555;'>16:55:39</span><span> 00       Vortex        01    09    0008        
+#&gt; </span><span style='color: #555555;'>10</span><span> 2020-07-06 </span><span style='color: #555555;'>16:55:39</span><span> 00       Vortex        01    10    0011        
+#&gt; </span><span style='color: #555555;'># ... with 2,102 more rows, and 6 more variables: franchise_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   player_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, age </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

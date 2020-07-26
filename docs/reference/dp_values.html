@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GET any MFL endpoint — mfl_getendpoint • ffscrapr</title>
+<title>Import latest DynastyProcess values — dp_values • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="GET any MFL endpoint — mfl_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint" />
+<meta property="og:title" content="Import latest DynastyProcess values — dp_values" />
+<meta property="og:description" content="Fetches a copy of the latest DynastyProcess dynasty trade values sheet" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -133,41 +133,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GET any MFL endpoint</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_api.R'><code>R/mfl_api.R</code></a></small>
-    <div class="hidden name"><code>mfl_getendpoint.Rd</code></div>
+    <h1>Import latest DynastyProcess values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/dp_import.R'><code>R/dp_import.R</code></a></small>
+    <div class="hidden name"><code>dp_values.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint</p>
+    <p>Fetches a copy of the latest DynastyProcess dynasty trade values sheet</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dp_values</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values.csv"</span>, <span class='st'>"values-players.csv"</span>, <span class='st'>"values-picks.csv"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>conn</th>
-      <td><p>the list object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>endpoint</th>
-      <td><p>a string defining which endpoint to return from the API</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Arguments which will be passed as "argumentname = argument" in an HTTP query parameter</p></td>
+      <th>file</th>
+      <td><p>one of <code><a href='https://rdrr.io/r/base/c.html'>c("values.csv","values-players.csv","values-picks.csv")</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>output from the specified MFL API endpoint</p>
+    <p>a tibble of trade values</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p></div>
+    <div class='dont-index'><p><a href='https://github.com/DynastyProcess/data'>https://github.com/DynastyProcess/data</a></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 478 x 12</span><span>
+#&gt;    player pos   team    age draft_year ecr_1qb ecr_2qb ecr_pos value_1qb
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Chris~ RB    CAR    24.1       </span><span style='text-decoration: underline;'>2</span><span>017     1.1     1.1     1.1     </span><span style='text-decoration: underline;'>10</span><span>232
+#&gt; </span><span style='color: #555555;'> 2</span><span> Saquo~ RB    NYG    23.5       </span><span style='text-decoration: underline;'>2</span><span>018     2       2.3     1.9     </span><span style='text-decoration: underline;'>10</span><span>018
+#&gt; </span><span style='color: #555555;'> 3</span><span> Micha~ WR    NOS    27.4       </span><span style='text-decoration: underline;'>2</span><span>016     3.5     4.1     1        </span><span style='text-decoration: underline;'>9</span><span>671
+#&gt; </span><span style='color: #555555;'> 4</span><span> Ezeki~ RB    DAL    25         </span><span style='text-decoration: underline;'>2</span><span>016     4.5     5.8     3.2      </span><span style='text-decoration: underline;'>9</span><span>446
+#&gt; </span><span style='color: #555555;'> 5</span><span> Alvin~ RB    NOS    25         </span><span style='text-decoration: underline;'>2</span><span>017     6       7.9     4.2      </span><span style='text-decoration: underline;'>9</span><span>119
+#&gt; </span><span style='color: #555555;'> 6</span><span> Tyree~ WR    KCC    26.4       </span><span style='text-decoration: underline;'>2</span><span>016     7.9    10.2     3.3      </span><span style='text-decoration: underline;'>8</span><span>721
+#&gt; </span><span style='color: #555555;'> 7</span><span> Davan~ WR    GBP    27.6       </span><span style='text-decoration: underline;'>2</span><span>014     8.1    10.4     3.6      </span><span style='text-decoration: underline;'>8</span><span>680
+#&gt; </span><span style='color: #555555;'> 8</span><span> DeAnd~ WR    ARI    28.1       </span><span style='text-decoration: underline;'>2</span><span>013     8.6    11.1     3.7      </span><span style='text-decoration: underline;'>8</span><span>579
+#&gt; </span><span style='color: #555555;'> 9</span><span> Dalvi~ RB    MIN    25         </span><span style='text-decoration: underline;'>2</span><span>017     9      12       6        </span><span style='text-decoration: underline;'>8</span><span>498
+#&gt; </span><span style='color: #555555;'>10</span><span> Chris~ WR    TBB    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     9.9    12.9     5        </span><span style='text-decoration: underline;'>8</span><span>321
+#&gt; </span><span style='color: #555555;'># ... with 468 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
