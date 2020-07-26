@@ -49,7 +49,8 @@
   
 
 <meta property="og:title" content="Get Player Scoring History — ff_playerscores" />
-<meta property="og:description" content="This function returns a tibble of player scores based on MFL rules" />
+<meta property="og:description" content="This function returns a tibble of player scores based on league rules
+Get weekly or full-year/YTD/avg points scored" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -82,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.19</span>
       </span>
     </div>
 
@@ -134,41 +135,63 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Player Scoring History</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a></small>
     <div class="hidden name"><code>ff_playerscores.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of player scores based on MFL rules</p>
+    <p>This function returns a tibble of player scores based on league rules</p>
+<p>Get weekly or full-year/YTD/avg points scored</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_playerscores</span>(<span class='no'>conn</span>, <span class='no'>season</span>, <span class='no'>week</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ff_playerscores</span>(<span class='no'>conn</span>, <span class='no'>season</span>, <span class='no'>week</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_playerscores</span>(<span class='no'>conn</span>, <span class='no'>season</span>, <span class='no'>week</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
+      <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>season</th>
-      <td><p>the season to look up (generally only recent seasons available)</p></td>
+      <td><p>the season of interest - generally only the most recent 2-3 seasons are available</p></td>
     </tr>
     <tr>
       <th>week</th>
-      <td><p>a numeric week or one of YTD (year to date) or AVG (average)</p></td>
+      <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>arguments passed to other methods</p></td>
+      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of scoring history</p>
+<p>a tibble detailing historical player scores</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
+<span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='no'>dlf_conn</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>week</span> <span class='kw'>=</span> <span class='st'>"YTD"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 597 x 8</span><span>
+#&gt;    season week  player_id player_name          pos   team  points isAvailable
+#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL   480.68 0          
+#&gt; </span><span style='color: #555555;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR   469.20 0          
+#&gt; </span><span style='color: #555555;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS   391.00 0          
+#&gt; </span><span style='color: #555555;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC   369.80 0          
+#&gt; </span><span style='color: #555555;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL   355.70 0          
+#&gt; </span><span style='color: #555555;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL   351.78 0          
+#&gt; </span><span style='color: #555555;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12626     Henry, Derrick       RB    TEN   351.60 0          
+#&gt; </span><span style='color: #555555;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU   342.08 0          
+#&gt; </span><span style='color: #555555;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA   339.70 0          
+#&gt; </span><span style='color: #555555;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP   337.90 0          
+#&gt; </span><span style='color: #555555;'># ... with 587 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
