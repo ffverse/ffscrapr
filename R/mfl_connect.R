@@ -18,7 +18,6 @@
 #' @export mfl_connect
 #'
 #' @examples
-#' library(ffscrapr)
 #' mfl_connect(season = 2020, league_id = 54040)
 #' mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 #'
