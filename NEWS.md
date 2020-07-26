@@ -6,3 +6,9 @@
 - 2020-05-27 - adding test folder, renamed main-level functions to "ff_" prefix for ease of autocomplete later
 - 2020-05-30 - add start of league summary code
 - 2020-06-07 - taking a big whack at testing stuff
+- 2020-06-08 - add pkgdown site
+- 2020-06-13 - switch to S3 methods and add memoise
+- 2020-06-21 - add ff_rosters and ff_franchises
+- 2020-07-10 - add ff_draft
+- 2020-07-16 - add dynastyprocess helpers
+- 2020-07-26 - add ff_playerscores

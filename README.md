@@ -13,43 +13,9 @@ The goal of this package is to abstract the code required to call various Fantas
 
 ## Installation
 Install from GitHub with:
+
 ``` r
 # install.packages("devtools") OR install.packages("remotes")
 ## remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
-
-## Functions List
-Loose roadmap:
-
-
-- Create connection to x league platform
-- Get raw API endpoints
-- Get league settings (i.e. number of teams, roster spots, starting-positions, number of QBs, IDPs, best ball etc)
-- Get scoring settings (PPR, PP1D, positional-scoring)
-- Get franchise data
-- Get draft/draft_picks
-- Get player data
-- Get transaction data
-- Get standings data (standings, potential-points, all-play, ?)
-- Get raw API endpoint (how do I construct argument calls from dots?)
-
-## Nomenclature decisions log
-
-Ordinary user functions are prefixed with `ff_` for easy autocomplete/search and wrap the corresponding function for each platform.
-
-League-specific functions are prefixed with the league - i.e. `mfl_`, `sleeper_`, `espn_`, `yahoo_` etc.
-
-Internal functions are prefixed with a `.fn_` if intended for cross-platform and otherwise with `.mfl_` and `.sleeper_` for platform specific.
-
-## Changelog
-
-- 2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions
-- 2020-05-19 - following [httr API vignette](https://httr.r-lib.org/articles/api-packages.html) and created generic call to MFL API via `get_mfl_endpoint()`
-- 2020-05-23 - adding rate limiting and beginnings of Sleeper connection code
-- 2020-05-27 - adding test folder, renamed main-level functions to "ff_" prefix for ease of autocomplete later
-- 2020-05-30 - add start of league summary code
-- 2020-06-07 - taking a big whack at testing stuff
-- 2020-06-08 - add pkgdown site
-- 2020-06-13 - switch to S3 methods and using memoise
-- 2020-06-21 - add ff_rosters and ff_franchises

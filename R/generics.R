@@ -150,6 +150,53 @@ ff_transactions.default <- function(conn,...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
+#### ff_draft ####
+
+#' Get Draft Results
+#'
+#' This function returns a tibble of draft results
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#'
+#' @export ff_draft
+#'
+#' @return A tibble of draft results
+
+ff_draft <- function(conn,...){
+  UseMethod("ff_draft")
+}
+
+#' @export
+ff_draft.default <- function(conn,...){
+  stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
+}
+
+#### ff_playerscores ####
+
+#' Get Player Scoring History
+#'
+#' This function returns a tibble of player scores based on league rules
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param season the season to look up (generally only recent seasons available)
+#' @param week a numeric week or one of YTD (year to date) or AVG (average)
+#' @param ... arguments passed to other methods
+#'
+#' @return A tibble of scoring history
+
+#' @export
+
+ff_playerscores <- function(conn, season, week,...){
+  UseMethod("ff_playerscores")
+}
+
+#' @export
+ff_playerscores.default <- function(conn, season, week,...){
+  stop(glue::glue("No method of ff_playerscores found for platform: {conn$platform}."))
+}
+
+
 # ff_settings_rosters - summarises all available roster setting details
 
 # ff_standings - summarises standings, potential points, all-play

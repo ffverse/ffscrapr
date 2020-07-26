@@ -11,7 +11,7 @@ mfl_connect(
   user_name = NULL,
   password = NULL,
   user_agent = NULL,
-  rate_limit = NULL,
+  rate_limit = TRUE,
   rate_limit_number = 4,
   rate_limit_seconds = 5
 )
@@ -42,7 +42,6 @@ a list that stores MFL connection objects
 This function creates a connection object which stores parameters and gets a login-cookie if available
 }
 \examples{
-library(ffscrapr)
 mfl_connect(season = 2020, league_id = 54040)
 mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 
