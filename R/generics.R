@@ -172,6 +172,30 @@ ff_draft.default <- function(conn,...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
+#### ff_playerscores ####
+
+#' Get Player Scoring History
+#'
+#' This function returns a tibble of player scores based on league rules
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param season the season to look up (generally only recent seasons available)
+#' @param week a numeric week or one of YTD (year to date) or AVG (average)
+#' @param ... arguments passed to other methods
+#'
+#' @return A tibble of scoring history
+
+#' @export
+
+ff_playerscores <- function(conn, season, week,...){
+  UseMethod("ff_playerscores")
+}
+
+#' @export
+ff_playerscores.default <- function(conn, season, week,...){
+  stop(glue::glue("No method of ff_playerscores found for platform: {conn$platform}."))
+}
+
 
 # ff_settings_rosters - summarises all available roster setting details
 

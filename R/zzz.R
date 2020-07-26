@@ -2,6 +2,7 @@
 
 .onLoad <- function(libname, pkgname) {
 
+  # nocov start
   # Memoise specific functions
   # Timeout lengths still up for discussion
   mfl_players <<- memoise::memoise(mfl_players,~ memoise::timeout(86400))
@@ -16,6 +17,8 @@
   )
 
   assign(".ffscrapr_env",env,envir = baseenv())
+
+  # nocov end
 
 }
 
