@@ -13,7 +13,14 @@ reference:
   desc: Additional functions designed/optimized for the Sleeper platform.
   contents:
   - starts_with("sleeper_")
+- subtitle: DynastyProcess
+  desc: Functions to interface with DynastyProcess data
+  contents:
+  - starts_with("dp_")
 url: ffscrapr.dynastyprocess.com
 authors:
   Tan Ho:
     href: https://twitter.com/_TanHo
+template:
+  params:
+    bootswatch: yeti

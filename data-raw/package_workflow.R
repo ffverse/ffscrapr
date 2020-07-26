@@ -33,8 +33,8 @@ usethis::use_version("dev")
 devtools::check(document = TRUE)
 
 # REBUILD PKGDOWN
-# pkgdown::build_site()
-remotes::install_local()
+pkgdown::build_site()
+remotes::install_local(upgrade = FALSE)
 pkgdown::deploy_to_branch()
 
 

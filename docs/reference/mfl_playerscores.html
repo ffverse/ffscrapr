@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GET any MFL endpoint — mfl_getendpoint • ffscrapr</title>
+<title>MFL PlayerScores — ff_playerscores.mfl_conn • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="GET any MFL endpoint — mfl_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint" />
+<meta property="og:title" content="MFL PlayerScores — ff_playerscores.mfl_conn" />
+<meta property="og:description" content="Get weekly or full-year/YTD/avg points scored" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.18</span>
       </span>
     </div>
 
@@ -133,41 +133,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GET any MFL endpoint</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_api.R'><code>R/mfl_api.R</code></a></small>
-    <div class="hidden name"><code>mfl_getendpoint.Rd</code></div>
+    <h1>MFL PlayerScores</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a></small>
+    <div class="hidden name"><code>mfl_playerscores.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint</p>
+    <p>Get weekly or full-year/YTD/avg points scored</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for mfl_conn</span>
+<span class='fu'><a href='ff_playerscores.html'>ff_playerscores</a></span>(<span class='no'>conn</span>, <span class='no'>season</span>, <span class='no'>week</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>the list object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
+      <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>endpoint</th>
-      <td><p>a string defining which endpoint to return from the API</p></td>
+      <th>season</th>
+      <td><p>the season of interest - generally only the most recent 2-3 seasons are available</p></td>
+    </tr>
+    <tr>
+      <th>week</th>
+      <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments which will be passed as "argumentname = argument" in an HTTP query parameter</p></td>
+      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>output from the specified MFL API endpoint</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>a tibble detailing historical player scores</p>
 
-    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p></div>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
+<span class='fu'>mfl_playerscores</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='no'>dlf_conn</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>, <span class='kw'>week</span> <span class='kw'>=</span> <span class='st'>"YTD"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mfl_playerscores(conn = dlf_conn, season = 2020, week = "YTD"): could not find function "mfl_playerscores"</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
