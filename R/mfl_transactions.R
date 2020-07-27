@@ -36,7 +36,10 @@ ff_transactions.mfl_conn <- function(conn,...){
   )
 
   purrr::map_dfr(transaction_functions,rlang::exec,df_transactions) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
+    dplyr::left_join(
+      dplyr::select(mfl_players(),"player_id","player_name","pos","team"),
+      by = "player_id")
 
 }
 
@@ -92,7 +95,7 @@ ff_transactions.mfl_conn <- function(conn,...){
     dplyr::rename('trade_partner' = .data$franchise2,
                   'traded_for' = .data$franchise2_gave_up,
                   'traded_away' = .data$franchise1_gave_up) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp))
 
 
 }
@@ -125,7 +128,7 @@ ff_transactions.mfl_conn <- function(conn,...){
       .data$type_desc,
       .data$player_id,
       .data$comments) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp))
 
 }
 
@@ -156,7 +159,7 @@ ff_transactions.mfl_conn <- function(conn,...){
       .data$type_desc,
       .data$player_id,
       .data$comments) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp))
 
 }
 
@@ -187,7 +190,7 @@ ff_transactions.mfl_conn <- function(conn,...){
       .data$type_desc,
       .data$player_id,
       .data$comments) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp))
 }
 
 ## BBID Waiver ##
@@ -225,7 +228,7 @@ ff_transactions.mfl_conn <- function(conn,...){
       .data$player_id,
       .data$bbid_spent,
       .data$comments) %>%
-    dplyr::arrange(desc(.data$timestamp))
+    dplyr::arrange(dplyr::desc(.data$timestamp))
 }
 
 ## Will need to write functions to parse each of these, then row bind them back together afterwards.

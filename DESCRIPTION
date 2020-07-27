@@ -28,7 +28,8 @@ Imports:
     tibble (>= 3.0.0),
     tidyr (>= 1.0.0),
     magrittr (>= 1.5.0),
-    memoise (>= 1.1.0)
+    memoise (>= 1.1.0),
+    stringr (>= 1.4.0)
 Suggests: 
     covr (>= 3.0.0),
     httptest (>= 3.0.0),
