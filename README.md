@@ -3,7 +3,7 @@
 
   <!-- badges: start -->
   [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-  [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+  [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/master/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=master)
   [![R build status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
   <!-- badges: end -->
 
