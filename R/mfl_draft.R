@@ -3,10 +3,11 @@
 #' Get a dataframe of draft results.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - are there custom players included in the result?
 #' @param ... not sure if there'll be other params yet!
 #'
 #' @examples
-#' ssb_conn <- ff_connect(platform = "mfl",league_id = 65443,season = 2020)
+#' ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
 #' ff_draft(ssb_conn)
 #'
 #' @rdname ff_draft
@@ -14,16 +15,25 @@
 
 # Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft
 
-ff_draft.mfl_conn <- function(conn,...){
+ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...){
+
+  stopifnot(is.logical(custom_players))
+
+  players_endpoint <- if(custom_players){mfl_players(conn)} else {mfl_players()}
+
+  players_endpoint <- players_endpoint %>%
+    dplyr::select("player_id","player_name","pos","team","age")
 
   raw_draftresults <- mfl_getendpoint(conn,"draftResults") %>%
     purrr::pluck("content","draftResults","draftUnit")
 
   if(!is.null(raw_draftresults$unit) && raw_draftresults$unit=="LEAGUE") {
 
+
     df_draftresults <- .mfl_parse_draftunit(raw_draftresults)
 
     if(is.null(df_draftresults)) return(NULL)
+
 
     df_draftresults <- df_draftresults %>%
       dplyr::left_join(
@@ -31,8 +41,7 @@ ff_draft.mfl_conn <- function(conn,...){
           dplyr::select('franchise_id','franchise_name'),
         by = c('franchise_id')) %>%
       dplyr::left_join(
-        mfl_players(conn) %>%
-          dplyr::select('player_id','player_name','pos','age','team'),
+        players_endpoint,
         by = c('player_id')) %>%
       dplyr::transmute(
         'timestamp' = lubridate::as_datetime(as.numeric(.data$timestamp)),
@@ -46,36 +55,35 @@ ff_draft.mfl_conn <- function(conn,...){
         .data$age,
         .data$team)
 
-    } else {
+  } else {
 
-      df_draftresults <- purrr::map_df(raw_draftresults,.mfl_parse_draftunit)
+    df_draftresults <- purrr::map_df(raw_draftresults,.mfl_parse_draftunit)
 
-      if(is.null(df_draftresults)) return(NULL)
+    if(is.null(df_draftresults)) return(NULL)
 
-      df_draftresults <- df_draftresults %>%
-        dplyr::left_join(
-          ff_franchises(conn) %>%
-            dplyr::select('franchise_id','division','division_name','franchise_name'),
-          by = c("franchise_id")) %>%
-        dplyr::left_join(
-          mfl_players(conn) %>%
-            dplyr::select('player_id','player_name','pos','age','team'),
-          by = c('player_id')) %>%
-        dplyr::transmute(
-          'timestamp' = lubridate::as_datetime(as.numeric(.data$timestamp)),
-          .data$division,
-          .data$division_name,
-          .data$round,
-          .data$pick,
-          .data$franchise_id,
-          .data$franchise_name,
-          .data$player_id,
-          .data$player_name,
-          .data$pos,
-          .data$age,
-          .data$team)
+    df_draftresults <- df_draftresults %>%
+      dplyr::left_join(
+        ff_franchises(conn) %>%
+          dplyr::select('franchise_id','division','division_name','franchise_name'),
+        by = c("franchise_id")) %>%
+      dplyr::left_join(
+        players_endpoint,
+        by = c('player_id')) %>%
+      dplyr::transmute(
+        'timestamp' = lubridate::as_datetime(as.numeric(.data$timestamp)),
+        .data$division,
+        .data$division_name,
+        .data$round,
+        .data$pick,
+        .data$franchise_id,
+        .data$franchise_name,
+        .data$player_id,
+        .data$player_name,
+        .data$pos,
+        .data$age,
+        .data$team)
 
-      }
+  }
 
   return(df_draftresults)
 }

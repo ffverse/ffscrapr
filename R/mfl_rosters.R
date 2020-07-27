@@ -4,6 +4,8 @@
 #' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - include custom players? defaults to FALSE
+#' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
@@ -15,7 +17,9 @@
 #' @rdname ff_rosters
 #' @export
 
-ff_rosters.mfl_conn <- function(conn){
+ff_rosters.mfl_conn <- function(conn,custom_players = FALSE,...){
+
+  stopifnot(is.logical(custom_players))
 
   rosters_endpoint <- mfl_getendpoint(conn,"rosters") %>%
     purrr::pluck("content","rosters","franchise") %>%
@@ -28,7 +32,9 @@ ff_rosters.mfl_conn <- function(conn){
                   "roster_status" = .data$status) %>%
     dplyr::select("franchise_id","player_id",dplyr::everything())
 
-  players_endpoint <- mfl_players(conn) %>%
+  players_endpoint <- if(custom_players){mfl_players(conn)} else {mfl_players()}
+
+  players_endpoint <- players_endpoint %>%
     dplyr::select("player_id","player_name","pos","team","age","draft_year","draft_round")
 
   franchises_endpoint <- ff_franchises(conn) %>%
@@ -40,7 +46,6 @@ ff_rosters.mfl_conn <- function(conn){
     dplyr::select("franchise_id","franchise_name",
                   "player_id","player_name","pos","team","age",
                   dplyr::everything())
-
  }
 
 #' MFL players library
