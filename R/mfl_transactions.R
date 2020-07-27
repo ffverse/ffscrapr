@@ -24,6 +24,8 @@ ff_transactions.mfl_conn <- function(conn,...){
     tidyr::unnest_wider(1) %>%
     dplyr::mutate_at('timestamp',~as.numeric(.x) %>% lubridate::as_datetime())
 
+  if(nrow(df_transactions)==0){return(NULL)}
+
   if(!"comments" %in% names(df_transactions)) df_transactions$comments <- NA_character_
 
   transaction_functions <- list(
@@ -39,7 +41,16 @@ ff_transactions.mfl_conn <- function(conn,...){
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     dplyr::left_join(
       dplyr::select(mfl_players(),"player_id","player_name","pos","team"),
-      by = "player_id")
+      by = "player_id") %>%
+    dplyr::left_join(
+      dplyr::select(ff_franchises(conn),"franchise_id","franchise_name"),
+      by = c("franchise"="franchise_id")
+    ) %>%
+    dplyr::select(dplyr::any_of(c("timestamp","type","type_desc",
+                                       "franchise_id"="franchise","franchise_name",
+                                       "player_id","player_name","pos","team",
+                                       "bbid_spent","trade_partner","comments")),
+                  dplyr::everything())
 
 }
 
@@ -82,22 +93,29 @@ ff_transactions.mfl_conn <- function(conn,...){
     dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_replace(.x,",$","")) %>%
     dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_split(.x,","))
 
-  parsed_trades %>%
+  df <- parsed_trades %>%
     dplyr::select(
       .data$timestamp,
       .data$type,
-      'franchise'=.data$franchise2,
-      'franchise2'=.data$franchise,
-      'franchise1_gave_up'=.data$franchise2_gave_up,
-      'franchise2_gave_up'=.data$franchise1_gave_up,
-      .data$comments) %>%
+      'franchise' = .data$franchise2,
+      'franchise2' = .data$franchise,
+      'franchise1_gave_up' = .data$franchise2_gave_up,
+      'franchise2_gave_up' = .data$franchise1_gave_up,
+      .data$comments
+    ) %>%
     dplyr::bind_rows(parsed_trades) %>%
-    dplyr::rename('trade_partner' = .data$franchise2,
-                  'traded_for' = .data$franchise2_gave_up,
-                  'traded_away' = .data$franchise1_gave_up) %>%
-    dplyr::arrange(dplyr::desc(.data$timestamp))
+    dplyr::rename(
+      'trade_partner' = .data$franchise2,
+      'traded_for' = .data$franchise2_gave_up,
+      'traded_away' = .data$franchise1_gave_up
+    ) %>%
+    dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
+    tidyr::pivot_longer(c('traded_away', 'traded_for'),
+                        names_to = "type_desc",
+                        values_to = "player_id") %>%
+    tidyr::unnest("player_id")
 
-
+  return(df)
 }
 
 ## FREE AGENTS ##
