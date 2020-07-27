@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -83,7 +83,7 @@ Create a cleaned table of MFL transactions" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.20</span>
       </span>
     </div>
 
@@ -169,7 +169,22 @@ Create a cleaned table of MFL transactions" />
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
-<span class='fu'>ff_transactions</span>(<span class='no'>dlf_conn</span>)</div></pre>
+<span class='fu'>ff_transactions</span>(<span class='no'>dlf_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3,248 x 11</span><span>
+#&gt;    timestamp           type  franchise player_id bid_amount comments type_desc
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2020-07-02 </span><span style='color: #555555;'>00:00:00</span><span> BBID~ 0005      13916     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       added    
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2020-07-02 </span><span style='color: #555555;'>00:00:00</span><span> BBID~ 0005      14816     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       added    
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      13115     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      12637     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      14097     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      13615     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      13623     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      12665     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      8673      </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'>10</span><span> 2020-06-29 </span><span style='color: #555555;'>22:38:41</span><span> TAXI  0005      13919     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>       demoted  
+#&gt; </span><span style='color: #555555;'># ... with 3,238 more rows, and 4 more variables: bbid_spent </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

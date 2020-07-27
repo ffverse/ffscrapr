@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.20</span>
       </span>
     </div>
 
@@ -107,46 +107,6 @@
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
 <span class="co">## remotes is a subpackage of devtools</span>
 <span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)</pre></div>
-</div>
-<div id="functions-list" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functions-list" class="anchor"></a>Functions List</h2>
-<p>Loose roadmap:</p>
-<ul>
-<li>Create connection to x league platform</li>
-<li>Get raw API endpoints</li>
-<li>Get league settings (i.e. number of teams, roster spots, starting-positions, number of QBs, IDPs, best ball etc)</li>
-<li>Get scoring settings (PPR, PP1D, positional-scoring)</li>
-<li>Get franchise data</li>
-<li>Get draft/draft_picks</li>
-<li>Get player data</li>
-<li>Get transaction data</li>
-<li>Get standings data (standings, potential-points, all-play, ?)</li>
-<li>Get raw API endpoint (how do I construct argument calls from dots?)</li>
-</ul>
-</div>
-<div id="nomenclature-decisions-log" class="section level2">
-<h2 class="hasAnchor">
-<a href="#nomenclature-decisions-log" class="anchor"></a>Nomenclature decisions log</h2>
-<p>Ordinary user functions are prefixed with <code>ff_</code> for easy autocomplete/search and wrap the corresponding function for each platform.</p>
-<p>League-specific functions are prefixed with the league - i.e. <code>mfl_</code>, <code>sleeper_</code>, <code>espn_</code>, <code>yahoo_</code> etc.</p>
-<p>Internal functions are prefixed with a <code>.fn_</code> if intended for cross-platform and otherwise with <code>.mfl_</code> and <code>.sleeper_</code> for platform specific.</p>
-</div>
-<div id="changelog" class="section level2">
-<h2 class="hasAnchor">
-<a href="#changelog" class="anchor"></a>Changelog</h2>
-<ul>
-<li>2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions</li>
-<li>2020-05-19 - following <a href="https://httr.r-lib.org/articles/api-packages.html">httr API vignette</a> and created generic call to MFL API via <code>get_mfl_endpoint()</code>
-</li>
-<li>2020-05-23 - adding rate limiting and beginnings of Sleeper connection code</li>
-<li>2020-05-27 - adding test folder, renamed main-level functions to “ff_” prefix for ease of autocomplete later</li>
-<li>2020-05-30 - add start of league summary code</li>
-<li>2020-06-07 - taking a big whack at testing stuff</li>
-<li>2020-06-08 - add pkgdown site</li>
-<li>2020-06-13 - switch to S3 methods and using memoise</li>
-<li>2020-06-21 - add ff_rosters and ff_franchises</li>
-</ul>
 </div>
 </div>
   </div>
