@@ -5,6 +5,7 @@
 #' Create a cleaned table of MFL transactions
 #'
 #' @param conn the list object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - fetch custom players
 #' @param ... additional args
 #'
 #' @rdname ff_transactions
@@ -16,8 +17,9 @@
 #' @return a tibble detailing every transaction since X date
 #' @export
 
-ff_transactions.mfl_conn <- function(conn,...){
+ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 
+  stopifnot(is.logical(custom_players))
   df_transactions <- mfl_getendpoint(conn,"transactions") %>%
     purrr::pluck("content",'transactions','transaction') %>%
     tibble::tibble() %>%
@@ -37,10 +39,15 @@ ff_transactions.mfl_conn <- function(conn,...){
     trade = .mfl_transactions_trade
   )
 
+  players_endpoint <- if(custom_players){mfl_players(conn)} else {mfl_players()}
+
+  players_endpoint <- players_endpoint %>%
+    dplyr::select("player_id","player_name","pos","team")
+
   purrr::map_dfr(transaction_functions,rlang::exec,df_transactions) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     dplyr::left_join(
-      dplyr::select(mfl_players(conn),"player_id","player_name","pos","team"),
+      players_endpoint,
       by = "player_id") %>%
     dplyr::left_join(
       dplyr::select(ff_franchises(conn),"franchise_id","franchise_name"),
