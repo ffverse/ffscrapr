@@ -5,18 +5,22 @@
 \alias{ff_rosters.mfl_conn}
 \title{Get League Rosters}
 \usage{
-ff_rosters(conn)
+ff_rosters(conn, custom_players = FALSE, ...)
 
-\method{ff_rosters}{mfl_conn}(conn)
+\method{ff_rosters}{mfl_conn}(conn, custom_players = FALSE, ...)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
+
+\item{custom_players}{TRUE or FALSE - include custom players? defaults to FALSE}
+
+\item{...}{arguments passed to other methods (currently none)}
 }
 \value{
 A tibble of rosters, joined to basic player information and basic franchise information
 }
 \description{
-This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
+This function returns a tibble of team rosters
 }
 \examples{
 ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)

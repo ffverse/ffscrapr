@@ -91,21 +91,23 @@ ff_scoring.default <- function(conn){
 
 #' Get League Rosters
 #'
-#' This function returns a tibble of common league settings - things like "1QB" or "2QB", best ball, team count etc
+#' This function returns a tibble of team rosters
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - include custom players (i.e. devy?)
+#' @param ... arguments passed to other methods
 #'
 #' @export ff_rosters
 #'
 #' @return A tibble of rosters, joined to basic player information and basic franchise information
 
-ff_rosters <- function(conn){
+ff_rosters <- function(conn, custom_players = FALSE, ...){
   UseMethod("ff_rosters")
 }
 
 #' @export
 #'
-ff_rosters.default <- function(conn){
+ff_rosters.default <- function(conn, custom_players = FALSE, ...){
   stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
 
@@ -138,18 +140,19 @@ ff_franchises.default <- function(conn){
 #' This function returns a tibble of transactions
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - retrieve custom players from database?
 #' @param ... additional args
 #'
 #' @export ff_transactions
 #'
 #' @return A tibble of franchises
 
-ff_transactions <- function(conn,...){
+ff_transactions <- function(conn, custom_players = FALSE, ...){
   UseMethod("ff_transactions")
 }
 
 #' @export
-ff_transactions.default <- function(conn,...){
+ff_transactions.default <- function(conn, custom_players = FALSE, ...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
@@ -160,18 +163,19 @@ ff_transactions.default <- function(conn,...){
 #' This function returns a tibble of draft results
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - retrieve custom players from the database?
 #' @param ... additional args which might be used eventually
 #'
 #' @export ff_draft
 #'
 #' @return A tibble of draft results
 
-ff_draft <- function(conn,...){
+ff_draft <- function(conn, custom_players = FALSE, ...){
   UseMethod("ff_draft")
 }
 
 #' @export
-ff_draft.default <- function(conn,...){
+ff_draft.default <- function(conn, custom_players = FALSE, ...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 

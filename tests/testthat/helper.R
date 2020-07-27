@@ -1,1 +1,1 @@
-library(httptest)
+suppressPackageStartupMessages({library(httptest)})

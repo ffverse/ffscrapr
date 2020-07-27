@@ -5,12 +5,14 @@
 \alias{ff_transactions.mfl_conn}
 \title{Get League Transactions}
 \usage{
-ff_transactions(conn, ...)
+ff_transactions(conn, custom_players = FALSE, ...)
 
-\method{ff_transactions}{mfl_conn}(conn, ...)
+\method{ff_transactions}{mfl_conn}(conn, custom_players = FALSE, ...)
 }
 \arguments{
 \item{conn}{the list object created by \code{ff_connect()}}
+
+\item{custom_players}{TRUE or FALSE - fetch custom players}
 
 \item{...}{additional args}
 }

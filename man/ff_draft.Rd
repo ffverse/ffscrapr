@@ -5,12 +5,14 @@
 \alias{ff_draft.mfl_conn}
 \title{Get Draft Results}
 \usage{
-ff_draft(conn, ...)
+ff_draft(conn, custom_players = FALSE, ...)
 
-\method{ff_draft}{mfl_conn}(conn, ...)
+\method{ff_draft}{mfl_conn}(conn, custom_players = FALSE, ...)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
+
+\item{custom_players}{TRUE or FALSE - are there custom players included in the result?}
 
 \item{...}{not sure if there'll be other params yet!}
 }
@@ -21,7 +23,7 @@ A tibble of draft results
 This function returns a tibble of draft results
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 65443,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
 ff_draft(ssb_conn)
 
 }
