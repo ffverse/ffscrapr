@@ -42,7 +42,15 @@ ff_transactions.mfl_conn <- function(conn,...){
     dplyr::left_join(
       dplyr::select(mfl_players(),"player_id","player_name","pos","team"),
       by = "player_id") %>%
-    dplyr::select("timestamp","type","type_desc","franchise","player_id",dplyr::everything())
+    dplyr::left_join(
+      dplyr::select(ff_franchises(conn),"franchise_id","franchise_name"),
+      by = c("franchise"="franchise_id")
+    ) %>%
+    dplyr::select(dplyr::any_of(c("timestamp","type","type_desc",
+                                       "franchise_id"="franchise","franchise_name",
+                                       "player_id","player_name","pos","team",
+                                       "bbid_spent","trade_partner","comments")),
+                  dplyr::everything())
 
 }
 
