@@ -2,10 +2,13 @@
 % Please edit documentation in R/generics.R, R/mfl_franchises.R
 \name{ff_franchises}
 \alias{ff_franchises}
+\alias{ff_franchises.default}
 \alias{ff_franchises.mfl_conn}
 \title{Get League Franchises}
 \usage{
 ff_franchises(conn)
+
+ff_franchises.default(conn)
 
 ff_franchises.mfl_conn(conn)
 }
