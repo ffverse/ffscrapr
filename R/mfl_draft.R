@@ -31,7 +31,7 @@ ff_draft.mfl_conn <- function(conn,...){
           dplyr::select('franchise_id','franchise_name'),
         by = c('franchise_id')) %>%
       dplyr::left_join(
-        mfl_players() %>%
+        mfl_players(conn) %>%
           dplyr::select('player_id','player_name','pos','age','team'),
         by = c('player_id')) %>%
       dplyr::transmute(
@@ -58,7 +58,7 @@ ff_draft.mfl_conn <- function(conn,...){
             dplyr::select('franchise_id','division','division_name','franchise_name'),
           by = c("franchise_id")) %>%
         dplyr::left_join(
-          mfl_players() %>%
+          mfl_players(conn) %>%
             dplyr::select('player_id','player_name','pos','age','team'),
           by = c('player_id')) %>%
         dplyr::transmute(

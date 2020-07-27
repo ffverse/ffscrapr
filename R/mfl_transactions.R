@@ -40,7 +40,7 @@ ff_transactions.mfl_conn <- function(conn,...){
   purrr::map_dfr(transaction_functions,rlang::exec,df_transactions) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     dplyr::left_join(
-      dplyr::select(mfl_players(),"player_id","player_name","pos","team"),
+      dplyr::select(mfl_players(conn),"player_id","player_name","pos","team"),
       by = "player_id") %>%
     dplyr::left_join(
       dplyr::select(ff_franchises(conn),"franchise_id","franchise_name"),
