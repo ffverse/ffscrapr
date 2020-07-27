@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: ffscrapr - R Client for Fantasy Football League APIs
-Version: 0.0.4.19
+Version: 0.0.4.20
 URL: https://ffscrapr.dynastyprocess.com, https://github.com/dynastyprocess/ffscrapr
 Authors@R: 
     person(given = "Tan",
