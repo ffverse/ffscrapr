@@ -82,6 +82,7 @@ ff_scoring <- function(conn){
 }
 
 #' @export
+#' @rdname ff_scoring
 ff_scoring.default <- function(conn){
   stop(glue::glue("No method of ff_scoring found for platform: {conn$platform}."))
 }
@@ -103,6 +104,7 @@ ff_rosters <- function(conn){
 }
 
 #' @export
+#'
 ff_rosters.default <- function(conn){
   stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
@@ -123,6 +125,7 @@ ff_franchises <- function(conn){
   UseMethod("ff_franchises")
 }
 
+#' @rdname ff_franchises
 #' @export
 ff_franchises.default <- function(conn){
   stop(glue::glue("No method of ff_franchises found for platform: {conn$platform}."))

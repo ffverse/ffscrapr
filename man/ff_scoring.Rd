@@ -2,12 +2,15 @@
 % Please edit documentation in R/generics.R, R/mfl_scoring.R
 \name{ff_scoring}
 \alias{ff_scoring}
+\alias{ff_scoring.default}
 \alias{ff_scoring.mfl_conn}
 \title{Get League Scoring settings}
 \usage{
 ff_scoring(conn)
 
-\method{ff_scoring}{mfl_conn}(conn)
+ff_scoring.default(conn)
+
+ff_scoring.mfl_conn(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
