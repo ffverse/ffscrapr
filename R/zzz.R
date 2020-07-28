@@ -12,9 +12,8 @@
   dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400))
   dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400))
 
-  ff_franchises <<- memoise::memoise(ff_franchises,~ memoise::timeout(86400))
-  ff_scoring <<- memoise::memoise(ff_scoring, ~ memoise::timeout(3600))
-
+  ff_franchises.mfl_conn <<- memoise::memoise(ff_franchises.mfl_conn,~ memoise::timeout(86400))
+  ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(3600))
 
   env <-  rlang::env(
     user_agent = glue::glue(
@@ -29,5 +28,3 @@
   # nocov end
 
 }
-
-
