@@ -5,13 +5,14 @@
   # nocov start
   # Memoise specific functions
   # Timeout lengths still up for discussion
+
   mfl_players <<- memoise::memoise(mfl_players,~ memoise::timeout(86400))
   mfl_allrules <<- memoise::memoise(mfl_allrules,~ memoise::timeout(86400))
+
   dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400))
   dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400))
 
   ff_franchises <<- memoise::memoise(ff_franchises,~ memoise::timeout(86400))
-
   ff_scoring <<- memoise::memoise(ff_scoring, ~ memoise::timeout(3600))
 
 
