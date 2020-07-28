@@ -203,10 +203,27 @@ ff_playerscores.default <- function(conn, season, week,...){
   stop(glue::glue("No method of ff_playerscores found for platform: {conn$platform}."))
 }
 
+#### ff_standings ####
 
-# ff_settings_rosters - summarises all available roster setting details
+#' Get Standings
+#'
+#' This function returns a tibble of season-long fantasy team stats
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#'
+#' @export ff_standings
+#'
+#' @return A tibble of standings
 
-# ff_standings - summarises standings, potential points, all-play
+ff_standings <- function(conn, ...){
+  UseMethod("ff_standings")
+}
+
+#' @export
+ff_standings.default <- function(conn, ...){
+  stop(glue::glue("No method of ff_standings found for platform: {conn$platform}."))
+}
 
 # ff_schedule - summarises matchups in a flat table
 
