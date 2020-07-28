@@ -21,7 +21,7 @@ ff_standings.mfl_conn <- function(conn,...){
     dplyr::left_join(
       dplyr::select(ff_franchises(conn),'franchise_id','franchise_name'),
       by = c("id"="franchise_id")) %>%
-    dplyr::mutate_at(dplyr::vars(-id,-franchise_name),as.numeric) %>%
+    dplyr::mutate_at(dplyr::vars(-id,-franchise_name,-contains("streak")),as.numeric) %>%
     dplyr::mutate(
       "h2h_winpct" = purrr::pmap_dbl(list(.data$h2hw,.data$h2hl,.data$h2ht),
                                      ~ ..1 / sum(...)),
