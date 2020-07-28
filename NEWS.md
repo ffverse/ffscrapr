@@ -12,3 +12,5 @@
 - 2020-07-10 - add ff_draft
 - 2020-07-16 - add dynastyprocess helpers
 - 2020-07-26 - add ff_playerscores
+- 2020-07-27 - finish ff_transactions, add "conn" argument and custom_players argument to mfl_players()
+- 2020-07-28 - add ff_standings
