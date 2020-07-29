@@ -27,7 +27,7 @@ sleeper_connect <- function(season = NULL,
 
   if(length(user_agent)>1){stop("user_agent must be a character vector of length one!")}
 
-  if(!is.null(user_agent)){ .fn_set_useragent(user_agent) }
+  if(!is.null(user_agent)){.fn_set_useragent(user_agent)}
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
