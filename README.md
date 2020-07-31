@@ -19,3 +19,13 @@ Install from GitHub with:
 ## remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
+
+## Contributing
+
+Many hands make light work! Here are some ways you can contribute to this project:
+
+- You can [open an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose) if you'd like to request specific data or report a bug/error. 
+
+- Happy to accept pull requests for bugfixes, but please open an issue before making a PR for a new feature so I can make sure it fits within the scope of the project!
+
+- You can [sponsor this project by donating to help with server costs](https://github.com/sponsors/tanho63)!
