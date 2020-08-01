@@ -11,7 +11,7 @@
 The goal of this package is to abstract the code required to call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handles required authentication, forms appropriate calls, and returns tidy and predictable data which can be easily connected to other data sources.
 
 
-## Installation
+### Installation
 Install from GitHub with:
 
 ``` r
@@ -19,3 +19,13 @@ Install from GitHub with:
 ## remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
+
+### Contributing
+
+Many hands make light work! Here are some ways you can contribute to this project:
+
+- You can [open an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose) if you'd like to request specific data or report a bug/error. 
+
+- You can [sponsor this project by donating to help with server costs](https://github.com/sponsors/tanho63)!
+
+- If you'd like to contribute code, please check out [the contribution guidelines](CONTRIBUTING.md).

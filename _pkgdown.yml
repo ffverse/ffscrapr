@@ -1,7 +1,8 @@
 destination: docs
+
 reference:
 - title: ffscrapr reference
-- subtitle: FF (main)
+- subtitle: FF
   desc: The main interface - these functions are designed to wrap the platform-specific methods to return generic input.
 - contents:
   - starts_with("ff_")
@@ -17,10 +18,20 @@ reference:
   desc: Functions to interface with DynastyProcess data
   contents:
   - starts_with("dp_")
+- subtitle: Misc
+  desc: Additional helper functions
+  contents:
+  - starts_with("forget")
+
 url: ffscrapr.dynastyprocess.com
+
 authors:
   Tan Ho:
     href: https://twitter.com/_TanHo
+
 template:
   params:
-    bootswatch: yeti
+    bootswatch: cosmo
+
+development:
+  mode: auto

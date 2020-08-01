@@ -2,7 +2,7 @@
 ^\.Rproj\.user$
 ^codecov\.yml$
 ^\.github$
-^data-raw$
+^dev$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$

@@ -11,7 +11,7 @@
 #' @rdname ff_transactions
 #'
 #' @examples
-#' dlf_conn <- mfl_connect(2020,league_id = 37920)
+#' dlf_conn <- mfl_connect(2019,league_id = 37920)
 #' ff_transactions(dlf_conn)
 #'
 #' @return a tibble detailing every transaction since X date
@@ -141,8 +141,8 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
     dplyr::select('timestamp','type', 'transaction','franchise','comments') %>%
     tidyr::separate('transaction',c("added","dropped"),sep = "\\|") %>%
     dplyr::mutate_at(c('added','dropped'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::separate_rows(c("added","dropped"),sep = ",") %>%
     tidyr::pivot_longer(c("added","dropped"),names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows(c("player_id"),sep = ",") %>%
     dplyr::filter(.data$player_id!="")
 
   parsed_fa %>%
@@ -172,8 +172,8 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
   parsed_ir <- ir_transactions %>%
     dplyr::select('timestamp','type','activated','deactivated','franchise','comments') %>%
     dplyr::mutate_at(c('activated','deactivated'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::separate_rows(c("activated","deactivated"),sep = ",") %>%
     tidyr::pivot_longer(c("activated","deactivated"),names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows("player_id",sep = ",") %>%
     dplyr::filter(.data$player_id!="")
 
   parsed_ir %>%
@@ -203,8 +203,8 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
   parsed_ts <- ts_transactions %>%
     dplyr::select('timestamp','type','demoted','promoted','franchise','comments') %>%
     dplyr::mutate_at(c('promoted','demoted'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::separate_rows(c("promoted","demoted"),sep = ",") %>%
     tidyr::pivot_longer(c("promoted","demoted"),names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows("player_id",sep = ",") %>%
     dplyr::filter(.data$player_id!="")
 
   parsed_ts %>%

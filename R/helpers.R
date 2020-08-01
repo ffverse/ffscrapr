@@ -1,10 +1,5 @@
 #### Helpers ####
-
-#' @keywords internal
-#' @importFrom rlang .data
-#' @importFrom utils str
-
-NULL
+## Internal code written for re-use
 
 #' Choose current season
 #'
@@ -22,7 +17,6 @@ NULL
   if(as.numeric(format(date,"%m"))>2){return(format(date,"%Y"))}
 
   return(format(date-365.25,"%Y"))
-
 }
 
 #' Set rate limit
@@ -40,13 +34,11 @@ NULL
 .fn_set_ratelimit <- function(toggle = TRUE,rate_number,rate_seconds){
 
   if(toggle){f <- (ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds)))}
-
   if(!toggle){f <- (httr::GET)}
 
   assign("get",f,envir = .ffscrapr_env)
 
   invisible(f)
-
 }
 
 #' Set user agent
@@ -60,9 +52,7 @@ NULL
 .fn_set_useragent <- function(user_agent){
 
   user_agent <- httr::user_agent(user_agent)
-
   assign("user_agent",user_agent,envir = .ffscrapr_env)
 
   invisible(user_agent)
-
 }
