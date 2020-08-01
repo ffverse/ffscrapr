@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ffscrapr - R Client for Fantasy Football League APIs • ffscrapr</title>
+<title>ffscrapr - R Client For Fantasy Football League Platforms • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="ffscrapr - R Client for Fantasy Football League APIs">
-<meta property="og:description" content="This package abstracts the code required to
-    call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker,
+<meta property="og:title" content="ffscrapr - R Client For Fantasy Football League Platforms">
+<meta property="og:description" content="Abstracts the code required to
+    call various fantasy football platforms (i.e. MFL, Sleeper, Fleaflicker,
     ESPN, Yahoo) and create methods that handle any authentication
     required, form appropriate calls, and return tidy &amp; predictable
     dataframes which can be easily connected to other sources.">
@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.21</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
 <a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="ffscrapr.dynastyprocess.com"><img src="reference/figures/logo.png" align="right" height="120"></a>
 </h1></div>
 <p><em>An R Client for Fantasy Football League APIs</em></p>
-<p><!-- badges: start --> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=master"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <!-- badges: end --></p>
+<p><!-- badges: start --> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <!-- badges: end --></p>
 <p>The goal of this package is to abstract the code required to call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handles required authentication, forms appropriate calls, and returns tidy and predictable data which can be easily connected to other data sources.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -108,44 +108,14 @@
 <span class="co">## remotes is a subpackage of devtools</span>
 <span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)</pre></div>
 </div>
-<div id="functions-list" class="section level2">
+<div id="contributing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#functions-list" class="anchor"></a>Functions List</h2>
-<p>Loose roadmap:</p>
+<a href="#contributing" class="anchor"></a>Contributing</h2>
+<p>Many hands make light work! Here are some ways you can contribute to this project:</p>
 <ul>
-<li>Create connection to x league platform</li>
-<li>Get raw API endpoints</li>
-<li>Get league settings (i.e. number of teams, roster spots, starting-positions, number of QBs, IDPs, best ball etc)</li>
-<li>Get scoring settings (PPR, PP1D, positional-scoring)</li>
-<li>Get franchise data</li>
-<li>Get draft/draft_picks</li>
-<li>Get player data</li>
-<li>Get transaction data</li>
-<li>Get standings data (standings, potential-points, all-play, ?)</li>
-<li>Get raw API endpoint (how do I construct argument calls from dots?)</li>
-</ul>
-</div>
-<div id="nomenclature-decisions-log" class="section level2">
-<h2 class="hasAnchor">
-<a href="#nomenclature-decisions-log" class="anchor"></a>Nomenclature decisions log</h2>
-<p>Ordinary user functions are prefixed with <code>ff_</code> for easy autocomplete/search and wrap the corresponding function for each platform.</p>
-<p>League-specific functions are prefixed with the league - i.e. <code>mfl_</code>, <code>sleeper_</code>, <code>espn_</code>, <code>yahoo_</code> etc.</p>
-<p>Internal functions are prefixed with a <code>.fn_</code> if intended for cross-platform and otherwise with <code>.mfl_</code> and <code>.sleeper_</code> for platform specific.</p>
-</div>
-<div id="changelog" class="section level2">
-<h2 class="hasAnchor">
-<a href="#changelog" class="anchor"></a>Changelog</h2>
-<ul>
-<li>2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions</li>
-<li>2020-05-19 - following <a href="https://httr.r-lib.org/articles/api-packages.html">httr API vignette</a> and created generic call to MFL API via <code>get_mfl_endpoint()</code>
-</li>
-<li>2020-05-23 - adding rate limiting and beginnings of Sleeper connection code</li>
-<li>2020-05-27 - adding test folder, renamed main-level functions to “ff_” prefix for ease of autocomplete later</li>
-<li>2020-05-30 - add start of league summary code</li>
-<li>2020-06-07 - taking a big whack at testing stuff</li>
-<li>2020-06-08 - add pkgdown site</li>
-<li>2020-06-13 - switch to S3 methods and using memoise</li>
-<li>2020-06-21 - add ff_rosters and ff_franchises</li>
+<li><p>You can <a href="https://github.com/DynastyProcess/ffscrapr/issues/new/choose">open an issue</a> if you’d like to request specific data or report a bug/error.</p></li>
+<li><p>Happy to accept pull requests for bugfixes, but please open an issue before making a PR for a new feature so I can make sure it fits within the scope of the project!</p></li>
+<li><p>You can <a href="https://github.com/sponsors/tanho63">sponsor this project by donating to help with server costs</a>!</p></li>
 </ul>
 </div>
 </div>

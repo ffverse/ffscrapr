@@ -1,8 +1,13 @@
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Space+Mono:300,400,700|Source+Code+Pro:300,400,700)';
+
 body{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1,h2, h3, h4, h5, h6 {
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Space Mono', sans-serif;
 }
 
+pre, code {
+  font-family: 'Source Code Pro';
+}
