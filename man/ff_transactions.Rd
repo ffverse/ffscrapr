@@ -27,7 +27,7 @@ This function returns a tibble of transactions
 Create a cleaned table of MFL transactions
 }
 \examples{
-dlf_conn <- mfl_connect(2020,league_id = 37920)
+dlf_conn <- mfl_connect(2019,league_id = 37920)
 ff_transactions(dlf_conn)
 
 }

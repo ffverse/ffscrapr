@@ -11,7 +11,7 @@
 #' @rdname ff_transactions
 #'
 #' @examples
-#' dlf_conn <- mfl_connect(2020,league_id = 37920)
+#' dlf_conn <- mfl_connect(2019,league_id = 37920)
 #' ff_transactions(dlf_conn)
 #'
 #' @return a tibble detailing every transaction since X date
