@@ -41,6 +41,7 @@ All `ffscrapr` functions start with a connection object created by ff_connect, w
 ```{r}
 library(ffscrapr)
 
+
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings

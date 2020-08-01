@@ -42,6 +42,7 @@ help return the correct data.
 ``` r
 library(ffscrapr)
 
+
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
