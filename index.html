@@ -114,17 +114,43 @@
 <p>All <code>ffscrapr</code> functions start with a connection object created by ff_connect, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ffscrapr</span>)
 
-<span class="no">ssb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(<span class="kw">platform</span> <span class="kw">=</span> <span class="st">"mfl"</span>, <span class="kw">league_id</span> <span class="kw">=</span> <span class="st">"54040"</span>)
-<span class="co">#&gt; No season supplied - choosing 2020 based on system date.</span>
+
+<span class="no">ssb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(<span class="kw">platform</span> <span class="kw">=</span> <span class="st">"mfl"</span>, <span class="kw">league_id</span> <span class="kw">=</span> <span class="st">"54040"</span>, <span class="kw">season</span> <span class="kw">=</span> <span class="fl">2020</span>)
 
 <span class="co"># Get a summary of league settings</span>
-<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 1 x 13</span>
-<span class="co">#&gt;   league_id league_name franchise_count qb_type idp   scoring_flags best_ball</span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;chr&gt;         &lt;lgl&gt;    </span>
-<span class="co">#&gt; 1 54040     The Super ~              14 1QB     FALSE 0.5_ppr, TEP~ TRUE     </span>
-<span class="co">#&gt; # ... with 6 more variables: salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;, league_depth &lt;dbl&gt;</span>
+<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="no">ssb</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>()
+<span class="co">#&gt; tibble [1 x 13] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ league_id      : chr "54040"</span>
+<span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
+<span class="co">#&gt;  $ franchise_count: num 14</span>
+<span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
+<span class="co">#&gt;  $ idp            : logi FALSE</span>
+<span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"</span>
+<span class="co">#&gt;  $ best_ball      : logi TRUE</span>
+<span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
+<span class="co">#&gt;  $ player_copies  : num 1</span>
+<span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
+<span class="co">#&gt;  $ qb_count       : chr "1"</span>
+<span class="co">#&gt;  $ roster_size    : num 35</span>
+<span class="co">#&gt;  $ league_depth   : num 490</span>
+
+<span class="co"># Get rosters</span>
+<span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
+<span class="co">#&gt; # A tibble: 432 x 12</span>
+<span class="co">#&gt;    franchise_id franchise_name player_id player_name pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5</span>
+<span class="co">#&gt;  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9</span>
+<span class="co">#&gt;  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7</span>
+<span class="co">#&gt;  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  </span>
+<span class="co">#&gt;  5 0001         Team Pikachu   13155     Ross, John  WR    CIN    24.7</span>
+<span class="co">#&gt;  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7</span>
+<span class="co">#&gt;  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.2</span>
+<span class="co">#&gt;  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3</span>
+<span class="co">#&gt;  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3</span>
+<span class="co">#&gt; 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4</span>
+<span class="co">#&gt; # ... with 422 more rows, and 5 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt; #   drafted &lt;chr&gt;, . &lt;list&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
