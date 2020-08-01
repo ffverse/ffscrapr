@@ -19,11 +19,9 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="ffscrapr - R Client For Fantasy Football League Platforms">
-<meta property="og:description" content="Abstracts the code required to
-    call various fantasy football platforms (i.e. MFL, Sleeper, Fleaflicker,
-    ESPN, Yahoo) and create methods that handle any authentication
-    required, form appropriate calls, and return tidy &amp; predictable
-    dataframes which can be easily connected to other sources.">
+<meta property="og:description" content="Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) 
+    by handling authentication and rate-limiting, forming appropriate calls, 
+    and returning tidy dataframes which can be easily connected to other data sources.">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -98,8 +96,10 @@
 <a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="ffscrapr.dynastyprocess.com"><img src="reference/figures/logo.png" align="right" height="120"></a>
 </h1></div>
 <p><em>An R Client for Fantasy Football League APIs</em></p>
-<p><!-- badges: start --> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <!-- badges: end --></p>
-<p>The goal of this package is to abstract the code required to call various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) and create methods that handles required authentication, forms appropriate calls, and returns tidy and predictable data which can be easily connected to other data sources.</p>
+<!-- badges: start -->
+
+<!-- badges: end -->
+<p>Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling authentication and rate-limiting, forming appropriate calls, and returning tidy dataframes which can be easily connected to other data sources.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
@@ -107,6 +107,43 @@
 <div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
 <span class="co">## remotes is a subpackage of devtools</span>
 <span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)</pre></div>
+</div>
+<div id="usage" class="section level3">
+<h3 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h3>
+<p>All <code>ffscrapr</code> functions start with a connection object created by ff_connect, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ffscrapr</span>)
+
+<span class="no">ssb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(<span class="kw">platform</span> <span class="kw">=</span> <span class="st">"mfl"</span>, <span class="kw">league_id</span> <span class="kw">=</span> <span class="st">"54040"</span>)
+<span class="co">#&gt; No season supplied - choosing 2020 based on system date.</span>
+
+<span class="co"># Get a summary of league settings</span>
+<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="no">ssb</span>)
+<span class="co">#&gt; # A tibble: 1 x 13</span>
+<span class="co">#&gt;   league_id league_name franchise_count qb_type idp   scoring_flags best_ball</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;   &lt;lgl&gt; &lt;chr&gt;         &lt;lgl&gt;    </span>
+<span class="co">#&gt; 1 54040     The Super ~              14 1QB     FALSE 0.5_ppr, TEP~ TRUE     </span>
+<span class="co">#&gt; # ... with 6 more variables: salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;, league_depth &lt;dbl&gt;</span>
+
+<span class="co"># Get transactions</span>
+<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
+<span class="co">#&gt; # A tibble: 172 x 12</span>
+<span class="co">#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id</span>
+<span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
+<span class="co">#&gt;  1 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    </span>
+<span class="co">#&gt;  2 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 13277    </span>
+<span class="co">#&gt;  3 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 12667    </span>
+<span class="co">#&gt;  4 2020-07-31 16:16:36 IR    deactiva~ 0013         Team Ness      14140    </span>
+<span class="co">#&gt;  5 2020-07-31 16:00:00 BBID~ dropped   0004         Team Ice Clim~ 13190    </span>
+<span class="co">#&gt;  6 2020-07-31 16:00:00 BBID~ added     0007         Team Kirby     14129    </span>
+<span class="co">#&gt;  7 2020-07-31 16:00:00 BBID~ added     0004         Team Ice Clim~ 14333    </span>
+<span class="co">#&gt;  8 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     12164    </span>
+<span class="co">#&gt;  9 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     10297    </span>
+<span class="co">#&gt; 10 2020-07-31 16:00:00 BBID~ added     0013         Team Ness      7813     </span>
+<span class="co">#&gt; # ... with 162 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></pre></div>
+<p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
 <div id="contributing" class="section level3">
 <h3 class="hasAnchor">
@@ -151,7 +188,15 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
