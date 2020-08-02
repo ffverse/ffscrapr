@@ -29,11 +29,9 @@ ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...){
 
   if(!is.null(raw_draftresults$unit) && raw_draftresults$unit=="LEAGUE") {
 
-
     df_draftresults <- .mfl_parse_draftunit(raw_draftresults)
 
     if(is.null(df_draftresults)) return(NULL)
-
 
     df_draftresults <- df_draftresults %>%
       dplyr::left_join(

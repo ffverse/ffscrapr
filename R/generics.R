@@ -225,11 +225,31 @@ ff_standings.default <- function(conn, ...){
   stop(glue::glue("No method of ff_standings found for platform: {conn$platform}."))
 }
 
-# ff_schedule - summarises matchups in a flat table
+#### ff_draftpicks ####
 
-# ff_draft_picks - summarises current and future year draft picks
+#' Get Draft Picks
+#'
+#' This function returns a tibble of current and future draft picks
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#'
+#' @export ff_draftpicks
+#'
+#' @return A tibble of draft picks
+
+ff_draftpicks <- function(conn,...){
+  UseMethod("ff_draftpicks")
+}
+
+#' @export
+ff_draftpicks.default <- function(conn,...){
+  stop(glue::glue("No method of ff_draftpicks found for platform: {conn$platform}"))
+}
 
 # ff_auction_settings
 
 # ff_auction_details
+
+# ff_schedule - summarises matchups in a flat table
 

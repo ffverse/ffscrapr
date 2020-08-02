@@ -32,6 +32,3 @@ authors:
 template:
   params:
     bootswatch: cosmo
-
-development:
-  mode: auto
