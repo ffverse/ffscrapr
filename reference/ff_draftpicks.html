@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get League Transactions — ff_transactions • ffscrapr</title>
+<title>Get Draft Picks — ff_draftpicks • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get League Transactions — ff_transactions" />
-<meta property="og:description" content="This function returns a tibble of transactions
-Create a cleaned table of MFL transactions" />
+<meta property="og:title" content="Get Draft Picks — ff_draftpicks" />
+<meta property="og:description" content="This function returns a tibble of current and future draft picks
+Get current and future draft picks that have not yet been selected/converted into players" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -134,20 +134,20 @@ Create a cleaned table of MFL transactions" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get League Transactions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_transactions.R'><code>R/mfl_transactions.R</code></a></small>
-    <div class="hidden name"><code>ff_transactions.Rd</code></div>
+    <h1>Get Draft Picks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_draftpicks.R'><code>R/mfl_draftpicks.R</code></a></small>
+    <div class="hidden name"><code>ff_draftpicks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of transactions</p>
-<p>Create a cleaned table of MFL transactions</p>
+    <p>This function returns a tibble of current and future draft picks</p>
+<p>Get current and future draft picks that have not yet been selected/converted into players</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_transactions</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ff_draftpicks</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_transactions</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>ff_draftpicks</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,38 +157,20 @@ Create a cleaned table of MFL transactions" />
       <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>custom_players</th>
-      <td><p>TRUE or FALSE - fetch custom players</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>additional args</p></td>
+      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of franchises</p>
-<p>a tibble detailing every transaction since X date</p>
+    <p>A tibble of draft picks</p>
+<p>a tibble detailing future draft picks</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2019</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
-<span class='fu'>ff_transactions</span>(<span class='no'>dlf_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,146 x 12</span><span>
-#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ added     0003         Electric Spid~ 13868    
-#&gt; </span><span style='color: #555555;'> 2</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ dropped   0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'> 3</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ added     0019         Advance Repti~ 12857    
-#&gt; </span><span style='color: #555555;'> 4</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ dropped   0019         Advance Repti~ 11186    
-#&gt; </span><span style='color: #555555;'> 5</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ added     0019         Advance Repti~ 13868    
-#&gt; </span><span style='color: #555555;'> 6</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ dropped   0019         Advance Repti~ 14305    
-#&gt; </span><span style='color: #555555;'> 7</span><span> 2019-12-15 </span><span style='color: #555555;'>17:28:15</span><span> FREE~ added     0003         Electric Spid~ 12197    
-#&gt; </span><span style='color: #555555;'> 8</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:28</span><span> FREE~ dropped   0003         Electric Spid~ 12623    
-#&gt; </span><span style='color: #555555;'> 9</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:00</span><span> FREE~ added     0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'>10</span><span> 2019-12-15 </span><span style='color: #555555;'>17:26:27</span><span> IR    deactiva~ 0003         Electric Spid~ 14138    
-#&gt; </span><span style='color: #555555;'># ... with 1,136 more rows, and 6 more variables: player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, bbid_spent </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, trade_partner </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, comments </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
+<span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='no'>dlf_conn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ff_draftpicks(conn = dlf_conn): could not find function "ff_draftpicks"</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
