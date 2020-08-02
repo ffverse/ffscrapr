@@ -20,7 +20,8 @@
       "ffscrapr/{utils::packageVersion('ffscrapr')} API client package",
       " https://github.com/dynastyprocess/ffscrapr") %>%
       httr::user_agent(),
-    get = ratelimitr::limit_rate(httr::GET,ratelimitr::rate(60,60))
+    get = ratelimitr::limit_rate(httr::GET,ratelimitr::rate(60,60)),
+    post = ratelimitr::limit_rate(httr::POST,ratelimitr::rate(60,60))
   )
 
   assign(".ffscrapr_env",env,envir = baseenv())

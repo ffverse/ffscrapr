@@ -112,11 +112,20 @@ print.mfl_conn <- function(x, ...) {
 
   env <- get(".ffscrapr_env",inherits = TRUE)
 
-  m_cookie <- env$get(
-    glue::glue(
-      "https://api.myfantasyleague.com/{season}/login?",
-      "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
-    env$user_agent)
+  # m_cookie <- env$get(
+  #   glue::glue(
+  #     "https://api.myfantasyleague.com/{season}/login?",
+  #     "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
+  #   env$user_agent)
+
+  m_cookie <- env$post(
+    url = 'https://api.myfantasyleague.com/2020/login',
+    body = list(USERNAME = user_name,
+                PASSWORD= password,
+                XML = 1),
+    encode = 'form',
+    env$user_agent
+  )
 
   m_cookie <- purrr::pluck(m_cookie,'cookies','value')
 

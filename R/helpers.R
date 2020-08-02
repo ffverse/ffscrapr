@@ -33,12 +33,20 @@
 
 .fn_set_ratelimit <- function(toggle = TRUE,rate_number,rate_seconds){
 
-  if(toggle){f <- (ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds)))}
-  if(!toggle){f <- (httr::GET)}
+  if(toggle){
+    fn_get <- ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds))
+    fn_post <- ratelimitr::limit_rate(httr::POST,ratelimitr::rate(rate_number,rate_seconds))
+    }
 
-  assign("get",f,envir = .ffscrapr_env)
+  if(!toggle){
+    fn_get <- httr::GET
+    fn_post <- httr::POST
+  }
 
-  invisible(f)
+  assign("get",fn_get,envir = .ffscrapr_env)
+  assign("post",fn_post, envir = .ffscrapr_env)
+
+  invisible(list(get = fn_get,post = fn_post))
 }
 
 #' Set user agent
