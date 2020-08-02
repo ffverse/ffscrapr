@@ -8,7 +8,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
 coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
@@ -62,7 +62,7 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 432 x 12
+#> # A tibble: 432 x 11
 #>    franchise_id franchise_name player_id player_name pos   team    age
 #>    <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
 #>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5
@@ -75,8 +75,8 @@ ff_rosters(ssb)
 #>  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
 #>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3
 #> 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
-#> # ... with 422 more rows, and 5 more variables: roster_status <chr>,
-#> #   drafted <chr>, . <list>, draft_year <chr>, draft_round <chr>
+#> # ... with 422 more rows, and 4 more variables: roster_status <chr>,
+#> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
@@ -115,3 +115,11 @@ this project:
 
   - If you’d like to contribute code, please check out [the contribution
     guidelines](CONTRIBUTING.md).
+
+### Terms of Use
+
+The R code for this package is released as open source under the [MIT
+license](LICENSE.md).
+
+The APIs and data accessed by this package belong to their respective
+owners, and are governed by their terms of use.

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
   <!-- badges: start -->
   
-  [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+  [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
   [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
   [![R build status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
   
@@ -64,3 +64,9 @@ Many hands make light work! Here are some ways you can contribute to this projec
 - You can [sponsor this project by donating to help with server costs](https://github.com/sponsors/tanho63)!
 
 - If you'd like to contribute code, please check out [the contribution guidelines](CONTRIBUTING.md).
+
+### Terms of Use
+
+The R code for this package is released as open source under the [MIT license](LICENSE.md). 
+
+The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use. 
