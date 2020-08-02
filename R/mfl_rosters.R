@@ -25,6 +25,7 @@ ff_rosters.mfl_conn <- function(conn,custom_players = FALSE,...){
     purrr::pluck("content","rosters","franchise") %>%
     tibble::tibble() %>%
     tidyr::hoist(1,'player'='player','franchise_id'='id') %>%
+    dplyr::select('player','franchise_id') %>%
     dplyr::filter(!is.na(.data$player)) %>%
     dplyr::mutate("player"= purrr::map(.data$player,dplyr::bind_rows)) %>%
     tidyr::unnest("player") %>%
