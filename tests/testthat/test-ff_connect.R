@@ -6,7 +6,7 @@ with_mock_api({
     expect_error(ff_connect("flea"))
   })
 
-  test_that("Does logincookie return a request-like object?",{
+  test_that("Does mfl-logincookie return a request-like object?",{
 
     request <- .mfl_logincookie(
       user_name = "dynastyprocesstest",
