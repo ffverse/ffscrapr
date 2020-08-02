@@ -1,17 +1,19 @@
 Type: Package
 Package: ffscrapr
 Title: ffscrapr - R Client For Fantasy Football League Platforms
-Version: 0.0.4.22
-URL: https://ffscrapr.dynastyprocess.com, https://github.com/dynastyprocess/ffscrapr
+Version: 0.0.4.23
 Authors@R: 
     person(given = "Tan",
            family = "Ho",
            role = c("aut", "cre"),
            email = "tan@tanho.ca")
-Description: Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo) 
-    by handling authentication and rate-limiting, forming appropriate calls, 
-    and returning tidy dataframes which can be easily connected to other data sources.
+Description: Helps access various Fantasy Football APIs (i.e.
+    MFL, Sleeper, Fleaflicker, ESPN, Yahoo) by handling authentication and
+    rate-limiting, forming appropriate calls, and returning tidy
+    dataframes which can be easily connected to other data sources.
 License: MIT + file LICENSE
+URL: https://ffscrapr.dynastyprocess.com,
+    https://github.com/dynastyprocess/ffscrapr
 Depends: 
     R (>= 3.0.0)
 Imports:
@@ -20,21 +22,22 @@ Imports:
     httr (>= 1.4.0),
     jsonlite (>= 1.6.0),
     lubridate (>= 1.5.0),
+    magrittr (>= 1.5.0),
+    memoise (>= 1.1.0),
     purrr (>= 0.3.0),
     ratelimitr (>= 0.4.0),
     rlang (>= 0.4.0),
+    stringr (>= 1.4.0),
     tibble (>= 3.0.0),
-    tidyr (>= 1.0.0),
-    magrittr (>= 1.5.0),
-    memoise (>= 1.1.0),
-    stringr (>= 1.4.0)
+    tidyr (>= 1.0.0)
 Suggests: 
     covr (>= 3.0.0),
     httptest (>= 3.0.0),
-    testthat (>= 2.1.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 2.1.0)
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
