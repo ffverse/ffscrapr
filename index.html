@@ -67,6 +67,9 @@
 <li>
       <a href="articles/mfl_basics.html">mfl_basics</a>
     </li>
+    <li>
+      <a href="articles/mfl_getendpoint.html">mfl_getendpoint</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -135,7 +138,7 @@
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 432 x 12</span>
+<span class="co">#&gt; # A tibble: 432 x 11</span>
 <span class="co">#&gt;    franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5</span>
@@ -148,8 +151,8 @@
 <span class="co">#&gt;  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3</span>
 <span class="co">#&gt;  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3</span>
 <span class="co">#&gt; 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4</span>
-<span class="co">#&gt; # ... with 422 more rows, and 5 more variables: roster_status &lt;chr&gt;,</span>
-<span class="co">#&gt; #   drafted &lt;chr&gt;, . &lt;list&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
+<span class="co">#&gt; # ... with 422 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
@@ -179,6 +182,12 @@
 <li><p>You can <a href="https://github.com/sponsors/tanho63">sponsor this project by donating to help with server costs</a>!</p></li>
 <li><p>If you’d like to contribute code, please check out <a href="CONTRIBUTING.html">the contribution guidelines</a>.</p></li>
 </ul>
+</div>
+<div id="terms-of-use" class="section level3">
+<h3 class="hasAnchor">
+<a href="#terms-of-use" class="anchor"></a>Terms of Use</h3>
+<p>The R code for this package is released as open source under the <a href="LICENSE.html">MIT license</a>.</p>
+<p>The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use.</p>
 </div>
 </div>
   </div>
@@ -216,7 +225,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
