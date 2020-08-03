@@ -5,26 +5,22 @@
 \alias{ff_transactions.mfl_conn}
 \title{Get League Transactions}
 \usage{
-ff_transactions(conn, custom_players = FALSE, ...)
+ff_transactions(conn, ...)
 
 \method{ff_transactions}{mfl_conn}(conn, custom_players = FALSE, ...)
 }
 \arguments{
 \item{conn}{the list object created by \code{ff_connect()}}
 
-\item{custom_players}{TRUE or FALSE - fetch custom players}
-
 \item{...}{additional args}
+
+\item{custom_players}{TRUE or FALSE - fetch custom players}
 }
 \value{
-A tibble of franchises
-
-a tibble detailing every transaction since X date
+A tidy dataframe of transaction data
 }
 \description{
 This function returns a tibble of transactions
-
-Create a cleaned table of MFL transactions
 }
 \examples{
 dlf_conn <- mfl_connect(2019,league_id = 37920)

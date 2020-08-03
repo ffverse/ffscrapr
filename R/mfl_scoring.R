@@ -9,7 +9,6 @@
 #' ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
 #' ff_scoring(ssb_conn)
 #'
-#'
 #' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
 #'
 #' @rdname ff_scoring

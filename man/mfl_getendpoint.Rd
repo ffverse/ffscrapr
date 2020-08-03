@@ -17,8 +17,10 @@ mfl_getendpoint(conn, endpoint, ...)
 output from the specified MFL API endpoint
 }
 \description{
-Create a GET request to any MFL export endpoint
+Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage.
 }
 \seealso{
 \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
+
+\code{vignette("mfl_getendpoint")}
 }

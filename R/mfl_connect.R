@@ -21,7 +21,8 @@
 #' mfl_connect(season = 2020, league_id = 54040)
 #' mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 #'
-#' @return a list that stores MFL connection objects
+#' @return a connection object to be used with \code{ff_*} functions
+#' @seealso \code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 
 mfl_connect <- function(season = NULL,
                         league_id=NULL,
@@ -112,11 +113,20 @@ print.mfl_conn <- function(x, ...) {
 
   env <- get(".ffscrapr_env",inherits = TRUE)
 
-  m_cookie <- env$get(
-    glue::glue(
-      "https://api.myfantasyleague.com/{season}/login?",
-      "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
-    env$user_agent)
+  # m_cookie <- env$get(
+  #   glue::glue(
+  #     "https://api.myfantasyleague.com/{season}/login?",
+  #     "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
+  #   env$user_agent)
+
+  m_cookie <- env$post(
+    url = 'https://api.myfantasyleague.com/2020/login',
+    body = list(USERNAME = user_name,
+                PASSWORD= password,
+                XML = 1),
+    encode = 'form',
+    env$user_agent
+  )
 
   m_cookie <- purrr::pluck(m_cookie,'cookies','value')
 

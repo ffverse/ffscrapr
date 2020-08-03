@@ -36,7 +36,7 @@ mfl_connect(
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
 }
 \value{
-a list that stores MFL connection objects
+a connection object to be used with \code{ff_*} functions
 }
 \description{
 This function creates a connection object which stores parameters and gets a login-cookie if available
@@ -45,4 +45,7 @@ This function creates a connection object which stores parameters and gets a log
 mfl_connect(season = 2020, league_id = 54040)
 mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 
+}
+\seealso{
+\code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 }

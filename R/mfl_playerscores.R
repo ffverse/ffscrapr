@@ -2,8 +2,6 @@
 
 #' MFL PlayerScores
 #'
-#' Get weekly or full-year/YTD/avg points scored
-#'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
 #' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
@@ -14,8 +12,6 @@
 #' @examples
 #' dlf_conn <- mfl_connect(2020,league_id = 37920)
 #' ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
-#'
-#' @return a tibble detailing historical player scores
 #'
 #' @export
 

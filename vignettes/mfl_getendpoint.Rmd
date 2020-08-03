@@ -1,0 +1,88 @@
+---
+title: "mfl_getendpoint"
+author: "Tan Ho"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mfl_getendpoint}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Creating your own custom MFL API calls
+
+```{r setup}
+library(ffscrapr)
+```
+
+The [MFL API is extensive](https://api.myfantasyleague.com/2020/api_info?STATE=details), and I haven't written out a function for every single one of the endpoints. If there is something you'd like to access, you can use the lower-level "`mfl_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+
+Here is an example of how you can call one of the endpoints - in this case, let's try searching for SFBX leagues through the leagueSearch endpoint. 
+
+We'll start by opening up this page, https://api.myfantasyleague.com/2020/api_info?STATE=test&CCAT=export&TYPE=leagueSearch, which is the "test" page for this particular endpoint. From here, we can see that the only parameter required is "SEARCH". 
+
+We need a connection object to pass into the mfl_getendpoint function, although in this example we don't need to give it much since the endpoint doesn't need a leagueID or username/password or APIKEY. 
+
+```{r}
+conn <- mfl_connect(season = 2020)
+
+conn
+```
+The parameters of the mfl_getendpoint function are `conn`, `endpoint`, and any other optional parameters required by the API.
+
+The function will automatically insert the league_id, API key, and/or authentication cookies from the connection object, and will request JSON for you - so you do not need to add any of these parameters. 
+
+It is safest to assume that everything is *case-sensitive*: the endpoint must match the case displayed by MFL ("league*S*earch") and the SEARCH argument name must be provided in upper-case. 
+
+```{r}
+sfb_search <- mfl_getendpoint(conn,endpoint = "leagueSearch", SEARCH = "sfbx conference")
+```
+
+The function returns a list with the `query` that was sent, the `response` that was received, and the `content` that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.
+
+I like to extract the `content` with `purrr::pluck` and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or `magrittr::extract2` for the same purpose. 
+
+```{r}
+
+search_results <- sfb_search %>% 
+  purrr::pluck("content","leagues","league") %>% 
+  tibble::tibble() %>% 
+  tidyr::unnest_wider(1)
+
+head(search_results)
+
+```
+
+### Another Example: Trade Bait
+
+Here's another example, this time with the trade bait endpoint:  https://api.myfantasyleague.com/2020/api_info?STATE=test&CCAT=export&TYPE=tradeBait
+
+```{r}
+
+fog <- mfl_connect(season = 2019, league_id = 12608)
+
+fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>% 
+  purrr::pluck("content","tradeBaits","tradeBait") %>% 
+  tibble::tibble() %>% 
+  tidyr::unnest_wider(1) %>% 
+  tidyr::separate_rows("willGiveUp",sep = ",") %>% 
+  dplyr::mutate(timestamp = lubridate::as_datetime(as.numeric(timestamp))) %>% 
+  dplyr::left_join(
+    ff_franchises(fog) %>% dplyr::select("franchise_id","franchise_name"),
+    by = c("franchise_id")
+  ) %>% 
+  dplyr::left_join(
+    mfl_players() %>% dplyr::select("player_id","player_name","pos","age","team"),
+    by = c("willGiveUp" = "player_id")
+  )
+
+head(fog_tradebait)
+```
+
+
