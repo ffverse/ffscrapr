@@ -25,7 +25,6 @@ A tibble of historical player scoring
 This function returns a tibble of player scores based on league rules
 }
 \examples{
-dlf_conn <- mfl_connect(2020,league_id = 37920)
+dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
-
 }

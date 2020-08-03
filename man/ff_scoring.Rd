@@ -19,9 +19,8 @@ A tibble of league scoring rules for each position defined.
 This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_scoring(ssb_conn)
-
 }
 \seealso{
 \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}

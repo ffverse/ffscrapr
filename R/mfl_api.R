@@ -2,7 +2,13 @@
 
 #' GET any MFL endpoint
 #'
-#' Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage.
+#' Create a GET request to any MFL export endpoint.
+#'
+#' This function will read the connection object and automatically pass in the rate-limiting, league ID (L), authentication cookie, and/or API key (APIKEY) if configured in the connection object.
+#'
+#' The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the MFL API reference page.
+#'
+#' Check out the vignette for more details and example usage.
 #'
 #' @param conn the list object created by \code{mfl_connect()}
 #' @param endpoint a string defining which endpoint to return from the API
@@ -11,45 +17,53 @@
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #' @seealso \code{vignette("mfl_getendpoint")}
 #'
-#' @return output from the specified MFL API endpoint
+#' @return A list object containing the query, response, and parsed content.
 #' @export
 
-mfl_getendpoint <- function(conn,endpoint,...){
+mfl_getendpoint <- function(conn, endpoint, ...) {
+  fn_get <- get("get", envir = .ffscrapr_env, inherits = TRUE)
 
-  fn_get <- get("get",envir = .ffscrapr_env,inherits = TRUE)
-
-  user_agent <- get("user_agent",envir = .ffscrapr_env,inherits = TRUE)
+  user_agent <- get("user_agent", envir = .ffscrapr_env, inherits = TRUE)
 
   url_query <- httr::modify_url(
     url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
-    query = list("TYPE"=endpoint,
-                 "L" = conn$league_id,
-                 'APIKEY'=conn$APIKEY,
-                 ...,
-                 "JSON"=1))
+    query = list(
+      "TYPE" = endpoint,
+      "L" = conn$league_id,
+      "APIKEY" = conn$APIKEY,
+      ...,
+      "JSON" = 1
+    )
+  )
 
-  response <- fn_get(url_query,user_agent,conn$auth_cookie)
+  response <- fn_get(url_query, user_agent, conn$auth_cookie)
 
   # nocov start
 
-  if(httr::http_error(response) && httr::status_code(response)==429) {
+  if (httr::http_error(response) && httr::status_code(response) == 429) {
     stop(glue::glue("You've hit the MFL rate limit wall! Please adjust the
-                    built-in rate_limit arguments in mfl_connect()!"),call. = FALSE)
+                    built-in rate_limit arguments in mfl_connect()!"), call. = FALSE)
   }
 
-  if(httr::http_error(response)) {
+  if (httr::http_error(response)) {
     stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n
-                    while calling <{url_query}>"),call. = FALSE)}
+                    while calling <{url_query}>"), call. = FALSE)
+  }
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("MFL API did not return json while calling {url_query}"),
-            call. = FALSE) }
+      call. = FALSE
+    )
+  }
 
 
-  if(httr::http_type(response)== "application/json"){
-    parsed <- jsonlite::parse_json(httr::content(response,"text"))}
+  if (httr::http_type(response) == "application/json") {
+    parsed <- jsonlite::parse_json(httr::content(response, "text"))
+  }
 
-  if(!is.null(parsed$error)){ warning(glue::glue("MFL says: {parsed$error[[1]]}"),call. = FALSE)}
+  if (!is.null(parsed$error)) {
+    warning(glue::glue("MFL says: {parsed$error[[1]]}"), call. = FALSE)
+  }
 
   # nocov end
 
@@ -61,7 +75,6 @@ mfl_getendpoint <- function(conn,endpoint,...){
     ),
     class = "mfl_api"
   )
-
 }
 
 ## PRINT METHOD MFL_API OBJ ##
@@ -72,7 +85,7 @@ print.mfl_api <- function(x, ...) {
 
   # nocov start
 
-  cat("<MFL - GET ",x$query,">\n", sep = "")
+  cat("<MFL - GET ", x$query, ">\n", sep = "")
   str(x$content)
 
   invisible(x)

@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="GET any MFL endpoint — mfl_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage." />
+<meta property="og:description" content="Create a GET request to any MFL export endpoint." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.24</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage.</p>
+    <p>Create a GET request to any MFL export endpoint.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mfl_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
@@ -166,7 +166,12 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>output from the specified MFL API endpoint</p>
+    <p>An list object containing the query, response, and parsed content.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function will read the connection object and automatically pass in the rate-limiting, league ID (L), authentication cookie, and/or API key (APIKEY) if configured in the connection object.</p>
+<p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the MFL API reference page.</p>
+<p>Check out the vignette for more details and example usage.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p>

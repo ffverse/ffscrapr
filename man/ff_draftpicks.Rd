@@ -21,7 +21,6 @@ a tibble detailing future draft picks
 Get current and future draft picks that have not yet been selected/converted into players
 }
 \examples{
-dlf_conn <- mfl_connect(2020,league_id = 37920)
+dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_draftpicks(conn = dlf_conn)
-
 }

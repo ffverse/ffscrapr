@@ -27,26 +27,26 @@
 #'
 #' @examples
 #' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
-#'
 #' @export ff_connect
 #' @return a connection object to be used with \code{ff_*} functions
 #'
 #' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
 
-ff_connect <- function(platform = "mfl",league_id,...){
-
+ff_connect <- function(platform = "mfl", league_id, ...) {
   platform <- tolower(platform)
 
-  if(!platform %in% c('mfl','sleeper')){stop("We only have code for MFL and Sleeper so far!")}
+  if (!platform %in% c("mfl", "sleeper")) {
+    stop("We only have code for MFL and Sleeper so far!")
+  }
 
   switch(platform,
-         # 'fleaflicker' = ,
-         # 'flea' = fleaflicker_connect(league_id = league_id,...),
-         # 'espn' = espn_connect(league_id = league_id,...),
-         # 'yahoo' = yahoo_connect(league_id = league_id,...)
-         "sleeper" = sleeper_connect(league_id = league_id, ...),
-         "mfl" = mfl_connect(league_id=league_id,...)
-         )
+    # 'fleaflicker' = ,
+    # 'flea' = fleaflicker_connect(league_id = league_id,...),
+    # 'espn' = espn_connect(league_id = league_id,...),
+    # 'yahoo' = yahoo_connect(league_id = league_id,...)
+    "sleeper" = sleeper_connect(league_id = league_id, ...),
+    "mfl" = mfl_connect(league_id = league_id, ...)
+  )
 }
 
 #### ff_league ####
@@ -61,12 +61,12 @@ ff_connect <- function(platform = "mfl",league_id,...){
 #'
 #' @return A one-row tibble of league settings.
 
-ff_league <- function(conn){
+ff_league <- function(conn) {
   UseMethod("ff_league")
 }
 
 #' @export
-ff_league.default <- function(conn){
+ff_league.default <- function(conn) {
   stop(glue::glue("No method of ff_league found for platform: {conn$platform}."))
 }
 
@@ -82,12 +82,12 @@ ff_league.default <- function(conn){
 #'
 #' @return A tibble of league scoring rules for each position defined.
 
-ff_scoring <- function(conn){
+ff_scoring <- function(conn) {
   UseMethod("ff_scoring")
 }
 
 #' @export
-ff_scoring.default <- function(conn){
+ff_scoring.default <- function(conn) {
   stop(glue::glue("No method of ff_scoring found for platform: {conn$platform}."))
 }
 
@@ -105,13 +105,13 @@ ff_scoring.default <- function(conn){
 #'
 #' @return A tibble of rosters, joined to basic player information and basic franchise information
 
-ff_rosters <- function(conn, ...){
+ff_rosters <- function(conn, ...) {
   UseMethod("ff_rosters")
 }
 
 #' @export
 #'
-ff_rosters.default <- function(conn, ...){
+ff_rosters.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
 
@@ -125,12 +125,12 @@ ff_rosters.default <- function(conn, ...){
 #'
 #' @return A tibble of franchises, complete with IDs
 
-ff_franchises <- function(conn){
+ff_franchises <- function(conn) {
   UseMethod("ff_franchises")
 }
 
 #' @export
-ff_franchises.default <- function(conn){
+ff_franchises.default <- function(conn) {
   stop(glue::glue("No method of ff_franchises found for platform: {conn$platform}."))
 }
 
@@ -148,12 +148,12 @@ ff_franchises.default <- function(conn){
 #'
 #' @return A tidy dataframe of transaction data
 
-ff_transactions <- function(conn, ...){
+ff_transactions <- function(conn, ...) {
   UseMethod("ff_transactions")
 }
 
 #' @export
-ff_transactions.default <- function(conn, ...){
+ff_transactions.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
@@ -172,12 +172,12 @@ ff_transactions.default <- function(conn, ...){
 #'
 #' @return A tibble of draft results
 
-ff_draft <- function(conn, ...){
+ff_draft <- function(conn, ...) {
   UseMethod("ff_draft")
 }
 
 #' @export
-ff_draft.default <- function(conn, ...){
+ff_draft.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
@@ -196,12 +196,12 @@ ff_draft.default <- function(conn, ...){
 
 #' @export
 
-ff_playerscores <- function(conn, season, week,...){
+ff_playerscores <- function(conn, season, week, ...) {
   UseMethod("ff_playerscores")
 }
 
 #' @export
-ff_playerscores.default <- function(conn, season, week,...){
+ff_playerscores.default <- function(conn, season, week, ...) {
   stop(glue::glue("No method of ff_playerscores found for platform: {conn$platform}."))
 }
 
@@ -218,12 +218,12 @@ ff_playerscores.default <- function(conn, season, week,...){
 #'
 #' @return A tibble of standings
 
-ff_standings <- function(conn, ...){
+ff_standings <- function(conn, ...) {
   UseMethod("ff_standings")
 }
 
 #' @export
-ff_standings.default <- function(conn, ...){
+ff_standings.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_standings found for platform: {conn$platform}."))
 }
 
@@ -236,12 +236,12 @@ ff_standings.default <- function(conn, ...){
 #'
 #' @export ff_draftpicks
 
-ff_draftpicks <- function(conn,...){
+ff_draftpicks <- function(conn, ...) {
   UseMethod("ff_draftpicks")
 }
 
 #' @export
-ff_draftpicks.default <- function(conn,...){
+ff_draftpicks.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_draftpicks found for platform: {conn$platform}"))
 }
 
@@ -251,3 +251,24 @@ ff_draftpicks.default <- function(conn,...){
 
 # ff_schedule - summarises matchups in a flat table
 
+#### ff_standings ####
+
+#' Get Schedule
+#'
+#' This function returns a tibble with one row for every team for every weekly matchup
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#'
+#' @export ff_schedule
+#'
+#' @return A tidy dataframe with one row per game per franchise per week
+
+ff_schedule <- function(conn, ...) {
+  UseMethod("ff_schedule")
+}
+
+#' @export
+ff_schedule.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_schedule found for platform: {conn$platform}."))
+}

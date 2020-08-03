@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.24</span>
       </span>
     </div>
 
@@ -164,22 +164,22 @@
     <div class='dont-index'><p><a href='https://github.com/DynastyProcess/data'>https://github.com/DynastyProcess/data</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()</div><div class='output co'>#&gt; # A tibble: 487 x 12
+    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 487 x 12</span><span>
 #&gt;    player pos   team    age draft_year ecr_1qb ecr_2qb ecr_pos value_1qb
-#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;      &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;     &lt;int&gt;
-#&gt;  1 Chris~ RB    CAR    24.1       2017     1.1     1.1     1.1     10232
-#&gt;  2 Saquo~ RB    NYG    23.5       2018     2       2.3     1.9     10018
-#&gt;  3 Micha~ WR    NOS    27.4       2016     3.2     3.6     1        9739
-#&gt;  4 Ezeki~ RB    DAL    25         2016     4.6     5.9     3.1      9424
-#&gt;  5 Alvin~ RB    NOS    25         2017     6       7.9     4.2      9119
-#&gt;  6 Davan~ WR    GBP    27.6       2014     8.1    10.4     3.5      8680
-#&gt;  7 Tyree~ WR    KCC    26.4       2016     8.2    10.6     3.3      8660
-#&gt;  8 DeAnd~ WR    ARI    28.1       2013     8.7    11.3     3.8      8559
-#&gt;  9 Dalvi~ RB    MIN    25         2017     9.1    12.1     6        8478
-#&gt; 10 Chris~ WR    TBB    24.4       2017     9.5    12.4     4.8      8399
-#&gt; # ... with 477 more rows, and 3 more variables: value_2qb &lt;int&gt;,
-#&gt; #   scrape_date &lt;date&gt;, fp_id &lt;chr&gt;</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Chris~ RB    CAR    24.1       </span><span style='text-decoration: underline;'>2</span><span>017     1.1     1.1     1.1     </span><span style='text-decoration: underline;'>10</span><span>232
+#&gt; </span><span style='color: #555555;'> 2</span><span> Saquo~ RB    NYG    23.5       </span><span style='text-decoration: underline;'>2</span><span>018     2       2.3     1.9     </span><span style='text-decoration: underline;'>10</span><span>018
+#&gt; </span><span style='color: #555555;'> 3</span><span> Micha~ WR    NOS    27.4       </span><span style='text-decoration: underline;'>2</span><span>016     3.2     3.6     1        </span><span style='text-decoration: underline;'>9</span><span>739
+#&gt; </span><span style='color: #555555;'> 4</span><span> Ezeki~ RB    DAL    25         </span><span style='text-decoration: underline;'>2</span><span>016     4.6     5.9     3.1      </span><span style='text-decoration: underline;'>9</span><span>424
+#&gt; </span><span style='color: #555555;'> 5</span><span> Alvin~ RB    NOS    25         </span><span style='text-decoration: underline;'>2</span><span>017     6       7.9     4.2      </span><span style='text-decoration: underline;'>9</span><span>119
+#&gt; </span><span style='color: #555555;'> 6</span><span> Davan~ WR    GBP    27.6       </span><span style='text-decoration: underline;'>2</span><span>014     8.1    10.4     3.5      </span><span style='text-decoration: underline;'>8</span><span>680
+#&gt; </span><span style='color: #555555;'> 7</span><span> Tyree~ WR    KCC    26.4       </span><span style='text-decoration: underline;'>2</span><span>016     8.2    10.6     3.3      </span><span style='text-decoration: underline;'>8</span><span>660
+#&gt; </span><span style='color: #555555;'> 8</span><span> DeAnd~ WR    ARI    28.1       </span><span style='text-decoration: underline;'>2</span><span>013     8.7    11.3     3.8      </span><span style='text-decoration: underline;'>8</span><span>559
+#&gt; </span><span style='color: #555555;'> 9</span><span> Dalvi~ RB    MIN    25         </span><span style='text-decoration: underline;'>2</span><span>017     9.1    12.1     6        </span><span style='text-decoration: underline;'>8</span><span>478
+#&gt; </span><span style='color: #555555;'>10</span><span> Chris~ WR    TBB    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     9.5    12.4     4.8      </span><span style='text-decoration: underline;'>8</span><span>399
+#&gt; </span><span style='color: #555555;'># ... with 477 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

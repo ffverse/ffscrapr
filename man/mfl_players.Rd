@@ -18,6 +18,5 @@ A cached table of MFL players. Will store in memory for each session!
 }
 \examples{
 player_list <- mfl_players()
-dplyr::sample_n(player_list,5)
-
+dplyr::sample_n(player_list, 5)
 }

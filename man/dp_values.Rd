@@ -17,7 +17,6 @@ Fetches a copy of the latest DynastyProcess dynasty trade values sheet
 }
 \examples{
 dp_values()
-
 }
 \seealso{
 \url{https://github.com/DynastyProcess/data}

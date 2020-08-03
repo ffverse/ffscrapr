@@ -7,8 +7,8 @@
 
 <!-- badges: start -->
 
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
 coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
@@ -105,6 +105,7 @@ vignettes\!
 
 Many hands make light work\! Here are some ways you can contribute to
 this project:
+
   - You can [open an
     issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
     if you’d like to request specific data or report a bug/error.

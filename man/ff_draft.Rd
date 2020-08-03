@@ -24,7 +24,6 @@ This function gets a table of the draft results for the current year.
 Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_draft(ssb_conn)
-
 }

@@ -14,10 +14,17 @@ mfl_getendpoint(conn, endpoint, ...)
 \item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
 }
 \value{
-output from the specified MFL API endpoint
+A list object containing the query, response, and parsed content.
 }
 \description{
-Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage.
+Create a GET request to any MFL export endpoint.
+}
+\details{
+This function will read the connection object and automatically pass in the rate-limiting, league ID (L), authentication cookie, and/or API key (APIKEY) if configured in the connection object.
+
+The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the MFL API reference page.
+
+Check out the vignette for more details and example usage.
 }
 \seealso{
 \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
