@@ -1,9 +1,11 @@
 #### ff_draft (MFL) ####
 
-#' Get a dataframe of draft results.
+#' Get Draft Results
+#' This function gets a table of the draft results for the current year.
+#' Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - are there custom players included in the result?
+#' @param custom_players TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)
 #' @param ... not sure if there'll be other params yet!
 #'
 #' @examples

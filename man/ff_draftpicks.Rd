@@ -15,13 +15,9 @@ ff_draftpicks(conn, ...)
 \item{...}{other arguments (currently unused)}
 }
 \value{
-A tibble of draft picks
-
 a tibble detailing future draft picks
 }
 \description{
-This function returns a tibble of current and future draft picks
-
 Get current and future draft picks that have not yet been selected/converted into players
 }
 \examples{

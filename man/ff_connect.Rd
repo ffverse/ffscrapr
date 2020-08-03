@@ -26,8 +26,15 @@ ff_connect(platform = "mfl", league_id, ...)
 \code{user_agent} Identifies user scraping the data}
 }
 \value{
-a list that stores MFL connection objects
+a connection object to be used with \code{ff_*} functions
 }
 \description{
 This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.
+}
+\examples{
+ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+
+}
+\seealso{
+\code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
 }

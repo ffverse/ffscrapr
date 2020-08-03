@@ -2,8 +2,6 @@
 
 #' Get a summary of common league settings
 #'
-#' This function returns a tibble of common league settings, including details like "1QB" or "2QB/SF", best ball, team count etc
-#'
 #' @param conn the connection object created by \code{ff_connect()}
 #'
 #' @examples

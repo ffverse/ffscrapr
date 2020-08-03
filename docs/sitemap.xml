@@ -16,6 +16,9 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_draft.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_draftpicks.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_franchises.html</loc>
   </url>
   <url>
@@ -56,5 +59,8 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/mfl_basics.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/mfl_getendpoint.html</loc>
   </url>
 </urlset>

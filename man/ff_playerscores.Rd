@@ -19,14 +19,10 @@ ff_playerscores(conn, season, week, ...)
 \item{...}{other arguments (currently unused)}
 }
 \value{
-A tibble of scoring history
-
-a tibble detailing historical player scores
+A tibble of historical player scoring
 }
 \description{
 This function returns a tibble of player scores based on league rules
-
-Get weekly or full-year/YTD/avg points scored
 }
 \examples{
 dlf_conn <- mfl_connect(2020,league_id = 37920)

@@ -2,8 +2,6 @@
 
 #' Get full transactions table
 #'
-#' Create a cleaned table of MFL transactions
-#'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param custom_players TRUE or FALSE - fetch custom players
 #' @param ... additional args
@@ -14,7 +12,6 @@
 #' dlf_conn <- mfl_connect(2019,league_id = 37920)
 #' ff_transactions(dlf_conn)
 #'
-#' @return a tibble detailing every transaction since X date
 #' @export
 
 ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){

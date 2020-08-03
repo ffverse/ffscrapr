@@ -2,13 +2,10 @@
 % Please edit documentation in R/generics.R, R/mfl_franchises.R
 \name{ff_franchises}
 \alias{ff_franchises}
-\alias{ff_franchises.default}
 \alias{ff_franchises.mfl_conn}
 \title{Get League Franchises}
 \usage{
 ff_franchises(conn)
-
-\method{ff_franchises}{default}(conn)
 
 \method{ff_franchises}{mfl_conn}(conn)
 }
@@ -16,11 +13,9 @@ ff_franchises(conn)
 \item{conn}{a conn object created by \code{ff_connect()}}
 }
 \value{
-A tibble of franchises
+A tibble of franchises, complete with IDs
 }
 \description{
-This function returns a tibble of franchise details (id, name, abbrev etc)
-
 Returns a tidy dataframe of franchises and any relevant information
 }
 \examples{
