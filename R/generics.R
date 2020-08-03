@@ -79,6 +79,7 @@ ff_league.default <- function(conn){
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @export
+#'
 #' @return A tibble of league scoring rules for each position defined.
 
 ff_scoring <- function(conn){
@@ -86,7 +87,6 @@ ff_scoring <- function(conn){
 }
 
 #' @export
-#' @rdname ff_scoring
 ff_scoring.default <- function(conn){
   stop(glue::glue("No method of ff_scoring found for platform: {conn$platform}."))
 }
@@ -98,20 +98,20 @@ ff_scoring.default <- function(conn){
 #' This function returns a tibble of team rosters
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - include custom players (i.e. devy?)
 #' @param ... arguments passed to other methods
+#' \code{custom_players} TRUE or FALSE - include custom players (i.e. devy?)
 #'
 #' @export ff_rosters
 #'
 #' @return A tibble of rosters, joined to basic player information and basic franchise information
 
-ff_rosters <- function(conn, custom_players = FALSE, ...){
+ff_rosters <- function(conn, ...){
   UseMethod("ff_rosters")
 }
 
 #' @export
 #'
-ff_rosters.default <- function(conn, custom_players = FALSE, ...){
+ff_rosters.default <- function(conn, ...){
   stop(glue::glue("No method of ff_rosters found for platform: {conn$platform}."))
 }
 
@@ -119,19 +119,16 @@ ff_rosters.default <- function(conn, custom_players = FALSE, ...){
 
 #' Get League Franchises
 #'
-#' This function returns a tibble of franchise details (id, name, abbrev etc)
-#'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @export ff_franchises
 #'
-#' @return A tibble of franchises
+#' @return A tibble of franchises, complete with IDs
 
 ff_franchises <- function(conn){
   UseMethod("ff_franchises")
 }
 
-#' @rdname ff_franchises
 #' @export
 ff_franchises.default <- function(conn){
   stop(glue::glue("No method of ff_franchises found for platform: {conn$platform}."))
@@ -144,19 +141,19 @@ ff_franchises.default <- function(conn){
 #' This function returns a tibble of transactions
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - retrieve custom players from database?
 #' @param ... additional args
+#' \code{custom_players} TRUE or FALSE - retrieve custom/devy players from database?
 #'
 #' @export ff_transactions
 #'
-#' @return A tibble of franchises
+#' @return A tidy dataframe of transaction data
 
-ff_transactions <- function(conn, custom_players = FALSE, ...){
+ff_transactions <- function(conn, ...){
   UseMethod("ff_transactions")
 }
 
 #' @export
-ff_transactions.default <- function(conn, custom_players = FALSE, ...){
+ff_transactions.default <- function(conn, ...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
@@ -164,22 +161,23 @@ ff_transactions.default <- function(conn, custom_players = FALSE, ...){
 
 #' Get Draft Results
 #'
-#' This function returns a tibble of draft results
+#' This function gets a table of the draft results for the current year.
+#' Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - retrieve custom players from the database?
-#' @param ... additional args which might be used eventually
+#' @param ... additional args
+#' \code{custom_players} TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)
 #'
 #' @export ff_draft
 #'
 #' @return A tibble of draft results
 
-ff_draft <- function(conn, custom_players = FALSE, ...){
+ff_draft <- function(conn, ...){
   UseMethod("ff_draft")
 }
 
 #' @export
-ff_draft.default <- function(conn, custom_players = FALSE, ...){
+ff_draft.default <- function(conn, ...){
   stop(glue::glue("No method of ff_transactions found for platform: {conn$platform}."))
 }
 
@@ -194,7 +192,7 @@ ff_draft.default <- function(conn, custom_players = FALSE, ...){
 #' @param week a numeric week or one of YTD (year to date) or AVG (average)
 #' @param ... arguments passed to other methods
 #'
-#' @return A tibble of scoring history
+#' @return A tibble of historical player scoring
 
 #' @export
 
@@ -233,14 +231,10 @@ ff_standings.default <- function(conn, ...){
 
 #' Get Draft Picks
 #'
-#' This function returns a tibble of current and future draft picks
-#'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param ... additional args which might be used eventually
 #'
 #' @export ff_draftpicks
-#'
-#' @return A tibble of draft picks
 
 ff_draftpicks <- function(conn,...){
   UseMethod("ff_draftpicks")

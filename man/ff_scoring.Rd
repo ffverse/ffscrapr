@@ -2,13 +2,10 @@
 % Please edit documentation in R/generics.R, R/mfl_scoring.R
 \name{ff_scoring}
 \alias{ff_scoring}
-\alias{ff_scoring.default}
 \alias{ff_scoring.mfl_conn}
 \title{Get League Scoring settings}
 \usage{
 ff_scoring(conn)
-
-\method{ff_scoring}{default}(conn)
 
 \method{ff_scoring}{mfl_conn}(conn)
 }
@@ -24,7 +21,6 @@ This function returns a dataframe with detailed scoring settings, broken down by
 \examples{
 ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
 ff_scoring(ssb_conn)
-
 
 }
 \seealso{

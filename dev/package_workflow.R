@@ -37,4 +37,3 @@ devtools::check(document = TRUE)
 remotes::install_local(upgrade = FALSE)
 pkgdown::deploy_to_branch()
 
-

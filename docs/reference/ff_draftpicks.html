@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connect to a League — ff_connect • ffscrapr</title>
+<title>Get Draft Picks — ff_draftpicks • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Connect to a League — ff_connect" />
-<meta property="og:description" content="This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler." />
+<meta property="og:title" content="Get Draft Picks — ff_draftpicks" />
+<meta property="og:description" content="Get current and future draft picks that have not yet been selected/converted into players" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -136,56 +136,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connect to a League</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a></small>
-    <div class="hidden name"><code>ff_connect.Rd</code></div>
+    <h1>Get Draft Picks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_draftpicks.R'><code>R/mfl_draftpicks.R</code></a></small>
+    <div class="hidden name"><code>ff_draftpicks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.</p>
+    <p>Get current and future draft picks that have not yet been selected/converted into players</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='no'>league_id</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ff_draftpicks</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_draftpicks</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>platform</th>
-      <td><p>one of MFL or Sleeper (Fleaflicker, ESPN, Yahoo in approximate priority order going forward)</p></td>
-    </tr>
-    <tr>
-      <th>league_id</th>
-      <td><p>league_id (currently assuming one league at a time)</p></td>
+      <th>conn</th>
+      <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other parameters passed to the connect function for each specific platform.</p>
-<p><code>rate_limit</code> Defaults to TRUE. Pass <code>FALSE</code> to turn off.</p>
-<p><code>rate_limit_number</code> number of attempts to try in <code>rate_limit_seconds</code>.</p>
-<p><code>APIKEY</code> MFL-specific - grants access to perform something as a user in a specific league</p>
-<p><code>user_name</code> Collects user_name field for leagues that support it (MFL, Sleeper so far)</p>
-<p><code>password</code> Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY</p>
-<p><code>user_agent</code> Identifies user scraping the data</p></td>
+      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a connection object to be used with <code>ff_*</code> functions</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='mfl_connect.html'>mfl_connect</a></code>, <code><a href='sleeper_connect.html'>sleeper_connect</a></code></p></div>
+    <p>a tibble detailing future draft picks</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;MFL connection 2019_54040&gt;
-#&gt; List of 5
-#&gt;  $ platform   : chr "MFL"
-#&gt;  $ season     : num 2019
-#&gt;  $ league_id  : chr "54040"
-#&gt;  $ APIKEY     : NULL
-#&gt;  $ auth_cookie: NULL
-#&gt;  - attr(*, "class")= chr "mfl_conn"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
+<span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='no'>dlf_conn</span>)</div><div class='output co'>#&gt; # A tibble: 80 x 5
+#&gt;    season franchise_id franchise_name round original_franchise_id
+#&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;                
+#&gt;  1   2021 0001         @dibari22          1 0001                 
+#&gt;  2   2021 0001         @dibari22          2 0001                 
+#&gt;  3   2021 0001         @dibari22          3 0001                 
+#&gt;  4   2021 0001         @dibari22          4 0001                 
+#&gt;  5   2021 0001         @dibari22          5 0001                 
+#&gt;  6   2021 0002         @_PeteLaw          1 0002                 
+#&gt;  7   2021 0002         @_PeteLaw          2 0002                 
+#&gt;  8   2021 0002         @_PeteLaw          3 0002                 
+#&gt;  9   2021 0002         @_PeteLaw          4 0002                 
+#&gt; 10   2021 0002         @_PeteLaw          5 0002                 
+#&gt; # ... with 70 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

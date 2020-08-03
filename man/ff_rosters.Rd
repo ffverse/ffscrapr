@@ -5,16 +5,16 @@
 \alias{ff_rosters.mfl_conn}
 \title{Get League Rosters}
 \usage{
-ff_rosters(conn, custom_players = FALSE, ...)
+ff_rosters(conn, ...)
 
 \method{ff_rosters}{mfl_conn}(conn, custom_players = FALSE, ...)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
 
-\item{custom_players}{TRUE or FALSE - include custom players? defaults to FALSE}
-
 \item{...}{arguments passed to other methods (currently none)}
+
+\item{custom_players}{TRUE or FALSE - include custom players? defaults to FALSE}
 }
 \value{
 A tibble of rosters, joined to basic player information and basic franchise information
@@ -27,7 +27,4 @@ ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
 ff_rosters(ssb_conn)
 
 
-}
-\seealso{
-\url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
 }
