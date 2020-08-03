@@ -74,7 +74,7 @@ fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>%
   tidyr::separate_rows("willGiveUp",sep = ",") %>% 
   dplyr::mutate(timestamp = lubridate::as_datetime(as.numeric(timestamp))) %>% 
   dplyr::left_join(
-    ff_franchises(ssb_2019) %>% dplyr::select("franchise_id","franchise_name"),
+    ff_franchises(fog) %>% dplyr::select("franchise_id","franchise_name"),
     by = c("franchise_id")
   ) %>% 
   dplyr::left_join(
