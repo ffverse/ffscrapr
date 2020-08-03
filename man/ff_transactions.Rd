@@ -23,7 +23,6 @@ A tidy dataframe of transaction data
 This function returns a tibble of transactions
 }
 \examples{
-dlf_conn <- mfl_connect(2019,league_id = 37920)
+dlf_conn <- mfl_connect(2019, league_id = 37920)
 ff_transactions(dlf_conn)
-
 }

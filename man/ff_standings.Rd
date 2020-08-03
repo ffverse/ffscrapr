@@ -21,7 +21,6 @@ A tibble of standings
 This function returns a tibble of season-long fantasy team stats
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_standings(ssb_conn)
-
 }
