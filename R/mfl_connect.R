@@ -21,7 +21,8 @@
 #' mfl_connect(season = 2020, league_id = 54040)
 #' mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 #'
-#' @return a list that stores MFL connection objects
+#' @return a connection object to be used with \code{ff_*} functions
+#' @seealso \code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 
 mfl_connect <- function(season = NULL,
                         league_id=NULL,

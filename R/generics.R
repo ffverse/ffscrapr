@@ -25,9 +25,13 @@
 #'
 #' \code{user_agent} Identifies user scraping the data
 #'
+#' @examples
+#' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
 #'
 #' @export ff_connect
-#' @return a list that stores MFL connection objects
+#' @return a connection object to be used with \code{ff_*} functions
+#'
+#' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
 
 ff_connect <- function(platform = "mfl",league_id,...){
 
