@@ -250,3 +250,25 @@ ff_draftpicks.default <- function(conn, ...) {
 # ff_auction_details
 
 # ff_schedule - summarises matchups in a flat table
+
+#### ff_standings ####
+
+#' Get Schedule
+#'
+#' This function returns a tibble with one row for every team for every weekly matchup
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#'
+#' @export ff_schedule
+#'
+#' @return A tidy dataframe with one row per game per franchise per week
+
+ff_schedule <- function(conn, ...) {
+  UseMethod("ff_schedule")
+}
+
+#' @export
+ff_schedule.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_schedule found for platform: {conn$platform}."))
+}
