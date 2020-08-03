@@ -51,6 +51,9 @@
 <meta property="og:title" content="Get League Summary — ff_league" />
 <meta property="og:description" content="This function returns a tibble of common league settings, including details like &quot;1QB&quot; or &quot;2QB/SF&quot;, best ball, team count etc" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 
@@ -82,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.24</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
       </span>
     </div>
 
@@ -164,14 +167,13 @@
     <p>A one-row tibble of league settings.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
+    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
 <span class='fu'>ff_league</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 13</span><span>
 #&gt;   league_id league_name franchise_count qb_type idp   scoring_flags best_ball
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'>1</span><span> 54040     The Super ~              14 1QB     FALSE 0.5_ppr, TEP~ TRUE     
 #&gt; </span><span style='color: #555555;'># ... with 6 more variables: salary_cap </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>, player_copies </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   years_active </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, qb_count </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, roster_size </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, league_depth </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   years_active </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, qb_count </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, roster_size </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, league_depth </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
