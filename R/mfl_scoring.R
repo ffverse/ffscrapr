@@ -14,7 +14,6 @@
 #' @export
 
 ff_scoring.mfl_conn <- function(conn) {
-
   df <- mfl_getendpoint(conn, "rules") %>%
     purrr::pluck("content", "rules", "positionRules")
 
@@ -31,21 +30,27 @@ ff_scoring.mfl_conn <- function(conn) {
   df <- df %>%
     dplyr::mutate(
       vec_depth = purrr::map_dbl(.data$rule, purrr::vec_depth),
-      rule = dplyr::case_when(.data$vec_depth == 3 ~ purrr::map_depth(.data$rule, 2, `[[`, 1),
-        .data$vec_depth == 4 ~ purrr::map_depth(.data$rule, -2, `[[`, 1)),
-      rule = dplyr::case_when(.data$vec_depth == 4 ~ purrr::map(.data$rule, dplyr::bind_rows),
-        TRUE ~ .data$rule)) %>%
+      rule = dplyr::case_when(
+        .data$vec_depth == 3 ~ purrr::map_depth(.data$rule, 2, `[[`, 1),
+        .data$vec_depth == 4 ~ purrr::map_depth(.data$rule, -2, `[[`, 1)
+      ),
+      rule = dplyr::case_when(
+        .data$vec_depth == 4 ~ purrr::map(.data$rule, dplyr::bind_rows),
+        TRUE ~ .data$rule
+      )
+    ) %>%
     dplyr::select(-.data$vec_depth) %>%
     tidyr::unnest_wider("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
     dplyr::left_join(mfl_allrules(), by = c("event" = "abbrev")) %>%
     dplyr::mutate_at(c("is_player", "is_team", "is_coach"), ~ as.logical(as.numeric(.x))) %>%
-    dplyr::mutate(points = purrr::map_if(.data$points, grepl("\\/", .data$points), .fn_parsedivide),
+    dplyr::mutate(
+      points = purrr::map_if(.data$points, grepl("\\/", .data$points), .fn_parsedivide),
       points = purrr::map_if(.data$points, grepl("\\*", .data$points), .fn_parsemultiply),
-      points = as.double(.data$points)) %>%
+      points = as.double(.data$points)
+    ) %>%
     dplyr::select("pos" = .data$positions, .data$points, .data$range, .data$event, .data$short_desc, .data$long_desc)
-
 }
 
 #' Parse the scoring rule chars into numeric.
@@ -62,7 +67,6 @@ ff_scoring.mfl_conn <- function(conn) {
 #' @noRd
 #' @keywords internal
 .fn_parsedivide <- function(points) {
-
   x <- strsplit(points, "/") %>%
     unlist() %>%
     as.numeric()

@@ -17,26 +17,30 @@
 #' @export
 
 ff_draftpicks.mfl_conn <- function(conn, ...) {
-
   future_picks <- .mfl_futurepicks(conn)
 
   current_picks <- .mfl_currentpicks(conn)
 
   dplyr::bind_rows(current_picks, future_picks) %>%
     dplyr::left_join(
-      dplyr::select(ff_franchises(conn),
-        dplyr::any_of(c("franchise_id", "franchise_name", "division", "division_name"))),
-      by = c("franchise_id")) %>%
+      dplyr::select(
+        ff_franchises(conn),
+        dplyr::any_of(c("franchise_id", "franchise_name", "division", "division_name"))
+      ),
+      by = c("franchise_id")
+    ) %>%
     dplyr::select(
-      dplyr::any_of(c("season", "division", "division_name",
+      dplyr::any_of(c(
+        "season", "division", "division_name",
         "franchise_id", "franchise_name", "round",
-        "pick", "original_franchise_id")))
+        "pick", "original_franchise_id"
+      ))
+    )
 }
 
 #' @keywords internal
 
 .mfl_futurepicks <- function(conn) {
-
   future_picks <- mfl_getendpoint(conn, "futureDraftPicks") %>%
     purrr::pluck("content", "futureDraftPicks", "franchise")
 
@@ -50,21 +54,20 @@ ff_draftpicks.mfl_conn <- function(conn, ...) {
     tidyr::unnest_longer("futureDraftPick") %>%
     tidyr::hoist("futureDraftPick", "season" = "year", "round" = "round", "original_franchise_id" = "originalPickFor") %>%
     dplyr::mutate_at(c("season", "round"), as.numeric)
-
 }
 
 #' @keywords internal
 
 .mfl_currentpicks <- function(conn) {
-
   raw_draftresults <- mfl_getendpoint(conn, "draftResults") %>%
     purrr::pluck("content", "draftResults", "draftUnit")
 
   if (!is.null(raw_draftresults$unit) && raw_draftresults$unit == "LEAGUE") {
-
     df_draftresults <- .mfl_parse_draftunit(raw_draftresults)
 
-    if (is.null(df_draftresults)) return(NULL)
+    if (is.null(df_draftresults)) {
+      return(NULL)
+    }
 
     df_draftresults <- df_draftresults %>%
       dplyr::filter(.data$player_id == "") %>%
@@ -73,12 +76,12 @@ ff_draftpicks.mfl_conn <- function(conn, ...) {
       dplyr::mutate_at(c("season", "round", "pick"), as.numeric)
 
     return(df_draftresults)
-
   } else {
-
     df_draftresults <- purrr::map_df(raw_draftresults, .mfl_parse_draftunit)
 
-    if (is.null(df_draftresults)) return(NULL)
+    if (is.null(df_draftresults)) {
+      return(NULL)
+    }
 
     df_draftresults <- df_draftresults %>%
       dplyr::filter(.data$player_id == "") %>%
@@ -87,7 +90,5 @@ ff_draftpicks.mfl_conn <- function(conn, ...) {
       dplyr::mutate_at(c("season", "round", "pick"), as.numeric)
 
     return(df_draftresults)
-
   }
-
 }

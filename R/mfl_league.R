@@ -11,7 +11,6 @@
 #' @export
 
 ff_league.mfl_conn <- function(conn) {
-
   league_endpoint <- mfl_getendpoint(conn, endpoint = "league") %>%
     purrr::pluck("content", "league")
 
@@ -34,7 +33,6 @@ ff_league.mfl_conn <- function(conn) {
 
 ## League Summary Helper Functions ##
 .mfl_flag_scoring <- function(conn) {
-
   df_rules <- ff_scoring(conn)
 
   ppr_flag <- .mfl_check_ppr(df_rules)
@@ -52,10 +50,11 @@ ff_league.mfl_conn <- function(conn) {
 
 #' @noRd
 .mfl_check_ppr <- function(df_rules) {
-
   ppr <- dplyr::filter(df_rules, grepl("Receptions", .data$short_desc))
 
-  if (nrow(ppr) == 0) return("zero_ppr")
+  if (nrow(ppr) == 0) {
+    return("zero_ppr")
+  }
 
   ppr <- dplyr::filter(ppr, .data$pos == "WR")$points
 
@@ -63,14 +62,14 @@ ff_league.mfl_conn <- function(conn) {
 }
 #' @noRd
 .mfl_check_teprem <- function(df_rules) {
-
   te_prem <- dplyr::group_by(df_rules, .data$pos) %>%
     dplyr::summarise(point_sum = sum(.data$points))
 
   ifelse(
     te_prem$point_sum[te_prem$pos == "TE"] > te_prem$point_sum[te_prem$pos == "WR"],
     "TEPrem",
-    NA_character_)
+    NA_character_
+  )
 }
 
 #' @noRd
@@ -87,18 +86,21 @@ ff_league.mfl_conn <- function(conn) {
 }
 #' @noRd
 .mfl_is_qbtype <- function(league_endpoint) {
-
   starters <- purrr::pluck(league_endpoint, "starters", "position") %>%
     dplyr::bind_rows()
 
   qb_count <- dplyr::filter(starters, .data$name == "QB")[["limit"]]
 
-  qb_type <- dplyr::case_when(qb_count == "1" ~ "1QB",
+  qb_type <- dplyr::case_when(
+    qb_count == "1" ~ "1QB",
     qb_count == "1-2" ~ "2QB/SF",
-    qb_count == "2" ~ "2QB/SF")
+    qb_count == "2" ~ "2QB/SF"
+  )
 
-  list(count = qb_count,
-    type = qb_type)
+  list(
+    count = qb_count,
+    type = qb_type
+  )
 }
 #' @noRd
 .mfl_roster_size <- function(league_endpoint) {

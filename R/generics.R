@@ -33,7 +33,6 @@
 #' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
 
 ff_connect <- function(platform = "mfl", league_id, ...) {
-
   platform <- tolower(platform)
 
   if (!platform %in% c("mfl", "sleeper")) {

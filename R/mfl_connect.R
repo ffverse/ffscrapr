@@ -86,8 +86,10 @@ mfl_connect <- function(season = NULL,
       season = season,
       league_id = as.character(league_id),
       APIKEY = APIKEY,
-      auth_cookie = m_cookie),
-    class = "mfl_conn")
+      auth_cookie = m_cookie
+    ),
+    class = "mfl_conn"
+  )
 }
 
 ## Print Method for Conn Obj ##
@@ -118,7 +120,6 @@ print.mfl_conn <- function(x, ...) {
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
 .mfl_logincookie <- function(user_name, password, season) {
-
   env <- get(".ffscrapr_env", inherits = TRUE)
 
   # m_cookie <- env$get(
@@ -129,9 +130,11 @@ print.mfl_conn <- function(x, ...) {
 
   m_cookie <- env$post(
     url = "https://api.myfantasyleague.com/2020/login",
-    body = list(USERNAME = user_name,
+    body = list(
+      USERNAME = user_name,
       PASSWORD = password,
-      XML = 1),
+      XML = 1
+    ),
     encode = "form",
     env$user_agent
   )

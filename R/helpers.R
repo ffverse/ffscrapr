@@ -9,7 +9,6 @@
 #' @keywords internal
 
 .fn_choose_season <- function(date = NULL) {
-
   if (is.null(date)) {
     date <- Sys.Date()
   }
@@ -38,7 +37,6 @@
 #' @keywords internal
 
 .fn_set_ratelimit <- function(toggle = TRUE, rate_number, rate_seconds) {
-
   if (toggle) {
     fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
     fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
@@ -64,7 +62,6 @@
 #' @keywords internal
 
 .fn_set_useragent <- function(user_agent) {
-
   user_agent <- httr::user_agent(user_agent)
   assign("user_agent", user_agent, envir = .ffscrapr_env)
 

@@ -1,5 +1,4 @@
 test_that("dp_values are fetched", {
-
   values <- dp_values()
   player_ids <- dp_playerids()
 
@@ -8,5 +7,4 @@ test_that("dp_values are fetched", {
 
   expect_gt(nrow(values), 1)
   expect_gt(nrow(player_ids), 1)
-
 })

@@ -17,22 +17,24 @@
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #' @seealso \code{vignette("mfl_getendpoint")}
 #'
-#' @return An list object containing the query, response, and parsed content.
+#' @return A list object containing the query, response, and parsed content.
 #' @export
 
 mfl_getendpoint <- function(conn, endpoint, ...) {
-
   fn_get <- get("get", envir = .ffscrapr_env, inherits = TRUE)
 
   user_agent <- get("user_agent", envir = .ffscrapr_env, inherits = TRUE)
 
   url_query <- httr::modify_url(
     url = glue::glue("https://api.myfantasyleague.com/{conn$season}/export"),
-    query = list("TYPE" = endpoint,
+    query = list(
+      "TYPE" = endpoint,
       "L" = conn$league_id,
       "APIKEY" = conn$APIKEY,
       ...,
-      "JSON" = 1))
+      "JSON" = 1
+    )
+  )
 
   response <- fn_get(url_query, user_agent, conn$auth_cookie)
 
@@ -50,7 +52,8 @@ mfl_getendpoint <- function(conn, endpoint, ...) {
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("MFL API did not return json while calling {url_query}"),
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 
 
@@ -72,7 +75,6 @@ mfl_getendpoint <- function(conn, endpoint, ...) {
     ),
     class = "mfl_api"
   )
-
 }
 
 ## PRINT METHOD MFL_API OBJ ##

@@ -69,17 +69,16 @@ sleeper_connect <- function(season = NULL,
       user_name = user_name,
       user_id = user_id
     ),
-    class = "sleeper_conn")
+    class = "sleeper_conn"
+  )
 }
 
 #' @noRd
 #' @export
 print.sleeper_conn <- function(x, ...) {
-
   cat("<Sleeper connection ", x$season, "_", x$league_id, ">\n", sep = "")
   str(x)
   invisible(x)
-
 }
 
 # DO NOT EXPORT
@@ -96,7 +95,6 @@ print.sleeper_conn <- function(x, ...) {
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
 .sleeper_userid <- function(user_name) {
-
   env <- get(".ffscrapr_env", inherits = TRUE)
 
   user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"), env$user_agent)
@@ -108,7 +106,8 @@ print.sleeper_conn <- function(x, ...) {
   parsed <- jsonlite::parse_json(httr::content(user_object, "text"))
 
   if (httr::http_error(user_object)) {
-    stop(glue::glue("Failed to retrieve user ID [{httr::status_code(user_object)}]\n",
+    stop(glue::glue(
+      "Failed to retrieve user ID [{httr::status_code(user_object)}]\n",
       parsed$message
     ),
     call. = FALSE
@@ -116,7 +115,6 @@ print.sleeper_conn <- function(x, ...) {
   }
 
   parsed$user_id
-
 }
 
 #' GET Sleeper endpoint

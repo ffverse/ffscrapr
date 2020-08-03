@@ -14,6 +14,5 @@ with_mock_api({
 
     sleeper_conn <- ff_connect("sleeper", 527362181635997696, season = 2020)
     expect_error(ff_draft(sleeper_conn))
-
   })
 })

@@ -14,7 +14,6 @@
 #' @export
 
 ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
-
   stopifnot(is.logical(custom_players))
   df_transactions <- mfl_getendpoint(conn, "transactions") %>%
     purrr::pluck("content", "transactions", "transaction") %>%
@@ -50,17 +49,20 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     dplyr::left_join(
       players_endpoint,
-      by = "player_id") %>%
+      by = "player_id"
+    ) %>%
     dplyr::left_join(
       dplyr::select(ff_franchises(conn), "franchise_id", "franchise_name"),
       by = c("franchise" = "franchise_id")
     ) %>%
-    dplyr::select(dplyr::any_of(c("timestamp", "type", "type_desc",
-      "franchise_id" = "franchise", "franchise_name",
-      "player_id", "player_name", "pos", "team",
-      "bbid_spent", "trade_partner", "comments")),
-    dplyr::everything())
-
+    dplyr::select(
+      dplyr::any_of(c("timestamp", "type", "type_desc",
+        "franchise_id" = "franchise", "franchise_name",
+        "player_id", "player_name", "pos", "team",
+        "bbid_spent", "trade_partner", "comments"
+      )),
+      dplyr::everything()
+    )
 }
 
 ## AUCTION ##
@@ -68,7 +70,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_auction <- function(df_transactions) {
-
   auction_transactions <- df_transactions %>%
     dplyr::filter(.data$type %in% c("AUCTION_INIT", "AUCTION_BID", "AUCTION_WON"))
 
@@ -81,7 +82,8 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
     tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|") %>%
     dplyr::mutate("comments" = ifelse(stringr::str_length(.data$comments) == 0,
       NA_character_,
-      .data$comments))
+      .data$comments
+    ))
 }
 
 ## TRADE ##
@@ -90,7 +92,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_trade <- function(df_transactions) {
-
   trade_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "TRADE")
 
@@ -99,10 +100,12 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
   }
 
   parsed_trades <- trade_transactions %>%
-    dplyr::select("timestamp", "type",
+    dplyr::select(
+      "timestamp", "type",
       "franchise", "franchise1_gave_up",
       "franchise2", "franchise2_gave_up",
-      "comments") %>%
+      "comments"
+    ) %>%
     dplyr::mutate_at(c("franchise1_gave_up", "franchise2_gave_up"), ~ stringr::str_replace(.x, ",$", "")) %>%
     dplyr::mutate_at(c("franchise1_gave_up", "franchise2_gave_up"), ~ stringr::str_split(.x, ","))
 
@@ -125,7 +128,8 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     tidyr::pivot_longer(c("traded_away", "traded_for"),
       names_to = "type_desc",
-      values_to = "player_id") %>%
+      values_to = "player_id"
+    ) %>%
     tidyr::unnest("player_id")
 
   return(df)
@@ -137,7 +141,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_freeagent <- function(df_transactions) {
-
   fa_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "FREE_AGENT")
 
@@ -160,9 +163,9 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
       .data$franchise,
       .data$type_desc,
       .data$player_id,
-      .data$comments) %>%
+      .data$comments
+    ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
-
 }
 
 ## IR ##
@@ -171,7 +174,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_injuredreserve <- function(df_transactions) {
-
   ir_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "IR")
 
@@ -193,9 +195,9 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
       .data$franchise,
       .data$type_desc,
       .data$player_id,
-      .data$comments) %>%
+      .data$comments
+    ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
-
 }
 
 ## TAXI SQUAD ##
@@ -204,7 +206,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_taxisquad <- function(df_transactions) {
-
   ts_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "TAXI")
 
@@ -226,7 +227,8 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
       .data$franchise,
       .data$type_desc,
       .data$player_id,
-      .data$comments) %>%
+      .data$comments
+    ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
 
@@ -236,7 +238,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 #' @keywords internal
 
 .mfl_transactions_bbid_waiver <- function(df_transactions) {
-
   bbid_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "BBID_WAIVER")
 
@@ -266,7 +267,8 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
       .data$type_desc,
       .data$player_id,
       .data$bbid_spent,
-      .data$comments) %>%
+      .data$comments
+    ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
 

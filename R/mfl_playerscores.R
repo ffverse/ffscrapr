@@ -15,7 +15,6 @@
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
-
   if (!(is.numeric(week) | week %in% c("AVG", "YTD"))) {
     stop("week should be either a numeric or one of AVG or YTD")
   }
@@ -26,12 +25,13 @@ ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
     tidyr::unnest_wider(1) %>%
     dplyr::left_join(
       dplyr::select(mfl_players(), "player_id", "player_name", "pos", "team"),
-      by = c("id" = "player_id")) %>%
+      by = c("id" = "player_id")
+    ) %>%
     dplyr::mutate(
       season = season,
-      week = week) %>%
+      week = week
+    ) %>%
     dplyr::select("season", "week", "player_id" = "id", "player_name", "pos", "team", "points" = "score", "isAvailable")
 
   return(df)
-
 }

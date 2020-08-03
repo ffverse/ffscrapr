@@ -1,6 +1,5 @@
 with_mock_api({
   test_that("ff_draftpicks returns a tibble of draft picks", {
-
     ssb <- mfl_connect(2020, 54040)
     ssb_picks <- ff_draftpicks(ssb)
 
@@ -12,6 +11,5 @@ with_mock_api({
 
     expect_s3_class(sfb_picks, "tbl_df")
     expect_equal(nrow(sfb_picks), 0)
-
   })
 })
