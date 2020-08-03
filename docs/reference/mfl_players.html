@@ -83,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.24</span>
       </span>
     </div>
 
@@ -164,20 +164,20 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>player_list</span> <span class='kw'>&lt;-</span> <span class='fu'>mfl_players</span>()
-<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span>(<span class='no'>player_list</span>,<span class='fl'>5</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 25</span><span>
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span>(<span class='no'>player_list</span>,<span class='fl'>5</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 25
 #&gt;   player_id player_name pos     age team  status draft_year draft_team
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> 12781     Burris, Ju~ S      27   CAR   </span><span style='color: #BB0000;'>NA</span><span>     2016       NYJ       
-#&gt; </span><span style='color: #555555;'>2</span><span> 13280     Williams, ~ WR     25.8 IND   </span><span style='color: #BB0000;'>NA</span><span>     2017       ARI       
-#&gt; </span><span style='color: #555555;'>3</span><span> 14324     Raymond, D~ TE     25.7 PIT   </span><span style='color: #BB0000;'>NA</span><span>     2019       FA        
-#&gt; </span><span style='color: #555555;'>4</span><span> 9816      Berry, Eric S      31.6 FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       KCC       
-#&gt; </span><span style='color: #555555;'>5</span><span> 14079     Sanders, M~ RB     23.3 PHI   </span><span style='color: #BB0000;'>NA</span><span>     2019       PHI       
-#&gt; </span><span style='color: #555555;'># ... with 17 more variables: draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_pick </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   stats_global_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, stats_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, cbs_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, fleaflicker_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   sportsdata_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotoworld_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotowire_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nfl_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   espn_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, twitter_username </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, college </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, height </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   weight </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, jersey </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, birthdate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;     
+#&gt; 1 12781     Burris, Ju~ S      27   CAR   &lt;NA&gt;   2016       NYJ       
+#&gt; 2 13280     Williams, ~ WR     25.8 IND   &lt;NA&gt;   2017       ARI       
+#&gt; 3 14324     Raymond, D~ TE     25.7 PIT   &lt;NA&gt;   2019       FA        
+#&gt; 4 9816      Berry, Eric S      31.6 FA    &lt;NA&gt;   2010       KCC       
+#&gt; 5 14079     Sanders, M~ RB     23.3 PHI   &lt;NA&gt;   2019       PHI       
+#&gt; # ... with 17 more variables: draft_round &lt;chr&gt;, draft_pick &lt;chr&gt;,
+#&gt; #   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, cbs_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;,
+#&gt; #   sportsdata_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, nfl_id &lt;chr&gt;,
+#&gt; #   espn_id &lt;chr&gt;, twitter_username &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,
+#&gt; #   weight &lt;chr&gt;, jersey &lt;chr&gt;, birthdate &lt;date&gt;</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
