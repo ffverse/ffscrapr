@@ -14,7 +14,6 @@ Fetches a copy of the latest DynastyProcess player IDs csv
 }
 \examples{
 dp_playerids()
-
 }
 \seealso{
 \url{https://github.com/DynastyProcess/data}

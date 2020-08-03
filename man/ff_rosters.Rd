@@ -23,8 +23,6 @@ A tibble of rosters, joined to basic player information and basic franchise info
 This function returns a tibble of team rosters
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_rosters(ssb_conn)
-
-
 }

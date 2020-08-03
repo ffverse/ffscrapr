@@ -19,7 +19,6 @@ A one-row tibble of league settings.
 This function returns a tibble of common league settings, including details like "1QB" or "2QB/SF", best ball, team count etc
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040, season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_league(ssb_conn)
-
 }

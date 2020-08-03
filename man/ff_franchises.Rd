@@ -19,7 +19,6 @@ A tibble of franchises, complete with IDs
 Returns a tidy dataframe of franchises and any relevant information
 }
 \examples{
-ssb_conn <- ff_connect(platform = "mfl",league_id = 54040,season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_franchises(ssb_conn)
-
 }

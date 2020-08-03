@@ -14,7 +14,7 @@ mfl_getendpoint(conn, endpoint, ...)
 \item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
 }
 \value{
-An list object containing the query, response, and parsed content.
+A list object containing the query, response, and parsed content.
 }
 \description{
 Create a GET request to any MFL export endpoint.
