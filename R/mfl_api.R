@@ -2,7 +2,13 @@
 
 #' GET any MFL endpoint
 #'
-#' Create a GET request to any MFL export endpoint. Check out the vignette for more details and example usage.
+#' Create a GET request to any MFL export endpoint.
+#'
+#' This function will read the connection object and automatically pass in the rate-limiting, league ID (L), authentication cookie, and/or API key (APIKEY) if configured in the connection object.
+#'
+#' The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the MFL API reference page.
+#'
+#' Check out the vignette for more details and example usage.
 #'
 #' @param conn the list object created by \code{mfl_connect()}
 #' @param endpoint a string defining which endpoint to return from the API
@@ -11,7 +17,7 @@
 #' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
 #' @seealso \code{vignette("mfl_getendpoint")}
 #'
-#' @return output from the specified MFL API endpoint
+#' @return An list object containing the query, response, and parsed content.
 #' @export
 
 mfl_getendpoint <- function(conn,endpoint,...){
