@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 *An R Client for Fantasy Football League APIs*
 
   <!-- badges: start -->
-  
   [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
   [![Codecov test coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
   [![R build status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
@@ -70,3 +69,4 @@ Many hands make light work! Here are some ways you can contribute to this projec
 The R code for this package is released as open source under the [MIT license](LICENSE.md). 
 
 The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use. 
+
