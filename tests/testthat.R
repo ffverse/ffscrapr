@@ -1,6 +1,6 @@
 suppressPackageStartupMessages({
-library(testthat)
-library(ffscrapr)
+  library(testthat)
+  library(ffscrapr)
 })
 
 test_check("ffscrapr")
