@@ -14,33 +14,39 @@
 #' @return a list that stores MFL connection objects
 
 sleeper_connect <- function(season = NULL,
-                            league_id=NULL,
+                            league_id = NULL,
                             user_name = NULL,
                             user_agent = NULL,
                             rate_limit = TRUE,
                             rate_limit_number = 100,
-                            rate_limit_seconds = 60){
+                            rate_limit_seconds = 60) {
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
   # See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
 
-  if(length(user_agent)>1){stop("user_agent must be a character vector of length one!")}
+  if (length(user_agent) > 1) {
+    stop("user_agent must be a character vector of length one!")
+  }
 
-  if(!is.null(user_agent)){.fn_set_useragent(user_agent)}
+  if (!is.null(user_agent)) {
+    .fn_set_useragent(user_agent)
+  }
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
-  if(!is.logical(rate_limit)){stop("rate_limit should be logical")}
+  if (!is.logical(rate_limit)) {
+    stop("rate_limit should be logical")
+  }
 
-  .fn_set_ratelimit(rate_limit,rate_limit_number,rate_limit_seconds)
+  .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
 
   ## Season ##
   # Sleeper organizes things by league year and tends to roll over around February.
   # Sensible default seems to be calling the current year if in March or later, otherwise previous year if in Jan/Feb
 
-  if(is.null(season) || is.na(season)){
+  if (is.null(season) || is.na(season)) {
     season <- .fn_choose_season()
     message(glue::glue("No season supplied - choosing {season} based on system date."))
   }
@@ -49,8 +55,9 @@ sleeper_connect <- function(season = NULL,
 
   user_id <- NULL
 
-  if(!is.null(user_name)){
-    user_id <- .sleeper_userid(user_name)}
+  if (!is.null(user_name)) {
+    user_id <- .sleeper_userid(user_name)
+  }
 
   structure(
     list(
@@ -61,15 +68,15 @@ sleeper_connect <- function(season = NULL,
       league_id = league_id,
       user_name = user_name,
       user_id = user_id
-      ),
-    class = 'sleeper_conn')
+    ),
+    class = "sleeper_conn")
 }
 
 #' @noRd
 #' @export
 print.sleeper_conn <- function(x, ...) {
 
-  cat("<Sleeper connection ",x$season,"_",x$league_id, ">\n", sep = "")
+  cat("<Sleeper connection ", x$season, "_", x$league_id, ">\n", sep = "")
   str(x)
   invisible(x)
 
@@ -88,21 +95,21 @@ print.sleeper_conn <- function(x, ...) {
 #'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
 
-.sleeper_userid <- function(user_name){
+.sleeper_userid <- function(user_name) {
 
-  env <- get(".ffscrapr_env",inherits = TRUE)
+  env <- get(".ffscrapr_env", inherits = TRUE)
 
-  user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"),env$user_agent)
+  user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"), env$user_agent)
 
   if (httr::http_type(user_object) != "application/json") {
     stop("API call for user_name object did not return JSON", call. = FALSE)
   }
 
-  parsed <- jsonlite::parse_json(httr::content(user_object,"text"))
+  parsed <- jsonlite::parse_json(httr::content(user_object, "text"))
 
   if (httr::http_error(user_object)) {
     stop(glue::glue("Failed to retrieve user ID [{httr::status_code(user_object)}]\n",
-                    parsed$message
+      parsed$message
     ),
     call. = FALSE
     )
@@ -173,4 +180,3 @@ print.sleeper_conn <- function(x, ...) {
 #'   invisible(x)
 #'
 #' }
-

@@ -9,23 +9,24 @@
 #' @rdname ff_transactions
 #'
 #' @examples
-#' dlf_conn <- mfl_connect(2019,league_id = 37920)
+#' dlf_conn <- mfl_connect(2019, league_id = 37920)
 #' ff_transactions(dlf_conn)
-#'
 #' @export
 
-ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
+ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 
   stopifnot(is.logical(custom_players))
-  df_transactions <- mfl_getendpoint(conn,"transactions") %>%
-    purrr::pluck("content",'transactions','transaction') %>%
+  df_transactions <- mfl_getendpoint(conn, "transactions") %>%
+    purrr::pluck("content", "transactions", "transaction") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    dplyr::mutate_at('timestamp',~as.numeric(.x) %>% lubridate::as_datetime())
+    dplyr::mutate_at("timestamp", ~ as.numeric(.x) %>% lubridate::as_datetime())
 
-  if(nrow(df_transactions)==0){return(NULL)}
+  if (nrow(df_transactions) == 0) {
+    return(NULL)
+  }
 
-  if(!"comments" %in% names(df_transactions)) df_transactions$comments <- NA_character_
+  if (!"comments" %in% names(df_transactions)) df_transactions$comments <- NA_character_
 
   transaction_functions <- list(
     auction = .mfl_transactions_auction,
@@ -36,25 +37,29 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
     trade = .mfl_transactions_trade
   )
 
-  players_endpoint <- if(custom_players){mfl_players(conn)} else {mfl_players()}
+  players_endpoint <- if (custom_players) {
+    mfl_players(conn)
+  } else {
+    mfl_players()
+  }
 
   players_endpoint <- players_endpoint %>%
-    dplyr::select("player_id","player_name","pos","team")
+    dplyr::select("player_id", "player_name", "pos", "team")
 
-  purrr::map_dfr(transaction_functions,rlang::exec,df_transactions) %>%
+  purrr::map_dfr(transaction_functions, rlang::exec, df_transactions) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     dplyr::left_join(
       players_endpoint,
       by = "player_id") %>%
     dplyr::left_join(
-      dplyr::select(ff_franchises(conn),"franchise_id","franchise_name"),
-      by = c("franchise"="franchise_id")
+      dplyr::select(ff_franchises(conn), "franchise_id", "franchise_name"),
+      by = c("franchise" = "franchise_id")
     ) %>%
-    dplyr::select(dplyr::any_of(c("timestamp","type","type_desc",
-                                       "franchise_id"="franchise","franchise_name",
-                                       "player_id","player_name","pos","team",
-                                       "bbid_spent","trade_partner","comments")),
-                  dplyr::everything())
+    dplyr::select(dplyr::any_of(c("timestamp", "type", "type_desc",
+      "franchise_id" = "franchise", "franchise_name",
+      "player_id", "player_name", "pos", "team",
+      "bbid_spent", "trade_partner", "comments")),
+    dplyr::everything())
 
 }
 
@@ -62,19 +67,21 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_auction <- function(df_transactions){
+.mfl_transactions_auction <- function(df_transactions) {
 
   auction_transactions <- df_transactions %>%
-    dplyr::filter(.data$type %in% c('AUCTION_INIT','AUCTION_BID','AUCTION_WON'))
+    dplyr::filter(.data$type %in% c("AUCTION_INIT", "AUCTION_BID", "AUCTION_WON"))
 
-  if(nrow(auction_transactions)==0){return(NULL)}
+  if (nrow(auction_transactions) == 0) {
+    return(NULL)
+  }
 
   auction_transactions %>%
-    dplyr::select('timestamp','type','franchise','transaction') %>%
-    tidyr::separate('transaction',into = c('player_id','bid_amount','comments'),sep = "\\|") %>%
-    dplyr::mutate('comments' = ifelse(stringr::str_length(.data$comments)==0,
-                                      NA_character_,
-                                      .data$comments))
+    dplyr::select("timestamp", "type", "franchise", "transaction") %>%
+    tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|") %>%
+    dplyr::mutate("comments" = ifelse(stringr::str_length(.data$comments) == 0,
+      NA_character_,
+      .data$comments))
 }
 
 ## TRADE ##
@@ -82,41 +89,43 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_trade <- function(df_transactions){
+.mfl_transactions_trade <- function(df_transactions) {
 
   trade_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "TRADE")
 
-  if(nrow(trade_transactions)==0){return(NULL)}
+  if (nrow(trade_transactions) == 0) {
+    return(NULL)
+  }
 
   parsed_trades <- trade_transactions %>%
-    dplyr::select('timestamp','type',
-                  'franchise','franchise1_gave_up',
-                  'franchise2','franchise2_gave_up',
-                  'comments') %>%
-    dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_replace(.x,",$","")) %>%
-    dplyr::mutate_at(c('franchise1_gave_up','franchise2_gave_up'),~stringr::str_split(.x,","))
+    dplyr::select("timestamp", "type",
+      "franchise", "franchise1_gave_up",
+      "franchise2", "franchise2_gave_up",
+      "comments") %>%
+    dplyr::mutate_at(c("franchise1_gave_up", "franchise2_gave_up"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    dplyr::mutate_at(c("franchise1_gave_up", "franchise2_gave_up"), ~ stringr::str_split(.x, ","))
 
   df <- parsed_trades %>%
     dplyr::select(
       .data$timestamp,
       .data$type,
-      'franchise' = .data$franchise2,
-      'franchise2' = .data$franchise,
-      'franchise1_gave_up' = .data$franchise2_gave_up,
-      'franchise2_gave_up' = .data$franchise1_gave_up,
+      "franchise" = .data$franchise2,
+      "franchise2" = .data$franchise,
+      "franchise1_gave_up" = .data$franchise2_gave_up,
+      "franchise2_gave_up" = .data$franchise1_gave_up,
       .data$comments
     ) %>%
     dplyr::bind_rows(parsed_trades) %>%
     dplyr::rename(
-      'trade_partner' = .data$franchise2,
-      'traded_for' = .data$franchise2_gave_up,
-      'traded_away' = .data$franchise1_gave_up
+      "trade_partner" = .data$franchise2,
+      "traded_for" = .data$franchise2_gave_up,
+      "traded_away" = .data$franchise1_gave_up
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
-    tidyr::pivot_longer(c('traded_away', 'traded_for'),
-                        names_to = "type_desc",
-                        values_to = "player_id") %>%
+    tidyr::pivot_longer(c("traded_away", "traded_for"),
+      names_to = "type_desc",
+      values_to = "player_id") %>%
     tidyr::unnest("player_id")
 
   return(df)
@@ -127,20 +136,22 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_freeagent <- function(df_transactions){
+.mfl_transactions_freeagent <- function(df_transactions) {
 
   fa_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "FREE_AGENT")
 
-  if(nrow(fa_transactions)==0){return(NULL)}
+  if (nrow(fa_transactions) == 0) {
+    return(NULL)
+  }
 
   parsed_fa <- fa_transactions %>%
-    dplyr::select('timestamp','type', 'transaction','franchise','comments') %>%
-    tidyr::separate('transaction',c("added","dropped"),sep = "\\|") %>%
-    dplyr::mutate_at(c('added','dropped'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::pivot_longer(c("added","dropped"),names_to = "type_desc", values_to = "player_id") %>%
-    tidyr::separate_rows(c("player_id"),sep = ",") %>%
-    dplyr::filter(.data$player_id!="")
+    dplyr::select("timestamp", "type", "transaction", "franchise", "comments") %>%
+    tidyr::separate("transaction", c("added", "dropped"), sep = "\\|") %>%
+    dplyr::mutate_at(c("added", "dropped"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    tidyr::pivot_longer(c("added", "dropped"), names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows(c("player_id"), sep = ",") %>%
+    dplyr::filter(.data$player_id != "")
 
   parsed_fa %>%
     dplyr::select(
@@ -159,19 +170,21 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_injuredreserve <- function(df_transactions){
+.mfl_transactions_injuredreserve <- function(df_transactions) {
 
   ir_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "IR")
 
-  if(nrow(ir_transactions)==0){return(NULL)}
+  if (nrow(ir_transactions) == 0) {
+    return(NULL)
+  }
 
   parsed_ir <- ir_transactions %>%
-    dplyr::select('timestamp','type','activated','deactivated','franchise','comments') %>%
-    dplyr::mutate_at(c('activated','deactivated'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::pivot_longer(c("activated","deactivated"),names_to = "type_desc", values_to = "player_id") %>%
-    tidyr::separate_rows("player_id",sep = ",") %>%
-    dplyr::filter(.data$player_id!="")
+    dplyr::select("timestamp", "type", "activated", "deactivated", "franchise", "comments") %>%
+    dplyr::mutate_at(c("activated", "deactivated"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    tidyr::pivot_longer(c("activated", "deactivated"), names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows("player_id", sep = ",") %>%
+    dplyr::filter(.data$player_id != "")
 
   parsed_ir %>%
     dplyr::select(
@@ -190,19 +203,21 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_taxisquad <- function(df_transactions){
+.mfl_transactions_taxisquad <- function(df_transactions) {
 
   ts_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "TAXI")
 
-  if(nrow(ts_transactions)==0){return(NULL)}
+  if (nrow(ts_transactions) == 0) {
+    return(NULL)
+  }
 
   parsed_ts <- ts_transactions %>%
-    dplyr::select('timestamp','type','demoted','promoted','franchise','comments') %>%
-    dplyr::mutate_at(c('promoted','demoted'),~stringr::str_replace(.x,",$","")) %>%
-    tidyr::pivot_longer(c("promoted","demoted"),names_to = "type_desc", values_to = "player_id") %>%
-    tidyr::separate_rows("player_id",sep = ",") %>%
-    dplyr::filter(.data$player_id!="")
+    dplyr::select("timestamp", "type", "demoted", "promoted", "franchise", "comments") %>%
+    dplyr::mutate_at(c("promoted", "demoted"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    tidyr::pivot_longer(c("promoted", "demoted"), names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows("player_id", sep = ",") %>%
+    dplyr::filter(.data$player_id != "")
 
   parsed_ts %>%
     dplyr::select(
@@ -220,26 +235,28 @@ ff_transactions.mfl_conn <- function(conn,custom_players = FALSE,...){
 #' @noRd
 #' @keywords internal
 
-.mfl_transactions_bbid_waiver <- function(df_transactions){
+.mfl_transactions_bbid_waiver <- function(df_transactions) {
 
   bbid_transactions <- df_transactions %>%
     dplyr::filter(.data$type == "BBID_WAIVER")
 
-  if(nrow(bbid_transactions)==0){return(NULL)}
+  if (nrow(bbid_transactions) == 0) {
+    return(NULL)
+  }
 
   parsed_bbid <- bbid_transactions %>%
-    dplyr::select('timestamp','type','franchise','transaction','comments') %>%
-    tidyr::separate("transaction",c("player_id","bbid_spent","dropped"), sep = "\\|") %>%
-    dplyr::mutate_at(c('player_id','dropped'),~stringr::str_replace(.x,",$","")) %>%
-    dplyr::mutate_at('bbid_spent',as.numeric)
+    dplyr::select("timestamp", "type", "franchise", "transaction", "comments") %>%
+    tidyr::separate("transaction", c("player_id", "bbid_spent", "dropped"), sep = "\\|") %>%
+    dplyr::mutate_at(c("player_id", "dropped"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    dplyr::mutate_at("bbid_spent", as.numeric)
 
   parsed_bbid_drops <- parsed_bbid %>%
-    dplyr::select('timestamp','type',"dropped",'franchise','comments') %>%
-    tidyr::separate_rows("dropped",sep = ",") %>%
-    tidyr::pivot_longer("dropped",names_to = "type_desc", values_to = "player_id") %>%
+    dplyr::select("timestamp", "type", "dropped", "franchise", "comments") %>%
+    tidyr::separate_rows("dropped", sep = ",") %>%
+    tidyr::pivot_longer("dropped", names_to = "type_desc", values_to = "player_id") %>%
     dplyr::filter(.data$player_id != "") %>%
     dplyr::bind_rows(parsed_bbid) %>%
-    dplyr::mutate_at("type_desc", tidyr::replace_na,"added")
+    dplyr::mutate_at("type_desc", tidyr::replace_na, "added")
 
   parsed_bbid_drops %>%
     dplyr::select(

@@ -5,16 +5,15 @@
 #' @param conn the connection object created by \code{ff_connect()}
 #'
 #' @examples
-#' ssb_conn <- ff_connect(platform = "mfl",league_id = 54040, season = 2020)
+#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_league(ssb_conn)
-#'
 #' @rdname ff_league
 #' @export
 
-ff_league.mfl_conn <- function(conn){
+ff_league.mfl_conn <- function(conn) {
 
-  league_endpoint <- mfl_getendpoint(conn,endpoint = "league") %>%
-    purrr::pluck("content","league")
+  league_endpoint <- mfl_getendpoint(conn, endpoint = "league") %>%
+    purrr::pluck("content", "league")
 
   tibble::tibble(
     league_id = conn$league_id,
@@ -34,7 +33,7 @@ ff_league.mfl_conn <- function(conn){
 }
 
 ## League Summary Helper Functions ##
-.mfl_flag_scoring <- function(conn){
+.mfl_flag_scoring <- function(conn) {
 
   df_rules <- ff_scoring(conn)
 
@@ -44,62 +43,62 @@ ff_league.mfl_conn <- function(conn){
 
   first_down <- .mfl_check_firstdown(df_rules)
 
-  flags <- list(ppr_flag,te_prem,first_down)
+  flags <- list(ppr_flag, te_prem, first_down)
 
-  flags <- paste(flags[!is.na(flags)],collapse = ", ")
+  flags <- paste(flags[!is.na(flags)], collapse = ", ")
 
   return(flags)
 }
 
 #' @noRd
-.mfl_check_ppr <- function(df_rules){
+.mfl_check_ppr <- function(df_rules) {
 
-  ppr <- dplyr::filter(df_rules,grepl("Receptions", .data$short_desc))
+  ppr <- dplyr::filter(df_rules, grepl("Receptions", .data$short_desc))
 
-  if(nrow(ppr)==0) return("zero_ppr")
+  if (nrow(ppr) == 0) return("zero_ppr")
 
-  ppr <- dplyr::filter(ppr,.data$pos=="WR")$points
+  ppr <- dplyr::filter(ppr, .data$pos == "WR")$points
 
-  return(paste0(ppr,"_ppr"))
+  return(paste0(ppr, "_ppr"))
 }
 #' @noRd
-.mfl_check_teprem <- function(df_rules){
+.mfl_check_teprem <- function(df_rules) {
 
-  te_prem <- dplyr::group_by(df_rules,.data$pos) %>%
+  te_prem <- dplyr::group_by(df_rules, .data$pos) %>%
     dplyr::summarise(point_sum = sum(.data$points))
 
   ifelse(
-    te_prem$point_sum[te_prem$pos=="TE"] > te_prem$point_sum[te_prem$pos=="WR"],
+    te_prem$point_sum[te_prem$pos == "TE"] > te_prem$point_sum[te_prem$pos == "WR"],
     "TEPrem",
     NA_character_)
 }
 
 #' @noRd
-.mfl_check_firstdown <- function(df_rules){
+.mfl_check_firstdown <- function(df_rules) {
   first_downs <- df_rules %>%
     dplyr::filter(grepl("First Down", .data$short_desc))
 
-  ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
+  ifelse(nrow(first_downs) > 0, "PP1D", NA_character_)
 }
 
 #' @noRd
-.mfl_is_idp <- function(league_endpoint){
-  ifelse(is.null(league_endpoint$starters$idp_starters) || league_endpoint$starters$idp_starters=="",FALSE,TRUE)
+.mfl_is_idp <- function(league_endpoint) {
+  ifelse(is.null(league_endpoint$starters$idp_starters) || league_endpoint$starters$idp_starters == "", FALSE, TRUE)
 }
 #' @noRd
-.mfl_is_qbtype <- function(league_endpoint){
+.mfl_is_qbtype <- function(league_endpoint) {
 
-  starters <- purrr::pluck(league_endpoint,"starters","position") %>%
+  starters <- purrr::pluck(league_endpoint, "starters", "position") %>%
     dplyr::bind_rows()
 
-  qb_count <- dplyr::filter(starters,.data$name == "QB")[["limit"]]
+  qb_count <- dplyr::filter(starters, .data$name == "QB")[["limit"]]
 
   qb_type <- dplyr::case_when(qb_count == "1" ~ "1QB",
-                              qb_count == "1-2" ~ "2QB/SF",
-                              qb_count == "2" ~ "2QB/SF")
+    qb_count == "1-2" ~ "2QB/SF",
+    qb_count == "2" ~ "2QB/SF")
 
   list(count = qb_count,
-       type = qb_type)
+    type = qb_type)
 }
 #' @noRd
 .mfl_roster_size <- function(league_endpoint) {
@@ -109,23 +108,23 @@ ff_league.mfl_conn <- function(conn){
 }
 
 #' @noRd
-.mfl_years_active <- function(league_endpoint){
+.mfl_years_active <- function(league_endpoint) {
   years_active <- league_endpoint$history$league %>%
     dplyr::bind_rows() %>%
     dplyr::arrange(.data$year)
 
   years_active %>%
-    dplyr::slice(1,nrow(years_active)) %>%
+    dplyr::slice(1, nrow(years_active)) %>%
     dplyr::pull("year") %>%
     paste(collapse = "-")
 }
 
 #' @noRd
-.mfl_is_bestball <- function(league_endpoint){
-  league_endpoint$bestLineup=="Yes"
+.mfl_is_bestball <- function(league_endpoint) {
+  league_endpoint$bestLineup == "Yes"
 }
 
 #' @noRd
-.mfl_is_salcap <- function(league_endpoint){
+.mfl_is_salcap <- function(league_endpoint) {
   league_endpoint$usesSalaries == "1"
 }

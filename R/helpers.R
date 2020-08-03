@@ -8,15 +8,21 @@
 #' @noRd
 #' @keywords internal
 
-.fn_choose_season <- function(date = NULL){
+.fn_choose_season <- function(date = NULL) {
 
-  if(is.null(date)){date <- Sys.Date()}
+  if (is.null(date)) {
+    date <- Sys.Date()
+  }
 
-  if(class(date)!="Date") {date <- as.Date(date)}
+  if (class(date) != "Date") {
+    date <- as.Date(date)
+  }
 
-  if(as.numeric(format(date,"%m"))>2){return(format(date,"%Y"))}
+  if (as.numeric(format(date, "%m")) > 2) {
+    return(format(date, "%Y"))
+  }
 
-  return(format(date-365.25,"%Y"))
+  return(format(date - 365.25, "%Y"))
 }
 
 #' Set rate limit
@@ -31,22 +37,22 @@
 #' @noRd
 #' @keywords internal
 
-.fn_set_ratelimit <- function(toggle = TRUE,rate_number,rate_seconds){
+.fn_set_ratelimit <- function(toggle = TRUE, rate_number, rate_seconds) {
 
-  if(toggle){
-    fn_get <- ratelimitr::limit_rate(httr::GET,ratelimitr::rate(rate_number,rate_seconds))
-    fn_post <- ratelimitr::limit_rate(httr::POST,ratelimitr::rate(rate_number,rate_seconds))
-    }
+  if (toggle) {
+    fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
+    fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
+  }
 
-  if(!toggle){
+  if (!toggle) {
     fn_get <- httr::GET
     fn_post <- httr::POST
   }
 
-  assign("get",fn_get,envir = .ffscrapr_env)
-  assign("post",fn_post, envir = .ffscrapr_env)
+  assign("get", fn_get, envir = .ffscrapr_env)
+  assign("post", fn_post, envir = .ffscrapr_env)
 
-  invisible(list(get = fn_get,post = fn_post))
+  invisible(list(get = fn_get, post = fn_post))
 }
 
 #' Set user agent
@@ -57,10 +63,10 @@
 #' @noRd
 #' @keywords internal
 
-.fn_set_useragent <- function(user_agent){
+.fn_set_useragent <- function(user_agent) {
 
   user_agent <- httr::user_agent(user_agent)
-  assign("user_agent",user_agent,envir = .ffscrapr_env)
+  assign("user_agent", user_agent, envir = .ffscrapr_env)
 
   invisible(user_agent)
 }
