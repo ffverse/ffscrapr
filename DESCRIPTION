@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: ffscrapr - R Client For Fantasy Football League Platforms
-Version: 0.0.4.24
+Version: 0.0.4.25
 Authors@R: 
     person(given = "Tan",
            family = "Ho",
