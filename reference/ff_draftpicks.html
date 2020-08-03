@@ -49,8 +49,7 @@
   
 
 <meta property="og:title" content="Get Draft Picks — ff_draftpicks" />
-<meta property="og:description" content="This function returns a tibble of current and future draft picks
-Get current and future draft picks that have not yet been selected/converted into players" />
+<meta property="og:description" content="Get current and future draft picks that have not yet been selected/converted into players" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 
 
@@ -83,7 +82,7 @@ Get current and future draft picks that have not yet been selected/converted int
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
       </span>
     </div>
 
@@ -143,8 +142,7 @@ Get current and future draft picks that have not yet been selected/converted int
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of current and future draft picks</p>
-<p>Get current and future draft picks that have not yet been selected/converted into players</p>
+    <p>Get current and future draft picks that have not yet been selected/converted into players</p>
     </div>
 
     <pre class="usage"><span class='fu'>ff_draftpicks</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
@@ -167,11 +165,10 @@ Get current and future draft picks that have not yet been selected/converted int
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of draft picks</p>
-<p>a tibble detailing future draft picks</p>
+    <p>a tibble detailing future draft picks</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
+    <pre class="examples"><div class='input'><span class='no'>dlf_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>37920</span>)
 <span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='no'>dlf_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 80 x 5</span><span>
 #&gt;    season franchise_id franchise_name round original_franchise_id
 #&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                
@@ -185,8 +182,7 @@ Get current and future draft picks that have not yet been selected/converted int
 #&gt; </span><span style='color: #555555;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          3 0002                 
 #&gt; </span><span style='color: #555555;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          4 0002                 
 #&gt; </span><span style='color: #555555;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          5 0002                 
-#&gt; </span><span style='color: #555555;'># ... with 70 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'># ... with 70 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

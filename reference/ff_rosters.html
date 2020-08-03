@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
       </span>
     </div>
 
@@ -145,7 +145,7 @@
     <p>This function returns a tibble of team rosters</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_rosters</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ff_rosters</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
 <span class='fu'>ff_rosters</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
@@ -158,24 +158,21 @@
       <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>custom_players</th>
-      <td><p>TRUE or FALSE - include custom players? defaults to FALSE</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>arguments passed to other methods (currently none)</p></td>
+    </tr>
+    <tr>
+      <th>custom_players</th>
+      <td><p>TRUE or FALSE - include custom players? defaults to FALSE</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of rosters, joined to basic player information and basic franchise information</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
+    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
 <span class='fu'>ff_rosters</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 432 x 11</span><span>
 #&gt;    franchise_id franchise_name player_id player_name pos   team    age
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
@@ -190,9 +187,7 @@
 #&gt; </span><span style='color: #555555;'> 9</span><span> 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3
 #&gt; </span><span style='color: #555555;'>10</span><span> 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
 #&gt; </span><span style='color: #555555;'># ... with 422 more rows, and 4 more variables: roster_status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   drafted </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   drafted </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
