@@ -9,3 +9,4 @@
 ^LICENSE\.md$
 ^CODE_OF_CONDUCT\.md$
 ^README\.Rmd$
+^cran-comments\.md$
