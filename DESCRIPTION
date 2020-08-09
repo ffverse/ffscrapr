@@ -1,19 +1,19 @@
 Type: Package
 Package: ffscrapr
-Title: ffscrapr - R Client For Fantasy Football League Platforms
-Version: 0.0.4.25
+Title: FFscrapR - R Client For Fantasy Football League Platforms
+Version: 1.0.0
 Authors@R: 
     person(given = "Tan",
            family = "Ho",
            role = c("aut", "cre"),
            email = "tan@tanho.ca")
-Description: Helps access various Fantasy Football APIs (i.e.
-    MFL, Sleeper, Fleaflicker, ESPN, Yahoo) by handling authentication and
+Description: Helps access various Fantasy Football APIs by handling authentication and
     rate-limiting, forming appropriate calls, and returning tidy
     dataframes which can be easily connected to other data sources.
 License: MIT + file LICENSE
 URL: https://ffscrapr.dynastyprocess.com,
     https://github.com/dynastyprocess/ffscrapr
+BugReports: https://github.com/dynastyprocess/ffscrapr/issues
 Depends: 
     R (>= 3.0.0)
 Imports:
