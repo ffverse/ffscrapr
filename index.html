@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ffscrapr - R Client For Fantasy Football League Platforms • ffscrapr</title>
+<title>FFscrapR - R Client For Fantasy Football League Platforms • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -18,9 +18,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="ffscrapr - R Client For Fantasy Football League Platforms">
-<meta property="og:description" content="Helps access various Fantasy Football APIs (i.e.
-    MFL, Sleeper, Fleaflicker, ESPN, Yahoo) by handling authentication and
+<meta property="og:title" content="FFscrapR - R Client For Fantasy Football League Platforms">
+<meta property="og:description" content="Helps access various Fantasy Football APIs by handling authentication and
     rate-limiting, forming appropriate calls, and returning tidy
     dataframes which can be easily connected to other data sources.">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
@@ -45,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -141,10 +140,17 @@
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 432 x 11</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
+<span class="co">#&gt; # A tibble: 431 x 12</span>
 <span class="co">#&gt;    franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5</span>
+<span class="co">#&gt;  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6</span>
 <span class="co">#&gt;  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9</span>
 <span class="co">#&gt;  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7</span>
 <span class="co">#&gt;  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  </span>
@@ -152,27 +158,34 @@
 <span class="co">#&gt;  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7</span>
 <span class="co">#&gt;  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.2</span>
 <span class="co">#&gt;  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3</span>
-<span class="co">#&gt;  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3</span>
+<span class="co">#&gt;  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4</span>
 <span class="co">#&gt; 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4</span>
-<span class="co">#&gt; # ... with 422 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
-<span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
+<span class="co">#&gt; # ... with 421 more rows, and 5 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt; #   drafted &lt;chr&gt;, . &lt;list&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 172 x 12</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
+<span class="co">#&gt; # A tibble: 181 x 12</span>
 <span class="co">#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    </span>
-<span class="co">#&gt;  2 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 13277    </span>
-<span class="co">#&gt;  3 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 12667    </span>
-<span class="co">#&gt;  4 2020-07-31 16:16:36 IR    deactiva~ 0013         Team Ness      14140    </span>
-<span class="co">#&gt;  5 2020-07-31 16:00:00 BBID~ dropped   0004         Team Ice Clim~ 13190    </span>
-<span class="co">#&gt;  6 2020-07-31 16:00:00 BBID~ added     0007         Team Kirby     14129    </span>
-<span class="co">#&gt;  7 2020-07-31 16:00:00 BBID~ added     0004         Team Ice Clim~ 14333    </span>
-<span class="co">#&gt;  8 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     12164    </span>
-<span class="co">#&gt;  9 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     10297    </span>
-<span class="co">#&gt; 10 2020-07-31 16:00:00 BBID~ added     0013         Team Ness      7813     </span>
-<span class="co">#&gt; # ... with 162 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt;  1 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    </span>
+<span class="co">#&gt;  2 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    </span>
+<span class="co">#&gt;  3 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11758    </span>
+<span class="co">#&gt;  4 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11890    </span>
+<span class="co">#&gt;  5 2020-08-04 22:16:11 IR    deactiva~ 0013         Team Ness      11925    </span>
+<span class="co">#&gt;  6 2020-08-04 16:22:07 FREE~ dropped   0013         Team Ness      11850    </span>
+<span class="co">#&gt;  7 2020-08-03 20:34:25 IR    activated 0007         Team Kirby     13724    </span>
+<span class="co">#&gt;  8 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12665    </span>
+<span class="co">#&gt;  9 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12596    </span>
+<span class="co">#&gt; 10 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    </span>
+<span class="co">#&gt; # ... with 171 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 <span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
@@ -200,6 +213,8 @@
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/dynastyprocess/ffscrapr/">https://​github.com/​dynastyprocess/​ffscrapr/​</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/dynastyprocess/ffscrapr/issues">https://​github.com/​dynastyprocess/​ffscrapr/​issues</a>
 </li>
 </ul>
 </div>

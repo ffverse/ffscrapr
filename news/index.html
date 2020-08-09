@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -142,25 +142,37 @@
       <small>Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="ffscrapr-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)</h1>
+    <div id="ffscrapr-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#ffscrapr-100" class="anchor"></a>ffscrapr 1.0.0</h1>
+<p>This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.</p>
+<p>Future versions will add more platforms via methods mapped to the same functions.</p>
+<p>Functions include:</p>
 <ul>
-<li>2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions</li>
-<li>2020-05-19 - following <a href="https://httr.r-lib.org/articles/api-packages.html">httr API vignette</a> and created generic call to MFL API via <code>get_mfl_endpoint()</code>
-</li>
-<li>2020-05-23 - adding rate limiting and beginnings of Sleeper connection code</li>
-<li>2020-05-27 - adding test folder, renamed main-level functions to “ff_” prefix for ease of autocomplete later</li>
-<li>2020-05-30 - add start of league summary code</li>
-<li>2020-06-07 - taking a big whack at testing stuff</li>
-<li>2020-06-08 - add pkgdown site</li>
-<li>2020-06-13 - switch to S3 methods and add memoise</li>
-<li>2020-06-21 - add ff_rosters and ff_franchises</li>
-<li>2020-07-10 - add ff_draft</li>
-<li>2020-07-16 - add dynastyprocess helpers</li>
-<li>2020-07-26 - add ff_playerscores</li>
-<li>2020-07-27 - finish ff_transactions, add “conn” argument and custom_players argument to mfl_players()</li>
-<li>2020-07-28 - add ff_standings</li>
+<li>
+<code>ff_connect</code> (and sibling <code>mfl_connect</code>) to establish connection parameters and ratelimiting</li>
+<li>
+<code>mfl_getendpoint</code> as a low-level function for making GET requests from MFL</li>
+<li>
+<code>ff_draft</code> gets draft results</li>
+<li>
+<code>ff_draftpicks</code> gets current and future draft picks that have not yet been selected</li>
+<li>
+<code>ff_franchises</code> gets franchise-level identifiers and divisions</li>
+<li>
+<code>ff_league</code> gets league-level summaries of rules, players, and franchises</li>
+<li>
+<code>ff_playerscores</code> gets playerweek-level scores</li>
+<li>
+<code>ff_rosters</code> gets franchise-level rosters complete with naming</li>
+<li>
+<code>ff_schedule</code> gets weekly fantasy schedules</li>
+<li>
+<code>ff_scoring</code> gets scoring rules</li>
+<li>
+<code>ff_standings</code> gets league-level season summaries</li>
+<li>
+<code>ff_transactions</code> gets a list of all transactions and cleans them into a data frame.</li>
 </ul>
 </div>
   </div>

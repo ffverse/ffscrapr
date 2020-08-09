@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -148,10 +148,17 @@
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">ssb_rosters</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">ssb_rosters</span>)
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 6 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  </span>
@@ -183,14 +190,21 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">value_1qb</span>))
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">ssb_values</span>)
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 6 x 14</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0001         Team Pikachu   14803     Edwards-He~ RB    KCC    21.3</span>
-<span class="co">#&gt; 2 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5</span>
+<span class="co">#&gt; 2 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   14777     Burrow, Joe QB    CIN    23.6</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   14777     Burrow, Joe QB    CIN    23.7</span>
 <span class="co">#&gt; 6 0001         Team Pikachu   14838     Shenault, ~ WR    JAC    21.8</span>
 <span class="co">#&gt; # ... with 7 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
 <span class="co">#&gt; #   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
@@ -209,46 +223,60 @@
 <span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="no">value_summary</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 14 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    TE    WR</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 0004         Team Ice Climbers        42795   570 19867  2037 20321</span>
-<span class="co">#&gt;  2 0009         Team Link                39268  2777 11193  2207 23091</span>
-<span class="co">#&gt;  3 0006         Team King Dedede         36999  5991  7793  1745 21470</span>
-<span class="co">#&gt;  4 0007         Team Kirby               35053  3170 23983  2662  5238</span>
-<span class="co">#&gt;  5 0014         Team Luigi               34775  2102   432   932 31309</span>
-<span class="co">#&gt;  6 0010         Team Yoshi               33876  1861  7523  6342 18150</span>
-<span class="co">#&gt;  7 0003         Team Captain Falcon      33800  2090 10154  6440 15116</span>
-<span class="co">#&gt;  8 0011         Team Diddy Kong          27650  1856 13312  1424 11058</span>
-<span class="co">#&gt;  9 0012         Team Mewtwo              27597   987 16856  1290  8464</span>
-<span class="co">#&gt; 10 0002         Team Simon Belmont       27128   401 10262    86 16379</span>
-<span class="co">#&gt; 11 0008         Team Fox                 24074  7436 10139   430  6069</span>
-<span class="co">#&gt; 12 0005         Team Dr. Mario           22195    13  1365  3449 17368</span>
-<span class="co">#&gt; 13 0013         Team Ness                20099   475 15728  1443  2453</span>
-<span class="co">#&gt; 14 0001         Team Pikachu             19297  1280 11156  2334  4527</span></pre></body></html></div>
+<span class="co">#&gt;  1 0004         Team Ice Climbers        41952   567 19728  2014 19643</span>
+<span class="co">#&gt;  2 0009         Team Link                38954  2852 11086  2187 22829</span>
+<span class="co">#&gt;  3 0006         Team King Dedede         36827  6122  7649  1680 21376</span>
+<span class="co">#&gt;  4 0007         Team Kirby               35358  3367 24013  2608  5370</span>
+<span class="co">#&gt;  5 0014         Team Luigi               34025  2150   357   973 30545</span>
+<span class="co">#&gt;  6 0003         Team Captain Falcon      33577  2083 10109  6223 15162</span>
+<span class="co">#&gt;  7 0010         Team Yoshi               33383  1745  7596  6440 17602</span>
+<span class="co">#&gt;  8 0012         Team Mewtwo              28507  1023 17510  1309  8665</span>
+<span class="co">#&gt;  9 0002         Team Simon Belmont       28030   381 10792    89 16768</span>
+<span class="co">#&gt; 10 0011         Team Diddy Kong          28006  1807 13287  1593 11319</span>
+<span class="co">#&gt; 11 0008         Team Fox                 23803  7565  9873   391  5974</span>
+<span class="co">#&gt; 12 0005         Team Dr. Mario           22406    13  1355  3512 17526</span>
+<span class="co">#&gt; 13 0013         Team Ness                20222   469 15726  1504  2523</span>
+<span class="co">#&gt; 14 0001         Team Pikachu             19698  1303 11584  2290  4521</span></pre></body></html></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">value_summary_pct</span> <span class="kw">&lt;-</span> <span class="no">value_summary</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span>),~<span class="no">.x</span>/<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">.x</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span>),<span class="no">round</span>, <span class="fl">3</span>)
 
 <span class="no">value_summary_pct</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 14 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    TE    WR</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 0004         Team Ice Climbers        0.101 0.018 0.124 0.062 0.101</span>
-<span class="co">#&gt;  2 0009         Team Link                0.092 0.09  0.07  0.067 0.115</span>
-<span class="co">#&gt;  3 0006         Team King Dedede         0.087 0.193 0.049 0.053 0.107</span>
-<span class="co">#&gt;  4 0007         Team Kirby               0.083 0.102 0.15  0.081 0.026</span>
-<span class="co">#&gt;  5 0014         Team Luigi               0.082 0.068 0.003 0.028 0.156</span>
-<span class="co">#&gt;  6 0010         Team Yoshi               0.08  0.06  0.047 0.193 0.09 </span>
-<span class="co">#&gt;  7 0003         Team Captain Falcon      0.08  0.067 0.064 0.196 0.075</span>
-<span class="co">#&gt;  8 0011         Team Diddy Kong          0.065 0.06  0.083 0.043 0.055</span>
-<span class="co">#&gt;  9 0012         Team Mewtwo              0.065 0.032 0.106 0.039 0.042</span>
-<span class="co">#&gt; 10 0002         Team Simon Belmont       0.064 0.013 0.064 0.003 0.081</span>
-<span class="co">#&gt; 11 0008         Team Fox                 0.057 0.24  0.063 0.013 0.03 </span>
-<span class="co">#&gt; 12 0005         Team Dr. Mario           0.052 0     0.009 0.105 0.086</span>
-<span class="co">#&gt; 13 0013         Team Ness                0.047 0.015 0.098 0.044 0.012</span>
-<span class="co">#&gt; 14 0001         Team Pikachu             0.045 0.041 0.07  0.071 0.023</span></pre></body></html></div>
+<span class="co">#&gt;  1 0004         Team Ice Climbers        0.099 0.018 0.123 0.061 0.098</span>
+<span class="co">#&gt;  2 0009         Team Link                0.092 0.091 0.069 0.067 0.114</span>
+<span class="co">#&gt;  3 0006         Team King Dedede         0.087 0.195 0.048 0.051 0.107</span>
+<span class="co">#&gt;  4 0007         Team Kirby               0.083 0.107 0.149 0.079 0.027</span>
+<span class="co">#&gt;  5 0014         Team Luigi               0.08  0.068 0.002 0.03  0.153</span>
+<span class="co">#&gt;  6 0003         Team Captain Falcon      0.079 0.066 0.063 0.19  0.076</span>
+<span class="co">#&gt;  7 0010         Team Yoshi               0.079 0.055 0.047 0.196 0.088</span>
+<span class="co">#&gt;  8 0012         Team Mewtwo              0.067 0.033 0.109 0.04  0.043</span>
+<span class="co">#&gt;  9 0002         Team Simon Belmont       0.066 0.012 0.067 0.003 0.084</span>
+<span class="co">#&gt; 10 0011         Team Diddy Kong          0.066 0.057 0.083 0.049 0.057</span>
+<span class="co">#&gt; 11 0008         Team Fox                 0.056 0.241 0.061 0.012 0.03 </span>
+<span class="co">#&gt; 12 0005         Team Dr. Mario           0.053 0     0.008 0.107 0.088</span>
+<span class="co">#&gt; 13 0013         Team Ness                0.048 0.015 0.098 0.046 0.013</span>
+<span class="co">#&gt; 14 0001         Team Pikachu             0.046 0.041 0.072 0.07  0.023</span></pre></body></html></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -270,24 +298,31 @@
 <span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="no">age_summary</span>
+<span class="co">#&gt; Warning: `...` is not empty.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; We detected these problematic arguments:</span>
+<span class="co">#&gt; * `needs_dots`</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; These dots only exist to allow future extensions and should be empty.</span>
+<span class="co">#&gt; Did you misspecify an argument?</span>
 <span class="co">#&gt; # A tibble: 14 x 10</span>
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [14]</span>
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 0001         Team Pikachu     24.3   22.9   25.9   26.3        6        6</span>
-<span class="co">#&gt;  2 0002         Team Simon Be~   33.9   24.0   24.1   24.2        7       10</span>
+<span class="co">#&gt;  1 0001         Team Pikachu     24.2   23.0   25.9   26.4        6        6</span>
+<span class="co">#&gt;  2 0002         Team Simon Be~   34.4   23.9   24.1   24.2        7       10</span>
 <span class="co">#&gt;  3 0003         Team Captain ~   24.7   23.7   30.1   26.4        6       11</span>
-<span class="co">#&gt;  4 0004         Team Ice Clim~   27.5   24.6   26.1   27.9        5        7</span>
-<span class="co">#&gt;  5 0005         Team Dr. Mario   37.7   19.2   23.9   24.4        3        7</span>
-<span class="co">#&gt;  6 0006         Team King Ded~   24.8   25.4   25.8   24.8        3       10</span>
-<span class="co">#&gt;  7 0007         Team Kirby       23.9   24.1   29.4   26.1        3       11</span>
-<span class="co">#&gt;  8 0008         Team Fox         24.8   26.1   26.0   26.8        3       11</span>
+<span class="co">#&gt;  4 0004         Team Ice Clim~   27.6   24.6   26.1   27.8        5        7</span>
+<span class="co">#&gt;  5 0005         Team Dr. Mario   37.7   19.4   23.9   24.4        3        7</span>
+<span class="co">#&gt;  6 0006         Team King Ded~   24.8   25.5   25.8   24.8        3       10</span>
+<span class="co">#&gt;  7 0007         Team Kirby       23.9   24.1   29.4   25.9        3       11</span>
+<span class="co">#&gt;  8 0008         Team Fox         24.7   26.1   26.0   26.7        3       11</span>
 <span class="co">#&gt;  9 0009         Team Link        25.8   25.8   27.1   27.4        2        9</span>
 <span class="co">#&gt; 10 0010         Team Yoshi       28.9   21.4   26.8   24.2        4        4</span>
-<span class="co">#&gt; 11 0011         Team Diddy Ko~   30.7   25.4   23.7   25.5        2       13</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo      29.2   24.1   24.4   23.6        4        6</span>
-<span class="co">#&gt; 13 0013         Team Ness        30.6   23.1   22.9   26.0        5        9</span>
-<span class="co">#&gt; 14 0014         Team Luigi       32.0   28.2   27.3   26.5        5        9</span>
+<span class="co">#&gt; 11 0011         Team Diddy Ko~   30.7   25.4   23.6   25.4        2       13</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo      29.3   24.1   24.5   23.5        4        6</span>
+<span class="co">#&gt; 13 0013         Team Ness        30.6   23.1   22.8   26.1        5        9</span>
+<span class="co">#&gt; 14 0014         Team Luigi       32.0   28.2   26.9   26.5        5        9</span>
 <span class="co">#&gt; # ... with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></pre></body></html></div>
 </div>
   </div>

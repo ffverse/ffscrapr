@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -172,9 +172,28 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_schedule</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ff_schedule(ssb_conn): could not find function "ff_schedule"</span></div><div class='input'>
+<span class='fu'>ff_schedule</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `...` is not empty.</span>
+#&gt; <span class='warning'></span>
+#&gt; <span class='warning'>We detected these problematic arguments:</span>
+#&gt; <span class='warning'>* `needs_dots`</span>
+#&gt; <span class='warning'></span>
+#&gt; <span class='warning'>These dots only exist to allow future extensions and should be empty.</span>
+#&gt; <span class='warning'>Did you misspecify an argument?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 236 x 5</span><span>
+#&gt;     week franchise_id spread result opponent_id
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'> 1</span><span>     1 0001              0 T      0003       
+#&gt; </span><span style='color: #555555;'> 2</span><span>     1 0002              0 T      0004       
+#&gt; </span><span style='color: #555555;'> 3</span><span>     1 0003              0 T      0001       
+#&gt; </span><span style='color: #555555;'> 4</span><span>     1 0004              0 T      0002       
+#&gt; </span><span style='color: #555555;'> 5</span><span>     1 0005              0 T      0008       
+#&gt; </span><span style='color: #555555;'> 6</span><span>     1 0006              0 T      0012       
+#&gt; </span><span style='color: #555555;'> 7</span><span>     1 0007              0 T      0009       
+#&gt; </span><span style='color: #555555;'> 8</span><span>     1 0008              0 T      0005       
+#&gt; </span><span style='color: #555555;'> 9</span><span>     1 0009              0 T      0007       
+#&gt; </span><span style='color: #555555;'>10</span><span>     1 0010              0 T      0014       
+#&gt; </span><span style='color: #555555;'># ... with 226 more rows</span><span></div><div class='input'>
 
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
