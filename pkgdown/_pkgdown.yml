@@ -32,3 +32,8 @@ authors:
 template:
   params:
     bootswatch: cosmo
+  opengraph:
+    twitter:
+      creator: "@_TanHo"
+      site: "@DynastyProcess"
+      card: summary

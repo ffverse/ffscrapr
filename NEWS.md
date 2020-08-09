@@ -1,16 +1,19 @@
-# ffscrapr (development version)
+# ffscrapr 1.0.0
 
-- 2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions
-- 2020-05-19 - following [httr API vignette](https://httr.r-lib.org/articles/api-packages.html) and created generic call to MFL API via `get_mfl_endpoint()`
-- 2020-05-23 - adding rate limiting and beginnings of Sleeper connection code
-- 2020-05-27 - adding test folder, renamed main-level functions to "ff_" prefix for ease of autocomplete later
-- 2020-05-30 - add start of league summary code
-- 2020-06-07 - taking a big whack at testing stuff
-- 2020-06-08 - add pkgdown site
-- 2020-06-13 - switch to S3 methods and add memoise
-- 2020-06-21 - add ff_rosters and ff_franchises
-- 2020-07-10 - add ff_draft
-- 2020-07-16 - add dynastyprocess helpers
-- 2020-07-26 - add ff_playerscores
-- 2020-07-27 - finish ff_transactions, add "conn" argument and custom_players argument to mfl_players()
-- 2020-07-28 - add ff_standings
+This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.
+
+Future versions will add more platforms via methods mapped to the same functions.
+
+Functions include: 
+- `ff_connect` (and sibling `mfl_connect`) to establish connection parameters and ratelimiting
+- `mfl_getendpoint` as a low-level function for making GET requests from MFL
+- `ff_draft` gets draft results
+- `ff_draftpicks` gets current and future draft picks that have not yet been selected
+- `ff_franchises` gets franchise-level identifiers and divisions
+- `ff_league` gets league-level summaries of rules, players, and franchises
+- `ff_playerscores` gets playerweek-level scores
+- `ff_rosters` gets franchise-level rosters complete with naming
+- `ff_schedule` gets weekly fantasy schedules
+- `ff_scoring` gets scoring rules
+- `ff_standings` gets league-level season summaries
+- `ff_transactions` gets a list of all transactions and cleans them into a data frame.

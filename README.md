@@ -1,12 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='ffscrapr.dynastyprocess.com'><img src='man/figures/logo.png' align="right" height="120" /></a>
+# ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="120" /></a>
 
 *An R Client for Fantasy Football League APIs*
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ffscrapr)](https://CRAN.R-project.org/package=ffscrapr)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
@@ -62,10 +64,17 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 432 x 11
+#> Warning: `...` is not empty.
+#> 
+#> We detected these problematic arguments:
+#> * `needs_dots`
+#> 
+#> These dots only exist to allow future extensions and should be empty.
+#> Did you misspecify an argument?
+#> # A tibble: 431 x 12
 #>    franchise_id franchise_name player_id player_name pos   team    age
 #>    <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
-#>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.5
+#>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6
 #>  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9
 #>  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7
 #>  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  
@@ -73,27 +82,34 @@ ff_rosters(ssb)
 #>  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7
 #>  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.2
 #>  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
-#>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.3
+#>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
 #> 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
-#> # ... with 422 more rows, and 4 more variables: roster_status <chr>,
-#> #   drafted <chr>, draft_year <chr>, draft_round <chr>
+#> # ... with 421 more rows, and 5 more variables: roster_status <chr>,
+#> #   drafted <chr>, . <list>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 172 x 12
+#> Warning: `...` is not empty.
+#> 
+#> We detected these problematic arguments:
+#> * `needs_dots`
+#> 
+#> These dots only exist to allow future extensions and should be empty.
+#> Did you misspecify an argument?
+#> # A tibble: 181 x 12
 #>    timestamp           type  type_desc franchise_id franchise_name player_id
 #>    <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#>  1 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    
-#>  2 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 13277    
-#>  3 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 12667    
-#>  4 2020-07-31 16:16:36 IR    deactiva~ 0013         Team Ness      14140    
-#>  5 2020-07-31 16:00:00 BBID~ dropped   0004         Team Ice Clim~ 13190    
-#>  6 2020-07-31 16:00:00 BBID~ added     0007         Team Kirby     14129    
-#>  7 2020-07-31 16:00:00 BBID~ added     0004         Team Ice Clim~ 14333    
-#>  8 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     12164    
-#>  9 2020-07-31 16:00:00 BBID~ added     0014         Team Luigi     10297    
-#> 10 2020-07-31 16:00:00 BBID~ added     0013         Team Ness      7813     
-#> # ... with 162 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#>  1 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    
+#>  2 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    
+#>  3 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11758    
+#>  4 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11890    
+#>  5 2020-08-04 22:16:11 IR    deactiva~ 0013         Team Ness      11925    
+#>  6 2020-08-04 16:22:07 FREE~ dropped   0013         Team Ness      11850    
+#>  7 2020-08-03 20:34:25 IR    activated 0007         Team Kirby     13724    
+#>  8 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12665    
+#>  9 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12596    
+#> 10 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    
+#> # ... with 171 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
