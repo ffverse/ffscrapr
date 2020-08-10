@@ -64,14 +64,7 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> Warning: `...` is not empty.
-#> 
-#> We detected these problematic arguments:
-#> * `needs_dots`
-#> 
-#> These dots only exist to allow future extensions and should be empty.
-#> Did you misspecify an argument?
-#> # A tibble: 431 x 12
+#> # A tibble: 429 x 11
 #>    franchise_id franchise_name player_id player_name pos   team    age
 #>    <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
 #>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6
@@ -84,32 +77,25 @@ ff_rosters(ssb)
 #>  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
 #>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
 #> 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
-#> # ... with 421 more rows, and 5 more variables: roster_status <chr>,
-#> #   drafted <chr>, . <list>, draft_year <chr>, draft_round <chr>
+#> # ... with 419 more rows, and 4 more variables: roster_status <chr>,
+#> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> Warning: `...` is not empty.
-#> 
-#> We detected these problematic arguments:
-#> * `needs_dots`
-#> 
-#> These dots only exist to allow future extensions and should be empty.
-#> Did you misspecify an argument?
-#> # A tibble: 181 x 12
+#> # A tibble: 183 x 12
 #>    timestamp           type  type_desc franchise_id franchise_name player_id
 #>    <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#>  1 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    
-#>  2 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    
-#>  3 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11758    
-#>  4 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11890    
-#>  5 2020-08-04 22:16:11 IR    deactiva~ 0013         Team Ness      11925    
-#>  6 2020-08-04 16:22:07 FREE~ dropped   0013         Team Ness      11850    
-#>  7 2020-08-03 20:34:25 IR    activated 0007         Team Kirby     13724    
-#>  8 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12665    
-#>  9 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12596    
-#> 10 2020-07-31 16:19:51 IR    deactiva~ 0004         Team Ice Clim~ 11688    
-#> # ... with 171 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#>  1 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    
+#>  2 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    
+#>  3 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    
+#>  4 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    
+#>  5 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11758    
+#>  6 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 11890    
+#>  7 2020-08-04 22:16:11 IR    deactiva~ 0013         Team Ness      11925    
+#>  8 2020-08-04 16:22:07 FREE~ dropped   0013         Team Ness      11850    
+#>  9 2020-08-03 20:34:25 IR    activated 0007         Team Kirby     13724    
+#> 10 2020-08-03 20:33:17 IR    deactiva~ 0007         Team Kirby     12665    
+#> # ... with 173 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
@@ -130,12 +116,12 @@ this project:
     costs](https://github.com/sponsors/tanho63)\!
 
   - If you’d like to contribute code, please check out [the contribution
-    guidelines](CONTRIBUTING.md).
+    guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
 
 ### Terms of Use
 
 The R code for this package is released as open source under the [MIT
-license](LICENSE.md).
+license](https://ffscrapr.dynastyprocess.com/LICENSE.html).
 
 The APIs and data accessed by this package belong to their respective
 owners, and are governed by their terms of use.

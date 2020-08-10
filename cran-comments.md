@@ -1,3 +1,10 @@
+## RESUBMISSION
+
+This is a resubmission. In this version, I have: 
+* Converted broken/missing file URIs to fully specified URLs
+* Adjusted the title to title case ("ffscrapr: API Client for Fantasy Football Platforms")
+* Added the API URL to the URL section
+
 ## Test environments
 * local R installation, R 3.6.3
 * Mac OSX - on github actions, R 3.6.3

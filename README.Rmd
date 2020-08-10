@@ -64,11 +64,11 @@ Many hands make light work! Here are some ways you can contribute to this projec
 
 - You can [sponsor this project by donating to help with server costs](https://github.com/sponsors/tanho63)!
 
-- If you'd like to contribute code, please check out [the contribution guidelines](CONTRIBUTING.md).
+- If you'd like to contribute code, please check out [the contribution guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
 
 ### Terms of Use
 
-The R code for this package is released as open source under the [MIT license](LICENSE.md). 
+The R code for this package is released as open source under the [MIT license](https://ffscrapr.dynastyprocess.com/LICENSE.html). 
 
 The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use. 
 
