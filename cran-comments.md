@@ -1,3 +1,6 @@
+## RESUBMISSION OF RESUBMISSION
+This is a followup resubmission - I apologize for not understanding the mechanics of the title field on previous submissions. Have removed the "ffscrapr:" chunk from the title as suggested - and thank you for your patience!
+
 ## RESUBMISSION
 
 This is a resubmission. In this version, I have: 
