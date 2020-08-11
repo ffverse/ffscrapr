@@ -2,7 +2,7 @@
 # External functions imported and sometimes re-exported
 
 #' @keywords internal
-#' @importFrom rlang .data
+#' @importFrom rlang .data `%||%`
 #' @importFrom utils str
 
 NULL
