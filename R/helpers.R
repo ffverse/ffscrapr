@@ -67,3 +67,11 @@
 
   invisible(user_agent)
 }
+
+#' Drop nulls from a list/vector
+#' @keywords internal
+#' @noRd
+.fn_drop_nulls <- function (x)
+{
+  x[!vapply(x, is.null, FUN.VALUE = logical(1))]
+}
