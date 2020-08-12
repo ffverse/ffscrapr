@@ -22,8 +22,7 @@ sleeper_connect <- function(season = NULL,
                             rate_limit_seconds = 60) {
 
   ## USER AGENT ##
-  # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
-  # See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
+  # Self-identifying is mostly about being polite.
 
   if (length(user_agent) > 1) {
     stop("user_agent must be a character vector of length one!")
@@ -62,11 +61,9 @@ sleeper_connect <- function(season = NULL,
   structure(
     list(
       platform = "Sleeper",
-      # get = .get,
-      # user_agent = user_agent
       season = season,
-      league_id = league_id,
       user_name = user_name,
+      league_id = league_id,
       user_id = user_id
     ),
     class = "sleeper_conn"
@@ -114,67 +111,9 @@ print.sleeper_conn <- function(x, ...) {
     )
   }
 
+  if(is.null(parsed$user_id)){
+    stop(glue::glue("Could not find user <{user_name}> in Sleeper user database."),
+         call. = FALSE)}
+
   parsed$user_id
 }
-
-#' GET Sleeper endpoint
-#' ## NOT YET WORKING ##
-#'
-#' Create a GET request to any MFL export endpoint
-#'
-#' @param conn the list object created by \code{mfl_connect()}
-#' @param endpoint a string defining which endpoint to return from the API
-#' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
-#'
-#' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
-#'
-#' @return the league endpoint for MFL
-#'
-#'
-#' @export
-
-#' sleeper_getendpoint <- function(conn,endpoint,...){
-#'
-#'   url_query <- httr::modify_url(url = glue::glue("https://api.sleeper.app/v1/"),
-#'                                 query = list("TYPE"=endpoint,
-#'                                              "L" = conn$league_id,
-#'                                              'APIKEY'=conn$APIKEY,
-#'                                              # ...,
-#'                                              "JSON"=1))
-#'
-#'   response <- .fn_get(url_query,conn$user_agent,conn$auth_cookie)
-#'
-#'   if (httr::http_type(response) != "application/json") {
-#'     stop("API did not return json", call. = FALSE)
-#'   }
-#'
-#'   parsed <- jsonlite::parse_json(httr::content(response,"text"))
-#'
-#'   if (httr::http_error(response)) {
-#'     stop(glue::glue("Sleeper API request failed [{httr::status_code(response)}]\n",
-#'                     parsed$message
-#'     ),
-#'     call. = FALSE
-#'     )
-#'   }
-#'
-#'   structure(
-#'     list(
-#'       content = parsed,
-#'       query = url_query,
-#'       response = response
-#'     ),
-#'     class = "sleeper_api"
-#'   )
-#'
-#' }
-#'
-#' #' @noRd
-#' #' @export
-#' print.sleeper_api <- function(x, ...) {
-#'
-#'   cat("<Sleeper - GET ",x$query,">\n", sep = "")
-#'   str(x$content)
-#'   invisible(x)
-#'
-#' }
