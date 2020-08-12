@@ -25,7 +25,7 @@ sleeper_getendpoint <- function(conn,
 
   # PREP URL
 
-  base_url <- "https://api.sleeper.app/v1/"
+  base_url <- "https://api.sleeper.app/v1"
 
   suffixes <- list(...) %>%
     unname() %>%
@@ -33,7 +33,7 @@ sleeper_getendpoint <- function(conn,
     .fn_drop_nulls() %>%
     paste0(collapse = "/")
 
-  url_query <- paste0(base_url,suffixes,sep = "/")
+  url_query <- paste(base_url,endpoint,suffixes,sep = "/")
 
   ## GET FFSCRAPR ENV
 
@@ -65,7 +65,7 @@ sleeper_getendpoint <- function(conn,
   }
 
   if (httr::http_type(response) == "application/json") {
-    parsed <- jsonlite::parse_json(httr::content(response, "text"))
+    parsed <- jsonlite::parse_json(httr::content(x = response,as = "text"))
   }
 
   if (!is.null(parsed$error)) {

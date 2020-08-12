@@ -277,6 +277,8 @@ ff_schedule.default <- function(conn, ...) {
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param ... additional args which might be used eventually
+#' \code{season} in MFL, you can look up previous seasons by passing a season parameter
+#' \code{user_name} in Sleeper, you can look up users not in the Sleeper conn object by passing a user_name param
 #'
 #' @export ff_userleagues
 #'

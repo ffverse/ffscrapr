@@ -94,6 +94,8 @@ print.sleeper_conn <- function(x, ...) {
 .sleeper_userid <- function(user_name) {
   env <- get(".ffscrapr_env", inherits = TRUE)
 
+  stopifnot(is.character(user_name))
+
   user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"), env$user_agent)
 
   if (httr::http_type(user_object) != "application/json") {
