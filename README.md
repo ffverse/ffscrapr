@@ -8,13 +8,13 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/ffscrapr)](https://CRAN.R-project.org/package=ffscrapr)
+status](https://img.shields.io/cran/v/ffscrapr?style=flat-square)](https://CRAN.R-project.org/package=ffscrapr)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
-coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=flat-square)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
-status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
 
 <!-- badges: end -->
 
@@ -70,10 +70,10 @@ ff_rosters(ssb)
 #>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6
 #>  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    25.9
 #>  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7
-#>  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25  
+#>  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25.1
 #>  5 0001         Team Pikachu   13155     Ross, John  WR    CIN    24.7
 #>  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7
-#>  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.2
+#>  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3
 #>  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
 #>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
 #> 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
