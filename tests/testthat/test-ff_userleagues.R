@@ -10,6 +10,10 @@ with_mock_api({
     expect_s3_class(leagues,"tbl_df")
     expect_gte(nrow(leagues),1)
 
+    edge <- mfl_connect(2020,54040)
+
+    expect_error(ff_userleagues(edge),"No authentication cookie")
+
   })
 })
 
