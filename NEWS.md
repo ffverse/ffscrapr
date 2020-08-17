@@ -1,3 +1,19 @@
+# ffscrapr (development version)
+
+The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but for Sleeper. Some other changes and tweaks will be added eventually!
+
+### Sleeper progress
+- Cleaned up `sleeper_connect()` code
+- Created a `sleeper_getendpoint()` lower level wrapper - design seems a little awkward ("pass each element of the url to become slash-separated parts of the path") - but will roll forward with it anyway, I think that makes the most sense. 
+- Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username. 
+
+### New generics
+Here is a list of new functions available at the top level (ie for all platforms)
+- `ff_userleagues()` returns a list of user leagues. This is deployed slightly differently for MFL and Sleeper - MFL requires authentication to access user's leagues, while Sleeper doesn't have authentication so you can look up any user you like. 
+
+### MFL changes
+- Added method for `ff_userleagues()`
+
 # ffscrapr 1.0.0
 
 This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.

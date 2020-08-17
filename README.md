@@ -8,13 +8,13 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/ffscrapr)](https://CRAN.R-project.org/package=ffscrapr)
+status](https://img.shields.io/cran/v/ffscrapr?style=flat-square)](https://CRAN.R-project.org/package=ffscrapr)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
-coverage](https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=flat-square)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
-status](https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
 
 <!-- badges: end -->
 
@@ -88,20 +88,20 @@ ff_rosters(ssb)
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 189 x 12
+#> # A tibble: 191 x 12
 #>    timestamp           type  type_desc franchise_id franchise_name player_id
 #>    <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#>  1 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    
-#>  2 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    
-#>  3 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    
-#>  4 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    
-#>  5 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    
-#>  6 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    
-#>  7 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    
-#>  8 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    
-#>  9 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    
-#> 10 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    
-#> # ... with 179 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#>  1 2020-08-17 18:40:20 FREE~ dropped   0014         Team Luigi     14342    
+#>  2 2020-08-17 18:40:20 TAXI  demoted   0014         Team Luigi     14096    
+#>  3 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    
+#>  4 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    
+#>  5 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    
+#>  6 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    
+#>  7 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    
+#>  8 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    
+#>  9 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    
+#> 10 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    
+#> # ... with 181 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
