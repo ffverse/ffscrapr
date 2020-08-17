@@ -27,12 +27,19 @@ knitr::opts_chunk$set(
 Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling authentication and rate-limiting, forming appropriate calls, and returning tidy dataframes which can be easily connected to other data sources.
 
 ### Installation
-Install from GitHub with:
+
+Version 1.0.0 is now on CRAN `r emo::ji("tada")` and can be installed with:
+
+```{r eval = FALSE}
+install.packages("ffscrapr")
+```
+
+Install the development version from GitHub with:
 
 ``` {r eval = FALSE}
 # install.packages("devtools") OR install.packages("remotes")
 ## remotes is a subpackage of devtools
-remotes::install_github("dynastyprocess/ffscrapr")
+remotes::install_github("dynastyprocess/ffscrapr",ref = "dev")
 ```
 
 ### Usage
