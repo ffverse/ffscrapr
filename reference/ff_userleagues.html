@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • ffscrapr</title>
+<title>Get User Leagues — ff_userleagues • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See magrittr::%&amp;gt;% for details." />
+<meta property="og:title" content="Get User Leagues — ff_userleagues" />
+<meta property="og:description" content="This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.
+This function retrieves a tibble of all user leagues and requires an
+authentication cookie to be stored inside the MFL conn object
+(which were created via username/password args)
+This function retrieves a tibble of all user leagues
+(which were created via username/password args)" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -139,18 +144,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Get User Leagues</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_userleagues.R'><code>R/mfl_userleagues.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_userleagues.R'><code>R/sleeper_userleagues.R</code></a></small>
+    <div class="hidden name"><code>ff_userleagues.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See <code>magrittr::%&gt;%</code> for details.</p>
+    <p>This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.</p>
+<p>This function retrieves a tibble of all user leagues and requires an
+authentication cookie to be stored inside the MFL conn object
+(which were created via username/password args)</p>
+<p>This function retrieves a tibble of all user leagues
+(which were created via username/password args)</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>ff_userleagues</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
 
+<span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_userleagues</span>(<span class='no'>conn</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
+<span class='co'># S3 method for sleeper_conn</span>
+<span class='fu'>ff_userleagues</span>(<span class='no'>conn</span>, <span class='kw'>user_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>conn</th>
+      <td><p>a connection object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments that may be passed to other methods (for method consistency)</p></td>
+    </tr>
+    <tr>
+      <th>season</th>
+      <td><p>the MFL platform season to look for</p></td>
+    </tr>
+    <tr>
+      <th>user_name</th>
+      <td><p>the username to look up - defaults to user created in conn if available</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tidy dataframe with one row for every league a user is in</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

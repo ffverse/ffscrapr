@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GET Sleeper endpoint
-## NOT YET WORKING ## — sleeper_getendpoint • ffscrapr</title>
+<title>GET any SLEEPER endpoint — sleeper_getendpoint • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -20,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -49,10 +48,12 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="GET Sleeper endpoint
-## NOT YET WORKING ## — sleeper_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint" />
+<meta property="og:title" content="GET any SLEEPER endpoint — sleeper_getendpoint" />
+<meta property="og:description" content="Create a GET request to any MFL export endpoint." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 
@@ -84,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -108,6 +109,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -135,14 +139,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GET Sleeper endpoint
-## NOT YET WORKING ##</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper.R'><code>R/sleeper.R</code></a></small>
+    <h1>GET any SLEEPER endpoint</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_api.R'><code>R/sleeper_api.R</code></a></small>
     <div class="hidden name"><code>sleeper_getendpoint.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint</p>
+    <p>Create a GET request to any MFL export endpoint.</p>
     </div>
 
     <pre class="usage"><span class='fu'>sleeper_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
@@ -152,7 +155,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>the list object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
+      <td><p>the list object created by <code><a href='sleeper_connect.html'>sleeper_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>endpoint</th>
@@ -160,16 +163,21 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments which will be passed as "argumentname = argument" in an HTTP query parameter</p></td>
+      <td><p>All other arguments are passed in order as slash-separated components of the url</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the league endpoint for MFL</p>
+    <p>A list object containing the query, response, and parsed content.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function will read the connection object and automatically pass in the rate-limiting, league ID, and/or user ID found in the object.</p>
+<p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.</p>
+<p>Check out the vignette for more details and example usage.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p></div>
+    <div class='dont-index'><p><a href='https://docs.sleeper.app'>https://docs.sleeper.app</a></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
