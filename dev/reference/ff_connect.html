@@ -51,6 +51,9 @@
 <meta property="og:title" content="Connect to a League — ff_connect" />
 <meta property="og:description" content="This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -82,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -106,6 +109,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -142,7 +148,7 @@
     <p>This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='no'>league_id</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,8 +175,20 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list that stores MFL connection objects</p>
+    <p>a connection object to be used with <code>ff_*</code> functions</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p><code><a href='mfl_connect.html'>mfl_connect</a></code>, <code><a href='sleeper_connect.html'>sleeper_connect</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>ff_connect</span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2019</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;MFL connection 2019_54040&gt;
+#&gt; List of 5
+#&gt;  $ platform   : chr "MFL"
+#&gt;  $ season     : num 2019
+#&gt;  $ league_id  : chr "54040"
+#&gt;  $ APIKEY     : NULL
+#&gt;  $ auth_cookie: NULL
+#&gt;  - attr(*, "class")= chr "mfl_conn"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
