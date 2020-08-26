@@ -30,6 +30,8 @@ Version 1.0.0 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
+# or from GitHub release
+remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.0.0")
 ```
 
 Install the development version from GitHub with:
@@ -37,8 +39,11 @@ Install the development version from GitHub with:
 ``` r
 # install.packages("devtools") OR install.packages("remotes")
 ## remotes is a subpackage of devtools
-remotes::install_github("dynastyprocess/ffscrapr",ref = "dev")
+remotes::install_github("dynastyprocess/ffscrapr")
 ```
+
+The dev version has a [separate documentation site
+here](https://ffscrapr.dynastyprocess.com/dev).
 
 ### Usage
 
@@ -70,38 +75,38 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 446 x 11
+#> # A tibble: 455 x 11
 #>    franchise_id franchise_name player_id player_name pos   team    age
 #>    <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
 #>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6
 #>  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26  
 #>  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7
 #>  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25.1
-#>  5 0001         Team Pikachu   13155     Ross, John  WR    CIN    24.7
-#>  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7
-#>  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3
-#>  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
-#>  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
-#> 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4
-#> # ... with 436 more rows, and 4 more variables: roster_status <chr>,
+#>  5 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.8
+#>  6 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3
+#>  7 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
+#>  8 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
+#>  9 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.5
+#> 10 0001         Team Pikachu   9918      Sanders, E~ WR    NOS    33.4
+#> # ... with 445 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 189 x 12
+#> # A tibble: 301 x 12
 #>    timestamp           type  type_desc franchise_id franchise_name player_id
 #>    <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#>  1 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    
-#>  2 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    
-#>  3 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    
-#>  4 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    
-#>  5 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    
-#>  6 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    
-#>  7 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    
-#>  8 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    
-#>  9 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    
-#> 10 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    
-#> # ... with 179 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#>  1 2020-08-25 11:10:50 FREE~ dropped   0003         Team Captain ~ 13387    
+#>  2 2020-08-24 15:05:29 TAXI  demoted   0003         Team Captain ~ 14081    
+#>  3 2020-08-24 15:04:45 FREE~ dropped   0003         Team Captain ~ 14094    
+#>  4 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     10960    
+#>  5 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     14209    
+#>  6 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14844    
+#>  7 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14209    
+#>  8 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14195    
+#>  9 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14317    
+#> 10 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14969    
+#> # ... with 291 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
