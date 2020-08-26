@@ -4,7 +4,7 @@
 \alias{ff_connect}
 \title{Connect to a League}
 \usage{
-ff_connect(platform = "mfl", league_id, ...)
+ff_connect(platform = "mfl", league_id = NULL, ...)
 }
 \arguments{
 \item{platform}{one of MFL or Sleeper (Fleaflicker, ESPN, Yahoo in approximate priority order going forward)}

@@ -32,7 +32,7 @@
 #'
 #' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
 
-ff_connect <- function(platform = "mfl", league_id, ...) {
+ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
   platform <- tolower(platform)
 
   if (!platform %in% c("mfl", "sleeper")) {
@@ -245,13 +245,9 @@ ff_draftpicks.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_draftpicks found for platform: {conn$platform}"))
 }
 
-# ff_auction_settings
-
-# ff_auction_details
-
 # ff_schedule - summarises matchups in a flat table
 
-#### ff_standings ####
+#### ff_schedule ####
 
 #' Get Schedule
 #'
@@ -271,4 +267,28 @@ ff_schedule <- function(conn, ...) {
 #' @export
 ff_schedule.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_schedule found for platform: {conn$platform}."))
+}
+
+#### ff_userleagues ####
+
+#' Get User Leagues
+#'
+#' This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args which might be used eventually
+#' \code{season} in MFL, you can look up previous seasons by passing a season parameter
+#' \code{user_name} in Sleeper, you can look up users not in the Sleeper conn object by passing a user_name param
+#'
+#' @export ff_userleagues
+#'
+#' @return A tidy dataframe with one row for every league a user is in
+
+ff_userleagues <- function(conn, ...) {
+  UseMethod("ff_userleagues")
+}
+
+#' @export
+ff_userleagues.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_userleagues found for platform: {conn$platform}."))
 }
