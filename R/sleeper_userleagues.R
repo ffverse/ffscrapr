@@ -19,7 +19,7 @@ ff_userleagues.sleeper_conn <- function(conn,user_name = NULL,...){
 
   if(!is.null(user_name)){user_id <- .sleeper_userid(user_name)}
 
-  df_leagues <- sleeper_getendpoint("user",user_id,"leagues","nfl","2020") %>%
+  df_leagues <- sleeper_getendpoint("user",user_id,"leagues/nfl",conn$season) %>%
     purrr::pluck("content") %>%
     purrr::map_dfr(`[`,c("name","league_id")) %>%
     dplyr::mutate(franchise_name = purrr::map_chr(.data$league_id,.sleeper_userteams,user_id),
