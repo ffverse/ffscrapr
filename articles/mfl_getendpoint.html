@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@
 <p>It is safest to assume that everything is <em>case-sensitive</em>: the endpoint must match the case displayed by MFL (“league<em>S</em>earch”) and the SEARCH argument name must be provided in upper-case.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">sfb_search</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span>(<span class="no">conn</span>,<span class="kw">endpoint</span> <span class="kw">=</span> <span class="st">"leagueSearch"</span>, <span class="kw">SEARCH</span> <span class="kw">=</span> <span class="st">"sfbx conference"</span>)</pre></body></html></div>
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
-<p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://rdrr.io/pkg/magrittr/man/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
+<p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r">
 <span class="no">search_results</span> <span class="kw">&lt;-</span> <span class="no">sfb_search</span> <span class="kw">%&gt;%</span>
   <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span>(<span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span>) <span class="kw">%&gt;%</span>
@@ -174,13 +174,14 @@
 <span class="co">#&gt; # A tibble: 6 x 9</span>
 <span class="co">#&gt;   timestamp           franchise_id willGiveUp inExchangeFor franchise_name</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         </span>
-<span class="co">#&gt; 1 2019-11-23 14:49:15 0001         7394       "anyone need… @JohnBoschFF  </span>
-<span class="co">#&gt; 2 2019-11-23 14:49:15 0001         13128      "anyone need… @JohnBoschFF  </span>
+<span class="co">#&gt; 1 2019-11-23 14:49:15 0001         7394       "anyone need~ @JohnBoschFF  </span>
+<span class="co">#&gt; 2 2019-11-23 14:49:15 0001         13128      "anyone need~ @JohnBoschFF  </span>
 <span class="co">#&gt; 3 2020-02-01 05:43:29 0003         13319      ""            The Accountant</span>
 <span class="co">#&gt; 4 2020-02-01 05:43:29 0003         13139      ""            The Accountant</span>
 <span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""            The Accountant</span>
 <span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""            Kevin Cutillo </span>
-<span class="co">#&gt; # … with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt; # ... with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   team &lt;chr&gt;</span></pre></body></html></div>
 </div>
 </div>
   </div>
