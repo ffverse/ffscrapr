@@ -4,11 +4,9 @@
 \alias{sleeper_getendpoint}
 \title{GET any SLEEPER endpoint}
 \usage{
-sleeper_getendpoint(conn, endpoint, ...)
+sleeper_getendpoint(endpoint, ...)
 }
 \arguments{
-\item{conn}{the list object created by \code{sleeper_connect()}}
-
 \item{endpoint}{a string defining which endpoint to return from the API}
 
 \item{...}{All other arguments are passed in order as slash-separated components of the url}
@@ -17,13 +15,9 @@ sleeper_getendpoint(conn, endpoint, ...)
 A list object containing the query, response, and parsed content.
 }
 \description{
-Create a GET request to any MFL export endpoint.
+The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.
 }
 \details{
-This function will read the connection object and automatically pass in the rate-limiting, league ID, and/or user ID found in the object.
-
-The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.
-
 Check out the vignette for more details and example usage.
 }
 \seealso{

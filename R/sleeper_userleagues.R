@@ -19,7 +19,7 @@ ff_userleagues.sleeper_conn <- function(conn,user_name = NULL,...){
 
   if(!is.null(user_name)){user_id <- .sleeper_userid(user_name)}
 
-  df_leagues <- sleeper_getendpoint(conn,"user",user_id,"leagues","nfl","2020") %>%
+  df_leagues <- sleeper_getendpoint("user",user_id,"leagues","nfl","2020") %>%
     purrr::pluck("content") %>%
     purrr::map_dfr(`[`,c("name","league_id")) %>%
     dplyr::mutate(franchise_name = purrr::map_chr(.data$league_id,.sleeper_userteams,user_id),
@@ -33,7 +33,7 @@ ff_userleagues.sleeper_conn <- function(conn,user_name = NULL,...){
 
 .sleeper_userteams <- function(league_id,user_id){
 
-  df_teams <- sleeper_getendpoint(conn = NULL,"league",league_id,"users") %>%
+  df_teams <- sleeper_getendpoint("league",league_id,"users") %>%
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     tidyr::hoist(1,"franchise_id"="user_id","display_name","metadata") %>%
