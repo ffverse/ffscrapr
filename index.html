@@ -110,11 +110,14 @@
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
 <p>Version 1.0.0 is now on CRAN 🎉 and can be installed with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ffscrapr"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ffscrapr"</span>)
+<span class="co"># or from GitHub release</span>
+<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>,<span class="kw">ref</span> <span class="kw">=</span> <span class="st">"v1.0.0"</span>)</pre></div>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
 <span class="co">## remotes is a subpackage of devtools</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>,<span class="kw">ref</span> <span class="kw">=</span> <span class="st">"dev"</span>)</pre></div>
+<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)</pre></div>
+<p>The dev version has a <a href="https://ffscrapr.dynastyprocess.com/dev">separate documentation site here</a>.</p>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
@@ -142,38 +145,38 @@
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 446 x 11</span>
+<span class="co">#&gt; # A tibble: 455 x 11</span>
 <span class="co">#&gt;    franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6</span>
 <span class="co">#&gt;  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26  </span>
 <span class="co">#&gt;  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7</span>
 <span class="co">#&gt;  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25.1</span>
-<span class="co">#&gt;  5 0001         Team Pikachu   13155     Ross, John  WR    CIN    24.7</span>
-<span class="co">#&gt;  6 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.7</span>
-<span class="co">#&gt;  7 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3</span>
-<span class="co">#&gt;  8 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3</span>
-<span class="co">#&gt;  9 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4</span>
-<span class="co">#&gt; 10 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.4</span>
-<span class="co">#&gt; # ... with 436 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt;  5 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.8</span>
+<span class="co">#&gt;  6 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3</span>
+<span class="co">#&gt;  7 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3</span>
+<span class="co">#&gt;  8 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4</span>
+<span class="co">#&gt;  9 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.5</span>
+<span class="co">#&gt; 10 0001         Team Pikachu   9918      Sanders, E~ WR    NOS    33.4</span>
+<span class="co">#&gt; # ... with 445 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 189 x 12</span>
+<span class="co">#&gt; # A tibble: 301 x 12</span>
 <span class="co">#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    </span>
-<span class="co">#&gt;  2 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    </span>
-<span class="co">#&gt;  3 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    </span>
-<span class="co">#&gt;  4 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    </span>
-<span class="co">#&gt;  5 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    </span>
-<span class="co">#&gt;  6 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    </span>
-<span class="co">#&gt;  7 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    </span>
-<span class="co">#&gt;  8 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    </span>
-<span class="co">#&gt;  9 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    </span>
-<span class="co">#&gt; 10 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    </span>
-<span class="co">#&gt; # ... with 179 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt;  1 2020-08-25 11:10:50 FREE~ dropped   0003         Team Captain ~ 13387    </span>
+<span class="co">#&gt;  2 2020-08-24 15:05:29 TAXI  demoted   0003         Team Captain ~ 14081    </span>
+<span class="co">#&gt;  3 2020-08-24 15:04:45 FREE~ dropped   0003         Team Captain ~ 14094    </span>
+<span class="co">#&gt;  4 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     10960    </span>
+<span class="co">#&gt;  5 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     14209    </span>
+<span class="co">#&gt;  6 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14844    </span>
+<span class="co">#&gt;  7 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14209    </span>
+<span class="co">#&gt;  8 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14195    </span>
+<span class="co">#&gt;  9 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14317    </span>
+<span class="co">#&gt; 10 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14969    </span>
+<span class="co">#&gt; # ... with 291 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 <span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
