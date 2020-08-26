@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -160,20 +160,20 @@
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
-<span class="co">#&gt; # A tibble: 189 x 12</span>
+<span class="co">#&gt; # A tibble: 191 x 12</span>
 <span class="co">#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    </span>
-<span class="co">#&gt;  2 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    </span>
-<span class="co">#&gt;  3 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    </span>
-<span class="co">#&gt;  4 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    </span>
-<span class="co">#&gt;  5 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    </span>
-<span class="co">#&gt;  6 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    </span>
-<span class="co">#&gt;  7 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    </span>
-<span class="co">#&gt;  8 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    </span>
-<span class="co">#&gt;  9 2020-08-07 20:38:52 IR    activated 0007         Team Kirby     13871    </span>
-<span class="co">#&gt; 10 2020-08-06 17:01:09 IR    deactiva~ 0003         Team Captain ~ 10737    </span>
-<span class="co">#&gt; # ... with 179 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt;  1 2020-08-17 18:40:20 FREE~ dropped   0014         Team Luigi     14342    </span>
+<span class="co">#&gt;  2 2020-08-17 18:40:20 TAXI  demoted   0014         Team Luigi     14096    </span>
+<span class="co">#&gt;  3 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     11529    </span>
+<span class="co">#&gt;  4 2020-08-16 23:51:55 FREE~ dropped   0007         Team Kirby     13136    </span>
+<span class="co">#&gt;  5 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     14464    </span>
+<span class="co">#&gt;  6 2020-08-15 19:11:44 FREE~ dropped   0007         Team Kirby     13144    </span>
+<span class="co">#&gt;  7 2020-08-14 09:03:33 IR    deactiva~ 0002         Team Simon Be~ 14093    </span>
+<span class="co">#&gt;  8 2020-08-14 09:02:50 FREE~ dropped   0002         Team Simon Be~ 12615    </span>
+<span class="co">#&gt;  9 2020-08-10 16:32:55 FREE~ dropped   0013         Team Ness      11925    </span>
+<span class="co">#&gt; 10 2020-08-10 16:31:43 FREE~ dropped   0013         Team Ness      12648    </span>
+<span class="co">#&gt; # ... with 181 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 <span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
@@ -233,10 +233,10 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=ffscrapr"><img src="https://www.r-pkg.org/badges/version/ffscrapr" alt="CRAN status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://codecov.io/gh/DynastyProcess/ffscrapr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://github.com/DynastyProcess/ffscrapr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=ffscrapr"><img src="https://img.shields.io/cran/v/ffscrapr?style=flat-square" alt="CRAN status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&amp;style=flat-square" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&amp;style=flat-square" alt="R build status"></a></li>
 </ul>
 </div>
 </div>

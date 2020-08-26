@@ -50,6 +50,8 @@
 
 <meta property="og:title" content="MFL players library — mfl_players" />
 <meta property="og:description" content="A cached table of MFL players. Will store in memory for each session!
+(via memoise in zzz.R)
+A cached table of MFL players. Will store in memory for each session!
 (via memoise in zzz.R)" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -86,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-info" data-toggle="tooltip" data-placement="bottom" title="Dev branch version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -141,16 +143,20 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>MFL players library</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_rosters.R'><code>R/mfl_rosters.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_players.R'><code>R/mfl_players.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_rosters.R'><code>R/mfl_rosters.R</code></a></small>
     <div class="hidden name"><code>mfl_players.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>A cached table of MFL players. Will store in memory for each session!
 (via memoise in zzz.R)</p>
+<p>A cached table of MFL players. Will store in memory for each session!
+(via memoise in zzz.R)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_players</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>mfl_players</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>mfl_players</span>(<span class='kw'>conn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,18 +170,32 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a dataframe containing all ~2000+ players in the MFL database</p>
+<p>a dataframe containing all ~2000+ players in the MFL database</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>player_list</span> <span class='kw'>&lt;-</span> <span class='fu'>mfl_players</span>()
 <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span>(<span class='no'>player_list</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 25</span><span>
 #&gt;   player_id player_name pos     age team  status draft_year draft_team
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> 12781     Burris, Ju~ S      27   CAR   </span><span style='color: #BB0000;'>NA</span><span>     2016       NYJ       
-#&gt; </span><span style='color: #555555;'>2</span><span> 13280     Williams, ~ WR     25.8 IND   </span><span style='color: #BB0000;'>NA</span><span>     2017       ARI       
-#&gt; </span><span style='color: #555555;'>3</span><span> 14324     Raymond, D~ TE     25.7 PIT   </span><span style='color: #BB0000;'>NA</span><span>     2019       FA        
-#&gt; </span><span style='color: #555555;'>4</span><span> 9816      Berry, Eric S      31.6 FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       KCC       
-#&gt; </span><span style='color: #555555;'>5</span><span> 14079     Sanders, M~ RB     23.3 PHI   </span><span style='color: #BB0000;'>NA</span><span>     2019       PHI       
-#&gt; </span><span style='color: #555555;'># ... with 17 more variables: draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_pick </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 12780     Ridgeway, … DT     25.8 PHI   </span><span style='color: #BB0000;'>NA</span><span>     2016       IND       
+#&gt; </span><span style='color: #555555;'>2</span><span> 13279     Tankersley… CB     26.8 FA    </span><span style='color: #BB0000;'>NA</span><span>     2017       MIA       
+#&gt; </span><span style='color: #555555;'>3</span><span> 15065     Edwards, E… WR     22.4 LAR   R      2020       FA        
+#&gt; </span><span style='color: #555555;'>4</span><span> 14322     Edwards, T… LB     24   PHI   </span><span style='color: #BB0000;'>NA</span><span>     2019       FA        
+#&gt; </span><span style='color: #555555;'>5</span><span> 9816      Berry, Eric S      31.7 FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       KCC       
+#&gt; </span><span style='color: #555555;'># … with 17 more variables: draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_pick </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   stats_global_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, stats_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, cbs_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, fleaflicker_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   sportsdata_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotoworld_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotowire_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nfl_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   espn_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, twitter_username </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, college </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, height </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   weight </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, jersey </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, birthdate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span></div><div class='input'><span class='no'>player_list</span> <span class='kw'>&lt;-</span> <span class='fu'>mfl_players</span>()
+<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span>(<span class='no'>player_list</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 25</span><span>
+#&gt;   player_id player_name pos     age team  status draft_year draft_team
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'>1</span><span> 14078     Higdon, Ka… RB     </span><span style='color: #BB0000;'>NA</span><span>   HOU   </span><span style='color: #BB0000;'>NA</span><span>     2019       FA        
+#&gt; </span><span style='color: #555555;'>2</span><span> 13336     Ledbetter,… DE     26.2 TBB   </span><span style='color: #BB0000;'>NA</span><span>     2017       DET       
+#&gt; </span><span style='color: #555555;'>3</span><span> 14801     Benjamin, … RB     20.7 ARI   R      2020       ARI       
+#&gt; </span><span style='color: #555555;'>4</span><span> 9966      Jones, Res… S      32.5 FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       MIA       
+#&gt; </span><span style='color: #555555;'>5</span><span> 13870     Thomas, Ah… LB     25.7 FA    </span><span style='color: #BB0000;'>NA</span><span>     2018       FA        
+#&gt; </span><span style='color: #555555;'># … with 17 more variables: draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_pick </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   stats_global_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, stats_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, cbs_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, fleaflicker_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   sportsdata_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotoworld_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotowire_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nfl_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   espn_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, twitter_username </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, college </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, height </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>

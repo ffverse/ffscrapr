@@ -43,6 +43,9 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_transactions.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_userleagues.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/forget.html</loc>
   </url>
   <url>
@@ -59,6 +62,12 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_connect.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/sleeper_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/sleeper_players.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/mfl_basics.html</loc>

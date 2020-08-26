@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get League Franchises — ff_franchises • ffscrapr</title>
+<title>Sleeper players library — sleeper_players • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get League Franchises — ff_franchises" />
-<meta property="og:description" content="Returns a tidy dataframe of franchises and any relevant information" />
+<meta property="og:title" content="Sleeper players library — sleeper_players" />
+<meta property="og:description" content="A cached table of Sleeper NFL players. Will store in memory for each session!
+(via memoise in zzz.R)" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -139,53 +140,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get League Franchises</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_franchises.R'><code>R/mfl_franchises.R</code></a></small>
-    <div class="hidden name"><code>ff_franchises.Rd</code></div>
+    <h1>Sleeper players library</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_players.R'><code>R/sleeper_players.R</code></a></small>
+    <div class="hidden name"><code>sleeper_players.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a tidy dataframe of franchises and any relevant information</p>
+    <p>A cached table of Sleeper NFL players. Will store in memory for each session!
+(via memoise in zzz.R)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)
+    <pre class="usage"><span class='fu'>sleeper_players</span>()</pre>
 
-<span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>conn</th>
-      <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of franchises, complete with IDs</p>
+    <p>a dataframe containing all ~7000+ players in the Sleeper database</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_franchises</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 7</span><span>
-#&gt;    franchise_id franchise_name logo  icon  abbrev bbidAvailableBa…
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   http… http… PIKA   185.00          
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0002         Team Simon Be… http… http… SIMN   200.00          
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0003         Team Captain … http… http… CFCN   200.00          
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0004         Team Ice Clim… http… http… ICE    1.00            
-#&gt; </span><span style='color: #555555;'> 5</span><span> 0005         Team Dr. Mario http… http… DRM    200.00          
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0006         Team King Ded… http… http… KDDD   200.00          
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0007         Team Kirby     http… http… KRBY   196.00          
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0008         Team Fox       http… http… FOX    200.00          
-#&gt; </span><span style='color: #555555;'> 9</span><span> 0009         Team Link      http… http… LINK   200.00          
-#&gt; </span><span style='color: #555555;'>10</span><span> 0010         Team Yoshi     http… http… YSHI   151.00          
-#&gt; </span><span style='color: #555555;'>11</span><span> 0011         Team Diddy Ko… http… http… DDY    189.00          
-#&gt; </span><span style='color: #555555;'>12</span><span> 0012         Team Mewtwo    http… http… MEW2   200.00          
-#&gt; </span><span style='color: #555555;'>13</span><span> 0013         Team Ness      http… http… </span><span style='color: #BB0000;'>NA</span><span>     179.00          
-#&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi     http… http… LUIG   183.00          
-#&gt; </span><span style='color: #555555;'># … with 1 more variable: waiverSortOrder </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='no'>player_list</span> <span class='kw'>&lt;-</span> <span class='fu'>sleeper_players</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
