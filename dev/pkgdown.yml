@@ -1,10 +1,10 @@
-pandoc: 2.9.2.1
+pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   mfl_basics: mfl_basics.html
   mfl_getendpoint: mfl_getendpoint.html
-last_built: 2020-08-18T00:51Z
+last_built: 2020-08-26T15:07Z
 urls:
   reference: ffscrapr.dynastyprocess.com/reference
   article: ffscrapr.dynastyprocess.com/articles

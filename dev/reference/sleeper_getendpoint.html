@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="GET any SLEEPER endpoint — sleeper_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint." />
+<meta property="og:description" content="The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -145,18 +145,14 @@
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint.</p>
+    <p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sleeper_getendpoint</span>(<span class='no'>conn</span>, <span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>sleeper_getendpoint</span>(<span class='no'>endpoint</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>conn</th>
-      <td><p>the list object created by <code><a href='sleeper_connect.html'>sleeper_connect()</a></code></p></td>
-    </tr>
     <tr>
       <th>endpoint</th>
       <td><p>a string defining which endpoint to return from the API</p></td>
@@ -172,9 +168,7 @@
     <p>A list object containing the query, response, and parsed content.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function will read the connection object and automatically pass in the rate-limiting, league ID, and/or user ID found in the object.</p>
-<p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.</p>
-<p>Check out the vignette for more details and example usage.</p>
+    <p>Check out the vignette for more details and example usage.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://docs.sleeper.app'>https://docs.sleeper.app</a></p></div>
