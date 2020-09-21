@@ -111,24 +111,29 @@
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
 <p>Version 1.0.0 is now on CRAN 🎉 and can be installed with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ffscrapr"</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ffscrapr"</span>)
 <span class="co"># or from GitHub release</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>,<span class="kw">ref</span> <span class="kw">=</span> <span class="st">"v1.0.0"</span>)</pre></div>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>,ref = <span class="st">"v1.0.0"</span>)
+</pre></div>
 <p>Install the development version from GitHub with:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
 <span class="co">## remotes is a subpackage of devtools</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)</pre></div>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)
+</pre></div>
 <p>The dev version has a <a href="https://ffscrapr.dynastyprocess.com/dev">separate documentation site here</a>.</p>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h3>
 <p>All <code>ffscrapr</code> functions start with a connection object created by ff_connect, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ffscrapr</span>)
-<span class="no">ssb</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(<span class="kw">platform</span> <span class="kw">=</span> <span class="st">"mfl"</span>, <span class="kw">league_id</span> <span class="kw">=</span> <span class="st">"54040"</span>, <span class="kw">season</span> <span class="kw">=</span> <span class="fl">2020</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span>)
+<span class="kw">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(platform = <span class="st">"mfl"</span>, league_id = <span class="st">"54040"</span>, season = <span class="fl">2020</span>)
 
 <span class="co"># Get a summary of league settings</span>
-<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="no">ssb</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>()
+<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="kw">ssb</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>()
 <span class="co">#&gt; tibble [1 x 13] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "54040"</span>
 <span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
@@ -145,7 +150,7 @@
 <span class="co">#&gt;  $ league_depth   : num 490</span>
 
 <span class="co"># Get rosters</span>
-<span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="no">ssb</span>)
+<span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="kw">ssb</span>)
 <span class="co">#&gt; # A tibble: 455 x 11</span>
 <span class="co">#&gt;    franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
@@ -163,7 +168,7 @@
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
-<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="no">ssb</span>)
+<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="kw">ssb</span>)
 <span class="co">#&gt; # A tibble: 301 x 12</span>
 <span class="co">#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
@@ -178,7 +183,8 @@
 <span class="co">#&gt;  9 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14317    </span>
 <span class="co">#&gt; 10 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14969    </span>
 <span class="co">#&gt; # ... with 291 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
-<span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></pre></div>
+<span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span>
+</pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
 <div id="contributing" class="section level3">
@@ -252,7 +258,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -148,10 +148,10 @@
     <p>This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_scoring</span>(<span class='no'>conn</span>)
+    <pre class="usage"><span class='fu'>ff_scoring</span>(<span class='kw'>conn</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_scoring</span>(<span class='no'>conn</span>)</pre>
+<span class='fu'>ff_scoring</span>(<span class='kw'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,8 +170,9 @@
     <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_scoring</span>(<span class='no'>ssb_conn</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_scoring</span>(<span class='kw'>ssb_conn</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -187,7 +188,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
