@@ -14,6 +14,7 @@
 #' @param rate_limit TRUE by default, pass FALSE to turn off rate limiting
 #' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
+#' @param ... silently swallows up unused arguments
 #'
 #' @export mfl_connect
 #'
@@ -31,7 +32,8 @@ mfl_connect <- function(season = NULL,
                         user_agent = NULL,
                         rate_limit = TRUE,
                         rate_limit_number = 4,
-                        rate_limit_seconds = 5) {
+                        rate_limit_seconds = 5,
+                        ...) {
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!

@@ -9,6 +9,7 @@
 #' @param rate_limit TRUE by default - turn off rate limiting with FALSE
 #' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 100 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
+#' @param ... silently swallows up unused arguments
 #'
 #' @export
 #' @return a list that stores MFL connection objects
@@ -19,7 +20,8 @@ sleeper_connect <- function(season = NULL,
                             user_agent = NULL,
                             rate_limit = TRUE,
                             rate_limit_number = 100,
-                            rate_limit_seconds = 60) {
+                            rate_limit_seconds = 60,
+                            ...) {
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite.

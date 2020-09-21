@@ -11,7 +11,8 @@ sleeper_connect(
   user_agent = NULL,
   rate_limit = TRUE,
   rate_limit_number = 100,
-  rate_limit_seconds = 60
+  rate_limit_seconds = 60,
+  ...
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ sleeper_connect(
 \item{rate_limit_number}{number of calls per \code{rate_limit_seconds}, suggested is 100 calls per 60 seconds}
 
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
+
+\item{...}{silently swallows up unused arguments}
 }
 \value{
 a list that stores MFL connection objects
