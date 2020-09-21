@@ -27,8 +27,16 @@ ff_userleagues.mfl_conn <- function(conn,season = NULL,...){
   df_leagues <- mfl_getendpoint(conn,"myleagues", FRANCHISE_NAMES = 1, YEAR = season) %>%
     purrr::pluck("content","leagues","league")
 
+  if(!is.null(df_leagues$franchise_id)){
+    df <- df_leagues %>%
+      tibble::as_tibble() %>%
+      dplyr::select("league_id","league_name"=.data$name,
+                    "franchise_id","franchise_name",
+                    "league_url"=.data$url)
+  }
+
   if(is.null(df_leagues$franchise_id)){
-    df_leagues <- df_leagues %>%
+    df <- df_leagues %>%
       tibble::tibble() %>%
       tidyr::hoist(1,
                    "league_id","league_name"="name",
@@ -36,13 +44,5 @@ ff_userleagues.mfl_conn <- function(conn,season = NULL,...){
                    "league_url"="url")
   }
 
-  if(!is.null(df_leagues$franchise_id)){
-    df_leagues <- df_leagues %>%
-      tibble::as_tibble() %>%
-      dplyr::select("league_id","league_name"=.data$name,
-                    "franchise_id","franchise_name",
-                    "league_url"=.data$url)
-  }
-
-  return(df_leagues)
+  return(df)
 }
