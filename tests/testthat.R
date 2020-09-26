@@ -1,5 +1,6 @@
 suppressPackageStartupMessages({
   library(testthat)
+  library(checkmate)
   library(ffscrapr)
 })
 

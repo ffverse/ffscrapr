@@ -4,7 +4,6 @@ with_mock_api({
 
     sfb_playerscores <- ff_playerscores(sfb_conn, 2019, "AVG")
 
-    expect_s3_class(sfb_playerscores, "tbl_df")
-    expect_gt(length(sfb_playerscores), 1)
+    expect_tibble(sfb_playerscores, min.rows = 100)
   })
 })
