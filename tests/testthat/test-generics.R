@@ -1,8 +1,8 @@
 
-test_that("Unknown platforms return no-method errors",{
-
+test_that("Unknown platforms return no-method errors", {
   conn <- structure(list(platform = "dummy"),
-            class = "dummy_platform")
+    class = "dummy_platform"
+  )
 
   message <- "No method"
 
@@ -17,5 +17,4 @@ test_that("Unknown platforms return no-method errors",{
   expect_error(ff_standings(conn), message)
   expect_error(ff_transactions(conn), message)
   expect_error(ff_userleagues(conn), message)
-
 })
