@@ -16,6 +16,9 @@ Here is a list of new functions available at the top level (ie for all platforms
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
 
+### Other tweaks
+- Now uses {checkmate} for testing.
+
 # ffscrapr 1.0.0
 
 This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.
