@@ -19,7 +19,7 @@ Here is a list of new functions available at the top level (ie for all platforms
 
 ### Other tweaks
 - Now uses {checkmate} for testing.
-- Silently swallowing up unused args in mfl_connect and sleeper_connect
+- Silently swallowing up unused args in mfl_connect and sleeper_connect.
 
 # ffscrapr 1.0.0
 
