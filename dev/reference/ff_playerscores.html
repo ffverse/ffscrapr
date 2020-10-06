@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9003</span>
       </span>
     </div>
 
@@ -148,10 +148,10 @@
     <p>This function returns a tibble of player scores based on league rules</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span>, <span class='kw'>season</span>, <span class='kw'>week</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span>, <span class='kw'>season</span>, <span class='kw'>week</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,8 +179,8 @@
     <p>A tibble of historical player scoring</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>, league_id = <span class='fl'>37920</span>)
-<span class='fu'>ff_playerscores</span>(conn = <span class='kw'>dlf_conn</span>, season = <span class='fl'>2019</span>, week = <span class='st'>"YTD"</span>)
+    <pre class="examples"><div class='input'><span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 597 x 8</span><span>
 #&gt;    season week  player_id player_name          pos   team  points isAvailable
 #&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
