@@ -5,7 +5,10 @@ with_mock_api({
 
     expect_tibble(dlf_standings, any.missing = FALSE, min.rows = 16)
 
-    sleeper_conn <- ff_connect("sleeper", 527362181635997696, season = 2020)
-    expect_error(ff_standings(sleeper_conn))
+    jml_conn <- ff_connect("sleeper", 522458773317046272, season = 2020)
+    jml_standings <- ff_standings(jml_conn)
+
+    expect_tibble(jml_standings, any.missing = FALSE, min.rows = 12)
+
   })
 })

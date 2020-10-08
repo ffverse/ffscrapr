@@ -65,6 +65,7 @@ ff_schedule.sleeper_conn <- function(conn,...){
     df_matchups <- df_matchups %>%
       dplyr::mutate(result = dplyr::case_when(.data$franchise_score > .data$opponent_score ~ "W",
                                        .data$franchise_score < .data$opponent_score ~ "L",
+                                       .data$franchise_score == 0 & .data$opponent_score == 0 ~ NA_character_,
                                        .data$franchise_score == .data$opponent_score ~ "T",
                                        TRUE ~ NA_character_))
   }
