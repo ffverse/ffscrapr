@@ -6,11 +6,15 @@ with_mock_api({
     dlf <- mfl_connect(2020, 37920)
     dlf_franchises <- ff_franchises(dlf)
 
-    # jml <- sleeper_connect(2020,522458773317046272)
-    # jml_franchises <- ff_franchises(jml)
+    jml <- sleeper_connect(2020,522458773317046272)
+    jml_franchises <- ff_franchises(jml)
+
+    dlp <- sleeper_connect(2020,521379020332068864)
+    dlp_franchises <- ff_franchises(dlp)
 
     expect_tibble(ssb_franchises, nrows = 14)
     expect_tibble(dlf_franchises, nrows = 16)
-    # expect_tibble(jml_franchises, nrow = 12)
+    expect_tibble(jml_franchises, nrow = 12)
+    expect_tibble(dlp_franchises, nrow = 12)
   })
 })
