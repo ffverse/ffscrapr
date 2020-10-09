@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9005</span>
       </span>
     </div>
 
@@ -154,7 +154,7 @@
   user_name <span class='op'>=</span> <span class='cn'>NULL</span>,
   user_agent <span class='op'>=</span> <span class='cn'>NULL</span>,
   rate_limit <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  rate_limit_number <span class='op'>=</span> <span class='fl'>100</span>,
+  rate_limit_number <span class='op'>=</span> <span class='fl'>900</span>,
   rate_limit_seconds <span class='op'>=</span> <span class='fl'>60</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
@@ -184,7 +184,7 @@
     </tr>
     <tr>
       <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is 100 calls per 60 seconds</p></td>
+      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is under 1000 calls per 60 seconds</p></td>
     </tr>
     <tr>
       <th>rate_limit_seconds</th>
