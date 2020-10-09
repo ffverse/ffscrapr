@@ -6,7 +6,7 @@
 #'
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
-#' ff_schedule(jml_conn)
+#' x <- ff_schedule(jml_conn)
 #' @rdname ff_schedule
 #' @export
 ff_schedule.sleeper_conn <- function(conn, ...) {
@@ -15,15 +15,18 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
   regular_season_end <- sleeper_getendpoint(league_path) %>%
     purrr::pluck("content", "settings", "playoff_week_start") - 1
 
+  last_scored_week <- sleeper_getendpoint(league_path) %>%
+    purrr::pluck("content", "settings", "last_scored_leg")
+
   weeks <- seq_len(regular_season_end)
 
-  matchups <- purrr::map_dfr(weeks, .sleeper_matchup, conn)
+  matchups <- purrr::map_dfr(weeks, .sleeper_matchup, conn, last_scored_week)
 
   return(matchups)
 }
 
 #' @keywords internal
-.sleeper_matchup <- function(week, conn) {
+.sleeper_matchup <- function(week, conn, last_scored_week) {
   endpoint <- glue::glue("league/{conn$league_id}/matchups/{week}")
 
   df_matchup <- sleeper_getendpoint(endpoint) %>%
@@ -64,10 +67,9 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
   if ("franchise_score" %in% names(df_matchups)) {
     df_matchups <- df_matchups %>%
       dplyr::mutate(result = dplyr::case_when(
-        .data$franchise_score > .data$opponent_score ~ "W",
-        .data$franchise_score < .data$opponent_score ~ "L",
-        .data$franchise_score == 0 & .data$opponent_score == 0 ~ NA_character_,
-        .data$franchise_score == .data$opponent_score ~ "T",
+        .data$week <= last_scored_week & .data$franchise_score > .data$opponent_score ~ "W",
+        .data$week <= last_scored_week & .data$franchise_score < .data$opponent_score ~ "L",
+        .data$week <= last_scored_week & .data$franchise_score == .data$opponent_score ~ "T",
         TRUE ~ NA_character_
       ))
   }
