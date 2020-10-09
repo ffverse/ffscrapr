@@ -8,6 +8,8 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 - Got rid of passing the conn object into `sleeper_getendpoint()` - wasn't really being used, would be used by higher-level functions. May change if cookies etc are used later.
 - Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username. MFL does have a parallel feature even if used for different purposes. 
 - Added method for `ff_schedule()` (1.0.0.9003)
+- Added method for `ff_standings()` (1.0.0.9004)
+- Added method for `ff_franchises()` (1.0.0.9005) and added separate testing file.
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
