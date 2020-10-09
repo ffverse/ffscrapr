@@ -14,34 +14,38 @@
 #'
 #' @export
 
-ff_userleagues.mfl_conn <- function(conn,season = NULL,...){
-
-  if(is.null(conn$auth_cookie)){
+ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
+  if (is.null(conn$auth_cookie)) {
     stop("No authentication cookie found in the conn object.
          Did you pass it the username and password when making it?",
-         call. = FALSE
-         )}
-
-  season <- ifelse(is.null(season),conn$season,season)
-
-  df_leagues <- mfl_getendpoint(conn,"myleagues", FRANCHISE_NAMES = 1, YEAR = season) %>%
-    purrr::pluck("content","leagues","league")
-
-  if(!is.null(df_leagues$franchise_id)){
-    df <- df_leagues %>%
-      tibble::as_tibble() %>%
-      dplyr::select("league_id","league_name"=.data$name,
-                    "franchise_id","franchise_name",
-                    "league_url"=.data$url)
+      call. = FALSE
+    )
   }
 
-  if(is.null(df_leagues$franchise_id)){
+  season <- ifelse(is.null(season), conn$season, season)
+
+  df_leagues <- mfl_getendpoint(conn, "myleagues", FRANCHISE_NAMES = 1, YEAR = season) %>%
+    purrr::pluck("content", "leagues", "league")
+
+  if (!is.null(df_leagues$franchise_id)) {
+    df <- df_leagues %>%
+      tibble::as_tibble() %>%
+      dplyr::select("league_id",
+        "league_name" = .data$name,
+        "franchise_id", "franchise_name",
+        "league_url" = .data$url
+      )
+  }
+
+  if (is.null(df_leagues$franchise_id)) {
     df <- df_leagues %>%
       tibble::tibble() %>%
       tidyr::hoist(1,
-                   "league_id","league_name"="name",
-                   "franchise_id","franchise_name",
-                   "league_url"="url")
+        "league_id",
+        "league_name" = "name",
+        "franchise_id", "franchise_name",
+        "league_url" = "url"
+      )
   }
 
   return(df)

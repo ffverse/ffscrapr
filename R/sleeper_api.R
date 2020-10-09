@@ -15,7 +15,7 @@
 #' @export
 
 sleeper_getendpoint <- function(endpoint,
-                                ...){
+                                ...) {
 
   # PREP URL
 
@@ -27,7 +27,7 @@ sleeper_getendpoint <- function(endpoint,
     .fn_drop_nulls() %>%
     paste0(collapse = "/")
 
-  url_query <- paste(base_url,endpoint,suffixes,sep = "/")
+  url_query <- paste(base_url, endpoint, suffixes, sep = "/")
 
   ## GET FFSCRAPR ENV
 
@@ -37,7 +37,7 @@ sleeper_getendpoint <- function(endpoint,
 
   ## DO QUERY
 
-  response <- fn_get(url_query,user_agent)
+  response <- fn_get(url_query, user_agent)
 
   ## CHECK QUERY
   # nocov start
@@ -54,12 +54,12 @@ sleeper_getendpoint <- function(endpoint,
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("Sleeper API did not return json while calling {url_query}"),
-            call. = FALSE
+      call. = FALSE
     )
   }
 
   if (httr::http_type(response) == "application/json") {
-    parsed <- jsonlite::parse_json(httr::content(x = response,as = "text"))
+    parsed <- jsonlite::parse_json(httr::content(x = response, as = "text"))
   }
 
   if (!is.null(parsed$error)) {
@@ -78,7 +78,6 @@ sleeper_getendpoint <- function(endpoint,
     ),
     class = "sleeper_api"
   )
-
 }
 
 ## PRINT METHOD SLEEPER_API OBJ ##

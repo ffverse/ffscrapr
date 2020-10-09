@@ -8,16 +8,15 @@
 #' @return a dataframe containing all ~7000+ players in the Sleeper database
 #' @export
 
-sleeper_players <- function(){
-
+sleeper_players <- function() {
   df_players <- sleeper_getendpoint("players/nfl") %>%
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    dplyr::mutate_at("fantasy_positions",~purrr::map(.x,as.character) %>% as.character) %>%
-    dplyr::mutate_at("birth_date",lubridate::as_date) %>%
+    dplyr::mutate_at("fantasy_positions", ~ purrr::map(.x, as.character) %>% as.character()) %>%
+    dplyr::mutate_at("birth_date", lubridate::as_date) %>%
     dplyr::mutate("age" = round(as.numeric(Sys.Date() - .data$birth_date) / 365.25, 1)) %>%
-    dplyr::select(-dplyr::contains("search"),-dplyr::contains("first_name"),-dplyr::contains("last_name")) %>%
+    dplyr::select(-dplyr::contains("search"), -dplyr::contains("first_name"), -dplyr::contains("last_name")) %>%
     dplyr::select(
       "player_id",
       "player_name" = .data$full_name,

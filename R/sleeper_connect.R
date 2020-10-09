@@ -115,9 +115,11 @@ print.sleeper_conn <- function(x, ...) {
     )
   }
 
-  if(is.null(parsed$user_id)){
+  if (is.null(parsed$user_id)) {
     stop(glue::glue("Could not find user <{user_name}> in Sleeper user database."),
-         call. = FALSE)}
+      call. = FALSE
+    )
+  }
 
   parsed$user_id
 }

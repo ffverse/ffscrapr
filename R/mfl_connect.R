@@ -130,7 +130,7 @@ print.mfl_conn <- function(x, ...) {
   #     "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
   #   env$user_agent)
 
-  httr::handle_reset('https://api.myfantasyleague.com')
+  httr::handle_reset("https://api.myfantasyleague.com")
 
   m_cookie <- env$post(
     url = "https://api.myfantasyleague.com/2020/login",
