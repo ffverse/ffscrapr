@@ -9,6 +9,5 @@ with_mock_api({
     jml_rosters <- ff_rosters(jml_conn)
 
     expect_tibble(jml_rosters, min.rows = 200)
-
   })
 })
