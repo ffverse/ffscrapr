@@ -1,7 +1,6 @@
 #### ff_rosters (MFL) ####
 
-#' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
-#' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
+#' Get a dataframe of rosters.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param custom_players TRUE or FALSE - include custom players? defaults to FALSE

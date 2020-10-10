@@ -27,10 +27,6 @@ This function returns a tibble with one row for every team for every weekly matc
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_schedule(ssb_conn)
-
-
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_schedule(jml_conn)
-
-
 }

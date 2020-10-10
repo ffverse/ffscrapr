@@ -6,7 +6,7 @@
 #'
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
-#' x <- ff_schedule(jml_conn)
+#' ff_schedule(jml_conn)
 #' @rdname ff_schedule
 #' @export
 ff_schedule.sleeper_conn <- function(conn, ...) {
