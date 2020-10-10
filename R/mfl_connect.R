@@ -31,8 +31,8 @@ mfl_connect <- function(season = NULL,
                         password = NULL,
                         user_agent = NULL,
                         rate_limit = TRUE,
-                        rate_limit_number = 4,
-                        rate_limit_seconds = 5,
+                        rate_limit_number = NULL,
+                        rate_limit_seconds = NULL,
                         ...) {
 
   ## USER AGENT ##
@@ -49,12 +49,15 @@ mfl_connect <- function(season = NULL,
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
-
   if (!is.logical(rate_limit)) {
     stop("rate_limit should be logical")
   }
 
-  .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+  if(!rate_limit ||
+     (!is.null(rate_limit_number) & !is.null(rate_limit_number))
+  ){
+  .fn_set_ratelimit(rate_limit,"MFL", rate_limit_number, rate_limit_seconds)
+  }
 
   ## SEASON ##
   # MFL organizes things by league year and tends to roll over around February.

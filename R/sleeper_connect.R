@@ -19,8 +19,8 @@ sleeper_connect <- function(season = NULL,
                             user_name = NULL,
                             user_agent = NULL,
                             rate_limit = TRUE,
-                            rate_limit_number = 900,
-                            rate_limit_seconds = 60,
+                            rate_limit_number = NULL,
+                            rate_limit_seconds = NULL,
                             ...) {
 
   ## USER AGENT ##
@@ -37,11 +37,14 @@ sleeper_connect <- function(season = NULL,
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
+
   if (!is.logical(rate_limit)) {
     stop("rate_limit should be logical")
   }
 
+  if(!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
   .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+  }
 
   ## Season ##
   # Sleeper organizes things by league year and tends to roll over around February.

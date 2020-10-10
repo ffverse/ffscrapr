@@ -31,7 +31,7 @@ sleeper_getendpoint <- function(endpoint,
 
   ## GET FFSCRAPR ENV
 
-  fn_get <- get("get", envir = .ffscrapr_env, inherits = TRUE)
+  fn_get <- get("get.sleeper", envir = .ffscrapr_env, inherits = TRUE)
 
   user_agent <- get("user_agent", envir = .ffscrapr_env, inherits = TRUE)
 

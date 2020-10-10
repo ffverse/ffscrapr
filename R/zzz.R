@@ -24,6 +24,8 @@
     ) %>%
       httr::user_agent(),
     get = ratelimitr::limit_rate(httr::GET, ratelimitr::rate(60, 60)),
+    get.mfl = ratelimitr::limit_rate(httr::GET, ratelimitr::rate(2, 3)),
+    get.sleeper = ratelimitr::limit_rate(httr::GET, ratelimitr::rate(30, 2)),
     post = ratelimitr::limit_rate(httr::POST, ratelimitr::rate(60, 60))
   )
 

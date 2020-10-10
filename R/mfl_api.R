@@ -21,7 +21,7 @@
 #' @export
 
 mfl_getendpoint <- function(conn, endpoint, ...) {
-  fn_get <- get("get", envir = .ffscrapr_env, inherits = TRUE)
+  fn_get <- get("get.mfl", envir = .ffscrapr_env, inherits = TRUE)
 
   user_agent <- get("user_agent", envir = .ffscrapr_env, inherits = TRUE)
 
