@@ -1,0 +1,105 @@
+#### ff_draftpicks - Sleeper ####
+
+#' Sleeper Draft Picks
+#'
+#' Get current and future draft picks that have not yet been selected/converted into players
+#'
+#' @param conn the list object created by \code{ff_connect()}
+#' @param ... other arguments (currently unused)
+#'
+#' @rdname ff_draftpicks
+#'
+#' @examples
+#' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
+#' ff_draftpicks(jml_conn)
+#' @return a tibble detailing future draft picks
+#'
+#' @export
+ff_draftpicks.sleeper_conn <- function(conn, ...) {
+
+  current_picks <- .sleeper_currentpicks(conn)
+
+  future_picks <- .sleeper_futurepicks(conn)
+
+  picks <- dplyr::bind_rows(current_picks,future_picks) %>%
+    dplyr::left_join(
+      ff_franchises(conn) %>% dplyr::select('franchise_id','franchise_name'),
+      by = 'franchise_id'
+    ) %>%
+    dplyr::select(dplyr::any_of(c(
+        "season", "franchise_id", "franchise_name",
+        "round", "pick", "original_franchise_id")))
+
+  return(picks)
+}
+
+.sleeper_currentpicks <- function(conn){
+
+  current_drafts <- glue::glue("league/{conn$league_id}/drafts") %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck('content') %>%
+    purrr::map_dfr(`[`,c('draft_id','season','status')) %>%
+    dplyr::filter(status != 'complete') %>%
+    dplyr::mutate(picks = purrr::map(.data$draft_id,.sleeper_currentdraft)) %>%
+    tidyr::unnest(picks) %>%
+    dplyr::select(dplyr::any_of(c(
+      'season','round','pick','franchise_id'
+    )))
+
+  return(current_drafts)
+}
+
+.sleeper_currentdraft <- function(draft_id){
+
+  picks <- glue::glue('draft/{draft_id}/picks') %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck('content') %>%
+    purrr::map_dfr(`[`,c('round','draft_slot','roster_id')) %>%
+    dplyr::select('round', 'pick' = 'draft_slot', 'franchise_id' = 'roster_id')
+
+  return(picks)
+}
+
+.sleeper_futurepicks <- function(conn){
+
+  league_settings <- glue::glue('league/{conn$league_id}') %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck('content')
+
+  draft_rounds <- league_settings %>%
+    purrr::pluck('settings','draft_rounds') %>%
+    seq_len()
+
+  # Seems to be that you can only trade three years in advance, hard-coded into the platform
+  seasons <- league_settings %>%
+    purrr::pluck('season') %>%
+    as.numeric() %>%
+    {seq.int(. +1, .+3, 1)} %>%
+    as.character()
+
+  franchises <- ff_franchises(conn) %>%
+    dplyr::select('franchise_id')
+
+  traded_picks <- glue::glue('league/{conn$league_id}/traded_picks') %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck('content') %>%
+    dplyr::bind_rows() %>%
+    dplyr::select(dplyr::any_of(c(
+      'season',
+      'round',
+      'original_franchise_id' = 'roster_id',
+      'franchise_id' = 'owner_id')
+    )) %>%
+    dplyr::filter(.data$season %in% seasons)
+
+  future_picks <- tidyr::crossing(season = seasons,
+                                  round = draft_rounds,
+                                  franchises) %>%
+    dplyr::mutate('original_franchise_id' = .data$franchise_id) %>%
+    dplyr::anti_join(traded_picks, by = c('original_franchise_id','season','round')) %>%
+    dplyr::bind_rows(traded_picks) %>%
+    dplyr::arrange(.data$franchise_id,.data$season,.data$round)
+
+  return(future_picks)
+}
+
