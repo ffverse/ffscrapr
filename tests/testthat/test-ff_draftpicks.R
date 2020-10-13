@@ -15,5 +15,8 @@ with_mock_api({
     dlp <- sleeper_connect(2020, 521379020332068864)
     dlp_picks <- ff_draftpicks(dlp)
 
+    expect_tibble(jml_picks,min.rows = 144)
+    expect_tibble(dlp_picks, min.rows = 144)
+
   })
 })

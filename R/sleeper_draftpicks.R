@@ -39,9 +39,9 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
     sleeper_getendpoint() %>%
     purrr::pluck('content') %>%
     purrr::map_dfr(`[`,c('draft_id','season','status')) %>%
-    dplyr::filter(status != 'complete') %>%
+    dplyr::filter(.data$status != 'complete') %>%
     dplyr::mutate(picks = purrr::map(.data$draft_id,.sleeper_currentdraft)) %>%
-    tidyr::unnest(picks) %>%
+    tidyr::unnest(.data$picks) %>%
     dplyr::select(dplyr::any_of(c(
       'season','round','pick','franchise_id'
     )))
@@ -74,7 +74,7 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
   seasons <- league_settings %>%
     purrr::pluck('season') %>%
     as.numeric() %>%
-    {seq.int(. +1, .+3, 1)} %>%
+    {function(.x) seq.int(.x +1, .x+3, 1)}() %>%
     as.character()
 
   franchises <- ff_franchises(conn) %>%
