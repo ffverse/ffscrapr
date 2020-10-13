@@ -36,7 +36,8 @@
 #' @noRd
 #' @keywords internal
 
-.fn_set_ratelimit <- function(toggle = TRUE, rate_number, rate_seconds) {
+.fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
+
   if (toggle) {
     fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
     fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
@@ -47,8 +48,15 @@
     fn_post <- httr::POST
   }
 
-  assign("get", fn_get, envir = .ffscrapr_env)
-  assign("post", fn_post, envir = .ffscrapr_env)
+  if(platform == "MFL"){
+    assign("get.mfl", fn_get, envir = .ffscrapr_env)
+    assign("post.mfl", fn_post, envir = .ffscrapr_env)
+  }
+
+  if(platform == "Sleeper"){
+    assign("get.sleeper", fn_get, envir = .ffscrapr_env)
+    assign("post.sleeper", fn_post, envir = .ffscrapr_env)
+  }
 
   invisible(list(get = fn_get, post = fn_post))
 }
@@ -71,7 +79,6 @@
 #' Drop nulls from a list/vector
 #' @keywords internal
 #' @noRd
-.fn_drop_nulls <- function (x)
-{
+.fn_drop_nulls <- function(x) {
   x[!vapply(x, is.null, FUN.VALUE = logical(1))]
 }

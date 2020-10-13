@@ -12,8 +12,9 @@ mfl_connect(
   password = NULL,
   user_agent = NULL,
   rate_limit = TRUE,
-  rate_limit_number = 4,
-  rate_limit_seconds = 5
+  rate_limit_number = NULL,
+  rate_limit_seconds = NULL,
+  ...
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ mfl_connect(
 \item{rate_limit_number}{number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds}
 
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
+
+\item{...}{silently swallows up unused arguments}
 }
 \value{
 a connection object to be used with \code{ff_*} functions

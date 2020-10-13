@@ -1,0 +1,41 @@
+#### ff_rosters (Sleeper) ####
+
+#' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
+#' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param custom_players TRUE or FALSE - include custom players? defaults to FALSE
+#' @param ... arguments passed to other methods (currently none)
+#'
+#' @examples
+#' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
+#' ff_rosters(jml_conn)
+#' @rdname ff_rosters
+#' @export
+ff_rosters.sleeper_conn <- function(conn, ...){
+
+  players_endpoint <- sleeper_players() %>%
+    dplyr::select("player_id", "player_name", "pos", "team", "age")
+
+  franchises_endpoint <- ff_franchises(conn) %>%
+    dplyr::transmute(franchise_id = as.character(.data$franchise_id),.data$franchise_name)
+
+  df_rosters <-  sleeper_getendpoint("league",conn$league_id,"rosters") %>%
+    purrr::pluck("content") %>%
+    tibble::tibble() %>%
+    tidyr::hoist(1, "player_id" ="players","franchise_id"="roster_id") %>%
+    tidyr::unnest("player_id") %>%
+    dplyr::transmute(
+      franchise_id = as.character(.data$franchise_id),
+      player_id = as.character(.data$player_id)
+    ) %>%
+    dplyr::left_join(players_endpoint, by = "player_id") %>%
+    dplyr::left_join(franchises_endpoint,by = 'franchise_id') %>%
+    dplyr::select(
+      "franchise_id", "franchise_name",
+      "player_id", "player_name", "pos", "team", "age",
+      dplyr::everything()
+    )
+
+  return(df_rosters)
+}

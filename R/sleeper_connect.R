@@ -7,8 +7,9 @@
 #' @param user_name Sleeper user_name - optional - attempts to get user's user ID
 #' @param user_agent User agent to self-identify (optional)
 #' @param rate_limit TRUE by default - turn off rate limiting with FALSE
-#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 100 calls per 60 seconds
+#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is under 1000 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
+#' @param ... silently swallows up unused arguments
 #'
 #' @export
 #' @return a list that stores MFL connection objects
@@ -18,8 +19,9 @@ sleeper_connect <- function(season = NULL,
                             user_name = NULL,
                             user_agent = NULL,
                             rate_limit = TRUE,
-                            rate_limit_number = 100,
-                            rate_limit_seconds = 60) {
+                            rate_limit_number = NULL,
+                            rate_limit_seconds = NULL,
+                            ...) {
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite.
@@ -35,11 +37,14 @@ sleeper_connect <- function(season = NULL,
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
+
   if (!is.logical(rate_limit)) {
     stop("rate_limit should be logical")
   }
 
+  if(!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
   .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+  }
 
   ## Season ##
   # Sleeper organizes things by league year and tends to roll over around February.
@@ -113,9 +118,11 @@ print.sleeper_conn <- function(x, ...) {
     )
   }
 
-  if(is.null(parsed$user_id)){
+  if (is.null(parsed$user_id)) {
     stop(glue::glue("Could not find user <{user_name}> in Sleeper user database."),
-         call. = FALSE)}
+      call. = FALSE
+    )
+  }
 
   parsed$user_id
 }

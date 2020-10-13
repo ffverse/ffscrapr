@@ -14,6 +14,7 @@
 #' @param rate_limit TRUE by default, pass FALSE to turn off rate limiting
 #' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
+#' @param ... silently swallows up unused arguments
 #'
 #' @export mfl_connect
 #'
@@ -30,8 +31,9 @@ mfl_connect <- function(season = NULL,
                         password = NULL,
                         user_agent = NULL,
                         rate_limit = TRUE,
-                        rate_limit_number = 4,
-                        rate_limit_seconds = 5) {
+                        rate_limit_number = NULL,
+                        rate_limit_seconds = NULL,
+                        ...) {
 
   ## USER AGENT ##
   # Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
@@ -47,12 +49,15 @@ mfl_connect <- function(season = NULL,
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
-
   if (!is.logical(rate_limit)) {
     stop("rate_limit should be logical")
   }
 
-  .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+  if(!rate_limit ||
+     (!is.null(rate_limit_number) & !is.null(rate_limit_number))
+  ){
+  .fn_set_ratelimit(rate_limit,"MFL", rate_limit_number, rate_limit_seconds)
+  }
 
   ## SEASON ##
   # MFL organizes things by league year and tends to roll over around February.
@@ -127,6 +132,8 @@ print.mfl_conn <- function(x, ...) {
   #     "https://api.myfantasyleague.com/{season}/login?",
   #     "USERNAME={user_name}&PASSWORD={utils::URLencode(password,reserved=TRUE)}&XML=1"),
   #   env$user_agent)
+
+  httr::handle_reset("https://api.myfantasyleague.com")
 
   m_cookie <- env$post(
     url = "https://api.myfantasyleague.com/2020/login",

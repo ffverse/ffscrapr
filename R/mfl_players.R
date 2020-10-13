@@ -26,8 +26,8 @@ mfl_players <- function(conn = NULL) {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::mutate_at("birthdate", ~ as.numeric(.x) %>%
-                       lubridate::as_datetime() %>%
-                       lubridate::as_date()) %>%
+      lubridate::as_datetime() %>%
+      lubridate::as_date()) %>%
     dplyr::mutate("age" = round(as.numeric(Sys.Date() - .data$birthdate) / 365.25, 1)) %>%
     dplyr::select(
       "player_id" = .data$id,

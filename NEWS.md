@@ -5,8 +5,13 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 ### Sleeper progress
 - Cleaned up `sleeper_connect()` code
 - Created a `sleeper_getendpoint()` lower level wrapper - design seems a little awkward ("pass each element of the url to become slash-separated parts of the path") - but will roll forward with it anyway, I think that makes the most sense. 
-- Got rid of passing the conn object into sleeper_getendpoint() - wasn't really being used, would be used by higher-level functions. May change if cookies etc are used later.
+- Got rid of passing the conn object into `sleeper_getendpoint()` - wasn't really being used, would be used by higher-level functions. May change if cookies etc are used later.
 - Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username. MFL does have a parallel feature even if used for different purposes. 
+- Added method for `ff_schedule()` (1.0.0.9003)
+- Added method for `ff_standings()` (1.0.0.9004)
+- Added method for `ff_franchises()` (1.0.0.9005) and added separate testing file.
+- Added method for `ff_rosters()` (1.0.0.9006)
+- Added method for `ff_draftpicks()` (1.0.0.9007)
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
@@ -15,6 +20,11 @@ Here is a list of new functions available at the top level (ie for all platforms
 ### MFL changes
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
+- Added an `httr::handle_reset()` call to fix login bug.
+
+### Other tweaks
+- Now uses {checkmate} for testing.
+- Silently swallowing up unused args in mfl_connect and sleeper_connect.
 
 # ffscrapr 1.0.0
 
