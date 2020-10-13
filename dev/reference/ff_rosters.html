@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9007</span>
       </span>
     </div>
 
@@ -188,7 +188,7 @@
 #&gt; </span><span style='color: #555555;'> 3</span><span> 0001         Team Pikachu   13290     Cohen, Tar… RB    CHI    25.2
 #&gt; </span><span style='color: #555555;'> 4</span><span> 0001         Team Pikachu   13158     Westbrook,… WR    JAC    26.9
 #&gt; </span><span style='color: #555555;'> 5</span><span> 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.4
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0001         Team Pikachu   14085     Pollard, T… RB    DAL    23.4
+#&gt; </span><span style='color: #555555;'> 6</span><span> 0001         Team Pikachu   14085     Pollard, T… RB    DAL    23.5
 #&gt; </span><span style='color: #555555;'> 7</span><span> 0001         Team Pikachu   13139     Williams, … RB    GBP    25.5
 #&gt; </span><span style='color: #555555;'> 8</span><span> 0001         Team Pikachu   9918      Sanders, E… WR    NOS    33.6
 #&gt; </span><span style='color: #555555;'> 9</span><span> 0001         Team Pikachu   13645     Smith, Tre… WR    NOS    24.8
@@ -196,10 +196,10 @@
 #&gt; </span><span style='color: #555555;'># … with 411 more rows, and 4 more variables: roster_status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   drafted </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='fl'>522458773317046272</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 350 x 7</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 351 x 7</span><span>
 #&gt;    franchise_id franchise_name player_id player_name      pos   team    age
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> 1            Paper Champs   2025      Albert Wilson    WR    MIA    28.2
+#&gt; </span><span style='color: #555555;'> 1</span><span> 1            Paper Champs   2025      Albert Wilson    WR    MIA    28.3
 #&gt; </span><span style='color: #555555;'> 2</span><span> 1            Paper Champs   4089      Gerald Everett   TE    LAR    26.3
 #&gt; </span><span style='color: #555555;'> 3</span><span> 1            Paper Champs   6068      Devine Ozigbo    RB    JAX    24  
 #&gt; </span><span style='color: #555555;'> 4</span><span> 1            Paper Champs   1339      Zach Ertz        TE    PHI    29.9
@@ -209,7 +209,7 @@
 #&gt; </span><span style='color: #555555;'> 8</span><span> 1            Paper Champs   4199      Aaron Jones      RB    GB     25.9
 #&gt; </span><span style='color: #555555;'> 9</span><span> 1            Paper Champs   4037      Chris Godwin     WR    TB     24.6
 #&gt; </span><span style='color: #555555;'>10</span><span> 1            Paper Champs   421       Matthew Stafford QB    DET    32.7
-#&gt; </span><span style='color: #555555;'># … with 340 more rows</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'># … with 341 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -86,7 +86,7 @@ Returns a tidy dataframe of franchises and any relevant information" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9007</span>
       </span>
     </div>
 
@@ -193,21 +193,21 @@ Returns a tidy dataframe of franchises and any relevant information" />
 #&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi     http… http… LUIG   173.00          
 #&gt; </span><span style='color: #555555;'># … with 1 more variable: waiverSortOrder </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='fl'>522458773317046272</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_franchises</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 4</span><span>
-#&gt;    franchise_id franchise_name    user_name      co_owners 
-#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span>            1 Paper Champs      Jcurtis44      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 2</span><span>            2 KingGabe          KingGabe       </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 3</span><span>            3 solarpool         solarpool      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 4</span><span>            4 The FANTom Menace weeknee        </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 5</span><span>            5 Barbarians        ABitterHomer   </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 6</span><span>            6 sox05syd          sox05syd       </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 7</span><span>            7 Flipadelphia05    Flipadelphia05 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 8</span><span>            8 Hocka Flocka      TwoFrames      </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 9</span><span>            9 ZPMiller97        ZPMiller97     </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>10</span><span>           10 JMLarkin          JMLarkin       </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>11</span><span>           11 Permian Panthers  theoracleETS   </span><span style='color: #555555;'>&lt;list [1]&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>12</span><span>           12 jaydk             jaydk          </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    </div></span></pre>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 5</span><span>
+#&gt;    franchise_id franchise_name    user_name      user_id            co_owners 
+#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span>            1 Paper Champs      Jcurtis44      70729037081100288  </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span>            2 KingGabe          KingGabe       76686532077305856  </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 3</span><span>            3 solarpool         solarpool      202892038360801280 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 4</span><span>            4 The FANTom Menace weeknee        202882046337490944 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span>            5 Barbarians        ABitterHomer   386383436639973376 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 6</span><span>            6 sox05syd          sox05syd       409797051455393792 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 7</span><span>            7 Flipadelphia05    Flipadelphia05 386950378371207168 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 8</span><span>            8 Hocka Flocka      TwoFrames      386976568364306432 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 9</span><span>            9 ZPMiller97        ZPMiller97     386571720443764736 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>10</span><span>           10 JMLarkin          JMLarkin       387070108625039360 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>11</span><span>           11 Permian Panthers  theoracleETS   198540145396289536 </span><span style='color: #555555;'>&lt;list [1]&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>12</span><span>           12 jaydk             jaydk          401485903224193024 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
