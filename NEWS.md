@@ -12,8 +12,9 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 - Added method for `ff_franchises()` (1.0.0.9005) and added separate testing file.
 - Added method for `ff_rosters()` (1.0.0.9006)
 - Added method for `ff_draftpicks()` (1.0.0.9007)
-- Added warning for `ff_playerscores()` (1.0.0.9008) related to Sleeper deprecating scoring endpoint
+- Added warning for `ff_playerscores()` (1.0.0.9008) related to Sleeper deprecating stats endpoint
 - Added method for `ff_draft()` (1.0.0.9009)
+- Added method for `ff_scoring()` (1.0.0.9010) and a separated test file for scoring.
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
