@@ -4,32 +4,57 @@
 #'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
-#' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
+#' @param week a numeric vector (ie 1:3 or 1:17 etc)
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_playerscores MFL: returns the player fantasy scores for each week (not the actual stats)
+#' @describeIn ff_starters MFL: returns the player fantasy scores for each week (not the actual stats)
 #'
 #' @examples
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
-#' ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
+#' ff_starters(conn = dlf_conn, week = 1:2)
 #' @export
-ff_starters.mfl_conn <- function(conn,week = "all", year = NULL, ...){
+ff_starters.mfl_conn <- function(conn,week = "all", season = NULL, ...){
 
-  if(is.character(week) && week == "all") week <- c(1:17)
-
-  if(is.null(year)) year <- conn$season
+  if(is.null(season)) season <- conn$season
 
   checkmate::assert_numeric(week,lower = 1, upper = 21)
   checkmate::assert_number(year)
 
+  players_endpoint <- sleeper_players() %>%
+    dplyr::select('player_id','player_name','pos','team')
+
+  franchises_endpoint <- ff_franchises(conn) %>%
+    dplyr::select('franchise_id','franchise_name')
+
   weekly_starters <- tibble::tibble(
-    season = year,
+    season = season,
     week = week
   ) %>%
     dplyr::mutate(starters = purrr::map2(week,season,.mfl_weeklystarters,conn)) %>%
     tidyr::unnest(.data$starters) %>%
     dplyr::mutate(player_score = as.numeric(.data$player_score),
-                  should_start = as.numeric(.data$should_start))
+                  should_start = as.numeric(.data$should_start)) %>%
+    dplyr::left_join(
+      franchises_endpoint,
+      by = 'franchise_id'
+    ) %>%
+    dplyr::left_join(
+      players_endpoint,
+      by = 'player_id'
+    ) %>%
+    dplyr::select(dplyr::any_of(c(
+      "franchise_id",
+      "franchise_name",
+      "season",
+      "week",
+      "starter_status",
+      "should_start",
+      "player_score",
+      "player_id",
+      "player_name",
+      "pos",
+      "team"
+    )))
 
   return(weekly_starters)
 }
