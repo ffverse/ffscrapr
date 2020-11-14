@@ -26,7 +26,7 @@ Here is a list of new functions available at the top level (ie for all platforms
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
 - Added an `httr::handle_reset()` call to fix login bug.
-- Added `ff_starters()` (1.0.0.9011)
+- Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks!)
 
 ### Other tweaks
 - Now uses {checkmate} for testing.
