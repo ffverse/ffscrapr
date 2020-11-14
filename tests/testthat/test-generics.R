@@ -7,6 +7,7 @@ test_that("Unknown platforms return no-method errors", {
   message <- "No method"
 
   expect_error(ff_draft(conn), message)
+  expect_error(ff_starters(conn), message)
   expect_error(ff_draftpicks(conn), message)
   expect_error(ff_league(conn), message)
   expect_error(ff_franchises(conn), message)
