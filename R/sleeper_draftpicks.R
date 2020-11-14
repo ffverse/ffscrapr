@@ -2,8 +2,6 @@
 
 #' Sleeper Draft Picks
 #'
-#' Get current and future draft picks that have not yet been selected/converted into players
-#'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
@@ -17,7 +15,7 @@
 #' @export
 ff_draftpicks.sleeper_conn <- function(conn, ...) {
 
-  current_picks <- .sleeper_currentpicks_available(conn)
+  current_picks <- .sleeper_currentpicks(conn)
 
   future_picks <- .sleeper_futurepicks(conn)
 
