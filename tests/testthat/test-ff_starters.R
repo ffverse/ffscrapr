@@ -2,7 +2,7 @@ with_mock_api({
   test_that("ff_transactions returns a tibble of starters", {
 
     dlf <- mfl_connect(2020, 37920)
-    dlf_starters <- ff_starters(dlf,week = c(1:3),year = 2020)
+    dlf_starters <- ff_starters(dlf,week = c(1:3),season = 2020)
 
     expect_tibble(dlf_starters, min.rows = 100)
 
