@@ -18,7 +18,7 @@ status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-
 
 <!-- badges: end -->
 
-Helps access various Fantasy Football APIs (i.e. MFL, Sleeper,
+Helps access various Fantasy Football APIs (i.e. MFL, Sleeper,
 Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling
 authentication and rate-limiting, forming appropriate calls, and
 returning tidy dataframes which can be easily connected to other data
@@ -48,7 +48,7 @@ here](https://ffscrapr.dynastyprocess.com/dev).
 ### Usage
 
 All `ffscrapr` functions start with a connection object created by
-ff\_connect, which stores connection, authentication, and other
+`ff_connect()`, which stores connection, authentication, and other
 user-defined parameters. This object is used by all other functions to
 help return the correct data.
 
@@ -70,43 +70,33 @@ ff_league(ssb) %>% str()
 #>  $ player_copies  : num 1
 #>  $ years_active   : chr "2018-2020"
 #>  $ qb_count       : chr "1"
-#>  $ roster_size    : num 35
-#>  $ league_depth   : num 490
+#>  $ roster_size    : num 28
+#>  $ league_depth   : num 392
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 455 x 11
-#>    franchise_id franchise_name player_id player_name pos   team    age
-#>    <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
-#>  1 0001         Team Pikachu   13129     Fournette,~ RB    JAC    25.6
-#>  2 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26  
-#>  3 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    27.7
-#>  4 0001         Team Pikachu   13290     Cohen, Tar~ RB    CHI    25.1
-#>  5 0001         Team Pikachu   13158     Westbrook,~ WR    JAC    26.8
-#>  6 0001         Team Pikachu   10273     Newton, Cam QB    NEP    31.3
-#>  7 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.3
-#>  8 0001         Team Pikachu   13139     Williams, ~ RB    GBP    25.4
-#>  9 0001         Team Pikachu   13649     Hamilton, ~ WR    DEN    25.5
-#> 10 0001         Team Pikachu   9918      Sanders, E~ WR    NOS    33.4
-#> # ... with 445 more rows, and 4 more variables: roster_status <chr>,
+#> # A tibble: 434 x 11
+#>   franchise_id franchise_name player_id player_name pos   team    age
+#>   <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
+#> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2
+#> 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  
+#> 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.5
+#> 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
+#> 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4
+#> # ... with 429 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 301 x 12
-#>    timestamp           type  type_desc franchise_id franchise_name player_id
-#>    <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#>  1 2020-08-25 11:10:50 FREE~ dropped   0003         Team Captain ~ 13387    
-#>  2 2020-08-24 15:05:29 TAXI  demoted   0003         Team Captain ~ 14081    
-#>  3 2020-08-24 15:04:45 FREE~ dropped   0003         Team Captain ~ 14094    
-#>  4 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     10960    
-#>  5 2020-08-22 14:46:44 IR    deactiva~ 0010         Team Yoshi     14209    
-#>  6 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14844    
-#>  7 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14209    
-#>  8 2020-08-22 14:46:15 TAXI  promoted  0010         Team Yoshi     14195    
-#>  9 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14317    
-#> 10 2020-08-22 14:46:15 TAXI  demoted   0010         Team Yoshi     14969    
-#> # ... with 291 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#> # A tibble: 833 x 12
+#>   timestamp           type  type_desc franchise_id franchise_name player_id
+#>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
+#> 1 2020-11-13 17:00:00 BBID~ added     0003         Team Captain ~ 14095    
+#> 2 2020-11-11 23:13:36 FREE~ added     0007         Team Kirby     13289    
+#> 3 2020-11-11 23:13:36 FREE~ dropped   0007         Team Kirby     13776    
+#> 4 2020-11-11 22:00:41 FREE~ dropped   0007         Team Kirby     11785    
+#> 5 2020-11-11 22:00:41 IR    activated 0007         Team Kirby     13634    
+#> # ... with 828 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
