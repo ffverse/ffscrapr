@@ -25,8 +25,6 @@ a tibble detailing future draft picks
 }
 \description{
 Get current and future draft picks that have not yet been selected/converted into players
-
-Get current and future draft picks that have not yet been selected/converted into players
 }
 \section{Methods (by class)}{
 \itemize{
