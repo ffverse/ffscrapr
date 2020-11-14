@@ -2,12 +2,10 @@
 
 #' Sleeper Draft Picks
 #'
-#' Get current and future draft picks that have not yet been selected/converted into players
-#'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @rdname ff_draftpicks
+#' @describeIn ff_draftpicks Sleeper: retrieves current and future draft picks
 #'
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
@@ -54,8 +52,8 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
   picks <- glue::glue('draft/{draft_id}/picks') %>%
     sleeper_getendpoint() %>%
     purrr::pluck('content') %>%
-    purrr::map_dfr(`[`,c('round','draft_slot','roster_id')) %>%
-    dplyr::select('round', 'pick' = 'draft_slot', 'franchise_id' = 'roster_id')
+    purrr::map_dfr(`[`,c('round','draft_slot','roster_id', 'player_id')) %>%
+    dplyr::select(dplyr::any_of(c('round', 'pick' = 'draft_slot', 'franchise_id' = 'roster_id','player_id')))
 
   return(picks)
 }

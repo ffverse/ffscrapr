@@ -10,7 +10,7 @@
 #' @param season the MFL platform season to look for
 #' @param ... arguments that may be passed to other methods (for method consistency)
 #'
-#' @rdname ff_userleagues
+#' @describeIn ff_userleagues MFL: With an authentication token, it will return a list of user leagues.
 #'
 #' @export
 

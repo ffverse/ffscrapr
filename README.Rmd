@@ -11,6 +11,9 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+options(tibble.print_min = 5)
+
 ```
 # ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="120" /></a>
 *An R Client for Fantasy Football League APIs*
@@ -28,7 +31,7 @@ Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN
 
 ### Installation
 
-Version 1.0.0 is now on CRAN `r emo::ji("tada")` and can be installed with:
+Version 1.0.0 is now on CRAN 🎉 and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
@@ -48,7 +51,7 @@ The dev version has a [separate documentation site here](https://ffscrapr.dynast
 
 ### Usage
 
-All `ffscrapr` functions start with a connection object created by ff_connect, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.
+All `ffscrapr` functions start with a connection object created by `ff_connect()`, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.
 
 ```{r}
 library(ffscrapr)

@@ -24,6 +24,13 @@ A tidy dataframe with one row per game per franchise per week
 \description{
 This function returns a tibble with one row for every team for every weekly matchup
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
+
+\item \code{sleeper_conn}: Sleeper: returns all schedule data
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_schedule(ssb_conn)

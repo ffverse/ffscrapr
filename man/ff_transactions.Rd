@@ -22,6 +22,11 @@ A tidy dataframe of transaction data
 \description{
 This function returns a tibble of transactions
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
+}}
+
 \examples{
 dlf_conn <- mfl_connect(2019, league_id = 37920)
 ff_transactions(dlf_conn)

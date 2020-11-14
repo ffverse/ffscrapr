@@ -51,6 +51,9 @@
 <meta property="og:title" content="Import latest DynastyProcess values — dp_values" />
 <meta property="og:description" content="Fetches a copy of the latest DynastyProcess dynasty trade values sheet" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -82,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
       </span>
     </div>
 
@@ -106,6 +109,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -142,7 +148,7 @@
     <p>Fetches a copy of the latest DynastyProcess dynasty trade values sheet</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dp_values</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values.csv"</span>, <span class='st'>"values-players.csv"</span>, <span class='st'>"values-picks.csv"</span>))</pre>
+    <pre class="usage"><span class='fu'>dp_values</span>(file = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values.csv"</span>, <span class='st'>"values-players.csv"</span>, <span class='st'>"values-picks.csv"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,22 +167,22 @@
     <div class='dont-index'><p><a href='https://github.com/DynastyProcess/data'>https://github.com/DynastyProcess/data</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 487 x 12</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 439 x 12</span><span>
 #&gt;    player pos   team    age draft_year ecr_1qb ecr_2qb ecr_pos value_1qb
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Chris~ RB    CAR    24.1       </span><span style='text-decoration: underline;'>2</span><span>017     1.1     1.1     1.1     </span><span style='text-decoration: underline;'>10</span><span>232
-#&gt; </span><span style='color: #555555;'> 2</span><span> Saquo~ RB    NYG    23.5       </span><span style='text-decoration: underline;'>2</span><span>018     2       2.3     1.9     </span><span style='text-decoration: underline;'>10</span><span>018
-#&gt; </span><span style='color: #555555;'> 3</span><span> Micha~ WR    NOS    27.4       </span><span style='text-decoration: underline;'>2</span><span>016     3.2     3.6     1        </span><span style='text-decoration: underline;'>9</span><span>739
-#&gt; </span><span style='color: #555555;'> 4</span><span> Ezeki~ RB    DAL    25         </span><span style='text-decoration: underline;'>2</span><span>016     4.6     5.9     3.1      </span><span style='text-decoration: underline;'>9</span><span>424
-#&gt; </span><span style='color: #555555;'> 5</span><span> Alvin~ RB    NOS    25         </span><span style='text-decoration: underline;'>2</span><span>017     6       7.9     4.2      </span><span style='text-decoration: underline;'>9</span><span>119
-#&gt; </span><span style='color: #555555;'> 6</span><span> Davan~ WR    GBP    27.6       </span><span style='text-decoration: underline;'>2</span><span>014     8.1    10.4     3.5      </span><span style='text-decoration: underline;'>8</span><span>680
-#&gt; </span><span style='color: #555555;'> 7</span><span> Tyree~ WR    KCC    26.4       </span><span style='text-decoration: underline;'>2</span><span>016     8.2    10.6     3.3      </span><span style='text-decoration: underline;'>8</span><span>660
-#&gt; </span><span style='color: #555555;'> 8</span><span> DeAnd~ WR    ARI    28.1       </span><span style='text-decoration: underline;'>2</span><span>013     8.7    11.3     3.8      </span><span style='text-decoration: underline;'>8</span><span>559
-#&gt; </span><span style='color: #555555;'> 9</span><span> Dalvi~ RB    MIN    25         </span><span style='text-decoration: underline;'>2</span><span>017     9.1    12.1     6        </span><span style='text-decoration: underline;'>8</span><span>478
-#&gt; </span><span style='color: #555555;'>10</span><span> Chris~ WR    TBB    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     9.5    12.4     4.8      </span><span style='text-decoration: underline;'>8</span><span>399
-#&gt; </span><span style='color: #555555;'># ... with 477 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Chris~ RB    CAR    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     1.8     2.1     1       </span><span style='text-decoration: underline;'>10</span><span>058
+#&gt; </span><span style='color: #555555;'> 2</span><span> Alvin~ RB    NOS    25.3       </span><span style='text-decoration: underline;'>2</span><span>017     2.2     2.5     3.3      </span><span style='text-decoration: underline;'>9</span><span>978
+#&gt; </span><span style='color: #555555;'> 3</span><span> Davan~ WR    GBP    27.9       </span><span style='text-decoration: underline;'>2</span><span>014     5       6.1     3.3      </span><span style='text-decoration: underline;'>9</span><span>336
+#&gt; </span><span style='color: #555555;'> 4</span><span> D.K. ~ WR    SEA    22.9       </span><span style='text-decoration: underline;'>2</span><span>019     5.2     6.4     1        </span><span style='text-decoration: underline;'>9</span><span>299
+#&gt; </span><span style='color: #555555;'> 5</span><span> DeAnd~ WR    ARI    28.4       </span><span style='text-decoration: underline;'>2</span><span>013     6.7     8.4     4.3      </span><span style='text-decoration: underline;'>8</span><span>977
+#&gt; </span><span style='color: #555555;'> 6</span><span> Saquo~ RB    NYG    23.7       </span><span style='text-decoration: underline;'>2</span><span>018     7.7    10.2     2.7      </span><span style='text-decoration: underline;'>8</span><span>768
+#&gt; </span><span style='color: #555555;'> 7</span><span> Tyree~ WR    KCC    26.7       </span><span style='text-decoration: underline;'>2</span><span>016     9      11.7     5.3      </span><span style='text-decoration: underline;'>8</span><span>498
+#&gt; </span><span style='color: #555555;'> 8</span><span> Micha~ WR    NOS    27.7       </span><span style='text-decoration: underline;'>2</span><span>016    10.5    13.8     4.7      </span><span style='text-decoration: underline;'>8</span><span>204
+#&gt; </span><span style='color: #555555;'> 9</span><span> A.J. ~ WR    TEN    23.4       </span><span style='text-decoration: underline;'>2</span><span>019    12.7    16.8     5.7      </span><span style='text-decoration: underline;'>7</span><span>796
+#&gt; </span><span style='color: #555555;'>10</span><span> Clyde~ RB    KCC    21.6       </span><span style='text-decoration: underline;'>2</span><span>020    13.8    18.7     7.7      </span><span style='text-decoration: underline;'>7</span><span>586
+#&gt; </span><span style='color: #555555;'># ... with 429 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -192,7 +198,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

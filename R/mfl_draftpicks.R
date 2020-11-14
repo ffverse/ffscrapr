@@ -7,7 +7,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @rdname ff_draftpicks
+#' @describeIn ff_draftpicks MFL: returns both current and future picks
 #'
 #' @examples
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)

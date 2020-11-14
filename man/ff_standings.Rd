@@ -24,6 +24,13 @@ A tibble of standings
 \description{
 This function returns a tibble of season-long fantasy team stats
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns H2H/points/all-play/best-ball data in a table.
+
+\item \code{sleeper_conn}: Sleeper: returns all standings and points data and manually calculates allplay results.
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_standings(ssb_conn)

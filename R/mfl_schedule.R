@@ -1,14 +1,13 @@
 ## ff_schedule (MFL) ##
 
 #' Get a dataframe detailing every game for every franchise
-#' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_schedule(ssb_conn)
-#' @rdname ff_schedule
+#' @describeIn ff_schedule MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
 #' @export
 
 ff_schedule.mfl_conn <- function(conn, ...) {

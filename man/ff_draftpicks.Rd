@@ -28,6 +28,13 @@ Get current and future draft picks that have not yet been selected/converted int
 
 Get current and future draft picks that have not yet been selected/converted into players
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns both current and future picks
+
+\item \code{sleeper_conn}: Sleeper: retrieves current and future draft picks
+}}
+
 \examples{
 dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_draftpicks(conn = dlf_conn)

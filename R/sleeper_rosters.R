@@ -4,13 +4,12 @@
 #' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - include custom players? defaults to FALSE
 #' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_rosters(jml_conn)
-#' @rdname ff_rosters
+#' @describeIn ff_rosters Sleeper: Returns all roster data.
 #' @export
 ff_rosters.sleeper_conn <- function(conn, ...){
 

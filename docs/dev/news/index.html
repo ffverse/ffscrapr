@@ -50,6 +50,9 @@
 
 <meta property="og:title" content="Changelog" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -81,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
       </span>
     </div>
 
@@ -105,6 +108,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -138,23 +144,86 @@
 
     <div id="ffscrapr-development-version" class="section level1">
 <h1 class="page-header" data-toc-text="development version">
-<a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)</h1>
+<a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
+</h1>
+<p>The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but for Sleeper. Some other changes and tweaks will be added eventually!</p>
+<div id="sleeper-progress" class="section level3">
+<h3 class="hasAnchor">
+<a href="#sleeper-progress" class="anchor"></a>Sleeper progress</h3>
 <ul>
-<li>2020-05-18 - initial commit and roadmap generated, add mfl_connect and mfl_endpoint_league functions</li>
-<li>2020-05-19 - following <a href="https://httr.r-lib.org/articles/api-packages.html">httr API vignette</a> and created generic call to MFL API via <code>get_mfl_endpoint()</code>
+<li>Cleaned up <code><a href="../reference/sleeper_connect.html">sleeper_connect()</a></code> code</li>
+<li>Created a <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> lower level wrapper - design seems a little awkward (“pass each element of the url to become slash-separated parts of the path”) - but will roll forward with it anyway, I think that makes the most sense.</li>
+<li>Got rid of passing the conn object into <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> - wasn’t really being used, would be used by higher-level functions. May change if cookies etc are used later.</li>
+<li>Added generic and method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user’s league_ids by username. MFL does have a parallel feature even if used for different purposes.</li>
+<li>Added method for <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> (1.0.0.9003)</li>
+<li>Added method for <code><a href="../reference/ff_standings.html">ff_standings()</a></code> (1.0.0.9004)</li>
+<li>Added method for <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code> (1.0.0.9005) and added separate testing file.</li>
+<li>Added method for <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> (1.0.0.9006)</li>
+<li>Added method for <code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> (1.0.0.9007)</li>
+<li>Added warning for <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> (1.0.0.9008) related to Sleeper deprecating</li>
+</ul>
+</div>
+<div id="new-generics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-generics" class="anchor"></a>New generics</h3>
+<p>Here is a list of new functions available at the top level (ie for all platforms)</p>
+<ul>
+<li>
+<code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> returns a list of user leagues. This is deployed slightly differently for MFL and Sleeper - MFL requires authentication to access user’s leagues, while Sleeper doesn’t have authentication so you can look up any user you like.</li>
+</ul>
+</div>
+<div id="mfl-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mfl-changes" class="anchor"></a>MFL changes</h3>
+<ul>
+<li>Added method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code>
 </li>
-<li>2020-05-23 - adding rate limiting and beginnings of Sleeper connection code</li>
-<li>2020-05-27 - adding test folder, renamed main-level functions to “ff_” prefix for ease of autocomplete later</li>
-<li>2020-05-30 - add start of league summary code</li>
-<li>2020-06-07 - taking a big whack at testing stuff</li>
-<li>2020-06-08 - add pkgdown site</li>
-<li>2020-06-13 - switch to S3 methods and add memoise</li>
-<li>2020-06-21 - add ff_rosters and ff_franchises</li>
-<li>2020-07-10 - add ff_draft</li>
-<li>2020-07-16 - add dynastyprocess helpers</li>
-<li>2020-07-26 - add ff_playerscores</li>
-<li>2020-07-27 - finish ff_transactions, add “conn” argument and custom_players argument to mfl_players()</li>
-<li>2020-07-28 - add ff_standings</li>
+<li>Added handling for offensive_points and defensive_points in <code><a href="../reference/ff_standings.html">ff_standings()</a></code> (<a href='https://github.com/dynastyprocess/ffscrapr/issues/69'>#69</a>, nice.)</li>
+<li>Added an <code><a href="https://httr.r-lib.org/reference/handle_pool.html">httr::handle_reset()</a></code> call to fix login bug.</li>
+</ul>
+</div>
+<div id="other-tweaks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-tweaks" class="anchor"></a>Other tweaks</h3>
+<ul>
+<li>Now uses {checkmate} for testing.</li>
+<li>Silently swallowing up unused args in mfl_connect and sleeper_connect.</li>
+<li>Uses describeIn instead of rdname for method documentation. (1.0.0.9008)</li>
+</ul>
+</div>
+</div>
+    <div id="ffscrapr-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#ffscrapr-100" class="anchor"></a>ffscrapr 1.0.0<small> 2020-08-17 </small>
+</h1>
+<p>This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.</p>
+<p>Future versions will add more platforms via methods mapped to the same functions.</p>
+<p>Functions include:</p>
+<ul>
+<li>
+<code>ff_connect</code> (and sibling <code>mfl_connect</code>) to establish connection parameters and ratelimiting</li>
+<li>
+<code>mfl_getendpoint</code> as a low-level function for making GET requests from MFL</li>
+<li>
+<code>ff_draft</code> gets draft results</li>
+<li>
+<code>ff_draftpicks</code> gets current and future draft picks that have not yet been selected</li>
+<li>
+<code>ff_franchises</code> gets franchise-level identifiers and divisions</li>
+<li>
+<code>ff_league</code> gets league-level summaries of rules, players, and franchises</li>
+<li>
+<code>ff_playerscores</code> gets playerweek-level scores</li>
+<li>
+<code>ff_rosters</code> gets franchise-level rosters complete with naming</li>
+<li>
+<code>ff_schedule</code> gets weekly fantasy schedules</li>
+<li>
+<code>ff_scoring</code> gets scoring rules</li>
+<li>
+<code>ff_standings</code> gets league-level season summaries</li>
+<li>
+<code>ff_transactions</code> gets a list of all transactions and cleans them into a data frame.</li>
 </ul>
 </div>
   </div>
@@ -174,7 +243,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

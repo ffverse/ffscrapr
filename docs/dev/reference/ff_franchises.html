@@ -49,9 +49,12 @@
   
 
 <meta property="og:title" content="Get League Franchises — ff_franchises" />
-<meta property="og:description" content="This function returns a tibble of franchise details (id, name, abbrev etc)
+<meta property="og:description" content="Returns a tidy dataframe of franchises and any relevant information
 Returns a tidy dataframe of franchises and any relevant information" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -83,7 +86,7 @@ Returns a tidy dataframe of franchises and any relevant information" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
       </span>
     </div>
 
@@ -107,6 +110,9 @@ Returns a tidy dataframe of franchises and any relevant information" />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -135,22 +141,22 @@ Returns a tidy dataframe of franchises and any relevant information" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League Franchises</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_franchises.R'><code>R/mfl_franchises.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_franchises.R'><code>R/mfl_franchises.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_franchises.R'><code>R/sleeper_franchises.R</code></a></small>
     <div class="hidden name"><code>ff_franchises.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of franchise details (id, name, abbrev etc)</p>
+    <p>Returns a tidy dataframe of franchises and any relevant information</p>
 <p>Returns a tidy dataframe of franchises and any relevant information</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)
+    <pre class="usage"><span class='fu'>ff_franchises</span>(<span class='kw'>conn</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_franchises</span>(<span class='no'>conn</span>)</pre>
+<span class='fu'>ff_franchises</span>(<span class='kw'>conn</span>)
+
+<span class='co'># S3 method for sleeper_conn</span>
+<span class='fu'>ff_franchises</span>(<span class='kw'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,29 +169,52 @@ Returns a tidy dataframe of franchises and any relevant information" />
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of franchises</p>
+    <p>A tibble of franchises, complete with IDs</p>
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    
+<ul>
+<li><p><code>mfl_conn</code>: MFL: returns franchise and division information.</p></li>
+<li><p><code>sleeper_conn</code>: Sleeper: retrieves a list of franchise information, including user IDs and co-owner IDs.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_franchises</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 7</span><span>
+    <pre class="examples"><div class='input'><span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_franchises</span>(<span class='kw'>ssb_conn</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 7</span><span>
 #&gt;    franchise_id franchise_name logo  icon  abbrev bbidAvailableBa~
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   http~ http~ PIKA   200.00          
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0002         Team Simon Be~ http~ http~ SIMN   200.00          
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0003         Team Captain ~ http~ http~ CFCN   200.00          
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0004         Team Ice Clim~ http~ http~ ICE    158.00          
-#&gt; </span><span style='color: #555555;'> 5</span><span> 0005         Team Dr. Mario http~ http~ DRM    200.00          
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0006         Team King Ded~ http~ http~ KDDD   200.00          
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0007         Team Kirby     http~ http~ KRBY   196.00          
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0008         Team Fox       http~ http~ FOX    200.00          
-#&gt; </span><span style='color: #555555;'> 9</span><span> 0009         Team Link      http~ http~ LINK   200.00          
-#&gt; </span><span style='color: #555555;'>10</span><span> 0010         Team Yoshi     http~ http~ YSHI   173.00          
-#&gt; </span><span style='color: #555555;'>11</span><span> 0011         Team Diddy Ko~ http~ http~ DDY    200.00          
-#&gt; </span><span style='color: #555555;'>12</span><span> 0012         Team Mewtwo    http~ http~ MEW2   200.00          
-#&gt; </span><span style='color: #555555;'>13</span><span> 0013         Team Ness      http~ http~ </span><span style='color: #BB0000;'>NA</span><span>     179.00          
-#&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi     http~ http~ LUIG   191.00          
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: waiverSortOrder </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   http~ http~ PIKA   159.00          
+#&gt; </span><span style='color: #555555;'> 2</span><span> 0002         Team Simon Be~ http~ http~ SIMN   171.00          
+#&gt; </span><span style='color: #555555;'> 3</span><span> 0003         Team Captain ~ http~ http~ CFCN   50.00           
+#&gt; </span><span style='color: #555555;'> 4</span><span> 0004         Team Ice Clim~ http~ http~ ICE    0.00            
+#&gt; </span><span style='color: #555555;'> 5</span><span> 0005         Team Dr. Mario http~ http~ DRM    84.00           
+#&gt; </span><span style='color: #555555;'> 6</span><span> 0006         Team King Ded~ http~ http~ KDDD   120.00          
+#&gt; </span><span style='color: #555555;'> 7</span><span> 0007         Team Kirby     http~ http~ KRBY   55.00           
+#&gt; </span><span style='color: #555555;'> 8</span><span> 0008         Team Fox       http~ http~ FOX    173.00          
+#&gt; </span><span style='color: #555555;'> 9</span><span> 0009         Team Link      http~ http~ LINK   81.00           
+#&gt; </span><span style='color: #555555;'>10</span><span> 0010         Team Yoshi     http~ http~ YSHI   0.00            
+#&gt; </span><span style='color: #555555;'>11</span><span> 0011         Team Diddy Ko~ http~ http~ DDY    179.00          
+#&gt; </span><span style='color: #555555;'>12</span><span> 0012         Team Mewtwo    http~ http~ MEW2   121.00          
+#&gt; </span><span style='color: #555555;'>13</span><span> 0013         Team Ness      http~ http~ NESS   0.00            
+#&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi     http~ http~ LUIG   45.00           
+#&gt; </span><span style='color: #555555;'># ... with 1 more variable: waiverSortOrder </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"sleeper"</span>, league_id = <span class='fl'>522458773317046272</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_franchises</span>(<span class='kw'>jml_conn</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 5</span><span>
+#&gt;    franchise_id franchise_name    user_name      user_id            co_owners 
+#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span>            1 Fake News         Jcurtis44      70729037081100288  </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span>            2 KingGabe          KingGabe       76686532077305856  </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 3</span><span>            3 solarpool         solarpool      202892038360801280 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 4</span><span>            4 The FANTom Menace weeknee        202882046337490944 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span>            5 Barbarians        ABitterHomer   386383436639973376 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 6</span><span>            6 sox05syd          sox05syd       409797051455393792 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 7</span><span>            7 Flipadelphia05    Flipadelphia05 386950378371207168 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 8</span><span>            8 Hocka Flocka      TwoFrames      386976568364306432 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 9</span><span>            9 ZPMiller97        ZPMiller97     386571720443764736 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>10</span><span>           10 JMLarkin          JMLarkin       387070108625039360 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'>11</span><span>           11 Permian Panthers  theoracleETS   198540145396289536 </span><span style='color: #555555;'>&lt;list [1]&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>12</span><span>           12 jaydk             jaydk          401485903224193024 </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>    </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -201,7 +230,7 @@ Returns a tidy dataframe of franchises and any relevant information" />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

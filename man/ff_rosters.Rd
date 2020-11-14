@@ -26,6 +26,13 @@ A tibble of rosters, joined to basic player information and basic franchise info
 \description{
 This function returns a tibble of team rosters
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns roster data.
+
+\item \code{sleeper_conn}: Sleeper: Returns all roster data.
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_rosters(ssb_conn)

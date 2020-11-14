@@ -49,8 +49,12 @@
   
 
 <meta property="og:title" content="Get Draft Results — ff_draft" />
-<meta property="og:description" content="This function returns a tibble of draft results" />
+<meta property="og:description" content="This function gets a table of the draft results for the current year.
+Can handle MFL devy drafts or startup drafts by specifying the custom_players argument" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -82,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
       </span>
     </div>
 
@@ -106,6 +110,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -139,13 +146,14 @@
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of draft results</p>
+    <p>This function gets a table of the draft results for the current year.
+Can handle MFL devy drafts or startup drafts by specifying the custom_players argument</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_draft</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ff_draft</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_draft</span>(<span class='no'>conn</span>, <span class='kw'>custom_players</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>ff_draft</span>(<span class='kw'>conn</span>, custom_players = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,22 +163,29 @@
       <td><p>a conn object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>custom_players</th>
-      <td><p>TRUE or FALSE - are there custom players included in the result?</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>not sure if there'll be other params yet!</p></td>
+    </tr>
+    <tr>
+      <th>custom_players</th>
+      <td><p>TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of draft results</p>
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    
+<ul>
+<li><p><code>mfl_conn</code>: MFL returns a table of drafts for the current year!</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>,<span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>,<span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_draft</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 57 x 10</span><span>
+    <pre class="examples"><div class='input'><span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_draft</span>(<span class='kw'>ssb_conn</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 57 x 10</span><span>
 #&gt;    timestamp           round pick  franchise_id franchise_name player_id
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'> 1</span><span> 2020-05-15 </span><span style='color: #555555;'>19:43:56</span><span> 01    01    0001         Team Pikachu   14803    
@@ -184,8 +199,7 @@
 #&gt; </span><span style='color: #555555;'> 9</span><span> 2020-05-16 </span><span style='color: #555555;'>12:38:48</span><span> 01    09    0006         Team King Ded~ 14836    
 #&gt; </span><span style='color: #555555;'>10</span><span> 2020-05-16 </span><span style='color: #555555;'>13:47:29</span><span> 01    10    0006         Team King Ded~ 14834    
 #&gt; </span><span style='color: #555555;'># ... with 47 more rows, and 4 more variables: player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   age </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   age </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -201,7 +215,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
