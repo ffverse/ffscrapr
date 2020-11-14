@@ -38,5 +38,6 @@ ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_draft(ssb_conn)
 jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
 ff_draft(jml_conn)
+dlp_conn <- ff_connect(platform = "sleeper", league_id = '464109311174373376', season = 2019)
 
 }
