@@ -18,7 +18,7 @@ status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-
 
 <!-- badges: end -->
 
-Helps access various Fantasy Football APIs (i.e. MFL, Sleeper,
+Helps access various Fantasy Football APIs (i.e. MFL, Sleeper,
 Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling
 authentication and rate-limiting, forming appropriate calls, and
 returning tidy dataframes which can be easily connected to other data
