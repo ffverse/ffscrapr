@@ -16,7 +16,7 @@ ff_scoring.sleeper_conn <- function(conn) {
     sleeper_getendpoint() %>%
     purrr::pluck('content','scoring_settings') %>%
     tibble::enframe(name = "event", value = "points") %>%
-    dplyr::mutate(points = as.numeric(points) %>% round(3))
+    dplyr::mutate(points = as.numeric(.data$points) %>% round(3))
 
   return(scoring_rules)
 }

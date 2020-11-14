@@ -64,7 +64,7 @@ ff_starters.sleeper_conn <- function(conn, week = 1:17, ...){
     tidyr::unnest("players") %>%
     dplyr::mutate(starter_status = purrr::map2_chr(.data$players, .data$starters,
                                         ~dplyr::if_else(.x %in% .y, "starter","nonstarter")),
-                  players = purrr::flatten_chr(players)) %>%
+                  players = purrr::flatten_chr(.data$players)) %>%
     dplyr::select(dplyr::any_of(c(
       'franchise_id' = "roster_id",
       "player_id" = 'players',
