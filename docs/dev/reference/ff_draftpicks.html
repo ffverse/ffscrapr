@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Player Scoring History — ff_playerscores • ffscrapr</title>
+<title>Get Draft Picks — ff_draftpicks • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,10 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get Player Scoring History — ff_playerscores" />
-<meta property="og:description" content="This function returns a tibble of player scores based on league rules
-Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
-Adding some nflfastr-based ideas to the pipeline for future iterations." />
+<meta property="og:title" content="Get Draft Picks — ff_draftpicks" />
+<meta property="og:description" content="Get current and future draft picks that have not yet been selected/converted into players
+Get current and future draft picks that have not yet been selected/converted into players" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -141,24 +140,23 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Player Scoring History</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_playerscores.R'><code>R/sleeper_playerscores.R</code></a></small>
-    <div class="hidden name"><code>ff_playerscores.Rd</code></div>
+    <h1>Get Draft Picks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_draftpicks.R'><code>R/mfl_draftpicks.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_draftpicks.R'><code>R/sleeper_draftpicks.R</code></a></small>
+    <div class="hidden name"><code>ff_draftpicks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of player scores based on league rules</p>
-<p>Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
-Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
+    <p>Get current and future draft picks that have not yet been selected/converted into players</p>
+<p>Get current and future draft picks that have not yet been selected/converted into players</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span>, <span class='kw'>season</span>, <span class='kw'>week</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span>, <span class='kw'>season</span>, <span class='kw'>week</span>, <span class='kw'>...</span>)
+<span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for sleeper_conn</span>
-<span class='fu'>ff_playerscores</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_draftpicks</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,14 +166,6 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
       <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>season</th>
-      <td><p>the season of interest - generally only the most recent 2-3 seasons are available</p></td>
-    </tr>
-    <tr>
-      <th>week</th>
-      <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>other arguments (currently unused)</p></td>
     </tr>
@@ -183,32 +173,48 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of historical player scoring</p>
+    <p>a tibble detailing future draft picks</p>
+<p>a tibble detailing future draft picks</p>
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     
 <ul>
-<li><p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)</p></li>
-<li><p><code>sleeper_conn</code>: Sleeper: Deprecated their open API endpoint for player scores</p></li>
+<li><p><code>mfl_conn</code>: MFL: returns both current and future picks</p></li>
+<li><p><code>sleeper_conn</code>: Sleeper: retrieves current and future draft picks</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>, league_id = <span class='fl'>37920</span>)
-<span class='fu'>ff_playerscores</span>(conn = <span class='kw'>dlf_conn</span>, season = <span class='fl'>2019</span>, week = <span class='st'>"YTD"</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 597 x 8</span><span>
-#&gt;    season week  player_id player_name          pos   team  points isAvailable
-#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL   480.68 0          
-#&gt; </span><span style='color: #555555;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR   469.20 0          
-#&gt; </span><span style='color: #555555;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS   391.00 0          
-#&gt; </span><span style='color: #555555;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC   369.80 0          
-#&gt; </span><span style='color: #555555;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL   355.70 0          
-#&gt; </span><span style='color: #555555;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL   351.78 0          
-#&gt; </span><span style='color: #555555;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12626     Henry, Derrick       RB    TEN   351.60 0          
-#&gt; </span><span style='color: #555555;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU   342.08 0          
-#&gt; </span><span style='color: #555555;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA   339.70 0          
-#&gt; </span><span style='color: #555555;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP   337.90 0          
-#&gt; </span><span style='color: #555555;'># ... with 587 more rows</span><span></div></span></pre>
+<span class='fu'>ff_draftpicks</span>(conn = <span class='kw'>dlf_conn</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 80 x 5</span><span>
+#&gt;    season franchise_id franchise_name round original_franchise_id
+#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                
+#&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          1 0001                 
+#&gt; </span><span style='color: #555555;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          2 0001                 
+#&gt; </span><span style='color: #555555;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          3 0001                 
+#&gt; </span><span style='color: #555555;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          5 0001                 
+#&gt; </span><span style='color: #555555;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          2 0009                 
+#&gt; </span><span style='color: #555555;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          1 0002                 
+#&gt; </span><span style='color: #555555;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          2 0002                 
+#&gt; </span><span style='color: #555555;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          3 0002                 
+#&gt; </span><span style='color: #555555;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          4 0002                 
+#&gt; </span><span style='color: #555555;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         @_PeteLaw          5 0002                 
+#&gt; </span><span style='color: #555555;'># ... with 70 more rows</span><span></div><div class='input'><span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"sleeper"</span>, league_id = <span class='fl'>522458773317046272</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_draftpicks</span>(<span class='kw'>jml_conn</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 144 x 5</span><span>
+#&gt;    season franchise_id franchise_name round original_franchise_id
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2021              1 Fake News          1                     1
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2021              1 Fake News          3                     1
+#&gt; </span><span style='color: #555555;'> 3</span><span> 2021              1 Fake News          4                     1
+#&gt; </span><span style='color: #555555;'> 4</span><span> 2022              1 Fake News          2                     1
+#&gt; </span><span style='color: #555555;'> 5</span><span> 2022              1 Fake News          3                     1
+#&gt; </span><span style='color: #555555;'> 6</span><span> 2022              1 Fake News          4                     1
+#&gt; </span><span style='color: #555555;'> 7</span><span> 2023              1 Fake News          1                     1
+#&gt; </span><span style='color: #555555;'> 8</span><span> 2023              1 Fake News          2                     1
+#&gt; </span><span style='color: #555555;'> 9</span><span> 2023              1 Fake News          3                     1
+#&gt; </span><span style='color: #555555;'>10</span><span> 2023              1 Fake News          4                     1
+#&gt; </span><span style='color: #555555;'># ... with 134 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

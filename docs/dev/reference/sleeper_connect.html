@@ -51,6 +51,9 @@
 <meta property="og:title" content="Connect to Sleeper League — sleeper_connect" />
 <meta property="og:description" content="This function creates a connection object which stores parameters and a user ID if available." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@_TanHo" />
+<meta name="twitter:site" content="@DynastyProcess" />
 
 
 <meta name="robots" content="noindex">
@@ -82,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.4.21</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9007</span>
       </span>
     </div>
 
@@ -106,6 +109,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mfl_basics.html">mfl_basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -134,7 +140,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Connect to Sleeper League</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper.R'><code>R/sleeper.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_connect.R'><code>R/sleeper_connect.R</code></a></small>
     <div class="hidden name"><code>sleeper_connect.Rd</code></div>
     </div>
 
@@ -143,13 +149,14 @@
     </div>
 
     <pre class="usage"><span class='fu'>sleeper_connect</span>(
-  <span class='kw'>season</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_agent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>rate_limit_number</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>rate_limit_seconds</span> <span class='kw'>=</span> <span class='fl'>60</span>
+  season = <span class='kw'>NULL</span>,
+  league_id = <span class='kw'>NULL</span>,
+  user_name = <span class='kw'>NULL</span>,
+  user_agent = <span class='kw'>NULL</span>,
+  rate_limit = <span class='fl'>TRUE</span>,
+  rate_limit_number = <span class='kw'>NULL</span>,
+  rate_limit_seconds = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -177,11 +184,15 @@
     </tr>
     <tr>
       <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is 100 calls per 60 seconds</p></td>
+      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is under 1000 calls per 60 seconds</p></td>
     </tr>
     <tr>
       <th>rate_limit_seconds</th>
       <td><p>number of seconds as denominator for rate_limit</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>silently swallows up unused arguments</p></td>
     </tr>
     </table>
 
@@ -204,7 +215,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

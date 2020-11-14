@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get League Transactions — ff_transactions • ffscrapr</title>
+<title>Get User Leagues — ff_userleagues • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get League Transactions — ff_transactions" />
-<meta property="og:description" content="This function returns a tibble of transactions" />
+<meta property="og:title" content="Get User Leagues — ff_userleagues" />
+<meta property="og:description" content="This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.
+This function retrieves a tibble of all user leagues and requires an
+authentication cookie to be stored inside the MFL conn object
+(which were created via username/password args)
+This function retrieves a tibble of all user leagues
+(which were created via username/password args)" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -139,65 +144,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get League Transactions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_transactions.R'><code>R/mfl_transactions.R</code></a></small>
-    <div class="hidden name"><code>ff_transactions.Rd</code></div>
+    <h1>Get User Leagues</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_userleagues.R'><code>R/mfl_userleagues.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_userleagues.R'><code>R/sleeper_userleagues.R</code></a></small>
+    <div class="hidden name"><code>ff_userleagues.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of transactions</p>
+    <p>This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.</p>
+<p>This function retrieves a tibble of all user leagues and requires an
+authentication cookie to be stored inside the MFL conn object
+(which were created via username/password args)</p>
+<p>This function retrieves a tibble of all user leagues
+(which were created via username/password args)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_transactions</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_userleagues</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_transactions</span>(<span class='kw'>conn</span>, custom_players = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_userleagues</span>(<span class='kw'>conn</span>, season = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+
+<span class='co'># S3 method for sleeper_conn</span>
+<span class='fu'>ff_userleagues</span>(<span class='kw'>conn</span>, user_name = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
+      <td><p>a connection object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional args</p></td>
+      <td><p>arguments that may be passed to other methods (for method consistency)</p></td>
     </tr>
     <tr>
-      <th>custom_players</th>
-      <td><p>TRUE or FALSE - fetch custom players</p></td>
+      <th>season</th>
+      <td><p>the MFL platform season to look for</p></td>
+    </tr>
+    <tr>
+      <th>user_name</th>
+      <td><p>the username to look up - defaults to user created in conn if available</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy dataframe of transaction data</p>
+    <p>A tidy dataframe with one row for every league a user is in</p>
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     
 <ul>
-<li><p><code>mfl_conn</code>: MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.</p></li>
+<li><p><code>mfl_conn</code>: MFL: With an authentication token, it will return a list of user leagues.</p></li>
+<li><p><code>sleeper_conn</code>: Sleeper: returns a listing of leagues for a given user_id or user_name</p></li>
 </ul>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2019</span>, league_id = <span class='fl'>37920</span>)
-<span class='fu'>ff_transactions</span>(<span class='kw'>dlf_conn</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,146 x 12</span><span>
-#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ added     0003         Electric Spid~ 13868    
-#&gt; </span><span style='color: #555555;'> 2</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ dropped   0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'> 3</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ added     0019         Advance Repti~ 12857    
-#&gt; </span><span style='color: #555555;'> 4</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ dropped   0019         Advance Repti~ 11186    
-#&gt; </span><span style='color: #555555;'> 5</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ added     0019         Advance Repti~ 13868    
-#&gt; </span><span style='color: #555555;'> 6</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ dropped   0019         Advance Repti~ 14305    
-#&gt; </span><span style='color: #555555;'> 7</span><span> 2019-12-15 </span><span style='color: #555555;'>17:28:15</span><span> FREE~ added     0003         Electric Spid~ 12197    
-#&gt; </span><span style='color: #555555;'> 8</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:28</span><span> FREE~ dropped   0003         Electric Spid~ 12623    
-#&gt; </span><span style='color: #555555;'> 9</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:00</span><span> FREE~ added     0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'>10</span><span> 2019-12-15 </span><span style='color: #555555;'>17:26:27</span><span> IR    deactiva~ 0003         Electric Spid~ 14138    
-#&gt; </span><span style='color: #555555;'># ... with 1,136 more rows, and 6 more variables: player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, bbid_spent </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, trade_partner </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, comments </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
