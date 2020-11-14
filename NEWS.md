@@ -12,6 +12,7 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 - Added method for `ff_franchises()` (1.0.0.9005) and added separate testing file.
 - Added method for `ff_rosters()` (1.0.0.9006)
 - Added method for `ff_draftpicks()` (1.0.0.9007)
+- Added warning for `ff_playerscores()` (1.0.0.9008) related to Sleeper deprecating
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
@@ -25,6 +26,7 @@ Here is a list of new functions available at the top level (ie for all platforms
 ### Other tweaks
 - Now uses {checkmate} for testing.
 - Silently swallowing up unused args in mfl_connect and sleeper_connect.
+- Uses describeIn instead of rdname for method documentation. (1.0.0.9008)
 
 # ffscrapr 1.0.0
 

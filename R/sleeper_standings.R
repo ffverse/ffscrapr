@@ -8,7 +8,7 @@
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_standings(jml_conn)
-#' @rdname ff_standings
+#' @describeIn ff_standings Sleeper: returns all standings and points data and manually calculates allplay results.
 #'
 #' @export
 ff_standings.sleeper_conn <- function(conn, ...) {

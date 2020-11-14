@@ -7,7 +7,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @rdname ff_draftpicks
+#' @describeIn ff_draftpicks Sleeper: retrieves current and future draft picks
 #'
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)

@@ -35,3 +35,10 @@ authentication cookie to be stored inside the MFL conn object
 This function retrieves a tibble of all user leagues
 (which were created via username/password args)
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: With an authentication token, it will return a list of user leagues.
+
+\item \code{sleeper_conn}: Sleeper: returns a listing of leagues for a given user_id or user_name
+}}
+

@@ -11,7 +11,7 @@
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_draft(ssb_conn)
-#' @rdname ff_draft
+#' @describeIn ff_draft MFL returns a table of drafts for the current year!
 #' @export
 
 # Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft

@@ -18,6 +18,11 @@ A tibble of league scoring rules for each position defined.
 \description{
 This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns scoring settings in a flat table, one row per position per rule.
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_scoring(ssb_conn)

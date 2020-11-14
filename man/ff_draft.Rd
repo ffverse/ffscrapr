@@ -23,6 +23,11 @@ A tibble of draft results
 This function gets a table of the draft results for the current year.
 Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL returns a table of drafts for the current year!
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_draft(ssb_conn)

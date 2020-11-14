@@ -7,7 +7,7 @@
 #' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
 #' @param ... other arguments (currently unused)
 #'
-#' @rdname ff_playerscores
+#' @describeIn ff_playerscores MFL: returns the player fantasy scores for each week (not the actual stats)
 #'
 #' @examples
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)

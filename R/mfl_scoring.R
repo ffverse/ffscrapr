@@ -10,7 +10,7 @@
 #' ff_scoring(ssb_conn)
 #' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
 #'
-#' @rdname ff_scoring
+#' @describeIn ff_scoring MFL: returns scoring settings in a flat table, one row per position per rule.
 #' @export
 
 ff_scoring.mfl_conn <- function(conn) {

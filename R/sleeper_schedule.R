@@ -7,7 +7,7 @@
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_schedule(jml_conn)
-#' @rdname ff_schedule
+#' @describeIn ff_schedule Sleeper: returns all schedule data
 #' @export
 ff_schedule.sleeper_conn <- function(conn, ...) {
   league_path <- glue::glue("league/{conn$league_id}")

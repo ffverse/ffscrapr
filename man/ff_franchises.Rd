@@ -24,6 +24,13 @@ Returns a tidy dataframe of franchises and any relevant information
 
 Returns a tidy dataframe of franchises and any relevant information
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns franchise and division information.
+
+\item \code{sleeper_conn}: Sleeper: retrieves a list of franchise information, including user IDs and co-owner IDs.
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_franchises(ssb_conn)

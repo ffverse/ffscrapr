@@ -9,7 +9,7 @@
 #' @param user_name the username to look up - defaults to user created in conn if available
 #' @param ... arguments that may be passed to other methods (for method consistency)
 #'
-#' @rdname ff_userleagues
+#' @describeIn ff_userleagues Sleeper: returns a listing of leagues for a given user_id or user_name
 #'
 #' @export
 

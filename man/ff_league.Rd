@@ -18,6 +18,11 @@ A one-row tibble of league settings.
 \description{
 This function returns a tibble of common league settings, including details like "1QB" or "2QB/SF", best ball, team count etc
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{mfl_conn}: MFL: returns a summary of league features.
+}}
+
 \examples{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_league(ssb_conn)

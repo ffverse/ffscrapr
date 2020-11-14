@@ -10,7 +10,7 @@
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_franchises(ssb_conn)
-#' @rdname ff_franchises
+#' @describeIn ff_franchises MFL: returns franchise and division information.
 #' @export
 
 ff_franchises.mfl_conn <- function(conn) {

@@ -6,7 +6,7 @@
 #' @param custom_players TRUE or FALSE - fetch custom players
 #' @param ... additional args
 #'
-#' @rdname ff_transactions
+#' @describeIn ff_transactions MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
 #'
 #' @examples
 #' dlf_conn <- mfl_connect(2019, league_id = 37920)

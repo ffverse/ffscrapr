@@ -8,7 +8,7 @@
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_standings(ssb_conn)
-#' @rdname ff_standings
+#' @describeIn ff_standings MFL: returns H2H/points/all-play/best-ball data in a table.
 #'
 #' @export
 ff_standings.mfl_conn <- function(conn, ...) {
