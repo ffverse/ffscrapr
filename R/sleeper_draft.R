@@ -8,7 +8,6 @@
 #' @examples
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
 #' ff_draft(jml_conn)
-#' dlp_conn <- ff_connect(platform = "sleeper", league_id = '464109311174373376', season = 2019)
 #'
 #' @describeIn ff_draft Sleeper: returns a dataframe of all drafts and draft selections, if available.
 #' @export
