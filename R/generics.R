@@ -292,3 +292,25 @@ ff_userleagues <- function(conn, ...) {
 ff_userleagues.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_userleagues found for platform: {conn$platform}."))
 }
+
+#### ff_starters ####
+
+#' Get Starting Lineups
+#'
+#' This function returns a tibble with one row for every starter (and bench) for every week and their scoring, if available.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args depending on method
+#'
+#' @export ff_starters
+#'
+#' @return A tibble
+
+ff_starters <- function(conn, ...) {
+  UseMethod("ff_starters")
+}
+
+#' @export
+ff_starters.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_starters found for platform: {conn$platform}."))
+}
