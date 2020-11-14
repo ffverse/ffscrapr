@@ -17,7 +17,7 @@
 #' @export
 ff_draftpicks.sleeper_conn <- function(conn, ...) {
 
-  current_picks <- .sleeper_currentpicks(conn)
+  current_picks <- .sleeper_currentpicks_available(conn)
 
   future_picks <- .sleeper_futurepicks(conn)
 
@@ -54,8 +54,8 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
   picks <- glue::glue('draft/{draft_id}/picks') %>%
     sleeper_getendpoint() %>%
     purrr::pluck('content') %>%
-    purrr::map_dfr(`[`,c('round','draft_slot','roster_id')) %>%
-    dplyr::select('round', 'pick' = 'draft_slot', 'franchise_id' = 'roster_id')
+    purrr::map_dfr(`[`,c('round','draft_slot','roster_id', 'player_id')) %>%
+    dplyr::select(dplyr::any_of(c('round', 'pick' = 'draft_slot', 'franchise_id' = 'roster_id','player_id')))
 
   return(picks)
 }

@@ -1,22 +1,20 @@
 #### ff_draft (MFL) ####
 
 #' Get Draft Results
-#' This function gets a table of the draft results for the current year.
-#' Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param custom_players TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)
-#' @param ... not sure if there'll be other params yet!
+#' @param ... args for other methods
 #'
 #' @examples
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_draft(ssb_conn)
-#' @describeIn ff_draft MFL returns a table of drafts for the current year!
+#' @describeIn ff_draft MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)
 #' @export
+ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 
 # Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft
 
-ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
   stopifnot(is.logical(custom_players))
 
   players_endpoint <- if (custom_players) {
