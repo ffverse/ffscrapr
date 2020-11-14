@@ -35,7 +35,7 @@ jobs:
         run: |
           options(repos = "https://packagemanager.rstudio.com/all/latest")
           remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown")
+          install.packages(c("pkgdown","ragg","textshaping"))
         shell: Rscript {0}
 
       - name: Install package
