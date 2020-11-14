@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages(c("pkgdown","ragg","textshaping"))
+          install.packages(c("pkgdown","ragg","textshaping"),type = "binary")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
