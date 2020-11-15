@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.1.0
 
 The main goal of ffscrapr 1.1.0 is to add a full set of methods for Sleeper. Also adds two new generics: `ff_userleagues()` and `ff_starters()`. 
 
