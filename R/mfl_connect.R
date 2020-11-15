@@ -5,6 +5,7 @@
 #' Connect to MFL League
 #'
 #' This function creates a connection object which stores parameters and gets a login-cookie if available
+#'
 #' @param season Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)
 #' @param league_id league_id Numeric ID parameter for each league, typically found in the URL
 #' @param APIKEY APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)
@@ -108,8 +109,6 @@ print.mfl_conn <- function(x, ...) {
 }
 
 ## LOGIN ## ----
-# Do Not Export
-#
 #' Get MFL Login Cookie
 #'
 #' Gets login cookie for MFL based on user_name/password
@@ -119,10 +118,9 @@ print.mfl_conn <- function(x, ...) {
 #' @param password MFL password (as string)
 #' @param season Season
 #'
-#' @keywords internal
-#' @noRd
-#'
 #' @return a login cookie, which should be included as a parameter in an httr GET request
+#'
+#' @keywords internal
 
 .mfl_logincookie <- function(user_name, password, season) {
   env <- get(".ffscrapr_env", inherits = TRUE)

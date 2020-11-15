@@ -9,8 +9,11 @@
 #' @describeIn ff_starters Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- sleeper_connect(league_id = 522458773317046272, season = 2020)
 #' jml_starters <- ff_starters(jml_conn)
+#' }
+#'
 #' @export
 ff_starters.sleeper_conn <- function(conn, week = 1:17, ...) {
   checkmate::assert_numeric(week, lower = 1, upper = 21)

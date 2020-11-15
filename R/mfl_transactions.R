@@ -9,8 +9,10 @@
 #' @describeIn ff_transactions MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
 #'
 #' @examples
+#' \donttest{
 #' dlf_conn <- mfl_connect(2019, league_id = 37920)
 #' ff_transactions(dlf_conn)
+#' }
 #' @export
 
 ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {

@@ -5,7 +5,6 @@
 #'
 #' A helper function to return the current year if March or later, otherwise assume previous year
 #'
-#' @noRd
 #' @keywords internal
 
 .fn_choose_season <- function(date = NULL) {
@@ -33,7 +32,6 @@
 #' @param rate_number number of calls per \code{rate_seconds}
 #' @param rate_seconds number of seconds
 #'
-#' @noRd
 #' @keywords internal
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
@@ -65,7 +63,6 @@
 #' Self-identifying is mostly about being polite, although MFL has a program to give verified clients more bandwidth!
 #' See: https://www03.myfantasyleague.com/2020/csetup?C=APICLI
 #'
-#' @noRd
 #' @keywords internal
 
 .fn_set_useragent <- function(user_agent) {
@@ -77,7 +74,6 @@
 
 #' Drop nulls from a list/vector
 #' @keywords internal
-#' @noRd
 .fn_drop_nulls <- function(x) {
   x[!vapply(x, is.null, FUN.VALUE = logical(1))]
 }

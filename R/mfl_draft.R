@@ -3,13 +3,17 @@
 #' Get Draft Results
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)
+#' @param custom_players MFL: TRUE or FALSE - retrieve custom players from the MFL database? (Allows for devy, placeholder picks, slightly slower)
 #' @param ... args for other methods
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_draft(ssb_conn)
+#' }
+#'
 #' @describeIn ff_draft MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)
+#'
 #' @export
 ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 
@@ -95,7 +99,6 @@ ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 }
 
 #' @noRd
-
 .mfl_parse_draftunit <- function(raw_draftresults) {
   df_1 <- raw_draftresults %>%
     purrr::pluck("draftPick")

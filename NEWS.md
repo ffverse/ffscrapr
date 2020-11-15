@@ -1,39 +1,35 @@
-# ffscrapr (development version)
+# ffscrapr 1.1.0
 
-The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but for Sleeper. Some other changes and tweaks will be added eventually!
+The main goal of ffscrapr 1.1.0 is to add a full set of methods for Sleeper. Also adds two new generics: `ff_userleagues()` and `ff_starters()`. 
 
-### Sleeper progress
-- Cleaned up `sleeper_connect()` code
-- Created a `sleeper_getendpoint()` lower level wrapper - design seems a little awkward ("pass each element of the url to become slash-separated parts of the path") - but will roll forward with it anyway, I think that makes the most sense. 
-- Got rid of passing the conn object into `sleeper_getendpoint()` - wasn't really being used, would be used by higher-level functions. May change if cookies etc are used later.
-- Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username. MFL does have a parallel feature even if used for different purposes. 
-- Added method for `ff_schedule()` (1.0.0.9003)
-- Added method for `ff_standings()` (1.0.0.9004)
-- Added method for `ff_franchises()` (1.0.0.9005) and added separate testing file.
-- Added method for `ff_rosters()` (1.0.0.9006)
-- Added method for `ff_draftpicks()` (1.0.0.9007)
-- Added warning for `ff_playerscores()` (1.0.0.9008) related to Sleeper deprecating stats endpoint
-- Added method for `ff_draft()` (1.0.0.9009)
-- Added method for `ff_scoring()` (1.0.0.9010) and a separated test file for scoring.
-- Added method for `ff_starters()` (1.0.0.9011) and tests for MFL/Sleeper.
-- Added method for `ff_league()` (1.0.0.9012) and tests for sleeper.
-- Added method for `ff_transactions()` (1.0.0.9013) and tests for sleeper.
-
-### New generics
+### New generic functions
 Here is a list of new functions available at the top level (ie for all platforms)
+
 - `ff_userleagues()` returns a list of user leagues. This is deployed slightly differently for MFL and Sleeper - MFL requires authentication to access user's leagues, while Sleeper doesn't have authentication so you can look up any user you like. 
-- `ff_starters()` returns a list of players started/not-started each week. MFL will return the actual score of each player each week and calculate whether they were optimal, while Sleeper just returns the player themselves. (1.0.0.9011)
+- `ff_starters()` returns a list of players started/not-started each week. MFL will return the actual score of each player each week and calculate whether they were optimal, while Sleeper just returns the player themselves. 
+
+### Sleeper notes
+
+Almost all functions now have Sleeper methods - implemented in what hopes to be relatively familiar manner to MFL. Outlining the specifics of what ***isn't*** the same:
+
+- `sleeper_userleagues()` is a wrapper on `ff_userleagues()` that makes it easier to look up user leagues without first creating a connection object.
+- `ff_playerscores()` is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on [nflfastr](https://www.nflfastr.com).
+- `sleeper_getendpoint()` is a little more simple than MFL's equivalent - just pass a string url (minus api.sleeper.app/v1) or pass in chunks of code, the function will automatically paste them together with "/". 
+- Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username first. MFL does have a parallel feature even if used for different purposes. 
+- Added two vignettes, showing "Getting Started" as well as one for custom API calls
 
 ### MFL changes
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
-- Added an `httr::handle_reset()` call to fix login bug.
 - Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks, Mike!)
+- Added an `httr::handle_reset()` call to fix login-caching bug.
+- Polished vignettes a little.
 
-### Other tweaks
+### Other release tweaks in 1.1.0
 - Now uses {checkmate} for testing.
 - Silently swallowing up unused args in mfl_connect and sleeper_connect.
-- Uses describeIn instead of rdname for method documentation. (1.0.0.9008)
+- Uses describeIn instead of rdname for method documentation.
+- Wrap all documentation examples in donttest - ratelimiting AND running in under 5 seconds each is pretty challenging!
 
 # ffscrapr 1.0.0
 

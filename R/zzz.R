@@ -2,6 +2,15 @@
 
 .onLoad <- function(libname, pkgname) {
 
+  # memoise_option <- getOption("ffscrapr.memoise")
+
+  # list of memoise options: "memory", "file_system"
+
+  # if(is.null(memoise_option)) memoise_option <- "memory"
+
+  # cache_function <- switch(memoise_option,
+  #                          "memory" = memoise::cache_memory)
+
   # nocov start
   # Memoise specific functions
   # Timeout lengths still up for discussion

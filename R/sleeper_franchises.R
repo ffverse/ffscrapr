@@ -2,15 +2,16 @@
 
 #' Get a dataframe of franchise information
 #'
-#'
-#' Returns a tidy dataframe of franchises and any relevant information
-#'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_franchises(jml_conn)
+#' }
+#'
 #' @describeIn ff_franchises Sleeper: retrieves a list of franchise information, including user IDs and co-owner IDs.
+#'
 #' @export
 ff_franchises.sleeper_conn <- function(conn) {
   rosters_endpoint <- glue::glue("league/{conn$league_id}/rosters")

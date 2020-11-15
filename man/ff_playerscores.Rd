@@ -26,7 +26,7 @@ ff_playerscores(conn, season, week, ...)
 A tibble of historical player scoring
 }
 \description{
-This function returns a tibble of player scores based on league rules
+This function returns a tidy dataframe of player scores based on league rules.
 
 Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
 Adding some nflfastr-based ideas to the pipeline for future iterations.
@@ -39,6 +39,8 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.
 }}
 
 \examples{
+\donttest{
 dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
+}
 }

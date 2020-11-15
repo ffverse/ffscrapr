@@ -7,7 +7,6 @@ with_mock_api({
 
     leagues <- ff_userleagues(conn)
 
-
     expect_tibble(leagues, min.rows = 1, any.missing = FALSE)
 
     edge <- mfl_connect(2020, 54040)
@@ -22,8 +21,11 @@ with_mock_api({
       user_name = "solarpool"
     )
 
-    leagues <- ff_userleagues(conn)
+    full_call <- ff_userleagues(conn)
+    quick_call <- sleeper_userleagues("solarpool",2020)
 
-    expect_tibble(leagues, min.rows = 1)
+    expect_tibble(full_call, min.rows = 1)
+    expect_tibble(quick_call, min.rows = 1)
+
   })
 })

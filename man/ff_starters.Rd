@@ -23,10 +23,10 @@ ff_starters(conn, ...)
 \item{season}{the season of interest - generally only the most recent 2-3 seasons are available}
 }
 \value{
-A tibble
+A tidy dataframe with every player for every week, including a flag for whether they were started or not
 }
 \description{
-This function returns a tibble with one row for every starter (and bench) for every week and their scoring, if available.
+This function returns a tidy dataframe with one row for every starter (and bench) for every week and their scoring, if available.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -36,8 +36,14 @@ This function returns a tibble with one row for every starter (and bench) for ev
 }}
 
 \examples{
+\donttest{
 dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_starters(conn = dlf_conn, week = 1:2)
+}
+
+\donttest{
 jml_conn <- sleeper_connect(league_id = 522458773317046272, season = 2020)
 jml_starters <- ff_starters(jml_conn)
+}
+
 }

@@ -11,19 +11,7 @@ ff_connect(platform = "mfl", league_id = NULL, ...)
 
 \item{league_id}{league_id (currently assuming one league at a time)}
 
-\item{...}{other parameters passed to the connect function for each specific platform.
-
-\code{rate_limit} Defaults to TRUE. Pass \code{FALSE} to turn off.
-
-\code{rate_limit_number} number of attempts to try in \code{rate_limit_seconds}.
-
-\code{APIKEY} MFL-specific - grants access to perform something as a user in a specific league
-
-\code{user_name} Collects user_name field for leagues that support it (MFL, Sleeper so far)
-
-\code{password} Collects password and attempts to fetch an authorization token which functions a lot like an APIKEY
-
-\code{user_agent} Identifies user scraping the data}
+\item{...}{other parameters passed to the connect function for each specific platform.}
 }
 \value{
 a connection object to be used with \code{ff_*} functions
@@ -33,7 +21,8 @@ This function creates a connection object which stores parameters and gets a log
 }
 \examples{
 ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+
 }
 \seealso{
-\code{\link{mfl_connect}}, \code{\link{sleeper_connect}}
+\code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 }

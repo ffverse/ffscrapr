@@ -10,11 +10,14 @@
 #' @describeIn ff_playerscores MFL: returns the player fantasy scores for each week (not the actual stats)
 #'
 #' @examples
+#' \donttest{
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
 #' ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
+#' }
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
+
   if (!(is.numeric(week) | week %in% c("AVG", "YTD"))) {
     stop("week should be either a numeric or one of AVG or YTD")
   }

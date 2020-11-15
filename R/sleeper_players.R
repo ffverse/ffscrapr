@@ -4,7 +4,10 @@
 #' (via memoise in zzz.R)
 #'
 #' @examples
+#' \donttest{
 #' player_list <- sleeper_players()
+#' }
+#'
 #' @return a dataframe containing all ~7000+ players in the Sleeper database
 #' @export
 

@@ -19,10 +19,10 @@ ff_standings(conn, ...)
 \item{...}{arguments passed to other methods (currently none)}
 }
 \value{
-A tibble of standings
+A tidy dataframe of standings data
 }
 \description{
-This function returns a tibble of season-long fantasy team stats
+This function returns a tidy dataframe of season-long fantasy team stats, including H2H wins as well as points, potential points, and all-play.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -32,8 +32,14 @@ This function returns a tibble of season-long fantasy team stats
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_standings(ssb_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_standings(jml_conn)
+}
+
 }

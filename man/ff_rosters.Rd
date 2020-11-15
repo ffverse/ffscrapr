@@ -21,21 +21,26 @@ ff_rosters(conn, ...)
 \item{custom_players}{TRUE or FALSE - include custom players? defaults to FALSE}
 }
 \value{
-A tibble of rosters, joined to basic player information and basic franchise information
+A tidy dataframe of rosters, joined to basic player information and basic franchise information
 }
 \description{
-This function returns a tibble of team rosters
+This function returns a tidy dataframe of team rosters
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{mfl_conn}: MFL: returns roster data.
+\item \code{mfl_conn}: MFL: returns roster data
 
 \item \code{sleeper_conn}: Sleeper: Returns all roster data.
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_rosters(ssb_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_rosters(jml_conn)
+}
 }
