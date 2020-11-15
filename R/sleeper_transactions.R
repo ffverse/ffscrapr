@@ -9,8 +9,11 @@
 #' @describeIn ff_transactions Sleeper: returns all transactions, including free agents, waivers, and trades.
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_transactions(jml_conn,week = 2:4)
+#' ff_transactions(jml_conn,week = 2:3)
+#' }
+#'
 #' @export
 ff_transactions.sleeper_conn <- function(conn,week = 1:17, ...) {
 
@@ -280,13 +283,15 @@ ff_transactions.sleeper_conn <- function(conn,week = 1:17, ...) {
       c("adds","drops","draft_picks","waiver_budget"),
       names_to = "name",
       values_to = "value") %>%
+    dplyr::filter(!is.na(.data$value)) %>%
     tidyr::unnest("value") %>%
     dplyr::select(-"name", - "status") %>%
     dplyr::group_by(.data$timestamp) %>%
     dplyr::mutate(trade_partner = list(unique(.data$franchise_id)),
-                  trade_partner = purrr::map2_chr(.data$trade_partner,
+                  trade_partner = purrr::map2(.data$trade_partner,
                                                   .data$franchise_id,
-                                                  ~.x[!.x %in%.y]))
+                                                  ~.x[!.x %in%.y]) %>% as.character()) %>%
+    dplyr::ungroup()
 
   return(trade_transactions)
 
