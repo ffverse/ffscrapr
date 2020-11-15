@@ -274,7 +274,6 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 
 ## Will need to write functions to parse each of these, then row bind them back together afterwards.
 # WAIVER - FCFS
-#
 # BBID_AUTO_PROCESS_WAIVERS
 # WAIVER_REQUEST
 # BBID_WAIVER_REQUEST

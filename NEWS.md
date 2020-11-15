@@ -17,7 +17,7 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 - Added method for `ff_scoring()` (1.0.0.9010) and a separated test file for scoring.
 - Added method for `ff_starters()` (1.0.0.9011) and tests for MFL/Sleeper.
 - Added method for `ff_league()` (1.0.0.9012) and tests for sleeper.
-
+- Added method for `ff_transactions()` (1.0.0.9013) and tests for sleeper.
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
@@ -28,7 +28,7 @@ Here is a list of new functions available at the top level (ie for all platforms
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
 - Added an `httr::handle_reset()` call to fix login bug.
-- Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks!)
+- Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks, Mike!)
 
 ### Other tweaks
 - Now uses {checkmate} for testing.
