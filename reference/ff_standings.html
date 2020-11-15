@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="Get Standings — ff_standings" />
-<meta property="og:description" content="This function returns a tibble of season-long fantasy team stats" />
+<meta property="og:description" content="This function returns a tidy dataframe of season-long fantasy team stats, including H2H wins as well as points, potential points, and all-play." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
       </span>
     </div>
 
@@ -108,10 +108,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/mfl_basics.html">mfl_basics</a>
+      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">sleeper_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -140,18 +146,21 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Standings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_standings.R'><code>R/mfl_standings.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_standings.R'><code>R/mfl_standings.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_standings.R'><code>R/sleeper_standings.R</code></a></small>
     <div class="hidden name"><code>ff_standings.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tibble of season-long fantasy team stats</p>
+    <p>This function returns a tidy dataframe of season-long fantasy team stats, including H2H wins as well as points, potential points, and all-play.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_standings</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_standings</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for sleeper_conn</span>
+<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,30 +177,65 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of standings</p>
+    <p>A tidy dataframe of standings data</p>
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    
+<ul>
+<li><p><code>mfl_conn</code>: MFL: returns H2H/points/all-play/best-ball data in a table.</p></li>
+<li><p><code>sleeper_conn</code>: Sleeper: returns all standings and points data and manually calculates allplay results.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ssb_conn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(<span class='kw'>platform</span> <span class='kw'>=</span> <span class='st'>"mfl"</span>, <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='fl'>54040</span>, <span class='kw'>season</span> <span class='kw'>=</span> <span class='fl'>2020</span>)
-<span class='fu'>ff_standings</span>(<span class='no'>ssb_conn</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 14</span><span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 14 x 20</span><span>
 #&gt;    franchise_id franchise_name h2h_wins h2h_losses h2h_ties h2h_winpct
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu          0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0002         Team Simon Be~        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0003         Team Captain ~        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0004         Team Ice Clim~        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 5</span><span> 0005         Team Dr. Mario        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0006         Team King Ded~        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0007         Team Kirby            0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0008         Team Fox              0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'> 9</span><span> 0009         Team Link             0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'>10</span><span> 0010         Team Yoshi            0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'>11</span><span> 0011         Team Diddy Ko~        0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'>12</span><span> 0012         Team Mewtwo           0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'>13</span><span> 0013         Team Ness             0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'>14</span><span> 0014         Team Luigi            0          0        0        </span><span style='color: #BB0000;'>NaN</span><span>
-#&gt; </span><span style='color: #555555;'># ... with 8 more variables: allplay_wins </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, allplay_losses </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 0014         Team Luigi            9          0        0      1    
+#&gt; </span><span style='color: #555555;'> 2</span><span> 0011         Team Diddy Ko…        7          2        0      0.778
+#&gt; </span><span style='color: #555555;'> 3</span><span> 0006         Team King Ded…        6          3        0      0.667
+#&gt; </span><span style='color: #555555;'> 4</span><span> 0009         Team Link             6          3        0      0.667
+#&gt; </span><span style='color: #555555;'> 5</span><span> 0010         Team Yoshi            5          4        0      0.556
+#&gt; </span><span style='color: #555555;'> 6</span><span> 0008         Team Fox              5          4        0      0.556
+#&gt; </span><span style='color: #555555;'> 7</span><span> 0003         Team Captain …        4          5        0      0.444
+#&gt; </span><span style='color: #555555;'> 8</span><span> 0007         Team Kirby            4          5        0      0.444
+#&gt; </span><span style='color: #555555;'> 9</span><span> 0012         Team Mewtwo           4          5        0      0.444
+#&gt; </span><span style='color: #555555;'>10</span><span> 0004         Team Ice Clim…        3          6        0      0.333
+#&gt; </span><span style='color: #555555;'>11</span><span> 0005         Team Dr. Mario        3          6        0      0.333
+#&gt; </span><span style='color: #555555;'>12</span><span> 0002         Team Simon Be…        3          6        0      0.333
+#&gt; </span><span style='color: #555555;'>13</span><span> 0001         Team Pikachu          3          6        0      0.333
+#&gt; </span><span style='color: #555555;'>14</span><span> 0013         Team Ness             1          8        0      0.111
+#&gt; </span><span style='color: #555555;'># … with 14 more variables: allplay_wins </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, allplay_losses </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   allplay_ties </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, allplay_winpct </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, points_for </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   points_against </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, victory_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, power_rank </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   points_against </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, max_points_against </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, min_points_against </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   potential_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, victory_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, offensive_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   defensive_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, power_rank </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, power_rank_alt </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='fl'>522458773317046272</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 12</span><span>
+#&gt;    franchise_id franchise_name h2h_wins h2h_losses h2h_ties h2h_winpct
+#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>            1 Fake News             5          4        0      0.556
+#&gt; </span><span style='color: #555555;'> 2</span><span>            2 KingGabe              0          9        0      0    
+#&gt; </span><span style='color: #555555;'> 3</span><span>            3 solarpool             6          3        0      0.667
+#&gt; </span><span style='color: #555555;'> 4</span><span>            4 The FANTom Me…        6          3        0      0.667
+#&gt; </span><span style='color: #555555;'> 5</span><span>            5 Barbarians            3          6        0      0.333
+#&gt; </span><span style='color: #555555;'> 6</span><span>            6 sox05syd              5          4        0      0.556
+#&gt; </span><span style='color: #555555;'> 7</span><span>            7 Flipadelphia05        6          3        0      0.667
+#&gt; </span><span style='color: #555555;'> 8</span><span>            8 Hocka Flocka          5          4        0      0.556
+#&gt; </span><span style='color: #555555;'> 9</span><span>            9 ZPMiller97            4          5        0      0.444
+#&gt; </span><span style='color: #555555;'>10</span><span>           10 JMLarkin              1          8        0      0.111
+#&gt; </span><span style='color: #555555;'>11</span><span>           11 Permian Panth…        6          3        0      0.667
+#&gt; </span><span style='color: #555555;'>12</span><span>           12 jaydk                 7          2        0      0.778
+#&gt; </span><span style='color: #555555;'># … with 6 more variables: points_for </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, points_against </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   potential_points </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, allplay_wins </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, allplay_losses </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   allplay_winpct </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -207,7 +251,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

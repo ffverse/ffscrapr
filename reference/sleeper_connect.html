@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
       </span>
     </div>
 
@@ -108,10 +108,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/mfl_basics.html">mfl_basics</a>
+      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">sleeper_getendpoint</a>
     </li>
   </ul>
 </li>
@@ -140,7 +146,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Connect to Sleeper League</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper.R'><code>R/sleeper.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_connect.R'><code>R/sleeper_connect.R</code></a></small>
     <div class="hidden name"><code>sleeper_connect.Rd</code></div>
     </div>
 
@@ -148,15 +154,16 @@
     <p>This function creates a connection object which stores parameters and a user ID if available.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sleeper_connect</span>(
-  <span class='kw'>season</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>league_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>user_agent</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>rate_limit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>rate_limit_number</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>rate_limit_seconds</span> <span class='kw'>=</span> <span class='fl'>60</span>
-)</pre>
+    <pre class="usage"><span class='fu'>sleeper_connect</span><span class='op'>(</span>
+  season <span class='op'>=</span> <span class='cn'>NULL</span>,
+  league_id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  user_name <span class='op'>=</span> <span class='cn'>NULL</span>,
+  user_agent <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rate_limit <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  rate_limit_number <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rate_limit_seconds <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,17 +190,21 @@
     </tr>
     <tr>
       <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is 100 calls per 60 seconds</p></td>
+      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is under 1000 calls per 60 seconds</p></td>
     </tr>
     <tr>
       <th>rate_limit_seconds</th>
       <td><p>number of seconds as denominator for rate_limit</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguments (for other methods)</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list that stores MFL connection objects</p>
+    <p>a list that stores Sleeper connection objects</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -210,7 +221,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -4,6 +4,24 @@
     <loc>ffscrapr.dynastyprocess.com/index.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-fn_choose_season.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-fn_drop_nulls.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-fn_set_ratelimit.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-fn_set_useragent.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-mfl_logincookie.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-sleeper_userid.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dp_playerids.html</loc>
   </url>
   <url>
@@ -40,7 +58,13 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_standings.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_starters.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_transactions.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_userleagues.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/forget.html</loc>
@@ -61,9 +85,24 @@
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_connect.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/sleeper_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/sleeper_players.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/sleeper_userleagues.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/articles/mfl_basics.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/mfl_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/sleeper_basics.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/sleeper_getendpoint.html</loc>
   </url>
 </urlset>
