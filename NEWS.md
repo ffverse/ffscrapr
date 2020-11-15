@@ -16,6 +16,8 @@ The main goal of ffscrapr 1.1.0 will be to replicate the features of 1.0.0 but f
 - Added method for `ff_draft()` (1.0.0.9009)
 - Added method for `ff_scoring()` (1.0.0.9010) and a separated test file for scoring.
 - Added method for `ff_starters()` (1.0.0.9011) and tests for MFL/Sleeper.
+- Added method for `ff_league()` (1.0.0.9012) and tests for sleeper.
+
 
 ### New generics
 Here is a list of new functions available at the top level (ie for all platforms)
