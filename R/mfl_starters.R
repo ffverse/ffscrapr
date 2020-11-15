@@ -13,34 +13,35 @@
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
 #' ff_starters(conn = dlf_conn, week = 1:2)
 #' @export
-ff_starters.mfl_conn <- function(conn,week = "all", season = NULL, ...){
+ff_starters.mfl_conn <- function(conn, week = "all", season = NULL, ...) {
+  if (is.null(season)) season <- conn$season
 
-  if(is.null(season)) season <- conn$season
-
-  checkmate::assert_numeric(week,lower = 1, upper = 21)
+  checkmate::assert_numeric(week, lower = 1, upper = 21)
   checkmate::assert_number(season)
 
   players_endpoint <- sleeper_players() %>%
-    dplyr::select('player_id','player_name','pos','team')
+    dplyr::select("player_id", "player_name", "pos", "team")
 
   franchises_endpoint <- ff_franchises(conn) %>%
-    dplyr::select('franchise_id','franchise_name')
+    dplyr::select("franchise_id", "franchise_name")
 
   weekly_starters <- tibble::tibble(
     season = season,
     week = week
   ) %>%
-    dplyr::mutate(starters = purrr::map2(week,season,.mfl_weeklystarters,conn)) %>%
+    dplyr::mutate(starters = purrr::map2(week, season, .mfl_weeklystarters, conn)) %>%
     tidyr::unnest(.data$starters) %>%
-    dplyr::mutate(player_score = as.numeric(.data$player_score),
-                  should_start = as.numeric(.data$should_start)) %>%
+    dplyr::mutate(
+      player_score = as.numeric(.data$player_score),
+      should_start = as.numeric(.data$should_start)
+    ) %>%
     dplyr::left_join(
       franchises_endpoint,
-      by = 'franchise_id'
+      by = "franchise_id"
     ) %>%
     dplyr::left_join(
       players_endpoint,
-      by = 'player_id'
+      by = "player_id"
     ) %>%
     dplyr::select(dplyr::any_of(c(
       "franchise_id",
@@ -59,38 +60,43 @@ ff_starters.mfl_conn <- function(conn,week = "all", season = NULL, ...){
   return(weekly_starters)
 }
 
-.mfl_weeklystarters <- function(week, year, conn){
-
-  weekly_result <- mfl_getendpoint(conn,"weeklyResults", W=week, YEAR = year) %>%
-    purrr::pluck('content','weeklyResults','matchup') %>%
-    purrr::map('franchise') %>%
+.mfl_weeklystarters <- function(week, year, conn) {
+  weekly_result <- mfl_getendpoint(conn, "weeklyResults", W = week, YEAR = year) %>%
+    purrr::pluck("content", "weeklyResults", "matchup") %>%
+    purrr::map("franchise") %>%
     tibble::tibble()
 
-  errortibble <- tibble::tibble("franchise_id" = character(),
-                                "starter_status" = character(),
-                                "player_id" = character(),
-                                "player_score" = character(),
-                                "should_start" = character())
+  errortibble <- tibble::tibble(
+    "franchise_id" = character(),
+    "starter_status" = character(),
+    "player_id" = character(),
+    "player_score" = character(),
+    "should_start" = character()
+  )
 
-  if(nrow(weekly_result)==0) return(errortibble)
+  if (nrow(weekly_result) == 0) {
+    return(errortibble)
+  }
 
 
   weekly_result <- weekly_result %>%
     tidyr::unnest_longer(1) %>%
     tidyr::unnest_wider(1)
 
-  if(!'player'%in% names(weekly_result)) return(errortibble)
+  if (!"player" %in% names(weekly_result)) {
+    return(errortibble)
+  }
 
 
   weekly_result %>%
-    dplyr::select("franchise_id"='id','player') %>%
-    tidyr::unnest_longer('player') %>%
-    tidyr::unnest_wider('player') %>%
+    dplyr::select("franchise_id" = "id", "player") %>%
+    tidyr::unnest_longer("player") %>%
+    tidyr::unnest_wider("player") %>%
     dplyr::select(dplyr::any_of(c(
-      'franchise_id',
-      "starter_status" = 'status',
-      "player_id" = 'id',
-      "player_score" = 'score',
+      "franchise_id",
+      "starter_status" = "status",
+      "player_id" = "id",
+      "player_score" = "score",
       "should_start" = "shouldStart"
     )))
 }

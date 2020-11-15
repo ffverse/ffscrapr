@@ -23,6 +23,8 @@ sleeper_connect <- function(season = NULL,
                             rate_limit_seconds = NULL,
                             ...) {
 
+  # nocov start
+
   ## USER AGENT ##
   # Self-identifying is mostly about being polite.
 
@@ -37,14 +39,15 @@ sleeper_connect <- function(season = NULL,
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
 
-
   if (!is.logical(rate_limit)) {
     stop("rate_limit should be logical")
   }
 
-  if(!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
-  .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+  if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
+    .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
   }
+
+  # nocov end
 
   ## Season ##
   # Sleeper organizes things by league year and tends to roll over around February.
@@ -68,13 +71,13 @@ sleeper_connect <- function(season = NULL,
       platform = "Sleeper",
       season = season,
       user_name = user_name,
-      league_id = league_id,
+      league_id = as.character(league_id),
       user_id = user_id
     ),
     class = "sleeper_conn"
   )
 }
-
+# nocov start
 #' @noRd
 #' @export
 print.sleeper_conn <- function(x, ...) {
@@ -82,47 +85,20 @@ print.sleeper_conn <- function(x, ...) {
   str(x)
   invisible(x)
 }
-
+# nocov end
 # DO NOT EXPORT
 #' Get Sleeper User ID
 #'
 #' Docs: https://docs.sleeper.app
 #'
 #' @param user_name Sleeper username
-#' @param season Season
 #'
 #' @keywords internal
-#' @noRd
 #'
-#' @return a login cookie, which should be included as a parameter in an httr GET request
+#' @return sleeper userID
 
 .sleeper_userid <- function(user_name) {
-  env <- get(".ffscrapr_env", inherits = TRUE)
-
-  stopifnot(is.character(user_name))
-
-  user_object <- env$get(glue::glue("https://api.sleeper.app/v1/user/{user_name}"), env$user_agent)
-
-  if (httr::http_type(user_object) != "application/json") {
-    stop("API call for user_name object did not return JSON", call. = FALSE)
-  }
-
-  parsed <- jsonlite::parse_json(httr::content(user_object, "text"))
-
-  if (httr::http_error(user_object)) {
-    stop(glue::glue(
-      "Failed to retrieve user ID [{httr::status_code(user_object)}]\n",
-      parsed$message
-    ),
-    call. = FALSE
-    )
-  }
-
-  if (is.null(parsed$user_id)) {
-    stop(glue::glue("Could not find user <{user_name}> in Sleeper user database."),
-      call. = FALSE
-    )
-  }
-
-  parsed$user_id
+  glue::glue("user/{user_name}") %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck("content", "user_id")
 }

@@ -13,8 +13,5 @@
 #' @export
 
 ff_playerscores.sleeper_conn <- function(conn, ...) {
-
   warning(glue::glue("Sleeper has deprecated their stats endpoint, no player stats data can be returned at this time."))
-
 }
-

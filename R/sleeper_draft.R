@@ -6,22 +6,20 @@
 #' @param ... args for other methods
 #'
 #' @examples
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
+#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_draft(jml_conn)
-#'
 #' @describeIn ff_draft Sleeper: returns a dataframe of all drafts and draft selections, if available.
 #' @export
-ff_draft.sleeper_conn <- function(conn,...) {
-
+ff_draft.sleeper_conn <- function(conn, ...) {
   franchise_endpoint <- ff_franchises(conn) %>%
-    dplyr::select("franchise_id","franchise_name")
+    dplyr::select("franchise_id", "franchise_name")
 
   players_endpoint <- sleeper_players() %>%
     dplyr::select("player_id", "player_name", "pos", "team", "age")
 
   df_drafts <- sleeper_getendpoint(glue::glue("league/{conn$league_id}/drafts")) %>%
-    purrr::pluck('content') %>%
-    purrr::map_dfr(`[`,c('season',"draft_id","league_id","status","type")) %>%
+    purrr::pluck("content") %>%
+    purrr::map_dfr(`[`, c("season", "draft_id", "league_id", "status", "type")) %>%
     dplyr::mutate(picks = purrr::map(.data$draft_id, .sleeper_currentdraft)) %>%
     tidyr::unnest(.data$picks) %>%
     dplyr::left_join(franchise_endpoint, by = "franchise_id") %>%
