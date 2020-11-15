@@ -1,14 +1,15 @@
 #### ff_rosters (Sleeper) ####
 
-#' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
-#' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
+#' Get a dataframe of roster data
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_rosters(jml_conn)
+#' }
 #' @describeIn ff_rosters Sleeper: Returns all roster data.
 #' @export
 ff_rosters.sleeper_conn <- function(conn, ...) {

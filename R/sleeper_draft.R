@@ -6,9 +6,13 @@
 #' @param ... args for other methods
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_draft(jml_conn)
+#' }
+#'
 #' @describeIn ff_draft Sleeper: returns a dataframe of all drafts and draft selections, if available.
+#'
 #' @export
 ff_draft.sleeper_conn <- function(conn, ...) {
   franchise_endpoint <- ff_franchises(conn) %>%

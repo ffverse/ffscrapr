@@ -8,9 +8,10 @@
 #' @describeIn ff_draftpicks Sleeper: retrieves current and future draft picks
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_draftpicks(jml_conn)
-#' @return a tibble detailing future draft picks
+#' }
 #'
 #' @export
 ff_draftpicks.sleeper_conn <- function(conn, ...) {

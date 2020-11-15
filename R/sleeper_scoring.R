@@ -5,9 +5,13 @@
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 #' ff_scoring(jml_conn)
+#' }
+#'
 #' @describeIn ff_scoring Sleeper: returns scoring settings in a flat table, one row per position per rule.
+#'
 #' @export
 ff_scoring.sleeper_conn <- function(conn) {
   scoring_rules <- glue::glue("league/{conn$league_id}") %>%

@@ -5,8 +5,11 @@
 #' @param conn the connection object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_league(ssb_conn)
+#' }
+#'
 #' @describeIn ff_league MFL: returns a summary of league features.
 #' @export
 

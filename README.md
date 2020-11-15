@@ -75,7 +75,7 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 434 x 11
+#> # A tibble: 435 x 11
 #>   franchise_id franchise_name player_id player_name pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
 #> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2
@@ -83,20 +83,20 @@ ff_rosters(ssb)
 #> 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.5
 #> 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
 #> 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4
-#> # ... with 429 more rows, and 4 more variables: roster_status <chr>,
+#> # ... with 430 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 833 x 12
+#> # A tibble: 843 x 12
 #>   timestamp           type  type_desc franchise_id franchise_name player_id
 #>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#> 1 2020-11-13 17:00:00 BBID~ added     0003         Team Captain ~ 14095    
-#> 2 2020-11-11 23:13:36 FREE~ added     0007         Team Kirby     13289    
-#> 3 2020-11-11 23:13:36 FREE~ dropped   0007         Team Kirby     13776    
-#> 4 2020-11-11 22:00:41 FREE~ dropped   0007         Team Kirby     11785    
-#> 5 2020-11-11 22:00:41 IR    activated 0007         Team Kirby     13634    
-#> # ... with 828 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#> 1 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    
+#> 2 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    
+#> 3 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    
+#> 4 2020-11-15 17:23:25 IR    deactiva~ 0010         Team Yoshi     14126    
+#> 5 2020-11-15 16:45:09 TAXI  promoted  0013         Team Ness      14125    
+#> # ... with 838 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
@@ -113,8 +113,8 @@ this project:
     issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
     if you’d like to request specific data or report a bug/error.
 
-  - You can [sponsor this project by donating to help with server
-    costs](https://github.com/sponsors/tanho63)\!
+  - You can [sponsor this project with
+    donations](https://github.com/sponsors/tanho63)\!
 
   - If you’d like to contribute code, please check out [the contribution
     guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).

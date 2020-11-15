@@ -2,17 +2,16 @@
 
 #' MFL Draft Picks
 #'
-#' Get current and future draft picks that have not yet been selected/converted into players
-#'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_draftpicks MFL: returns both current and future picks
+#' @describeIn ff_draftpicks MFL: returns current and future picks
 #'
 #' @examples
+#' \donttest{
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
 #' ff_draftpicks(conn = dlf_conn)
-#' @return a tibble detailing future draft picks
+#' }
 #'
 #' @export
 

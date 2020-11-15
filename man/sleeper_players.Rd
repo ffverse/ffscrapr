@@ -14,5 +14,8 @@ A cached table of Sleeper NFL players. Will store in memory for each session!
 (via memoise in zzz.R)
 }
 \examples{
+\donttest{
 player_list <- sleeper_players()
+}
+
 }

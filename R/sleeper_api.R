@@ -10,6 +10,7 @@
 #' @param ... All other arguments are passed in order as slash-separated components of the url
 #'
 #' @seealso \url{https://docs.sleeper.app}
+#' @seealso \code{vignette("sleeper_getendpoint")}
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export
@@ -83,7 +84,6 @@ sleeper_getendpoint <- function(endpoint,
 ## PRINT METHOD SLEEPER_API OBJ ##
 #' @noRd
 #' @export
-#'
 print.sleeper_api <- function(x, ...) {
 
   # nocov start

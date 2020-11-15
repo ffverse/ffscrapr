@@ -30,10 +30,10 @@ sleeper_connect(
 
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
 
-\item{...}{silently swallows up unused arguments}
+\item{...}{other arguments (for other methods)}
 }
 \value{
-a list that stores MFL connection objects
+a list that stores Sleeper connection objects
 }
 \description{
 This function creates a connection object which stores parameters and a user ID if available.

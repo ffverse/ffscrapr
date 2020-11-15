@@ -20,7 +20,7 @@ ff_scoring(conn)
 A tibble of league scoring rules for each position defined.
 }
 \description{
-This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.
+This function returns a dataframe with detailed scoring settings for each league - broken down by event, points, and (if available) position.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -30,10 +30,16 @@ This function returns a dataframe with detailed scoring settings, broken down by
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_scoring(ssb_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_scoring(jml_conn)
+}
+
 }
 \seealso{
 \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}

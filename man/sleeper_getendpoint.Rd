@@ -22,4 +22,6 @@ Check out the vignette for more details and example usage.
 }
 \seealso{
 \url{https://docs.sleeper.app}
+
+\code{vignette("sleeper_getendpoint")}
 }

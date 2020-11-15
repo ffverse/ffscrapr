@@ -10,13 +10,16 @@ dp_values(file = c("values.csv", "values-players.csv", "values-picks.csv"))
 \item{file}{one of \code{c("values.csv","values-players.csv","values-picks.csv")}}
 }
 \value{
-a tibble of trade values
+a tibble of trade values from DynastyProcess
 }
 \description{
-Fetches a copy of the latest DynastyProcess dynasty trade values sheet
+Fetches a copy of the latest DynastyProcess dynasty trade values sheets
 }
 \examples{
-dp_values()
+\donttest{
+ dp_values()
+}
+
 }
 \seealso{
 \url{https://github.com/DynastyProcess/data}

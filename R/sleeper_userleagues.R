@@ -2,9 +2,6 @@
 
 #' Get User Leagues
 #'
-#' This function retrieves a tibble of all user leagues
-#' (which were created via username/password args)
-#'
 #' @param conn a connection object created by \code{ff_connect()}
 #' @param user_name the username to look up - defaults to user created in conn if available
 #' @param ... arguments that may be passed to other methods (for method consistency)

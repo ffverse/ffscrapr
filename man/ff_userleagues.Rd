@@ -26,18 +26,11 @@ ff_userleagues(conn, ...)
 A tidy dataframe with one row for every league a user is in
 }
 \description{
-This function returns a tibble with one row for every league a user is in. This requries authentication cookies for MFL usage.
-
-This function retrieves a tibble of all user leagues and requires an
-authentication cookie to be stored inside the MFL conn object
-(which were created via username/password args)
-
-This function retrieves a tibble of all user leagues
-(which were created via username/password args)
+This function returns a tidy dataframe with one row for every league a user is in. This requries authentication cookies for MFL usage.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{mfl_conn}: MFL: With an authentication token, it will return a list of user leagues.
+\item \code{mfl_conn}: MFL: With username/password, it will return a list of user leagues.
 
 \item \code{sleeper_conn}: Sleeper: returns a listing of leagues for a given user_id or user_name
 }}

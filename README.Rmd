@@ -36,14 +36,14 @@ Version 1.0.0 is now on CRAN 🎉 and can be installed with:
 ```{r eval = FALSE}
 install.packages("ffscrapr")
 # or from GitHub release
+# install.packages("devtools") OR install.packages("remotes")
+# remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.0.0")
 ```
 
 Install the development version from GitHub with:
 
 ``` {r eval = FALSE}
-# install.packages("devtools") OR install.packages("remotes")
-## remotes is a subpackage of devtools
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
 
@@ -76,7 +76,7 @@ Many hands make light work! Here are some ways you can contribute to this projec
 
 - You can [open an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose) if you'd like to request specific data or report a bug/error. 
 
-- You can [sponsor this project by donating to help with server costs](https://github.com/sponsors/tanho63)!
+- You can [sponsor this project with donations](https://github.com/sponsors/tanho63)!
 
 - If you'd like to contribute code, please check out [the contribution guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
 
