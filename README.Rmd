@@ -47,7 +47,7 @@ Install the development version from GitHub with:
 remotes::install_github("dynastyprocess/ffscrapr")
 ```
 
-The dev version has a [separate documentation site here](https://ffscrapr.dynastyprocess.com/dev).
+The dev version has a [separate documentation site here](https://ffscrapr.dynastyprocess.com/dev/).
 
 ### Usage
 
