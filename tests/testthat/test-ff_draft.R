@@ -10,7 +10,7 @@ with_mock_api({
 
     expect_tibble(ssb_draftresults, min.rows = 40)
 
-    jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+    jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
     jml_draftresults <- ff_draft(jml_conn)
 
     expect_tibble(jml_draftresults, min.rows = 40)

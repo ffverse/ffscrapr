@@ -6,7 +6,8 @@ with_mock_api({
 
     expect_tibble(sfb_playerscores, min.rows = 100)
 
-    jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+    jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
     expect_warning(ff_playerscores(jml_conn))
+
   })
 })
