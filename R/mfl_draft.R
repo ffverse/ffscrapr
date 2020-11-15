@@ -13,7 +13,7 @@
 #' @export
 ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
 
-# Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft
+  # Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft
 
   stopifnot(is.logical(custom_players))
 

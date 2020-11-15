@@ -37,7 +37,6 @@
 #' @keywords internal
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
-
   if (toggle) {
     fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
     fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
@@ -48,12 +47,12 @@
     fn_post <- httr::POST
   }
 
-  if(platform == "MFL"){
+  if (platform == "MFL") {
     assign("get.mfl", fn_get, envir = .ffscrapr_env)
     assign("post.mfl", fn_post, envir = .ffscrapr_env)
   }
 
-  if(platform == "Sleeper"){
+  if (platform == "Sleeper") {
     assign("get.sleeper", fn_get, envir = .ffscrapr_env)
     assign("post.sleeper", fn_post, envir = .ffscrapr_env)
   }

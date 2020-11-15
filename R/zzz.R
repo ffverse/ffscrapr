@@ -20,10 +20,10 @@
 
   sleeper_players <<- memoise::memoise(sleeper_players, ~ memoise::timeout(86400))
 
-  ff_userleagues.sleeper_conn <<- memoise::memoise(ff_userleagues.sleeper_conn, ~memoise::timeout(3600))
-  ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~memoise::timeout(86400))
+  ff_userleagues.sleeper_conn <<- memoise::memoise(ff_userleagues.sleeper_conn, ~ memoise::timeout(3600))
+  ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~ memoise::timeout(86400))
   ff_schedule.sleeper_conn <<- memoise::memoise(ff_schedule.sleeper_conn, ~ memoise::timeout(3600))
-  ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~memoise::timeout(3600))
+  ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~ memoise::timeout(3600))
 
   env <- rlang::env(
     user_agent = glue::glue(

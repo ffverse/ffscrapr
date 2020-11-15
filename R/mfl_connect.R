@@ -53,10 +53,10 @@ mfl_connect <- function(season = NULL,
     stop("rate_limit should be logical")
   }
 
-  if(!rate_limit ||
-     (!is.null(rate_limit_number) & !is.null(rate_limit_number))
-  ){
-  .fn_set_ratelimit(rate_limit,"MFL", rate_limit_number, rate_limit_seconds)
+  if (!rate_limit ||
+    (!is.null(rate_limit_number) & !is.null(rate_limit_number))
+  ) {
+    .fn_set_ratelimit(rate_limit, "MFL", rate_limit_number, rate_limit_seconds)
   }
 
   ## SEASON ##

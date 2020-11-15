@@ -36,7 +36,8 @@ ff_franchises.sleeper_conn <- function(conn) {
     dplyr::left_join(users_response, by = c("owner_id" = "user_id")) %>%
     dplyr::select(
       "franchise_id" = .data$roster_id,
-      dplyr::any_of(c("franchise_name", "user_name", "user_id" = "owner_id", "co_owners")))
+      dplyr::any_of(c("franchise_name", "user_name", "user_id" = "owner_id", "co_owners"))
+    )
 
   return(df_ownerlist)
 }

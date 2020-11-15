@@ -34,7 +34,6 @@ ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_scoring(ssb_conn)
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_scoring(jml_conn)
-
 }
 \seealso{
 \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
