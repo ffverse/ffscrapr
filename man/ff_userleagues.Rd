@@ -11,14 +11,14 @@ ff_userleagues(conn, ...)
 
 \method{ff_userleagues}{mfl_conn}(conn, season = NULL, ...)
 
-\method{ff_userleagues}{sleeper_conn}(conn, user_name = NULL, ...)
+\method{ff_userleagues}{sleeper_conn}(conn = NULL, user_name = NULL, season = NULL, ...)
 }
 \arguments{
 \item{conn}{a connection object created by \code{ff_connect()}}
 
 \item{...}{arguments that may be passed to other methods (for method consistency)}
 
-\item{season}{the MFL platform season to look for}
+\item{season}{the season to look up leagues for}
 
 \item{user_name}{the username to look up - defaults to user created in conn if available}
 }
@@ -35,3 +35,6 @@ This function returns a tidy dataframe with one row for every league a user is i
 \item \code{sleeper_conn}: Sleeper: returns a listing of leagues for a given user_id or user_name
 }}
 
+\seealso{
+\code{\link{sleeper_userleagues}} to call this function for Sleeper leagues without first creating a connection object.
+}

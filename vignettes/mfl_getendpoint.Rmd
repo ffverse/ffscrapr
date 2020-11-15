@@ -1,5 +1,6 @@
 ---
-title: "mfl_getendpoint"
+title: "MFL: Get Any API Endpoint"
+date: "2020-08-10"
 author: "Tan Ho"
 output: rmarkdown::html_vignette
 vignette: >

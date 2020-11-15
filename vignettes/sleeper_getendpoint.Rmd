@@ -1,0 +1,76 @@
+---
+title: "sleeper_getendpoint"
+date: "2020-11-15"
+author: "Tan Ho"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{sleeper_getendpoint}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Creating your own custom Sleeper API calls
+
+```{r setup}
+library(ffscrapr)
+library(dplyr)
+library(purrr)
+library(glue)
+```
+
+The [Sleeper API is pretty extensive](https://docs.sleeper.app), and I haven't written out a function for every single combination of the endpoints. If there is something you'd like to access, you can use the lower-level "`sleeper_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+
+Here is an example of how you can call one of the endpoints - in this case, let's pull Sleeper's trending players data! 
+
+We'll start by opening up this page, https://docs.sleeper.app/#trending-players, which is the documentation page for this particular endpoint. From here, we can see that Sleeper's documentation says the endpoint is: 
+
+`https://api.sleeper.app/v1/players/<sport>/trending/<type>?lookback_hours=<hours>&limit=<int>`
+
+The sleeper_getendpoint function already has the `https://api.sleeper.app/v1/` part encoded, so all we'll need to do is pass in the remaining part of the URL. 
+
+We'll need to fill out the other parameters as per the documentation: sport is `NFL`, type is either `add` or `drop`, lookback_hours is optional in hours, and limit is optional in number of rows. We can use the `glue` package to parameterise this, although you can also use base R's paste function just as easily.
+
+```{r}
+
+query <- glue::glue('players/nfl/trending/add')
+
+query
+
+response_trending <- sleeper_getendpoint(query)
+
+str(response_trending, max.level = 1)
+```
+
+Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debug, but we can turn the content into a dataframe with some careful application of the tidyverse. 
+
+```{r}
+
+df_trending <- response_trending %>% 
+  purrr::pluck("content") %>% 
+  dplyr::bind_rows()
+
+head(df_trending)
+```
+
+This isn't very helpful without knowing who these players are - let's pull the players endpoint in as well. 
+
+```{r}
+
+players <- sleeper_players() %>% 
+  select(player_id, player_name, pos, team, age)
+
+trending <- df_trending %>% 
+  left_join(players, by = "player_id")
+
+trending
+
+```
+
+There - this means something to us now! As of this writing, Kalen Ballage is the most added player. Haven't we been bitten by this before?
