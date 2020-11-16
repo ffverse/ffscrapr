@@ -2,14 +2,14 @@
 
 #' Get a dataframe of franchise information
 #'
-#'
-#' Returns a tidy dataframe of franchises and any relevant information
-#'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_franchises(ssb_conn)
+#' }
+#'
 #' @describeIn ff_franchises MFL: returns franchise and division information.
 #' @export
 

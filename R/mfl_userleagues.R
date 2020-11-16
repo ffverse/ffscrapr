@@ -2,18 +2,13 @@
 
 #' Get User Leagues
 #'
-#' This function retrieves a tibble of all user leagues and requires an
-#' authentication cookie to be stored inside the MFL conn object
-#' (which were created via username/password args)
-#'
 #' @param conn a connection object created by \code{ff_connect()}
 #' @param season the MFL platform season to look for
 #' @param ... arguments that may be passed to other methods (for method consistency)
 #'
-#' @describeIn ff_userleagues MFL: With an authentication token, it will return a list of user leagues.
+#' @describeIn ff_userleagues MFL: With username/password, it will return a list of user leagues.
 #'
 #' @export
-
 ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
   if (is.null(conn$auth_cookie)) {
     stop("No authentication cookie found in the conn object.

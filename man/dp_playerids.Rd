@@ -7,13 +7,16 @@
 dp_playerids()
 }
 \value{
-a tibble of trade values
+a tibble of player IDs
 }
 \description{
 Fetches a copy of the latest DynastyProcess player IDs csv
 }
 \examples{
+\donttest{
 dp_playerids()
+}
+
 }
 \seealso{
 \url{https://github.com/DynastyProcess/data}

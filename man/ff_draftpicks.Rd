@@ -19,23 +19,27 @@ ff_draftpicks(conn, ...)
 \item{...}{other arguments (currently unused)}
 }
 \value{
-a tibble detailing future draft picks
-
-a tibble detailing future draft picks
+Returns a dataframe with current and future draft picks for each franchise
 }
 \description{
-Get current and future draft picks that have not yet been selected/converted into players
+Returns all draft picks (current and future) that belong to a specific franchise and have not yet been converted into players (i.e. selected.)
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{mfl_conn}: MFL: returns both current and future picks
+\item \code{mfl_conn}: MFL: returns current and future picks
 
 \item \code{sleeper_conn}: Sleeper: retrieves current and future draft picks
 }}
 
 \examples{
+\donttest{
 dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_draftpicks(conn = dlf_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_draftpicks(jml_conn)
+}
+
 }

@@ -16,10 +16,10 @@ ff_league(conn)
 \item{conn}{the connection object created by \code{ff_connect()}}
 }
 \value{
-A one-row tibble of league settings.
+A one-row summary of each league's main features.
 }
 \description{
-This function returns a tibble of common league settings, including details like "1QB" or "2QB/SF", best ball, team count etc
+This function returns a tidy dataframe of common league settings, including details like "1QB" or "2QB/SF", scoring, best ball, team count, IDP etc. This is potentially useful in summarising the features of multiple leagues.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -29,8 +29,13 @@ This function returns a tibble of common league settings, including details like
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_league(ssb_conn)
+}
+
+
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_league(jml_conn)
+
 }

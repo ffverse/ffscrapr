@@ -3,11 +3,14 @@
 #' Get a dataframe of league standings
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param ... arguments passed to other methods (currently none)
+#' @param ... arguments passed to other methods
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_standings(ssb_conn)
+#' }
+#'
 #' @describeIn ff_standings MFL: returns H2H/points/all-play/best-ball data in a table.
 #'
 #' @export

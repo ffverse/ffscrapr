@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.0.0.9012
+Version: 1.1.0
 Authors@R: 
     person(given = "Tan",
            family = "Ho",
@@ -13,7 +13,8 @@ Description: Helps access various Fantasy Football APIs by handling authenticati
 License: MIT + file LICENSE
 URL: https://ffscrapr.dynastyprocess.com,
     https://github.com/dynastyprocess/ffscrapr,
-    https://api.myfantasyleague.com/2020/api_info
+    https://api.myfantasyleague.com/2020/api_info,
+    https://docs.sleeper.app
 BugReports: https://github.com/dynastyprocess/ffscrapr/issues
 Depends: 
     R (>= 3.0.0)

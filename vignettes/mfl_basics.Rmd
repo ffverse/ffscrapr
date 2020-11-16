@@ -1,5 +1,6 @@
 ---
-title: "mfl_basics"
+title: "Getting Started: MFL Basics"
+date: "2020-11-15"
 author: "Tan Ho"
 output: rmarkdown::html_vignette
 vignette: >
@@ -15,24 +16,30 @@ knitr::opts_chunk$set(
 )
 ```
 
-Here's what a basic dynasty league analysis might look like on MFL!
+In this vignette, I'll walk through how to get started with a basic dynasty value analysis on MFL. 
+
+We'll start by loading the packages:
 
 ```{r setup}
-suppressPackageStartupMessages({
   library(ffscrapr)
   library(dplyr)
   library(tidyr)
-})
+
 ```
 
 Set up the connection to the league:
 
 ```{r}
-ssb <- mfl_connect(season = 2020, league_id = 54040, rate_limit_number = 3, rate_limit_seconds = 6)
+ssb <- mfl_connect(season = 2020, 
+                   league_id = 54040, # from the URL of your league
+                   rate_limit_number = 3, 
+                   rate_limit_seconds = 6)
 ssb
 ```
 
-Cool! Let's have a deeper look at what this league is like.
+I've done this with the `mfl_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. Most if not all of the remaining functions are prefixed with "ff_".
+
+Cool! Let's have a quick look at what this league is like.
 
 ```{r}
 
@@ -131,3 +138,6 @@ age_summary
 
 ```
 
+## Next steps
+
+In this vignette, I've used ~three functions: ff_connect, ff_league, and ff_rosters. Now that you've gotten this far, why not check out some of the other possibilities?

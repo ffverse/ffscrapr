@@ -10,8 +10,11 @@
 #' @describeIn ff_starters MFL: returns the player fantasy scores for each week (not the actual stats)
 #'
 #' @examples
+#' \donttest{
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
 #' ff_starters(conn = dlf_conn, week = 1:2)
+#' }
+#'
 #' @export
 ff_starters.mfl_conn <- function(conn, week = "all", season = NULL, ...) {
   if (is.null(season)) season <- conn$season

@@ -5,9 +5,13 @@
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_schedule(ssb_conn)
+#' }
+#'
 #' @describeIn ff_schedule MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
+#'
 #' @export
 
 ff_schedule.mfl_conn <- function(conn, ...) {

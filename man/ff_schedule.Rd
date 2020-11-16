@@ -16,13 +16,13 @@ ff_schedule(conn, ...)
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
 
-\item{...}{additional args which might be used eventually}
+\item{...}{additional args passed to each platform}
 }
 \value{
 A tidy dataframe with one row per game per franchise per week
 }
 \description{
-This function returns a tibble with one row for every team for every weekly matchup
+This function returns a tidy dataframe with one row for every team for every weekly matchup
 }
 \section{Methods (by class)}{
 \itemize{
@@ -32,8 +32,14 @@ This function returns a tibble with one row for every team for every weekly matc
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_schedule(ssb_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
 ff_schedule(jml_conn)
+}
+
 }

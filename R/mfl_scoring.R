@@ -1,18 +1,20 @@
 ## ff_scoring (MFL) ##
 
 #' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
-#' The all-rules endpoint is saved to a cache, so subsequent function calls should be faster!
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #'
 #' @examples
+#' \donttest{
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_scoring(ssb_conn)
+#' }
+#'
 #' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
 #'
 #' @describeIn ff_scoring MFL: returns scoring settings in a flat table, one row per position per rule.
+#'
 #' @export
-
 ff_scoring.mfl_conn <- function(conn) {
   df <- mfl_getendpoint(conn, "rules") %>%
     purrr::pluck("content", "rules", "positionRules")

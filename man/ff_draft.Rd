@@ -17,13 +17,13 @@ ff_draft(conn, ...)
 
 \item{...}{args for other methods}
 
-\item{custom_players}{TRUE or FALSE - retrieve custom players from the MFL database? (Devy, placeholder picks etc)}
+\item{custom_players}{MFL: TRUE or FALSE - retrieve custom players from the MFL database? (Allows for devy, placeholder picks, slightly slower)}
 }
 \value{
-A tibble of draft results
+A tidy dataframe of draft results
 }
 \description{
-This function gets a table of the draft results for the current year.
+This function gets a tidy dataframe of draft results for the current year.
 Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 }
 \section{Methods (by class)}{
@@ -34,8 +34,14 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 }}
 
 \examples{
+\donttest{
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_draft(ssb_conn)
+}
+
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_draft(jml_conn)
+}
+
 }

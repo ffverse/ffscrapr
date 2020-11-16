@@ -9,10 +9,11 @@
 #' @param rate_limit TRUE by default - turn off rate limiting with FALSE
 #' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is under 1000 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
-#' @param ... silently swallows up unused arguments
+#' @param ... other arguments (for other methods)
 #'
 #' @export
-#' @return a list that stores MFL connection objects
+#'
+#' @return a list that stores Sleeper connection objects
 
 sleeper_connect <- function(season = NULL,
                             league_id = NULL,
