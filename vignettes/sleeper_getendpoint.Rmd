@@ -1,6 +1,5 @@
 ---
-title: "sleeper_getendpoint"
-date: "2020-11-15"
+title: "Sleeper: Get Any API Endpoint"
 author: "Tan Ho"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Creating your own custom Sleeper API calls
+# Creating your own custom Sleeper API calls
 
 ```{r setup}
 library(ffscrapr)
@@ -25,7 +24,7 @@ library(purrr)
 library(glue)
 ```
 
-The [Sleeper API is pretty extensive](https://docs.sleeper.app), and I haven't written out a function for every single combination of the endpoints. If there is something you'd like to access, you can use the lower-level "`sleeper_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+The [Sleeper API is pretty extensive](https://docs.sleeper.app). If there is something you'd like to access that's beyond the current scope of ffscrapr, you can use the lower-level "`sleeper_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
 
 Here is an example of how you can call one of the endpoints - in this case, let's pull Sleeper's trending players data! 
 
@@ -39,7 +38,11 @@ We'll need to fill out the other parameters as per the documentation: sport is `
 
 ```{r}
 
-query <- glue::glue('players/nfl/trending/add')
+type <- "add"
+lookback_hours <- 48
+limit_rows <- 10
+
+query <- glue::glue('players/nfl/trending/{type}?lookback_hours={lookback_hours}&limit={limit_rows}')
 
 query
 
@@ -48,7 +51,7 @@ response_trending <- sleeper_getendpoint(query)
 str(response_trending, max.level = 1)
 ```
 
-Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debug, but we can turn the content into a dataframe with some careful application of the tidyverse. 
+Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse. 
 
 ```{r}
 
@@ -59,7 +62,7 @@ df_trending <- response_trending %>%
 head(df_trending)
 ```
 
-This isn't very helpful without knowing who these players are - let's pull the players endpoint in as well. 
+This isn't very helpful without knowing who these players are, so let's pull the players endpoint in as well - this one has a convenient function!
 
 ```{r}
 

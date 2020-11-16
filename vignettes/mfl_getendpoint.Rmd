@@ -1,6 +1,5 @@
 ---
 title: "MFL: Get Any API Endpoint"
-date: "2020-08-10"
 author: "Tan Ho"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,13 +15,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Creating your own custom MFL API calls
+# Creating your own custom MFL API calls
 
 ```{r setup}
 library(ffscrapr)
 ```
 
-The [MFL API is extensive](https://api.myfantasyleague.com/2020/api_info?STATE=details), and I haven't written out a function for every single one of the endpoints. If there is something you'd like to access, you can use the lower-level "`mfl_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+The [MFL API is extensive](https://api.myfantasyleague.com/2020/api_info?STATE=details). If there is something you'd like to access beyond the current scope of ffscrapr, you can use the lower-level "`mfl_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
 
 Here is an example of how you can call one of the endpoints - in this case, let's try searching for SFBX leagues through the leagueSearch endpoint. 
 
@@ -60,7 +59,7 @@ head(search_results)
 
 ```
 
-### Another Example: Trade Bait
+## Another Example: Trade Bait
 
 Here's another example, this time with the trade bait endpoint:  https://api.myfantasyleague.com/2020/api_info?STATE=test&CCAT=export&TYPE=tradeBait
 

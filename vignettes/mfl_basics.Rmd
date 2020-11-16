@@ -1,6 +1,5 @@
 ---
 title: "Getting Started: MFL Basics"
-date: "2020-11-15"
 author: "Tan Ho"
 output: rmarkdown::html_vignette
 vignette: >
@@ -37,7 +36,8 @@ ssb <- mfl_connect(season = 2020,
 ssb
 ```
 
-I've done this with the `mfl_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. Most if not all of the remaining functions are prefixed with "ff_".
+I've done this with the `mfl_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. 
+Most if not all of the remaining functions are prefixed with "ff_".
 
 Cool! Let's have a quick look at what this league is like.
 
@@ -119,7 +119,8 @@ Armed with a value summary like this, we can see team strengths and weaknesses p
 ## Age
 Another question you might ask: what is the average age of any given team?
 
-I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team!
+I like looking at average age by position, but weighted by dynasty value. 
+This helps give a better idea of age for each team!
 
 ```{r}
 
@@ -140,4 +141,5 @@ age_summary
 
 ## Next steps
 
-In this vignette, I've used ~three functions: ff_connect, ff_league, and ff_rosters. Now that you've gotten this far, why not check out some of the other possibilities?
+In this vignette, I've used three functions: ff_connect, ff_league, and ff_rosters. 
+Now that you've gotten this far, why not check out some of the other possibilities?
