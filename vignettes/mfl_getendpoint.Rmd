@@ -42,6 +42,9 @@ It is safest to assume that everything is *case-sensitive*: the endpoint must ma
 
 ```{r}
 sfb_search <- mfl_getendpoint(conn,endpoint = "leagueSearch", SEARCH = "sfbx conference")
+
+str(sfb_search, max.level = 1)
+
 ```
 
 The function returns a list with the `query` that was sent, the `response` that was received, and the `content` that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.
