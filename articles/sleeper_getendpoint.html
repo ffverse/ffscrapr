@@ -169,12 +169,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 4994      184795</span>
-<span class="co">#&gt; 2 5163      100754</span>
-<span class="co">#&gt; 3 1535       93876</span>
-<span class="co">#&gt; 4 6012       78515</span>
-<span class="co">#&gt; 5 6931       74662</span>
-<span class="co">#&gt; 6 4150       63487</span></code></pre></div>
+<span class="co">#&gt; 1 6918      110611</span>
+<span class="co">#&gt; 2 4994       99307</span>
+<span class="co">#&gt; 3 1535       90171</span>
+<span class="co">#&gt; 4 5163       65550</span>
+<span class="co">#&gt; 5 6012       56246</span>
+<span class="co">#&gt; 6 1048       49193</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are - let’s pull the players endpoint in as well.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -186,18 +186,18 @@
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 25 x 6</span>
-<span class="co">#&gt;    player_id  count player_name           pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                 &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 4994      184795 Kalen Ballage         RB    LAC    24.9</span>
-<span class="co">#&gt;  2 5163      100754 Ryan Nall             RB    CHI    24.9</span>
-<span class="co">#&gt;  3 1535       93876 Cordarrelle Patterson WR    CHI    29.7</span>
-<span class="co">#&gt;  4 6012       78515 Travis Homer          RB    SEA    22.3</span>
-<span class="co">#&gt;  5 6931       74662 DeeJay Dallas         RB    SEA    22.2</span>
-<span class="co">#&gt;  6 4150       63487 Wayne Gallman         RB    NYG    26.1</span>
-<span class="co">#&gt;  7 6918       49732 Salvon Ahmed          RB    MIA    21.9</span>
-<span class="co">#&gt;  8 3934       45327 Troymaine Pope        RB    LAC    27  </span>
-<span class="co">#&gt;  9 1048       40756 Lamar Miller          RB    CHI    29.6</span>
-<span class="co">#&gt; 10 MIN        40019 &lt;NA&gt;                  DEF   MIN    NA  </span>
+<span class="co">#&gt;    player_id  count player_name              pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 6918      110611 Salvon Ahmed             RB    MIA    21.9</span>
+<span class="co">#&gt;  2 4994       99307 Kalen Ballage            RB    LAC    24.9</span>
+<span class="co">#&gt;  3 1535       90171 Cordarrelle Patterson    WR    CHI    29.7</span>
+<span class="co">#&gt;  4 5163       65550 Ryan Nall                RB    CHI    24.9</span>
+<span class="co">#&gt;  5 6012       56246 Travis Homer             RB    SEA    22.3</span>
+<span class="co">#&gt;  6 1048       49193 Lamar Miller             RB    CHI    29.6</span>
+<span class="co">#&gt;  7 5347       44695 Nyheim Hines             RB    IND    24  </span>
+<span class="co">#&gt;  8 4150       39060 Wayne Gallman            RB    NYG    26.1</span>
+<span class="co">#&gt;  9 6931       36364 DeeJay Dallas            RB    SEA    22.2</span>
+<span class="co">#&gt; 10 5086       33519 Marquez Valdes-Scantling WR    GB     26.1</span>
 <span class="co">#&gt; # … with 15 more rows</span></code></pre></div>
 <p>There - this means something to us now! As of this writing, Kalen Ballage is the most added player. Haven’t we been bitten by this before?</p>
 </div>
