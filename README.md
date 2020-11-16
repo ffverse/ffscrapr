@@ -31,9 +31,8 @@ Version 1.1.0 is now on CRAN 🎉 and can be installed with:
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release
-# install.packages("devtools") OR install.packages("remotes")
-# remotes is a subpackage of devtools
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.0.0")
+# install.packages("remotes")
+remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.1.0")
 ```
 
 Install the development version from GitHub with:
