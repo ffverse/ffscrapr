@@ -15,20 +15,19 @@
 #' @return A list object containing the query, response, and parsed content.
 #' @export
 
-sleeper_getendpoint <- function(endpoint,
-                                ...) {
+sleeper_getendpoint <- function(endpoint, ...) {
 
   # PREP URL
 
   base_url <- "https://api.sleeper.app/v1"
 
-  suffixes <- list(...) %>%
+  endpoint <- list(endpoint, ...) %>%
     unname() %>%
     as.character() %>%
     .fn_drop_nulls() %>%
     paste0(collapse = "/")
 
-  url_query <- paste(base_url, endpoint, suffixes, sep = "/")
+  url_query <- paste0(c(base_url, endpoint), collapse = "/")
 
   ## GET FFSCRAPR ENV
 

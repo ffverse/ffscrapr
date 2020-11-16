@@ -1,3 +1,12 @@
+# ffscrapr (development version)
+
+Currently undecided on next platform. Amassing some tweaks and hotfixes for a patch version (probably with improved vignettes).
+
+### Tweaks to be released with 1.1.1
+
+- Patched bug in `sleeper_getendpoint()` - was appending a "/" to the end of every url by accident, breaking URL parameters
+- Small copyedits to existing vignettes.
+
 # ffscrapr 1.1.0
 
 The main goal of ffscrapr 1.1.0 is to add a full set of methods for Sleeper. Also adds two new generics: `ff_userleagues()` and `ff_starters()`. 
