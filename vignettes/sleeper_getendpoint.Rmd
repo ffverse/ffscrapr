@@ -76,4 +76,4 @@ trending
 
 ```
 
-There - this means something to us now! As of this writing, Kalen Ballage is the most added player. Haven't we been bitten by this before?
+There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven't we been bitten by this before?
