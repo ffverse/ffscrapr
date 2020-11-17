@@ -135,11 +135,12 @@
 <a href="#what-is-being-cached-how-long-is-it-being-cached-for" class="anchor"></a>What is being cached? How long is it being cached for?</h2>
 <p>ffscrapr’s core functions often loop over the same, stable endpoints to help return the data for each function - things like “player names/positions/teams”, “franchise IDs/names”, and “league scoring rules” are all used frequently. ffscrapr incorporates <a href="https://github.com/r-lib/memoise">memoise</a> package to help with this functionality, and (as of this writing) saves the results of these functions:</p>
 <ul>
-<li><p><code><a href="../reference/mfl_players.html">mfl_players()</a></code>, <code>mfl_allrules()</code>, <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code> - these functions are stored for 7 days</p></li>
-<li><p><code><a href="../reference/ff_franchises.html">ff_franchises()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, <code><a href="../reference/ff_league.html">ff_league()</a></code> - these functions are stored for 24 hours</p></li>
-<li><p><code><a href="../reference/ff_standings.html">ff_standings()</a></code>, <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code>, <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> , <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - these functions are stored for one hour</p></li>
-</ul>
-<!-- --><ul>
+<li>
+<code><a href="../reference/mfl_players.html">mfl_players()</a></code>, <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code> - these functions are stored for 7 days</li>
+<li>
+<code><a href="../reference/ff_franchises.html">ff_franchises()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, <code><a href="../reference/ff_league.html">ff_league()</a></code> - these functions are stored for 24 hours</li>
+<li>
+<code><a href="../reference/ff_standings.html">ff_standings()</a></code>, <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code>, <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> , <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - these functions are stored for one hour</li>
 <li>
 <code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> and <code><a href="../reference/dp_values.html">dp_values()</a></code> - these functions are stored for 24 hours</li>
 </ul>
@@ -151,20 +152,17 @@
 <p>By default, ffscrapr will save the results of each function call (i.e. function + arguments) into memory.</p>
 <p>If you would like to have your cache stored on your local filesystem, you can adjust this behaviour by adding the following line to your (or your project) .Rprofile, or by adding it BEFORE you library/load the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>ffscrapr.cache <span class="op">=</span> <span class="st">"filesystem"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>ffscrapr.cache <span class="op">=</span> <span class="st">"filesystem"</span><span class="op">)</span> </code></pre></div>
 <p>This will instruct ffscrapr to store the cache on your machine, as dictated by the typical cache location for your operating system. You can see where this is by running the following line of code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu">rappdirs</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rappdirs/man/user_cache_dir.html">user_cache_dir</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">rappdirs</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rappdirs/man/user_cache_dir.html">user_cache_dir</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="how-can-i-clear-the-cache" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-can-i-clear-the-cache" class="anchor"></a>How can I clear the cache?</h2>
 <p>You can use the following function to clear the cache (whether it is in memory or on your filesystem):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="../reference/.ffscrapr_clear_cache.html">.ffscrapr_clear_cache</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/.ffscrapr_clear_cache.html">.ffscrapr_clear_cache</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 

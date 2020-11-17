@@ -153,7 +153,7 @@
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "mfl_api"</span></code></pre></div>
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
-<p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://rdrr.io/pkg/magrittr/man/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
+<p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op">%&gt;%</span> 
