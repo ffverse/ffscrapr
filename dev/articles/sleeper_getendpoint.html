@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -66,6 +66,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+    </li>
+    <li>
       <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
     </li>
     <li>
@@ -173,12 +176,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 4994      275977</span>
-<span class="co">#&gt; 2 5163      154587</span>
-<span class="co">#&gt; 3 1535      132707</span>
-<span class="co">#&gt; 4 6918      121726</span>
-<span class="co">#&gt; 5 4150      117528</span>
-<span class="co">#&gt; 6 6931      111790</span></code></pre></div>
+<span class="co">#&gt; 1 6918      408597</span>
+<span class="co">#&gt; 2 2306      224056</span>
+<span class="co">#&gt; 3 4994      181142</span>
+<span class="co">#&gt; 4 5347      166050</span>
+<span class="co">#&gt; 5 LAC       153869</span>
+<span class="co">#&gt; 6 1535       98751</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -190,19 +193,19 @@
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 10 x 6</span>
-<span class="co">#&gt;    player_id  count player_name           pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                 &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 4994      275977 Kalen Ballage         RB    LAC    24.9</span>
-<span class="co">#&gt;  2 5163      154587 Ryan Nall             RB    CHI    24.9</span>
-<span class="co">#&gt;  3 1535      132707 Cordarrelle Patterson WR    CHI    29.7</span>
-<span class="co">#&gt;  4 6918      121726 Salvon Ahmed          RB    MIA    21.9</span>
-<span class="co">#&gt;  5 4150      117528 Wayne Gallman         RB    NYG    26.1</span>
-<span class="co">#&gt;  6 6931      111790 DeeJay Dallas         RB    SEA    22.2</span>
-<span class="co">#&gt;  7 6012       92217 Travis Homer          RB    SEA    22.3</span>
-<span class="co">#&gt;  8 3934       72562 Troymaine Pope        RB    LAC    27  </span>
-<span class="co">#&gt;  9 5347       71657 Nyheim Hines          RB    IND    24  </span>
-<span class="co">#&gt; 10 1048       61920 Lamar Miller          RB    CHI    29.6</span></code></pre></div>
-<p>There - this means something to us now! As of this writing, Kalen Ballage is the most added player. Haven’t we been bitten by this before?</p>
+<span class="co">#&gt;    player_id  count player_name              pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 6918      408597 Salvon Ahmed             RB    MIA    21.9</span>
+<span class="co">#&gt;  2 2306      224056 Jameis Winston           QB    NO     26.9</span>
+<span class="co">#&gt;  3 4994      181142 Kalen Ballage            RB    LAC    24.9</span>
+<span class="co">#&gt;  4 5347      166050 Nyheim Hines             RB    IND    24  </span>
+<span class="co">#&gt;  5 LAC       153869 &lt;NA&gt;                     DEF   LAC    NA  </span>
+<span class="co">#&gt;  6 1535       98751 Cordarrelle Patterson    WR    CHI    29.7</span>
+<span class="co">#&gt;  7 5086       94541 Marquez Valdes-Scantling WR    GB     26.1</span>
+<span class="co">#&gt;  8 MIA        82095 &lt;NA&gt;                     DEF   MIA    NA  </span>
+<span class="co">#&gt;  9 3209       79552 Devontae Booker          RB    LV     28.5</span>
+<span class="co">#&gt; 10 5890       77014 Damien Harris            RB    NE     23.8</span></code></pre></div>
+<p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>
 
