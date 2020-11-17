@@ -1,6 +1,5 @@
 ---
-title: "MFL: Get Any API Endpoint"
-author: "Tan Ho"
+title: "MFL: Get Endpoint"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{mfl_getendpoint}
@@ -15,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Creating your own custom MFL API calls
+## Creating custom MFL API calls
 
 ```{r setup}
 library(ffscrapr)
@@ -52,14 +51,12 @@ The function returns a list with the `query` that was sent, the `response` that 
 I like to extract the `content` with `purrr::pluck` and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or `magrittr::extract2` for the same purpose. 
 
 ```{r}
-
 search_results <- sfb_search %>% 
   purrr::pluck("content","leagues","league") %>% 
   tibble::tibble() %>% 
   tidyr::unnest_wider(1)
 
 head(search_results)
-
 ```
 
 ## Another Example: Trade Bait
@@ -67,7 +64,6 @@ head(search_results)
 Here's another example, this time with the trade bait endpoint:  https://api.myfantasyleague.com/2020/api_info?STATE=test&CCAT=export&TYPE=tradeBait
 
 ```{r}
-
 fog <- mfl_connect(season = 2019, league_id = 12608)
 
 fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>% 
@@ -87,5 +83,4 @@ fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>%
 
 head(fog_tradebait)
 ```
-
 

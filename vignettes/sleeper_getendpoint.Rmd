@@ -1,6 +1,5 @@
 ---
-title: "Sleeper: Get Any API Endpoint"
-author: "Tan Ho"
+title: "Sleeper: Get Endpoint"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{sleeper_getendpoint}
@@ -15,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Creating your own custom Sleeper API calls
+## Creating custom Sleeper API calls
 
-```{r setup}
+```{r setup, message = FALSE}
 library(ffscrapr)
 library(dplyr)
 library(purrr)

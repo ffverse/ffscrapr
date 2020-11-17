@@ -2,9 +2,12 @@ pandoc: 2.9.2.1
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  ffscrapr_caching: ffscrapr_caching.html
   mfl_basics: mfl_basics.html
   mfl_getendpoint: mfl_getendpoint.html
-last_built: 2020-11-14T15:22Z
+  sleeper_basics: sleeper_basics.html
+  sleeper_getendpoint: sleeper_getendpoint.html
+last_built: 2020-11-17T20:41Z
 urls:
   reference: ffscrapr.dynastyprocess.com/reference
   article: ffscrapr.dynastyprocess.com/articles

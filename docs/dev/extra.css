@@ -4,6 +4,10 @@ body{
   font-family: 'Barlow', sans-serif;
 }
 
+h1 {
+  font-family: 'Fira Mono', sans-serif;
+}
+
 pre, code {
   font-family: 'Fira Mono';
 }

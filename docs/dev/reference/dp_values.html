@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="Import latest DynastyProcess values — dp_values" />
-<meta property="og:description" content="Fetches a copy of the latest DynastyProcess dynasty trade values sheet" />
+<meta property="og:description" content="Fetches a copy of the latest DynastyProcess dynasty trade values sheets" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -108,10 +108,21 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/mfl_basics.html">mfl_basics</a>
+      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
+      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cache</li>
+    <li>
+      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
     </li>
   </ul>
 </li>
@@ -145,7 +156,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Fetches a copy of the latest DynastyProcess dynasty trade values sheet</p>
+    <p>Fetches a copy of the latest DynastyProcess dynasty trade values sheets</p>
     </div>
 
     <pre class="usage"><span class='fu'>dp_values</span>(file = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"values.csv"</span>, <span class='st'>"values-players.csv"</span>, <span class='st'>"values-picks.csv"</span>))</pre>
@@ -161,13 +172,14 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble of trade values</p>
+    <p>a tibble of trade values from DynastyProcess</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://github.com/DynastyProcess/data'>https://github.com/DynastyProcess/data</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dp_values</span>()
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+ <span class='fu'>dp_values</span>()
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 439 x 12</span><span>
 #&gt;    player pos   team    age draft_year ecr_1qb ecr_2qb ecr_pos value_1qb
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
@@ -182,7 +194,9 @@
 #&gt; </span><span style='color: #555555;'> 9</span><span> A.J. ~ WR    TEN    23.4       </span><span style='text-decoration: underline;'>2</span><span>019    12.7    16.8     5.7      </span><span style='text-decoration: underline;'>7</span><span>796
 #&gt; </span><span style='color: #555555;'>10</span><span> Clyde~ RB    KCC    21.6       </span><span style='text-decoration: underline;'>2</span><span>020    13.8    18.7     7.7      </span><span style='text-decoration: underline;'>7</span><span>586
 #&gt; </span><span style='color: #555555;'># ... with 429 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
