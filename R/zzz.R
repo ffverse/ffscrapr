@@ -14,8 +14,7 @@
 
   if(memoise_option == "filesystem") {
 
-    cache_dir <- rappdirs::user_cache_dir(appname = "ffscrapr",
-                                          appauthor = "dynastyprocess")
+    cache_dir <- rappdirs::user_cache_dir(appname = "ffscrapr")
     dir.create(cache_dir, recursive = TRUE,showWarnings = FALSE)
     cache <- memoise::cache_filesystem(cache_dir)
   }

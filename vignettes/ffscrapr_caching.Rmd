@@ -66,8 +66,11 @@ rappdirs::user_cache_dir("ffscrapr")
 
 ## How can I clear the cache?
 
-The simplest way to clear the cache if it is stored in memory is just to restart your R session. 
+You can use the following function to clear the cache (whether it is in memory or on your filesystem):
 
-If your cache is stored on the hard disk, you can visit the directory given by the code above and delete everything in it. 
+```{r eval = FALSE}
 
-In a future version, ffscrapr will have some built in functions to empty its cache!
+.ffscrapr_clear_cache()
+
+```
+
