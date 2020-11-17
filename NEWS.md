@@ -5,7 +5,8 @@ Currently undecided on next platform. Amassing some tweaks and hotfixes for a pa
 ### Tweaks to be released with 1.1.1
 
 - Patched bug in `sleeper_getendpoint()` - was appending a "/" to the end of every url by accident, breaking URL parameters
-- Small copyedits to existing vignettes.
+- Small copyedits to existing vignettes. (1.1.0.9000)
+- Added filesystem cache capabilities and a vignette to detailing how to use it (1.1.0.9001)
 
 # ffscrapr 1.1.0
 
