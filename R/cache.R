@@ -5,7 +5,7 @@
 #' This function will reset the cache for any and all ffscrapr cached functions.
 #'
 #' @export
-.ffscrapr_clear_cache <- function(){
+.ff_clear_cache <- function(){
 
   functions = list(
     dp_values,

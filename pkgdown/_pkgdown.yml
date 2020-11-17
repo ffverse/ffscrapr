@@ -21,7 +21,23 @@ reference:
 - subtitle: Misc
   desc: Additional helper functions
   contents:
-  - starts_with("forget")
+  - starts_with(".ff")
+
+articles:
+- title: Getting Started
+  navbar: Getting Started
+  contents:
+  - starts_with("mfl_basics")
+  - starts_with("sleeper_basics")
+- title: Custom API calls
+  navbar: Custom API Calls
+  contents:
+  - starts_with("mfl_getendpoint")
+  - starts_with("sleeper_getendpoint")
+- title: Performance
+  navbar: "Cache"
+  contents:
+  - starts_with("ffscrapr_caching")
 
 url: ffscrapr.dynastyprocess.com
 
