@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connect to MFL League — mfl_connect • ffscrapr</title>
+<title>Empty Function Cache — .ff_clear_cache • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Connect to MFL League — mfl_connect" />
-<meta property="og:description" content="This function creates a connection object which stores parameters and gets a login-cookie if available" />
+<meta property="og:title" content="Empty Function Cache — .ff_clear_cache" />
+<meta property="og:description" content="This function will reset the cache for any and all ffscrapr cached functions." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -148,98 +148,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connect to MFL League</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_connect.R'><code>R/mfl_connect.R</code></a></small>
-    <div class="hidden name"><code>mfl_connect.Rd</code></div>
+    <h1>Empty Function Cache</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/cache.R'><code>R/cache.R</code></a></small>
+    <div class="hidden name"><code>dot-ff_clear_cache.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function creates a connection object which stores parameters and gets a login-cookie if available</p>
+    <p>This function will reset the cache for any and all ffscrapr cached functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_connect</span><span class='op'>(</span>
-  season <span class='op'>=</span> <span class='cn'>NULL</span>,
-  league_id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  APIKEY <span class='op'>=</span> <span class='cn'>NULL</span>,
-  user_name <span class='op'>=</span> <span class='cn'>NULL</span>,
-  password <span class='op'>=</span> <span class='cn'>NULL</span>,
-  user_agent <span class='op'>=</span> <span class='cn'>NULL</span>,
-  rate_limit <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  rate_limit_number <span class='op'>=</span> <span class='cn'>NULL</span>,
-  rate_limit_seconds <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>.ff_clear_cache</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>season</th>
-      <td><p>Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)</p></td>
-    </tr>
-    <tr>
-      <th>league_id</th>
-      <td><p>league_id Numeric ID parameter for each league, typically found in the URL</p></td>
-    </tr>
-    <tr>
-      <th>APIKEY</th>
-      <td><p>APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)</p></td>
-    </tr>
-    <tr>
-      <th>user_name</th>
-      <td><p>MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token</p></td>
-    </tr>
-    <tr>
-      <th>password</th>
-      <td><p>MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token</p></td>
-    </tr>
-    <tr>
-      <th>user_agent</th>
-      <td><p>A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit</th>
-      <td><p>TRUE by default, pass FALSE to turn off rate limiting</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is 60 calls per 60 seconds</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_seconds</th>
-      <td><p>number of seconds as denominator for rate_limit</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>silently swallows up unused arguments</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a connection object to be used with <code>ff_*</code> functions</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='ff_connect.html'>ff_connect</a></code>, <code><a href='sleeper_connect.html'>sleeper_connect</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mfl_connect</span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;MFL connection 2020_54040&gt;
-#&gt; List of 5
-#&gt;  $ platform   : chr "MFL"
-#&gt;  $ season     : num 2020
-#&gt;  $ league_id  : chr "54040"
-#&gt;  $ APIKEY     : NULL
-#&gt;  $ auth_cookie: NULL
-#&gt;  - attr(*, "class")= chr "mfl_conn"</div><div class='input'><span class='fu'>mfl_connect</span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, rate_limit <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;MFL connection 2019_54040&gt;
-#&gt; List of 5
-#&gt;  $ platform   : chr "MFL"
-#&gt;  $ season     : num 2019
-#&gt;  $ league_id  : chr "54040"
-#&gt;  $ APIKEY     : NULL
-#&gt;  $ auth_cookie: NULL
-#&gt;  - attr(*, "class")= chr "mfl_conn"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

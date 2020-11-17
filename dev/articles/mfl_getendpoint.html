@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MFL: Get Any API Endpoint • ffscrapr</title>
+<title>MFL: Get Endpoint • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="MFL: Get Any API Endpoint">
+<meta property="og:title" content="MFL: Get Endpoint">
 <meta property="og:description" content="ffscrapr">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
 <meta name="twitter:card" content="summary">
@@ -69,16 +69,16 @@
       <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
     </li>
     <li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
     </li>
   </ul>
 </li>
@@ -107,8 +107,7 @@
 <script src="mfl_getendpoint_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>MFL: Get Any API Endpoint</h1>
-                        <h4 class="author">Tan Ho</h4>
+      <h1 data-toc-skip>MFL: Get Endpoint</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/mfl_getendpoint.Rmd"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
@@ -118,9 +117,9 @@
 
     
     
-<div id="creating-your-own-custom-mfl-api-calls" class="section level1">
-<h1 class="hasAnchor">
-<a href="#creating-your-own-custom-mfl-api-calls" class="anchor"></a>Creating your own custom MFL API calls</h1>
+<div id="creating-custom-mfl-api-calls" class="section level2">
+<h2 class="hasAnchor">
+<a href="#creating-custom-mfl-api-calls" class="anchor"></a>Creating custom MFL API calls</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span></code></pre></div>
 <p>The <a href="https://api.myfantasyleague.com/2020/api_info?STATE=details">MFL API is extensive</a>. If there is something you’d like to access beyond the current scope of ffscrapr, you can use the lower-level “<code>mfl_getendpoint</code>” function to create a GET request and access the data, while still using the authentication and rate-limiting features I’ve already created.</p>
@@ -155,8 +154,7 @@
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
 <p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op">%&gt;%</span> 
   <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
@@ -171,13 +169,13 @@
 <span class="co">#&gt; 4 http://www73.myfantasyleague.com/2020/home/26453 #SFBX Conference 8  26453</span>
 <span class="co">#&gt; 5 http://www73.myfantasyleague.com/2020/home/27495 #SFBX Conference 2  27495</span>
 <span class="co">#&gt; 6 http://www73.myfantasyleague.com/2020/home/31492 #SFBX Conference 14 31492</span></code></pre></div>
+</div>
 <div id="another-example-trade-bait" class="section level2">
 <h2 class="hasAnchor">
 <a href="#another-example-trade-bait" class="anchor"></a>Another Example: Trade Bait</h2>
 <p>Here’s another example, this time with the trade bait endpoint: <a href="https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=tradeBait" class="uri">https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=tradeBait</a></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">fog</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2019</span>, league_id <span class="op">=</span> <span class="fl">12608</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">fog</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2019</span>, league_id <span class="op">=</span> <span class="fl">12608</span><span class="op">)</span>
 
 <span class="va">fog_tradebait</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">fog</span>, <span class="st">"tradeBait"</span>, INCLUDE_DRAFT_PICKS <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"tradeBaits"</span>,<span class="st">"tradeBait"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -205,7 +203,6 @@
 <span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""            The Accountant</span>
 <span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""            Kevin Cutillo </span>
 <span class="co">#&gt; # … with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></code></pre></div>
-</div>
 </div>
   </div>
 
