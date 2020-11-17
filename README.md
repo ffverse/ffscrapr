@@ -26,7 +26,7 @@ sources.
 
 ### Installation
 
-Version 1.0.0 is now on CRAN 🎉 and can be installed with:
+Version 1.1.0 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
