@@ -30,9 +30,7 @@ Version 1.1.0 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
-# or from GitHub release
-# install.packages("devtools") OR install.packages("remotes")
-# remotes is a subpackage of devtools
+# or from GitHub release with the remotes package # install.packages("remotes")
 remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.0.0")
 ```
 
@@ -54,7 +52,6 @@ help return the correct data.
 
 ``` r
 library(ffscrapr)
-#> memorycache
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
@@ -89,15 +86,15 @@ ff_rosters(ssb)
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 843 x 12
+#> # A tibble: 845 x 12
 #>   timestamp           type  type_desc franchise_id franchise_name player_id
 #>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#> 1 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    
-#> 2 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    
-#> 3 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    
-#> 4 2020-11-15 17:23:25 IR    deactiva~ 0010         Team Yoshi     14126    
-#> 5 2020-11-15 16:45:09 TAXI  promoted  0013         Team Ness      14125    
-#> # ... with 838 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#> 1 2020-11-17 15:24:11 IR    activated 0009         Team Link      13632    
+#> 2 2020-11-17 15:24:11 IR    deactiva~ 0009         Team Link      11186    
+#> 3 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    
+#> 4 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    
+#> 5 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    
+#> # ... with 840 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
