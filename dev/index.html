@@ -128,9 +128,7 @@
 <p>Version 1.1.0 is now on CRAN 🎉 and can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span>
-<span class="co"># or from GitHub release</span>
-<span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
-<span class="co"># remotes is a subpackage of devtools</span>
+<span class="co"># or from GitHub release with the remotes package # install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>,ref <span class="op">=</span> <span class="st">"v1.0.0"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -143,7 +141,6 @@
 <p>All <code>ffscrapr</code> functions start with a connection object created by <code><a href="reference/ff_connect.html">ff_connect()</a></code>, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
-<span class="co">#&gt; memorycache</span>
 <span class="va">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span><span class="op">(</span>platform <span class="op">=</span> <span class="st">"mfl"</span>, league_id <span class="op">=</span> <span class="st">"54040"</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span>
 
 <span class="co"># Get a summary of league settings</span>
@@ -178,15 +175,15 @@
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 843 x 12</span>
+<span class="co">#&gt; # A tibble: 845 x 12</span>
 <span class="co">#&gt;   timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt; 1 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    </span>
-<span class="co">#&gt; 2 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    </span>
-<span class="co">#&gt; 3 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    </span>
-<span class="co">#&gt; 4 2020-11-15 17:23:25 IR    deactiva~ 0010         Team Yoshi     14126    </span>
-<span class="co">#&gt; 5 2020-11-15 16:45:09 TAXI  promoted  0013         Team Ness      14125    </span>
-<span class="co">#&gt; # ... with 838 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt; 1 2020-11-17 15:24:11 IR    activated 0009         Team Link      13632    </span>
+<span class="co">#&gt; 2 2020-11-17 15:24:11 IR    deactiva~ 0009         Team Link      11186    </span>
+<span class="co">#&gt; 3 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    </span>
+<span class="co">#&gt; 4 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    </span>
+<span class="co">#&gt; 5 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    </span>
+<span class="co">#&gt; # ... with 840 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 <span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></code></pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
