@@ -138,20 +138,18 @@
 <p>Here is an example of how you can call one of the endpoints - in this case, let’s pull Sleeper’s trending players data!</p>
 <p>We’ll start by opening up this page, <a href="https://docs.sleeper.app/#trending-players" class="uri">https://docs.sleeper.app/#trending-players</a>, which is the documentation page for this particular endpoint. From here, we can see that Sleeper’s documentation says the endpoint is:</p>
 <p><code>https://api.sleeper.app/v1/players/&lt;sport&gt;/trending/&lt;type&gt;?lookback_hours=&lt;hours&gt;&amp;limit=&lt;int&gt;</code></p>
-<p>The sleeper_getendpoint function already has the <code>https://api.sleeper.app/v1/</code> part encoded, so all we’ll need to do is pass in the remaining part of the URL.</p>
-<p>We’ll need to fill out the other parameters as per the documentation: sport is <code>NFL</code>, type is either <code>add</code> or <code>drop</code>, lookback_hours is optional in hours, and limit is optional in number of rows. We can use the <code>glue</code> package to parameterise this, although you can also use base R’s paste function just as easily.</p>
+<p>On first glance, you can see that it takes two parameters within the endpoint call itself (<code>sport</code> and <code>type</code>) and we can further adjust the query with HTTP parameters <code>lookback_hours</code> and <code>limit</code>. The sleeper_getendpoint function already has the <code>https://api.sleeper.app/v1/</code> part encoded, so all we’ll need to do is pass in the remaining part of the URL as the endpoint, and pass the HTTP parameters in as arguments to the function (these are case sensitive!)</p>
+<p>We can use the <code>glue</code> package to parameterise this, although you can also use base R’s paste function just as easily.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">type</span> <span class="op">&lt;-</span> <span class="st">"add"</span>
-<span class="va">lookback_hours</span> <span class="op">&lt;-</span> <span class="fl">48</span>
-<span class="va">limit_rows</span> <span class="op">&lt;-</span> <span class="fl">10</span>
 
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'players/nfl/trending/{type}?lookback_hours={lookback_hours}&amp;limit={limit_rows}'</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'players/nfl/trending/{type}'</span><span class="op">)</span>
 
 <span class="va">query</span>
-<span class="co">#&gt; players/nfl/trending/add?lookback_hours=48&amp;limit=10</span>
+<span class="co">#&gt; players/nfl/trending/add</span>
 
-<span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
+<span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span>,lookback_hours <span class="op">=</span> <span class="fl">48</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">response_trending</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
@@ -171,12 +169,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 6918      667934</span>
-<span class="co">#&gt; 2 2306      359893</span>
-<span class="co">#&gt; 3 4994      324597</span>
-<span class="co">#&gt; 4 LAC       292410</span>
-<span class="co">#&gt; 5 6819      237346</span>
-<span class="co">#&gt; 6 5347      233403</span></code></pre></div>
+<span class="co">#&gt; 1 6918      639490</span>
+<span class="co">#&gt; 2 2306      346672</span>
+<span class="co">#&gt; 3 4994      315848</span>
+<span class="co">#&gt; 4 LAC       276420</span>
+<span class="co">#&gt; 5 6819      232861</span>
+<span class="co">#&gt; 6 5347      220429</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -190,16 +188,16 @@
 <span class="co">#&gt; # A tibble: 10 x 6</span>
 <span class="co">#&gt;    player_id  count player_name     pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 6918      667934 Salvon Ahmed    RB    MIA    21.9</span>
-<span class="co">#&gt;  2 2306      359893 Jameis Winston  QB    NO     26.9</span>
-<span class="co">#&gt;  3 4994      324597 Kalen Ballage   RB    LAC    24.9</span>
-<span class="co">#&gt;  4 LAC       292410 &lt;NA&gt;            DEF   LAC    NA  </span>
-<span class="co">#&gt;  5 6819      237346 Michael Pittman WR    IND    23.1</span>
-<span class="co">#&gt;  6 5347      233403 Nyheim Hines    RB    IND    24  </span>
-<span class="co">#&gt;  7 CLE       222021 &lt;NA&gt;            DEF   CLE    NA  </span>
-<span class="co">#&gt;  8 3209      206315 Devontae Booker RB    LV     28.5</span>
-<span class="co">#&gt;  9 MIA       179920 &lt;NA&gt;            DEF   MIA    NA  </span>
-<span class="co">#&gt; 10 MIN       159606 &lt;NA&gt;            DEF   MIN    NA</span></code></pre></div>
+<span class="co">#&gt;  1 6918      639490 Salvon Ahmed    RB    MIA    21.9</span>
+<span class="co">#&gt;  2 2306      346672 Jameis Winston  QB    NO     26.9</span>
+<span class="co">#&gt;  3 4994      315848 Kalen Ballage   RB    LAC    24.9</span>
+<span class="co">#&gt;  4 LAC       276420 &lt;NA&gt;            DEF   LAC    NA  </span>
+<span class="co">#&gt;  5 6819      232861 Michael Pittman WR    IND    23.1</span>
+<span class="co">#&gt;  6 5347      220429 Nyheim Hines    RB    IND    24  </span>
+<span class="co">#&gt;  7 CLE       218095 &lt;NA&gt;            DEF   CLE    NA  </span>
+<span class="co">#&gt;  8 3209      201206 Devontae Booker RB    LV     28.5</span>
+<span class="co">#&gt;  9 MIA       172159 &lt;NA&gt;            DEF   MIA    NA  </span>
+<span class="co">#&gt; 10 2257      159817 Carlos Hyde     RB    SEA    30.2</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>
