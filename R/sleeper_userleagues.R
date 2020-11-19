@@ -62,7 +62,7 @@ sleeper_userleagues <- function(user_name, season = NULL){
 #' @noRd
 
 .sleeper_userteams <- function(league_id, user_id) {
-  df_teams <- sleeper_getendpoint("league", league_id, "users") %>%
+  df_teams <- sleeper_getendpoint(glue::glue("league/{league_id}/users")) %>%
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "franchise_id" = "user_id", "display_name", "metadata") %>%
