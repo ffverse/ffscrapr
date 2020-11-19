@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Empty Function Cache — .ff_clear_cache • ffscrapr</title>
+<title>flea - Get User Leagues — fleaflicker_userleagues • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Empty Function Cache — .ff_clear_cache" />
-<meta property="og:description" content="This function will reset the cache for any and all ffscrapr cached functions." />
+<meta property="og:title" content="flea - Get User Leagues — fleaflicker_userleagues" />
+<meta property="og:description" content="This function returns the leagues that a specific user is in.
+This variant can be used without first creating a connection object." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -157,18 +158,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Empty Function Cache</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/cache.R'><code>R/cache.R</code></a></small>
-    <div class="hidden name"><code>dot-ff_clear_cache.Rd</code></div>
+    <h1>flea - Get User Leagues</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_userleagues.R'><code>R/flea_userleagues.R</code></a></small>
+    <div class="hidden name"><code>fleaflicker_userleagues.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will reset the cache for any and all ffscrapr cached functions.</p>
+    <p>This function returns the leagues that a specific user is in.
+This variant can be used without first creating a connection object.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.ff_clear_cache</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>fleaflicker_userleagues</span><span class='op'>(</span><span class='va'>user_email</span>, season <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>user_email</th>
+      <td><p>the username to look up</p></td>
+    </tr>
+    <tr>
+      <th>season</th>
+      <td><p>the season to return leagues from - defaults to current year based on heuristics</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a dataframe of leagues for the specified user</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='ff_userleagues.flea_conn.html'>ff_userleagues</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

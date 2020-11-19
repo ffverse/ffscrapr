@@ -70,6 +70,15 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_userleagues.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/fleaflicker_connect.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/fleaflicker_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/fleaflicker_userleagues.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/mfl_connect.html</loc>
   </url>
   <url>
@@ -95,6 +104,9 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/mfl_basics.html</loc>

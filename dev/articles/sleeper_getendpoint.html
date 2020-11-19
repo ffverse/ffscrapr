@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9002</span>
       </span>
     </div>
 
@@ -72,6 +72,9 @@
     </li>
     <li>
       <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Custom API Calls</li>
@@ -168,12 +171,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 6918      693089</span>
-<span class="co">#&gt; 2 2306      381291</span>
-<span class="co">#&gt; 3 LAC       307139</span>
-<span class="co">#&gt; 4 5347      281698</span>
-<span class="co">#&gt; 5 4994      230646</span>
-<span class="co">#&gt; 6 MIA       163111</span></code></pre></div>
+<span class="co">#&gt; 1 6918      667934</span>
+<span class="co">#&gt; 2 2306      359893</span>
+<span class="co">#&gt; 3 4994      324597</span>
+<span class="co">#&gt; 4 LAC       292410</span>
+<span class="co">#&gt; 5 6819      237346</span>
+<span class="co">#&gt; 6 5347      233403</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -185,18 +188,18 @@
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 10 x 6</span>
-<span class="co">#&gt;    player_id  count player_name              pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 6918      693089 Salvon Ahmed             RB    MIA    21.9</span>
-<span class="co">#&gt;  2 2306      381291 Jameis Winston           QB    NO     26.9</span>
-<span class="co">#&gt;  3 LAC       307139 &lt;NA&gt;                     DEF   LAC    NA  </span>
-<span class="co">#&gt;  4 5347      281698 Nyheim Hines             RB    IND    24  </span>
-<span class="co">#&gt;  5 4994      230646 Kalen Ballage            RB    LAC    24.9</span>
-<span class="co">#&gt;  6 MIA       163111 &lt;NA&gt;                     DEF   MIA    NA  </span>
-<span class="co">#&gt;  7 6819      154237 Michael Pittman          WR    IND    23.1</span>
-<span class="co">#&gt;  8 3209      144708 Devontae Booker          RB    LV     28.5</span>
-<span class="co">#&gt;  9 5890      127688 Damien Harris            RB    NE     23.8</span>
-<span class="co">#&gt; 10 5086      126625 Marquez Valdes-Scantling WR    GB     26.1</span></code></pre></div>
+<span class="co">#&gt;    player_id  count player_name     pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 6918      667934 Salvon Ahmed    RB    MIA    21.9</span>
+<span class="co">#&gt;  2 2306      359893 Jameis Winston  QB    NO     26.9</span>
+<span class="co">#&gt;  3 4994      324597 Kalen Ballage   RB    LAC    24.9</span>
+<span class="co">#&gt;  4 LAC       292410 &lt;NA&gt;            DEF   LAC    NA  </span>
+<span class="co">#&gt;  5 6819      237346 Michael Pittman WR    IND    23.1</span>
+<span class="co">#&gt;  6 5347      233403 Nyheim Hines    RB    IND    24  </span>
+<span class="co">#&gt;  7 CLE       222021 &lt;NA&gt;            DEF   CLE    NA  </span>
+<span class="co">#&gt;  8 3209      206315 Devontae Booker RB    LV     28.5</span>
+<span class="co">#&gt;  9 MIA       179920 &lt;NA&gt;            DEF   MIA    NA  </span>
+<span class="co">#&gt; 10 MIN       159606 &lt;NA&gt;            DEF   MIN    NA</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>
