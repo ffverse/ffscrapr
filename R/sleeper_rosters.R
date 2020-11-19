@@ -19,7 +19,7 @@ ff_rosters.sleeper_conn <- function(conn, ...) {
   franchises_endpoint <- ff_franchises(conn) %>%
     dplyr::transmute(franchise_id = as.character(.data$franchise_id), .data$franchise_name)
 
-  df_rosters <- sleeper_getendpoint("league", conn$league_id, "rosters") %>%
+  df_rosters <- sleeper_getendpoint(glue::glue("league/{conn$league_id}/rosters")) %>%
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "player_id" = "players", "franchise_id" = "roster_id") %>%
