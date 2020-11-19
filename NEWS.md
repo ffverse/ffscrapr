@@ -4,7 +4,7 @@ Fleaflicker looks like it's going to be the next platform.
 
 Also amassing some tweaks and hotfixes for a patch version (probably with improved vignettes).
 
-### Tweaks to be released with 1.1.1
+### Tweaks to be released with 1.1.x or whichever next version
 
 - Patched bug in `sleeper_getendpoint()` - was appending a "/" to the end of every url by accident, breaking URL parameters
 - Small copyedits to existing vignettes. (1.1.0.9000)
@@ -16,6 +16,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `ff_connect()` (1.1.0.9002)
 - Added `ff_rosters()` (1.1.0.9002)
 - Added `ff_userleagues()` - interestingly, has feature for looking up by email but doesn't return actual user ID? (1.1.0.9002)
+- Added `fleaflicker_players()` - requires a connection/leagueID by default.
 
 
 # ffscrapr 1.1.0
