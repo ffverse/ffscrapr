@@ -31,21 +31,19 @@ We'll start by opening up this page, https://docs.sleeper.app/#trending-players,
 
 `https://api.sleeper.app/v1/players/<sport>/trending/<type>?lookback_hours=<hours>&limit=<int>`
 
-The sleeper_getendpoint function already has the `https://api.sleeper.app/v1/` part encoded, so all we'll need to do is pass in the remaining part of the URL. 
+On first glance, you can see that it takes two parameters within the endpoint call itself (`sport` and `type`) and we can further adjust the query with HTTP parameters `lookback_hours` and `limit`. The sleeper_getendpoint function already has the `https://api.sleeper.app/v1/` part encoded, so all we'll need to do is pass in the remaining part of the URL as the endpoint, and pass the HTTP parameters in as arguments to the function (these are case sensitive!) 
 
-We'll need to fill out the other parameters as per the documentation: sport is `NFL`, type is either `add` or `drop`, lookback_hours is optional in hours, and limit is optional in number of rows. We can use the `glue` package to parameterise this, although you can also use base R's paste function just as easily.
+We can use the `glue` package to parameterise this, although you can also use base R's paste function just as easily.
 
 ```{r}
 
 type <- "add"
-lookback_hours <- 48
-limit_rows <- 10
 
-query <- glue::glue('players/nfl/trending/{type}?lookback_hours={lookback_hours}&limit={limit_rows}')
+query <- glue::glue('players/nfl/trending/{type}')
 
 query
 
-response_trending <- sleeper_getendpoint(query)
+response_trending <- sleeper_getendpoint(query,lookback_hours = 48, limit = 10)
 
 str(response_trending, max.level = 1)
 ```
