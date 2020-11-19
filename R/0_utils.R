@@ -15,6 +15,4 @@ NULL
 #' @rdname pipe
 #' @export
 #' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-
 NULL
