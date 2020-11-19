@@ -14,6 +14,10 @@ reference:
   desc: Additional functions designed/optimized for the Sleeper platform.
   contents:
   - starts_with("sleeper_")
+- subtitle: Fleaflicker
+  desc: Additional functions designed/optimized for the Fleaflicker platform.
+  contents:
+  - starts_with("fleaflicker_")
 - subtitle: DynastyProcess
   desc: Functions to interface with DynastyProcess data
   contents:
@@ -29,11 +33,13 @@ articles:
   contents:
   - starts_with("mfl_basics")
   - starts_with("sleeper_basics")
+  - starts_with("fleaflicker_basics")
 - title: Custom API calls
   navbar: Custom API Calls
   contents:
   - starts_with("mfl_getendpoint")
   - starts_with("sleeper_getendpoint")
+  - starts_with("fleaflicker_getendpoint")
 - title: Performance
   navbar: "Cache"
   contents:
