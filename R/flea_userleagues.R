@@ -17,6 +17,8 @@ ff_userleagues.flea_conn <- function(conn = NULL, user_email = NULL, season = NU
 
   if(is.null(user_email) && is.null(conn)) {stop("Please supply either a user_email or a flea_conn object!")}
 
+  if(is.null(user_email) && !is.null(conn)) user_email <- conn$user_email
+
   if(is.null(season) && !is.null(conn)) season <- conn$season
 
   fleaflicker_userleagues(user_email,season)
