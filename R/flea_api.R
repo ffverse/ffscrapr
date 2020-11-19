@@ -73,7 +73,7 @@ fleaflicker_getendpoint <- function(endpoint, ...) {
       query = url_query,
       response = response
     ),
-    class = "sleeper_api"
+    class = "fleaflicker_api"
   )
 }
 
@@ -84,7 +84,7 @@ print.fleaflicker_api <- function(x, ...) {
 
   # nocov start
 
-  cat("<FLEAFLICKER - GET ", x$query, ">\n", sep = "")
+  cat("<Fleaflicker - GET ", x$query, ">\n", sep = "")
 
   str(x$content)
 
