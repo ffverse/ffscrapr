@@ -28,12 +28,13 @@
 
   mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)
   sleeper_players <<- memoise::memoise(sleeper_players, ~ memoise::timeout(604800), cache = cache)
+  fleaflicker_players <<- memoise::memoise(fleaflicker_players, ~ memoise::timeout(604800), cache = cache)
+
   mfl_allrules <<- memoise::memoise(mfl_allrules, ~ memoise::timeout(604800), cache = cache)
 
   ff_franchises.mfl_conn <<- memoise::memoise(ff_franchises.mfl_conn, ~ memoise::timeout(86400), cache = cache)
   ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(86400), cache = cache)
   ff_league.mfl_conn <<- memoise::memoise(ff_league.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-
 
   ff_starters.mfl_conn <<- memoise::memoise(ff_starters.mfl_conn, ~ memoise::timeout(86400), cache = cache)
   ff_standings.mfl_conn <<- memoise::memoise(ff_standings.mfl_conn, ~ memoise::timeout(3600), cache = cache)
