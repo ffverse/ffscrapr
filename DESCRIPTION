@@ -19,7 +19,7 @@ BugReports: https://github.com/dynastyprocess/ffscrapr/issues
 Depends: 
     R (>= 3.0.0)
 Imports:
-    dplyr (>= 0.8.0),
+    dplyr (>= 1.0.0),
     glue (>= 1.3.0),
     httr (>= 1.4.0),
     jsonlite (>= 1.6.0),
