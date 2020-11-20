@@ -9,7 +9,6 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 
 ### Tweaks to be released with 1next version
 
-- ***BREAKING CHANGE*** `sleeper_getendpoint`
 - Small copyedits to existing vignettes. (1.1.0.9000)
 - Added filesystem cache capabilities and a vignette to detailing how to use it (1.1.0.9001)
 
