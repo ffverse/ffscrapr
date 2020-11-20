@@ -16,13 +16,14 @@
 
 ff_schedule.flea_conn <- function(conn, ...) {
 
-  x <- fleaflicker_getendpoint("FetchLeagueScoreboard",
+  weeks <- fleaflicker_getendpoint("FetchLeagueScoreboard",
                                sport = "NFL",
                                league_id = conn$league_id,
                                season = conn$season) %>%
     purrr::pluck('content',"eligibleSchedulePeriods") %>%
-    purrr::map_int(`[[`,"value") %>%
-    tibble::tibble(week = .) %>%
+    purrr::map_int(`[[`,"value")
+
+  x <- tibble::tibble(week = weeks) %>%
     dplyr::mutate(score = purrr::map(.data$week,.flea_schedule,conn)) %>%
     tidyr::unnest("score")
 

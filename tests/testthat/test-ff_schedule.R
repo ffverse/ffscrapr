@@ -13,7 +13,7 @@ with_mock_api({
     jml_schedule <- ff_schedule(jml_conn)
 
     joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-    joe_schedule <- ff_schedule(conn)
+    joe_schedule <- ff_schedule(joe_conn)
 
     expect_tibble(ssb_schedule, min.rows = 100)
     expect_tibble(dlf_schedule, min.rows = 100)
