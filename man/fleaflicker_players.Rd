@@ -6,6 +6,9 @@
 \usage{
 fleaflicker_players(conn)
 }
+\arguments{
+\item{conn}{a conn object created by \code{ff_connect()}}
+}
 \value{
 a dataframe containing all ~7000+ players in the Fleaflicker database
 }

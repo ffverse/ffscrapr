@@ -3,6 +3,8 @@
 #' A cached table of Fleaflicker NFL players. Will store in memory for each session!
 #' (via memoise in zzz.R)
 #'
+#' @param conn a conn object created by \code{ff_connect()}
+#'
 #' @examples
 #' \donttest{
 #' conn <- fleaflicker_connect(2020,312861)
