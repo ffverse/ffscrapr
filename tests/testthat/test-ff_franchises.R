@@ -12,9 +12,13 @@ with_mock_api({
     dlp <- sleeper_connect(2020, 521379020332068864)
     dlp_franchises <- ff_franchises(dlp)
 
+    joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+    joe_franchises <- ff_franchises(joe_conn)
+
     expect_tibble(ssb_franchises, nrows = 14)
     expect_tibble(dlf_franchises, nrows = 16)
     expect_tibble(jml_franchises, nrow = 12)
     expect_tibble(dlp_franchises, nrow = 12)
+    expect_tibble(joe_franchises, nrow = 16)
   })
 })

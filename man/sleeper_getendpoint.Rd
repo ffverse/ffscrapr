@@ -9,7 +9,7 @@ sleeper_getendpoint(endpoint, ...)
 \arguments{
 \item{endpoint}{a string defining which endpoint to return from the API}
 
-\item{...}{All other arguments are passed in order as slash-separated components of the url}
+\item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
 }
 \value{
 A list object containing the query, response, and parsed content.
