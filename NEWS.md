@@ -17,7 +17,8 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `ff_rosters()` (1.1.0.9002)
 - Added `ff_userleagues()` - interestingly, has feature for looking up by email but doesn't return actual user ID? (1.1.0.9002)
 - Added `fleaflicker_players()` - requires a connection/leagueID by default.
-
+- Added `ff_scoring()` and tests.
+- 
 
 # ffscrapr 1.1.0
 
