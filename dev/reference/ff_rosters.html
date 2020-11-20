@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a dataframe of roster data — ff_rosters.flea_conn • ffscrapr</title>
+<title>Get League Rosters — ff_rosters • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,7 +48,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get a dataframe of roster data — ff_rosters.flea_conn" />
+<meta property="og:title" content="Get League Rosters — ff_rosters" />
 <meta property="og:description" content="This function returns a tidy dataframe of team rosters" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
       </span>
     </div>
 
@@ -157,8 +157,8 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a dataframe of roster data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_rosters.R'><code>R/flea_rosters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_rosters.R'><code>R/mfl_rosters.R</code></a>, and 1 more</small>
+    <h1>Get League Rosters</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_rosters.R'><code>R/flea_rosters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_rosters.R'><code>R/mfl_rosters.R</code></a>, and 1 more</small>
     <div class="hidden name"><code>ff_rosters.Rd</code></div>
     </div>
 
@@ -166,9 +166,9 @@
     <p>This function returns a tidy dataframe of team rosters</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for flea_conn</span>
-<span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
+<span class='co'># S3 method for flea_conn</span>
 <span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
