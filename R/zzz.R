@@ -55,13 +55,15 @@
 
     ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~memoise::timeout(86400), cache = cache)
-    # ff_league.sleeper_conn <<- memoise::memoise(ff_league.sleeper_conn, ~memoise::timeout(86400), cache = cache)
+    ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~memoise::timeout(86400), cache = cache)
     .flea_potentialpointsweek <<- memoise::memoise(.flea_potentialpointsweek, ~memoise::timeout(86400), cache = cache)
 
     ff_userleagues.flea_conn <<- memoise::memoise(ff_userleagues.flea_conn, ~ memoise::timeout(3600), cache = cache)
     ff_schedule.flea_conn <<- memoise::memoise(ff_schedule.flea_conn, ~ memoise::timeout(3600), cache = cache)
     ff_standings.flea_conn <<- memoise::memoise(ff_standings.flea_conn, ~ memoise::timeout(3600), cache = cache)
   }
+
+  if(memoise_option=="off") packageStartupMessage("ffscrapr.cache is set to 'off'")
 
   env <- rlang::env(
     user_agent = glue::glue(
