@@ -77,3 +77,27 @@
 .fn_drop_nulls <- function(x) {
   x[!vapply(x, is.null, FUN.VALUE = logical(1))]
 }
+
+#' Add allplay from a standardised schedule output
+#'
+#' @param schedule - an output from ff_schedule
+#'
+#' @keywords internal
+.add_allplay <- function(schedule){
+
+  all_play <- schedule %>%
+    dplyr::filter(!is.na(.data$result)) %>%
+    dplyr::group_by(.data$week) %>%
+    dplyr::mutate(
+      allplay_wins = rank(.data$franchise_score, ) - 1,
+      allplay_losses = dplyr::n() - 1 - .data$allplay_wins
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::group_by(.data$franchise_id) %>%
+    dplyr::summarise(
+      allplay_wins = sum(c(.data$allplay_wins, 0), na.rm = TRUE),
+      allplay_losses = sum(c(.data$allplay_losses, 0), na.rm = TRUE),
+      allplay_winpct = (.data$allplay_wins / (.data$allplay_wins + .data$allplay_losses)) %>% round(3)
+    )
+  return(all_play)
+}

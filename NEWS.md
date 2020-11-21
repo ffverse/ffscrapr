@@ -21,6 +21,8 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `fleaflicker_players()` - requires a connection/leagueID by default. (1.1.0.9003)
 - Added `ff_scoring()` and tests. (1.1.0.9003)
 - Added `ff_schedule()` and tests. (1.1.0.9003)
+- Added `ff_franchises()` and tests.
+- Added `ff_standings()` and tests.
 
 # ffscrapr 1.1.0
 
