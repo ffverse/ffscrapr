@@ -3,6 +3,7 @@
 #' Get a dataframe detailing every game for every franchise
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param week a numeric or numeric vector specifying which weeks to pull
 #'
 #' @examples
 #' \donttest{
@@ -14,7 +15,7 @@
 #'
 #' @export
 
-ff_schedule.flea_conn <- function(conn, ...) {
+ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
 
   weeks <- fleaflicker_getendpoint("FetchLeagueScoreboard",
                                sport = "NFL",
@@ -24,6 +25,7 @@ ff_schedule.flea_conn <- function(conn, ...) {
     purrr::map_int(`[[`,"value")
 
   schedule <- tibble::tibble(week = weeks) %>%
+    dplyr::filter(.data$week %in% .env$week) %>%
     dplyr::mutate(score = purrr::map(.data$week,.flea_schedule,conn)) %>%
     tidyr::unnest("score")
 
