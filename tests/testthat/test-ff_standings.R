@@ -11,7 +11,11 @@ with_mock_api({
     dlp <- sleeper_connect(2020, 521379020332068864)
     dlp_standings <- ff_standings(dlp)
 
+    got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+    got_standings <- ff_standings(got_conn)
+
     expect_tibble(jml_standings, any.missing = FALSE, nrows = 12)
     expect_tibble(dlp_standings, any.missing = FALSE, nrows = 12)
+    expect_tibble(got_standings, any.missing = FALSE, nrows = 16)
   })
 })
