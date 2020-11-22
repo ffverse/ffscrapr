@@ -26,6 +26,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `ff_league()` and tests.
 - Added `ff_playerscores()` and tests. Fleaflicker's API returns season level data easily, week-level is not readily available yet without some workarounds. 
 - Added `ff_starters()` and tests.
+- Added `ff_draftpicks()` and tests.
 
 # ffscrapr 1.1.0
 
