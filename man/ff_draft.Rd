@@ -42,7 +42,7 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 \examples{
 \donttest{
 conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-ff_starters(conn)
+ff_draft(conn)
 }
 
 \donttest{
