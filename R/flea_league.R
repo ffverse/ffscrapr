@@ -116,7 +116,7 @@ ff_league.flea_conn <- function(conn) {
 .flea_check_ppr <- function(scoring_settings){
 
   x <- scoring_settings %>%
-    dplyr::filter(.data$event == "Catch",pos == "WR") %>%
+    dplyr::filter(.data$event == "Catch", .data$pos == "WR") %>%
     dplyr::pull(.data$points)
 
   ifelse(x > 0, paste0(x, "_ppr"), "zero_ppr")
@@ -125,8 +125,8 @@ ff_league.flea_conn <- function(conn) {
 .flea_check_teprem <- function(scoring_settings){
 
   te_prem <- scoring_settings %>%
-    dplyr::group_by(pos) %>%
-    dplyr::summarise(points = sum(points))
+    dplyr::group_by(.data$pos) %>%
+    dplyr::summarise(points = sum(.data$points))
 
   ifelse(
     te_prem$points[te_prem$pos == "TE"] > te_prem$points[te_prem$pos == "WR"],

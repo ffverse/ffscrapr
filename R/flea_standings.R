@@ -50,7 +50,7 @@ ff_standings.flea_conn <- function(conn, ...) {
   standings <- standings %>%
     dplyr::left_join(allplay, by = c("franchise_id")) %>%
     dplyr::left_join(potentialpoints, by = c('franchise_id')) %>%
-    dplyr::arrange(desc(.data$h2h_winpct),desc(.data$allplay_winpct))
+    dplyr::arrange(dplyr::desc(.data$h2h_winpct),dplyr::desc(.data$allplay_winpct))
 
 }
 
@@ -60,9 +60,9 @@ ff_standings.flea_conn <- function(conn, ...) {
     dplyr::filter(!is.na(.data$result)) %>%
     dplyr::distinct(.data$week,.data$game_id) %>%
     dplyr::mutate(potentialpoints = purrr::map2(.data$week,.data$game_id,.flea_potentialpointsweek,conn)) %>%
-    tidyr::unnest(potentialpoints) %>%
+    tidyr::unnest(.data$potentialpoints) %>%
     dplyr::group_by(.data$franchise_id) %>%
-    dplyr::summarise(potential_points = sum(potential_points)) %>%
+    dplyr::summarise(potential_points = sum(.data$potential_points)) %>%
     dplyr::ungroup()
 
 }
