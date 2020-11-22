@@ -18,5 +18,9 @@ with_mock_api({
     expect_tibble(jml_picks,min.rows = 144)
     expect_tibble(dlp_picks, min.rows = 144)
 
+    joe_conn <- fleaflicker_connect(2020,206154)
+    joe_picks <- ff_draftpicks(joe_conn)
+
+    expect_tibble(joe_picks, min.rows = 144)
   })
 })
