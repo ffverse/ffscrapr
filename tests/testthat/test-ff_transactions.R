@@ -21,7 +21,7 @@ with_mock_api({
     aaa_transactions <- ff_transactions(aaa_conn)
 
     expect_tibble(aaa_transactions,min.rows = 50)
-    expect_tibble(got_Transactions,min.rows = 100)
+    expect_tibble(got_transactions,min.rows = 100)
 
   })
 })
