@@ -23,7 +23,6 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
     dplyr::mutate(starters = purrr::map2(.data$week,.data$game_id, .flea_starters, conn)) %>%
     tidyr::unnest("starters") %>%
     dplyr::arrange(.data$week,.data$franchise_id)
-
 }
 
 .flea_starters <- function(week,game_id,conn){
