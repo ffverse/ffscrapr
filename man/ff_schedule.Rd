@@ -10,7 +10,7 @@
 \usage{
 ff_schedule(conn, ...)
 
-\method{ff_schedule}{flea_conn}(conn, ...)
+\method{ff_schedule}{flea_conn}(conn, week = 1:17, ...)
 
 \method{ff_schedule}{mfl_conn}(conn, ...)
 
@@ -20,6 +20,8 @@ ff_schedule(conn, ...)
 \item{conn}{a conn object created by \code{ff_connect()}}
 
 \item{...}{additional args passed to each platform}
+
+\item{week}{a numeric or numeric vector specifying which weeks to pull}
 }
 \value{
 A tidy dataframe with one row per game per franchise per week

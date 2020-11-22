@@ -60,8 +60,7 @@ ff_league.sleeper_conn <- function(conn) {
   QB <- sum(starting_positions$value %in% c("QB"))
   SF <- sum(starting_positions$value %in% c("SUPER_FLEX"))
 
-  x <- sum(QB, SF)
-
+  x <- sum(QB, SF, na.rm = TRUE)
 
   type <- dplyr::case_when(
     x >= 2 ~ "2QB/SF",

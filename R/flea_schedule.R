@@ -3,6 +3,7 @@
 #' Get a dataframe detailing every game for every franchise
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param week a numeric or numeric vector specifying which weeks to pull
 #'
 #' @examples
 #' \donttest{
@@ -14,7 +15,7 @@
 #'
 #' @export
 
-ff_schedule.flea_conn <- function(conn, ...) {
+ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
 
   weeks <- fleaflicker_getendpoint("FetchLeagueScoreboard",
                                sport = "NFL",
@@ -23,65 +24,80 @@ ff_schedule.flea_conn <- function(conn, ...) {
     purrr::pluck('content',"eligibleSchedulePeriods") %>%
     purrr::map_int(`[[`,"value")
 
-  x <- tibble::tibble(week = weeks) %>%
+  schedule <- tibble::tibble(week = weeks) %>%
+    dplyr::filter(.data$week %in% .env$week) %>%
     dplyr::mutate(score = purrr::map(.data$week,.flea_schedule,conn)) %>%
     tidyr::unnest("score")
 
-  if("franchise_score" %in% names(x)){
-    x <- x %>%
-      dplyr::mutate(
-        franchise_score = purrr::map_dbl(.data$franchise_score,~replace(.x,is.null(.x),NA)),
-        opponent_score = purrr::map_dbl(.data$opponent_score,~replace(.x,is.null(.x),NA)))
-  }
-
-  return(x)
+  return(schedule)
 
 }
 #'
 .flea_schedule <- function(week,conn){
 
-  x <- fleaflicker_getendpoint("FetchLeagueScoreboard",
+  schedule_raw <- fleaflicker_getendpoint("FetchLeagueScoreboard",
                                sport = "NFL",
                                league_id = conn$league_id,
                                scoring_period = week,
                                season = conn$season) %>%
     purrr::pluck('content',"games")
 
-  if(is.null(x)) return(tibble::tibble())
+  if(is.null(schedule_raw)) return(tibble::tibble())
 
-  x <- x %>%
+  schedule_raw <- schedule_raw %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    tidyr::hoist('home',"franchise_id"='id',"franchise_name" = "name") %>%
-    tidyr::hoist("away","opponent_id"="id","opponent_name" = "name") %>%
+    tidyr::hoist('home',"home_id"='id',"home_name" = "name") %>%
+    tidyr::hoist("away","away_id"="id","away_name" = "name") %>%
     dplyr::mutate_at(c('homeScore','awayScore'),purrr::map,~purrr::pluck(.x,1,"value")) %>%
+    dplyr::select(dplyr::any_of(c(
+      "game_id"="id",
+      "home_id",
+      "home_name",
+      "home_score" = "homeScore",
+      "home_result" = "homeResult",
+      "away_id",
+      "away_name",
+      "away_score" = "awayScore",
+      "away_result" = "awayResult"
+    )))
+
+  home_schedule <- schedule_raw %>%
+    dplyr::rename(dplyr::any_of(c(
+      "franchise_id" = 'home_id',
+      "franchise_name" = 'home_name',
+      "franchise_score" = 'home_score',
+      "result" = 'home_result',
+      "opponent_id" = 'away_id',
+      "opponent_name" = 'away_name',
+      "opponent_score" = "away_score"
+    )))
+
+  away_schedule <- schedule_raw %>%
+    dplyr::rename(dplyr::any_of(c(
+      "franchise_id" = "away_id",
+      "franchise_name" = "away_name",
+      "franchise_score" = "away_score",
+      "result" = "away_result",
+      "opponent_id" = "home_id",
+      "opponent_name" = "home_name",
+      "opponent_score" = 'home_score'
+    )))
+
+  schedule <- dplyr::bind_rows(home_schedule, away_schedule) %>%
     dplyr::select(dplyr::any_of(c(
       "franchise_id",
       "franchise_name",
-      "franchise_score" = "homeScore",
-      "result" = "homeResult",
+      "franchise_score",
+      "result",
       "opponent_id",
       "opponent_name",
-      "opponent_score" = "awayScore",
-      "opponent_result" = "awayResult"
-    )))
+      "opponent_score",
+      "game_id"
+    ))) %>%
+    dplyr::mutate(dplyr::across(dplyr::contains("_score"),purrr::map_dbl,~replace(.x,is.null(.x),NA)))
 
-  y <- x %>%
-    dplyr::rename(dplyr::any_of(c(
-      "franchise_id" = .data$opponent_id,
-      "franchise_name" = .data$opponent_name,
-      "franchise_score" = .data$opponent_score,
-      "result" = .data[["opponent_result"]],
-      "opponent_id" = .data$franchise_id,
-      "opponent_name" = .data$franchise_name,
-      "opponent_score" = .data$franchise_score,
-      "opponent_result" = .data[['result']]))) %>%
-    dplyr::bind_rows(x) %>%
-    dplyr::select(dplyr::any_of(c(
-      "franchise_id","franchise_name","franchise_score","result",
-      "opponent_id","opponent_name","opponent_score")))
-
-  return(y)
+  return(schedule)
 }
 
 

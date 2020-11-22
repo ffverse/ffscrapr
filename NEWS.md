@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.2.0
 
 Fleaflicker looks like it's going to be the next platform. 
 
@@ -7,7 +7,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 ### BREAKING CHANGES
 - `sleeper_getendpoint()` now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters. (1.1.0.9003)
 
-### Tweaks to be released with 1next version
+### Tweaks to be released with next version
 
 - Small copyedits to existing vignettes. (1.1.0.9000)
 - Added filesystem cache capabilities and a vignette to detailing how to use it (1.1.0.9001)
@@ -21,6 +21,15 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `fleaflicker_players()` - requires a connection/leagueID by default. (1.1.0.9003)
 - Added `ff_scoring()` and tests. (1.1.0.9003)
 - Added `ff_schedule()` and tests. (1.1.0.9003)
+- Added `ff_franchises()` and tests.
+- Added `ff_standings()` and tests.
+- Added `ff_league()` and tests.
+- Added `ff_playerscores()` and tests. Fleaflicker's API returns season level data easily, week-level is not readily available yet without some workarounds. 
+- Added `ff_starters()` and tests.
+- Added `ff_draftpicks()` and tests.
+- Added `ff_draft()` and tests.
+- Added `ff_transactions()` and tests.
+- Added vignettes: basics and getendpoint.
 
 # ffscrapr 1.1.0
 
