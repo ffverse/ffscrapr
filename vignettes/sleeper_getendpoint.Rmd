@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(httptest)
+httptest::start_vignette("sleeper_getendpoint")
 ```
 
 ## Creating custom Sleeper API calls
@@ -74,3 +76,8 @@ trending
 ```
 
 There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven't we been bitten by this before?
+
+```{r}
+httptest::end_vignette()
+```
+
