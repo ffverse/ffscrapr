@@ -17,7 +17,7 @@ with_mock_api({
     aaa_conn <- fleaflicker_connect(season = 2020, league_id = 312861)
     aaa_transactions <- ff_transactions(aaa_conn)
 
-    expect_tibble(aaa_transactions,min.rows = 100)
+    expect_tibble(aaa_transactions,min.rows = 50)
 
   })
 })
