@@ -688,7 +688,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 53,
+                            "ordinal": 54,
                             "positions": [
                                 {
                                     "position": {
@@ -1829,7 +1829,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 268,
+                            "ordinal": 269,
                             "positions": [
                                 {
                                     "position": {
@@ -2542,7 +2542,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 54,
+                            "ordinal": 52,
                             "positions": [
                                 {
                                     "position": {
@@ -2767,7 +2767,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 157,
+                            "ordinal": 158,
                             "positions": [
                                 {
                                     "position": {
@@ -2780,8 +2780,8 @@
                                             "DRAFT_BOARD_BLUE"
                                         ]
                                     },
-                                    "ordinal": 48,
-                                    "formatted": "48",
+                                    "ordinal": 49,
+                                    "formatted": "49",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -3844,7 +3844,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 257,
                             "positions": [
                                 {
                                     "position": {
@@ -4727,7 +4727,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 291,
+                            "ordinal": 284,
                             "positions": [
                                 {
                                     "position": {
@@ -4740,8 +4740,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 36,
-                                    "formatted": "36"
+                                    "ordinal": 34,
+                                    "formatted": "34"
                                 }
                             ],
                             "season": 2020
@@ -4928,7 +4928,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 230,
+                            "ordinal": 223,
                             "positions": [
                                 {
                                     "position": {
@@ -4941,8 +4941,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 16,
-                                    "formatted": "16",
+                                    "ordinal": 13,
+                                    "formatted": "13",
                                     "rating": "RATING_GOOD"
                                 }
                             ],
@@ -5575,7 +5575,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 341,
+                            "ordinal": 310,
                             "positions": [
                                 {
                                     "position": {
@@ -5588,8 +5588,9 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 18,
+                                    "formatted": "18",
+                                    "rating": "RATING_GOOD"
                                 }
                             ],
                             "season": 2020
@@ -6016,7 +6017,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 230,
+                            "ordinal": 231,
                             "positions": [
                                 {
                                     "position": {
@@ -6029,8 +6030,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 4,
-                                    "formatted": "4",
+                                    "ordinal": 5,
+                                    "formatted": "5",
                                     "rating": "RATING_VERY_GOOD"
                                 }
                             ],
@@ -6135,7 +6136,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -6144,7 +6145,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -6438,7 +6439,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 230,
+                            "ordinal": 231,
                             "positions": [
                                 {
                                     "position": {
@@ -6638,7 +6639,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 341,
+                            "ordinal": 342,
                             "positions": [
                                 {
                                     "position": {
@@ -7214,7 +7215,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -7224,7 +7225,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -7260,7 +7261,7 @@
                         },
                         "displayGroup": "PASSER",
                         "rankFantasy": {
-                            "ordinal": 759,
+                            "ordinal": 760,
                             "positions": [
                                 {
                                     "position": {
@@ -7728,7 +7729,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -7737,7 +7738,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -7982,7 +7983,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 137,
+                            "ordinal": 140,
                             "positions": [
                                 {
                                     "position": {
@@ -8115,7 +8116,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -8124,7 +8125,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -8543,7 +8544,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -8553,7 +8554,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -9333,7 +9334,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -9342,7 +9343,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -9627,7 +9628,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 457,
+                            "ordinal": 458,
                             "positions": [
                                 {
                                     "position": {
@@ -9852,7 +9853,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 478,
+                            "ordinal": 480,
                             "positions": [
                                 {
                                     "position": {
@@ -10220,7 +10221,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -10230,7 +10231,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -10379,7 +10380,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -10389,7 +10390,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -10441,7 +10442,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 716,
+                            "ordinal": 717,
                             "positions": [
                                 {
                                     "position": {
@@ -10958,7 +10959,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -10967,7 +10968,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -11019,7 +11020,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 977,
+                            "ordinal": 978,
                             "positions": [
                                 {
                                     "position": {
@@ -11143,7 +11144,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -11152,7 +11153,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -11204,7 +11205,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 616,
+                            "ordinal": 617,
                             "positions": [
                                 {
                                     "position": {
@@ -11217,8 +11218,8 @@
                                             "DRAFT_BOARD_BLUE"
                                         ]
                                     },
-                                    "ordinal": 143,
-                                    "formatted": "143",
+                                    "ordinal": 144,
+                                    "formatted": "144",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -11552,7 +11553,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -11562,7 +11563,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -11614,7 +11615,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 136,
+                            "ordinal": 137,
                             "positions": [
                                 {
                                     "position": {
@@ -11920,7 +11921,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -11929,7 +11930,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -12547,7 +12548,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -12556,7 +12557,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -12817,7 +12818,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 247,
+                            "ordinal": 248,
                             "positions": [
                                 {
                                     "position": {
@@ -13250,7 +13251,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 158,
+                            "ordinal": 159,
                             "positions": [
                                 {
                                     "position": {
@@ -13472,7 +13473,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 249,
                             "positions": [
                                 {
                                     "position": {
@@ -13485,8 +13486,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 23,
-                                    "formatted": "23"
+                                    "ordinal": 21,
+                                    "formatted": "21"
                                 }
                             ],
                             "season": 2020
@@ -13840,7 +13841,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 283,
+                            "ordinal": 284,
                             "positions": [
                                 {
                                     "position": {
@@ -13853,8 +13854,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 33,
-                                    "formatted": "33"
+                                    "ordinal": 34,
+                                    "formatted": "34"
                                 }
                             ],
                             "season": 2020
@@ -14189,7 +14190,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -14198,7 +14199,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -14419,7 +14420,7 @@
                         },
                         "displayGroup": "KICKER",
                         "rankFantasy": {
-                            "ordinal": 73,
+                            "ordinal": 67,
                             "positions": [
                                 {
                                     "position": {
@@ -14432,9 +14433,8 @@
                                             "DRAFT_BOARD_GRAY"
                                         ]
                                     },
-                                    "ordinal": 10,
-                                    "formatted": "10",
-                                    "rating": "RATING_BAD"
+                                    "ordinal": 7,
+                                    "formatted": "7"
                                 }
                             ],
                             "season": 2020
@@ -15466,8 +15466,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 23,
+                                    "formatted": "23"
                                 }
                             ],
                             "season": 2020
@@ -16074,7 +16074,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 257,
                             "positions": [
                                 {
                                     "position": {
@@ -16598,7 +16598,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -16607,7 +16607,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -16659,7 +16659,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 915,
+                            "ordinal": 916,
                             "positions": [
                                 {
                                     "position": {
@@ -16672,8 +16672,8 @@
                                             "DRAFT_BOARD_GREEN"
                                         ]
                                     },
-                                    "ordinal": 150,
-                                    "formatted": "150",
+                                    "ordinal": 151,
+                                    "formatted": "151",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -17007,7 +17007,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -17016,7 +17016,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -17165,7 +17165,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -17174,7 +17174,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -17226,7 +17226,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 403,
+                            "ordinal": 404,
                             "positions": [
                                 {
                                     "position": {
@@ -17239,8 +17239,8 @@
                                             "DRAFT_BOARD_YELLOW"
                                         ]
                                     },
-                                    "ordinal": 35,
-                                    "formatted": "35",
+                                    "ordinal": 36,
+                                    "formatted": "36",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -17378,7 +17378,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -17387,7 +17387,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -17537,7 +17537,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -17547,7 +17547,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -17843,7 +17843,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 456,
+                            "ordinal": 457,
                             "positions": [
                                 {
                                     "position": {
@@ -17961,7 +17961,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -17971,7 +17971,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -18160,7 +18160,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -18169,7 +18169,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -18361,7 +18361,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -18371,7 +18371,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -18423,7 +18423,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 469,
+                            "ordinal": 471,
                             "positions": [
                                 {
                                     "position": {
@@ -18603,7 +18603,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -18613,7 +18613,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -18763,7 +18763,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -18773,7 +18773,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -18967,7 +18967,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -18976,7 +18976,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -19136,7 +19136,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -19145,7 +19145,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -19319,7 +19319,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "period": {
                                     "ordinal": 5,
@@ -19328,7 +19328,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -19583,7 +19583,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 480,
+                            "ordinal": 470,
                             "positions": [
                                 {
                                     "position": {
@@ -19596,8 +19596,8 @@
                                             "DRAFT_BOARD_YELLOW"
                                         ]
                                     },
-                                    "ordinal": 46,
-                                    "formatted": "46",
+                                    "ordinal": 43,
+                                    "formatted": "43",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -19910,7 +19910,7 @@
                                     }
                                 ],
                                 "pointsActual": {
-                                    "formatted": "—"
+                                    "formatted": "â€”"
                                 },
                                 "participant": "HOME",
                                 "period": {
@@ -19920,7 +19920,7 @@
                             }
                         ],
                         "viewingActualPoints": {
-                            "formatted": "—"
+                            "formatted": "â€”"
                         },
                         "viewingActualStats": [
                             {
@@ -20411,7 +20411,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 53,
+                            "ordinal": 54,
                             "positions": [
                                 {
                                     "position": {
@@ -21135,7 +21135,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 54,
+                            "ordinal": 52,
                             "positions": [
                                 {
                                     "position": {
@@ -22291,7 +22291,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 291,
+                            "ordinal": 284,
                             "positions": [
                                 {
                                     "position": {
@@ -22304,8 +22304,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 36,
-                                    "formatted": "36"
+                                    "ordinal": 34,
+                                    "formatted": "34"
                                 }
                             ],
                             "season": 2020
@@ -22943,7 +22943,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 230,
+                            "ordinal": 231,
                             "positions": [
                                 {
                                     "position": {
@@ -23401,7 +23401,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 257,
                             "positions": [
                                 {
                                     "position": {
@@ -23623,7 +23623,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 341,
+                            "ordinal": 310,
                             "positions": [
                                 {
                                     "position": {
@@ -23636,8 +23636,9 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 18,
+                                    "formatted": "18",
+                                    "rating": "RATING_GOOD"
                                 }
                             ],
                             "season": 2020
@@ -24072,7 +24073,7 @@
                         },
                         "displayGroup": "RUSHER",
                         "rankFantasy": {
-                            "ordinal": 53,
+                            "ordinal": 54,
                             "positions": [
                                 {
                                     "position": {
@@ -24796,7 +24797,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 54,
+                            "ordinal": 52,
                             "positions": [
                                 {
                                     "position": {
@@ -25952,7 +25953,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 291,
+                            "ordinal": 284,
                             "positions": [
                                 {
                                     "position": {
@@ -25965,8 +25966,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 36,
-                                    "formatted": "36"
+                                    "ordinal": 34,
+                                    "formatted": "34"
                                 }
                             ],
                             "season": 2020
@@ -26604,7 +26605,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 230,
+                            "ordinal": 231,
                             "positions": [
                                 {
                                     "position": {
@@ -27062,7 +27063,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 257,
                             "positions": [
                                 {
                                     "position": {
@@ -27284,7 +27285,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 341,
+                            "ordinal": 310,
                             "positions": [
                                 {
                                     "position": {
@@ -27297,8 +27298,9 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 18,
+                                    "formatted": "18",
+                                    "rating": "RATING_GOOD"
                                 }
                             ],
                             "season": 2020
@@ -28195,7 +28197,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 157,
+                            "ordinal": 158,
                             "positions": [
                                 {
                                     "position": {
@@ -28208,8 +28210,8 @@
                                             "DRAFT_BOARD_BLUE"
                                         ]
                                     },
-                                    "ordinal": 48,
-                                    "formatted": "48",
+                                    "ordinal": 49,
+                                    "formatted": "49",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -28895,7 +28897,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 268,
+                            "ordinal": 269,
                             "positions": [
                                 {
                                     "position": {
@@ -29331,7 +29333,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 249,
                             "positions": [
                                 {
                                     "position": {
@@ -29344,8 +29346,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 23,
-                                    "formatted": "23"
+                                    "ordinal": 21,
+                                    "formatted": "21"
                                 }
                             ],
                             "season": 2020
@@ -30475,8 +30477,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 23,
+                                    "formatted": "23"
                                 }
                             ],
                             "season": 2020
@@ -31788,7 +31790,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 157,
+                            "ordinal": 158,
                             "positions": [
                                 {
                                     "position": {
@@ -31801,8 +31803,8 @@
                                             "DRAFT_BOARD_BLUE"
                                         ]
                                     },
-                                    "ordinal": 48,
-                                    "formatted": "48",
+                                    "ordinal": 49,
+                                    "formatted": "49",
                                     "rating": "RATING_VERY_BAD"
                                 }
                             ],
@@ -32488,7 +32490,7 @@
                         },
                         "displayGroup": "RECEIVER",
                         "rankFantasy": {
-                            "ordinal": 268,
+                            "ordinal": 269,
                             "positions": [
                                 {
                                     "position": {
@@ -32924,7 +32926,7 @@
                         },
                         "displayGroup": "DEFENDER",
                         "rankFantasy": {
-                            "ordinal": 256,
+                            "ordinal": 249,
                             "positions": [
                                 {
                                     "position": {
@@ -32937,8 +32939,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 23,
-                                    "formatted": "23"
+                                    "ordinal": 21,
+                                    "formatted": "21"
                                 }
                             ],
                             "season": 2020
@@ -34068,8 +34070,8 @@
                                             "DRAFT_BOARD_PURPLE"
                                         ]
                                     },
-                                    "ordinal": 22,
-                                    "formatted": "22"
+                                    "ordinal": 23,
+                                    "formatted": "23"
                                 }
                             ],
                             "season": 2020
