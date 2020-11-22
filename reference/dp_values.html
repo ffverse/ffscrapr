@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -107,17 +107,32 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">sleeper_getendpoint</a>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cache</li>
+    <li>
+      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
     </li>
   </ul>
 </li>
@@ -175,20 +190,20 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
  <span class='fu'>dp_values</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 439 x 12</span><span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 475 x 12</span><span>
 #&gt;    player pos   team    age draft_year ecr_1qb ecr_2qb ecr_pos value_1qb
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Chris… RB    CAR    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     1.8     2.1     1       </span><span style='text-decoration: underline;'>10</span><span>058
-#&gt; </span><span style='color: #555555;'> 2</span><span> Alvin… RB    NOS    25.3       </span><span style='text-decoration: underline;'>2</span><span>017     2.2     2.5     3.3      </span><span style='text-decoration: underline;'>9</span><span>978
-#&gt; </span><span style='color: #555555;'> 3</span><span> Davan… WR    GBP    27.9       </span><span style='text-decoration: underline;'>2</span><span>014     5       6.1     3.3      </span><span style='text-decoration: underline;'>9</span><span>336
-#&gt; </span><span style='color: #555555;'> 4</span><span> D.K. … WR    SEA    22.9       </span><span style='text-decoration: underline;'>2</span><span>019     5.2     6.4     1        </span><span style='text-decoration: underline;'>9</span><span>299
-#&gt; </span><span style='color: #555555;'> 5</span><span> DeAnd… WR    ARI    28.4       </span><span style='text-decoration: underline;'>2</span><span>013     6.7     8.4     4.3      </span><span style='text-decoration: underline;'>8</span><span>977
-#&gt; </span><span style='color: #555555;'> 6</span><span> Saquo… RB    NYG    23.7       </span><span style='text-decoration: underline;'>2</span><span>018     7.7    10.2     2.7      </span><span style='text-decoration: underline;'>8</span><span>768
-#&gt; </span><span style='color: #555555;'> 7</span><span> Tyree… WR    KCC    26.7       </span><span style='text-decoration: underline;'>2</span><span>016     9      11.7     5.3      </span><span style='text-decoration: underline;'>8</span><span>498
-#&gt; </span><span style='color: #555555;'> 8</span><span> Micha… WR    NOS    27.7       </span><span style='text-decoration: underline;'>2</span><span>016    10.5    13.8     4.7      </span><span style='text-decoration: underline;'>8</span><span>204
-#&gt; </span><span style='color: #555555;'> 9</span><span> A.J. … WR    TEN    23.4       </span><span style='text-decoration: underline;'>2</span><span>019    12.7    16.8     5.7      </span><span style='text-decoration: underline;'>7</span><span>796
-#&gt; </span><span style='color: #555555;'>10</span><span> Clyde… RB    KCC    21.6       </span><span style='text-decoration: underline;'>2</span><span>020    13.8    18.7     7.7      </span><span style='text-decoration: underline;'>7</span><span>586
-#&gt; </span><span style='color: #555555;'># … with 429 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Chris… RB    CAR    24.4       </span><span style='text-decoration: underline;'>2</span><span>017     1.2     1.3     1       </span><span style='text-decoration: underline;'>10</span><span>196
+#&gt; </span><span style='color: #555555;'> 2</span><span> Alvin… RB    NOS    25.3       </span><span style='text-decoration: underline;'>2</span><span>017     2.8     3.4     2.5      </span><span style='text-decoration: underline;'>9</span><span>843
+#&gt; </span><span style='color: #555555;'> 3</span><span> Saquo… RB    NYG    23.8       </span><span style='text-decoration: underline;'>2</span><span>018     5       6.5     3        </span><span style='text-decoration: underline;'>9</span><span>336
+#&gt; </span><span style='color: #555555;'> 4</span><span> Dalvi… RB    MIN    25.3       </span><span style='text-decoration: underline;'>2</span><span>017     5.5     7.2     3.8      </span><span style='text-decoration: underline;'>9</span><span>227
+#&gt; </span><span style='color: #555555;'> 5</span><span> Davan… WR    GBP    27.9       </span><span style='text-decoration: underline;'>2</span><span>014     8      10.3     2.8      </span><span style='text-decoration: underline;'>8</span><span>700
+#&gt; </span><span style='color: #555555;'> 6</span><span> D.K. … WR    SEA    22.9       </span><span style='text-decoration: underline;'>2</span><span>019     9.2    12       1.8      </span><span style='text-decoration: underline;'>8</span><span>449
+#&gt; </span><span style='color: #555555;'> 7</span><span> Micha… WR    NOS    27.7       </span><span style='text-decoration: underline;'>2</span><span>016     9.8    12.7     6.2      </span><span style='text-decoration: underline;'>8</span><span>350
+#&gt; </span><span style='color: #555555;'> 8</span><span> Tyree… WR    KCC    26.7       </span><span style='text-decoration: underline;'>2</span><span>016    11.2    14.8     4        </span><span style='text-decoration: underline;'>8</span><span>061
+#&gt; </span><span style='color: #555555;'> 9</span><span> DeAnd… WR    ARI    28.4       </span><span style='text-decoration: underline;'>2</span><span>013    11.5    15.2     5.6      </span><span style='text-decoration: underline;'>8</span><span>013
+#&gt; </span><span style='color: #555555;'>10</span><span> Josh … RB    LVR    22.8       </span><span style='text-decoration: underline;'>2</span><span>019    12.2    16.5     6.7      </span><span style='text-decoration: underline;'>7</span><span>873
+#&gt; </span><span style='color: #555555;'># … with 465 more rows, and 3 more variables: value_2qb </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   scrape_date </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>, fp_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>

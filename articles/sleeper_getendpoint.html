@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>sleeper_getendpoint • ffscrapr</title>
+<title>Sleeper: Get Endpoint • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="sleeper_getendpoint">
+<meta property="og:title" content="Sleeper: Get Endpoint">
 <meta property="og:description" content="ffscrapr">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
 <meta name="twitter:card" content="summary">
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -64,17 +64,32 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+<li class="divider">
+    <li class="dropdown-header">Getting Started</li>
+    <li>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">sleeper_getendpoint</a>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Cache</li>
+    <li>
+      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
     </li>
   </ul>
 </li>
@@ -103,10 +118,8 @@
 <script src="sleeper_getendpoint_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>sleeper_getendpoint</h1>
-                        <h4 class="author">Tan Ho</h4>
+      <h1 data-toc-skip>Sleeper: Get Endpoint</h1>
             
-            <h4 class="date">2020-11-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/sleeper_getendpoint.Rmd"><code>vignettes/sleeper_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>sleeper_getendpoint.Rmd</code></div>
@@ -115,50 +128,40 @@
 
     
     
-<div id="creating-your-own-custom-sleeper-api-calls" class="section level2">
+<div id="creating-custom-sleeper-api-calls" class="section level2">
 <h2 class="hasAnchor">
-<a href="#creating-your-own-custom-sleeper-api-calls" class="anchor"></a>Creating your own custom Sleeper API calls</h2>
+<a href="#creating-custom-sleeper-api-calls" class="anchor"></a>Creating custom Sleeper API calls</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'glue'</span>
-<span class="co">#&gt; The following object is masked from 'package:dplyr':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     collapse</span></code></pre></div>
-<p>The <a href="https://docs.sleeper.app">Sleeper API is pretty extensive</a>, and I haven’t written out a function for every single combination of the endpoints. If there is something you’d like to access, you can use the lower-level “<code>sleeper_getendpoint</code>” function to create a GET request and access the data, while still using the authentication and rate-limiting features I’ve already created.</p>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
+<p>The <a href="https://docs.sleeper.app">Sleeper API is pretty extensive</a>. If there is something you’d like to access that’s beyond the current scope of ffscrapr, you can use the lower-level “<code>sleeper_getendpoint</code>” function to create a GET request and access the data, while still using the authentication and rate-limiting features I’ve already created.</p>
 <p>Here is an example of how you can call one of the endpoints - in this case, let’s pull Sleeper’s trending players data!</p>
 <p>We’ll start by opening up this page, <a href="https://docs.sleeper.app/#trending-players" class="uri">https://docs.sleeper.app/#trending-players</a>, which is the documentation page for this particular endpoint. From here, we can see that Sleeper’s documentation says the endpoint is:</p>
 <p><code>https://api.sleeper.app/v1/players/&lt;sport&gt;/trending/&lt;type&gt;?lookback_hours=&lt;hours&gt;&amp;limit=&lt;int&gt;</code></p>
-<p>The sleeper_getendpoint function already has the <code>https://api.sleeper.app/v1/</code> part encoded, so all we’ll need to do is pass in the remaining part of the URL.</p>
-<p>We’ll need to fill out the other parameters as per the documentation: sport is <code>NFL</code>, type is either <code>add</code> or <code>drop</code>, lookback_hours is optional in hours, and limit is optional in number of rows. We can use the <code>glue</code> package to parameterise this, although you can also use base R’s paste function just as easily.</p>
+<p>On first glance, you can see that it takes two parameters within the endpoint call itself (<code>sport</code> and <code>type</code>) and we can further adjust the query with HTTP parameters <code>lookback_hours</code> and <code>limit</code>. The sleeper_getendpoint function already has the <code>https://api.sleeper.app/v1/</code> part encoded, so all we’ll need to do is pass in the remaining part of the URL as the endpoint, and pass the HTTP parameters in as arguments to the function (these are case sensitive!)</p>
+<p>We can use the <code>glue</code> package to parameterise this, although you can also use base R’s paste function just as easily.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'players/nfl/trending/add'</span><span class="op">)</span>
+<span class="va">type</span> <span class="op">&lt;-</span> <span class="st">"add"</span>
+
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'players/nfl/trending/{type}'</span><span class="op">)</span>
 
 <span class="va">query</span>
 <span class="co">#&gt; players/nfl/trending/add</span>
 
-<span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
+<span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span>,lookback_hours <span class="op">=</span> <span class="fl">48</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">response_trending</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
-<span class="co">#&gt;  $ content :List of 25</span>
-<span class="co">#&gt;  $ query   : chr "https://api.sleeper.app/v1/players/nfl/trending/add/"</span>
-<span class="co">#&gt;  $ response:List of 10</span>
+<span class="co">#&gt;  $ content :List of 10</span>
+<span class="co">#&gt;  $ query   : chr "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=48&amp;limit=10"</span>
+<span class="co">#&gt;  $ response:List of 8</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "sleeper_api"</span></code></pre></div>
-<p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debug, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
+<p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">df_trending</span> <span class="op">&lt;-</span> <span class="va">response_trending</span> <span class="op">%&gt;%</span> 
@@ -169,37 +172,40 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 6918      110611</span>
-<span class="co">#&gt; 2 4994       99307</span>
-<span class="co">#&gt; 3 1535       90171</span>
-<span class="co">#&gt; 4 5163       65550</span>
-<span class="co">#&gt; 5 6012       56246</span>
-<span class="co">#&gt; 6 1048       49193</span></code></pre></div>
-<p>This isn’t very helpful without knowing who these players are - let’s pull the players endpoint in as well.</p>
+<span class="co">#&gt; 1 4381      149286</span>
+<span class="co">#&gt; 2 4147       95840</span>
+<span class="co">#&gt; 3 184        79348</span>
+<span class="co">#&gt; 4 6908       72060</span>
+<span class="co">#&gt; 5 5068       58946</span>
+<span class="co">#&gt; 6 1386       47846</span></code></pre></div>
+<p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_players.html">sleeper_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">player_name</span>, <span class="va">pos</span>, <span class="va">team</span>, <span class="va">age</span><span class="op">)</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="va">trending</span> <span class="op">&lt;-</span> <span class="va">df_trending</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">players</span>, by <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
 
 <span class="va">trending</span>
-<span class="co">#&gt; # A tibble: 25 x 6</span>
-<span class="co">#&gt;    player_id  count player_name              pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;                    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 6918      110611 Salvon Ahmed             RB    MIA    21.9</span>
-<span class="co">#&gt;  2 4994       99307 Kalen Ballage            RB    LAC    24.9</span>
-<span class="co">#&gt;  3 1535       90171 Cordarrelle Patterson    WR    CHI    29.7</span>
-<span class="co">#&gt;  4 5163       65550 Ryan Nall                RB    CHI    24.9</span>
-<span class="co">#&gt;  5 6012       56246 Travis Homer             RB    SEA    22.3</span>
-<span class="co">#&gt;  6 1048       49193 Lamar Miller             RB    CHI    29.6</span>
-<span class="co">#&gt;  7 5347       44695 Nyheim Hines             RB    IND    24  </span>
-<span class="co">#&gt;  8 4150       39060 Wayne Gallman            RB    NYG    26.1</span>
-<span class="co">#&gt;  9 6931       36364 DeeJay Dallas            RB    SEA    22.2</span>
-<span class="co">#&gt; 10 5086       33519 Marquez Valdes-Scantling WR    GB     26.1</span>
-<span class="co">#&gt; # … with 15 more rows</span></code></pre></div>
-<p>There - this means something to us now! As of this writing, Kalen Ballage is the most added player. Haven’t we been bitten by this before?</p>
+<span class="co">#&gt; # A tibble: 10 x 6</span>
+<span class="co">#&gt;    player_id  count player_name     pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 4381      149286 Taysom Hill     QB    NO     30.3</span>
+<span class="co">#&gt;  2 4147       95840 Samaje Perine   RB    CIN    25.2</span>
+<span class="co">#&gt;  3 184        79348 Adrian Peterson RB    DET    35.7</span>
+<span class="co">#&gt;  4 6908       72060 La'Mical Perine RB    NYJ    22.8</span>
+<span class="co">#&gt;  5 5068       58946 Kerryon Johnson RB    DET    23.4</span>
+<span class="co">#&gt;  6 1386       47846 Giovani Bernard RB    CIN    29  </span>
+<span class="co">#&gt;  7 3895       47818 Marvin Hall     WR    DET    27.6</span>
+<span class="co">#&gt;  8 1387       47234 Rex Burkhead    RB    NE     30.4</span>
+<span class="co">#&gt;  9 6918       46924 Salvon Ahmed    RB    MIA    21.9</span>
+<span class="co">#&gt; 10 4335       43064 Phillip Walker  QB    CAR    25.7</span></code></pre></div>
+<p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">httptest</span><span class="fu">::</span><span class="fu"><a href="https://enpiar.com/r/httptest/reference/start_vignette.html">end_vignette</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Untracing function "form_file" in package "curl"</span></code></pre></div>
 </div>
   </div>
 
