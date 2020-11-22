@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.2.0
 
 Fleaflicker looks like it's going to be the next platform. 
 
@@ -29,6 +29,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `ff_draftpicks()` and tests.
 - Added `ff_draft()` and tests.
 - Added `ff_transactions()` and tests.
+- Added vignettes: basics and getendpoint.
 
 # ffscrapr 1.1.0
 

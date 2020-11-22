@@ -46,7 +46,7 @@ ff_transactions.flea_conn <- function(conn,franchise_id = NULL, ...) {
   transactions <- purrr::map_dfr(transaction_functions, rlang::exec, raw_transactions) %>%
     dplyr::mutate(player_id = as.character(.data$player_id)) %>%
     dplyr::bind_rows(transactions_trade) %>%
-    dplyr::arrange(desc(.data$timestamp),.data$franchise_id)
+    dplyr::arrange(dplyr::desc(.data$timestamp),.data$franchise_id)
 
   return(transactions)
 }
