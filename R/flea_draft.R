@@ -8,7 +8,7 @@
 #' @examples
 #' \donttest{
 #' conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-#' ff_starters(conn)
+#' ff_draft(conn)
 #' }
 #'
 #' @describeIn ff_draft Fleaflicker: returns a table of drafts for the current year
