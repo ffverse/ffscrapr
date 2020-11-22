@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.2.0
 
 Fleaflicker looks like it's going to be the next platform. 
 
