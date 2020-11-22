@@ -7,7 +7,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 ### BREAKING CHANGES
 - `sleeper_getendpoint()` now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters. (1.1.0.9003)
 
-### Tweaks to be released with 1next version
+### Tweaks to be released with next version
 
 - Small copyedits to existing vignettes. (1.1.0.9000)
 - Added filesystem cache capabilities and a vignette to detailing how to use it (1.1.0.9001)
@@ -28,6 +28,7 @@ Also amassing some tweaks and hotfixes for a patch version (probably with improv
 - Added `ff_starters()` and tests.
 - Added `ff_draftpicks()` and tests.
 - Added `ff_draft()` and tests.
+- Added `ff_transactions()` and tests.
 
 # ffscrapr 1.1.0
 
