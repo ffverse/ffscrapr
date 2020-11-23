@@ -7,8 +7,8 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-#' ff_schedule(conn)
+#' conn <- fleaflicker_connect(season = 2019, league_id = 206154)
+#' x <- ff_schedule(conn)
 #' }
 #'
 #' @describeIn ff_schedule MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
@@ -46,21 +46,23 @@ ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
 
   schedule_raw <- schedule_raw %>%
     tibble::tibble() %>%
-    tidyr::unnest_wider(1) %>%
+    tidyr::hoist(1, 'home',"away","homeScore","awayScore","homeResult","awayResult","isFinalScore","isDivisional","isPlayoffs","isThirdPlaceGame","isChampionshipGame") %>%
     tidyr::hoist('home',"home_id"='id',"home_name" = "name") %>%
     tidyr::hoist("away","away_id"="id","away_name" = "name") %>%
     dplyr::mutate_at(c('homeScore','awayScore'),purrr::map,~purrr::pluck(.x,1,"value")) %>%
-    dplyr::select(dplyr::any_of(c(
-      "game_id"="id",
-      "home_id",
-      "home_name",
-      "home_score" = "homeScore",
-      "home_result" = "homeResult",
-      "away_id",
-      "away_name",
-      "away_score" = "awayScore",
-      "away_result" = "awayResult"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "game_id"="id",
+        "home_id",
+        "home_name",
+        "home_score" = "homeScore",
+        "home_result" = "homeResult",
+        "away_id",
+        "away_name",
+        "away_score" = "awayScore",
+        "away_result" = "awayResult")),
+      dplyr::starts_with("is")
+    )
 
   home_schedule <- schedule_raw %>%
     dplyr::rename(dplyr::any_of(c(
@@ -85,16 +87,18 @@ ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
     )))
 
   schedule <- dplyr::bind_rows(home_schedule, away_schedule) %>%
-    dplyr::select(dplyr::any_of(c(
-      "franchise_id",
-      "franchise_name",
-      "franchise_score",
-      "result",
-      "opponent_id",
-      "opponent_name",
-      "opponent_score",
-      "game_id"
-    ))) %>%
+    dplyr::select(
+      dplyr::any_of(c(
+        "franchise_id",
+        "franchise_name",
+        "franchise_score",
+        "result",
+        "opponent_id",
+        "opponent_name",
+        "opponent_score",
+        "game_id")),
+      dplyr::starts_with("is")
+    ) %>%
     dplyr::mutate(dplyr::across(dplyr::contains("_score"),purrr::map_dbl,~replace(.x,is.null(.x),NA)))
 
   return(schedule)
