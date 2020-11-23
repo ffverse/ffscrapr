@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 )
 library(httptest)
 httptest::start_vignette("flea_api")
+options(dplyr.summarise.inform = FALSE)
 ```
 
 ## Creating custom Fleaflicker API calls
@@ -90,7 +91,8 @@ onegame_lineups <- fleaflicker_getendpoint(
   "FetchLeagueBoxscore",
   sport = sport, 
   league_id = league_id, 
-  fantasy_game_id = df_scoreboard$id[[1]], # example for one call, but you can call this in a map or loop! 
+  # example for one call, but you can call this in a map or loop! 
+  fantasy_game_id = df_scoreboard$id[[1]], 
   scoring_period = week) %>% 
   purrr::pluck('content','lineups') %>% 
   tibble::tibble() %>% 

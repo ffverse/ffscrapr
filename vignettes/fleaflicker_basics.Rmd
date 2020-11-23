@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 )
 library(httptest)
 httptest::start_vignette("fleaflicker_basics")
+options(dplyr.summarise.inform = FALSE)
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Fleaflicker. 
@@ -72,7 +73,8 @@ player_ids <- dp_playerids() %>%
   select(sportradar_id,fantasypros_id) %>% 
   filter(!is.na(sportradar_id),!is.na(fantasypros_id))
 
-# Drilling values down to just 1QB values, ages, IDs, we'll be joining it onto rosters and don't need the extra stuff
+# We'll be joining it onto rosters, so we can trim down the values dataframe
+# to just IDs, age, and values
 
 player_values <- player_values %>% 
   left_join(player_ids, by = c("fp_id" = "fantasypros_id")) %>% 
