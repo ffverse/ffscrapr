@@ -86,7 +86,7 @@ print.mfl_api <- function(x, ...) {
   # nocov start
 
   cat("<MFL - GET ", x$query, ">\n", sep = "")
-  str(x$content)
+  str(x$content,max.level = 1)
 
   invisible(x)
 

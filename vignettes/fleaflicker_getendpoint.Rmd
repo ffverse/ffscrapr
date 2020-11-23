@@ -12,8 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(httptest)
-httptest::start_vignette("flea_api")
 options(dplyr.summarise.inform = FALSE)
 ```
 
@@ -71,7 +69,6 @@ str(response_scoreboard, max.level = 1)
 Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse. 
 
 ```{r}
-
 df_scoreboard <- response_scoreboard %>% 
   purrr::pluck("content","games") %>% 
   tibble::tibble() %>% 
@@ -86,7 +83,6 @@ From here, we'll be able to feed these IDs into the FetchLeagueBoxscore endpoint
 
 ```{r}
 # same variables as previous endpoint call!
- 
 onegame_lineups <- fleaflicker_getendpoint(
   "FetchLeagueBoxscore",
   sport = sport, 
@@ -103,13 +99,6 @@ onegame_lineups <- fleaflicker_getendpoint(
   tidyr::unnest_wider('player')
 
 str(onegame_lineups,max.level = 2)
-
 ```
 
 From here, you can keep unravelling - including the "viewingActualPoints" and "viewingActualStats" columns!
-
-
-```{r, include = FALSE}
-httptest::end_vignette()
-```
-

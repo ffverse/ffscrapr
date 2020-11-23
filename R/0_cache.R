@@ -27,7 +27,15 @@
     ff_userleagues.sleeper_conn,
     ff_schedule.sleeper_conn,
     ff_standings.sleeper_conn,
-    ff_starters.sleeper_conn
+    ff_starters.sleeper_conn,
+    ff_franchises.flea_conn,
+    ff_scoring.flea_conn,
+    ff_league.flea_conn,
+    .flea_potentialpointsweek,
+    ff_userleagues.flea_conn,
+    ff_schedule.flea_conn,
+    ff_standings.flea_conn,
+    ff_starters.flea_conn
   )
 
   purrr::walk(functions,memoise::forget)

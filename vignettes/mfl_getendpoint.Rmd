@@ -12,8 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(httptest)
-httptest::start_vignette("mfl_getendpoint")
 options(dplyr.summarise.inform = FALSE)
 ```
 
@@ -86,8 +84,3 @@ fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>%
 
 head(fog_tradebait)
 ```
-
-```{r}
-httptest::end_vignette()
-```
-
