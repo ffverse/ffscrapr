@@ -31,7 +31,8 @@ ff_league.flea_conn <- function(conn) {
     player_copies = 1,
     qb_count = .flea_qbtype(league_endpoint)$count,
     roster_size = league_endpoint$league$rosterRequirements$rosterSize,
-    league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies)
+    league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies),
+    keeper_count = league_endpoint$league[["maxKeepers"]]
   )
 }
 
