@@ -46,7 +46,7 @@ ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
 
   schedule_raw <- schedule_raw %>%
     tibble::tibble() %>%
-    tidyr::hoist(1, 'home',"away","homeScore","awayScore","homeResult","awayResult","isFinalScore","isDivisional","isPlayoffs","isThirdPlaceGame","isChampionshipGame") %>%
+    tidyr::hoist(1,"id", 'home',"away","homeScore","awayScore","homeResult","awayResult","isFinalScore","isDivisional","isPlayoffs","isThirdPlaceGame","isChampionshipGame") %>%
     tidyr::hoist('home',"home_id"='id',"home_name" = "name") %>%
     tidyr::hoist("away","away_id"="id","away_name" = "name") %>%
     dplyr::mutate_at(c('homeScore','awayScore'),purrr::map,~purrr::pluck(.x,1,"value")) %>%
