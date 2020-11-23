@@ -255,7 +255,6 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>, values_from <span class="op">=</span> <span class="va">total_value</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="va">value_summary</span>
 <span class="co">#&gt; # A tibble: 14 x 7</span>
@@ -317,7 +316,6 @@
             age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">weighted_age</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>,
               values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="va">age_summary</span>
 <span class="co">#&gt; # A tibble: 14 x 10</span>

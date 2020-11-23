@@ -204,7 +204,8 @@ Parameters:
   <span class="st">"FetchLeagueBoxscore"</span>,
   sport <span class="op">=</span> <span class="va">sport</span>, 
   league_id <span class="op">=</span> <span class="va">league_id</span>, 
-  fantasy_game_id <span class="op">=</span> <span class="va">df_scoreboard</span><span class="op">$</span><span class="va">id</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="co"># example for one call, but you can call this in a map or loop! </span>
+  <span class="co"># example for one call, but you can call this in a map or loop! </span>
+  fantasy_game_id <span class="op">=</span> <span class="va">df_scoreboard</span><span class="op">$</span><span class="va">id</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, 
   scoring_period <span class="op">=</span> <span class="va">week</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">'content'</span>,<span class="st">'lineups'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 

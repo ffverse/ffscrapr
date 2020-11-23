@@ -134,7 +134,7 @@
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
-<p>In Fleaflicker, you can find the league ID by looking in the URL - it’s the number immediately after /league/ in this example URL: <a href="https://www.fleaflicker.com/nfl/leagues/206154" class="uri">https://www.fleaflicker.com/nfl/leagues/206154</a>.</p>
+<p>In Fleaflicker, you can find the league ID by looking in the URL - it’s the number immediately after /league/ in this example URL: <a href="https://www.fleaflicker.com/nfl/leagues/312861" class="uri">https://www.fleaflicker.com/nfl/leagues/312861</a>.</p>
 <p>Let’s set up a connection to this league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">aaa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fleaflicker_connect.html">fleaflicker_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">312861</span><span class="op">)</span>
@@ -156,7 +156,7 @@
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aaa_summary</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble [1 × 14] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "312861"</span>
 <span class="co">#&gt;  $ league_name    : chr "Avid Auctioneers Alliance"</span>
 <span class="co">#&gt;  $ league_type    : chr "dynasty"</span>
@@ -169,7 +169,8 @@
 <span class="co">#&gt;  $ player_copies  : num 1</span>
 <span class="co">#&gt;  $ qb_count       : chr "1-2"</span>
 <span class="co">#&gt;  $ roster_size    : int 28</span>
-<span class="co">#&gt;  $ league_depth   : num 336</span></code></pre></div>
+<span class="co">#&gt;  $ league_depth   : num 336</span>
+<span class="co">#&gt;  $ keeper_count   : int 28</span></code></pre></div>
 <p>Okay, so it’s the Avid Auctioneers Alliance, it’s a 2QB league with 12 teams, half ppr scoring, and rosters about 340 players.</p>
 <p>Let’s grab the rosters now.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -200,7 +201,8 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sportradar_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sportradar_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># Drilling values down to just 1QB values, ages, IDs, we'll be joining it onto rosters and don't need the extra stuff</span>
+<span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span>
+<span class="co"># to just IDs, age, and values</span>
 
 <span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -236,7 +238,6 @@
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>, values_from <span class="op">=</span> <span class="va">total_value</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="va">value_summary</span>
 <span class="co">#&gt; # A tibble: 12 x 7</span>
@@ -296,7 +297,6 @@
             age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">weighted_age</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>,
               values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'franchise_id', 'franchise_name' (override with `.groups` argument)</span>
 
 <span class="va">age_summary</span>
 <span class="co">#&gt; # A tibble: 12 x 10</span>
