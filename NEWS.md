@@ -1,6 +1,6 @@
 # ffscrapr 1.2.0
 
-The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. Also adds improved caching (see the vignette on ffscrapr caching!) and fixes for sleeper_getendpoint.
+The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. This release also adds improved caching options, including writing to your filesystem for persistent caching (see the vignette!), and one hotfix for sleeper_getendpoint.
 
 ### BREAKING CHANGES
 - `sleeper_getendpoint()` now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.
@@ -42,7 +42,7 @@ Almost all functions now have Sleeper methods - implemented in what hopes to be 
 ### MFL changes
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
-- Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks, Mike!)
+- Added `ff_starters()` as requested by #76 (thanks, Mike!)
 - Added an `httr::handle_reset()` call to fix login-caching bug.
 - Polished vignettes a little.
 

@@ -27,7 +27,7 @@ We'll start by loading the packages:
   library(tidyr)
 ```
 
-In Fleaflicker, you can find the league ID by looking in the URL - it's the number immediately after /league/ in this example URL: https://www.fleaflicker.com/nfl/leagues/206154. 
+In Fleaflicker, you can find the league ID by looking in the URL - it's the number immediately after /league/ in this example URL: https://www.fleaflicker.com/nfl/leagues/312861. 
 
 Let's set up a connection to this league:
 
