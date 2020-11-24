@@ -4,19 +4,26 @@
 #'
 #' @param conn the connection object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
+#' @param franchise_id A list of franchise IDs to pull, if NULL will return all franchise IDs
 #'
-#' @describeIn ff_draftpicks Fleaflicker: retrieves current and future draft picks
+#' @describeIn ff_draftpicks Fleaflicker: retrieves current and future draft picks, potentially for a specified team.
 #'
 #' @examples
 #' \donttest{
 #' conn <- fleaflicker_connect(2020,206154)
-#' ff_draftpicks(conn)
+#' ff_draftpicks(conn, franchise_id = 1373475)
 #' }
 #'
 #' @export
-ff_draftpicks.flea_conn <- function(conn, ...) {
+ff_draftpicks.flea_conn <- function(conn,franchise_id = NULL, ...) {
 
-  franchises <- ff_franchises(conn) %>%
+  franchises <- ff_franchises(conn)
+
+  if(!is.null(franchise_id)){
+    franchises <- franchises %>%
+      dplyr::filter(.data$franchise_id %in% .env$franchise_id)}
+
+  picks <- franchises %>%
     dplyr::transmute(picks = purrr::map(.data$franchise_id,.flea_get_teampicks,conn)) %>%
     tidyr::unnest(1) %>%
     dplyr::arrange(.data$franchise_id,.data$season,.data$round)

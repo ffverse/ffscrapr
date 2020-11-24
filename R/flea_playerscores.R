@@ -4,6 +4,7 @@
 #'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (for other platform/methods)
+#' @param page_limit A numeric describing the number of pages to return - default NULL returns all available
 #'
 #' @describeIn ff_playerscores Fleaflicker: returns the season, season average, and standard deviation
 #'
@@ -11,13 +12,15 @@
 #' \donttest{
 #'
 #' conn <- fleaflicker_connect(2020,312861)
-#' x <- ff_playerscores(conn)
-#'
+#' x <- ff_playerscores(conn, page_limit = 2)
+#' x
 #' }
 #' @export
-ff_playerscores.flea_conn <- function(conn, ...) {
+ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
 
   result_offset <- 0
+  page_count <- 1
+  if(is.null(page_limit)) page_limit <- Inf
 
   initial_results <- fleaflicker_getendpoint(
     endpoint = "FetchPlayerListing",
@@ -33,7 +36,7 @@ ff_playerscores.flea_conn <- function(conn, ...) {
 
   rm(initial_results)
 
-  while(!is.null(result_offset)){
+  while(!is.null(result_offset) && page_count < page_limit){
 
     results <- fleaflicker_getendpoint(endpoint = "FetchPlayerListing",
                                        sport = "NFL",
@@ -45,6 +48,8 @@ ff_playerscores.flea_conn <- function(conn, ...) {
     players <- c(players,results$players)
 
     result_offset <- results[['resultOffsetNext']]
+
+    page_count <- page_count + 1
 
     rm(results)
   }

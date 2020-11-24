@@ -8,15 +8,18 @@
 #' @examples
 #' \donttest{
 #' conn <- fleaflicker_connect(2020,312861)
-#' player_list <- fleaflicker_players(conn)
+#' player_list <- fleaflicker_players(conn, page_limit = 2)
 #' }
 #'
 #' @return a dataframe containing all ~7000+ players in the Fleaflicker database
 #' @export
 
-fleaflicker_players <- function(conn) {
+fleaflicker_players <- function(conn, page_limit = NULL) {
 
   result_offset <- 0
+  page_count <- 1
+
+  if(is.null(page_limit)) page_limit <- Inf
 
   initial_results <- fleaflicker_getendpoint(endpoint = "FetchPlayerListing",
                                         sport = "NFL",
@@ -31,7 +34,7 @@ fleaflicker_players <- function(conn) {
 
   rm(initial_results)
 
-  while(!is.null(result_offset)){
+  while(!is.null(result_offset) && page_count < page_limit){
 
     results <- fleaflicker_getendpoint(endpoint = "FetchPlayerListing",
                                                sport = "NFL",
@@ -43,6 +46,8 @@ fleaflicker_players <- function(conn) {
     players <- c(players,results$players)
 
     result_offset <- results[['resultOffsetNext']]
+
+    page_count <- page_count + 1
 
     rm(results)
   }
