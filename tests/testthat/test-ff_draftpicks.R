@@ -21,6 +21,6 @@ with_mock_api({
     joe_conn <- fleaflicker_connect(2020,206154)
     joe_picks <- ff_draftpicks(joe_conn, franchise_id = 1373475)
 
-    expect_tibble(joe_picks, min.rows = 144)
+    expect_tibble(joe_picks, min.rows = 15)
   })
 })

@@ -10,7 +10,7 @@
 \usage{
 ff_standings(conn, ...)
 
-\method{ff_standings}{flea_conn}(conn, ...)
+\method{ff_standings}{flea_conn}(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...)
 
 \method{ff_standings}{mfl_conn}(conn, ...)
 
@@ -20,6 +20,10 @@ ff_standings(conn, ...)
 \item{conn}{a conn object created by \code{ff_connect()}}
 
 \item{...}{arguments passed to other methods (currently none)}
+
+\item{include_allplay}{TRUE/FALSE - return all-play win pct calculation? defaults to TRUE}
+
+\item{include_potentialpoints}{TRUE/FALSE - return potential points calculation? defaults to TRUE.}
 }
 \value{
 A tidy dataframe of standings data

@@ -8,9 +8,9 @@
 \alias{ff_playerscores.sleeper_conn}
 \title{Get Player Scoring History}
 \usage{
-ff_playerscores(conn, season, week, ...)
+ff_playerscores(conn, ...)
 
-\method{ff_playerscores}{flea_conn}(conn, ...)
+\method{ff_playerscores}{flea_conn}(conn, page_limit = NULL, ...)
 
 \method{ff_playerscores}{mfl_conn}(conn, season, week, ...)
 
@@ -19,11 +19,13 @@ ff_playerscores(conn, season, week, ...)
 \arguments{
 \item{conn}{the list object created by \code{ff_connect()}}
 
+\item{...}{other arguments (currently unused)}
+
+\item{page_limit}{A numeric describing the number of pages to return - default NULL returns all available}
+
 \item{season}{the season of interest - generally only the most recent 2-3 seasons are available}
 
 \item{week}{a numeric or one of YTD (year-to-date) or AVG (average to date)}
-
-\item{...}{other arguments (currently unused)}
 }
 \value{
 A tibble of historical player scoring
@@ -47,8 +49,8 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.
 \donttest{
 
 conn <- fleaflicker_connect(2020,312861)
-x <- ff_playerscores(conn)
-
+x <- ff_playerscores(conn, page_limit = 2)
+x
 }
 \donttest{
 dlf_conn <- mfl_connect(2020, league_id = 37920)

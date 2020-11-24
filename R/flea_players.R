@@ -4,6 +4,7 @@
 #' (via memoise in zzz.R)
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param page_limit A number limiting the number of players to return, or NULL (default) returns all
 #'
 #' @examples
 #' \donttest{

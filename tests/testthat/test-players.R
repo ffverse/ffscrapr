@@ -7,8 +7,8 @@ with_mock_api({
     expect_tibble(sleeper, min.rows = 200)
 
     joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
-    flea <- fleaflicker_players(joe_conn)
-    expect_tibble(flea,min.rows = 300)
+    flea <- fleaflicker_players(joe_conn,page_limit = 2)
+    expect_tibble(flea)
 
 
   })
