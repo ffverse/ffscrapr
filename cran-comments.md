@@ -1,3 +1,7 @@
+# RESUBMISSION
+
+Have much reduced test cache files and package tarball should now build to about 3.2 MB.
+
 ## Test environments
 * local (Windows) R installation, R 4.0.2
 * ubuntu 16.04 (on GitHub Actions), R 4.0.2
