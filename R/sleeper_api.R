@@ -85,7 +85,7 @@ print.sleeper_api <- function(x, ...) {
 
   cat("<SLEEPER - GET ", x$query, ">\n", sep = "")
 
-  str(x$content)
+  str(x$content, max.level = 1)
 
   invisible(x)
 

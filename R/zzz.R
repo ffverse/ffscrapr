@@ -52,7 +52,6 @@
     ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
     ff_starters.sleeper_conn <<- memoise::memoise(ff_starters.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
 
-
     ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~memoise::timeout(86400), cache = cache)
     ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~memoise::timeout(86400), cache = cache)

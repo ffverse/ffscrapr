@@ -12,8 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(httptest)
-httptest::start_vignette("sleeper_getendpoint")
 options(dplyr.summarise.inform = FALSE)
 ```
 
@@ -73,12 +71,6 @@ trending <- df_trending %>%
   left_join(players, by = "player_id")
 
 trending
-
 ```
 
 There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven't we been bitten by this before?
-
-```{r}
-httptest::end_vignette()
-```
-
