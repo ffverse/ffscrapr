@@ -6,11 +6,12 @@ with_mock_api({
       platform = "sleeper",
       user_name = "solarpool"
     )
+    joe <- ff_connect("flea", 312861, season = 2020)
 
     expect_s3_class(ssb, "mfl_conn")
     expect_s3_class(jml, "sleeper_conn")
     expect_s3_class(solar, "sleeper_conn")
-    expect_error(ff_connect("flea"))
+    expect_s3_class(joe,"flea_conn")
   })
 
   test_that("Does mfl-logincookie return a request-like object?", {

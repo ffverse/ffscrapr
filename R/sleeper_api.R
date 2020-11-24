@@ -7,7 +7,7 @@
 #' Check out the vignette for more details and example usage.
 #'
 #' @param endpoint a string defining which endpoint to return from the API
-#' @param ... All other arguments are passed in order as slash-separated components of the url
+#' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #'
 #' @seealso \url{https://docs.sleeper.app}
 #' @seealso \code{vignette("sleeper_getendpoint")}
@@ -15,20 +15,15 @@
 #' @return A list object containing the query, response, and parsed content.
 #' @export
 
-sleeper_getendpoint <- function(endpoint,
-                                ...) {
+sleeper_getendpoint <- function(endpoint, ...) {
 
   # PREP URL
-
-  base_url <- "https://api.sleeper.app/v1"
-
-  suffixes <- list(...) %>%
-    unname() %>%
-    as.character() %>%
-    .fn_drop_nulls() %>%
-    paste0(collapse = "/")
-
-  url_query <- paste(base_url, endpoint, suffixes, sep = "/")
+  url_query <- httr::modify_url(
+    url = glue::glue("https://api.sleeper.app/v1/{endpoint}"),
+    query = list(
+      ...
+    )
+  )
 
   ## GET FFSCRAPR ENV
 
@@ -90,7 +85,7 @@ print.sleeper_api <- function(x, ...) {
 
   cat("<SLEEPER - GET ", x$query, ">\n", sep = "")
 
-  str(x$content)
+  str(x$content, max.level = 1)
 
   invisible(x)
 

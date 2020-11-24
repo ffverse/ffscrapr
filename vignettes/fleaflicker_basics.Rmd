@@ -1,0 +1,143 @@
+---
+title: "Fleaflicker: Basics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fleaflicker_basics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+options(dplyr.summarise.inform = FALSE)
+```
+
+In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Fleaflicker. 
+
+We'll start by loading the packages:
+
+```{r setup, message=FALSE}
+  library(ffscrapr)
+  library(dplyr)
+  library(tidyr)
+```
+
+In Fleaflicker, you can find the league ID by looking in the URL - it's the number immediately after /league/ in this example URL: https://www.fleaflicker.com/nfl/leagues/312861. 
+
+Let's set up a connection to this league:
+
+```{r}
+aaa <- fleaflicker_connect(season = 2020, league_id = 312861)
+
+aaa
+```
+
+I've done this with the `fleaflicker_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. Most if not all of the remaining functions after this point are prefixed with "ff_".
+
+Cool! Let's have a quick look at what this league is like.
+
+```{r}
+
+aaa_summary <- ff_league(aaa)
+
+str(aaa_summary)
+```
+
+Okay, so it's the Avid Auctioneers Alliance, it's a 2QB league with 12 teams, half ppr scoring, and rosters about 340 players. 
+
+Let's grab the rosters now. 
+
+```{r}
+aaa_rosters <- ff_rosters(aaa)
+
+head(aaa_rosters)
+```
+
+## Values
+
+Cool! Let's pull in some additional context by adding DynastyProcess player values. 
+
+```{r}
+player_values <- dp_values("values-players.csv")
+
+# The values are stored by fantasypros ID since that's where the data comes from. 
+# To join it to our rosters, we'll need playerID mappings.
+
+player_ids <- dp_playerids() %>% 
+  select(sportradar_id,fantasypros_id) %>% 
+  filter(!is.na(sportradar_id),!is.na(fantasypros_id))
+
+# We'll be joining it onto rosters, so we can trim down the values dataframe
+# to just IDs, age, and values
+
+player_values <- player_values %>% 
+  left_join(player_ids, by = c("fp_id" = "fantasypros_id")) %>% 
+  select(sportradar_id,age,ecr_1qb,ecr_pos,value_1qb)
+
+# ff_rosters() will return the sportradar_id, which we can then match to our player values!
+
+aaa_values <- aaa_rosters %>% 
+  left_join(player_values, by = c("sportradar_id"="sportradar_id")) %>% 
+  arrange(franchise_id,desc(value_1qb))
+
+head(aaa_values)
+```
+
+Let's do some team summaries now!
+
+```{r}
+value_summary <- aaa_values %>% 
+  group_by(franchise_id,franchise_name,pos) %>% 
+  summarise(total_value = sum(value_1qb,na.rm = TRUE)) %>%
+  ungroup() %>% 
+  group_by(franchise_id,franchise_name) %>% 
+  mutate(team_value = sum(total_value)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = pos, values_from = total_value) %>% 
+  arrange(desc(team_value)) %>% 
+  select(franchise_id,franchise_name,team_value,QB,RB,WR,TE)
+
+value_summary
+```
+
+So with that, we've got a team summary of values! I like applying some context, so let's turn these into percentages - this helps normalise it to your league environment.
+
+```{r}
+value_summary_pct <- value_summary %>% 
+  mutate_at(c("team_value","QB","RB","WR","TE"),~.x/sum(.x)) %>% 
+  mutate_at(c("team_value","QB","RB","WR","TE"),round, 3)
+
+value_summary_pct
+```
+
+Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.
+
+## Age
+Another question you might ask: what is the average age of any given team?
+
+I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team - including who might be looking to offload an older veteran!
+
+```{r}
+age_summary <- aaa_values %>% 
+  filter(pos %in% c("QB","RB","WR","TE")) %>% 
+  group_by(franchise_id,pos) %>% 
+  mutate(position_value = sum(value_1qb,na.rm=TRUE)) %>% 
+  ungroup() %>% 
+  mutate(weighted_age = age*value_1qb/position_value,
+         weighted_age = round(weighted_age, 1)) %>% 
+  group_by(franchise_id,franchise_name,pos) %>% 
+  summarise(count = n(),
+            age = sum(weighted_age,na.rm = TRUE)) %>% 
+  pivot_wider(names_from = pos,
+              values_from = c(age,count))
+
+age_summary
+```
+
+## Next steps
+
+In this vignette, I've used only a few functions: ff_connect, ff_league, ff_rosters, and dp_values. Now that you've gotten this far, why not check out some of the other possibilities?

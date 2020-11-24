@@ -14,5 +14,14 @@ with_mock_api({
 
     expect_tibble(jml_transactions,min.rows = 20)
 
+    got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+    got_transactions <- ff_transactions(got_conn, franchise_id = 1373475)
+
+    aaa_conn <- fleaflicker_connect(season = 2020, league_id = 312861)
+    aaa_transactions <- ff_transactions(aaa_conn, franchise_id = 1581722)
+
+    expect_tibble(aaa_transactions)
+    expect_tibble(got_transactions)
+
   })
 })

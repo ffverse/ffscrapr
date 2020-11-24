@@ -49,7 +49,7 @@
   
 
 <meta property="og:title" content="Get League Scoring settings — ff_scoring" />
-<meta property="og:description" content="This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points." />
+<meta property="og:description" content="This function returns a dataframe with detailed scoring settings for each league - broken down by event, points, and (if available) position." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -108,10 +108,21 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/mfl_basics.html">mfl_basics</a>
+      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">mfl_getendpoint</a>
+      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+    </li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cache</li>
+    <li>
+      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
     </li>
   </ul>
 </li>
@@ -140,17 +151,20 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League Scoring settings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_scoring.R'><code>R/mfl_scoring.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_scoring.R'><code>R/mfl_scoring.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_scoring.R'><code>R/sleeper_scoring.R</code></a></small>
     <div class="hidden name"><code>ff_scoring.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a dataframe with detailed scoring settings, broken down by position, event, range, and points.</p>
+    <p>This function returns a dataframe with detailed scoring settings for each league - broken down by event, points, and (if available) position.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ff_scoring</span>(<span class='kw'>conn</span>)
 
 <span class='co'># S3 method for mfl_conn</span>
+<span class='fu'>ff_scoring</span>(<span class='kw'>conn</span>)
+
+<span class='co'># S3 method for sleeper_conn</span>
 <span class='fu'>ff_scoring</span>(<span class='kw'>conn</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -170,15 +184,37 @@
     
 <ul>
 <li><p><code>mfl_conn</code>: MFL: returns scoring settings in a flat table, one row per position per rule.</p></li>
+<li><p><code>sleeper_conn</code>: Sleeper: returns scoring settings in a flat table, one row per position per rule.</p></li>
 </ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='http://www03.myfantasyleague.com/2020/scoring_rules#rules'>http://www03.myfantasyleague.com/2020/scoring_rules#rules</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
 <span class='fu'>ff_scoring</span>(<span class='kw'>ssb_conn</span>)
-</div></pre>
+<span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"sleeper"</span>, league_id = <span class='fl'>522458773317046272</span>, season = <span class='fl'>2020</span>)
+<span class='fu'>ff_scoring</span>(<span class='kw'>jml_conn</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 45 x 2</span><span>
+#&gt;    event          points
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> pass_2pt          2  
+#&gt; </span><span style='color: #555555;'> 2</span><span> pass_int         -</span><span style='color: #BB0000;'>2</span><span>  
+#&gt; </span><span style='color: #555555;'> 3</span><span> fgmiss            0  
+#&gt; </span><span style='color: #555555;'> 4</span><span> rec_yd            0.1
+#&gt; </span><span style='color: #555555;'> 5</span><span> xpmiss            0  
+#&gt; </span><span style='color: #555555;'> 6</span><span> def_pr_td         0  
+#&gt; </span><span style='color: #555555;'> 7</span><span> fgm_30_39         0  
+#&gt; </span><span style='color: #555555;'> 8</span><span> blk_kick          2  
+#&gt; </span><span style='color: #555555;'> 9</span><span> pts_allow_7_13    0  
+#&gt; </span><span style='color: #555555;'>10</span><span> ff                1  
+#&gt; </span><span style='color: #555555;'># ... with 35 more rows</span><span></div><div class='input'><span class='co'># }</span>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

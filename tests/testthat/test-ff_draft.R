@@ -14,5 +14,10 @@ with_mock_api({
     jml_draftresults <- ff_draft(jml_conn)
 
     expect_tibble(jml_draftresults, min.rows = 40)
+
+    joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+    joe_draftresults <- ff_draft(joe_conn)
+
+    expect_tibble(joe_draftresults)
   })
 })

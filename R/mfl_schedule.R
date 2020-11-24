@@ -3,6 +3,7 @@
 #' Get a dataframe detailing every game for every franchise
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param ... for other platforms
 #'
 #' @examples
 #' \donttest{

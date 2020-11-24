@@ -9,5 +9,9 @@ with_mock_api({
     jml_conn <- ff_connect(platform = "sleeper", league_id = '522458773317046272', season = 2020)
     expect_warning(ff_playerscores(jml_conn))
 
+    joe_conn <- fleaflicker_connect(2020,312861)
+    joe_playerscores <- ff_playerscores(joe_conn, page_limit = 2)
+
+    expect_tibble(joe_playerscores, min.rows = 50)
   })
 })

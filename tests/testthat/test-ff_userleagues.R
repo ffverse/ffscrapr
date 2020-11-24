@@ -29,3 +29,18 @@ with_mock_api({
 
   })
 })
+
+with_mock_api({
+  test_that("ff_userleagues works for Fleaflicker", {
+    conn <- fleaflicker_connect(2020,
+                                user_email = "syd235@gmail.com"
+    )
+
+    full_call <- ff_userleagues(conn)
+    quick_call <- fleaflicker_userleagues("syd235@gmail.com",2020)
+
+    expect_tibble(full_call, min.rows = 1)
+    expect_tibble(quick_call, min.rows = 1)
+
+  })
+})

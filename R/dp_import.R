@@ -42,10 +42,8 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 #' @return a tibble of player IDs
 #'
 #' @export
-
-
 dp_playerids <- function() {
-  read.csv(
+  utils::read.csv(
     glue::glue("https://github.com/DynastyProcess/data/raw/master/files/db_playerids.csv"),
     stringsAsFactors = FALSE
   ) %>%

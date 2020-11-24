@@ -2,7 +2,6 @@
 
 # This series of functions are designed to be the main functions - all are prefixed with "ff_" for easy of autocomplete
 
-
 #### ff_connect ####
 
 #' Connect to a League
@@ -24,18 +23,18 @@
 ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
   platform <- tolower(platform)
 
-  if (!platform %in% c("mfl", "sleeper")) {
-    stop("We only have code for MFL and Sleeper so far!")
-  }
-
-  switch(platform,
-    # 'fleaflicker' = ,
-    # 'flea' = fleaflicker_connect(league_id = league_id,...),
+  x <- switch(platform,
+    'fleaflicker' = ,
+    'flea' = fleaflicker_connect(league_id = league_id,...),
     # 'espn' = espn_connect(league_id = league_id,...),
     # 'yahoo' = yahoo_connect(league_id = league_id,...)
     "sleeper" = sleeper_connect(league_id = league_id, ...),
     "mfl" = mfl_connect(league_id = league_id, ...)
   )
+
+  if(is.null(x)) stop("We can't connect to that platform yet!")
+
+  x
 }
 
 #### ff_league ####
@@ -174,14 +173,12 @@ ff_draft.default <- function(conn, ...) {
 #' This function returns a tidy dataframe of player scores based on league rules.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param season the season to look up (generally only recent seasons available)
-#' @param week a numeric week or one of YTD (year to date) or AVG (average)
 #' @param ... arguments passed to other methods
 #'
 #' @return A tibble of historical player scoring
 #'
 #' @export
-ff_playerscores <- function(conn, season, week, ...) {
+ff_playerscores <- function(conn, ...) {
   UseMethod("ff_playerscores")
 }
 

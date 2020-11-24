@@ -1,7 +1,5 @@
 ---
-title: "Getting Started: MFL Basics"
-date: "2020-11-15"
-author: "Tan Ho"
+title: "MFL: Basics"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{mfl_basics}
@@ -14,6 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(dplyr.summarise.inform = FALSE)
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on MFL. 
@@ -24,7 +23,6 @@ We'll start by loading the packages:
   library(ffscrapr)
   library(dplyr)
   library(tidyr)
-
 ```
 
 Set up the connection to the league:
@@ -37,12 +35,12 @@ ssb <- mfl_connect(season = 2020,
 ssb
 ```
 
-I've done this with the `mfl_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. Most if not all of the remaining functions are prefixed with "ff_".
+I've done this with the `mfl_connect()` function, although you can also do this from the `ff_connect()` call - they are equivalent. 
+Most if not all of the remaining functions are prefixed with "ff_".
 
 Cool! Let's have a quick look at what this league is like.
 
 ```{r}
-
 ssb_summary <- ff_league(ssb)
 
 str(ssb_summary)
@@ -63,7 +61,6 @@ head(ssb_rosters)
 Cool! Let's pull in some additional context by adding DynastyProcess player values. 
 
 ```{r}
-
 player_values <- dp_values("values-players.csv")
 
 # The values are stored by fantasypros ID since that's where the data comes from. 
@@ -88,7 +85,6 @@ head(ssb_values)
 Let's do some team summaries now!
 
 ```{r}
-
 value_summary <- ssb_values %>% 
   group_by(franchise_id,franchise_name,pos) %>% 
   summarise(total_value = sum(value_1qb,na.rm = TRUE)) %>%
@@ -100,7 +96,6 @@ value_summary <- ssb_values %>%
   arrange(desc(team_value))
 
 value_summary
-
 ```
 
 So with that, we've got a team summary of values! I like applying some context, so let's turn these into percentages.
@@ -119,10 +114,10 @@ Armed with a value summary like this, we can see team strengths and weaknesses p
 ## Age
 Another question you might ask: what is the average age of any given team?
 
-I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team!
+I like looking at average age by position, but weighted by dynasty value. 
+This helps give a better idea of age for each team!
 
 ```{r}
-
 age_summary <- ssb_values %>% 
   group_by(franchise_id,pos) %>% 
   mutate(position_value = sum(value_1qb,na.rm=TRUE)) %>% 
@@ -135,9 +130,9 @@ age_summary <- ssb_values %>%
               values_from = c(age,count))
 
 age_summary
-
 ```
 
 ## Next steps
 
-In this vignette, I've used ~three functions: ff_connect, ff_league, and ff_rosters. Now that you've gotten this far, why not check out some of the other possibilities?
+In this vignette, I've used three functions: ff_connect, ff_league, and ff_rosters. 
+Now that you've gotten this far, why not check out some of the other possibilities?

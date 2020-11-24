@@ -1,0 +1,104 @@
+---
+title: "Fleaflicker: Get Endpoint"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fleaflicker_getendpoint}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+options(dplyr.summarise.inform = FALSE)
+```
+
+## Creating custom Fleaflicker API calls
+
+```{r setup, message = FALSE}
+library(ffscrapr)
+library(dplyr)
+library(purrr)
+library(glue)
+```
+
+The [Fleaflicker API is fairly extensive](https://www.fleaflicker.com/api-docs/index.html). If there is something you'd like to access that's beyond the current scope of ffscrapr, you can use the lower-level "`fleaflicker_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+
+Here is an example of how you can call one of the endpoints - in this case, let's zoom in on the Fetch League Scoreboard endpoint, which is used inside a few different `ffscrapr` functions and summarised in a few ways. 
+
+We'll start by opening up this page, https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get, which is the documentation page for this particular endpoint. 
+
+From here, we can see that Fleaflicker's documentation says the endpoint and parameters are: 
+
+```
+GET /FetchLeagueScoreboard
+
+Parameters:
+
+- sport: string NFL, MLB, NBA, NHL NFL
+(in query)
+
+- league_id: integer (int32)
+(in query)
+
+- season: integer (int32)
+(in query)
+
+- scoring_period: integer (int32)
+(in query)
+```
+The fleaflicker_getendpoint function already has the base url encoded, so all we'll need to do is pass in the endpoint without the `/`, and pass the HTTP parameters in as arguments to the function (these are case sensitive!)
+
+```{r}
+sport <- "NFL"
+league_id <- 206154
+season <- 2020
+week <- 5
+
+response_scoreboard <- fleaflicker_getendpoint("FetchLeagueScoreboard",
+                                               sport = sport, 
+                                               league_id = league_id, 
+                                               season = season, 
+                                               scoring_period = week)
+
+str(response_scoreboard, max.level = 1)
+```
+
+Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse. 
+
+```{r}
+df_scoreboard <- response_scoreboard %>% 
+  purrr::pluck("content","games") %>% 
+  tibble::tibble() %>% 
+  tidyr::unnest_wider(1) %>% 
+  dplyr::mutate_at(c("away","home"),purrr::map_chr,purrr::pluck,"franchise_name"="name") %>% 
+  dplyr::mutate_at(c("homeScore","awayScore"),purrr::map_dbl,purrr::pluck,"score","value")
+
+head(df_scoreboard)
+```
+
+From here, we'll be able to feed these IDs into the FetchLeagueBoxscore endpoint https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get as the fantasy_game_id - and from here you'll be able to get to player-level points and actual stat data for each fantasy game!
+
+```{r}
+# same variables as previous endpoint call!
+onegame_lineups <- fleaflicker_getendpoint(
+  "FetchLeagueBoxscore",
+  sport = sport, 
+  league_id = league_id, 
+  # example for one call, but you can call this in a map or loop! 
+  fantasy_game_id = df_scoreboard$id[[1]], 
+  scoring_period = week) %>% 
+  purrr::pluck('content','lineups') %>% 
+  tibble::tibble() %>% 
+  tidyr::unnest_wider(1) %>% 
+  tidyr::unnest_longer('slots') %>% 
+  tidyr::unnest_wider('slots') %>% 
+  tidyr::pivot_longer(c("home","away"),names_to = "franchise",values_to = "player") %>% 
+  tidyr::unnest_wider('player')
+
+str(onegame_lineups,max.level = 2)
+```
+
+From here, you can keep unravelling - including the "viewingActualPoints" and "viewingActualStats" columns!

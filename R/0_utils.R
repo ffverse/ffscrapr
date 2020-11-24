@@ -2,19 +2,8 @@
 # External functions imported and sometimes re-exported
 
 #' @keywords internal
-#' @importFrom rlang .data `%||%`
+#' @importFrom rlang .data `%||%` .env
 #' @importFrom utils str
-
-NULL
-
-#' Clear memoised cache
-#'
-#' See \code{memoise::\link[memoise:forget]{forget}} for details.
-#'
-#' @name forget
-#' @rdname forget
-#' @export
-#' @importFrom memoise forget
 
 NULL
 
@@ -24,9 +13,6 @@ NULL
 #'
 #' @name %>%
 #' @rdname pipe
-#' @keywords internal
 #' @export
 #' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-
 NULL

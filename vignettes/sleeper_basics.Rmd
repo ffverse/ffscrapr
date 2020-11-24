@@ -1,5 +1,5 @@
 ---
-title: "Getting Started: Sleeper Basics"
+title: "Sleeper: Basics"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{sleeper_basics}
@@ -13,13 +13,14 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(dplyr.summarise.inform = FALSE)
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Sleeper. 
 
 We'll start by loading the packages:
 
-```{r setup}
+```{r setup, message=FALSE}
   library(ffscrapr)
   library(dplyr)
   library(tidyr)
@@ -28,11 +29,9 @@ We'll start by loading the packages:
 In Sleeper, unlike in other platforms, it's very unlikely that you'll remember the league ID - both because most people use the mobile app, and because it happens to be an 18 digit number! It's a little more natural to start analyses from the username, so let's start there!
 
 ```{r}
-
 solarpool_leagues <- sleeper_userleagues("solarpool",2020)
 
 head(solarpool_leagues)
-
 ```
 
 Let's pull the JML league ID from here for analysis, and set up a Sleeper connection object.
@@ -75,7 +74,6 @@ head(jml_rosters)
 Cool! Let's pull in some additional context by adding DynastyProcess player values. 
 
 ```{r}
-
 player_values <- dp_values("values-players.csv")
 
 # The values are stored by fantasypros ID since that's where the data comes from. 
@@ -100,7 +98,6 @@ head(jml_values)
 Let's do some team summaries now!
 
 ```{r}
-
 value_summary <- jml_values %>% 
   group_by(franchise_id,franchise_name,pos) %>% 
   summarise(total_value = sum(value_1qb,na.rm = TRUE)) %>%
@@ -112,7 +109,6 @@ value_summary <- jml_values %>%
   arrange(desc(team_value))
 
 value_summary
-
 ```
 
 So with that, we've got a team summary of values! I like applying some context, so let's turn these into percentages - this helps normalise it to your league environment.
@@ -133,7 +129,6 @@ Another question you might ask: what is the average age of any given team?
 I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team - including who might be looking to offload an older veteran!
 
 ```{r}
-
 age_summary <- jml_values %>% 
   group_by(franchise_id,pos) %>% 
   mutate(position_value = sum(value_1qb,na.rm=TRUE)) %>% 
@@ -147,7 +142,6 @@ age_summary <- jml_values %>%
               values_from = c(age,count))
 
 age_summary
-
 ```
 
 ## Next steps

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="120" /></a>
+# ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="200" /></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -18,21 +18,20 @@ status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-
 
 <!-- badges: end -->
 
-Helps access various Fantasy Football APIs (i.e. MFL, Sleeper,
-Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling
-authentication and rate-limiting, forming appropriate calls, and
+Helps access various Fantasy Football APIs (currently MFL, Sleeper,
+Fleaflicker, and eventually ESPN, Yahoo, potentially others) by handling
+authentication/rate-limiting/caching, forming appropriate calls, and
 returning tidy dataframes which can be easily connected to other data
 sources.
 
 ### Installation
 
-Version 1.1.0 is now on CRAN 🎉 and can be installed with:
+Version 1.2.0 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
-# or from GitHub release
-# install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.1.0")
+# or from GitHub release with the remotes package # install.packages("remotes")
+remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.0")
 ```
 
 Install the development version from GitHub with:
@@ -74,28 +73,28 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 435 x 11
+#> # A tibble: 439 x 11
 #>   franchise_id franchise_name player_id player_name pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
 #> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2
 #> 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  
-#> 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.5
+#> 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.6
 #> 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
 #> 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4
-#> # ... with 430 more rows, and 4 more variables: roster_status <chr>,
+#> # ... with 434 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 843 x 12
+#> # A tibble: 891 x 12
 #>   timestamp           type  type_desc franchise_id franchise_name player_id
 #>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#> 1 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    
-#> 2 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    
-#> 3 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    
-#> 4 2020-11-15 17:23:25 IR    deactiva~ 0010         Team Yoshi     14126    
-#> 5 2020-11-15 16:45:09 TAXI  promoted  0013         Team Ness      14125    
-#> # ... with 838 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#> 1 2020-11-22 19:29:36 FREE~ added     0009         Team Link      12155    
+#> 2 2020-11-22 19:29:36 FREE~ dropped   0009         Team Link      13794    
+#> 3 2020-11-22 14:49:11 FREE~ added     0014         Team Luigi     14062    
+#> 4 2020-11-21 22:24:25 IR    deactiva~ 0014         Team Luigi     13136    
+#> 5 2020-11-21 22:24:02 FREE~ added     0014         Team Luigi     13136    
+#> # ... with 886 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 

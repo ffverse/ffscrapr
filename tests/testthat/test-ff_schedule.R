@@ -12,9 +12,14 @@ with_mock_api({
     jml_conn <- sleeper_connect(league_id = 522458773317046272, season = 2020)
     jml_schedule <- ff_schedule(jml_conn)
 
+    joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+    joe_schedule <- ff_schedule(joe_conn, week = 4)
+
     expect_tibble(ssb_schedule, min.rows = 100)
     expect_tibble(dlf_schedule, min.rows = 100)
     expect_tibble(jml_schedule, min.rows = 100)
     expect_null(fog_schedule)
+
+    expect_tibble(joe_schedule, min.rows = 16)
   })
 })

@@ -1,3 +1,24 @@
+# ffscrapr 1.2.0
+
+The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. This release also adds improved caching options, including writing to your filesystem for persistent caching (see the vignette!), and one hotfix for sleeper_getendpoint.
+
+### BREAKING CHANGES
+- `sleeper_getendpoint()` now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.
+
+### Other tweaks to existing platforms/methods
+
+- Small copyedits to existing vignettes.
+- Caching vignette rebuild.
+- Added filesystem cache capabilities and a vignette to detailing how to use it.
+
+### Fleaflicker notes
+
+All functions now have Fleaflicker methods! Here are notes about what ***isn't*** the same: 
+
+- `fleaflicker_players()` requires a connection/leagueID by default - acts a little oddly on game days as of right now. 
+- `ff_playerscores()` - Fleaflicker's API returns season level data easily, week-level is not readily available yet without some workarounds. 
+Everything else seems to be okay. 
+
 # ffscrapr 1.1.0
 
 The main goal of ffscrapr 1.1.0 is to add a full set of methods for Sleeper. Also adds two new generics: `ff_userleagues()` and `ff_starters()`. 
@@ -21,7 +42,7 @@ Almost all functions now have Sleeper methods - implemented in what hopes to be 
 ### MFL changes
 - Added method for `ff_userleagues()`
 - Added handling for offensive_points and defensive_points in `ff_standings()` (#69, nice.)
-- Added `ff_starters()` (1.0.0.9011) as requested by #76 (thanks, Mike!)
+- Added `ff_starters()` as requested by #76 (thanks, Mike!)
 - Added an `httr::handle_reset()` call to fix login-caching bug.
 - Polished vignettes a little.
 

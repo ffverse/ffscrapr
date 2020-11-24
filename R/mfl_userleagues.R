@@ -10,6 +10,7 @@
 #'
 #' @export
 ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
+
   if (is.null(conn$auth_cookie)) {
     stop("No authentication cookie found in the conn object.
          Did you pass it the username and password when making it?",
@@ -32,6 +33,8 @@ ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
       )
   }
 
+  #nocov start
+
   if (is.null(df_leagues$franchise_id)) {
     df <- df_leagues %>%
       tibble::tibble() %>%
@@ -42,6 +45,8 @@ ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
         "league_url" = "url"
       )
   }
+
+  #nocov end
 
   return(df)
 }

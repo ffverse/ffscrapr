@@ -5,7 +5,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
 #' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
-#' @param ... other arguments (currently unused)
+#' @param ... other arguments
 #'
 #' @describeIn ff_playerscores MFL: returns the player fantasy scores for each week (not the actual stats)
 #'
