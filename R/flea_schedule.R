@@ -1,21 +1,22 @@
-## ff_schedule (MFL) ##
+## ff_schedule (Flea) ##
 
 #' Get a dataframe detailing every game for every franchise
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param week a numeric or numeric vector specifying which weeks to pull
+#' @param ... for other methods
 #'
 #' @examples
 #' \donttest{
 #' conn <- fleaflicker_connect(season = 2019, league_id = 206154)
-#' x <- ff_schedule(conn)
+#' x <- ff_schedule(conn, week = 2:4)
 #' }
 #'
-#' @describeIn ff_schedule MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
+#' @describeIn ff_schedule Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.
 #'
 #' @export
 
-ff_schedule.flea_conn <- function(conn,week=1:17, ...) {
+ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
 
   weeks <- fleaflicker_getendpoint("FetchLeagueScoreboard",
                                sport = "NFL",

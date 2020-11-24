@@ -4,6 +4,8 @@
 #'
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param ... arguments passed to other methods
+#' @param include_allplay TRUE/FALSE - return all-play win pct calculation? defaults to TRUE
+#' @param include_potentialpoints TRUE/FALSE - return potential points calculation? defaults to TRUE.
 #'
 #' @examples
 #' \donttest{
@@ -14,9 +16,7 @@
 #' @describeIn ff_standings Fleaflicker: returns H2H/points/all-play/best-ball data in a table.
 #'
 #' @export
-ff_standings.flea_conn <- function(conn, ...) {
-
-  schedule <- ff_schedule(conn)
+ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...) {
 
   standings <- fleaflicker_getendpoint("FetchLeagueStandings",league_id = conn$league_id, sport = "NFL") %>%
     purrr::pluck('content','divisions') %>%
@@ -41,17 +41,26 @@ ff_standings.flea_conn <- function(conn, ...) {
       dplyr::starts_with("franchise"),
       dplyr::starts_with("h2h"),
       dplyr::starts_with("points")
-    )
+    ) %>%
+    dplyr::arrange(dplyr::desc(.data$h2h_winpct))
 
-  allplay <- .add_allplay(schedule)
+  if(any(include_potentialpoints,include_allplay)) schedule <- ff_schedule(conn)
 
-  potentialpoints <- .flea_add_potentialpoints(schedule,conn)
+  if(include_allplay) {
+    allplay <- .add_allplay(schedule)
 
-  standings <- standings %>%
-    dplyr::left_join(allplay, by = c("franchise_id")) %>%
-    dplyr::left_join(potentialpoints, by = c('franchise_id')) %>%
-    dplyr::arrange(dplyr::desc(.data$h2h_winpct),dplyr::desc(.data$allplay_winpct))
+    standings <- standings %>%
+      dplyr::left_join(allplay, by = c('franchise_id'))
+  }
 
+  if(include_potentialpoints){
+    potentialpoints <- .flea_add_potentialpoints(schedule,conn)
+
+    standings <- standings %>%
+      dplyr::left_join(potentialpoints,by = c('franchise_id'))
+  }
+
+  return(standings)
 }
 
 .flea_add_potentialpoints <- function(schedule,conn){

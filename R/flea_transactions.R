@@ -15,7 +15,7 @@
 #' }
 #'
 #' @export
-ff_transactions.flea_conn <- function(conn,franchise_id = NULL, ...) {
+ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
 
   franchises <- ff_franchises(conn)
 

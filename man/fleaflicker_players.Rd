@@ -4,10 +4,12 @@
 \alias{fleaflicker_players}
 \title{fleaflicker players library}
 \usage{
-fleaflicker_players(conn)
+fleaflicker_players(conn, page_limit = NULL)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
+
+\item{page_limit}{A number limiting the number of players to return, or NULL (default) returns all}
 }
 \value{
 a dataframe containing all ~7000+ players in the Fleaflicker database
@@ -19,7 +21,7 @@ A cached table of Fleaflicker NFL players. Will store in memory for each session
 \examples{
 \donttest{
 conn <- fleaflicker_connect(2020,312861)
-player_list <- fleaflicker_players(conn)
+player_list <- fleaflicker_players(conn, page_limit = 2)
 }
 
 }

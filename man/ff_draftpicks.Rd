@@ -10,7 +10,7 @@
 \usage{
 ff_draftpicks(conn, ...)
 
-\method{ff_draftpicks}{flea_conn}(conn, ...)
+\method{ff_draftpicks}{flea_conn}(conn, franchise_id = NULL, ...)
 
 \method{ff_draftpicks}{mfl_conn}(conn, ...)
 
@@ -20,6 +20,8 @@ ff_draftpicks(conn, ...)
 \item{conn}{the list object created by \code{ff_connect()}}
 
 \item{...}{other arguments (currently unused)}
+
+\item{franchise_id}{A list of franchise IDs to pull, if NULL will return all franchise IDs}
 }
 \value{
 Returns a dataframe with current and future draft picks for each franchise
@@ -29,7 +31,7 @@ Returns all draft picks (current and future) that belong to a specific franchise
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{flea_conn}: Fleaflicker: retrieves current and future draft picks
+\item \code{flea_conn}: Fleaflicker: retrieves current and future draft picks, potentially for a specified team.
 
 \item \code{mfl_conn}: MFL: returns current and future picks
 
@@ -39,7 +41,7 @@ Returns all draft picks (current and future) that belong to a specific franchise
 \examples{
 \donttest{
 conn <- fleaflicker_connect(2020,206154)
-ff_draftpicks(conn)
+ff_draftpicks(conn, franchise_id = 1373475)
 }
 
 \donttest{

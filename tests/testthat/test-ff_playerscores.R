@@ -10,8 +10,8 @@ with_mock_api({
     expect_warning(ff_playerscores(jml_conn))
 
     joe_conn <- fleaflicker_connect(2020,312861)
-    joe_playerscores <- ff_playerscores(joe_conn)
+    joe_playerscores <- ff_playerscores(joe_conn, page_limit = 2)
 
-    expect_tibble(joe_playerscores, min.rows = 200)
+    expect_tibble(joe_playerscores, min.rows = 50)
   })
 })

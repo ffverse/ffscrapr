@@ -17,8 +17,8 @@
 #' @export
 ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
 
-  starters <- ff_schedule(conn) %>%
-    dplyr::filter(.data$week %in% .env$week,!is.na(.data$result)) %>%
+  starters <- ff_schedule(conn, week) %>%
+    dplyr::filter(!is.na(.data$result)) %>%
     dplyr::distinct(.data$week,.data$game_id) %>%
     dplyr::mutate(starters = purrr::map2(.data$week,.data$game_id, .flea_starters, conn)) %>%
     tidyr::unnest("starters") %>%

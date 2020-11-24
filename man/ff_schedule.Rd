@@ -19,7 +19,7 @@ ff_schedule(conn, ...)
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
 
-\item{...}{additional args passed to each platform}
+\item{...}{for other platforms}
 
 \item{week}{a numeric or numeric vector specifying which weeks to pull}
 }
@@ -31,7 +31,7 @@ This function returns a tidy dataframe with one row for every team for every wee
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{flea_conn}: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
+\item \code{flea_conn}: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.
 
 \item \code{mfl_conn}: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
 
@@ -40,8 +40,8 @@ This function returns a tidy dataframe with one row for every team for every wee
 
 \examples{
 \donttest{
-conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-ff_schedule(conn)
+conn <- fleaflicker_connect(season = 2019, league_id = 206154)
+x <- ff_schedule(conn, week = 2:4)
 }
 
 \donttest{
