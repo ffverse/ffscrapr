@@ -154,13 +154,12 @@
 <p>It is safest to assume that everything is <em>case-sensitive</em>: the endpoint must match the case displayed by MFL (“league<em>S</em>earch”) and the SEARCH argument name must be provided in upper-case.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sfb_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">conn</span>,endpoint <span class="op">=</span> <span class="st">"leagueSearch"</span>, SEARCH <span class="op">=</span> <span class="st">"sfbx conference"</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sfb_search</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 3</span>
 <span class="co">#&gt;  $ query   : chr "https://api.myfantasyleague.com/2020/export?TYPE=leagueSearch&amp;SEARCH=sfbx%20conference&amp;JSON=1"</span>
-<span class="co">#&gt;  $ response:List of 8</span>
+<span class="co">#&gt;  $ response:List of 10</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "mfl_api"</span></code></pre></div>
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
@@ -203,9 +202,6 @@
     <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"willGiveUp"</span> <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 9</span>
@@ -218,9 +214,6 @@
 <span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""            The Accountant</span>
 <span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""            Kevin Cutillo </span>
 <span class="co">#&gt; # … with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">httptest</span><span class="fu">::</span><span class="fu"><a href="https://enpiar.com/r/httptest/reference/start_vignette.html">end_vignette</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Untracing function "form_file" in package "curl"</span></code></pre></div>
 </div>
   </div>
 

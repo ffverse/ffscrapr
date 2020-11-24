@@ -152,13 +152,12 @@
 <span class="co">#&gt; players/nfl/trending/add</span>
 
 <span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span>,lookback_hours <span class="op">=</span> <span class="fl">48</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">response_trending</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 10</span>
 <span class="co">#&gt;  $ query   : chr "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=48&amp;limit=10"</span>
-<span class="co">#&gt;  $ response:List of 8</span>
+<span class="co">#&gt;  $ response:List of 10</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "sleeper_api"</span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
@@ -170,42 +169,38 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_trending</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 2</span>
-<span class="co">#&gt;   player_id  count</span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 4381      149286</span>
-<span class="co">#&gt; 2 4147       95840</span>
-<span class="co">#&gt; 3 184        79348</span>
-<span class="co">#&gt; 4 6908       72060</span>
-<span class="co">#&gt; 5 5068       58946</span>
-<span class="co">#&gt; 6 1386       47846</span></code></pre></div>
+<span class="co">#&gt;   player_id count</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;</span>
+<span class="co">#&gt; 1 4381      85781</span>
+<span class="co">#&gt; 2 4147      76561</span>
+<span class="co">#&gt; 3 5248      58401</span>
+<span class="co">#&gt; 4 5885      52069</span>
+<span class="co">#&gt; 5 4335      48264</span>
+<span class="co">#&gt; 6 6819      46389</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_players.html">sleeper_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">player_name</span>, <span class="va">pos</span>, <span class="va">team</span>, <span class="va">age</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="va">trending</span> <span class="op">&lt;-</span> <span class="va">df_trending</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">players</span>, by <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 10 x 6</span>
-<span class="co">#&gt;    player_id  count player_name     pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 4381      149286 Taysom Hill     QB    NO     30.3</span>
-<span class="co">#&gt;  2 4147       95840 Samaje Perine   RB    CIN    25.2</span>
-<span class="co">#&gt;  3 184        79348 Adrian Peterson RB    DET    35.7</span>
-<span class="co">#&gt;  4 6908       72060 La'Mical Perine RB    NYJ    22.8</span>
-<span class="co">#&gt;  5 5068       58946 Kerryon Johnson RB    DET    23.4</span>
-<span class="co">#&gt;  6 1386       47846 Giovani Bernard RB    CIN    29  </span>
-<span class="co">#&gt;  7 3895       47818 Marvin Hall     WR    DET    27.6</span>
-<span class="co">#&gt;  8 1387       47234 Rex Burkhead    RB    NE     30.4</span>
-<span class="co">#&gt;  9 6918       46924 Salvon Ahmed    RB    MIA    21.9</span>
-<span class="co">#&gt; 10 4335       43064 Phillip Walker  QB    CAR    25.7</span></code></pre></div>
+<span class="co">#&gt;    player_id count player_name     pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 4381      85781 Taysom Hill     QB    NO     30.3</span>
+<span class="co">#&gt;  2 4147      76561 Samaje Perine   RB    CIN    25.2</span>
+<span class="co">#&gt;  3 5248      58401 Gus Edwards     RB    BAL    25.6</span>
+<span class="co">#&gt;  4 5885      52069 Ryan Finley     QB    CIN    25.9</span>
+<span class="co">#&gt;  5 4335      48264 Phillip Walker  QB    CAR    25.7</span>
+<span class="co">#&gt;  6 6819      46389 Michael Pittman WR    IND    23.1</span>
+<span class="co">#&gt;  7 6908      37246 La'Mical Perine RB    NYJ    22.8</span>
+<span class="co">#&gt;  8 4171      35550 Josh Reynolds   WR    LAR    25.8</span>
+<span class="co">#&gt;  9 2325      34764 Nelson Agholor  WR    LV     27.5</span>
+<span class="co">#&gt; 10 NO        33922 &lt;NA&gt;            DEF   NO     NA</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">httptest</span><span class="fu">::</span><span class="fu"><a href="https://enpiar.com/r/httptest/reference/start_vignette.html">end_vignette</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Untracing function "form_file" in package "curl"</span></code></pre></div>
 </div>
   </div>
 

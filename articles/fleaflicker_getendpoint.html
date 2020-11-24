@@ -167,19 +167,17 @@ Parameters:
                                                league_id <span class="op">=</span> <span class="va">league_id</span>, 
                                                season <span class="op">=</span> <span class="va">season</span>, 
                                                scoring_period <span class="op">=</span> <span class="va">week</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">response_scoreboard</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 3</span>
 <span class="co">#&gt;  $ query   : chr "https://www.fleaflicker.com/api/FetchLeagueScoreboard?sport=NFL&amp;league_id=206154&amp;season=2020&amp;scoring_period=5"</span>
-<span class="co">#&gt;  $ response:List of 8</span>
+<span class="co">#&gt;  $ response:List of 10</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "fleaflicker_api"</span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">df_scoreboard</span> <span class="op">&lt;-</span> <span class="va">response_scoreboard</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">df_scoreboard</span> <span class="op">&lt;-</span> <span class="va">response_scoreboard</span> <span class="op">%&gt;%</span> 
   <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"games"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -199,7 +197,6 @@ Parameters:
 <p>From here, we’ll be able to feed these IDs into the FetchLeagueBoxscore endpoint <a href="https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get" class="uri">https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get</a> as the fantasy_game_id - and from here you’ll be able to get to player-level points and actual stat data for each fantasy game!</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># same variables as previous endpoint call!</span>
- 
 <span class="va">onegame_lineups</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fleaflicker_getendpoint.html">fleaflicker_getendpoint</a></span><span class="op">(</span>
   <span class="st">"FetchLeagueBoxscore"</span>,
   sport <span class="op">=</span> <span class="va">sport</span>, 
@@ -214,7 +211,6 @@ Parameters:
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="st">'slots'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"home"</span>,<span class="st">"away"</span><span class="op">)</span>,names_to <span class="op">=</span> <span class="st">"franchise"</span>,values_to <span class="op">=</span> <span class="st">"player"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="st">'player'</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">onegame_lineups</span>,max.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; tibble [98 × 16] (S3: tbl_df/tbl/data.frame)</span>
