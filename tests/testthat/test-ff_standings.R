@@ -5,10 +5,10 @@ with_mock_api({
 
     expect_tibble(dlf_standings, any.missing = FALSE, min.rows = 16)
 
-    jml_conn <- ff_connect("sleeper", 522458773317046272, season = 2020)
+    jml_conn <- ff_connect("sleeper", "522458773317046272", season = 2020)
     jml_standings <- ff_standings(jml_conn)
 
-    dlp <- sleeper_connect(2020, 521379020332068864)
+    dlp <- sleeper_connect(2020, "521379020332068864")
     dlp_standings <- ff_standings(dlp)
 
     got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)

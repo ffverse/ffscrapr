@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \donttest{
-#' jml_conn <- sleeper_connect(league_id = 522458773317046272, season = 2020)
+#' jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
 #' jml_starters <- ff_starters(jml_conn)
 #' }
 #'

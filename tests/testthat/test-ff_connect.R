@@ -1,7 +1,7 @@
 with_mock_api({
   test_that("ff_connect returns an S3 platform_conn obj for each platform currently programmed", {
     ssb <- ff_connect("mfl", 54040, user_agent = "ffscrapr_test")
-    jml <- ff_connect("sleeper", 527362181635997696)
+    jml <- ff_connect("sleeper", "527362181635997696")
     solar <- ff_connect(
       platform = "sleeper",
       user_name = "solarpool"

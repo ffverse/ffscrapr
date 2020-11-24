@@ -3,7 +3,7 @@ with_mock_api({
     dlf <- mfl_connect(2019, 37920)
     dlf_scoring <- ff_scoring(dlf)
 
-    jml_conn <- sleeper_connect(league_id = 522458773317046272, season = 2020)
+    jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
     jml_scoring <- ff_scoring(jml_conn)
 
     joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)

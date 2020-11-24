@@ -6,7 +6,7 @@
 #'
 #' @examples
 #' \donttest{
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
+#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_scoring(jml_conn)
 #' }
 #'
