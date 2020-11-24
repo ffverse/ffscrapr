@@ -173,10 +173,10 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
 Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
-<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -192,16 +192,20 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
       <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>other arguments (currently unused)</p></td>
+    </tr>
+    <tr>
+      <th>page_limit</th>
+      <td><p>A numeric describing the number of pages to return - default NULL returns all available</p></td>
+    </tr>
+    <tr>
       <th>season</th>
       <td><p>the season of interest - generally only the most recent 2-3 seasons are available</p></td>
     </tr>
     <tr>
       <th>week</th>
       <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
@@ -221,13 +225,26 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>,<span class='fl'>312861</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-
-<span class='co'># }</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 60 x 8</span><span>
+#&gt;    player_id player_name     pos   team  games score_total score_avg score_sd
+#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU       9       264.      29.4      7.46
+#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC       8       265.      33.2      7.35
+#&gt; </span><span style='color: #555555;'> 3</span><span>      </span><span style='text-decoration: underline;'>8</span><span>625 Kirk Cousins    QB    MIN       9       212.      23.5      9.58
+#&gt; </span><span style='color: #555555;'> 4</span><span>      </span><span style='text-decoration: underline;'>3</span><span>452 Aaron Rodgers   QB    GB        9       301.      33.4     10.2 
+#&gt; </span><span style='color: #555555;'> 5</span><span>     </span><span style='text-decoration: underline;'>10</span><span>315 Derek Carr      QB    LV        9       212.      23.6      7.8 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC        9       324.      36.0     11.7 
+#&gt; </span><span style='color: #555555;'> 7</span><span>      </span><span style='text-decoration: underline;'>9</span><span>380 Keenan Allen    WR    LAC       9       150.      16.7      6.52
+#&gt; </span><span style='color: #555555;'> 8</span><span>       326 Philip Rivers   QB    IND       9       183.      20.3      8.49
+#&gt; </span><span style='color: #555555;'> 9</span><span>      </span><span style='text-decoration: underline;'>9</span><span>891 Adam Thielen    WR    MIN       9       145.      16.1      9.5 
+#&gt; </span><span style='color: #555555;'>10</span><span>      </span><span style='text-decoration: underline;'>7</span><span>404 Andy Dalton     QB    DAL       4        27.6      6.89     7.23
+#&gt; </span><span style='color: #555555;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 597 x 8</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 597 x 8</span><span>
 #&gt;    season week  player_id player_name          pos   team  points isAvailable
 #&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL   480.68 0          

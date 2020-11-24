@@ -189,7 +189,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional args passed to each platform</p></td>
+      <td><p>for other platforms</p></td>
     </tr>
     <tr>
       <th>week</th>
@@ -204,37 +204,21 @@
 
     
 <ul>
-<li><p><code>flea_conn</code>: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
+<li><p><code>flea_conn</code>: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns all schedule data</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
-<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 208 x 14</span><span>
-#&gt;     week franchise_id franchise_name franchise_score result opponent_id
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>475 Winterfell Di…            233. WIN        1</span><span style='text-decoration: underline;'>373</span><span>480
-#&gt; </span><span style='color: #555555;'> 2</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>973 Red River Lan…            171. WIN        1</span><span style='text-decoration: underline;'>373</span><span>501
-#&gt; </span><span style='color: #555555;'> 3</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>535 Winterthur An…            222. WIN        1</span><span style='text-decoration: underline;'>373</span><span>883
-#&gt; </span><span style='color: #555555;'> 4</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>393 Philadelphia …            247. WIN        1</span><span style='text-decoration: underline;'>373</span><span>988
-#&gt; </span><span style='color: #555555;'> 5</span><span>     1      1</span><span style='text-decoration: underline;'>371</span><span>776 Winter Hill B…            164. WIN        1</span><span style='text-decoration: underline;'>373</span><span>991
-#&gt; </span><span style='color: #555555;'> 6</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>970 Bamenda Herd              210. WIN        1</span><span style='text-decoration: underline;'>373</span><span>993
-#&gt; </span><span style='color: #555555;'> 7</span><span>     1      1</span><span style='text-decoration: underline;'>374</span><span>252 Central City …            192. LOSE       1</span><span style='text-decoration: underline;'>374</span><span>255
-#&gt; </span><span style='color: #555555;'> 8</span><span>     1      1</span><span style='text-decoration: underline;'>374</span><span>271 Clutch City B…            192. LOSE       1</span><span style='text-decoration: underline;'>374</span><span>315
-#&gt; </span><span style='color: #555555;'> 9</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>480 Goldenrod Cit…            161. LOSE       1</span><span style='text-decoration: underline;'>373</span><span>475
-#&gt; </span><span style='color: #555555;'>10</span><span>     1      1</span><span style='text-decoration: underline;'>373</span><span>501 Midgard Gallo…            154. LOSE       1</span><span style='text-decoration: underline;'>373</span><span>973
-#&gt; </span><span style='color: #555555;'># … with 198 more rows, and 8 more variables: opponent_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   opponent_score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, game_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, isFinalScore </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   isDivisional </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>, isPlayoffs </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>, isThirdPlaceGame </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   isChampionshipGame </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
+<span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 190 x 7</span><span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 190 x 7</span><span>
 #&gt;     week franchise_id franchise_score spread result opponent_id opponent_score
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>     1 0001                    123.     </span><span style='color: #BB0000;'>NA</span><span> W      0002                  103.

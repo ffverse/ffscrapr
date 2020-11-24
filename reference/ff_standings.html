@@ -172,7 +172,7 @@
     <pre class="usage"><span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
-<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, include_allplay <span class='op'>=</span> <span class='cn'>TRUE</span>, include_potentialpoints <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
 <span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -190,6 +190,14 @@
     <tr>
       <th>...</th>
       <td><p>arguments passed to other methods (currently none)</p></td>
+    </tr>
+    <tr>
+      <th>include_allplay</th>
+      <td><p>TRUE/FALSE - return all-play win pct calculation? defaults to TRUE</p></td>
+    </tr>
+    <tr>
+      <th>include_potentialpoints</th>
+      <td><p>TRUE/FALSE - return potential points calculation? defaults to TRUE.</p></td>
     </tr>
     </table>
 
