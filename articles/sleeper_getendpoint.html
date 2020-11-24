@@ -171,12 +171,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id count</span>
 <span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;</span>
-<span class="co">#&gt; 1 4381      83636</span>
+<span class="co">#&gt; 1 4381      84884</span>
 <span class="co">#&gt; 2 4147      71738</span>
-<span class="co">#&gt; 3 5248      63484</span>
-<span class="co">#&gt; 4 5885      53447</span>
-<span class="co">#&gt; 5 4335      48238</span>
-<span class="co">#&gt; 6 6819      45323</span></code></pre></div>
+<span class="co">#&gt; 3 5248      69295</span>
+<span class="co">#&gt; 4 5885      54825</span>
+<span class="co">#&gt; 5 4335      48433</span>
+<span class="co">#&gt; 6 6819      45804</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -190,16 +190,16 @@
 <span class="co">#&gt; # A tibble: 10 x 6</span>
 <span class="co">#&gt;    player_id count player_name     pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 4381      83636 Taysom Hill     QB    NO     30.3</span>
+<span class="co">#&gt;  1 4381      84884 Taysom Hill     QB    NO     30.3</span>
 <span class="co">#&gt;  2 4147      71738 Samaje Perine   RB    CIN    25.2</span>
-<span class="co">#&gt;  3 5248      63484 Gus Edwards     RB    BAL    25.6</span>
-<span class="co">#&gt;  4 5885      53447 Ryan Finley     QB    CIN    25.9</span>
-<span class="co">#&gt;  5 4335      48238 Phillip Walker  QB    CAR    25.7</span>
-<span class="co">#&gt;  6 6819      45323 Michael Pittman WR    IND    23.1</span>
-<span class="co">#&gt;  7 2325      36012 Nelson Agholor  WR    LV     27.5</span>
-<span class="co">#&gt;  8 6908      34594 La'Mical Perine RB    NYJ    22.8</span>
-<span class="co">#&gt;  9 4171      34523 Josh Reynolds   WR    LAR    25.8</span>
-<span class="co">#&gt; 10 NO        34299 &lt;NA&gt;            DEF   NO     NA</span></code></pre></div>
+<span class="co">#&gt;  3 5248      69295 Gus Edwards     RB    BAL    25.6</span>
+<span class="co">#&gt;  4 5885      54825 Ryan Finley     QB    CIN    25.9</span>
+<span class="co">#&gt;  5 4335      48433 Phillip Walker  QB    CAR    25.7</span>
+<span class="co">#&gt;  6 6819      45804 Michael Pittman WR    IND    23.1</span>
+<span class="co">#&gt;  7 2325      38040 Nelson Agholor  WR    LV     27.5</span>
+<span class="co">#&gt;  8 NO        35365 &lt;NA&gt;            DEF   NO     NA  </span>
+<span class="co">#&gt;  9 4171      34640 Josh Reynolds   WR    LAR    25.8</span>
+<span class="co">#&gt; 10 6908      34607 La'Mical Perine RB    NYJ    22.8</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>
