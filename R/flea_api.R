@@ -51,7 +51,7 @@ fleaflicker_getendpoint <- function(endpoint, ...) {
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("Fleaflicker API did not return json while calling {url_query}"),
-            call. = FALSE
+      call. = FALSE
     )
   }
 
@@ -86,7 +86,7 @@ print.fleaflicker_api <- function(x, ...) {
 
   cat("<Fleaflicker - GET ", x$query, ">\n", sep = "")
 
-  str(x$content,max.level = 1)
+  str(x$content, max.level = 1)
 
   invisible(x)
 

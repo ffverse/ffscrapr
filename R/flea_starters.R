@@ -16,53 +16,53 @@
 #'
 #' @export
 ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
-
   starters <- ff_schedule(conn, week) %>%
     dplyr::filter(!is.na(.data$result)) %>%
-    dplyr::distinct(.data$week,.data$game_id) %>%
-    dplyr::mutate(starters = purrr::map2(.data$week,.data$game_id, .flea_starters, conn)) %>%
+    dplyr::distinct(.data$week, .data$game_id) %>%
+    dplyr::mutate(starters = purrr::map2(.data$week, .data$game_id, .flea_starters, conn)) %>%
     tidyr::unnest("starters") %>%
-    dplyr::arrange(.data$week,.data$franchise_id)
+    dplyr::arrange(.data$week, .data$franchise_id)
 }
 
-.flea_starters <- function(week,game_id,conn){
-
+.flea_starters <- function(week, game_id, conn) {
   x <- fleaflicker_getendpoint("FetchLeagueBoxscore",
-                               sport = "NFL",
-                               scoring_period = week,
-                               fantasy_game_id = game_id,
-                               league_id = conn$league_id) %>%
-    purrr::pluck('content',"lineups") %>%
+    sport = "NFL",
+    scoring_period = week,
+    fantasy_game_id = game_id,
+    league_id = conn$league_id
+  ) %>%
+    purrr::pluck("content", "lineups") %>%
     list() %>%
     tibble::tibble() %>%
     tidyr::unnest_longer(1) %>%
     tidyr::unnest_wider(1) %>%
-    tidyr::unnest_longer('slots') %>%
-    tidyr::unnest_wider('slots') %>%
-    dplyr::mutate(position = purrr::map_chr(.data$position, purrr::pluck,'label'),
-                  positionColor = NULL) %>%
-    tidyr::pivot_longer(c('home','away'),names_to = 'franchise',values_to = "player") %>%
-    tidyr::hoist('player','proPlayer','owner',"points"='viewingActualPoints') %>%
-    tidyr::hoist('proPlayer',
-                 'player_id'='id',
-                 'player_name'="nameFull",
-                 'pos' = 'position',
-                 'team' = "proTeamAbbreviation") %>%
+    tidyr::unnest_longer("slots") %>%
+    tidyr::unnest_wider("slots") %>%
+    dplyr::mutate(
+      position = purrr::map_chr(.data$position, purrr::pluck, "label"),
+      positionColor = NULL
+    ) %>%
+    tidyr::pivot_longer(c("home", "away"), names_to = "franchise", values_to = "player") %>%
+    tidyr::hoist("player", "proPlayer", "owner", "points" = "viewingActualPoints") %>%
+    tidyr::hoist("proPlayer",
+      "player_id" = "id",
+      "player_name" = "nameFull",
+      "pos" = "position",
+      "team" = "proTeamAbbreviation"
+    ) %>%
     dplyr::filter(!is.na(.data$player_id)) %>%
-    tidyr::hoist('owner','franchise_id'='id','franchise_name'="name") %>%
-    tidyr::hoist('points',"player_score"="value") %>%
+    tidyr::hoist("owner", "franchise_id" = "id", "franchise_name" = "name") %>%
+    tidyr::hoist("points", "player_score" = "value") %>%
     dplyr::select(dplyr::any_of(c(
       "franchise_id",
       "franchise_name",
-      "starter_status"="position",
+      "starter_status" = "position",
       "player_id",
       "player_name",
-      'pos',
-      'team',
+      "pos",
+      "team",
       "player_score"
     )))
 
   return(x)
-
 }
-

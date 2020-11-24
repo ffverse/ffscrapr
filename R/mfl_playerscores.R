@@ -17,7 +17,6 @@
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
-
   if (!(is.numeric(week) | week %in% c("AVG", "YTD"))) {
     stop("week should be either a numeric or one of AVG or YTD")
   }

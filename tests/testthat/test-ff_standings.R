@@ -15,7 +15,7 @@ with_mock_api({
     got_standings <- ff_standings(got_conn, include_allplay = FALSE, include_potentialpoints = FALSE)
 
     got_schedule <- ff_schedule(got_conn, week = 4)
-    got_potentialpoints <- .flea_add_potentialpoints(got_schedule,got_conn)
+    got_potentialpoints <- .flea_add_potentialpoints(got_schedule, got_conn)
 
     expect_tibble(jml_standings, any.missing = FALSE, nrows = 12)
     expect_tibble(dlp_standings, any.missing = FALSE, nrows = 12)

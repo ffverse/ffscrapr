@@ -90,11 +90,11 @@ mfl_allrules <- function() {
     dplyr::as_tibble() %>%
     dplyr::mutate_all(as.character) %>%
     dplyr::select(
-      'abbrev' = 'abbreviation',
-      'short_desc' = 'shortDescription',
-      'long_desc' = 'detailedDescription',
-      'is_player' = 'isPlayer',
-      'is_team' = 'isTeam',
-      'is_coach' = 'isCoach'
+      "abbrev" = "abbreviation",
+      "short_desc" = "shortDescription",
+      "long_desc" = "detailedDescription",
+      "is_player" = "isPlayer",
+      "is_team" = "isTeam",
+      "is_coach" = "isCoach"
     )
 }

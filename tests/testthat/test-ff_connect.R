@@ -11,7 +11,7 @@ with_mock_api({
     expect_s3_class(ssb, "mfl_conn")
     expect_s3_class(jml, "sleeper_conn")
     expect_s3_class(solar, "sleeper_conn")
-    expect_s3_class(joe,"flea_conn")
+    expect_s3_class(joe, "flea_conn")
   })
 
   test_that("Does mfl-logincookie return a request-like object?", {

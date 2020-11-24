@@ -16,7 +16,6 @@
 #'
 #' @examples
 #' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
-#'
 #' @export ff_connect
 #' @return a connection object to be used with \code{ff_*} functions
 
@@ -24,15 +23,15 @@ ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
   platform <- tolower(platform)
 
   x <- switch(platform,
-    'fleaflicker' = ,
-    'flea' = fleaflicker_connect(league_id = league_id,...),
+    "fleaflicker" = ,
+    "flea" = fleaflicker_connect(league_id = league_id, ...),
     # 'espn' = espn_connect(league_id = league_id,...),
     # 'yahoo' = yahoo_connect(league_id = league_id,...)
     "sleeper" = sleeper_connect(league_id = league_id, ...),
     "mfl" = mfl_connect(league_id = league_id, ...)
   )
 
-  if(is.null(x)) stop("We can't connect to that platform yet!")
+  if (is.null(x)) stop("We can't connect to that platform yet!")
 
   x
 }
