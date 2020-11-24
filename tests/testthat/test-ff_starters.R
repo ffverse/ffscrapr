@@ -12,7 +12,7 @@ with_mock_api({
     expect_tibble(jml_starters, min.rows = 100)
 
     got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-    got_starters <- ff_starters(got_conn, week = 1:3)
+    got_starters <- ff_starters(got_conn, week = 4)
 
     expect_tibble(got_starters, min.rows = 100)
   })

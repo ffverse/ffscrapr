@@ -11,6 +11,6 @@ with_mock_api({
 
     got_conn <- fleaflicker_connect(2020,206154)
     got_league <- ff_league(got_conn)
-
+    expect_tibble(got_league,  min.rows = 1)
   })
 })
