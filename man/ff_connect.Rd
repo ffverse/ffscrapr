@@ -21,7 +21,6 @@ This function creates a connection object which stores parameters and gets a log
 }
 \examples{
 ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
-
 }
 \seealso{
 \code{\link{ff_connect}}, \code{\link{sleeper_connect}}

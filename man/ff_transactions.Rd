@@ -55,7 +55,7 @@ ff_transactions(dlf_conn)
 }
 \donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-x <- ff_transactions(jml_conn,week = 1:17)
+x <- ff_transactions(jml_conn, week = 1:17)
 }
 
 }

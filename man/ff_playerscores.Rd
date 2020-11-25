@@ -48,7 +48,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.
 \examples{
 \donttest{
 
-conn <- fleaflicker_connect(2020,312861)
+conn <- fleaflicker_connect(2020, 312861)
 x <- ff_playerscores(conn, page_limit = 2)
 x
 }

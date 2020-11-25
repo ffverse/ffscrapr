@@ -40,7 +40,7 @@ Returns all draft picks (current and future) that belong to a specific franchise
 
 \examples{
 \donttest{
-conn <- fleaflicker_connect(2020,206154)
+conn <- fleaflicker_connect(2020, 206154)
 ff_draftpicks(conn, franchise_id = 1373475)
 }
 
@@ -50,7 +50,7 @@ ff_draftpicks(conn = dlf_conn)
 }
 
 \donttest{
-jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
+jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_draftpicks(jml_conn)
 }
 
