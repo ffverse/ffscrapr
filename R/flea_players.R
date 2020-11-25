@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- fleaflicker_connect(2020,312861)
+#' conn <- fleaflicker_connect(2020, 312861)
 #' player_list <- fleaflicker_players(conn, page_limit = 2)
 #' }
 #'
@@ -16,37 +16,39 @@
 #' @export
 
 fleaflicker_players <- function(conn, page_limit = NULL) {
-
   result_offset <- 0
   page_count <- 1
 
-  if(is.null(page_limit)) page_limit <- Inf
+  if (is.null(page_limit)) page_limit <- Inf
 
-  initial_results <- fleaflicker_getendpoint(endpoint = "FetchPlayerListing",
-                                        sport = "NFL",
-                                        league_id = conn$league_id,
-                                        external_id_type = "SPORTRADAR",
-                                        result_offset = result_offset) %>%
-    purrr::pluck('content')
+  initial_results <- fleaflicker_getendpoint(
+    endpoint = "FetchPlayerListing",
+    sport = "NFL",
+    league_id = conn$league_id,
+    external_id_type = "SPORTRADAR",
+    result_offset = result_offset
+  ) %>%
+    purrr::pluck("content")
 
   players <- initial_results$players
 
-  result_offset <- initial_results[['resultOffsetNext']]
+  result_offset <- initial_results[["resultOffsetNext"]]
 
   rm(initial_results)
 
-  while(!is.null(result_offset) && page_count < page_limit){
+  while (!is.null(result_offset) && page_count < page_limit) {
+    results <- fleaflicker_getendpoint(
+      endpoint = "FetchPlayerListing",
+      sport = "NFL",
+      league_id = conn$league_id,
+      external_id_type = "SPORTRADAR",
+      result_offset = result_offset
+    ) %>%
+      purrr::pluck("content")
 
-    results <- fleaflicker_getendpoint(endpoint = "FetchPlayerListing",
-                                               sport = "NFL",
-                                               league_id = conn$league_id,
-                                               external_id_type = "SPORTRADAR",
-                                               result_offset = result_offset) %>%
-      purrr::pluck('content')
+    players <- c(players, results$players)
 
-    players <- c(players,results$players)
-
-    result_offset <- results[['resultOffsetNext']]
+    result_offset <- results[["resultOffsetNext"]]
 
     page_count <- page_count + 1
 
@@ -55,14 +57,15 @@ fleaflicker_players <- function(conn, page_limit = NULL) {
 
   df_players <- players %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,"player"="proPlayer") %>%
-    tidyr::hoist('player',
-                 'player_id' = "id",
-                 'player_name' = 'nameFull',
-                 'team' = 'proTeamAbbreviation',
-                 'pos' = 'position',
-                 "sportradar_id"= 'externalIds',
-                 "position_eligibility" = 'positionEligibility') %>%
+    tidyr::hoist(1, "player" = "proPlayer") %>%
+    tidyr::hoist("player",
+      "player_id" = "id",
+      "player_name" = "nameFull",
+      "team" = "proTeamAbbreviation",
+      "pos" = "position",
+      "sportradar_id" = "externalIds",
+      "position_eligibility" = "positionEligibility"
+    ) %>%
     dplyr::select(
       "player_id",
       "player_name",
@@ -71,8 +74,10 @@ fleaflicker_players <- function(conn, page_limit = NULL) {
       "sportradar_id",
       "position_eligibility"
     ) %>%
-    dplyr::mutate("sportradar_id" = purrr::map_chr(.data$sportradar_id,unlist),
-                  "position_eligibility" = purrr::map(.data$position_eligibility,unlist) %>% as.character)
+    dplyr::mutate(
+      "sportradar_id" = purrr::map_chr(.data$sportradar_id, unlist),
+      "position_eligibility" = purrr::map(.data$position_eligibility, unlist) %>% as.character()
+    )
 
 
   return(df_players)

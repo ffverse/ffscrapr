@@ -6,9 +6,8 @@
 #'
 #' @examples
 #'
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = 522458773317046272, season = 2020)
+#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_league(jml_conn)
-#'
 #' @describeIn ff_league Sleeper: returns a summary of league features.
 #'
 #' @export

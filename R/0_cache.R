@@ -5,9 +5,8 @@
 #' This function will reset the cache for any and all ffscrapr cached functions.
 #'
 #' @export
-.ff_clear_cache <- function(){
-
-  functions = list(
+.ff_clear_cache <- function() {
+  functions <- list(
     dp_values,
     dp_playerids,
     mfl_players,
@@ -38,5 +37,5 @@
     ff_starters.flea_conn
   )
 
-  purrr::walk(functions,memoise::forget)
+  purrr::walk(functions, memoise::forget)
 }

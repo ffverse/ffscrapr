@@ -14,20 +14,21 @@
 #' @export
 
 ff_userleagues.sleeper_conn <- function(conn = NULL, user_name = NULL, season = NULL, ...) {
-
   if (!is.null(user_name)) {
     user_id <- .sleeper_userid(user_name)
   }
 
-  if(is.null(user_name) && is.null(conn)) {stop("Please supply either a user_name or a Sleeper connection object!")}
+  if (is.null(user_name) && is.null(conn)) {
+    stop("Please supply either a user_name or a Sleeper connection object!")
+  }
 
   if (is.null(user_name)) {
     user_id <- conn$user_id
   }
 
-  if(is.null(season) && !is.null(conn)) season <- conn$season
+  if (is.null(season) && !is.null(conn)) season <- conn$season
 
-  if(is.null(season)) season <- .fn_choose_season()
+  if (is.null(season)) season <- .fn_choose_season()
 
   df_leagues <- sleeper_getendpoint(glue::glue("user/{user_id}/leagues/nfl/{season}")) %>%
     purrr::pluck("content") %>%
@@ -54,7 +55,7 @@ ff_userleagues.sleeper_conn <- function(conn = NULL, user_name = NULL, season = 
 #' @return a dataframe of leagues for the specified user
 #' @export
 
-sleeper_userleagues <- function(user_name, season = NULL){
+sleeper_userleagues <- function(user_name, season = NULL) {
   ff_userleagues.sleeper_conn(user_name = user_name, season = season)
 }
 
