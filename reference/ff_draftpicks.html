@@ -211,7 +211,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>,<span class='fl'>206154</span><span class='op'>)</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>206154</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>conn</span>, franchise_id <span class='op'>=</span> <span class='fl'>1373475</span><span class='op'>)</span>
 <span class='co'># }</span>
 
@@ -234,7 +234,7 @@
 #&gt; </span><span style='color: #555555;'># … with 70 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='fl'>522458773317046272</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 144 x 5</span><span>
 #&gt;    season franchise_id franchise_name round original_franchise_id

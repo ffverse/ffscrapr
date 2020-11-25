@@ -224,22 +224,22 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>,<span class='fl'>312861</span><span class='op'>)</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>x</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 60 x 8</span><span>
 #&gt;    player_id player_name     pos   team  games score_total score_avg score_sd
 #&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU       9       264.      29.4      7.46
-#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC       8       265.      33.2      7.35
-#&gt; </span><span style='color: #555555;'> 3</span><span>      </span><span style='text-decoration: underline;'>8</span><span>625 Kirk Cousins    QB    MIN       9       212.      23.5      9.58
-#&gt; </span><span style='color: #555555;'> 4</span><span>      </span><span style='text-decoration: underline;'>3</span><span>452 Aaron Rodgers   QB    GB        9       301.      33.4     10.2 
-#&gt; </span><span style='color: #555555;'> 5</span><span>     </span><span style='text-decoration: underline;'>10</span><span>315 Derek Carr      QB    LV        9       212.      23.6      7.8 
-#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC        9       324.      36.0     11.7 
-#&gt; </span><span style='color: #555555;'> 7</span><span>      </span><span style='text-decoration: underline;'>9</span><span>380 Keenan Allen    WR    LAC       9       150.      16.7      6.52
-#&gt; </span><span style='color: #555555;'> 8</span><span>       326 Philip Rivers   QB    IND       9       183.      20.3      8.49
-#&gt; </span><span style='color: #555555;'> 9</span><span>      </span><span style='text-decoration: underline;'>9</span><span>891 Adam Thielen    WR    MIN       9       145.      16.1      9.5 
-#&gt; </span><span style='color: #555555;'>10</span><span>      </span><span style='text-decoration: underline;'>7</span><span>404 Andy Dalton     QB    DAL       4        27.6      6.89     7.23
+#&gt; </span><span style='color: #555555;'> 1</span><span>     </span><span style='text-decoration: underline;'>14</span><span>664 Kyler Murray    QB    ARI      10        375.      37.5     6.63
+#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>13</span><span>761 Josh Allen      QB    BUF      10        337.      33.7    10.6 
+#&gt; </span><span style='color: #555555;'> 3</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU      10        304.      30.4     7.78
+#&gt; </span><span style='color: #555555;'> 4</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC       10        356.      35.6    11.1 
+#&gt; </span><span style='color: #555555;'> 5</span><span>      </span><span style='text-decoration: underline;'>8</span><span>598 Russell Wilson  QB    SEA      10        370.      37.0    10.1 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC       9        304.      33.8     7.15
+#&gt; </span><span style='color: #555555;'> 7</span><span>     </span><span style='text-decoration: underline;'>14</span><span>668 Daniel Jones    QB    NYG      10        196.      19.6     6.64
+#&gt; </span><span style='color: #555555;'> 8</span><span>     </span><span style='text-decoration: underline;'>12</span><span>032 Carson Wentz    QB    PHI      10        248.      24.8     8.2 
+#&gt; </span><span style='color: #555555;'> 9</span><span>      </span><span style='text-decoration: underline;'>5</span><span>371 Matt Ryan       QB    ATL      10        254.      25.4    11.6 
+#&gt; </span><span style='color: #555555;'>10</span><span>     </span><span style='text-decoration: underline;'>10</span><span>315 Derek Carr      QB    LV       10        245.      24.5     7.9 
 #&gt; </span><span style='color: #555555;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
