@@ -1,6 +1,8 @@
 on:
   push:
-    branches: dev
+    branches:
+      - main
+      - dev
 
 name: pkgdown
 
@@ -24,7 +26,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache R packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -32,8 +34,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages(c("pkgdown","ragg","textshaping"),type = "binary")
           remotes::install_deps(dependencies = TRUE)
+          install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
 
       - name: Install package
