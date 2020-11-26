@@ -220,17 +220,17 @@
 #&gt; </span><span style='color: #555555;'> 2</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear        </span><span style='text-decoration: underline;'>7</span><span>378 Cam Newton   QB    NE    214e55e4-a089…
 #&gt; </span><span style='color: #555555;'> 3</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>15</span><span>622 Joshua Kell… RB    LAC   62542e04-3c44…
 #&gt; </span><span style='color: #555555;'> 4</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>358 Matt Breida  RB    MIA   6249d2c0-75dc…
-#&gt; </span><span style='color: #555555;'> 5</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear        </span><span style='text-decoration: underline;'>8</span><span>429 Marvin Jones WR    DET   1a2fbc23-e6db…
-#&gt; </span><span style='color: #555555;'> 6</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear        </span><span style='text-decoration: underline;'>7</span><span>369 A.J. Green   WR    CIN   c9701373-23f6…
+#&gt; </span><span style='color: #555555;'> 5</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear        </span><span style='text-decoration: underline;'>7</span><span>369 A.J. Green   WR    CIN   c9701373-23f6…
+#&gt; </span><span style='color: #555555;'> 6</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>782 Anthony Mil… WR    CHI   bfaedf99-7618…
 #&gt; </span><span style='color: #555555;'> 7</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear        </span><span style='text-decoration: underline;'>9</span><span>338 Robert Woods WR    LAR   618bedee-9259…
 #&gt; </span><span style='color: #555555;'> 8</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>209 Tim Patrick  WR    DEN   2a443351-5e63…
-#&gt; </span><span style='color: #555555;'> 9</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>12</span><span>926 Chris Godwin WR    TB    baa61bb5-f8d0…
-#&gt; </span><span style='color: #555555;'>10</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>874 Ian Thomas   TE    CAR   ed8a8fd2-df67…
+#&gt; </span><span style='color: #555555;'> 9</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>874 Ian Thomas   TE    CAR   ed8a8fd2-df67…
+#&gt; </span><span style='color: #555555;'>10</span><span>      1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear       </span><span style='text-decoration: underline;'>13</span><span>489 Robert Tony… TE    GB    7c9c7800-69d0…
 #&gt; </span><span style='color: #555555;'># … with 347 more rows</span><span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 437 x 11</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 443 x 11</span><span>
 #&gt;    franchise_id franchise_name player_id player_name pos   team    age
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> 0001         Team Pikachu   13189     Engram, Ev… TE    NYG    26.2
@@ -243,13 +243,13 @@
 #&gt; </span><span style='color: #555555;'> 8</span><span> 0001         Team Pikachu   13377     Patrick, T… WR    DEN    27  
 #&gt; </span><span style='color: #555555;'> 9</span><span> 0001         Team Pikachu   13254     Shaheen, A… TE    MIA    26.9
 #&gt; </span><span style='color: #555555;'>10</span><span> 0001         Team Pikachu   8673      Ginn Jr., … WR    FA     35.6
-#&gt; </span><span style='color: #555555;'># … with 427 more rows, and 4 more variables: roster_status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'># … with 433 more rows, and 4 more variables: roster_status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   drafted </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 347 x 7</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 350 x 7</span><span>
 #&gt;    franchise_id franchise_name player_id player_name     pos   team    age
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> 1            Fake News      1110      T.Y. Hilton     WR    IND    31  
@@ -259,10 +259,10 @@
 #&gt; </span><span style='color: #555555;'> 5</span><span> 1            Fake News      2025      Albert Wilson   WR    MIA    28.4
 #&gt; </span><span style='color: #555555;'> 6</span><span> 1            Fake News      2197      Brandin Cooks   WR    HOU    27.2
 #&gt; </span><span style='color: #555555;'> 7</span><span> 1            Fake News      2319      DeVante Parker  WR    MIA    27.8
-#&gt; </span><span style='color: #555555;'> 8</span><span> 1            Fake News      2822      Adam Humphries  WR    TEN    27.4
-#&gt; </span><span style='color: #555555;'> 9</span><span> 1            Fake News      289       Drew Brees      QB    NO     41.9
-#&gt; </span><span style='color: #555555;'>10</span><span> 1            Fake News      344       Julian Edelman  WR    NE     34.5
-#&gt; </span><span style='color: #555555;'># … with 337 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt; </span><span style='color: #555555;'> 8</span><span> 1            Fake News      232       Frank Gore      RB    NYJ    37.5
+#&gt; </span><span style='color: #555555;'> 9</span><span> 1            Fake News      2822      Adam Humphries  WR    TEN    27.4
+#&gt; </span><span style='color: #555555;'>10</span><span> 1            Fake News      289       Drew Brees      QB    NO     41.9
+#&gt; </span><span style='color: #555555;'># … with 340 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
