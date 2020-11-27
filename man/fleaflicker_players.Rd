@@ -20,7 +20,7 @@ A cached table of Fleaflicker NFL players. Will store in memory for each session
 }
 \examples{
 \donttest{
-conn <- fleaflicker_connect(2020,312861)
+conn <- fleaflicker_connect(2020, 312861)
 player_list <- fleaflicker_players(conn, page_limit = 2)
 }
 

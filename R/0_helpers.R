@@ -83,8 +83,7 @@
 #' @param schedule - an output from ff_schedule
 #'
 #' @keywords internal
-.add_allplay <- function(schedule){
-
+.add_allplay <- function(schedule) {
   all_play <- schedule %>%
     dplyr::filter(!is.na(.data$result)) %>%
     dplyr::group_by(.data$week) %>%

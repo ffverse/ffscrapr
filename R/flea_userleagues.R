@@ -14,14 +14,15 @@
 #' @export
 
 ff_userleagues.flea_conn <- function(conn = NULL, user_email = NULL, season = NULL, ...) {
+  if (is.null(user_email) && is.null(conn)) {
+    stop("Please supply either a user_email or a flea_conn object!")
+  }
 
-  if(is.null(user_email) && is.null(conn)) {stop("Please supply either a user_email or a flea_conn object!")}
+  if (is.null(user_email) && !is.null(conn)) user_email <- conn$user_email
 
-  if(is.null(user_email) && !is.null(conn)) user_email <- conn$user_email
+  if (is.null(season) && !is.null(conn)) season <- conn$season
 
-  if(is.null(season) && !is.null(conn)) season <- conn$season
-
-  fleaflicker_userleagues(user_email,season)
+  fleaflicker_userleagues(user_email, season)
 }
 
 #' flea - Get User Leagues
@@ -37,21 +38,20 @@ ff_userleagues.flea_conn <- function(conn = NULL, user_email = NULL, season = NU
 #' @return a dataframe of leagues for the specified user
 #' @export
 
-fleaflicker_userleagues <- function(user_email, season = NULL){
-
-  if(is.null(season)) season <- .fn_choose_season()
+fleaflicker_userleagues <- function(user_email, season = NULL) {
+  if (is.null(season)) season <- .fn_choose_season()
 
   df_leagues <- fleaflicker_getendpoint("FetchUserLeagues", email = user_email, season = season, sport = "NFL") %>%
-    purrr::pluck("content","leagues") %>%
-    purrr::map(`[`, c("name", "id","ownedTeam")) %>%
+    purrr::pluck("content", "leagues") %>%
+    purrr::map(`[`, c("name", "id", "ownedTeam")) %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    dplyr::rename(league_name = .data$name,
-                  league_id = .data$id) %>%
-    tidyr::hoist('ownedTeam','franchise_id'='id','franchise_name' = 'name') %>%
-    dplyr::select(-'ownedTeam')
+    dplyr::rename(
+      league_name = .data$name,
+      league_id = .data$id
+    ) %>%
+    tidyr::hoist("ownedTeam", "franchise_id" = "id", "franchise_name" = "name") %>%
+    dplyr::select(-"ownedTeam")
 
   return(df_leagues)
 }
-
-

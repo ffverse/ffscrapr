@@ -17,43 +17,44 @@
 #' @export
 
 ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
-
   weeks <- fleaflicker_getendpoint("FetchLeagueScoreboard",
-                               sport = "NFL",
-                               league_id = conn$league_id,
-                               season = conn$season) %>%
-    purrr::pluck('content',"eligibleSchedulePeriods") %>%
-    purrr::map_int(`[[`,"value")
+    sport = "NFL",
+    league_id = conn$league_id,
+    season = conn$season
+  ) %>%
+    purrr::pluck("content", "eligibleSchedulePeriods") %>%
+    purrr::map_int(`[[`, "value")
 
   schedule <- tibble::tibble(week = weeks) %>%
     dplyr::filter(.data$week %in% .env$week) %>%
-    dplyr::mutate(score = purrr::map(.data$week,.flea_schedule,conn)) %>%
+    dplyr::mutate(score = purrr::map(.data$week, .flea_schedule, conn)) %>%
     tidyr::unnest("score")
 
   return(schedule)
-
 }
 #'
-.flea_schedule <- function(week,conn){
-
+.flea_schedule <- function(week, conn) {
   schedule_raw <- fleaflicker_getendpoint("FetchLeagueScoreboard",
-                               sport = "NFL",
-                               league_id = conn$league_id,
-                               scoring_period = week,
-                               season = conn$season) %>%
-    purrr::pluck('content',"games")
+    sport = "NFL",
+    league_id = conn$league_id,
+    scoring_period = week,
+    season = conn$season
+  ) %>%
+    purrr::pluck("content", "games")
 
-  if(is.null(schedule_raw)) return(tibble::tibble())
+  if (is.null(schedule_raw)) {
+    return(tibble::tibble())
+  }
 
   schedule_raw <- schedule_raw %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,"id", 'home',"away","homeScore","awayScore","homeResult","awayResult","isFinalScore","isDivisional","isPlayoffs","isThirdPlaceGame","isChampionshipGame") %>%
-    tidyr::hoist('home',"home_id"='id',"home_name" = "name") %>%
-    tidyr::hoist("away","away_id"="id","away_name" = "name") %>%
-    dplyr::mutate_at(c('homeScore','awayScore'),purrr::map,~purrr::pluck(.x,1,"value")) %>%
+    tidyr::hoist(1, "id", "home", "away", "homeScore", "awayScore", "homeResult", "awayResult", "isFinalScore", "isDivisional", "isPlayoffs", "isThirdPlaceGame", "isChampionshipGame") %>%
+    tidyr::hoist("home", "home_id" = "id", "home_name" = "name") %>%
+    tidyr::hoist("away", "away_id" = "id", "away_name" = "name") %>%
+    dplyr::mutate_at(c("homeScore", "awayScore"), purrr::map, ~ purrr::pluck(.x, 1, "value")) %>%
     dplyr::select(
       dplyr::any_of(c(
-        "game_id"="id",
+        "game_id" = "id",
         "home_id",
         "home_name",
         "home_score" = "homeScore",
@@ -61,18 +62,19 @@ ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
         "away_id",
         "away_name",
         "away_score" = "awayScore",
-        "away_result" = "awayResult")),
+        "away_result" = "awayResult"
+      )),
       dplyr::starts_with("is")
     )
 
   home_schedule <- schedule_raw %>%
     dplyr::rename(dplyr::any_of(c(
-      "franchise_id" = 'home_id',
-      "franchise_name" = 'home_name',
-      "franchise_score" = 'home_score',
-      "result" = 'home_result',
-      "opponent_id" = 'away_id',
-      "opponent_name" = 'away_name',
+      "franchise_id" = "home_id",
+      "franchise_name" = "home_name",
+      "franchise_score" = "home_score",
+      "result" = "home_result",
+      "opponent_id" = "away_id",
+      "opponent_name" = "away_name",
       "opponent_score" = "away_score"
     )))
 
@@ -84,7 +86,7 @@ ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
       "result" = "away_result",
       "opponent_id" = "home_id",
       "opponent_name" = "home_name",
-      "opponent_score" = 'home_score'
+      "opponent_score" = "home_score"
     )))
 
   schedule <- dplyr::bind_rows(home_schedule, away_schedule) %>%
@@ -97,12 +99,11 @@ ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
         "opponent_id",
         "opponent_name",
         "opponent_score",
-        "game_id")),
+        "game_id"
+      )),
       dplyr::starts_with("is")
     ) %>%
-    dplyr::mutate(dplyr::across(dplyr::contains("_score"),purrr::map_dbl,~replace(.x,is.null(.x),NA)))
+    dplyr::mutate(dplyr::across(dplyr::contains("_score"), purrr::map_dbl, ~ replace(.x, is.null(.x), NA)))
 
   return(schedule)
 }
-
-

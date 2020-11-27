@@ -17,7 +17,7 @@ Fetches a copy of the latest DynastyProcess dynasty trade values sheets
 }
 \examples{
 \donttest{
- dp_values()
+dp_values()
 }
 
 }

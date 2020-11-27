@@ -5,18 +5,17 @@
 #' @param conn the connection object created by \code{ff_connect()}
 #'
 #' @examples
-#'\donttest{
-#' conn <- fleaflicker_connect(2020,206154)
+#' \donttest{
+#' conn <- fleaflicker_connect(2020, 206154)
 #' ff_league(conn)
-#'}
+#' }
 #'
 #' @describeIn ff_league Flea: returns a summary of league features.
 #'
 #' @export
 ff_league.flea_conn <- function(conn) {
-
-  league_endpoint <- fleaflicker_getendpoint("FetchLeagueStandings",league_id = conn$league_id, sport = "NFL",season = conn$season) %>%
-    purrr::pluck('content')
+  league_endpoint <- fleaflicker_getendpoint("FetchLeagueStandings", league_id = conn$league_id, sport = "NFL", season = conn$season) %>%
+    purrr::pluck("content")
 
   tibble::tibble(
     league_id = as.character(conn$league_id),
@@ -36,38 +35,37 @@ ff_league.flea_conn <- function(conn) {
   )
 }
 
-.flea_isdyno <- function(league_endpoint){
-
+.flea_isdyno <- function(league_endpoint) {
   max_keepers <- league_endpoint %>%
-    purrr::pluck("league","maxKeepers")
+    purrr::pluck("league", "maxKeepers")
 
-  if(is.null(max_keepers)) max_keepers <- 0
+  if (is.null(max_keepers)) max_keepers <- 0
 
   team_count <- league_endpoint %>%
-    purrr::pluck('league','capacity')
+    purrr::pluck("league", "capacity")
 
   player_count <- max_keepers * team_count
 
   dplyr::case_when(
     player_count == 0 ~ "redraft",
     player_count <= 250 ~ "keeper",
-    TRUE ~ "dynasty")
+    TRUE ~ "dynasty"
+  )
 }
 
-.flea_qbtype <- function(league_endpoint){
-
+.flea_qbtype <- function(league_endpoint) {
   x <- league_endpoint %>%
-    purrr::pluck('league','rosterRequirements','positions') %>%
+    purrr::pluck("league", "rosterRequirements", "positions") %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,"label","start") %>%
-    dplyr::filter(.data$label %in% c("QB","QB/RB/WR/TE"))
+    tidyr::hoist(1, "label", "start") %>%
+    dplyr::filter(.data$label %in% c("QB", "QB/RB/WR/TE"))
 
-  QB <- x$start[x$label=="QB"]
+  QB <- x$start[x$label == "QB"]
   SF <- x$start[x$label == "QB/RB/WR/TE"]
 
-  if(length(QB)==0) QB <- 0
+  if (length(QB) == 0) QB <- 0
 
-  if(length(SF)==0) SF <- 0
+  if (length(SF) == 0) SF <- 0
 
   y <- sum(QB, SF, na.rm = TRUE)
 
@@ -88,18 +86,16 @@ ff_league.flea_conn <- function(conn) {
   )
 }
 
-.flea_isidp <- function(league_endpoint){
+.flea_isidp <- function(league_endpoint) {
   x <- league_endpoint %>%
-    purrr::pluck('league','rosterRequirements','positions') %>%
+    purrr::pluck("league", "rosterRequirements", "positions") %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,"label","start")
+    tidyr::hoist(1, "label", "start")
 
-  any(x$label %in% c("LB","EDR","DL","IL", "LB","DB","CB","S"))
-
+  any(x$label %in% c("LB", "EDR", "DL", "IL", "LB", "DB", "CB", "S"))
 }
 
-.flea_flag_scoring <- function(conn){
-
+.flea_flag_scoring <- function(conn) {
   scoring_settings <- ff_scoring(conn)
 
   ppr_flag <- .flea_check_ppr(scoring_settings)
@@ -111,11 +107,9 @@ ff_league.flea_conn <- function(conn) {
   flags <- paste(flags[!is.na(flags) & !is.null(flags)], collapse = ", ")
 
   return(flags)
-
 }
 
-.flea_check_ppr <- function(scoring_settings){
-
+.flea_check_ppr <- function(scoring_settings) {
   x <- scoring_settings %>%
     dplyr::filter(.data$event == "Catch", .data$pos == "WR") %>%
     dplyr::pull(.data$points)
@@ -123,8 +117,7 @@ ff_league.flea_conn <- function(conn) {
   ifelse(x > 0, paste0(x, "_ppr"), "zero_ppr")
 }
 
-.flea_check_teprem <- function(scoring_settings){
-
+.flea_check_teprem <- function(scoring_settings) {
   te_prem <- scoring_settings %>%
     dplyr::group_by(.data$pos) %>%
     dplyr::summarise(points = sum(.data$points))
@@ -136,9 +129,9 @@ ff_league.flea_conn <- function(conn) {
   )
 }
 
-.flea_check_firstdown <- function(scoring_settings){
+.flea_check_firstdown <- function(scoring_settings) {
   first_downs <- scoring_settings %>%
-    dplyr::filter(stringr::str_detect(.data$event,"First Down"))
+    dplyr::filter(stringr::str_detect(.data$event, "First Down"))
 
-  ifelse(nrow(first_downs)>0,"PP1D",NA_character_)
+  ifelse(nrow(first_downs) > 0, "PP1D", NA_character_)
 }

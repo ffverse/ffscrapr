@@ -14,19 +14,18 @@
 #'
 #' @export
 ff_scoring.flea_conn <- function(conn) {
-
-  scoring_rules <- fleaflicker_getendpoint("FetchLeagueRules",league_id = conn$league_id) %>%
-    purrr::pluck('content',"groups") %>%
+  scoring_rules <- fleaflicker_getendpoint("FetchLeagueRules", league_id = conn$league_id) %>%
+    purrr::pluck("content", "groups") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    tidyr::unnest_longer('scoringRules') %>%
-    tidyr::unnest_wider('scoringRules') %>%
+    tidyr::unnest_longer("scoringRules") %>%
+    tidyr::unnest_wider("scoringRules") %>%
     dplyr::filter(!is.na(.data$description)) %>%
-    tidyr::hoist("points","point_value"="value") %>%
-    tidyr::hoist("pointsPer","points_per_value"="value") %>%
+    tidyr::hoist("points", "point_value" = "value") %>%
+    tidyr::hoist("pointsPer", "points_per_value" = "value") %>%
     tidyr::unnest_wider("category") %>%
     tidyr::unnest_longer("applyTo") %>%
-    dplyr::mutate(points = dplyr::coalesce(.data$points_per_value,.data$point_value)) %>%
+    dplyr::mutate(points = dplyr::coalesce(.data$points_per_value, .data$point_value)) %>%
     dplyr::select(
       dplyr::any_of(c(
         "pos" = "applyTo",
@@ -36,7 +35,8 @@ ff_scoring.flea_conn <- function(conn) {
         "label",
         "desc" = "description",
         "event_id" = "id"
-      )))
+      ))
+    )
 
   return(scoring_rules)
 }

@@ -28,7 +28,7 @@ fleaflicker_connect <- function(season = NULL,
   ## USER AGENT ##
   # Self-identifying is mostly about being polite.
   if (length(user_agent) > 1) stop("user_agent must be a character vector of length one!")
-  if (!is.null(user_agent))  .fn_set_useragent(user_agent)
+  if (!is.null(user_agent)) .fn_set_useragent(user_agent)
 
   ## RATE LIMIT ##
   # For more info, see: https://api.myfantasyleague.com/2020/api_info
@@ -69,5 +69,3 @@ print.flea_conn <- function(x, ...) {
   invisible(x)
 }
 # nocov end
-
-
