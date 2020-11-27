@@ -171,12 +171,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 5248      309054</span>
-<span class="co">#&gt; 2 NYG       308169</span>
-<span class="co">#&gt; 3 2325      184329</span>
-<span class="co">#&gt; 4 3357      178692</span>
-<span class="co">#&gt; 5 LAR       166869</span>
-<span class="co">#&gt; 6 232       165964</span></code></pre></div>
+<span class="co">#&gt; 1 NYG       215180</span>
+<span class="co">#&gt; 2 3357      194734</span>
+<span class="co">#&gt; 3 4147      165195</span>
+<span class="co">#&gt; 4 5248      149648</span>
+<span class="co">#&gt; 5 232       132294</span>
+<span class="co">#&gt; 6 GB        128103</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -190,16 +190,16 @@
 <span class="co">#&gt; # A tibble: 10 x 6</span>
 <span class="co">#&gt;    player_id  count player_name    pos   team    age</span>
 <span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 5248      309054 Gus Edwards    RB    BAL    25.6</span>
-<span class="co">#&gt;  2 NYG       308169 &lt;NA&gt;           DEF   NYG    NA  </span>
-<span class="co">#&gt;  3 2325      184329 Nelson Agholor WR    LV     27.5</span>
-<span class="co">#&gt;  4 3357      178692 Brandon Allen  QB    CIN    28.2</span>
-<span class="co">#&gt;  5 LAR       166869 &lt;NA&gt;           DEF   LAR    NA  </span>
-<span class="co">#&gt;  6 232       165964 Frank Gore     RB    NYJ    37.5</span>
-<span class="co">#&gt;  7 NO        161010 &lt;NA&gt;           DEF   NO     NA  </span>
-<span class="co">#&gt;  8 GB        156313 &lt;NA&gt;           DEF   GB     NA  </span>
-<span class="co">#&gt;  9 1500      137189 Jordan Reed    TE    SF     30.4</span>
-<span class="co">#&gt; 10 5885      124596 Ryan Finley    QB    CIN    25.9</span></code></pre></div>
+<span class="co">#&gt;  1 NYG       215180 &lt;NA&gt;           DEF   NYG    NA  </span>
+<span class="co">#&gt;  2 3357      194734 Brandon Allen  QB    CIN    28.2</span>
+<span class="co">#&gt;  3 4147      165195 Samaje Perine  RB    CIN    25.2</span>
+<span class="co">#&gt;  4 5248      149648 Gus Edwards    RB    BAL    25.6</span>
+<span class="co">#&gt;  5 232       132294 Frank Gore     RB    NYJ    37.5</span>
+<span class="co">#&gt;  6 GB        128103 &lt;NA&gt;           DEF   GB     NA  </span>
+<span class="co">#&gt;  7 2325      120343 Nelson Agholor WR    LV     27.5</span>
+<span class="co">#&gt;  8 LAR       113803 &lt;NA&gt;           DEF   LAR    NA  </span>
+<span class="co">#&gt;  9 1500       99333 Jordan Reed    TE    SF     30.4</span>
+<span class="co">#&gt; 10 1559       97158 Mike Glennon   QB    JAX    31</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>
