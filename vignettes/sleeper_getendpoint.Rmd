@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(dplyr.summarise.inform = FALSE)
+httptest::use_mock_api()
 ```
 
 ## Creating custom Sleeper API calls
@@ -74,3 +75,8 @@ trending
 ```
 
 There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven't we been bitten by this before?
+
+```{r include = FALSE}
+httptest::stop_mocking()
+```
+

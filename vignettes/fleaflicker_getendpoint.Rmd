@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(dplyr.summarise.inform = FALSE)
+
+httptest::use_mock_api()
 ```
 
 ## Creating custom Fleaflicker API calls
@@ -102,3 +104,8 @@ str(onegame_lineups,max.level = 2)
 ```
 
 From here, you can keep unravelling - including the "viewingActualPoints" and "viewingActualStats" columns!
+
+```{r include = FALSE}
+httptest::stop_mocking()
+```
+
