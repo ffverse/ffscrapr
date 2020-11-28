@@ -171,12 +171,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 3357      194006</span>
-<span class="co">#&gt; 2 4147      171617</span>
-<span class="co">#&gt; 3 NYG       135672</span>
-<span class="co">#&gt; 4 1559      102683</span>
-<span class="co">#&gt; 5 GB         90767</span>
-<span class="co">#&gt; 6 232        89511</span></code></pre></div>
+<span class="co">#&gt; 1 4187      259183</span>
+<span class="co">#&gt; 2 1169      127758</span>
+<span class="co">#&gt; 3 6156      117065</span>
+<span class="co">#&gt; 4 5100       73153</span>
+<span class="co">#&gt; 5 4381       64799</span>
+<span class="co">#&gt; 6 NYG        60636</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -188,18 +188,18 @@
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 10 x 6</span>
-<span class="co">#&gt;    player_id  count player_name    pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 3357      194006 Brandon Allen  QB    CIN    28.2</span>
-<span class="co">#&gt;  2 4147      171617 Samaje Perine  RB    CIN    25.2</span>
-<span class="co">#&gt;  3 NYG       135672 &lt;NA&gt;           DEF   NYG    NA  </span>
-<span class="co">#&gt;  4 1559      102683 Mike Glennon   QB    JAX    31  </span>
-<span class="co">#&gt;  5 GB         90767 &lt;NA&gt;           DEF   GB     NA  </span>
-<span class="co">#&gt;  6 232        89511 Frank Gore     RB    NYJ    37.5</span>
-<span class="co">#&gt;  7 1169       77955 Robert Griffin QB    BAL    30.8</span>
-<span class="co">#&gt;  8 LAR        71696 &lt;NA&gt;           DEF   LAR    NA  </span>
-<span class="co">#&gt;  9 2325       68278 Nelson Agholor WR    LV     27.5</span>
-<span class="co">#&gt; 10 SEA        66512 &lt;NA&gt;           DEF   SEA    NA</span></code></pre></div>
+<span class="co">#&gt;    player_id  count player_name       pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 4187      259183 Brian Hill        RB    ATL    25.1</span>
+<span class="co">#&gt;  2 1169      127758 Robert Griffin    QB    BAL    30.8</span>
+<span class="co">#&gt;  3 6156      117065 Benny Snell       RB    PIT    22.8</span>
+<span class="co">#&gt;  4 5100       73153 Jordan Wilkins    RB    IND    26.4</span>
+<span class="co">#&gt;  5 4381       64799 Taysom Hill       QB    NO     30.3</span>
+<span class="co">#&gt;  6 NYG        60636 &lt;NA&gt;              DEF   NYG    NA  </span>
+<span class="co">#&gt;  7 4147       56671 Samaje Perine     RB    CIN    25.2</span>
+<span class="co">#&gt;  8 3976       50089 Mitchell Trubisky QB    CHI    26.3</span>
+<span class="co">#&gt;  9 232        44765 Frank Gore        RB    NYJ    37.5</span>
+<span class="co">#&gt; 10 943        42135 Kyle Rudolph      TE    MIN    31.1</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>

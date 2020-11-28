@@ -246,20 +246,20 @@
 <span class="co">#&gt; # A tibble: 14 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    TE    WR</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 0010         Team Yoshi               40406  2590 13428  7405 16983</span>
-<span class="co">#&gt;  2 0004         Team Ice Climbers        40176   604 20842  3031 15699</span>
-<span class="co">#&gt;  3 0009         Team Link                39704  2763 12190  4061 20690</span>
-<span class="co">#&gt;  4 0006         Team King Dedede         38508  5825  6928  2258 23497</span>
-<span class="co">#&gt;  5 0003         Team Captain Falcon      36126  2295 12233  5974 15624</span>
-<span class="co">#&gt;  6 0007         Team Kirby               34981  3782 17098  1491 12610</span>
-<span class="co">#&gt;  7 0002         Team Simon Belmont       29495   504 11590    83 17318</span>
-<span class="co">#&gt;  8 0005         Team Dr. Mario           28609    78  5703  3703 19125</span>
-<span class="co">#&gt;  9 0011         Team Diddy Kong          27600  1308 13322  2637 10333</span>
-<span class="co">#&gt; 10 0014         Team Luigi               27012  3067  6516   965 16464</span>
-<span class="co">#&gt; 11 0012         Team Mewtwo              24913  1053 16679  1454  5727</span>
-<span class="co">#&gt; 12 0013         Team Ness                23070  1058 17205  2767  2040</span>
-<span class="co">#&gt; 13 0001         Team Pikachu             20795  2287  8608  1642  8258</span>
-<span class="co">#&gt; 14 0008         Team Fox                 18708  5343  8405   178  4782</span></code></pre></div>
+<span class="co">#&gt;  1 0010         Team Yoshi               41148  2595 13996  7671 16886</span>
+<span class="co">#&gt;  2 0004         Team Ice Climbers        39753   599 20313  3199 15642</span>
+<span class="co">#&gt;  3 0009         Team Link                39661  2761 12203  4037 20660</span>
+<span class="co">#&gt;  4 0006         Team King Dedede         38290  5813  6801  2144 23532</span>
+<span class="co">#&gt;  5 0007         Team Kirby               35213  3787 17214  1502 12710</span>
+<span class="co">#&gt;  6 0003         Team Captain Falcon      34524  2290 10666  5967 15601</span>
+<span class="co">#&gt;  7 0005         Team Dr. Mario           29461    53  6598  3703 19107</span>
+<span class="co">#&gt;  8 0002         Team Simon Belmont       29330   476 11446    71 17337</span>
+<span class="co">#&gt;  9 0011         Team Diddy Kong          26820  1280 12478  2654 10408</span>
+<span class="co">#&gt; 10 0014         Team Luigi               26250  3069  5676   979 16526</span>
+<span class="co">#&gt; 11 0012         Team Mewtwo              24862  1121 16546  1443  5752</span>
+<span class="co">#&gt; 12 0013         Team Ness                23539  1040 17686  2790  2023</span>
+<span class="co">#&gt; 13 0001         Team Pikachu             21103  2287  8930  1678  8208</span>
+<span class="co">#&gt; 14 0008         Team Fox                 18604  5352  8273   201  4778</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -270,20 +270,20 @@
 <span class="co">#&gt; # A tibble: 14 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    TE    WR</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 0010         Team Yoshi               0.094 0.08  0.079 0.197 0.09 </span>
-<span class="co">#&gt;  2 0004         Team Ice Climbers        0.093 0.019 0.122 0.081 0.083</span>
-<span class="co">#&gt;  3 0009         Team Link                0.092 0.085 0.071 0.108 0.109</span>
-<span class="co">#&gt;  4 0006         Team King Dedede         0.09  0.179 0.041 0.06  0.124</span>
-<span class="co">#&gt;  5 0003         Team Captain Falcon      0.084 0.07  0.072 0.159 0.083</span>
-<span class="co">#&gt;  6 0007         Team Kirby               0.081 0.116 0.1   0.04  0.067</span>
-<span class="co">#&gt;  7 0002         Team Simon Belmont       0.069 0.015 0.068 0.002 0.092</span>
-<span class="co">#&gt;  8 0005         Team Dr. Mario           0.067 0.002 0.033 0.098 0.101</span>
-<span class="co">#&gt;  9 0011         Team Diddy Kong          0.064 0.04  0.078 0.07  0.055</span>
-<span class="co">#&gt; 10 0014         Team Luigi               0.063 0.094 0.038 0.026 0.087</span>
-<span class="co">#&gt; 11 0012         Team Mewtwo              0.058 0.032 0.098 0.039 0.03 </span>
-<span class="co">#&gt; 12 0013         Team Ness                0.054 0.032 0.101 0.073 0.011</span>
-<span class="co">#&gt; 13 0001         Team Pikachu             0.048 0.07  0.05  0.044 0.044</span>
-<span class="co">#&gt; 14 0008         Team Fox                 0.043 0.164 0.049 0.005 0.025</span></code></pre></div>
+<span class="co">#&gt;  1 0010         Team Yoshi               0.096 0.08  0.083 0.202 0.089</span>
+<span class="co">#&gt;  2 0004         Team Ice Climbers        0.093 0.018 0.12  0.084 0.083</span>
+<span class="co">#&gt;  3 0009         Team Link                0.093 0.085 0.072 0.106 0.109</span>
+<span class="co">#&gt;  4 0006         Team King Dedede         0.089 0.179 0.04  0.056 0.124</span>
+<span class="co">#&gt;  5 0007         Team Kirby               0.082 0.116 0.102 0.039 0.067</span>
+<span class="co">#&gt;  6 0003         Team Captain Falcon      0.081 0.07  0.063 0.157 0.082</span>
+<span class="co">#&gt;  7 0005         Team Dr. Mario           0.069 0.002 0.039 0.097 0.101</span>
+<span class="co">#&gt;  8 0002         Team Simon Belmont       0.068 0.015 0.068 0.002 0.092</span>
+<span class="co">#&gt;  9 0011         Team Diddy Kong          0.063 0.039 0.074 0.07  0.055</span>
+<span class="co">#&gt; 10 0014         Team Luigi               0.061 0.094 0.034 0.026 0.087</span>
+<span class="co">#&gt; 11 0012         Team Mewtwo              0.058 0.034 0.098 0.038 0.03 </span>
+<span class="co">#&gt; 12 0013         Team Ness                0.055 0.032 0.105 0.073 0.011</span>
+<span class="co">#&gt; 13 0001         Team Pikachu             0.049 0.07  0.053 0.044 0.043</span>
+<span class="co">#&gt; 14 0008         Team Fox                 0.043 0.165 0.049 0.005 0.025</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -308,20 +308,20 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [14]</span>
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 0001         Team Pikachu     23.6   22.1   26.0   23.4        3        6</span>
-<span class="co">#&gt;  2 0002         Team Simon Be…   30.2   24.7   24.3   24.2        8       11</span>
-<span class="co">#&gt;  3 0003         Team Captain …   24.6   23.4   30.7   26.6        5        8</span>
-<span class="co">#&gt;  4 0004         Team Ice Clim…   28.5   25.0   25.9   27.5        5        9</span>
-<span class="co">#&gt;  5 0005         Team Dr. Mario   30.0   22.8   24.3   24.3        2        7</span>
-<span class="co">#&gt;  6 0006         Team King Ded…   25.3   25.5   25.7   24.7        3       10</span>
+<span class="co">#&gt;  1 0001         Team Pikachu     23.6   22.0   25.8   23.4        3        6</span>
+<span class="co">#&gt;  2 0002         Team Simon Be…   30.6   24.8   24.4   24.2        8       11</span>
+<span class="co">#&gt;  3 0003         Team Captain …   24.6   23.3   30.7   26.6        5        8</span>
+<span class="co">#&gt;  4 0004         Team Ice Clim…   28.6   25.0   25.8   27.5        5        9</span>
+<span class="co">#&gt;  5 0005         Team Dr. Mario   26.3   22.8   24.3   24.3        2        7</span>
+<span class="co">#&gt;  6 0006         Team King Ded…   25.3   25.5   25.9   24.7        3       10</span>
 <span class="co">#&gt;  7 0007         Team Kirby       24.0   24.5   28.7   27.5        4       10</span>
-<span class="co">#&gt;  8 0008         Team Fox         25.7   26.3   32.8   27.7        4       11</span>
-<span class="co">#&gt;  9 0009         Team Link        26.1   26.1   27.0   27.7        2       11</span>
-<span class="co">#&gt; 10 0010         Team Yoshi       28.8   21.9   27.3   24.7        2        6</span>
-<span class="co">#&gt; 11 0011         Team Diddy Ko…   31.7   25.8   24.0   23.5        4       11</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo      29.7   24.3   24.4   23.9        5        7</span>
-<span class="co">#&gt; 13 0013         Team Ness        31.3   23.2   23.5   26.0        6       11</span>
-<span class="co">#&gt; 14 0014         Team Luigi       32.2   24.4   25.4   26.4        3       12</span>
+<span class="co">#&gt;  8 0008         Team Fox         25.7   26.3   32.6   27.7        4       11</span>
+<span class="co">#&gt;  9 0009         Team Link        26.0   26.0   27.0   27.7        2       11</span>
+<span class="co">#&gt; 10 0010         Team Yoshi       28.8   21.9   27.2   24.7        2        6</span>
+<span class="co">#&gt; 11 0011         Team Diddy Ko…   31.9   25.8   24.0   23.4        4       11</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo      30.3   24.2   24.4   23.9        5        7</span>
+<span class="co">#&gt; 13 0013         Team Ness        31.4   23.2   23.5   26.0        6       11</span>
+<span class="co">#&gt; 14 0014         Team Luigi       32.2   24.5   25.4   26.4        3       12</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">
