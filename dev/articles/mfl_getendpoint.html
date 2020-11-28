@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.0.1</span>
       </span>
     </div>
 
@@ -83,6 +83,9 @@
     </li>
     <li>
       <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Cache</li>
@@ -157,7 +160,7 @@
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 3</span>
 <span class="co">#&gt;  $ query   : chr "https://api.myfantasyleague.com/2020/export?TYPE=leagueSearch&amp;SEARCH=sfbx%20conference&amp;JSON=1"</span>
-<span class="co">#&gt;  $ response:List of 10</span>
+<span class="co">#&gt;  $ response:List of 9</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "mfl_api"</span></code></pre></div>
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>

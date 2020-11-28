@@ -87,7 +87,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.0.1</span>
       </span>
     </div>
 
@@ -128,6 +128,9 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
     <li>
       <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
     </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
@@ -160,7 +163,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Player Scoring History</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_playerscores.R'><code>R/sleeper_playerscores.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_playerscores.R'><code>R/flea_playerscores.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a>, and 1 more</small>
     <div class="hidden name"><code>ff_playerscores.Rd</code></div>
     </div>
 
@@ -170,7 +173,10 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
 Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for flea_conn</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>week</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -186,16 +192,20 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
       <td><p>the list object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>other arguments (currently unused)</p></td>
+    </tr>
+    <tr>
+      <th>page_limit</th>
+      <td><p>A numeric describing the number of pages to return - default NULL returns all available</p></td>
+    </tr>
+    <tr>
       <th>season</th>
       <td><p>the season of interest - generally only the most recent 2-3 seasons are available</p></td>
     </tr>
     <tr>
       <th>week</th>
       <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments (currently unused)</p></td>
     </tr>
     </table>
 
@@ -206,15 +216,35 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
 
     
 <ul>
+<li><p><code>flea_conn</code>: Fleaflicker: returns the season, season average, and standard deviation</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: Deprecated their open API endpoint for player scores</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 60 x 8</span><span>
+#&gt;    player_id player_name       pos   team  games score_total score_avg score_sd
+#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     </span><span style='text-decoration: underline;'>14</span><span>664 Kyler Murray      QB    ARI      10        375.      37.5     6.63
+#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>13</span><span>761 Josh Allen        QB    BUF      10        337.      33.7    10.6 
+#&gt; </span><span style='color: #555555;'> 3</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson    QB    HOU      10        304.      30.4     7.78
+#&gt; </span><span style='color: #555555;'> 4</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes   QB    KC       10        356.      35.6    11.1 
+#&gt; </span><span style='color: #555555;'> 5</span><span>      </span><span style='text-decoration: underline;'>8</span><span>598 Russell Wilson    QB    SEA      10        370.      37.0    10.1 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert    QB    LAC       9        304.      33.8     7.15
+#&gt; </span><span style='color: #555555;'> 7</span><span>     </span><span style='text-decoration: underline;'>14</span><span>668 Daniel Jones      QB    NYG      10        196.      19.6     6.64
+#&gt; </span><span style='color: #555555;'> 8</span><span>     </span><span style='text-decoration: underline;'>10</span><span>240 Teddy Bridgewater QB    CAR      10        246.      24.6     7.59
+#&gt; </span><span style='color: #555555;'> 9</span><span>      </span><span style='text-decoration: underline;'>5</span><span>371 Matt Ryan         QB    ATL      10        254.      25.4    11.6 
+#&gt; </span><span style='color: #555555;'>10</span><span>     </span><span style='text-decoration: underline;'>10</span><span>315 Derek Carr        QB    LV       10        245.      24.5     7.9 
+#&gt; </span><span style='color: #555555;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 597 x 8</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 597 x 8</span><span>
 #&gt;    season week  player_id player_name          pos   team  points isAvailable
 #&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL   480.68 0          

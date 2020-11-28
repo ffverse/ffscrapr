@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.0.1</span>
       </span>
     </div>
 
@@ -83,6 +83,9 @@
     </li>
     <li>
       <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Cache</li>
@@ -155,7 +158,7 @@
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 10</span>
 <span class="co">#&gt;  $ query   : chr "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=48&amp;limit=10"</span>
-<span class="co">#&gt;  $ response:List of 10</span>
+<span class="co">#&gt;  $ response:List of 9</span>
 <span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
 <span class="co">#&gt;  - attr(*, "class")= chr "sleeper_api"</span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
@@ -169,12 +172,12 @@
 <span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   player_id  count</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;int&gt;</span>
-<span class="co">#&gt; 1 6918      394089</span>
-<span class="co">#&gt; 2 4994      259116</span>
-<span class="co">#&gt; 3 2306      255828</span>
-<span class="co">#&gt; 4 2257      209828</span>
-<span class="co">#&gt; 5 CLE       197243</span>
-<span class="co">#&gt; 6 LAC       189749</span></code></pre></div>
+<span class="co">#&gt; 1 4187      270285</span>
+<span class="co">#&gt; 2 6156      142272</span>
+<span class="co">#&gt; 3 1169      129162</span>
+<span class="co">#&gt; 4 5100       84788</span>
+<span class="co">#&gt; 5 4381       64578</span>
+<span class="co">#&gt; 6 333        62680</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -186,18 +189,18 @@
 
 <span class="va">trending</span>
 <span class="co">#&gt; # A tibble: 10 x 6</span>
-<span class="co">#&gt;    player_id  count player_name     pos   team    age</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 6918      394089 Salvon Ahmed    RB    MIA    21.9</span>
-<span class="co">#&gt;  2 4994      259116 Kalen Ballage   RB    LAC    24.9</span>
-<span class="co">#&gt;  3 2306      255828 Jameis Winston  QB    NO     26.9</span>
-<span class="co">#&gt;  4 2257      209828 Carlos Hyde     RB    SEA    30.2</span>
-<span class="co">#&gt;  5 CLE       197243 &lt;NA&gt;            DEF   CLE    NA  </span>
-<span class="co">#&gt;  6 LAC       189749 &lt;NA&gt;            DEF   LAC    NA  </span>
-<span class="co">#&gt;  7 6819      173425 Michael Pittman WR    IND    23.1</span>
-<span class="co">#&gt;  8 3209      154198 Devontae Booker RB    LV     28.5</span>
-<span class="co">#&gt;  9 MIN       145098 &lt;NA&gt;            DEF   MIN    NA  </span>
-<span class="co">#&gt; 10 1387      134503 Rex Burkhead    RB    NE     30.4</span></code></pre></div>
+<span class="co">#&gt;    player_id  count player_name       pos   team    age</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 4187      270285 Brian Hill        RB    ATL    25.1</span>
+<span class="co">#&gt;  2 6156      142272 Benny Snell       RB    PIT    22.8</span>
+<span class="co">#&gt;  3 1169      129162 Robert Griffin    QB    BAL    30.8</span>
+<span class="co">#&gt;  4 5100       84788 Jordan Wilkins    RB    IND    26.4</span>
+<span class="co">#&gt;  5 4381       64578 Taysom Hill       QB    NO     30.3</span>
+<span class="co">#&gt;  6 333        62680 Ryan Fitzpatrick  QB    MIA    38  </span>
+<span class="co">#&gt;  7 NYG        57945 &lt;NA&gt;              DEF   NYG    NA  </span>
+<span class="co">#&gt;  8 4147       52537 Samaje Perine     RB    CIN    25.2</span>
+<span class="co">#&gt;  9 3976       50102 Mitchell Trubisky QB    CHI    26.3</span>
+<span class="co">#&gt; 10 943        45866 Kyle Rudolph      TE    MIN    31.1</span></code></pre></div>
 <p>There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven’t we been bitten by this before?</p>
 </div>
   </div>

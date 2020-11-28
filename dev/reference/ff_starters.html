@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.0.1</span>
       </span>
     </div>
 
@@ -126,6 +126,9 @@
     <li>
       <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
     </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
@@ -158,7 +161,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Starting Lineups</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_starters.R'><code>R/mfl_starters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_starters.R'><code>R/sleeper_starters.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_starters.R'><code>R/flea_starters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_starters.R'><code>R/mfl_starters.R</code></a>, and 1 more</small>
     <div class="hidden name"><code>ff_starters.Rd</code></div>
     </div>
 
@@ -167,6 +170,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for flea_conn</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
 <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='st'>"all"</span>, season <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -202,12 +208,18 @@
 
     
 <ul>
+<li><p><code>flea_conn</code>: Fleaflicker: returns who was started as well as what they scored.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_starters</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 938 x 11</span><span>
@@ -227,7 +239,7 @@
 #&gt; </span><span style='color: #555555;'>#   player_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='fl'>522458773317046272</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='va'>jml_starters</span> <span class='op'>&lt;-</span> <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
 <span class='co'># }</span>
 

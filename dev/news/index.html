@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.0.1</span>
       </span>
     </div>
 
@@ -125,6 +125,9 @@
     <li>
       <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
     </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
@@ -164,35 +167,45 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
-<p>Fleaflicker looks like it’s going to be the next platform.</p>
-<p>Also amassing some tweaks and hotfixes for a patch version (probably with improved vignettes).</p>
+<div id="minor-patches" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-patches" class="anchor"></a>Minor patches</h3>
+<ul>
+<li>Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant</li>
+<li>Changing the league_id output of <code>sleeper_userleagues</code> to be a character column (because of cran no-longdouble support)</li>
+</ul>
+</div>
+</div>
+    <div id="ffscrapr-120" class="section level1">
+<h1 class="page-header" data-toc-text="1.2.0">
+<a href="#ffscrapr-120" class="anchor"></a>ffscrapr 1.2.0<small> 2020-11-27 </small>
+</h1>
+<p>The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. This release also adds improved caching options, including writing to your filesystem for persistent caching (see the vignette!), and one hotfix for sleeper_getendpoint.</p>
 <div id="breaking-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#breaking-changes" class="anchor"></a>BREAKING CHANGES</h3>
 <ul>
 <li>
-<code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters. (1.1.0.9003)</li>
+<code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.</li>
 </ul>
 </div>
-<div id="tweaks-to-be-released-with-1next-version" class="section level3">
+<div id="other-tweaks-to-existing-platformsmethods" class="section level3">
 <h3 class="hasAnchor">
-<a href="#tweaks-to-be-released-with-1next-version" class="anchor"></a>Tweaks to be released with 1next version</h3>
+<a href="#other-tweaks-to-existing-platformsmethods" class="anchor"></a>Other tweaks to existing platforms/methods</h3>
 <ul>
-<li>Small copyedits to existing vignettes. (1.1.0.9000)</li>
-<li>Added filesystem cache capabilities and a vignette to detailing how to use it (1.1.0.9001)</li>
+<li>Small copyedits to existing vignettes.</li>
+<li>Added filesystem cache capabilities and a vignette to detailing how to use it.</li>
 </ul>
 </div>
-<div id="fleaflicker-progress" class="section level3">
+<div id="fleaflicker-notes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fleaflicker-progress" class="anchor"></a>Fleaflicker Progress</h3>
+<a href="#fleaflicker-notes" class="anchor"></a>Fleaflicker notes</h3>
+<p>All functions now have Fleaflicker methods! Here are notes about what <strong><em>isn’t</em></strong> the same:</p>
 <ul>
-<li>Added <code><a href="../reference/fleaflicker_getendpoint.html">fleaflicker_getendpoint()</a></code> (1.1.0.9002)</li>
-<li>Added <code><a href="../reference/ff_connect.html">ff_connect()</a></code> (1.1.0.9002)</li>
-<li>Added <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> (1.1.0.9002)</li>
-<li>Added <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - interestingly, has feature for looking up by email but doesn’t return actual user ID? (1.1.0.9002)</li>
-<li>Added <code><a href="../reference/fleaflicker_players.html">fleaflicker_players()</a></code> - requires a connection/leagueID by default. (1.1.0.9003)</li>
-<li>Added <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> and tests. (1.1.0.9003)</li>
-<li>Added <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> and tests. (1.1.0.9003)</li>
+<li>
+<code><a href="../reference/fleaflicker_players.html">fleaflicker_players()</a></code> requires a connection/leagueID by default - acts a little oddly on game days as of right now.</li>
+<li>
+<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> - Fleaflicker’s API returns season level data easily, week-level is not readily available yet without some workarounds. Everything else seems to be okay.</li>
 </ul>
 </div>
 </div>
@@ -234,7 +247,7 @@
 <li>Added method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code>
 </li>
 <li>Added handling for offensive_points and defensive_points in <code><a href="../reference/ff_standings.html">ff_standings()</a></code> (<a href='https://github.com/dynastyprocess/ffscrapr/issues/69'>#69</a>, nice.)</li>
-<li>Added <code><a href="../reference/ff_starters.html">ff_starters()</a></code> (1.0.0.9011) as requested by <a href='https://github.com/dynastyprocess/ffscrapr/issues/76'>#76</a> (thanks, Mike!)</li>
+<li>Added <code><a href="../reference/ff_starters.html">ff_starters()</a></code> as requested by <a href='https://github.com/dynastyprocess/ffscrapr/issues/76'>#76</a> (thanks, Mike!)</li>
 <li>Added an <code><a href="https://httr.r-lib.org/reference/handle_pool.html">httr::handle_reset()</a></code> call to fix login-caching bug.</li>
 <li>Polished vignettes a little.</li>
 </ul>
