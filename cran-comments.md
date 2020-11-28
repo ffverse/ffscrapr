@@ -1,6 +1,10 @@
-# RESUBMISSION
+# RESUBMISSION 2
 
-Have much reduced test cache files and package tarball should now build to about 3.2 MB.
+- Have changed examples to refer to character league_ids instead of integer ones, so that it works on noLD systems.
+
+# RESUBMISSION 1
+
+- Have much reduced test cache files and package tarball should now build to about 3.2 MB.
 
 ## Test environments
 * local (Windows) R installation, R 4.0.2
@@ -11,4 +15,3 @@ Have much reduced test cache files and package tarball should now build to about
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
-
