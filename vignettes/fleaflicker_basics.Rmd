@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
 )
 options(dplyr.summarise.inform = FALSE)
 
+httptest::.mockPaths("../tests/testthat")
 httptest::use_mock_api()
-
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Fleaflicker. 
