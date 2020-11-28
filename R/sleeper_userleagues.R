@@ -35,6 +35,7 @@ ff_userleagues.sleeper_conn <- function(conn = NULL, user_name = NULL, season = 
     purrr::map_dfr(`[`, c("name", "league_id")) %>%
     dplyr::rename(league_name = .data$name) %>%
     dplyr::mutate(
+      league_id = as.character(league_id),
       franchise_name = purrr::map_chr(.data$league_id, .sleeper_userteams, user_id),
       franchise_id = user_id
     )
