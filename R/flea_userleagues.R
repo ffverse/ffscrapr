@@ -25,7 +25,7 @@ ff_userleagues.flea_conn <- function(conn = NULL, user_email = NULL, season = NU
   fleaflicker_userleagues(user_email, season)
 }
 
-#' flea - Get User Leagues
+#' Fleaflicker - Get User Leagues
 #'
 #' This function returns the leagues that a specific user is in.
 #' This variant can be used without first creating a connection object.

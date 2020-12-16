@@ -2,7 +2,7 @@
 % Please edit documentation in R/flea_players.R
 \name{fleaflicker_players}
 \alias{fleaflicker_players}
-\title{fleaflicker players library}
+\title{Fleaflicker players library}
 \usage{
 fleaflicker_players(conn, page_limit = NULL)
 }

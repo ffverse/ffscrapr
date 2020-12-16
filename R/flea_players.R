@@ -1,4 +1,4 @@
-#' fleaflicker players library
+#' Fleaflicker players library
 #'
 #' A cached table of Fleaflicker NFL players. Will store in memory for each session!
 #' (via memoise in zzz.R)

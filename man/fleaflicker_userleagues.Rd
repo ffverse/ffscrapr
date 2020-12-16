@@ -2,7 +2,7 @@
 % Please edit documentation in R/flea_userleagues.R
 \name{fleaflicker_userleagues}
 \alias{fleaflicker_userleagues}
-\title{flea - Get User Leagues}
+\title{Fleaflicker - Get User Leagues}
 \usage{
 fleaflicker_userleagues(user_email, season = NULL)
 }
