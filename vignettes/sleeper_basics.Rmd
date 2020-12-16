@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(dplyr.summarise.inform = FALSE)
+httptest::.mockPaths("../tests/testthat")
+httptest::use_mock_api()
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Sleeper. 
@@ -147,3 +149,8 @@ age_summary
 ## Next steps
 
 In this vignette, I've used ~three functions: ff_connect, ff_league, and ff_rosters. Now that you've gotten this far, why not check out some of the other possibilities?
+
+```{r include = FALSE}
+httptest::stop_mocking()
+```
+

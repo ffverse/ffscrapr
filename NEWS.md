@@ -1,3 +1,9 @@
+# ffscrapr 1.2.1
+
+### Minor patches
+- Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant
+- Changing the league_id output of `sleeper_userleagues` to be a character column (because of cran no-longdouble support)
+
 # ffscrapr 1.2.0
 
 The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. This release also adds improved caching options, including writing to your filesystem for persistent caching (see the vignette!), and one hotfix for sleeper_getendpoint.
@@ -8,7 +14,6 @@ The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker.
 ### Other tweaks to existing platforms/methods
 
 - Small copyedits to existing vignettes.
-- Caching vignette rebuild.
 - Added filesystem cache capabilities and a vignette to detailing how to use it.
 
 ### Fleaflicker notes

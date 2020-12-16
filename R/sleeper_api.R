@@ -1,6 +1,6 @@
 #### SLEEPER GET API ####
 
-#' GET any SLEEPER endpoint
+#' GET any Sleeper endpoint
 #'
 #' The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the Sleeper API reference page.
 #'

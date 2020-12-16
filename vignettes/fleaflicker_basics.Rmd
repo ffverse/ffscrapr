@@ -14,6 +14,9 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(dplyr.summarise.inform = FALSE)
+
+httptest::.mockPaths("../tests/testthat")
+httptest::use_mock_api()
 ```
 
 In this vignette, I'll walk through how to get started with a basic dynasty value analysis on Fleaflicker. 
@@ -141,3 +144,8 @@ age_summary
 ## Next steps
 
 In this vignette, I've used only a few functions: ff_connect, ff_league, ff_rosters, and dp_values. Now that you've gotten this far, why not check out some of the other possibilities?
+
+```{r include = FALSE}
+httptest::stop_mocking()
+```
+

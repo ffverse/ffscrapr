@@ -26,12 +26,12 @@ sources.
 
 ### Installation
 
-Version 1.2.0 is now on CRAN 🎉 and can be installed with:
+Version 1.2.1 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.0")
+remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.1")
 ```
 
 Install the development version from GitHub with:
@@ -63,7 +63,7 @@ ff_league(ssb) %>% str()
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
 #>  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"
-#>  $ best_ball      : logi TRUE
+#>  $ best_ball      : logi FALSE
 #>  $ salary_cap     : logi FALSE
 #>  $ player_copies  : num 1
 #>  $ years_active   : chr "2018-2020"
@@ -73,28 +73,28 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 439 x 11
+#> # A tibble: 438 x 11
 #>   franchise_id franchise_name player_id player_name pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2
+#> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.3
 #> 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  
-#> 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.6
-#> 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
-#> 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4
-#> # ... with 434 more rows, and 4 more variables: roster_status <chr>,
+#> 3 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
+#> 4 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.5
+#> 5 0001         Team Pikachu   13168     Reynolds, ~ WR    LAR    25.8
+#> # ... with 433 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 891 x 12
+#> # A tibble: 1,026 x 12
 #>   timestamp           type  type_desc franchise_id franchise_name player_id
 #>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#> 1 2020-11-22 19:29:36 FREE~ added     0009         Team Link      12155    
-#> 2 2020-11-22 19:29:36 FREE~ dropped   0009         Team Link      13794    
-#> 3 2020-11-22 14:49:11 FREE~ added     0014         Team Luigi     14062    
-#> 4 2020-11-21 22:24:25 IR    deactiva~ 0014         Team Luigi     13136    
-#> 5 2020-11-21 22:24:02 FREE~ added     0014         Team Luigi     13136    
-#> # ... with 886 more rows, and 6 more variables: player_name <chr>, pos <chr>,
+#> 1 2020-12-15 19:56:03 FREE~ dropped   0013         Team Ness      14331    
+#> 2 2020-12-15 19:56:03 IR    activated 0013         Team Ness      13620    
+#> 3 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    13963    
+#> 4 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    14871    
+#> 5 2020-12-11 18:39:43 FREE~ dropped   0012         Team Mewtwo    14793    
+#> # ... with 1,021 more rows, and 6 more variables: player_name <chr>, pos <chr>,
 #> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
 ```
 
