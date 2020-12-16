@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.1</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -102,7 +102,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/dynastyprocess/ffscrapr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,11 +130,11 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<p>Version 1.2.0 is now on CRAN 🎉 and can be installed with:</p>
+<p>Version 1.2.1 is now on CRAN 🎉 and can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span>
 <span class="co"># or from GitHub release with the remotes package # install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>,ref <span class="op">=</span> <span class="st">"v1.2.0"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>,ref <span class="op">=</span> <span class="st">"v1.2.1"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span><span class="op">)</span></code></pre></div>
@@ -157,7 +157,7 @@
 <span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
 <span class="co">#&gt;  $ idp            : logi FALSE</span>
 <span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"</span>
-<span class="co">#&gt;  $ best_ball      : logi TRUE</span>
+<span class="co">#&gt;  $ best_ball      : logi FALSE</span>
 <span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
 <span class="co">#&gt;  $ player_copies  : num 1</span>
 <span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
@@ -167,28 +167,28 @@
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 439 x 11</span>
+<span class="co">#&gt; # A tibble: 438 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.3</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  </span>
-<span class="co">#&gt; 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.6</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4</span>
-<span class="co">#&gt; # ... with 434 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.5</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, ~ WR    LAR    25.8</span>
+<span class="co">#&gt; # ... with 433 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 891 x 12</span>
+<span class="co">#&gt; # A tibble: 1,026 x 12</span>
 <span class="co">#&gt;   timestamp           type  type_desc franchise_id franchise_name player_id</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt; 1 2020-11-22 19:29:36 FREE~ added     0009         Team Link      12155    </span>
-<span class="co">#&gt; 2 2020-11-22 19:29:36 FREE~ dropped   0009         Team Link      13794    </span>
-<span class="co">#&gt; 3 2020-11-22 14:49:11 FREE~ added     0014         Team Luigi     14062    </span>
-<span class="co">#&gt; 4 2020-11-21 22:24:25 IR    deactiva~ 0014         Team Luigi     13136    </span>
-<span class="co">#&gt; 5 2020-11-21 22:24:02 FREE~ added     0014         Team Luigi     13136    </span>
-<span class="co">#&gt; # ... with 886 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+<span class="co">#&gt; 1 2020-12-15 19:56:03 FREE~ dropped   0013         Team Ness      14331    </span>
+<span class="co">#&gt; 2 2020-12-15 19:56:03 IR    activated 0013         Team Ness      13620    </span>
+<span class="co">#&gt; 3 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    13963    </span>
+<span class="co">#&gt; 4 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    14871    </span>
+<span class="co">#&gt; 5 2020-12-11 18:39:43 FREE~ dropped   0012         Team Mewtwo    14793    </span>
+<span class="co">#&gt; # ... with 1,021 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 <span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></code></pre></div>
 <p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
 </div>
