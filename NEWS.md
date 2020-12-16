@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.2.1
 
 ### Minor patches
 - Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant

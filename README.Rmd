@@ -31,12 +31,12 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Version 1.2.0 is now on CRAN 🎉 and can be installed with:
+Version 1.2.1 is now on CRAN 🎉 and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.0")
+remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.1")
 ```
 
 Install the development version from GitHub with:

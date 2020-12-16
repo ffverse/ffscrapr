@@ -2,7 +2,7 @@
 % Please edit documentation in R/sleeper_api.R
 \name{sleeper_getendpoint}
 \alias{sleeper_getendpoint}
-\title{GET any SLEEPER endpoint}
+\title{GET any Sleeper endpoint}
 \usage{
 sleeper_getendpoint(endpoint, ...)
 }
