@@ -167,14 +167,21 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
+<div id="minor-patches" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-patches" class="anchor"></a>Minor patches</h3>
+<ul>
+<li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>. ()</li>
+</ul>
+</div>
 </div>
     <div id="ffscrapr-121" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.1">
 <a href="#ffscrapr-121" class="anchor"></a>ffscrapr 1.2.1<small> 2020-12-16 </small>
 </h1>
-<div id="minor-patches" class="section level3">
+<div id="minor-patches-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-patches" class="anchor"></a>Minor patches</h3>
+<a href="#minor-patches-1" class="anchor"></a>Minor patches</h3>
 <ul>
 <li>Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant</li>
 <li>Changing the league_id output of <code>sleeper_userleagues</code> to be a character column (because of cran no-longdouble support)</li>
