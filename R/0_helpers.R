@@ -23,6 +23,28 @@
   return(format(date - 365.25, "%Y"))
 }
 
+#' Create RETRY version of GET
+#'
+#' This wrapper on httr retries the httr::GET function based on best-practice heuristics
+#'
+#' @param ... arguments passed to \code{httr::GET}
+#'
+#' @keywords internal
+.retry_get <- function(...){
+  httr::RETRY("GET",...)
+}
+
+#' Create RETRY version of POST
+#'
+#' This wrapper on httr retries the httr::POST function based on best-practice heuristics.
+#'
+#' @param ... arguments passed to \code{httr::POST}
+#'
+#' @keywords internal
+.retry_post <- function(...){
+  httr::RETRY("POST",...)
+}
+
 #' Set rate limit
 #'
 #' A helper function that creates a new copy of the httr::GET function and stores it
@@ -36,13 +58,13 @@
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
   if (toggle) {
-    fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
-    fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
+    fn_get <- ratelimitr::limit_rate(.retry_get, ratelimitr::rate(rate_number, rate_seconds))
+    fn_post <- ratelimitr::limit_rate(.retry_post, ratelimitr::rate(rate_number, rate_seconds))
   }
 
   if (!toggle) {
-    fn_get <- httr::GET
-    fn_post <- httr::POST
+    fn_get <- .retry_get
+    fn_post <- .retry_post
   }
 
   if (platform == "MFL") {
@@ -100,3 +122,4 @@
     )
   return(all_play)
 }
+

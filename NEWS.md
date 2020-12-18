@@ -1,5 +1,8 @@
 # ffscrapr (development version)
 
+### Minor patches
+- Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). ()
+
 # ffscrapr 1.2.1
 
 ### Minor patches
