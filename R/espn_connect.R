@@ -28,16 +28,17 @@ espn_connect <- function(season = NULL,
                          rate_limit_number = NULL,
                          rate_limit_seconds = NULL,
                          ...) {
-  # nocov start
+  checkmate::assert_character(user_agent, null.ok = TRUE)
+  checkmate::assert_logical(rate_limit, len = 1)
+  checkmate::assert_numeric(rate_limit_number, null.ok = TRUE)
+  checkmate::assert_numeric(rate_limit_seconds, null.ok = TRUE)
 
+  # nocov start
   ## USER AGENT ##
   # Self-identifying is mostly about being polite.
-  checkmate::assert_character(user_agent,len = 1)
   if (!is.null(user_agent)) .fn_set_useragent(user_agent)
 
   ## RATE LIMIT ##
-
-  checkmate::assert_logical(rate_limit, len = 1)
   if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
     .fn_set_ratelimit(rate_limit,"espn", rate_limit_number, rate_limit_seconds)
   }
