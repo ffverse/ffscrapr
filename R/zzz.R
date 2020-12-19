@@ -74,6 +74,7 @@
     get.mfl = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(2, 3)),
     get.sleeper = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
     get.flea = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
+    get.espn = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
     post = ratelimitr::limit_rate(.retry_post, ratelimitr::rate(60, 60))
   )
 

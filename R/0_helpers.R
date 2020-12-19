@@ -57,6 +57,7 @@
 #' @keywords internal
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
+
   if (toggle) {
     fn_get <- ratelimitr::limit_rate(.retry_get, ratelimitr::rate(rate_number, rate_seconds))
     fn_post <- ratelimitr::limit_rate(.retry_post, ratelimitr::rate(rate_number, rate_seconds))
@@ -67,12 +68,22 @@
     fn_post <- .retry_post
   }
 
-  if (platform == "MFL") {
+  if (platform == "mfl") {
     assign("get.mfl", fn_get, envir = .ffscrapr_env)
     assign("post.mfl", fn_post, envir = .ffscrapr_env)
   }
 
-  if (platform == "Sleeper") {
+  if (platform == "sleeper") {
+    assign("get.sleeper", fn_get, envir = .ffscrapr_env)
+    assign("post.sleeper", fn_post, envir = .ffscrapr_env)
+  }
+
+  if (platform == "fleaflicker") {
+    assign("get.sleeper", fn_get, envir = .ffscrapr_env)
+    assign("post.sleeper", fn_post, envir = .ffscrapr_env)
+  }
+
+  if (platform == "espn") {
     assign("get.sleeper", fn_get, envir = .ffscrapr_env)
     assign("post.sleeper", fn_post, envir = .ffscrapr_env)
   }
