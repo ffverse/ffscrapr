@@ -21,10 +21,10 @@ httptest::use_mock_api()
 
   <!-- badges: start -->
   
-  [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square)](https://CRAN.R-project.org/package=ffscrapr)
-  [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
-  [![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=flat-square)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
-  [![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
+  [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=for-the-badge)](https://CRAN.R-project.org/package=ffscrapr)
+  [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=for-the-badge)](https://www.tidyverse.org/lifecycle/#maturing)
+  [![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=for-the-badge)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+  [![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=for-the-badge)](https://github.com/DynastyProcess/ffscrapr/actions)
   
   <!-- badges: end -->
 
