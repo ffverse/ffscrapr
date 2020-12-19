@@ -45,7 +45,7 @@ sleeper_connect <- function(season = NULL,
   }
 
   if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
-    .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+    .fn_set_ratelimit(rate_limit, "Sleeper", rate_limit_number, rate_limit_seconds)
   }
 
   # nocov end
