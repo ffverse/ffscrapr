@@ -14,7 +14,7 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-sq
 [![Codecov test
 coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=flat-square)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
-status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
 
 <!-- badges: end -->
 
@@ -30,8 +30,9 @@ Version 1.2.1 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
-# or from GitHub release with the remotes package # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.1")
+# or from GitHub release with the remotes package via:
+# install.packages("remotes")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.1")
 ```
 
 Install the development version from GitHub with:
@@ -63,7 +64,7 @@ ff_league(ssb) %>% str()
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
 #>  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"
-#>  $ best_ball      : logi FALSE
+#>  $ best_ball      : logi TRUE
 #>  $ salary_cap     : logi FALSE
 #>  $ player_copies  : num 1
 #>  $ years_active   : chr "2018-2020"
@@ -73,34 +74,42 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 438 x 11
-#>   franchise_id franchise_name player_id player_name pos   team    age
-#>   <chr>        <chr>          <chr>     <chr>       <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.3
-#> 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  
-#> 3 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9
-#> 4 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.5
-#> 5 0001         Team Pikachu   13168     Reynolds, ~ WR    LAR    25.8
-#> # ... with 433 more rows, and 4 more variables: roster_status <chr>,
+#> # A tibble: 443 x 11
+#>   franchise_id franchise_name player_id player_name     pos   team    age
+#>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.3
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.1
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    24.9
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.5
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    25.8
+#> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 1,026 x 12
-#>   timestamp           type  type_desc franchise_id franchise_name player_id
-#>   <dttm>              <chr> <chr>     <chr>        <chr>          <chr>    
-#> 1 2020-12-15 19:56:03 FREE~ dropped   0013         Team Ness      14331    
-#> 2 2020-12-15 19:56:03 IR    activated 0013         Team Ness      13620    
-#> 3 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    13963    
-#> 4 2020-12-11 18:40:22 IR    activated 0012         Team Mewtwo    14871    
-#> 5 2020-12-11 18:39:43 FREE~ dropped   0012         Team Mewtwo    14793    
-#> # ... with 1,021 more rows, and 6 more variables: player_name <chr>, pos <chr>,
-#> #   team <chr>, bbid_spent <dbl>, trade_partner <chr>, comments <chr>
+#> # A tibble: 152 x 12
+#>   timestamp           type       type_desc franchise_id franchise_name   
+#>   <dttm>              <chr>      <chr>     <chr>        <chr>            
+#> 1 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
+#> 2 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
+#> 3 2020-06-16 01:56:49 TAXI       promoted  0014         Team Luigi       
+#> 4 2020-06-16 01:56:49 TAXI       demoted   0014         Team Luigi       
+#> 5 2020-06-12 23:51:44 FREE_AGENT dropped   0010         Team Yoshi       
+#> # ... with 147 more rows, and 7 more variables: player_id <chr>,
+#> #   player_name <chr>, pos <chr>, team <chr>, bbid_spent <dbl>,
+#> #   trade_partner <chr>, comments <chr>
 ```
 
-For a more detailed usage example, including a template dynasty league
-analysis script, please check out the reference articles and/or
-vignettes\!
+Platform-specific guides on getting started with ffscrapr are here:
+
+  - [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
+  - [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
+  - [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
+
+There are also some more advanced guides for custom API calls in the
+[Articles section](https://ffscrapr.dynastyprocess.com/articles/), as
+well as some guides on [optimizing ffscrapr’s
+performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
 
 ### Contributing
 

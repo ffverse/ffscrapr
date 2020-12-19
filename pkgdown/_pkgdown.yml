@@ -55,10 +55,16 @@ template:
   params:
     bootswatch: cosmo
   opengraph:
+    image:
+      src: man/figures/ffscrapr.svg
+      alt: "ffscrapr - an R client for fantasy football platforms"
     twitter:
       creator: "@_TanHo"
       site: "@DynastyProcess"
       card: summary
+    #docsearch:
+      #api_key: API_KEY
+      #index_name: INDEX_NAME
 
 development:
   mode: auto
