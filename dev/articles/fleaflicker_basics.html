@@ -20,7 +20,8 @@
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Fleaflicker: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -203,31 +204,31 @@
 
 <span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sportradar_id</span>,<span class="va">age</span>,<span class="va">ecr_1qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_1qb</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sportradar_id</span>,<span class="va">age</span>,<span class="va">ecr_2qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_2qb</span><span class="op">)</span>
 
 <span class="co"># ff_rosters() will return the sportradar_id, which we can then match to our player values!</span>
 
 <span class="va">aaa_values</span> <span class="op">&lt;-</span> <span class="va">aaa_rosters</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sportradar_id"</span><span class="op">=</span><span class="st">"sportradar_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">value_1qb</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team  sportradar_id</span>
 <span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        </span>
 <span class="co">#&gt; 1      1578553 Running Bear       12926 Chris Godw… WR    TB    baa61bb5-f8d…</span>
-<span class="co">#&gt; 2      1578553 Running Bear       13325 Austin Eke… RB    LAC   e5b8c439-a48…</span>
-<span class="co">#&gt; 3      1578553 Running Bear        9338 Robert Woo… WR    LAR   618bedee-925…</span>
-<span class="co">#&gt; 4      1578553 Running Bear       13788 Michael Ga… WR    DAL   9e174ff2-ca0…</span>
-<span class="co">#&gt; 5      1578553 Running Bear       12159 Dak Presco… QB    DAL   86197778-8d4…</span>
-<span class="co">#&gt; 6      1578553 Running Bear       15531 Brandon Ai… WR    SF    c90471cc-fa6…</span>
-<span class="co">#&gt; # … with 4 more variables: age &lt;dbl&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   value_1qb &lt;int&gt;</span></code></pre></div>
+<span class="co">#&gt; 2      1578553 Running Bear       12159 Dak Presco… QB    DAL   86197778-8d4…</span>
+<span class="co">#&gt; 3      1578553 Running Bear       13325 Austin Eke… RB    LAC   e5b8c439-a48…</span>
+<span class="co">#&gt; 4      1578553 Running Bear       12032 Carson Wen… QB    PHI   e9a5c16b-447…</span>
+<span class="co">#&gt; 5      1578553 Running Bear        7378 Cam Newton  QB    NE    214e55e4-a08…</span>
+<span class="co">#&gt; 6      1578553 Running Bear        9338 Robert Woo… WR    LAR   618bedee-925…</span>
+<span class="co">#&gt; # … with 4 more variables: age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">aaa_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_1qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>team_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -240,18 +241,18 @@
 <span class="co">#&gt; # A tibble: 12 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1      1581753 fede_mndz's Team         40211   781 20225 18733   472</span>
-<span class="co">#&gt;  2      1581803 ZachFarni's Team         39003  1387 16063 21512    41</span>
-<span class="co">#&gt;  3      1581722 syd12nyjets's Team       38775  1667  7573 27377  2158</span>
-<span class="co">#&gt;  4      1581719 Jmuthers's Team          37224  2081 11365 16001  7777</span>
-<span class="co">#&gt;  5      1581988 The DK Crew              37066  1688  7569 22617  5060</span>
-<span class="co">#&gt;  6      1581726 SCJaguars's Team         36285   543 20527 15002   213</span>
-<span class="co">#&gt;  7      1582423 The Verblanders          36164  3833 11593 19441  1297</span>
-<span class="co">#&gt;  8      1582416 Ray Jay Team             35377   532 14826 12722  7297</span>
-<span class="co">#&gt;  9      1581718 AlexG5386's Team         34866  2901 21201  8360  2404</span>
-<span class="co">#&gt; 10      1581721 Mjenkyns2004's Team      34320  7771  5553 19998   998</span>
-<span class="co">#&gt; 11      1581720 brosene's Team           33372  3479 15877 10938  3078</span>
-<span class="co">#&gt; 12      1578553 Running Bear             27162  2578  6244 16733  1607</span></code></pre></div>
+<span class="co">#&gt;  1      1581753 fede_mndz's Team         41838  6237 17878 17329   394</span>
+<span class="co">#&gt;  2      1581803 ZachFarni's Team         40832 10078 12791 17915    48</span>
+<span class="co">#&gt;  3      1582423 The Verblanders          37472 12548 10110 13925   889</span>
+<span class="co">#&gt;  4      1581721 Mjenkyns2004's Team      37241 18119  3414 14955   753</span>
+<span class="co">#&gt;  5      1581719 Jmuthers's Team          37148  7656  9979 13374  6139</span>
+<span class="co">#&gt;  6      1581722 syd12nyjets's Team       36825 10603  5752 18985  1485</span>
+<span class="co">#&gt;  7      1581988 The DK Crew              36019  8863  5604 17965  3500</span>
+<span class="co">#&gt;  8      1581720 brosene's Team           34973 12104 13465  7133  2271</span>
+<span class="co">#&gt;  9      1581718 AlexG5386's Team         33237  8981 16935  5603  1718</span>
+<span class="co">#&gt; 10      1581726 SCJaguars's Team         32270  5784 16482  9795   209</span>
+<span class="co">#&gt; 11      1582416 Ray Jay Team             30259  4572 11574  8546  5567</span>
+<span class="co">#&gt; 12      1578553 Running Bear             30077 12566  4531 11816  1164</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -262,18 +263,18 @@
 <span class="co">#&gt; # A tibble: 12 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      1581753 fede_mndz's Team         0.094 0.027 0.128 0.089 0.015</span>
-<span class="co">#&gt;  2      1581803 ZachFarni's Team         0.091 0.047 0.101 0.103 0.001</span>
-<span class="co">#&gt;  3      1581722 syd12nyjets's Team       0.09  0.057 0.048 0.131 0.067</span>
-<span class="co">#&gt;  4      1581719 Jmuthers's Team          0.087 0.071 0.072 0.076 0.24 </span>
-<span class="co">#&gt;  5      1581988 The DK Crew              0.086 0.058 0.048 0.108 0.156</span>
-<span class="co">#&gt;  6      1581726 SCJaguars's Team         0.084 0.019 0.129 0.072 0.007</span>
-<span class="co">#&gt;  7      1582423 The Verblanders          0.084 0.131 0.073 0.093 0.04 </span>
-<span class="co">#&gt;  8      1582416 Ray Jay Team             0.082 0.018 0.093 0.061 0.225</span>
-<span class="co">#&gt;  9      1581718 AlexG5386's Team         0.081 0.099 0.134 0.04  0.074</span>
-<span class="co">#&gt; 10      1581721 Mjenkyns2004's Team      0.08  0.266 0.035 0.095 0.031</span>
-<span class="co">#&gt; 11      1581720 brosene's Team           0.078 0.119 0.1   0.052 0.095</span>
-<span class="co">#&gt; 12      1578553 Running Bear             0.063 0.088 0.039 0.08  0.05</span></code></pre></div>
+<span class="co">#&gt;  1      1581753 fede_mndz's Team         0.098 0.053 0.139 0.11  0.016</span>
+<span class="co">#&gt;  2      1581803 ZachFarni's Team         0.095 0.085 0.1   0.114 0.002</span>
+<span class="co">#&gt;  3      1582423 The Verblanders          0.088 0.106 0.079 0.089 0.037</span>
+<span class="co">#&gt;  4      1581721 Mjenkyns2004's Team      0.087 0.153 0.027 0.095 0.031</span>
+<span class="co">#&gt;  5      1581719 Jmuthers's Team          0.087 0.065 0.078 0.085 0.254</span>
+<span class="co">#&gt;  6      1581722 syd12nyjets's Team       0.086 0.09  0.045 0.121 0.062</span>
+<span class="co">#&gt;  7      1581988 The DK Crew              0.084 0.075 0.044 0.114 0.145</span>
+<span class="co">#&gt;  8      1581720 brosene's Team           0.082 0.102 0.105 0.045 0.094</span>
+<span class="co">#&gt;  9      1581718 AlexG5386's Team         0.078 0.076 0.132 0.036 0.071</span>
+<span class="co">#&gt; 10      1581726 SCJaguars's Team         0.075 0.049 0.128 0.062 0.009</span>
+<span class="co">#&gt; 11      1582416 Ray Jay Team             0.071 0.039 0.09  0.054 0.231</span>
+<span class="co">#&gt; 12      1578553 Running Bear             0.07  0.106 0.035 0.075 0.048</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -285,9 +286,9 @@
 <code class="sourceCode R"><span class="va">age_summary</span> <span class="op">&lt;-</span> <span class="va">aaa_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pos</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_1qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_1qb</span><span class="op">/</span><span class="va">position_value</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_2qb</span><span class="op">/</span><span class="va">position_value</span>,
          weighted_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">weighted_age</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
@@ -300,18 +301,18 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1      1578553 Running Bear     28     25.9   25.7   25.9        6        6</span>
-<span class="co">#&gt;  2      1581718 AlexG5386's T…   31.7   24.8   28.2   26.1        3       12</span>
-<span class="co">#&gt;  3      1581719 Jmuthers's Te…   24.9   24.6   26.3   28.4        5        8</span>
-<span class="co">#&gt;  4      1581720 brosene's Team   26.8   25.3   24.5   27.5        6       10</span>
-<span class="co">#&gt;  5      1581721 Mjenkyns2004'…   25.2   24.6   26.9   26.3        5        9</span>
-<span class="co">#&gt;  6      1581722 syd12nyjets's…   24.3   22.3   25     22.6        5        7</span>
-<span class="co">#&gt;  7      1581726 SCJaguars's T…   23.8   25     33.7   24.2        5        7</span>
-<span class="co">#&gt;  8      1581753 fede_mndz's T…   36.1   24.3   25.4   27.6        6       12</span>
-<span class="co">#&gt;  9      1581803 ZachFarni's T…   27.2   21.9   24.5   24.1        5        9</span>
-<span class="co">#&gt; 10      1581988 The DK Crew      26.3   22.7   25     25.4        4        6</span>
-<span class="co">#&gt; 11      1582416 Ray Jay Team     30.6   26.1   30     26.8        4        8</span>
-<span class="co">#&gt; 12      1582423 The Verblande…   24     25     26     27.7        4        8</span>
+<span class="co">#&gt;  1      1578553 Running Bear     28.4   25.7   25.6   25.7        6        6</span>
+<span class="co">#&gt;  2      1581718 AlexG5386's T…   30.7   24.6   28.2   26.2        3       12</span>
+<span class="co">#&gt;  3      1581719 Jmuthers's Te…   25.2   24.3   26.5   28.5        5        8</span>
+<span class="co">#&gt;  4      1581720 brosene's Team   28.8   25.3   24.5   27.8        6       10</span>
+<span class="co">#&gt;  5      1581721 Mjenkyns2004'…   25.6   24.6   26.8   26.2        5        9</span>
+<span class="co">#&gt;  6      1581722 syd12nyjets's…   25.4   22.1   25     22.3        5        7</span>
+<span class="co">#&gt;  7      1581726 SCJaguars's T…   23.8   25.1   33.4   24.7        5        7</span>
+<span class="co">#&gt;  8      1581753 fede_mndz's T…   36.5   24.3   25.3   27.8        6       12</span>
+<span class="co">#&gt;  9      1581803 ZachFarni's T…   27.6   21.8   24.5   24.1        5        9</span>
+<span class="co">#&gt; 10      1581988 The DK Crew      27.3   22.5   25     25.1        4        6</span>
+<span class="co">#&gt; 11      1582416 Ray Jay Team     32.0   26.1   30     26.7        4        8</span>
+<span class="co">#&gt; 12      1582423 The Verblande…   25.4   25.1   25.9   27.4        4        8</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

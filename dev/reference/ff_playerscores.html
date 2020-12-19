@@ -52,7 +52,8 @@
 <meta property="og:description" content="This function returns a tidy dataframe of player scores based on league rules.
 Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
 Adding some nflfastr-based ideas to the pipeline for future iterations." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -230,14 +231,14 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 60 x 8</span><span>
 #&gt;    player_id player_name     pos   team  games score_total score_avg score_sd
 #&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     </span><span style='text-decoration: underline;'>13</span><span>775 Lamar Jackson   QB    BAL      12        338.      28.2     6.75
-#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>14</span><span>664 Kyler Murray    QB    ARI      13        437.      33.6     9.59
-#&gt; </span><span style='color: #555555;'> 3</span><span>     </span><span style='text-decoration: underline;'>13</span><span>761 Josh Allen      QB    BUF      13        429.      33.0    10.4 
-#&gt; </span><span style='color: #555555;'> 4</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU      13        396.      30.5     8.5 
-#&gt; </span><span style='color: #555555;'> 5</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC       13        455.      35      10.5 
-#&gt; </span><span style='color: #555555;'> 6</span><span>      </span><span style='text-decoration: underline;'>8</span><span>598 Russell Wilson  QB    SEA      13        446.      34.3    10.6 
-#&gt; </span><span style='color: #555555;'> 7</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC      12        359.      29.9     9.67
-#&gt; </span><span style='color: #555555;'> 8</span><span>      </span><span style='text-decoration: underline;'>3</span><span>452 Aaron Rodgers   QB    GB       13        444.      34.2     8.81
+#&gt; </span><span style='color: #555555;'> 1</span><span>      </span><span style='text-decoration: underline;'>3</span><span>452 Aaron Rodgers   QB    GB       13        444.      34.2     8.81
+#&gt; </span><span style='color: #555555;'> 2</span><span>     </span><span style='text-decoration: underline;'>13</span><span>775 Lamar Jackson   QB    BAL      12        338.      28.2     6.75
+#&gt; </span><span style='color: #555555;'> 3</span><span>     </span><span style='text-decoration: underline;'>14</span><span>664 Kyler Murray    QB    ARI      13        437.      33.6     9.59
+#&gt; </span><span style='color: #555555;'> 4</span><span>     </span><span style='text-decoration: underline;'>13</span><span>761 Josh Allen      QB    BUF      13        429.      33.0    10.4 
+#&gt; </span><span style='color: #555555;'> 5</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU      13        396.      30.5     8.5 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC       13        455.      35      10.5 
+#&gt; </span><span style='color: #555555;'> 7</span><span>      </span><span style='text-decoration: underline;'>8</span><span>598 Russell Wilson  QB    SEA      13        446.      34.3    10.6 
+#&gt; </span><span style='color: #555555;'> 8</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC      12        359.      29.9     9.67
 #&gt; </span><span style='color: #555555;'> 9</span><span>     </span><span style='text-decoration: underline;'>12</span><span>102 Jared Goff      QB    LAR      13        309.      23.7     8.77
 #&gt; </span><span style='color: #555555;'>10</span><span>      </span><span style='text-decoration: underline;'>8</span><span>514 Ryan Tannehill  QB    TEN      13        365.      28.1     9.13
 #&gt; </span><span style='color: #555555;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
