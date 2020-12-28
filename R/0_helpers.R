@@ -30,8 +30,8 @@
 #' @param ... arguments passed to \code{httr::GET}
 #'
 #' @keywords internal
-.retry_get <- function(...){
-  httr::RETRY("GET",...)
+.retry_get <- function(...) {
+  httr::RETRY("GET", ...)
 }
 
 #' Create RETRY version of POST
@@ -41,8 +41,8 @@
 #' @param ... arguments passed to \code{httr::POST}
 #'
 #' @keywords internal
-.retry_post <- function(...){
-  httr::RETRY("POST",...)
+.retry_post <- function(...) {
+  httr::RETRY("POST", ...)
 }
 
 #' Set rate limit
@@ -57,7 +57,6 @@
 #' @keywords internal
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
-
   if (toggle) {
     fn_get <- ratelimitr::limit_rate(.retry_get, ratelimitr::rate(rate_number, rate_seconds))
     fn_post <- ratelimitr::limit_rate(.retry_post, ratelimitr::rate(rate_number, rate_seconds))
@@ -133,4 +132,3 @@
     )
   return(all_play)
 }
-

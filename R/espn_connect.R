@@ -40,7 +40,7 @@ espn_connect <- function(season = NULL,
 
   ## RATE LIMIT ##
   if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
-    .fn_set_ratelimit(rate_limit,"espn", rate_limit_number, rate_limit_seconds)
+    .fn_set_ratelimit(rate_limit, "espn", rate_limit_number, rate_limit_seconds)
   }
 
   # nocov end
@@ -57,9 +57,11 @@ espn_connect <- function(season = NULL,
   ## Cookies ##
   cookies <- NULL
 
-  if(!is.null(swid) & !is.null(espn_s2)){
-    cookies <- httr::set_cookies(espn_s2 = espn_s2,
-                                 SWID = swid)
+  if (!is.null(swid) & !is.null(espn_s2)) {
+    cookies <- httr::set_cookies(
+      espn_s2 = espn_s2,
+      SWID = swid
+    )
   }
 
   structure(
