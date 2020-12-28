@@ -16,7 +16,19 @@
 #' @return A list object containing the query, response, and parsed content.
 #' @export
 
-espn_getendpoint <- function(endpoint, ...) {
+espn_getendpoint <- function(conn, endpoint, ...) {
+  if (conn$season < 2018) {
+    url_query <- httr::modify_url(
+      url = glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{conn$league_id}"),
+      query = list(
+        seasonId = conn$season
+      )
+    )
+  }
+
+  if (conn$season >= 2018) {
+    base_url <- glue("https://fantasy.espn.com/apis/v3/games/ffl//seasons/{conn$year}/segments/0/leagues/{conn$league_id}")
+  }
 
   # PREP URL
   url_query <- httr::modify_url(
