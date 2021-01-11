@@ -17,6 +17,7 @@
 #' @export
 
 espn_getendpoint <- function(conn, endpoint, ...) {
+
   if (conn$season < 2018) {
     url_query <- httr::modify_url(
       url = glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{conn$league_id}"),
@@ -27,15 +28,13 @@ espn_getendpoint <- function(conn, endpoint, ...) {
   }
 
   if (conn$season >= 2018) {
-    base_url <- glue("https://fantasy.espn.com/apis/v3/games/ffl//seasons/{conn$year}/segments/0/leagues/{conn$league_id}")
+    base_url <- glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/seasons/{conn$season}/segments/0/leagues/{conn$league_id}")
   }
 
   # PREP URL
   url_query <- httr::modify_url(
-    url = glue::glue("https://api.sleeper.app/v1/{endpoint}"),
-    query = list(
-      ...
-    )
+    url = base_url,
+    query = list(...)
   )
 
   ## GET FFSCRAPR ENV
@@ -57,12 +56,12 @@ espn_getendpoint <- function(conn, endpoint, ...) {
   }
 
   if (httr::http_error(response)) {
-    stop(glue::glue("Sleeper API request failed with error: <{httr::status_code(response)}> \n
+    stop(glue::glue("ESPN API request failed with error: <{httr::status_code(response)}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 
   if (httr::http_type(response) != "application/json") {
-    warning(glue::glue("Sleeper API did not return json while calling {url_query}"),
+    warning(glue::glue("ESPN API did not return json while calling {url_query}"),
       call. = FALSE
     )
   }
@@ -72,7 +71,7 @@ espn_getendpoint <- function(conn, endpoint, ...) {
   }
 
   if (!is.null(parsed$error)) {
-    warning(glue::glue("Sleeper says: {parsed$error[[1]]}"), call. = FALSE)
+    warning(glue::glue("ESPN says: {parsed$error[[1]]}"), call. = FALSE)
   }
 
   # nocov end
@@ -85,18 +84,18 @@ espn_getendpoint <- function(conn, endpoint, ...) {
       query = url_query,
       response = response
     ),
-    class = "sleeper_api"
+    class = "espn_api"
   )
 }
 
-## PRINT METHOD SLEEPER_API OBJ ##
+## PRINT METHOD ESPN_API OBJ ##
 #' @noRd
 #' @export
-print.sleeper_api <- function(x, ...) {
+print.espn_api <- function(x, ...) {
 
   # nocov start
 
-  cat("<SLEEPER - GET ", x$query, ">\n", sep = "")
+  cat("<ESPN - GET ", x$query, ">\n", sep = "")
 
   str(x$content, max.level = 1)
 

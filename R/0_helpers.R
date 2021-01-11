@@ -132,3 +132,22 @@
     )
   return(all_play)
 }
+
+
+#' Add unescaped cookies
+#'
+#' Useful for ESPN which is already URL escaped
+#'
+#' @param ... a named cookie values
+#'
+#' @seealso \code{httr::set_cookies}
+#'
+#' @keywords internal
+
+set_unescaped_cookies <- function(...) {
+  cookies <- c(...)
+
+  cookie <- paste(names(cookies), cookies, sep = "=", collapse = ";")
+
+  httr::config(cookie = cookie)
+}
