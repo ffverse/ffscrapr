@@ -133,7 +133,6 @@
   return(all_play)
 }
 
-
 #' Add unescaped cookies
 #'
 #' Useful for ESPN which is already URL escaped
