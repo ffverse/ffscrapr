@@ -43,3 +43,13 @@ a list that stores ESPN connection objects
 \description{
 This function creates a connection object which stores parameters and a user ID if available.
 }
+\examples{
+\donttest{
+conn <- espn_connect(
+  season = 2018,
+  league_id = 1178049,
+  espn_s2 = Sys.getenv("TAN_ESPN_S2"),
+  swid = Sys.getenv("TAN_SWID"))
+}
+
+}

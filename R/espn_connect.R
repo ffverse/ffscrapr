@@ -13,7 +13,16 @@
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
 #' @param ... other arguments (for other methods, for R compat)
 #'
-#' @export
+#' @examples
+#' \donttest{
+#' conn <- espn_connect(
+#'   season = 2018,
+#'   league_id = 1178049,
+#'   espn_s2 = Sys.getenv("TAN_ESPN_S2"),
+#'   swid = Sys.getenv("TAN_SWID"))
+#' }
+#'
+#' @export espn_connect
 #'
 #' @return a list that stores ESPN connection objects
 
@@ -40,7 +49,7 @@ espn_connect <- function(season = NULL,
 
   ## RATE LIMIT ##
   if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
-    .fn_set_ratelimit(rate_limit,"espn", rate_limit_number, rate_limit_seconds)
+    .fn_set_ratelimit(rate_limit, "espn", rate_limit_number, rate_limit_seconds)
   }
 
   # nocov end
@@ -57,9 +66,12 @@ espn_connect <- function(season = NULL,
   ## Cookies ##
   cookies <- NULL
 
-  if(!is.null(swid) & !is.null(espn_s2)){
-    cookies <- httr::set_cookies(espn_s2 = espn_s2,
-                                 SWID = swid)
+  if (!is.null(swid) & !is.null(espn_s2)) {
+
+    cookies <- set_unescaped_cookies(
+      espn_s2 = espn_s2,
+      SWID = swid
+    )
   }
 
   structure(
