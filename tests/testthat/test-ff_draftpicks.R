@@ -22,5 +22,10 @@ with_mock_api({
     joe_picks <- ff_draftpicks(joe_conn, franchise_id = 1373475)
 
     expect_tibble(joe_picks, min.rows = 15)
+
+    dlp <- ff_connect("espn", 1178049)
+
+    expect_warning(ff_draftpicks(dlp),regexp = "ESPN does not support draft pick trades")
+
   })
 })
