@@ -183,15 +183,19 @@ ff_league.espn_conn <- function(conn) {
   qb_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[qb_pos]]
   op_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[op_pos]]
 
-  qb_type <- dplyr::case_when(
+  type <- dplyr::case_when(
     qb_count == 1 & op_count < 1 ~ "1QB",
     qb_count == 1 & op_count == 1 ~ "2QB/SF",
     TRUE ~ "2+QB/SF"
   )
+  count <- dplyr::case_when(
+    op_count > 0 ~ paste(qb_count, qb_count + op_count, sep = "-"),
+    op_count == 0 ~ paste(qb_count)
+  )
 
   list(
-    count = qb_count,
-    type = qb_type
+    count = count,
+    type = type
   )
 }
 
