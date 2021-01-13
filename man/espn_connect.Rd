@@ -34,8 +34,6 @@ espn_connect(
 \item{rate_limit_seconds}{number of seconds as denominator for rate_limit}
 
 \item{...}{other arguments (for other methods, for R compat)}
-
-\item{user_email}{Optional - attempts to get user's user ID by email}
 }
 \value{
 a list that stores ESPN connection objects

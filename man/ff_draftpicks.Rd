@@ -34,7 +34,7 @@ Returns all draft picks (current and future) that belong to a specific franchise
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: not supported - for draft results, please use ff_draft.
+\item \code{espn_conn}: ESPN: does not support future/draft pick trades - for draft results, please use ff_draft.
 
 \item \code{flea_conn}: Fleaflicker: retrieves current and future draft picks, potentially for a specified team.
 

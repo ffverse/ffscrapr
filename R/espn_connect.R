@@ -4,7 +4,6 @@
 #'
 #' @param season Season to access on Fleaflicker - if missing, will guess based on system date (current year if March or later, otherwise previous year)
 #' @param league_id League ID
-#' @param user_email Optional - attempts to get user's user ID by email
 #' @param user_agent User agent to self-identify (optional)
 #' @param swid SWID parameter for accessing private leagues - see vignette for details
 #' @param espn_s2 ESPN_S2 parameter for accessing private leagues - see vignette for details
