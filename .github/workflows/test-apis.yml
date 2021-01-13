@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      HTTPTEST_BYPASS: true
+      MOCK_BYPASS: true
     steps:
       - uses: actions/checkout@v2
 
