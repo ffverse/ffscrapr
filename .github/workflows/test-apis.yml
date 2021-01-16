@@ -40,5 +40,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Run Tests
-        run: testthat::test_local()
+        run: | 
+          print(Sys.getenv("MOCK_BYPASS"))
+          testthat::test_local()
         shell: Rscript {0}
