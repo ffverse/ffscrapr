@@ -1,6 +1,8 @@
 on:
   schedule:
     - cron: 3 6 * * 5
+  workflow_dispatch:
+  
 
 name: Test_APIs
 
