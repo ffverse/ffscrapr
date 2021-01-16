@@ -8,13 +8,17 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://img.shields.io/cran/v/ffscrapr?style=for-the-badge)](https://CRAN.R-project.org/package=ffscrapr)
+status](https://img.shields.io/cran/v/ffscrapr?style=for-the-badge&logo=R)](https://CRAN.R-project.org/package=ffscrapr) 
+[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=R%40Dev&style=for-the-badge&logo=github)](https://ffscrapr.dynastyprocess.com/dev) 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=for-the-badge)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=for-the-badge&logo=RStudio)](https://www.tidyverse.org/lifecycle/#maturing)
+
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=for-the-badge)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=for-the-badge&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) 
 [![R build
-status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=for-the-badge)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=for-the-badge&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
+[![API
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=for-the-badge&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
 
 <!-- badges: end -->
 
