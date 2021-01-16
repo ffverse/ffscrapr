@@ -6,6 +6,7 @@
 -   Fixed cookie-based authentication from connect and added `espn_getendpoint()` low-level function (v1.2.1.3)
 -   Added warning for `ff_draftpicks()` - ESPN does not support draft pick trades (v1.2.1.4)
 -   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, @TonyElHabr!)
+-   Added warning for `ff_userleagues()` - ESPN does not support looking up user leagues (v1.2.1.6)
 
 
 ### Minor patches
