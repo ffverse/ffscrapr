@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   
 
-name: Test_APIs
+name: Test APIs
 
 jobs:
-  test-coverage:
+  test-apis:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
