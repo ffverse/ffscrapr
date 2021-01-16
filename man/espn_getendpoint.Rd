@@ -4,14 +4,16 @@
 \alias{espn_getendpoint}
 \title{GET any ESPN endpoint}
 \usage{
-espn_getendpoint(conn, endpoint, ...)
+espn_getendpoint(conn, x_fantasy_filter = NULL, ...)
 }
 \arguments{
 \item{conn}{a connection object created by \code{espn_connect} or \code{ff_connect()}}
 
-\item{endpoint}{a string defining which endpoint to return from the API}
+\item{x_fantasy_filter}{a JSON-encoded character string that specifies a filter for the data}
 
 \item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
+
+\item{url}{a fully formed URL call, will override all other URL components}
 }
 \value{
 A list object containing the query, response, and parsed content.
