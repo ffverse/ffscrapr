@@ -5,7 +5,8 @@
 -   `espn_connect()`/`ff_connect()`: implemented with SWID/ESPN_S2 arguments, which act a lot like the API keys. Will need vignettes or demos to help users find these. Python package has [not yet found a way](https://github.com/cwendt94/espn-api/discussions/128) to make username/password work yet - this is annoying and I'll let them tackle it since I'd rather just build out the R functionality first. (v1.2.1.2)
 -   Fixed cookie-based authentication from connect and added `espn_getendpoint()` low-level function (v1.2.1.3)
 -   Added warning for `ff_draftpicks()` - ESPN does not support draft pick trades (v1.2.1.4)
--   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, Tony!)
+-   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, @TonyElHabr!)
+
 
 ### Minor patches
 
