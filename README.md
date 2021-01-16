@@ -8,13 +8,17 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://img.shields.io/cran/v/ffscrapr?style=for-the-badge)](https://CRAN.R-project.org/package=ffscrapr)
+status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr)
+[![Dev
+status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=for-the-badge)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=for-the-badge)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
-status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=for-the-badge)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
+[![API
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
 
 <!-- badges: end -->
 
@@ -77,11 +81,11 @@ ff_rosters(ssb)
 #> # A tibble: 443 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.3
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.4
 #> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.1
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    24.9
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25  
 #> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.5
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    25.8
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    25.9
 #> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
@@ -102,9 +106,9 @@ ff_transactions(ssb)
 
 Platform-specific guides on getting started with ffscrapr are here:
 
-  - [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
-  - [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
-  - [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
+-   [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
+-   [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
+-   [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
 
 There are also some more advanced guides for custom API calls in the
 [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as
@@ -113,17 +117,17 @@ performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html)
 
 ### Contributing
 
-Many hands make light work\! Here are some ways you can contribute to
+Many hands make light work! Here are some ways you can contribute to
 this project:
 
-  - You can [open an
+-   You can [open an
     issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
     if you’d like to request specific data or report a bug/error.
 
-  - You can [sponsor this project with
-    donations](https://github.com/sponsors/tanho63)\!
+-   You can [sponsor this project with
+    donations](https://github.com/sponsors/tanho63)!
 
-  - If you’d like to contribute code, please check out [the contribution
+-   If you’d like to contribute code, please check out [the contribution
     guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
 
 ### Terms of Use

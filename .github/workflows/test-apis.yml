@@ -1,11 +1,13 @@
 on:
   schedule:
     - cron: 3 6 * * 5
+  workflow_dispatch:
+  
 
-name: Test_APIs
+name: Test APIs
 
 jobs:
-  test-coverage:
+  test-apis:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -38,5 +40,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Run Tests
-        run: testthat::test_dir()
+        run: | 
+          print(Sys.getenv("MOCK_BYPASS"))
+          testthat::test_local()
         shell: Rscript {0}
