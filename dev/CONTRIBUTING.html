@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.7</span>
       </span>
     </div>
 
@@ -194,12 +194,25 @@
 <li>If you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal <a href="https://www.tidyverse.org/help/#reprex">reprex</a> (this will also help you write a unit test, if needed).</li>
 </ul>
 </div>
+<div id="project-and-branch-strategy" class="section level3">
+<h3 class="hasAnchor">
+<a href="#project-and-branch-strategy" class="anchor"></a>Project and branch strategy</h3>
+<ul>
+<li>Feature development for this package is organized with GitHub Projects, each of which track towards a <strong>minor version release</strong>.</li>
+<li>Each function/method is tracked as a GitHub Issue, and linked to/closed by Pull Requests.</li>
+<li>The <code>main</code> branch contains the code for the current CRAN version of the package.</li>
+<li>The <code>dev</code> branch reflects a fully-tested, linted, and documented version of the proposed release.</li>
+<li>Staging branches (e.g. <code>fleaflicker</code>, <code>espn</code>) contain reviewed/tested code for each GitHub Project.</li>
+<li>Feature branches are built off of the staging branch, add one function/method + documentation + testing, and then is squash-merged back onto the staging branch once developed.</li>
+<li>The staging branch is periodically merged onto the <code>dev</code> branch, and the <code>dev</code> branch is merged onto the <code>main</code> branch only when released to CRAN.</li>
+</ul>
+</div>
 <div id="pull-request-process" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull-request-process" class="anchor"></a>Pull request process</h3>
 <ul>
 <li><p>Fork the package and clone onto your computer. If you haven’t done this before, we recommend using <code>usethis::create_from_github("dynastyprocess/ffscrapr", fork = TRUE)</code>.</p></li>
-<li><p>Install all development dependences with <code>devtools::install_dev_deps()</code>, and then make sure the package passes R CMD check by running <code>devtools::check()</code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
+<li><p>Install all development dependencies with <code>devtools::install_dev_deps()</code>, and then make sure the package passes R CMD check by running <code>devtools::check()</code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
 <li><p>Create a Git branch for your pull request (PR). We recommend using <code>usethis::pr_init("brief-description-of-change")</code>.</p></li>
 <li><p>Make your changes, commit to git, and then create a PR by running <code>usethis::pr_push()</code>, and following the prompts in your browser. The title of your PR should briefly describe the change. The body of your PR should contain <code>Fixes #issue-number</code>.</p></li>
 <li><p>For user-facing changes, add a bullet to the top of <code>NEWS.md</code> (i.e. just below the first header). Follow the style described in <a href="https://style.tidyverse.org/news.html" class="uri">https://style.tidyverse.org/news.html</a>.</p></li>

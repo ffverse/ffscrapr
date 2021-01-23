@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GET any MFL endpoint — mfl_getendpoint • ffscrapr</title>
+<title>GET any ESPN endpoint — espn_getendpoint • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="GET any MFL endpoint — mfl_getendpoint" />
-<meta property="og:description" content="Create a GET request to any MFL export endpoint." />
+<meta property="og:title" content="GET any ESPN endpoint — espn_getendpoint" />
+<meta property="og:description" content="The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE.
+Best URL help page is TBD, possibly might just be the vignette." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -161,31 +162,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GET any MFL endpoint</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_api.R'><code>R/mfl_api.R</code></a></small>
-    <div class="hidden name"><code>mfl_getendpoint.Rd</code></div>
+    <h1>GET any ESPN endpoint</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_api.R'><code>R/espn_api.R</code></a></small>
+    <div class="hidden name"><code>espn_getendpoint.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a GET request to any MFL export endpoint.</p>
+    <p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE.
+Best URL help page is TBD, possibly might just be the vignette.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mfl_getendpoint</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>endpoint</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>espn_getendpoint</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span>, x_fantasy_filter <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>conn</th>
-      <td><p>the list object created by <code><a href='mfl_connect.html'>mfl_connect()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>endpoint</th>
-      <td><p>a string defining which endpoint to return from the API</p></td>
+      <td><p>a connection object created by <code>espn_connect</code> or <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Arguments which will be passed as "argumentname = argument" in an HTTP query parameter</p></td>
+    </tr>
+    <tr>
+      <th>x_fantasy_filter</th>
+      <td><p>a JSON-encoded character string that specifies a filter for the data</p></td>
     </tr>
     </table>
 
@@ -194,13 +196,10 @@
     <p>A list object containing the query, response, and parsed content.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function will read the connection object and automatically pass in the rate-limiting, league ID (L), authentication cookie, and/or API key (APIKEY) if configured in the connection object.</p>
-<p>The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE and should be passed in exactly as displayed on the MFL API reference page.</p>
-<p>Check out the vignette for more details and example usage.</p>
+    <p>Check out the vignette for more details and example usage.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://api.myfantasyleague.com/2020/api_info?STATE=details'>https://api.myfantasyleague.com/2020/api_info?STATE=details</a></p>
-<p><code><a href='../articles/mfl_getendpoint.html'>vignette("mfl_getendpoint")</a></code></p></div>
+    <div class='dont-index'><p><code>vignette("espn_getendpoint")</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.7</span>
       </span>
     </div>
 
@@ -208,7 +208,7 @@
 <span class="co">#&gt; 2 1            Paper Champs   4089      Gerald Everett  TE    LAR    26.6</span>
 <span class="co">#&gt; 3 1            Paper Champs   6068      Devine Ozigbo   RB    JAX    24.3</span>
 <span class="co">#&gt; 4 1            Paper Champs   1339      Zach Ertz       TE    PHI    30.2</span>
-<span class="co">#&gt; 5 1            Paper Champs   5068      Kerryon Johnson RB    DET    23.5</span>
+<span class="co">#&gt; 5 1            Paper Champs   5068      Kerryon Johnson RB    DET    23.6</span>
 <span class="co">#&gt; 6 1            Paper Champs   5965      Miles Boykin    WR    BAL    24.3</span></code></pre></div>
 <div id="values" class="section level2">
 <h2 class="hasAnchor">
@@ -237,12 +237,12 @@
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team    age ecr_1qb</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Paper Champs   1426      DeAndre Ho… WR    ARI    28.6    12.8</span>
-<span class="co">#&gt; 2 1            Paper Champs   4866      Saquon Bar… RB    NYG    23.9    14.6</span>
-<span class="co">#&gt; 3 1            Paper Champs   4037      Chris Godw… WR    TB     24.9    20.2</span>
-<span class="co">#&gt; 4 1            Paper Champs   4199      Aaron Jones RB    GB     26.1    26.8</span>
-<span class="co">#&gt; 5 1            Paper Champs   5022      Dallas Goe… TE    PHI    26      65.6</span>
-<span class="co">#&gt; 6 1            Paper Champs   1825      Jarvis Lan… WR    CLE    28.1    79.4</span>
+<span class="co">#&gt; 1 1            Paper Champs   1426      DeAndre Ho… WR    ARI    28.6    13  </span>
+<span class="co">#&gt; 2 1            Paper Champs   4037      Chris Godw… WR    TB     24.9    19.5</span>
+<span class="co">#&gt; 3 1            Paper Champs   4866      Saquon Bar… RB    NYG    24      33  </span>
+<span class="co">#&gt; 4 1            Paper Champs   4199      Aaron Jones RB    GB     26.1    40.5</span>
+<span class="co">#&gt; 5 1            Paper Champs   5022      Dallas Goe… TE    PHI    26.1    62  </span>
+<span class="co">#&gt; 6 1            Paper Champs   4098      Kareem Hunt RB    CLE    25.5    68.5</span>
 <span class="co">#&gt; # … with 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -260,18 +260,18 @@
 <span class="co">#&gt; # A tibble: 12 x 8</span>
 <span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 4            The FANTom Menace      47687  3710 13493  2267 28217    NA</span>
-<span class="co">#&gt;  2 3            solarpool              46796  6891 22047  1605 16253    NA</span>
-<span class="co">#&gt;  3 11           Permian Panthers       44921  5978 10295  6550 22098    NA</span>
-<span class="co">#&gt;  4 1            Paper Champs           40687   956 16618  4599 18514    NA</span>
-<span class="co">#&gt;  5 12           jaydk                  39548  3127 16472  4807 15142    NA</span>
-<span class="co">#&gt;  6 8            Hocka Flocka           37510  2375 18673  2801 13661    NA</span>
-<span class="co">#&gt;  7 5            Barbarians             37084  6232 19469  4803  6580    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               35188  4344  4208  8150 18486    NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             27644  3752 10141  3416 10335    NA</span>
-<span class="co">#&gt; 10 7            Flipadelphia05         22943  2550  7696   307 12390    NA</span>
-<span class="co">#&gt; 11 2            KingGabe               18745   117  2986    68 15574    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               18627   599   285  1844 15899     0</span></code></pre></div>
+<span class="co">#&gt;  1 4            The FANTom Menace      51635  3529 11382  2554 34170    NA</span>
+<span class="co">#&gt;  2 3            solarpool              45382  6146 18797  1826 18613    NA</span>
+<span class="co">#&gt;  3 11           Permian Panthers       44683  6392  8346  5283 24662    NA</span>
+<span class="co">#&gt;  4 12           jaydk                  39385  2949 14715  4764 16957    NA</span>
+<span class="co">#&gt;  5 8            Hocka Flocka           39007  2347 18294  2897 15469    NA</span>
+<span class="co">#&gt;  6 1            Paper Champs           37229  1052 11913  5774 18490    NA</span>
+<span class="co">#&gt;  7 5            Barbarians             36980  5600 19727  4302  7351    NA</span>
+<span class="co">#&gt;  8 6            sox05syd               36792  4519  3897  7913 20463    NA</span>
+<span class="co">#&gt;  9 9            ZPMiller97             29558  4432  8749  3125 13252    NA</span>
+<span class="co">#&gt; 10 7            Flipadelphia05         23179  2510  7275   305 13089    NA</span>
+<span class="co">#&gt; 11 2            KingGabe               21564   321  3732    82 17429    NA</span>
+<span class="co">#&gt; 12 10           JMLarkin               19949   621   314  1679 17335     0</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -282,18 +282,18 @@
 <span class="co">#&gt; # A tibble: 12 x 8</span>
 <span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 4            The FANTom Menace      0.114 0.091 0.095 0.055 0.146    NA</span>
-<span class="co">#&gt;  2 3            solarpool              0.112 0.17  0.155 0.039 0.084    NA</span>
-<span class="co">#&gt;  3 11           Permian Panthers       0.108 0.147 0.072 0.159 0.114    NA</span>
-<span class="co">#&gt;  4 1            Paper Champs           0.097 0.024 0.117 0.112 0.096    NA</span>
-<span class="co">#&gt;  5 12           jaydk                  0.095 0.077 0.116 0.117 0.078    NA</span>
-<span class="co">#&gt;  6 8            Hocka Flocka           0.09  0.058 0.131 0.068 0.071    NA</span>
-<span class="co">#&gt;  7 5            Barbarians             0.089 0.153 0.137 0.117 0.034    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               0.084 0.107 0.03  0.198 0.096    NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             0.066 0.092 0.071 0.083 0.054    NA</span>
-<span class="co">#&gt; 10 7            Flipadelphia05         0.055 0.063 0.054 0.007 0.064    NA</span>
-<span class="co">#&gt; 11 2            KingGabe               0.045 0.003 0.021 0.002 0.081    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               0.045 0.015 0.002 0.045 0.082     0</span></code></pre></div>
+<span class="co">#&gt;  1 4            The FANTom Menace      0.121 0.087 0.09  0.063 0.157    NA</span>
+<span class="co">#&gt;  2 3            solarpool              0.107 0.152 0.148 0.045 0.086    NA</span>
+<span class="co">#&gt;  3 11           Permian Panthers       0.105 0.158 0.066 0.13  0.114    NA</span>
+<span class="co">#&gt;  4 12           jaydk                  0.093 0.073 0.116 0.118 0.078    NA</span>
+<span class="co">#&gt;  5 8            Hocka Flocka           0.092 0.058 0.144 0.072 0.071    NA</span>
+<span class="co">#&gt;  6 1            Paper Champs           0.088 0.026 0.094 0.143 0.085    NA</span>
+<span class="co">#&gt;  7 5            Barbarians             0.087 0.139 0.155 0.106 0.034    NA</span>
+<span class="co">#&gt;  8 6            sox05syd               0.086 0.112 0.031 0.195 0.094    NA</span>
+<span class="co">#&gt;  9 9            ZPMiller97             0.069 0.11  0.069 0.077 0.061    NA</span>
+<span class="co">#&gt; 10 7            Flipadelphia05         0.054 0.062 0.057 0.008 0.06     NA</span>
+<span class="co">#&gt; 11 2            KingGabe               0.051 0.008 0.029 0.002 0.08     NA</span>
+<span class="co">#&gt; 12 10           JMLarkin               0.047 0.015 0.002 0.041 0.08      0</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -319,18 +319,18 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR age_FB count_QB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 1            Paper Champs     32.8   24.9   26.8   27.2     NA        3</span>
-<span class="co">#&gt;  2 10           JMLarkin         28.4   27.1   26.5   25.4      0        3</span>
-<span class="co">#&gt;  3 11           Permian Panth…   24     23.2   31.2   25.8     NA        4</span>
-<span class="co">#&gt;  4 12           jaydk            31.2   25.1   25.8   27.7     NA        5</span>
-<span class="co">#&gt;  5 2            KingGabe         25.6   22.3   28.7   22.7     NA        5</span>
-<span class="co">#&gt;  6 3            solarpool        25.5   25.2   26.4   27.6     NA        4</span>
-<span class="co">#&gt;  7 4            The FANTom Me…   27.7   24.6   23.9   26.6     NA        3</span>
-<span class="co">#&gt;  8 5            Barbarians       25     24.5   28.3   26.4     NA        2</span>
-<span class="co">#&gt;  9 6            sox05syd         23.6   23.6   26.5   24.6     NA        4</span>
-<span class="co">#&gt; 10 7            Flipadelphia05   32.9   25.6   27.1   26       NA        2</span>
-<span class="co">#&gt; 11 8            Hocka Flocka     30.3   24.4   24.4   23.1     NA        3</span>
-<span class="co">#&gt; 12 9            ZPMiller97       24.4   24.1   26.2   24.9     NA        2</span>
+<span class="co">#&gt;  1 1            Paper Champs     32.8   25     26.1   27       NA        3</span>
+<span class="co">#&gt;  2 10           JMLarkin         29.2   25.9   26.6   25.1      0        3</span>
+<span class="co">#&gt;  3 11           Permian Panth…   24.2   23     31.3   25.8     NA        4</span>
+<span class="co">#&gt;  4 12           jaydk            31.1   25.3   25.8   27.6     NA        5</span>
+<span class="co">#&gt;  5 2            KingGabe         24.5   22.1   28     22.7     NA        5</span>
+<span class="co">#&gt;  6 3            solarpool        25.8   25.1   26.3   27.5     NA        4</span>
+<span class="co">#&gt;  7 4            The FANTom Me…   27.7   24.2   24.4   26.5     NA        3</span>
+<span class="co">#&gt;  8 5            Barbarians       25.1   24.4   28.3   26.4     NA        2</span>
+<span class="co">#&gt;  9 6            sox05syd         23.8   23.4   26.4   24.5     NA        4</span>
+<span class="co">#&gt; 10 7            Flipadelphia05   32.9   24.6   26.7   26.3     NA        2</span>
+<span class="co">#&gt; 11 8            Hocka Flocka     30.2   24.5   24.6   23.5     NA        3</span>
+<span class="co">#&gt; 12 9            ZPMiller97       24.2   23.7   26.1   25.1     NA        2</span>
 <span class="co">#&gt; # … with 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span>
 <span class="co">#&gt; #   count_FB &lt;int&gt;</span></code></pre></div>
 </div>
