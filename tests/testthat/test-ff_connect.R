@@ -6,12 +6,15 @@ with_mock_api({
       platform = "sleeper",
       user_name = "solarpool"
     )
-    joe <- ff_connect("flea", 312861, season = 2020)
+    joe <- ff_connect("flea", 312861)
+
+    dlp <- ff_connect("espn", 1178049)
 
     expect_s3_class(ssb, "mfl_conn")
     expect_s3_class(jml, "sleeper_conn")
     expect_s3_class(solar, "sleeper_conn")
     expect_s3_class(joe, "flea_conn")
+    expect_s3_class(dlp, "espn_conn")
   })
 
   test_that("Does mfl-logincookie return a request-like object?", {
@@ -43,4 +46,13 @@ with_mock_api({
 test_that("sleeper_connect edge cases are handled", {
   expect_error(sleeper_connect(user_agent = c("pie", "cake")), regexp = "character vector of length one")
   expect_error(sleeper_connect(user_agent = "ffscraprtest", rate_limit = 1), regexp = "rate_limit should be logical")
+})
+
+test_that("ESPN connect cookie authentication works", {
+
+  dlp <- espn_connect(season = 2020, league_id = 1178049, swid = "{1E6BB139}", espn_s2 = "AECt%2FIDwd5kt")
+
+  expect_character(dlp$cookies$options$cookie,
+                   pattern = "\\{",
+                   info = "Cookie string contains curly brace")
 })

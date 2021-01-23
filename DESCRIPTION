@@ -1,12 +1,16 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.2.1.9000
+Version: 1.2.1.7
 Authors@R: 
-    person(given = "Tan",
+    c(person(given = "Tan",
            family = "Ho",
            role = c("aut", "cre"),
-           email = "tan@tanho.ca")
+           email = "tan@tanho.ca"),
+    person(given = "Tony",
+           family = "ElHabr",
+           role = c("ctb"),
+           email = "anthonyelhabr@gmail.com"))
 Description: Helps access various Fantasy Football APIs by handling authentication and
     rate-limiting, forming appropriate calls, and returning tidy
     dataframes which can be easily connected to other data sources.
