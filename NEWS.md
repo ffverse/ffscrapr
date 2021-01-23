@@ -7,6 +7,8 @@
 -   Added warning for `ff_draftpicks()` - ESPN does not support draft pick trades (v1.2.1.4)
 -   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, @TonyElHabr!)
 -   Added warning for `ff_userleagues()` - ESPN does not support looking up user leagues (v1.2.1.6)
+-   Edited `espn_getendpoint()` LL function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat.
+-   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function.
 
 
 ### Minor patches
