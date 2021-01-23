@@ -1,8 +1,12 @@
 #### ESPN helper functions ####
 
-#' @noRd
+#' ESPN Lineup Slot map
+#'
+#' This is for the starting lineup specifically - primary positions is accessible via \code{.espn_pos_map}
+#'
+#' @keywords internal
 #' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
-.espn_position_map <- function() {
+.espn_lineupslot_map <- function() {
   c(
     "0" = "QB",
     "1" = "TQB",
@@ -20,7 +24,7 @@
     "13" = "S",
     "14" = "DB",
     "15" = "DP",
-    "16" = "D/ST",
+    "16" = "DST",
     "17" = "K",
     "18" = "P",
     "19" = "HC",
@@ -50,7 +54,116 @@
   )
 }
 
-#' @noRd
+#' ESPN Primary Position map
+#'
+#' Decoded by hand - if you have an IDP ESPN league please open a GitHub issue
+#' and pass along the league info so we can expand this.
+#'
+#' @keywords internal
+
+.espn_pos_map <- function(){
+  c(
+    "1"="QB",
+    "2"="RB",
+    "3"="WR",
+    "4"="TE",
+    "5"="K",
+    "7"="P",
+    "9"="DT",
+    "16"="DST",
+    "QB"= 1,
+    "RB"= 2,
+    "WR"= 3,
+    "TE"= 4,
+    "K"= 5,
+    "P"= 7,
+    "DT"= 9,
+    "DST"= 16
+  )
+}
+
+#' ESPN Team ID map
+#'
+#' Opinionatedly conforming to DynastyProcess standards, which conform to MFL standards.
+#' Abbreviations are consistently three letters.
+#'
+#' @keywords internal
+#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
+.espn_team_map <- function(){
+  c(
+    "0" = "FA",
+    "1" = "ATL",
+    "2" = 'BUF',
+    "3" = 'CHI',
+    "4" = 'CIN',
+    "5" = 'CLE',
+    "6" = 'DAL',
+    "7" = 'DEN',
+    "8" = 'DET',
+    "9" = 'GBP',
+    "10" = 'TEN',
+    "11" = 'IND',
+    "12" = 'KCC',
+    "13" = 'OAK',
+    "14" = 'LAR',
+    "15" = 'MIA',
+    "16" = 'MIN',
+    "17" = 'NEP',
+    "18" = 'NOS',
+    "19" = 'NYG',
+    "20" = 'NYJ',
+    "21" = 'PHI',
+    "22" = 'ARI',
+    "23" = 'PIT',
+    "24" = 'LAC',
+    "25" = 'SFO',
+    "26" = 'SEA',
+    "27" = 'TBB',
+    "28" = 'WAS',
+    "29" = 'CAR',
+    "30" = 'JAC',
+    "33" = 'BAL',
+    "34" = 'HOU',
+    "FA"= "0",
+    "ATL"= "1",
+    'BUF'= "2",
+    'CHI'= "3",
+    'CIN'= "4",
+    'CLE'= "5",
+    'DAL'= "6",
+    'DEN'= "7",
+    'DET'= "8",
+    'GBP'= "9",
+    'TEN'= "10" ,
+    'IND'= "11" ,
+    'KCC'= "12" ,
+    'OAK'= "13" ,
+    'LAR'= "14" ,
+    'MIA'= "15" ,
+    'MIN'= "16" ,
+    'NEP'= "17" ,
+    'NOS'= "18" ,
+    'NYG'= "19" ,
+    'NYJ'= "20" ,
+    'PHI'= "21" ,
+    'ARI'= "22" ,
+    'PIT'= "23" ,
+    'LAC'= "24" ,
+    'SFO'= "25" ,
+    'SEA'= "26" ,
+    'TBB'= "27" ,
+    'WAS'= "28" ,
+    'CAR'= "29" ,
+    'JAC'= "30" ,
+    'BAL'= "33" ,
+    'HOU'= "34"
+  )
+}
+
+
+#' ESPN Stat ID map
+#'
+#' @keywords internal
 #' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
 .espn_stat_map <- function() {
   c(

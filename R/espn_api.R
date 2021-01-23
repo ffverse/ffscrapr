@@ -8,16 +8,15 @@
 #' Check out the vignette for more details and example usage.
 #'
 #' @param conn a connection object created by \code{espn_connect} or \code{ff_connect()}
-#' @param url a fully formed URL call, will override all other URL components
-#' @param x_fantasy_filter a JSON-encoded character string that specifies a filter for the data
 #' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
+#' @param x_fantasy_filter a JSON-encoded character string that specifies a filter for the data
 #'
 #' @seealso \code{vignette("espn_getendpoint")}
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export
 
-espn_getendpoint <- function(conn, x_fantasy_filter = NULL, ...) {
+espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 
   xff <- NULL
 

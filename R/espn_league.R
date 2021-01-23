@@ -49,7 +49,7 @@ ff_league.espn_conn <- function(conn) {
 
 #' @noRd
 .espn_is_qbtype <- function(league_endpoint) {
-  position_map <- .espn_position_map()
+  position_map <- .espn_lineupslot_map()
   qb_pos <- position_map["QB"]
   op_pos <- position_map["OP"]
   qb_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[qb_pos]]
@@ -73,7 +73,7 @@ ff_league.espn_conn <- function(conn) {
 
 #' @noRd
 .espn_is_idp <- function(league_endpoint) {
-  position_map <- .espn_position_map()
+  position_map <- .espn_lineupslot_map()
   def_pos <- position_map[c("DT", "DE", "LB", "DL", "CB", "S", "DB", "DP")]
   def_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[def_pos]
   has_def <- sum(unlist(def_count)) > 0

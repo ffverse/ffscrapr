@@ -12,7 +12,7 @@ espn_players(conn, limit = 5000)
 \item{limit}{the maximum number of results to return}
 }
 \value{
-a dataframe containing all ~7000+ players in the ESPN database
+a dataframe containing all ~1000+ players in the ESPN database
 }
 \description{
 A cached table of ESPN NFL players. Will store in memory for each session!
@@ -20,9 +20,9 @@ A cached table of ESPN NFL players. Will store in memory for each session!
 }
 \examples{
 \donttest{
-  conn <- espn_connect(season = 2020,league_id = 899513)
+  conn <- espn_connect(season = 2020,league_id = 1178049)
 
-  player_list <- espn_players(conn)
+  player_list <- espn_players(conn, limit = 25)
 }
 
 }

@@ -8,12 +8,12 @@
 #'
 #' @examples
 #' \donttest{
-#'   conn <- espn_connect(season = 2020,league_id = 899513)
+#'   conn <- espn_connect(season = 2020,league_id = 1178049)
 #'
-#'   player_list <- espn_players(conn)
+#'   player_list <- espn_players(conn, limit = 25)
 #' }
 #'
-#' @return a dataframe containing all ~7000+ players in the ESPN database
+#' @return a dataframe containing all ~1000+ players in the ESPN database
 #' @export
 
 espn_players <- function(conn, limit = 5000) {
@@ -31,8 +31,9 @@ espn_players <- function(conn, limit = 5000) {
         list(players = list(limit = limit,
                             sortPercOwned = list(
                               sortPriority = 1,
-                              sortAsc = FALSE
-                            ))),
+                              sortAsc = FALSE)
+                            )
+             ),
         auto_unbox = TRUE)
     ) %>%
     purrr::pluck("content","players") %>%
@@ -40,18 +41,21 @@ espn_players <- function(conn, limit = 5000) {
     tidyr::hoist(
       1,
       "player_id"="id",
-      "player_data"="player",
-      "rank_data"="ratings") %>%
-    dplyr::select('player_id','player_data','rank_data') %>%
+      "player_data"="player") %>%
+    dplyr::select('player_id','player_data') %>%
     tidyr::hoist(
       'player_data',
       "player_name" = "fullName",
-
       "pos" = "defaultPositionId",
-      "eligible_pos" = "eligibleSlots"
-    )
-    tidyr::unnest_wider(player_data)
-
+      "eligible_pos" = "eligibleSlots",
+      "team"="proTeamId"
+    ) %>%
+    dplyr::mutate(
+      pos = purrr::map_chr(as.character(.data$pos),~.espn_pos_map()[.x]),
+      eligible_pos = purrr::map(.data$eligible_pos,~.espn_lineupslot_map()[as.character(.x)] %>% unname()),
+      team = purrr::map_chr(as.character(.data$team),~.espn_team_map()[.x])
+    ) %>%
+    dplyr::select(-"player_data")
 
   return(df_players)
 }
