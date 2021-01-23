@@ -10,7 +10,6 @@
 -   Edited `espn_getendpoint()` LL function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat.
 -   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function.
 
-
 ### Minor patches
 
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). (v1.2.1.1)
