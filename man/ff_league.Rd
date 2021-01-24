@@ -43,9 +43,7 @@ This function returns a tidy dataframe of common league settings, including deta
 \donttest{
 conn <- espn_connect(
   season = 2020,
-  league_id = 899513,
-  espn_s2 = Sys.getenv("FF_ESPN_S2"),
-  swid = Sys.getenv("FF_SWID")
+  league_id = 899513
 )
 ff_league(conn)
 }
