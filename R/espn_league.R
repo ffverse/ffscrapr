@@ -8,9 +8,7 @@
 #' \donttest{
 #' conn <- espn_connect(
 #'   season = 2020,
-#'   league_id = 899513,
-#'   espn_s2 = Sys.getenv("FF_ESPN_S2"),
-#'   swid = Sys.getenv("FF_SWID")
+#'   league_id = 899513
 #' )
 #' ff_league(conn)
 #' }
@@ -28,10 +26,11 @@ ff_league.espn_conn <- function(conn) {
   franchise_count <- league_endpoint$content$settings$size
   roster_size <- .espn_roster_size(league_endpoint)
   player_copies <- 1
+
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$content$settings$name,
-    # league_type = "",
+    league_type = .espn_is_keeper(league_endpoint),
     franchise_count = franchise_count,
     qb_type = .espn_is_qbtype(league_endpoint)$type,
     idp = .espn_is_idp(league_endpoint),
@@ -39,11 +38,11 @@ ff_league.espn_conn <- function(conn) {
     best_ball = FALSE,
     salary_cap = FALSE, # this may actually be possible to get
     player_copies = player_copies,
-    # years_active = "",
+    years_active = .espn_leaguehistory(conn,league_endpoint),
     qb_count = .espn_is_qbtype(league_endpoint)$count,
     roster_size = roster_size,
-    league_depth = roster_size * franchise_count / player_copies # ,
-    # keeper_count = ""
+    league_depth = roster_size * franchise_count / player_copies,
+    keeper_count = league_endpoint$content$settings$draftSettings$keeperCount
   )
 }
 
@@ -69,6 +68,14 @@ ff_league.espn_conn <- function(conn) {
     count = count,
     type = type
   )
+}
+
+#' @noRd
+.espn_leaguehistory <- function(conn,league_endpoint){
+
+  start_year <- head(league_endpoint$content$status$previousSeasons,1) %>% unlist()
+
+  paste0(start_year,"-",conn$season)
 }
 
 #' @noRd
@@ -119,4 +126,12 @@ ff_league.espn_conn <- function(conn) {
   # scoring_settings <- ff_scoring(conn)
   roster_size <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts %>% purrr::map_int(~.x) %>% sum()
   roster_size
+}
+
+.espn_is_keeper <- function(league_endpoint){
+
+  x <- purrr::pluck(league_endpoint,"content","settings","draftSettings","keeperCount")
+
+  dplyr::case_when(x == 0 ~ "redraft",
+                   TRUE ~ "keeper")
 }

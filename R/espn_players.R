@@ -48,12 +48,13 @@ espn_players <- function(conn, limit = 5000) {
       "player_name" = "fullName",
       "pos" = "defaultPositionId",
       "eligible_pos" = "eligibleSlots",
-      "team"="proTeamId"
+      "team"="proTeamId",
+      "jersey_num"="jersey"
     ) %>%
     dplyr::mutate(
-      pos = purrr::map_chr(as.character(.data$pos),~.espn_pos_map()[.x]),
-      eligible_pos = purrr::map(.data$eligible_pos,~.espn_lineupslot_map()[as.character(.x)] %>% unname()),
-      team = purrr::map_chr(as.character(.data$team),~.espn_team_map()[.x])
+      pos = purrr::map_chr(as.character(.data$pos), ~.espn_pos_map()[.x]),
+      eligible_pos = purrr::map(.data$eligible_pos, ~.espn_lineupslot_map()[as.character(.x)] %>% unname()),
+      team = purrr::map_chr(as.character(.data$team), ~.espn_team_map()[.x])
     ) %>%
     dplyr::select(-"player_data")
 
