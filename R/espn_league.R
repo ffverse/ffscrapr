@@ -73,7 +73,7 @@ ff_league.espn_conn <- function(conn) {
 #' @noRd
 .espn_leaguehistory <- function(conn,league_endpoint){
 
-  start_year <- head(league_endpoint$content$status$previousSeasons,1) %>% unlist()
+  start_year <- utils::head(league_endpoint$content$status$previousSeasons,1) %>% unlist()
 
   paste0(start_year,"-",conn$season)
 }
