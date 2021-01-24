@@ -10,6 +10,7 @@
 -   Edited `espn_getendpoint()` LL function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)
 -   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)
 -   Added `ff_franchises()` method for ESPN. (v1.2.1.8)
+-   Added `ff_draft()` method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)
 
 ### Minor patches
 
