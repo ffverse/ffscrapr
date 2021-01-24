@@ -462,8 +462,8 @@
         "standingsUpdateDate": 1609748298388,
         "teamsJoined": 10,
         "transactionScoringPeriod": 18,
-        "waiverLastExecutionDate": 1611158415734,
-        "waiverNextExecutionDate": 1611504000000,
+        "waiverLastExecutionDate": 1611504015015,
+        "waiverNextExecutionDate": 1611763200000,
         "waiverProcessStatus": {
             "2020-09-09T15:00:03.083+0000": 1,
             "2020-09-16T15:00:35.713+0000": 5,
@@ -1891,7 +1891,7 @@
             "location": "Austin",
             "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/HelmetAlphabet-ESPN/Helmet-B.svg",
             "logoType": "VECTOR",
-            "nickname": "<U+0001F410>Drew Lock<U+0001F410>",
+            "nickname": "🐐Drew Lock🐐",
             "owners": [
                 "{2B355850-05B1-4DA3-BA19-7FEDA07BD9C2}"
             ],
