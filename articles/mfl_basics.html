@@ -17,7 +17,9 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Basics">
 <meta property="og:description" content="ffscrapr">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
@@ -105,7 +107,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -187,7 +195,7 @@
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Ev… TE    NYG    26.4</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Ja… WR    CLE    28.2</span>
-<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre… WR    NOS    25  </span>
+<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre… WR    NOS    25.1</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cam… TE    TBB    29.6</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, … WR    LAR    25.9</span>
 <span class="co">#&gt; 6 0001         Team Pikachu   13793     Valdes-Sca… WR    GBP    26.3</span>
@@ -308,8 +316,8 @@
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
 <span class="co">#&gt;  1 0001         Team Pikachu     23.4   22.3   26.2   23.7        3        6</span>
-<span class="co">#&gt;  2 0002         Team Simon Be…   32.8   24.7   24.5   24.3        8       11</span>
-<span class="co">#&gt;  3 0003         Team Captain …   25.0   23.4   30.9   26.5        5        8</span>
+<span class="co">#&gt;  2 0002         Team Simon Be…   32.8   24.7   24.6   24.3        8       11</span>
+<span class="co">#&gt;  3 0003         Team Captain …   25.0   23.5   30.9   26.5        5        8</span>
 <span class="co">#&gt;  4 0004         Team Ice Clim…   29.0   25.1   26.1   27.1        5        9</span>
 <span class="co">#&gt;  5 0005         Team Dr. Mario   27.2   22.9   24.5   24.5        2        7</span>
 <span class="co">#&gt;  6 0006         Team King Ded…   25.5   25.2   26.2   24.6        3       10</span>
@@ -318,9 +326,9 @@
 <span class="co">#&gt;  9 0009         Team Link        26.6   25.8   27.3   27.9        2       11</span>
 <span class="co">#&gt; 10 0010         Team Yoshi       29.0   22.1   27.5   25.3        2        6</span>
 <span class="co">#&gt; 11 0011         Team Diddy Ko…   31.4   26.3   24.0   23.9        4       11</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo      31.2   23.4   24.4   23.7        5        7</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo      31.2   23.4   24.4   23.8        5        7</span>
 <span class="co">#&gt; 13 0013         Team Ness        31.6   23.3   23.4   26.2        6       11</span>
-<span class="co">#&gt; 14 0014         Team Luigi       32.6   25.1   24.0   26.7        3       12</span>
+<span class="co">#&gt; 14 0014         Team Luigi       32.7   25.1   24.0   26.7        3       12</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">
@@ -352,7 +360,20 @@
 </div>
 
   
-
-
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

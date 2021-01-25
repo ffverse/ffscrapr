@@ -44,6 +44,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
@@ -149,6 +155,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -231,8 +243,8 @@
 #&gt; </span><span style='color: #555555;'> 4</span><span> 0006         Team King Ded…        8          5        0      0.615
 #&gt; </span><span style='color: #555555;'> 5</span><span> 0011         Team Diddy Ko…        8          5        0      0.615
 #&gt; </span><span style='color: #555555;'> 6</span><span> 0007         Team Kirby            7          6        0      0.538
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0008         Team Fox              7          6        0      0.538
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0003         Team Captain …        6          7        0      0.462
+#&gt; </span><span style='color: #555555;'> 7</span><span> 0008         Team Bowser           7          6        0      0.538
+#&gt; </span><span style='color: #555555;'> 8</span><span> 0003         Team Donkey K…        6          7        0      0.462
 #&gt; </span><span style='color: #555555;'> 9</span><span> 0002         Team Simon Be…        6          7        0      0.462
 #&gt; </span><span style='color: #555555;'>10</span><span> 0004         Team Ice Clim…        5          8        0      0.385
 #&gt; </span><span style='color: #555555;'>11</span><span> 0005         Team Dr. Mario        5          8        0      0.385
@@ -290,6 +302,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>
