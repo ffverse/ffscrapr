@@ -5,6 +5,7 @@
 #'
 #' @param conn a connection object created by \code{espn_connect} or \code{ff_connect()}
 #' @param limit the maximum number of results to return
+#' @param x_fantasy_filter a JSON encoded list of parameters to pass to API - overrides limit arg.
 #'
 #' @examples
 #' \donttest{
@@ -16,11 +17,21 @@
 #' @return a dataframe containing all ~1000+ players in the ESPN database
 #' @export
 
-espn_players <- function(conn, limit = 5000) {
+espn_players <- function(conn, limit = 5000, x_fantasy_filter = NULL) {
 
   checkmate::assert_number(limit, lower = 0)
 
   if(as.numeric(conn$season) < 2018) rlang::abort("ESPN's v3 API does not return player data from before 2018")
+
+  if(is.null(x_fantasy_filter)) {
+    x_fantasy_filter <- jsonlite::toJSON(
+      list(players = list(limit = limit,
+                          sortPercOwned = list(
+                            sortPriority = 1,
+                            sortAsc = FALSE)
+      )
+      ),
+      auto_unbox = TRUE)}
 
   df_players <- espn_getendpoint(
     conn = conn,

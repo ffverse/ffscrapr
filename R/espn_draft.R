@@ -29,9 +29,22 @@ ff_draft.espn_conn <- function(conn){
       ff_franchises(conn) %>%
         dplyr::select('franchise_id',"franchise_name",'user_nickname'),
       by = c("franchise_id")
-    ) %>%
+    )
+
+  x_fantasy_filter <- list(
+    players = list(filterIds=draft_endpoint$player_id,
+                   filterStatsForTopScoringPeriodIds = list(
+                     value = 0,
+                     additionalValue = ""
+                   ),
+                   sortPercOwned = list(
+                     sortPriority = 1,
+                     sortAsc = FALSE))) %>%
+    jsonlite::toJSON(auto_unbox = TRUE)
+
+  x <- draft_endpoint %>%
     dplyr::left_join(
-      espn_players(conn) %>%
+      espn_players(conn,x_fantasy_filter = x_fantasy_filter) %>%
         dplyr::select("player_id","player_name","pos","team"),
       by = c("player_id")
     ) %>%
