@@ -62,7 +62,7 @@ dp_playerids <- function() {
 #'
 #' @examples
 #' \donttest{
-#' dp_cleannames()
+#' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 #' }
 #'
 #' @return a character vector of cleaned names

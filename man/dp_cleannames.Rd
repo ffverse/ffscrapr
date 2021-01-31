@@ -20,7 +20,7 @@ May eventually refer to a name-cleaning database, for now will just include basi
 }
 \examples{
 \donttest{
-dp_cleannames()
+dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 }
 
 }
