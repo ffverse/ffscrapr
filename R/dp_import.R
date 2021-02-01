@@ -22,7 +22,7 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 
   url_query <- glue::glue("https://github.com/DynastyProcess/data/raw/master/files/{file_name}")
 
-  response <- httr::RETRY("GET", url_query)
+  response <- httr::RETRY("GET", url_query, httr::accept("text/csv"))
 
   if (httr::http_error(response)) {
     stop(glue::glue("GitHub request failed with error: <{httr::status_code(response)}> \n
@@ -54,7 +54,7 @@ dp_playerids <- function() {
 
   url_query <- "https://github.com/DynastyProcess/data/raw/master/files/db_playerids.csv"
 
-  response <- httr::RETRY("GET",url_query)
+  response <- httr::RETRY("GET", url_query, httr::accept("text/csv"))
 
   if (httr::http_error(response)) {
     stop(glue::glue("GitHub request failed with error: <{httr::status_code(response)}> \n
