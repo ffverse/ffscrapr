@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.10</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@
 <li>Added warning for <code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> - ESPN does not support draft pick trades (v1.2.1.4)</li>
 <li>Added <code><a href="../reference/ff_league.html">ff_league()</a></code> method for ESPN connection. (v1.2.1.5) (Thanks, <a href='https://github.com/TonyElHabr'>@TonyElHabr</a>!)</li>
 <li>Added warning for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - ESPN does not support looking up user leagues (v1.2.1.6)</li>
-<li>Edited <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> LL function to take a json-formatted <code>x_fantasy_filter</code> argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)</li>
+<li>Edited <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> lower-level function to take a json-formatted <code>x_fantasy_filter</code> argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)</li>
 <li>Added <code><a href="../reference/espn_players.html">espn_players()</a></code>, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)</li>
 <li>Added <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code> method for ESPN. (v1.2.1.8)</li>
 </ul>
@@ -191,6 +191,8 @@
 <li>Documentation and vignette updates/tweaks (v1.2.1.1)</li>
 <li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)</li>
 <li>Added <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)</li>
+<li>Refactored <code><a href="../reference/dp_values.html">dp_values()</a></code> and <code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)</li>
+<li>Added inst-level redactor (v1.2.1.10)</li>
 </ul>
 </div>
 </div>

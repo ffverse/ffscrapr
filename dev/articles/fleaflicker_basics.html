@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.9</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.10</span>
       </span>
     </div>
 
@@ -153,6 +153,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">aaa_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span>
+<span class="co">#&gt; Using request.R from "ffscrapr"</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aaa_summary</span><span class="op">)</span>
 <span class="co">#&gt; tibble [1 × 14] (S3: tbl_df/tbl/data.frame)</span>
@@ -191,6 +192,7 @@
 <p>Cool! Let’s pull in some additional context by adding DynastyProcess player values.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="co"># The values are stored by fantasypros ID since that's where the data comes from. </span>
 <span class="co"># To join it to our rosters, we'll need playerID mappings.</span>
@@ -198,6 +200,7 @@
 <span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sportradar_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sportradar_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span>
 <span class="co"># to just IDs, age, and values</span>
@@ -217,12 +220,12 @@
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team  sportradar_id</span>
 <span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        </span>
 <span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Presco… QB    DAL   86197778-8d4…</span>
-<span class="co">#&gt; 2      1578553 Running Bear       12926 Chris Godw… WR    TB    baa61bb5-f8d…</span>
-<span class="co">#&gt; 3      1578553 Running Bear       12032 Carson Wen… QB    PHI   e9a5c16b-447…</span>
-<span class="co">#&gt; 4      1578553 Running Bear       13325 Austin Eke… RB    LAC   e5b8c439-a48…</span>
-<span class="co">#&gt; 5      1578553 Running Bear        9338 Robert Woo… WR    LAR   618bedee-925…</span>
-<span class="co">#&gt; 6      1578553 Running Bear        7378 Cam Newton  QB    NE    214e55e4-a08…</span>
-<span class="co">#&gt; # … with 4 more variables: age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
+<span class="co">#&gt; 2      1578553 Running Bear       13325 Austin Eke… RB    LAC   e5b8c439-a48…</span>
+<span class="co">#&gt; 3      1578553 Running Bear       12926 Chris Godw… WR    TB    baa61bb5-f8d…</span>
+<span class="co">#&gt; 4      1578553 Running Bear       12032 Carson Wen… QB    PHI   e9a5c16b-447…</span>
+<span class="co">#&gt; 5      1578553 Running Bear       15531 Brandon Ai… WR    SF    c90471cc-fa6…</span>
+<span class="co">#&gt; 6      1578553 Running Bear        9338 Robert Woo… WR    LAR   618bedee-925…</span>
+<span class="co">#&gt; # … with 4 more variables: age &lt;lgl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -241,18 +244,18 @@
 <span class="co">#&gt; # A tibble: 12 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1      1581722 syd12nyjets's Team       41782 16514  5161 17648  2459</span>
-<span class="co">#&gt;  2      1581803 ZachFarni's Team         40976 12547 12860 15432   137</span>
-<span class="co">#&gt;  3      1581753 fede_mndz's Team         39788  6361 16079 16484   864</span>
-<span class="co">#&gt;  4      1581719 Jmuthers's Team          37798  8483 10491 11436  7388</span>
-<span class="co">#&gt;  5      1582416 Ray Jay Team             36605  9915 10615  8323  7752</span>
-<span class="co">#&gt;  6      1581721 Mjenkyns2004's Team      36304 19643  2979 13143   539</span>
-<span class="co">#&gt;  7      1581720 brosene's Team           35294 14181 13114  5164  2835</span>
-<span class="co">#&gt;  8      1582423 The Verblanders          35040 12708 10838 10814   680</span>
-<span class="co">#&gt;  9      1581718 AlexG5386's Team         33657  9460 16004  4915  3278</span>
-<span class="co">#&gt; 10      1581988 The DK Crew              32743 10717  3662 14287  3972</span>
-<span class="co">#&gt; 11      1581726 SCJaguars's Team         26129  4863 13760  7323   183</span>
-<span class="co">#&gt; 12      1578553 Running Bear             25614 12534  3646  8517   917</span></code></pre></div>
+<span class="co">#&gt;  1      1581803 ZachFarni's Team         44419 11637 17714 15010    58</span>
+<span class="co">#&gt;  2      1581722 syd12nyjets's Team       40128 16326  5758 16315  1729</span>
+<span class="co">#&gt;  3      1582416 Ray Jay Team             39973  9178 12933  9632  8230</span>
+<span class="co">#&gt;  4      1581719 Jmuthers's Team          38770  8134 11359 11270  8007</span>
+<span class="co">#&gt;  5      1581753 fede_mndz's Team         37486  4599 17587 14513   787</span>
+<span class="co">#&gt;  6      1581721 Mjenkyns2004's Team      37146 19625  4681 12465   375</span>
+<span class="co">#&gt;  7      1581720 brosene's Team           35309 13049 13574  5897  2789</span>
+<span class="co">#&gt;  8      1581988 The DK Crew              34496 10871  6756 13785  3016</span>
+<span class="co">#&gt;  9      1582423 The Verblanders          33918 11570 11265 10686   397</span>
+<span class="co">#&gt; 10      1581718 AlexG5386's Team         32469  7702 16728  4509  3530</span>
+<span class="co">#&gt; 11      1581726 SCJaguars's Team         28552  3965 16905  7576   106</span>
+<span class="co">#&gt; 12      1578553 Running Bear             25098 10441  5011  8990   656</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -263,18 +266,18 @@
 <span class="co">#&gt; # A tibble: 12 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name      team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      1581722 syd12nyjets's Team       0.099 0.12  0.043 0.132 0.079</span>
-<span class="co">#&gt;  2      1581803 ZachFarni's Team         0.097 0.091 0.108 0.116 0.004</span>
-<span class="co">#&gt;  3      1581753 fede_mndz's Team         0.094 0.046 0.135 0.123 0.028</span>
-<span class="co">#&gt;  4      1581719 Jmuthers's Team          0.09  0.062 0.088 0.086 0.238</span>
-<span class="co">#&gt;  5      1582416 Ray Jay Team             0.087 0.072 0.089 0.062 0.25 </span>
-<span class="co">#&gt;  6      1581721 Mjenkyns2004's Team      0.086 0.142 0.025 0.098 0.017</span>
-<span class="co">#&gt;  7      1581720 brosene's Team           0.084 0.103 0.11  0.039 0.091</span>
-<span class="co">#&gt;  8      1582423 The Verblanders          0.083 0.092 0.091 0.081 0.022</span>
-<span class="co">#&gt;  9      1581718 AlexG5386's Team         0.08  0.069 0.134 0.037 0.106</span>
-<span class="co">#&gt; 10      1581988 The DK Crew              0.078 0.078 0.031 0.107 0.128</span>
-<span class="co">#&gt; 11      1581726 SCJaguars's Team         0.062 0.035 0.115 0.055 0.006</span>
-<span class="co">#&gt; 12      1578553 Running Bear             0.061 0.091 0.031 0.064 0.03</span></code></pre></div>
+<span class="co">#&gt;  1      1581803 ZachFarni's Team         0.104 0.092 0.126 0.115 0.002</span>
+<span class="co">#&gt;  2      1581722 syd12nyjets's Team       0.094 0.128 0.041 0.125 0.058</span>
+<span class="co">#&gt;  3      1582416 Ray Jay Team             0.093 0.072 0.092 0.074 0.277</span>
+<span class="co">#&gt;  4      1581719 Jmuthers's Team          0.091 0.064 0.081 0.086 0.27 </span>
+<span class="co">#&gt;  5      1581753 fede_mndz's Team         0.088 0.036 0.125 0.111 0.027</span>
+<span class="co">#&gt;  6      1581721 Mjenkyns2004's Team      0.087 0.154 0.033 0.095 0.013</span>
+<span class="co">#&gt;  7      1581720 brosene's Team           0.083 0.103 0.097 0.045 0.094</span>
+<span class="co">#&gt;  8      1581988 The DK Crew              0.081 0.086 0.048 0.106 0.102</span>
+<span class="co">#&gt;  9      1582423 The Verblanders          0.079 0.091 0.08  0.082 0.013</span>
+<span class="co">#&gt; 10      1581718 AlexG5386's Team         0.076 0.061 0.119 0.035 0.119</span>
+<span class="co">#&gt; 11      1581726 SCJaguars's Team         0.067 0.031 0.121 0.058 0.004</span>
+<span class="co">#&gt; 12      1578553 Running Bear             0.059 0.082 0.036 0.069 0.022</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -301,18 +304,18 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1      1578553 Running Bear     28     25.7   26     25.6        6        6</span>
-<span class="co">#&gt;  2      1581718 AlexG5386's T…   29.8   24.8   28.3   26.2        3       12</span>
-<span class="co">#&gt;  3      1581719 Jmuthers's Te…   24.9   24.2   26.4   28.5        5        8</span>
-<span class="co">#&gt;  4      1581720 brosene's Team   29.6   25.3   24.9   26.6        6       10</span>
-<span class="co">#&gt;  5      1581721 Mjenkyns2004'…   25.9   24.8   25.9   26.6        5        9</span>
-<span class="co">#&gt;  6      1581722 syd12nyjets's…   25.6   22.5   24.7   22.3        5        7</span>
-<span class="co">#&gt;  7      1581726 SCJaguars's T…   23.9   25.4   33.2   25.1        5        7</span>
-<span class="co">#&gt;  8      1581753 fede_mndz's T…   34.7   24.7   24.8   27.9        6       12</span>
-<span class="co">#&gt;  9      1581803 ZachFarni's T…   28.1   22.1   25.1   24.1        5        9</span>
-<span class="co">#&gt; 10      1581988 The DK Crew      27.9   23.3   25.1   25.1        4        6</span>
-<span class="co">#&gt; 11      1582416 Ray Jay Team     30.8   26.4   29.8   26.9        4        8</span>
-<span class="co">#&gt; 12      1582423 The Verblande…   24.7   25.3   25.9   27.3        4        8</span>
+<span class="co">#&gt;  1      1578553 Running Bear        0      0      0      0        6        6</span>
+<span class="co">#&gt;  2      1581718 AlexG5386's T…      0      0      0      0        3       12</span>
+<span class="co">#&gt;  3      1581719 Jmuthers's Te…      0      0      0      0        5        8</span>
+<span class="co">#&gt;  4      1581720 brosene's Team      0      0      0      0        6       10</span>
+<span class="co">#&gt;  5      1581721 Mjenkyns2004'…      0      0      0      0        5        9</span>
+<span class="co">#&gt;  6      1581722 syd12nyjets's…      0      0      0      0        5        7</span>
+<span class="co">#&gt;  7      1581726 SCJaguars's T…      0      0      0      0        5        7</span>
+<span class="co">#&gt;  8      1581753 fede_mndz's T…      0      0      0      0        6       12</span>
+<span class="co">#&gt;  9      1581803 ZachFarni's T…      0      0      0      0        5        9</span>
+<span class="co">#&gt; 10      1581988 The DK Crew         0      0      0      0        4        6</span>
+<span class="co">#&gt; 11      1582416 Ray Jay Team        0      0      0      0        4        8</span>
+<span class="co">#&gt; 12      1582423 The Verblande…      0      0      0      0        4        8</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">
