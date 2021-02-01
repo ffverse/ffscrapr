@@ -19,6 +19,7 @@
 - Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
 - Refactored `dp_values()` and `dp_playerids()` functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)
 
+
 # ffscrapr 1.2.1
 
 ### Minor patches

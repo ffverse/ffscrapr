@@ -51,7 +51,6 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 #'
 #' @export
 dp_playerids <- function() {
-
   url_query <- "https://github.com/DynastyProcess/data/raw/master/files/db_playerids.csv"
 
   response <- httr::RETRY("GET",url_query)
@@ -68,6 +67,37 @@ dp_playerids <- function() {
     tibble::tibble()
 
   return(content)
+}
+
+#' Clean Names
+#'
+#' Applies some name-cleaning heuristics to facilitate joins.
+#' May eventually refer to a name-cleaning database, for now will just include basic regex.
+#'
+#' @param player_name a character (or character vector)
+#' @param lowercase defaults to FALSE - if TRUE, converts to lowercase
+#'
+#' @examples
+#' \donttest{
+#' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
+#' }
+#'
+#' @return a character vector of cleaned names
+#'
+#' @export
+
+dp_cleannames <- function(player_name, lowercase= FALSE) {
+
+  checkmate::assert_logical(lowercase)
+  checkmate::assert_character(player_name)
+
+  n <- stringr::str_remove_all(player_name, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
+
+  if(lowercase) n <- tolower(n)
+
+  n <- stringr::str_squish(n)
+
+  return(n)
 }
 
 #' Clean Names
