@@ -1,9 +1,12 @@
-test_that("dp_values are fetched", {
-  values <- dp_values()
-  player_ids <- dp_playerids()
+with_mock_api({
 
-  expect_tibble(values, min.rows = 1)
-  expect_tibble(player_ids, min.rows = 1)
+  test_that("dp_values are fetched", {
+    values <- dp_values()
+    player_ids <- dp_playerids()
+
+    expect_tibble(values, min.rows = 1)
+    expect_tibble(player_ids, min.rows = 1)
+  })
 })
 
 test_that("dp_cleannames removes periods, apostrophes, and suffixes", {
