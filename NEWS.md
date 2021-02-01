@@ -20,6 +20,7 @@
 - Refactored `dp_values()` and `dp_playerids()` functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)
 - Added inst-level redactor (v1.2.1.10)
 
+
 # ffscrapr 1.2.1
 
 ### Minor patches
