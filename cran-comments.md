@@ -1,3 +1,7 @@
+## RESUBMISSION
+Fix URL redirects.
+
+## Original Submission
 This release corrects the issues found by CRAN check so that it is robust against internet resource availibility. 
 
 ## Test environments
