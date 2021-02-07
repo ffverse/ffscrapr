@@ -7,15 +7,20 @@
 -   Added warning for `ff_draftpicks()` - ESPN does not support draft pick trades (v1.2.1.4)
 -   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, @TonyElHabr!)
 -   Added warning for `ff_userleagues()` - ESPN does not support looking up user leagues (v1.2.1.6)
--   Edited `espn_getendpoint()` LL function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)
+-   Edited `espn_getendpoint()` lower-level function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)
 -   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)
 -   Added `ff_franchises()` method for ESPN. (v1.2.1.8)
+-   Added `ff_draft()` method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)
 
 ### Minor patches
 
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). (v1.2.1.1)
 - Documentation and vignette updates/tweaks (v1.2.1.1)
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
+- Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
+- Refactored `dp_values()` and `dp_playerids()` functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)
+- Added inst-level redactor (v1.2.1.10)
+
 
 # ffscrapr 1.2.1
 
