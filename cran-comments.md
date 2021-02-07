@@ -1,4 +1,4 @@
-This release corrects the issues found by CRAN check so that it is robust against internet resource availibility.
+This release corrects the issues found by CRAN check so that it is robust against internet resource availibility. 
 
 ## Test environments
 * local (Windows) R installation, R 4.0.2
