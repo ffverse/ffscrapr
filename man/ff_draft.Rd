@@ -11,7 +11,7 @@
 \usage{
 ff_draft(conn, ...)
 
-\method{ff_draft}{espn_conn}(conn)
+\method{ff_draft}{espn_conn}(conn, ...)
 
 \method{ff_draft}{flea_conn}(conn, ...)
 

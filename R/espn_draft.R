@@ -14,13 +14,13 @@
 #' @describeIn ff_draft ESPN: returns the current year's draft/auction, including details on keepers
 #'
 #' @export
-ff_draft.espn_conn <- function(conn){
+ff_draft.espn_conn <- function(conn, ...){
 
   draft_endpoint <- espn_getendpoint(conn, view = "mDraftDetail") %>%
     purrr::pluck("content","draftDetail") %>%
     tibble::as_tibble() %>%
     tidyr::unnest_wider('picks') %>%
-    dplyr::mutate(completeDate = lubridate::as_datetime(completeDate/1000)) %>%
+    dplyr::mutate(completeDate = lubridate::as_datetime(.data$completeDate/1000)) %>%
     dplyr::rename(
       "player_id"="playerId",
       "franchise_id"="teamId"

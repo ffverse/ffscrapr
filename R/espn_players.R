@@ -67,7 +67,7 @@ espn_players <- function(conn = NULL, season = NULL) {
 
   df_players <- parsed %>%
     tibble::tibble() %>%
-    setNames("x") %>%
+    stats::setNames("x") %>%
     tidyr::hoist(
       "x",
       "player_id"="id",
