@@ -4,5 +4,5 @@ suppressPackageStartupMessages({
 })
 
 if (Sys.getenv("MOCK_BYPASS") == "true") {
-    with_mock_api <- force
+  with_mock_api <- force
 }

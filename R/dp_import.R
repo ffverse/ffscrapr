@@ -31,7 +31,7 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 
   content <- response %>%
     httr::content() %>%
-    utils::read.csv(text = .,stringsAsFactors = FALSE) %>%
+    utils::read.csv(text = ., stringsAsFactors = FALSE) %>%
     dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")), as.character) %>%
     tibble::tibble()
 }
@@ -62,7 +62,7 @@ dp_playerids <- function() {
 
   content <- response %>%
     httr::content() %>%
-    utils::read.csv(text = .,stringsAsFactors = FALSE) %>%
+    utils::read.csv(text = ., stringsAsFactors = FALSE) %>%
     dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")), as.character) %>%
     tibble::tibble()
 
@@ -86,14 +86,13 @@ dp_playerids <- function() {
 #'
 #' @export
 
-dp_cleannames <- function(player_name, lowercase= FALSE) {
-
+dp_cleannames <- function(player_name, lowercase = FALSE) {
   checkmate::assert_logical(lowercase)
   checkmate::assert_character(player_name)
 
   n <- stringr::str_remove_all(player_name, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
 
-  if(lowercase) n <- tolower(n)
+  if (lowercase) n <- tolower(n)
 
   n <- stringr::str_squish(n)
 

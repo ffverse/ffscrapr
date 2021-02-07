@@ -12,18 +12,26 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-options(tibble.print_min = 5)
-
+options(tibble.print_min = 5, pillar.bold = TRUE, pillar.min_chars = 25, pillar.min_title_chars = 25)
+httptest::.mockPaths("tests/testthat")
+httptest::use_mock_api()
 ```
 # ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="200" /></a>
 *An R Client for Fantasy Football League APIs*
 
   <!-- badges: start -->
   
-  [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square)](https://CRAN.R-project.org/package=ffscrapr)
-  [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
-  [![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&style=flat-square)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
-  [![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&style=flat-square)](https://github.com/DynastyProcess/ffscrapr/actions)
+[![CRAN
+status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
+[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev) 
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Codecov test
+coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) 
+[![R build
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
+[![API
+status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
   
   <!-- badges: end -->
 
@@ -31,12 +39,13 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Version 1.2.1 is now on CRAN 🎉 and can be installed with:
+Version 1.2.2 is now on CRAN 🎉 and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
-# or from GitHub release with the remotes package # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr",ref = "v1.2.1")
+# or from GitHub release with the remotes package via:
+# install.packages("remotes")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
 ```
 
 Install the development version from GitHub with:
@@ -63,10 +72,15 @@ ff_rosters(ssb)
 
 # Get transactions
 ff_transactions(ssb)
-
 ```
 
-For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!
+Platform-specific guides on getting started with ffscrapr are here:
+
+- [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
+- [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html) 
+- [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
+
+There are also some more advanced guides for custom API calls in the [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as well as some guides on [optimizing ffscrapr's performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html). 
 
 ### Contributing
 
@@ -82,4 +96,8 @@ Many hands make light work! Here are some ways you can contribute to this projec
 
 The R code for this package is released as open source under the [MIT license](https://ffscrapr.dynastyprocess.com/LICENSE.html). 
 
-The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use. 
+The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use.
+
+```{r include = FALSE}
+httptest::stop_mocking()
+```
