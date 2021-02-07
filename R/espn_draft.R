@@ -16,7 +16,7 @@
 #' @export
 ff_draft.espn_conn <- function(conn){
 
-  draft_endpoint <- espn_getendpoint(conn, view = "mDraftDetail")
+  draft_endpoint <- espn_getendpoint(conn, view = "mDraftDetail") %>%
     purrr::pluck("content","draftDetail") %>%
     tibble::as_tibble() %>%
     tidyr::unnest_wider('picks') %>%
@@ -31,20 +31,9 @@ ff_draft.espn_conn <- function(conn){
       by = c("franchise_id")
     )
 
-  x_fantasy_filter <- list(
-    players = list(filterIds=draft_endpoint$player_id,
-                   filterStatsForTopScoringPeriodIds = list(
-                     value = 0,
-                     additionalValue = ""
-                   ),
-                   sortPercOwned = list(
-                     sortPriority = 1,
-                     sortAsc = FALSE))) %>%
-    jsonlite::toJSON(auto_unbox = TRUE)
-
   x <- draft_endpoint %>%
     dplyr::left_join(
-      espn_players(conn,x_fantasy_filter = x_fantasy_filter) %>%
+      espn_players(conn) %>%
         dplyr::select("player_id","player_name","pos","team"),
       by = c("player_id")
     ) %>%

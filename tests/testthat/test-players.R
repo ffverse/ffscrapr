@@ -11,7 +11,7 @@ with_mock_api({
     expect_tibble(flea)
 
     conn <- espn_connect(season = 2020,league_id = 1178049)
-    espn <- espn_players(conn,limit = 3)
+    espn <- espn_players(conn)
 
     expect_tibble(espn)
   })
