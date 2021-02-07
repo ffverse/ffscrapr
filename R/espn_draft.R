@@ -16,7 +16,7 @@
 #' @export
 ff_draft.espn_conn <- function(conn){
 
-  draft_endpoint <- espn_getendpoint(conn,view = "mDraftDetail") %>%
+  draft_endpoint <- espn_getendpoint(conn, view = "mDraftDetail")
     purrr::pluck("content","draftDetail") %>%
     tibble::as_tibble() %>%
     tidyr::unnest_wider('picks') %>%
