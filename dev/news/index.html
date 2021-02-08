@@ -44,6 +44,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
@@ -85,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.1.10</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.10</span>
       </span>
     </div>
 
@@ -149,6 +155,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -190,9 +202,21 @@
 <li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>. (v1.2.1.1)</li>
 <li>Documentation and vignette updates/tweaks (v1.2.1.1)</li>
 <li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)</li>
-<li>Added <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)</li>
-<li>Refactored <code><a href="../reference/dp_values.html">dp_values()</a></code> and <code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)</li>
-<li>Added inst-level redactor (v1.2.1.10)</li>
+</ul>
+</div>
+</div>
+    <div id="ffscrapr-122" class="section level1">
+<h1 class="page-header" data-toc-text="1.2.2">
+<a href="#ffscrapr-122" class="anchor"></a>ffscrapr 1.2.2<small> 2021-02-08 </small>
+</h1>
+<p>Minor patches to dp_import functions to address issues discovered by CRAN checks.</p>
+<p>Also adds minor helper function, <code>dp_cleannames</code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</p>
+<div id="minor-patches-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-patches-1" class="anchor"></a>Minor patches</h3>
+<ul>
+<li>Refactored <code><a href="../reference/dp_values.html">dp_values()</a></code> and <code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> functions to use httr backend for compat with httptest, preventing CRAN errors.</li>
+<li>Added inst-level redactor for httptest.</li>
 </ul>
 </div>
 </div>
@@ -200,9 +224,9 @@
 <h1 class="page-header" data-toc-text="1.2.1">
 <a href="#ffscrapr-121" class="anchor"></a>ffscrapr 1.2.1<small> 2020-12-16 </small>
 </h1>
-<div id="minor-patches-1" class="section level3">
+<div id="minor-patches-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-patches-1" class="anchor"></a>Minor patches</h3>
+<a href="#minor-patches-2" class="anchor"></a>Minor patches</h3>
 <ul>
 <li>Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant</li>
 <li>Changing the league_id output of <code>sleeper_userleagues</code> to be a character column (because of cran no-longdouble support)</li>
@@ -328,6 +352,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>
