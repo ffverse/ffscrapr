@@ -12,5 +12,9 @@ with_mock_api({
     got_conn <- fleaflicker_connect(2020, 206154)
     got_league <- ff_league(got_conn)
     expect_tibble(got_league, min.rows = 1)
+
+    espn_conn <- espn_connect(season = 2020, league_id = 899513)
+    espn_league <- ff_league(espn_conn)
+    expect_tibble(espn_league, any.missing = FALSE, min.rows = 1)
   })
 })

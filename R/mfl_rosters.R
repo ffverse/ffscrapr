@@ -48,9 +48,11 @@ ff_rosters.mfl_conn <- function(conn, custom_players = FALSE, ...) {
   rosters_endpoint %>%
     dplyr::left_join(franchises_endpoint, by = "franchise_id") %>%
     dplyr::left_join(players_endpoint, by = "player_id") %>%
+    dplyr::mutate(dplyr::across(dplyr::any_of(c("contractYear", "salary")), as.numeric)) %>%
     dplyr::select(
       "franchise_id", "franchise_name",
       "player_id", "player_name", "pos", "team", "age",
+      dplyr::any_of(c("salary", "contract_years" = "contractYear")),
       dplyr::everything()
     )
 }

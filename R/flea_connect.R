@@ -35,7 +35,7 @@ fleaflicker_connect <- function(season = NULL,
 
   if (!is.logical(rate_limit)) stop("rate_limit should be logical")
   if (!rate_limit || !(is.null(rate_limit_number) | is.null(rate_limit_seconds))) {
-    .fn_set_ratelimit(rate_limit, rate_limit_number, rate_limit_seconds)
+    .fn_set_ratelimit(rate_limit, "fleaflicker", rate_limit_number, rate_limit_seconds)
   }
 
   # nocov end

@@ -58,11 +58,13 @@ template:
       api_key: 7abddd2aa591d955b365235f35d75a38
       index_name: dynastyprocess
   opengraph:
+    image:
+      src: man/figures/ffscrapr.svg
+      alt: "ffscrapr - an R client for fantasy football platforms"
     twitter:
       creator: "@_TanHo"
       site: "@DynastyProcess"
       card: summary
-      
 
 development:
   mode: auto

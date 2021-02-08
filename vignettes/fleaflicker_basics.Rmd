@@ -79,13 +79,13 @@ player_ids <- dp_playerids() %>%
 
 player_values <- player_values %>% 
   left_join(player_ids, by = c("fp_id" = "fantasypros_id")) %>% 
-  select(sportradar_id,age,ecr_1qb,ecr_pos,value_1qb)
+  select(sportradar_id,age,ecr_2qb,ecr_pos,value_2qb)
 
 # ff_rosters() will return the sportradar_id, which we can then match to our player values!
 
 aaa_values <- aaa_rosters %>% 
   left_join(player_values, by = c("sportradar_id"="sportradar_id")) %>% 
-  arrange(franchise_id,desc(value_1qb))
+  arrange(franchise_id,desc(value_2qb))
 
 head(aaa_values)
 ```
@@ -95,7 +95,7 @@ Let's do some team summaries now!
 ```{r}
 value_summary <- aaa_values %>% 
   group_by(franchise_id,franchise_name,pos) %>% 
-  summarise(total_value = sum(value_1qb,na.rm = TRUE)) %>%
+  summarise(total_value = sum(value_2qb,na.rm = TRUE)) %>%
   ungroup() %>% 
   group_by(franchise_id,franchise_name) %>% 
   mutate(team_value = sum(total_value)) %>% 
@@ -128,9 +128,9 @@ I like looking at average age by position, but weighted by dynasty value. This h
 age_summary <- aaa_values %>% 
   filter(pos %in% c("QB","RB","WR","TE")) %>% 
   group_by(franchise_id,pos) %>% 
-  mutate(position_value = sum(value_1qb,na.rm=TRUE)) %>% 
+  mutate(position_value = sum(value_2qb,na.rm=TRUE)) %>% 
   ungroup() %>% 
-  mutate(weighted_age = age*value_1qb/position_value,
+  mutate(weighted_age = age*value_2qb/position_value,
          weighted_age = round(weighted_age, 1)) %>% 
   group_by(franchise_id,franchise_name,pos) %>% 
   summarise(count = n(),
