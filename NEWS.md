@@ -16,10 +16,16 @@
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). (v1.2.1.1)
 - Documentation and vignette updates/tweaks (v1.2.1.1)
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
-- Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
-- Refactored `dp_values()` and `dp_playerids()` functions to use httr backend so that it can be captured by httptest, preventing CRAN errors (v1.2.1.10)
-- Added inst-level redactor (v1.2.1.10)
 
+# ffscrapr 1.2.2
+
+Minor patches to dp_import functions to address issues discovered by CRAN checks. 
+
+Also adds minor helper function, `dp_cleannames`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.
+
+### Minor patches
+-  Refactored `dp_values()` and `dp_playerids()` functions to use httr backend for compat with httptest, preventing CRAN errors.
+- Added inst-level redactor for httptest. 
 
 # ffscrapr 1.2.1
 

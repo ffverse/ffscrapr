@@ -10,9 +10,9 @@
 [![CRAN
 status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr)
 [![Dev
-status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev)
+status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
+stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
 coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
@@ -30,13 +30,13 @@ sources.
 
 ### Installation
 
-Version 1.2.1 is now on CRAN 🎉 and can be installed with:
+Version 1.2.2 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.1")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
 ```
 
 Install the development version from GitHub with:
@@ -61,6 +61,7 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
 ff_league(ssb) %>% str()
+#> Using request.R from "ffscrapr"
 #> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
@@ -82,10 +83,10 @@ ff_rosters(ssb)
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
 #> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.4
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.1
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25  
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.5
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    25.9
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.2
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.1
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.6
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26  
 #> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
