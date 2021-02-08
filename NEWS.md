@@ -1,3 +1,12 @@
+# ffscrapr 1.2.2
+Minor patches to dp_import functions to address issues discovered by CRAN checks. 
+
+Also adds minor helper function, `dp_cleannames`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.
+
+### Minor patches
+-  Refactored `dp_values()` and `dp_playerids()` functions to use httr backend for compat with httptest, preventing CRAN errors.
+- Added inst-level redactor for httptest. 
+
 # ffscrapr 1.2.1
 
 ### Minor patches
