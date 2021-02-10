@@ -54,6 +54,9 @@ authors:
 template:
   params:
     bootswatch: cosmo
+    docsearch:
+      api_key: 7abddd2aa591d955b365235f35d75a38
+      index_name: dynastyprocess
   opengraph:
     image:
       src: man/figures/ffscrapr.svg
@@ -62,9 +65,6 @@ template:
       creator: "@_TanHo"
       site: "@DynastyProcess"
       card: summary
-    #docsearch:
-      #api_key: API_KEY
-      #index_name: INDEX_NAME
 
 development:
   mode: auto

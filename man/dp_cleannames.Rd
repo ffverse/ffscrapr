@@ -5,8 +5,6 @@
 \title{Clean Names}
 \usage{
 dp_cleannames(player_name, lowercase = FALSE)
-
-dp_cleannames(player_name, lowercase = FALSE)
 }
 \arguments{
 \item{player_name}{a character (or character vector)}
@@ -15,21 +13,12 @@ dp_cleannames(player_name, lowercase = FALSE)
 }
 \value{
 a character vector of cleaned names
-
-a character vector of cleaned names
 }
 \description{
 Applies some name-cleaning heuristics to facilitate joins.
 May eventually refer to a name-cleaning database, for now will just include basic regex.
-
-Applies some name-cleaning heuristics to facilitate joins.
-May eventually refer to a name-cleaning database, for now will just include basic regex.
 }
 \examples{
-\donttest{
-dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
-}
-
 \donttest{
 dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 }

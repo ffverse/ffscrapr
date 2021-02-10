@@ -23,9 +23,9 @@ httptest::use_mock_api()
   
 [![CRAN
 status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
-[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev) 
+[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/) 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square)](https://www.tidyverse.org/lifecycle/#maturing)
+stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
 coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) 
 [![R build
@@ -39,13 +39,13 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Version 1.2.1 is now on CRAN 🎉 and can be installed with:
+Version 1.2.2 is now on CRAN 🎉 and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.1")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
 ```
 
 Install the development version from GitHub with:
