@@ -19,12 +19,14 @@
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
 - Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
 - Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (#196, thanks for reporting Mike!) (v1.2.2.11)
+- Actually export `dp_cleannames()` and add it to the NAMESPACE so it's accessible to the end user, whoops.
+
 
 # ffscrapr 1.2.2
 
 Minor patches to dp_import functions to address issues discovered by CRAN checks. 
 
-Also adds minor helper function, `dp_cleannames`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.
+~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.~~ Messed up the export here, whoops. Fixed for dev version.
 
 ### Minor patches
 -  Refactored `dp_values()` and `dp_playerids()` functions to use httr backend for compat with httptest, preventing CRAN errors.
