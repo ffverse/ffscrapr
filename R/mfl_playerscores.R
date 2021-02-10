@@ -26,7 +26,7 @@ ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::left_join(
-      dplyr::select(mfl_players(), "player_id", "player_name", "pos", "team"),
+      dplyr::select(mfl_players(mfl_connect(season)), "player_id", "player_name", "pos", "team"),
       by = c("id" = "player_id")
     ) %>%
     dplyr::mutate(
