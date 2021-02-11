@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.12</span>
       </span>
     </div>
 
@@ -184,7 +184,7 @@
 (via memoise in zzz.R)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>espn_players</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>5000</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>espn_players</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='cn'>NULL</span>, season <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,20 +194,20 @@
       <td><p>a connection object created by <code>espn_connect</code> or <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
     </tr>
     <tr>
-      <th>limit</th>
-      <td><p>the maximum number of results to return</p></td>
+      <th>season</th>
+      <td><p>a season to fetch</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe containing all ~1000+ players in the ESPN database</p>
+    <p>a dataframe containing all ~2000+ active players in the ESPN database</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>,league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
 
-  <span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>espn_players</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>
+<span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>espn_players</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='co'># }</span>
 
 </div></pre>

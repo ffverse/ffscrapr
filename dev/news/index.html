@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.12</span>
       </span>
     </div>
 
@@ -193,6 +193,7 @@
 <li>Edited <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> lower-level function to take a json-formatted <code>x_fantasy_filter</code> argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)</li>
 <li>Added <code><a href="../reference/espn_players.html">espn_players()</a></code>, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)</li>
 <li>Added <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code> method for ESPN. (v1.2.1.8)</li>
+<li>Added <code><a href="../reference/ff_draft.html">ff_draft()</a></code> method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)</li>
 </ul>
 </div>
 <div id="minor-patches" class="section level3">
@@ -202,7 +203,10 @@
 <li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>. (v1.2.1.1)</li>
 <li>Documentation and vignette updates/tweaks (v1.2.1.1)</li>
 <li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)</li>
-<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>, thanks for reporting Mike!) (v1.2.2.10)</li>
+<li>Added <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)</li>
+<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>, thanks for reporting Mike!) (v1.2.2.11)</li>
+<li>Actually export <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> and add it to the NAMESPACE so it’s accessible to the end user, whoops.</li>
+<li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing (v1.2.2.12)</li>
 </ul>
 </div>
 </div>
@@ -211,7 +215,7 @@
 <a href="#ffscrapr-122" class="anchor"></a>ffscrapr 1.2.2<small> 2021-02-08 </small>
 </h1>
 <p>Minor patches to dp_import functions to address issues discovered by CRAN checks.</p>
-<p>Also adds minor helper function, <code>dp_cleannames</code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</p>
+<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</del> Messed up the export here, whoops. Fixed for dev version.</p>
 <div id="minor-patches-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-patches-1" class="anchor"></a>Minor patches</h3>
