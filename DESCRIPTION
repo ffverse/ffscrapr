@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.2.2.11
+Version: 1.2.2.12
 Authors@R: 
     c(person(given = "Tan",
            family = "Ho",
@@ -24,6 +24,7 @@ BugReports: https://github.com/dynastyprocess/ffscrapr/issues
 Depends: 
     R (>= 3.0.0)
 Imports:
+    checkmate (>= 2.0.0),
     dplyr (>= 1.0.0),
     glue (>= 1.3.0),
     httr (>= 1.4.0),
@@ -40,12 +41,12 @@ Imports:
     tidyr (>= 1.0.0)
 Suggests: 
     covr (>= 3.0.0),
+    curl (>= 4.0.0),
     httptest (>= 3.0.0),
-    knitr,
-    rmarkdown,
+    knitr (>= 1.0),
+    rmarkdown (>= 2.6),
     testthat (>= 2.1.0),
-    checkmate,
-    withr
+    withr (>= 2.4.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
