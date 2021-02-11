@@ -8,21 +8,20 @@
 #'
 #' @examples
 #' \donttest{
-#'   conn <- espn_connect(season = 2020,league_id = 1178049)
+#' conn <- espn_connect(season = 2020, league_id = 1178049)
 #'
-#'   player_list <- espn_players(conn, season = 2020)
+#' player_list <- espn_players(conn, season = 2020)
 #' }
 #'
 #' @return a dataframe containing all ~2000+ active players in the ESPN database
 #' @export
 
 espn_players <- function(conn = NULL, season = NULL) {
-
   checkmate::assert_number(season, null.ok = TRUE)
 
-  if(!is.null(conn) && is.null(season)) season <- conn$season
+  if (!is.null(conn) && is.null(season)) season <- conn$season
 
-  if(is.null(season)) season <- .fn_choose_season()
+  if (is.null(season)) season <- .fn_choose_season()
 
   xff <- list(filterActive = list(value = TRUE)) %>%
     jsonlite::toJSON(auto_unbox = TRUE)
@@ -52,7 +51,7 @@ espn_players <- function(conn = NULL, season = NULL) {
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("ESPN API did not return json while calling {url_query}"),
-            call. = FALSE
+      call. = FALSE
     )
   }
 
@@ -70,16 +69,16 @@ espn_players <- function(conn = NULL, season = NULL) {
     stats::setNames("x") %>%
     tidyr::hoist(
       "x",
-      "player_id"="id",
+      "player_id" = "id",
       "player_name" = "fullName",
       "pos" = "defaultPositionId",
       "eligible_pos" = "eligibleSlots",
-      "team"="proTeamId"
+      "team" = "proTeamId"
     ) %>%
     dplyr::mutate(
-      pos2 = purrr::map_chr(as.character(.data$pos), ~.espn_pos_map()[.x]),
-      eligible_pos = purrr::map(.data$eligible_pos, ~.espn_lineupslot_map()[as.character(.x)] %>% unname()),
-      team = purrr::map_chr(as.character(.data$team), ~.espn_team_map()[.x]),
+      pos2 = purrr::map_chr(as.character(.data$pos), ~ .espn_pos_map()[.x]),
+      eligible_pos = purrr::map(.data$eligible_pos, ~ .espn_lineupslot_map()[as.character(.x)] %>% unname()),
+      team = purrr::map_chr(as.character(.data$team), ~ .espn_team_map()[.x]),
       x = NULL
     )
 

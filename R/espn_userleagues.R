@@ -10,7 +10,6 @@
 #' @export
 
 ff_userleagues.espn_conn <- function(conn = NULL, ...) {
-
   rlang::warn("ESPN does not support looking up leagues by user.")
 
   return(NULL)

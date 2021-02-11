@@ -35,14 +35,15 @@ ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
       score = as.numeric(score)
     ) %>%
     dplyr::select("season",
-                  "week",
-                  "player_id" = "id",
-                  "player_name",
-                  "pos",
-                  "team",
-                  "points" = "score",
-                  "is_available"="isAvailable",
-                  dplyr::everything())
+      "week",
+      "player_id" = "id",
+      "player_name",
+      "pos",
+      "team",
+      "points" = "score",
+      "is_available" = "isAvailable",
+      dplyr::everything()
+    )
 
   return(df)
 }

@@ -22,7 +22,7 @@ with_mock_api({
 
     expect_tibble(joe_draftresults)
 
-    tony <- espn_connect(season = 2020,league_id = 899513)
+    tony <- espn_connect(season = 2020, league_id = 899513)
     tony_draftresults <- ff_draft(tony)
 
     expect_tibble(tony_draftresults, min.rows = 200)

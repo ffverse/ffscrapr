@@ -57,6 +57,7 @@ test_that("ESPN connect cookie authentication works", {
   dlp <- espn_connect(season = 2020, league_id = 1178049, swid = "{1E6BB139}", espn_s2 = "AECt%2FIDwd5kt")
 
   expect_character(dlp$cookies$options$cookie,
-                   pattern = "\\{",
-                   info = "Cookie string contains curly brace")
+    pattern = "\\{",
+    info = "Cookie string contains curly brace"
+  )
 })

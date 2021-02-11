@@ -53,7 +53,6 @@ with_mock_api({
 
     espn_conn <- espn_connect(season = 2020)
 
-    expect_warning(ff_userleagues(espn_conn),regexp = "ESPN does not support")
-
+    expect_warning(ff_userleagues(espn_conn), regexp = "ESPN does not support")
   })
 })

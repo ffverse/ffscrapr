@@ -17,14 +17,13 @@
 #' @export
 
 espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
-
   xff <- NULL
 
-  if(!is.null(x_fantasy_filter) && !jsonlite::validate(x_fantasy_filter)) {
+  if (!is.null(x_fantasy_filter) && !jsonlite::validate(x_fantasy_filter)) {
     rlang::abort("x_fantasy_filter is not formatted as valid JSON")
   }
 
-  if(!is.null(x_fantasy_filter)) {
+  if (!is.null(x_fantasy_filter)) {
     xff <- httr::add_headers(`X-Fantasy-Filter` = x_fantasy_filter)
   }
 

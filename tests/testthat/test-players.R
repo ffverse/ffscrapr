@@ -11,7 +11,7 @@ with_mock_api({
     flea <- fleaflicker_players(joe_conn, page_limit = 2)
     expect_tibble(flea)
 
-    conn <- espn_connect(season = 2020,league_id = 1178049)
+    conn <- espn_connect(season = 2020, league_id = 1178049)
     espn <- espn_players(conn)
 
     expect_tibble(espn)

@@ -46,8 +46,8 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 
 \examples{
 \donttest{
-  conn <- espn_connect(season = 2020,league_id = 899513)
-  ff_draft(conn)
+conn <- espn_connect(season = 2020, league_id = 899513)
+ff_draft(conn)
 }
 
 \donttest{

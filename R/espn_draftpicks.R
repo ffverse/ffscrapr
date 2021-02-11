@@ -13,14 +13,14 @@
 #'   season = 2018,
 #'   league_id = 1178049,
 #'   espn_s2 = Sys.getenv("TAN_ESPN_S2"),
-#'   swid = Sys.getenv("TAN_SWID"))
+#'   swid = Sys.getenv("TAN_SWID")
+#' )
 #'
 #' ff_draftpicks(conn)
 #' }
 #'
 #' @export
 ff_draftpicks.espn_conn <- function(conn, ...) {
-
   rlang::warn("ESPN does not support draft pick trades. For draft results, please use ff_draft()")
 
   return(NULL)

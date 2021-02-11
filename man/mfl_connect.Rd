@@ -46,8 +46,8 @@ This function creates a connection object which stores parameters and gets a log
 }
 \examples{
 \donttest{
-  mfl_connect(season = 2020, league_id = 54040)
-  mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
+mfl_connect(season = 2020, league_id = 54040)
+mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 }
 }
 \seealso{

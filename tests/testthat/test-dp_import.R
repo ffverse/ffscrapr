@@ -19,5 +19,4 @@ test_that("dp_cleannames removes periods, apostrophes, and suffixes", {
 
   expect_equal(cleaned_names, c("AJ Green", "Odell Beckham", "LeVeon Bell"))
   expect_equal(lowercase_clean, c("aj green", "odell beckham", "leveon bell"))
-
 })

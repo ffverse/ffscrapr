@@ -62,7 +62,7 @@ dp_playerids <- function() {
 
   content <- response %>%
     httr::content() %>%
-    utils::read.csv(text = .,stringsAsFactors = FALSE) %>%
+    utils::read.csv(text = ., stringsAsFactors = FALSE) %>%
     dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")), as.character) %>%
     tibble::tibble()
 

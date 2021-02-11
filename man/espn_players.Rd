@@ -20,9 +20,9 @@ A cached table of ESPN NFL players. Will store in memory for each session!
 }
 \examples{
 \donttest{
-  conn <- espn_connect(season = 2020,league_id = 1178049)
+conn <- espn_connect(season = 2020, league_id = 1178049)
 
-  player_list <- espn_players(conn, season = 2020)
+player_list <- espn_players(conn, season = 2020)
 }
 
 }

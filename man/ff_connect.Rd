@@ -21,7 +21,7 @@ This function creates a connection object which stores parameters and gets a log
 }
 \examples{
 \donttest{
-  ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
 }
 }
 \seealso{
