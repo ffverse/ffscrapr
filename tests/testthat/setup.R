@@ -6,13 +6,14 @@ suppressPackageStartupMessages({
 
 # Download test files and clean up afterwards, if running mocked tests
 
-if (Sys.getenv("MOCK_BYPASS") == "true") {
-  with_mock_api <- force
-}
+if (identical(Sys.getenv("MOCK_BYPASS"),"true")) with_mock_api <- force
 
-runtests <- !identical(Sys.getenv("MOCK_BYPASS"), "true") & !is.null(curl::nslookup("github.com", error = FALSE))
 
-if (runtests) {
+download_mock <- !identical(Sys.getenv("MOCK_BYPASS"), "true") & !is.null(curl::nslookup("github.com", error = FALSE))
+
+skip <- FALSE
+
+if (download_mock) {
   tryCatch(
     expr = {
       download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip", "f.zip")
@@ -25,10 +26,10 @@ if (runtests) {
         testthat::teardown_env()
       )
     },
-    warning = function(e) runtests <<- FALSE,
-    error = function(e) runtests <<- FALSE
+    warning = function(e) skip <<- TRUE,
+    error = function(e) skip <<- TRUE
   )
 }
 
 skippy <- function() NULL
-if (!runtests) skippy <- function() testthat::skip(message = "Unable to download test data")
+if (skip) skippy <- function() testthat::skip(message = "Unable to download test data")

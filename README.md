@@ -42,7 +42,7 @@ remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
 Install the development version from GitHub with:
 
 ``` r
-remotes::install_github("dynastyprocess/ffscrapr")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "dev")
 ```
 
 The dev version has a [separate documentation site
