@@ -58,7 +58,8 @@ ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_league(ssb_conn)
 }
 
-
+\donttest{
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_league(jml_conn)
+}
 }

@@ -1,5 +1,6 @@
 with_mock_api({
   test_that("ff_scoring returns a tibble", {
+    skippy()
     dlf <- mfl_connect(2019, 37920)
     dlf_scoring <- ff_scoring(dlf)
 

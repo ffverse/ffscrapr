@@ -1,5 +1,7 @@
 with_mock_api({
   test_that("ff_draftpicks returns a tibble of draft picks", {
+    skippy()
+
     ssb <- mfl_connect(2020, 54040)
     ssb_picks <- ff_draftpicks(ssb)
 

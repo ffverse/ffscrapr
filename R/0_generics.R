@@ -15,7 +15,9 @@
 #' @seealso \code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 #'
 #' @examples
-#' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+#' \donttest{
+#'   ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+#' }
 #' @export ff_connect
 #' @return a connection object to be used with \code{ff_*} functions
 

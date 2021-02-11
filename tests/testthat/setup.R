@@ -12,8 +12,6 @@ if (Sys.getenv("MOCK_BYPASS") == "true") {
 
 runtests <- !identical(Sys.getenv("MOCK_BYPASS"),"true") & !is.null(curl::nslookup("github.com",error = FALSE))
 
-skip <- FALSE
-
 if (runtests) {
 
   tryCatch(expr = {
@@ -26,7 +24,10 @@ if (runtests) {
       unlink(c("ffscrapr-tests-main","f.zip"), recursive = TRUE, force = TRUE),
       testthat::teardown_env())
   },
-  error = function(e) skip <- TRUE)
+  warning = function(e) runtests <<- FALSE,
+  error = function(e) runtests <<- FALSE)
 
 }
 
+skippy <- function() NULL
+if(!runtests) skippy <- function() testthat::skip(message = "Unable to download test data")
