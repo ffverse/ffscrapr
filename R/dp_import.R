@@ -86,13 +86,12 @@ dp_playerids <- function() {
 #'
 #' @export
 
-
 dp_cleannames <- function(player_name, lowercase = FALSE) {
   checkmate::assert_logical(lowercase)
   checkmate::assert_character(player_name)
 
   n <- stringr::str_remove_all(player_name, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
-  
+
   if (lowercase) n <- tolower(n)
 
   n <- stringr::str_squish(n)

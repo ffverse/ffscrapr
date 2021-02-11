@@ -47,7 +47,8 @@ conn <- espn_connect(
   season = 2018,
   league_id = 1178049,
   espn_s2 = Sys.getenv("TAN_ESPN_S2"),
-  swid = Sys.getenv("TAN_SWID"))
+  swid = Sys.getenv("TAN_SWID")
+)
 }
 
 }

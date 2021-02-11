@@ -1,5 +1,6 @@
 with_mock_api({
   test_that("ff_schedule returns a tibble", {
+    skippy()
     dlf <- mfl_connect(2019, 37920)
     dlf_schedule <- ff_schedule(dlf)
 

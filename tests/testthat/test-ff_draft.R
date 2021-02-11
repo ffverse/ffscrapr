@@ -1,5 +1,7 @@
 with_mock_api({
   test_that("ff_draft returns a tibble for each platform currently programmed", {
+    skippy()
+
     sfb_conn <- ff_connect("mfl", 65443, season = 2020)
     sfb_draftresults <- ff_draft(sfb_conn)
 
@@ -19,5 +21,10 @@ with_mock_api({
     joe_draftresults <- ff_draft(joe_conn)
 
     expect_tibble(joe_draftresults)
+
+    tony <- espn_connect(season = 2020, league_id = 899513)
+    tony_draftresults <- ff_draft(tony)
+
+    expect_tibble(tony_draftresults, min.rows = 200)
   })
 })

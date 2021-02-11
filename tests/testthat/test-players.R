@@ -1,5 +1,6 @@
 with_mock_api({
   test_that("ff_playersish calls return a tibble", {
+    skippy()
     mfl <- mfl_players()
     expect_tibble(mfl, min.rows = 300)
 
@@ -10,8 +11,8 @@ with_mock_api({
     flea <- fleaflicker_players(joe_conn, page_limit = 2)
     expect_tibble(flea)
 
-    conn <- espn_connect(season = 2020,league_id = 1178049)
-    espn <- espn_players(conn,limit = 3)
+    conn <- espn_connect(season = 2020, league_id = 1178049)
+    espn <- espn_players(conn)
 
     expect_tibble(espn)
   })

@@ -10,20 +10,24 @@
 -   Edited `espn_getendpoint()` lower-level function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)
 -   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)
 -   Added `ff_franchises()` method for ESPN. (v1.2.1.8)
+-   Added `ff_draft()` method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)
 
 ### Minor patches
 
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). (v1.2.1.1)
 - Documentation and vignette updates/tweaks (v1.2.1.1)
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
-- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (#196, thanks for reporting Mike!) (v1.2.2.10)
+- Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
+- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (#196, thanks for reporting Mike!) (v1.2.2.11)
+- Actually export `dp_cleannames()` and add it to the NAMESPACE so it's accessible to the end user, whoops.
+- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing (v1.2.2.12)
 
 
 # ffscrapr 1.2.2
 
 Minor patches to dp_import functions to address issues discovered by CRAN checks. 
 
-Also adds minor helper function, `dp_cleannames`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.
+~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.~~ Messed up the export here, whoops. Fixed for dev version.
 
 ### Minor patches
 -  Refactored `dp_values()` and `dp_playerids()` functions to use httr backend for compat with httptest, preventing CRAN errors.

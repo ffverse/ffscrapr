@@ -41,7 +41,7 @@ Return franchise-level data (including divisions, usernames, etc) - available da
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020,league_id = 1178049)
+conn <- espn_connect(season = 2020, league_id = 1178049)
 
 ff_franchises(conn)
 }

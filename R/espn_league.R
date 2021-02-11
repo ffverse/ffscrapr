@@ -38,7 +38,7 @@ ff_league.espn_conn <- function(conn) {
     best_ball = FALSE,
     salary_cap = FALSE, # this may actually be possible to get
     player_copies = player_copies,
-    years_active = .espn_leaguehistory(conn,league_endpoint),
+    years_active = .espn_leaguehistory(conn, league_endpoint),
     qb_count = .espn_is_qbtype(league_endpoint)$count,
     roster_size = roster_size,
     league_depth = roster_size * franchise_count / player_copies,
@@ -71,11 +71,10 @@ ff_league.espn_conn <- function(conn) {
 }
 
 #' @noRd
-.espn_leaguehistory <- function(conn,league_endpoint){
+.espn_leaguehistory <- function(conn, league_endpoint) {
+  start_year <- utils::head(league_endpoint$content$status$previousSeasons, 1) %>% unlist()
 
-  start_year <- head(league_endpoint$content$status$previousSeasons,1) %>% unlist()
-
-  paste0(start_year,"-",conn$season)
+  paste0(start_year, "-", conn$season)
 }
 
 #' @noRd
@@ -90,7 +89,7 @@ ff_league.espn_conn <- function(conn) {
 #' @noRd
 .espn_check_ppr <- function(league_endpoint) {
   stat_map <- .espn_stat_map()
-  stat_ids <- league_endpoint$content$settings$scoringSettings$scoringItems %>% purrr::map_chr(~.x$statId)
+  stat_ids <- league_endpoint$content$settings$scoringSettings$scoringItems %>% purrr::map_chr(~ .x$statId)
   stat_ids_named <- stat_map[stat_ids] # %>% purrr::discard(~is.na(.x))
   idx_rec <- which(stat_ids_named == "receivingReceptions")
   seq_stat_ids <- seq_along(stat_ids)
@@ -124,14 +123,17 @@ ff_league.espn_conn <- function(conn) {
 #' @noRd
 .espn_roster_size <- function(league_endpoint) {
   # scoring_settings <- ff_scoring(conn)
-  roster_size <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts %>% purrr::map_int(~.x) %>% sum()
+  roster_size <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts %>%
+    purrr::map_int(~.x) %>%
+    sum()
   roster_size
 }
 
-.espn_is_keeper <- function(league_endpoint){
+.espn_is_keeper <- function(league_endpoint) {
+  x <- purrr::pluck(league_endpoint, "content", "settings", "draftSettings", "keeperCount")
 
-  x <- purrr::pluck(league_endpoint,"content","settings","draftSettings","keeperCount")
-
-  dplyr::case_when(x == 0 ~ "redraft",
-                   TRUE ~ "keeper")
+  dplyr::case_when(
+    x == 0 ~ "redraft",
+    TRUE ~ "keeper"
+  )
 }
