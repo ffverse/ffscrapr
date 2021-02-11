@@ -1,5 +1,7 @@
 with_mock_api({
   test_that("ff_draft returns a tibble for each platform currently programmed", {
+    skippy()
+
     sfb_conn <- ff_connect("mfl", 65443, season = 2020)
     sfb_draftresults <- ff_draft(sfb_conn)
 
