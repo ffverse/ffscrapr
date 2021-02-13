@@ -12,7 +12,7 @@ ff_starters(conn, ...)
 
 \method{ff_starters}{flea_conn}(conn, week = 1:17, ...)
 
-\method{ff_starters}{mfl_conn}(conn, week = "all", season = NULL, ...)
+\method{ff_starters}{mfl_conn}(conn, week = 1:17, season = NULL, ...)
 
 \method{ff_starters}{sleeper_conn}(conn, week = 1:17, ...)
 }
@@ -48,7 +48,7 @@ ff_starters(conn)
 
 \donttest{
 dlf_conn <- mfl_connect(2020, league_id = 37920)
-ff_starters(conn = dlf_conn, week = 1:2)
+ff_starters(conn = dlf_conn)
 }
 
 \donttest{
