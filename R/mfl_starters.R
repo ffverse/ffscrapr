@@ -12,17 +12,17 @@
 #' @examples
 #' \donttest{
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
-#' ff_starters(conn = dlf_conn, week = 1:2)
+#' ff_starters(conn = dlf_conn)
 #' }
 #'
 #' @export
-ff_starters.mfl_conn <- function(conn, week = "all", season = NULL, ...) {
+ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
   if (is.null(season)) season <- conn$season
 
-  checkmate::assert_numeric(week, lower = 1, upper = 21)
+  checkmate::assert_number(week, lower = 1, upper = 21)
   checkmate::assert_number(season)
 
-  players_endpoint <- sleeper_players() %>%
+  players_endpoint <- mfl_players() %>%
     dplyr::select("player_id", "player_name", "pos", "team")
 
   franchises_endpoint <- ff_franchises(conn) %>%

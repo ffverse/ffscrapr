@@ -41,10 +41,7 @@ This function returns a tidy dataframe of common league settings, including deta
 
 \examples{
 \donttest{
-conn <- espn_connect(
-  season = 2020,
-  league_id = 899513
-)
+conn <- espn_connect(season = 2020, league_id = 899513)
 ff_league(conn)
 }
 
