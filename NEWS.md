@@ -21,6 +21,7 @@
 - Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (#196, thanks for reporting Mike!) (v1.2.2.11)
 - Actually export `dp_cleannames()` and add it to the NAMESPACE so it's accessible to the end user, whoops.
 - Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing (v1.2.2.12)
+- Fixed bugs in MFL's `ff_starters()` function - bad default arg
 
 
 # ffscrapr 1.2.2

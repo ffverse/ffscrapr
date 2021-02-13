@@ -12,8 +12,24 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-options(tibble.print_min = 5, pillar.bold = TRUE, pillar.min_chars = 25, pillar.min_title_chars = 25)
-httptest::.mockPaths("tests/testthat")
+options(tibble.print_min = 5, 
+        pillar.bold = TRUE, 
+        pillar.min_chars = 25, 
+        pillar.min_title_chars = 25,
+        dplyr.summarise.inform = FALSE,
+        rmarkdown.html_vignette.check_title = FALSE)
+
+eval <- TRUE
+
+tryCatch(expr = {
+  
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip","f.zip")
+  unzip('f.zip', exdir = ".")
+  
+  httptest::.mockPaths(new = "ffscrapr-tests-main")},
+  warning = function(e) eval <<- FALSE,
+  error = function(e) eval <<- FALSE)
+
 httptest::use_mock_api()
 ```
 # ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="200" /></a>
@@ -51,7 +67,7 @@ remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
 Install the development version from GitHub with:
 
 ``` {r eval = FALSE}
-remotes::install_github("dynastyprocess/ffscrapr")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "dev")
 ```
 
 The dev version has a [separate documentation site here](https://ffscrapr.dynastyprocess.com/dev/).
@@ -60,7 +76,7 @@ The dev version has a [separate documentation site here](https://ffscrapr.dynast
 
 All `ffscrapr` functions start with a connection object created by `ff_connect()`, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.
 
-```{r}
+```{r eval = eval}
 library(ffscrapr)
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
@@ -100,4 +116,5 @@ The APIs and data accessed by this package belong to their respective owners, an
 
 ```{r include = FALSE}
 httptest::stop_mocking()
+unlink(c("ffscrapr-tests-main","f.zip"), recursive = TRUE, force = TRUE)
 ```
