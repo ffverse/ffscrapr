@@ -19,7 +19,7 @@
 ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
   if (is.null(season)) season <- conn$season
 
-  checkmate::assert_number(week, lower = 1, upper = 21)
+  checkmate::assert_numeric(week, lower = 1, upper = 21)
   checkmate::assert_number(season)
 
   players_endpoint <- mfl_players() %>%
