@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.13</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
       </span>
     </div>
 
@@ -194,6 +194,8 @@
 <li>Added <code><a href="../reference/espn_players.html">espn_players()</a></code>, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)</li>
 <li>Added <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code> method for ESPN. (v1.2.1.8)</li>
 <li>Added <code><a href="../reference/ff_draft.html">ff_draft()</a></code> method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)</li>
+<li>Added <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> method for ESPN (v1.2.2.14)</li>
+<li>Added <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> method for ESPN (v1.2.2.16)</li>
 </ul>
 </div>
 <div id="minor-patches" class="section level3">
@@ -204,10 +206,11 @@
 <li>Documentation and vignette updates/tweaks (v1.2.1.1)</li>
 <li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)</li>
 <li>Added <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)</li>
-<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>, thanks for reporting Mike!) (v1.2.2.11)</li>
+<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>) (v1.2.2.11)</li>
 <li>Actually export <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> and add it to the NAMESPACE so it’s accessible to the end user, whoops.</li>
 <li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing (v1.2.2.12)</li>
-<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg</li>
+<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/202'>#202</a>) (v1.2.2.14)</li>
+<li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/206'>#206</a>) (v1.2.2.15)</li>
 </ul>
 </div>
 </div>

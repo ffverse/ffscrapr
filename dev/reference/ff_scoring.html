@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.13</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
       </span>
     </div>
 
@@ -174,7 +174,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League Scoring settings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_scoring.R'><code>R/flea_scoring.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_scoring.R'><code>R/mfl_scoring.R</code></a>, and 1 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_scoring.R'><code>R/espn_scoring.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_scoring.R'><code>R/flea_scoring.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_scoring.Rd</code></div>
     </div>
 
@@ -183,6 +183,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
@@ -209,6 +212,7 @@
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns scoring settings in a flat table, override positions have their own scoring.</p></li>
 <li><p><code>flea_conn</code>: Fleaflicker: returns scoring settings in a flat table, one row per position per rule.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns scoring settings in a flat table, one row per position per rule.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns scoring settings in a flat table, one row per position per rule.</p></li>
@@ -219,9 +223,27 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+<span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 77 x 4</span><span>
+#&gt;    stat_id stat_name                     points override_pos
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'> 1</span><span>     133 defensive400To449YardsAllowed      0 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 2</span><span>     200 missedFieldGoalsFrom50To59        -</span><span style='color: #BB0000;'>1</span><span> </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 3</span><span>     203 missedFieldGoalsFrom60Plus        -</span><span style='color: #BB0000;'>1</span><span> </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 4</span><span>      25 rushingTouchdowns                  6 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 5</span><span>     134 defensive450To499YardsAllowed      0 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 6</span><span>      72 lostFumbles                       -</span><span style='color: #BB0000;'>2</span><span> </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 7</span><span>     135 defensive500To549YardsAllowed      0 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 8</span><span>      79 missedFieldGoalsFrom40To49        -</span><span style='color: #BB0000;'>2</span><span> </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'> 9</span><span>     136 defensiveOver550YardsAllowed       0 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'>10</span><span>      43 receivingTouchdowns                6 </span><span style='color: #BB0000;'>NA</span><span>          
+#&gt; </span><span style='color: #555555;'># … with 67 more rows</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
 <span class='va'>joe_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"fleaflicker"</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>joe_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 72 x 7</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 72 x 7</span><span>
 #&gt;    pos   event           abbrev points label  desc                      event_id
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> QB    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
