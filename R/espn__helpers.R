@@ -30,18 +30,18 @@
     "19" = "HC",
     "20" = "BE",
     "21" = "IR",
-    "22" = "",
+    "22" = "XYZ",
     "23" = "RB/WR/TE",
     "24" = "ER",
     "25" = "Rookie",
     "QB" = 0,
+    "TQB" = 1,
     "RB" = 2,
+    "RB/WR" = 3,
     "WR" = 4,
+    "WR/TE" = 5,
     "TE" = 6,
-    "OP" = 7, # added
-    "D/ST" = 16,
-    "K" = 17,
-    "FLEX" = 23,
+    "OP" = 7,
     "DT" = 8,
     "DE" = 9,
     "LB" = 10,
@@ -50,7 +50,16 @@
     "S" = 13,
     "DB" = 14,
     "DP" = 15,
-    "HC" = 19
+    "DST" = 16,
+    "K" = 17,
+    "P" = 18,
+    "HC" = 19,
+    "BE" = 20,
+    "IR" = 21,
+    "XYZ" = 22,
+    "RB/WR/TE" = 23,
+    "ER" = 24,
+    "Rookie" = 25
   )
 }
 
@@ -94,7 +103,7 @@
 
 #' ESPN Team ID map
 #'
-#' Opinionatedly conforming to DynastyProcess standards, which conform to MFL standards.
+#' Opinionatedly conforming to DynastyProcess standards, which match to MyFantasyLeague.
 #' Abbreviations are consistently three letters.
 #'
 #' @keywords internal
@@ -192,11 +201,14 @@
     "44" = "receiving2PtConversions",
     "53" = "receivingReceptions",
 
+    "63" = "fumbleRecoveryTouchdown",
     "72" = "lostFumbles",
 
     "74" = "madeFieldGoalsFrom50Plus",
     "77" = "madeFieldGoalsFrom40To49",
+    "79" = "missedFieldGoalsFrom40To49",
     "80" = "madeFieldGoalsFromUnder40",
+    "82" = "missedFieldGoalsFromUnder40",
     "85" = "missedFieldGoals",
     "86" = "madeExtraPoints",
     "88" = "missedExtraPoints",
@@ -218,9 +230,14 @@
     "103" = "fumbleReturnTouchdown",
     "104" = "interceptionReturnTouchdown",
 
+    "114" = "kickoffReturnYards",
+    "115" = "puntReturnYards",
+
     "123" = "defensive28To34PointsAllowed",
     "124" = "defensive35To45PointsAllowed",
+    "125" = "defensive46+PointsAllowed",
 
+    "128" = "defensive000To099YardsAllowed",
     "129" = "defensive100To199YardsAllowed",
     "130" = "defensive200To299YardsAllowed",
     "132" = "defensive350To399YardsAllowed",
@@ -247,6 +264,14 @@
     "155" = "TeamWin", # TW
 
     "171" = "20-24pointLossMargin", # LM20
-    "172" = "25+pointLossMargin" # LM25
+    "172" = "25+pointLossMargin", # LM25
+
+    "198" = "madeFieldGoalsFrom50To59",
+    "200" = "missedFieldGoalsFrom50To59",
+    "201" = "madeFieldGoalsFrom60Plus",
+    "203" = "missedFieldGoalsFrom60Plus",
+
+    "206" = "2PtConversionReturnedForTouchdown",
+    "209" = "1PtSafety"
   )
 }

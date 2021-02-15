@@ -60,4 +60,6 @@ ff_draft.espn_conn <- function(conn, ...) {
       dplyr::everything()
     ) %>%
     dplyr::arrange(.data$bid_amount, .data$overall)
+
+  return(x)
 }

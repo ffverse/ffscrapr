@@ -4,7 +4,7 @@
 #'
 #' @param conn the list object created by \code{ff_connect()}
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
-#' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
+#' @param week a numeric vector (ie 1:17) or one of YTD (year-to-date) or AVG (average to date)
 #' @param ... other arguments
 #'
 #' @describeIn ff_playerscores MFL: returns the player fantasy scores for each week (not the actual stats)
@@ -17,6 +17,16 @@
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
+
+  player_scores <- tidyr::crossing(season = season, week = week) %>%
+    dplyr::transmute(playerscore = purrr::map2(.data$season,.data$week,.mfl_playerscore,conn = conn)) %>%
+    tidyr::unnest(playerscore)
+
+  return(player_scores)
+}
+
+.mfl_playerscore <- function(season,week,conn){
+
   if (!(is.numeric(week) | week %in% c("AVG", "YTD"))) {
     stop("week should be either a numeric or one of AVG or YTD")
   }

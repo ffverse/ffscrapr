@@ -25,7 +25,7 @@ ff_playerscores(conn, ...)
 
 \item{season}{the season of interest - generally only the most recent 2-3 seasons are available}
 
-\item{week}{a numeric or one of YTD (year-to-date) or AVG (average to date)}
+\item{week}{a numeric vector (ie 1:17) or one of YTD (year-to-date) or AVG (average to date)}
 }
 \value{
 A tibble of historical player scoring

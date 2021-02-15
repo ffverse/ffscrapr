@@ -11,6 +11,8 @@
 -   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)
 -   Added `ff_franchises()` method for ESPN. (v1.2.1.8)
 -   Added `ff_draft()` method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)
+-   Added `ff_rosters()` method for ESPN (v1.2.2.14)
+-   Added `ff_scoring()` method for ESPN (v1.2.2.16)
 
 ### Minor patches
 
@@ -18,10 +20,11 @@
 - Documentation and vignette updates/tweaks (v1.2.1.1)
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
 - Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
-- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (#196, thanks for reporting Mike!) (v1.2.2.11)
+- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (Resolves #196) (v1.2.2.11)
 - Actually export `dp_cleannames()` and add it to the NAMESPACE so it's accessible to the end user, whoops.
 - Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing (v1.2.2.12)
-- Fixed bugs in MFL's `ff_starters()` function - bad default arg
+- Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202) (v1.2.2.14)
+- Resolve MFL's playerscores to handle vectorized request (Fixes #206) (v1.2.2.15)
 
 
 # ffscrapr 1.2.2
