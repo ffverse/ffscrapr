@@ -7,7 +7,7 @@
 .espn_team_map()
 }
 \description{
-Opinionatedly conforming to DynastyProcess standards, which conform to MFL standards.
+Opinionatedly conforming to DynastyProcess standards, which match to MyFantasyLeague.
 Abbreviations are consistently three letters.
 }
 \seealso{
