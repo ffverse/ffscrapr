@@ -27,15 +27,21 @@
 - Resolve MFL's playerscores to handle vectorized request (Fixes #206) (v1.2.2.15)
 
 
+---
+
 # ffscrapr 1.2.2
 
 Minor patches to dp_import functions to address issues discovered by CRAN checks. 
 
-~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.~~ Messed up the export here, whoops. Fixed for dev version.
+~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.~~ 
+
+Messed up the export here, whoops. Fixing for next release.
 
 ### Minor patches
 -  Refactored `dp_values()` and `dp_playerids()` functions to use httr backend for compat with httptest, preventing CRAN errors.
 - Added inst-level redactor for httptest. 
+
+---
 
 # ffscrapr 1.2.1
 
@@ -43,6 +49,8 @@ Minor patches to dp_import functions to address issues discovered by CRAN checks
 
 -   Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant
 -   Changing the league_id output of `sleeper_userleagues` to be a character column (because of cran no-longdouble support)
+
+---
 
 # ffscrapr 1.2.0
 
@@ -63,6 +71,8 @@ All functions now have Fleaflicker methods! Here are notes about what ***isn't**
 
 -   `fleaflicker_players()` requires a connection/leagueID by default - acts a little oddly on game days as of right now.
 -   `ff_playerscores()` - Fleaflicker's API returns season level data easily, week-level is not readily available yet without some workarounds. Everything else seems to be okay.
+
+---
 
 # ffscrapr 1.1.0
 
@@ -100,10 +110,25 @@ Almost all functions now have Sleeper methods - implemented in what hopes to be 
 -   Uses describeIn instead of rdname for method documentation.
 -   Wrap all documentation examples in donttest - ratelimiting AND running in under 5 seconds each is pretty challenging!
 
+---
+
 # ffscrapr 1.0.0
 
 This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.
 
 Future versions will add more platforms via methods mapped to the same functions.
 
-Functions include: - `ff_connect` (and sibling `mfl_connect`) to establish connection parameters and ratelimiting - `mfl_getendpoint` as a low-level function for making GET requests from MFL - `ff_draft` gets draft results - `ff_draftpicks` gets current and future draft picks that have not yet been selected - `ff_franchises` gets franchise-level identifiers and divisions - `ff_league` gets league-level summaries of rules, players, and franchises - `ff_playerscores` gets playerweek-level scores - `ff_rosters` gets franchise-level rosters complete with naming - `ff_schedule` gets weekly fantasy schedules - `ff_scoring` gets scoring rules - `ff_standings` gets league-level season summaries - `ff_transactions` gets a list of all transactions and cleans them into a data frame.
+Functions include: 
+
+- `ff_connect` (and sibling `mfl_connect`) to establish connection parameters and ratelimiting 
+- `mfl_getendpoint` as a low-level function for making GET requests from MFL 
+- `ff_draft` gets draft results 
+- `ff_draftpicks` gets current and future draft picks that have not yet been selected 
+- `ff_franchises` gets franchise-level identifiers and divisions 
+- `ff_league` gets league-level summaries of rules, players, and franchises 
+- `ff_playerscores` gets playerweek-level scores 
+- `ff_rosters` gets franchise-level rosters complete with naming 
+- `ff_schedule` gets weekly fantasy schedules 
+- `ff_scoring` gets scoring rules 
+- `ff_standings` gets league-level season summaries 
+- `ff_transactions` gets a list of all transactions and cleans them into a data frame.
