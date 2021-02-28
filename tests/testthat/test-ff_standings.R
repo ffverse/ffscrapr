@@ -18,9 +18,13 @@ with_mock_api({
     got_schedule <- ff_schedule(got_conn, week = 4)
     got_potentialpoints <- .flea_add_potentialpoints(got_schedule, got_conn)
 
+    tony_conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_standings <- ff_standings(tony_conn)
+
     expect_tibble(jml_standings, any.missing = FALSE, nrows = 12)
     expect_tibble(dlp_standings, any.missing = FALSE, nrows = 12)
     expect_tibble(got_standings, any.missing = FALSE, nrows = 16)
     expect_tibble(got_potentialpoints, nrows = 16)
+    expect_tibble(tony_standings, any.missing = FALSE, nrows = 10)
   })
 })
