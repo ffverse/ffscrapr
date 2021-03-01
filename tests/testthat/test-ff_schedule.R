@@ -16,11 +16,15 @@ with_mock_api({
     joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
     joe_schedule <- ff_schedule(joe_conn, week = 4)
 
+    tony_conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_schedule <- ff_standings(tony_conn)
+
     expect_tibble(ssb_schedule, min.rows = 100)
     expect_tibble(dlf_schedule, min.rows = 100)
     expect_tibble(jml_schedule, min.rows = 100)
     expect_null(fog_schedule)
 
     expect_tibble(joe_schedule, min.rows = 16)
+    expect_tibble(tony_schedule, min.rows = 100)
   })
 })
