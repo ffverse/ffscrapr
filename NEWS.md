@@ -14,6 +14,7 @@
 -   Added `ff_rosters()` method for ESPN (v1.2.2.14)
 -   Added `ff_scoring()` method for ESPN (v1.2.2.16)
 -   Added `ff_standings()` method for ESPN (v1.2.2.17)
+-   Added `ff_schedule()` method for ESPN (v1.2.2.18)
 
 ### Minor patches
 
