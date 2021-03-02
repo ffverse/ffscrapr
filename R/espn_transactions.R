@@ -77,7 +77,7 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...){
       dplyr::mutate(type_desc = "traded_for")
 
     all_transactions <- dplyr::bind_rows(all_transactions,trade_transactions) %>%
-      dplyr::arrange(desc(.data$timestamp),.data$franchise_id)
+      dplyr::arrange(dplyr::desc(.data$timestamp),.data$franchise_id)
 
   }
 
