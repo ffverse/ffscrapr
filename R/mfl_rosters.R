@@ -3,6 +3,7 @@
 #' Get a dataframe of rosters.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
+#' @param week a numeric that specifies which week to return
 #' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... arguments passed to other methods (currently none)
 #'
@@ -16,13 +17,15 @@
 #'
 #' @export
 
-ff_rosters.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
+ff_rosters.mfl_conn <- function(conn, custom_players = deprecated(), week = NULL, ...) {
+
+  checkmate::assert_number(week,null.ok = TRUE)
 
   if(lifecycle::is_present(custom_players)) {
     lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
   }
 
-  rosters_endpoint <- mfl_getendpoint(conn, "rosters") %>%
+  rosters_endpoint <- mfl_getendpoint(conn, "rosters", W=week) %>%
     purrr::pluck("content", "rosters", "franchise") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "player" = "player", "franchise_id" = "id") %>%

@@ -81,9 +81,10 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
     dplyr::select("timestamp", "type", "franchise", "transaction") %>%
     tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|") %>%
     dplyr::mutate("comments" = ifelse(stringr::str_length(.data$comments) == 0,
-      NA_character_,
-      .data$comments
-    ))
+                                      NA_character_,
+                                      .data$comments),
+                  bid_amount = as.numeric(.data$bid_amount)
+                  )
 }
 
 ## TRADE ##

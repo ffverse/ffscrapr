@@ -11,7 +11,7 @@
 \usage{
 ff_standings(conn, ...)
 
-\method{ff_standings}{espn_conn}(conn)
+\method{ff_standings}{espn_conn}(conn, ...)
 
 \method{ff_standings}{flea_conn}(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...)
 
