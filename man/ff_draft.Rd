@@ -15,7 +15,7 @@ ff_draft(conn, ...)
 
 \method{ff_draft}{flea_conn}(conn, ...)
 
-\method{ff_draft}{mfl_conn}(conn, custom_players = FALSE, ...)
+\method{ff_draft}{mfl_conn}(conn, custom_players = deprecated(), ...)
 
 \method{ff_draft}{sleeper_conn}(conn, ...)
 }
@@ -24,7 +24,7 @@ ff_draft(conn, ...)
 
 \item{...}{args for other methods}
 
-\item{custom_players}{MFL: TRUE or FALSE - retrieve custom players from the MFL database? (Allows for devy, placeholder picks, slightly slower)}
+\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
 }
 \value{
 A tidy dataframe of draft results

@@ -4,6 +4,7 @@
 #' @keywords internal
 #' @importFrom rlang .data `%||%` .env
 #' @importFrom utils str
+#' @importFrom lifecycle deprecated
 
 NULL
 

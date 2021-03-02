@@ -3,7 +3,7 @@
 #' Get full transactions table
 #'
 #' @param conn the list object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - fetch custom players
+#' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... additional args
 #'
 #' @describeIn ff_transactions MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
@@ -15,8 +15,12 @@
 #' }
 #' @export
 
-ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
-  stopifnot(is.logical(custom_players))
+ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
+
+  if(lifecycle::is_present(custom_players)) {
+    lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
+  }
+
   df_transactions <- mfl_getendpoint(conn, "transactions") %>%
     purrr::pluck("content", "transactions", "transaction") %>%
     tibble::tibble() %>%
@@ -38,13 +42,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = FALSE, ...) {
     trade = .mfl_transactions_trade
   )
 
-  players_endpoint <- if (custom_players) {
-    mfl_players(conn)
-  } else {
-    mfl_players()
-  }
-
-  players_endpoint <- players_endpoint %>%
+  players_endpoint <- mfl_players(conn) %>%
     dplyr::select("player_id", "player_name", "pos", "team")
 
   purrr::map_dfr(transaction_functions, rlang::exec, df_transactions) %>%
