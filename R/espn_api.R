@@ -47,6 +47,15 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
     query = list(...)
   )
 
+  .espn_api_doquery(conn, url_query, xff)
+}
+
+#' ESPN Do Query
+#'
+#' @keywords internal
+
+.espn_api_doquery <- function(conn, url_query, ...){
+
   ## GET FFSCRAPR ENV
 
   fn_get <- get("get.espn", envir = .ffscrapr_env, inherits = TRUE)
@@ -55,9 +64,8 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 
   ## DO QUERY
 
-  response <- fn_get(url_query, user_agent, conn$cookies, xff)
+  response <- fn_get(url_query, user_agent, conn$cookies, ...)
 
-  ## CHECK QUERY
   # nocov start
 
   if (httr::http_error(response) && httr::status_code(response) == 429) {
@@ -72,7 +80,7 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("ESPN API did not return json while calling {url_query}"),
-      call. = FALSE
+            call. = FALSE
     )
   }
 
@@ -85,8 +93,6 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
   }
 
   # nocov end
-
-  ## RETURN S3
 
   structure(
     list(

@@ -275,3 +275,23 @@
     "209" = "1PtSafety"
   )
 }
+
+#' ESPN Activity/Transaction Mapping
+#'
+#' @keywords internal
+#'
+#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py#L82-92}
+
+.espn_activity_map <- function(){
+  c(
+    "178"= 'FREE_AGENT|added',
+    "179"= 'FREE_AGENT|dropped',
+    "180"= 'BBID_WAIVER|added',
+    "181"= 'BBID_WAIVER|dropped',
+    "239"= 'DROP|dropped',
+    "244"= 'TRADE|traded_away',
+    'FREE_AGENT|added'= '178',
+    'BBID_WAIVER|added'= '180',
+    'TRADE|traded_away'= '244'
+  )
+}

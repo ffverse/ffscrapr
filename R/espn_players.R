@@ -30,41 +30,8 @@ espn_players <- function(conn = NULL, season = NULL) {
 
   url_query <- glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/players?scoringPeriodId=0&view=players_wl")
 
-  fn_get <- get("get.espn", envir = .ffscrapr_env, inherits = TRUE)
-
-  user_agent <- get("user_agent", envir = .ffscrapr_env, inherits = TRUE)
-
-  response <- fn_get(url_query, user_agent, conn$cookies, xff)
-
-  ## CHECK QUERY
-  # nocov start
-
-  if (httr::http_error(response) && httr::status_code(response) == 429) {
-    warning(glue::glue("You've hit a rate limit wall! Please adjust the
-                    built-in rate_limit arguments in espn_connect()!"), call. = FALSE)
-  }
-
-  if (httr::http_error(response)) {
-    warning(glue::glue("ESPN API request failed with error: <{httr::status_code(response)}> \n
-                    while calling <{url_query}>"), call. = FALSE)
-  }
-
-  if (httr::http_type(response) != "application/json") {
-    warning(glue::glue("ESPN API did not return json while calling {url_query}"),
-      call. = FALSE
-    )
-  }
-
-  if (httr::http_type(response) == "application/json") {
-    parsed <- jsonlite::parse_json(httr::content(x = response, as = "text"))
-  }
-
-  if (!is.null(parsed$error)) {
-    warning(glue::glue("ESPN says: {parsed$error[[1]]}"), call. = FALSE)
-  }
-  # nocov end
-
-  df_players <- parsed %>%
+  df_players <- .espn_api_doquery(conn,url_query,xff) %>%
+    purrr::pluck("content") %>%
     tibble::tibble() %>%
     stats::setNames("x") %>%
     tidyr::hoist(

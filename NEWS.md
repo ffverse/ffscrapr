@@ -15,6 +15,8 @@
 -   Added `ff_scoring()` method for ESPN (v1.2.2.16)
 -   Added `ff_standings()` method for ESPN (v1.2.2.17)
 -   Added `ff_schedule()` method for ESPN (v1.2.2.18)
+-   Added `ff_transactions()` method for ESPN (v1.2.2.20)
+-   Added vignettes for basics and private league (v1.2.2.21)
 
 ### Minor patches
 
@@ -30,7 +32,8 @@
 - Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219) (v1.2.2.19)
 - Resolved bug in MFL's `ff_rosters()` by adding a week parameter (Fixes #215) (v1.2.2.19)
 - Coerced `ff_transactions()` bid_amount into a numeric (Fixes #210) (v1.2.2.19)
-
+- Removed bye franchises from `ff_starters()` (Fixes #212) (v1.2.2.22)
+- DEPRECATED custom_players arguments - now calling custom_players by default everywhere (v1.2.2.22)
 
 ---
 
