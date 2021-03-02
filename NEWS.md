@@ -32,6 +32,7 @@
 - Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219) (v1.2.2.19)
 - Resolved bug in MFL's `ff_rosters()` by adding a week parameter (Fixes #215) (v1.2.2.19)
 - Coerced `ff_transactions()` bid_amount into a numeric (Fixes #210) (v1.2.2.19)
+- Removed bye franchises from `ff_starters()` (Fixes #212) (v1.2.2.22)
 
 
 ---

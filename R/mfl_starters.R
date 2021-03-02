@@ -43,6 +43,7 @@ ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
       franchises_endpoint,
       by = "franchise_id"
     ) %>%
+    dplyr::filter(!is.na(.data$franchise_name)) %>%
     dplyr::left_join(
       players_endpoint,
       by = "player_id"
