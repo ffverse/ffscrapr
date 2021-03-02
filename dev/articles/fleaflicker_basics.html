@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.19</span>
       </span>
     </div>
 
@@ -225,14 +225,14 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 11</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team  sportradar_id</span>
-<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        </span>
-<span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Presco… QB    DAL   86197778-8d4…</span>
-<span class="co">#&gt; 2      1578553 Running Bear       13325 Austin Eke… RB    LAC   e5b8c439-a48…</span>
-<span class="co">#&gt; 3      1578553 Running Bear       12926 Chris Godw… WR    TB    baa61bb5-f8d…</span>
-<span class="co">#&gt; 4      1578553 Running Bear       12032 Carson Wen… QB    PHI   e9a5c16b-447…</span>
-<span class="co">#&gt; 5      1578553 Running Bear       15531 Brandon Ai… WR    SF    c90471cc-fa6…</span>
-<span class="co">#&gt; 6      1578553 Running Bear        9338 Robert Woo… WR    LAR   618bedee-925…</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name  pos   team  sportradar_id  </span>
+<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          </span>
+<span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Prescott QB    DAL   86197778-8d4b-…</span>
+<span class="co">#&gt; 2      1578553 Running Bear       13325 Austin Ekel… RB    LAC   e5b8c439-a48a-…</span>
+<span class="co">#&gt; 3      1578553 Running Bear       12926 Chris Godwin WR    TB    baa61bb5-f8d0-…</span>
+<span class="co">#&gt; 4      1578553 Running Bear       12032 Carson Wentz QB    PHI   e9a5c16b-4472-…</span>
+<span class="co">#&gt; 5      1578553 Running Bear       15531 Brandon Aiy… WR    SF    c90471cc-fa60-…</span>
+<span class="co">#&gt; 6      1578553 Running Bear        9338 Robert Woods WR    LAR   618bedee-9259-…</span>
 <span class="co">#&gt; # … with 4 more variables: age &lt;lgl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
@@ -310,20 +310,20 @@
 <span class="va">age_summary</span>
 <span class="co">#&gt; # A tibble: 12 x 10</span>
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
-<span class="co">#&gt;    franchise_id franchise_name age_QB age_RB age_TE age_WR count_QB count_RB</span>
-<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1      1578553 Running Bear        0      0      0      0        6        6</span>
-<span class="co">#&gt;  2      1581718 AlexG5386's T…      0      0      0      0        3       12</span>
-<span class="co">#&gt;  3      1581719 Jmuthers's Te…      0      0      0      0        5        8</span>
-<span class="co">#&gt;  4      1581720 brosene's Team      0      0      0      0        6       10</span>
-<span class="co">#&gt;  5      1581721 Mjenkyns2004'…      0      0      0      0        5        9</span>
-<span class="co">#&gt;  6      1581722 syd12nyjets's…      0      0      0      0        5        7</span>
-<span class="co">#&gt;  7      1581726 SCJaguars's T…      0      0      0      0        5        7</span>
-<span class="co">#&gt;  8      1581753 fede_mndz's T…      0      0      0      0        6       12</span>
-<span class="co">#&gt;  9      1581803 ZachFarni's T…      0      0      0      0        5        9</span>
-<span class="co">#&gt; 10      1581988 The DK Crew         0      0      0      0        4        6</span>
-<span class="co">#&gt; 11      1582416 Ray Jay Team        0      0      0      0        4        8</span>
-<span class="co">#&gt; 12      1582423 The Verblande…      0      0      0      0        4        8</span>
+<span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
+<span class="co">#&gt;  1      1578553 Running Bear            0      0      0      0        6        6</span>
+<span class="co">#&gt;  2      1581718 AlexG5386's Team        0      0      0      0        3       12</span>
+<span class="co">#&gt;  3      1581719 Jmuthers's Team         0      0      0      0        5        8</span>
+<span class="co">#&gt;  4      1581720 brosene's Team          0      0      0      0        6       10</span>
+<span class="co">#&gt;  5      1581721 Mjenkyns2004's Te…      0      0      0      0        5        9</span>
+<span class="co">#&gt;  6      1581722 syd12nyjets's Team      0      0      0      0        5        7</span>
+<span class="co">#&gt;  7      1581726 SCJaguars's Team        0      0      0      0        5        7</span>
+<span class="co">#&gt;  8      1581753 fede_mndz's Team        0      0      0      0        6       12</span>
+<span class="co">#&gt;  9      1581803 ZachFarni's Team        0      0      0      0        5        9</span>
+<span class="co">#&gt; 10      1581988 The DK Crew             0      0      0      0        4        6</span>
+<span class="co">#&gt; 11      1582416 Ray Jay Team            0      0      0      0        4        8</span>
+<span class="co">#&gt; 12      1582423 The Verblanders         0      0      0      0        4        8</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

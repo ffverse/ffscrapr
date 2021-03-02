@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.19</span>
       </span>
     </div>
 
@@ -196,6 +196,8 @@
 <li>Added <code><a href="../reference/ff_draft.html">ff_draft()</a></code> method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)</li>
 <li>Added <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> method for ESPN (v1.2.2.14)</li>
 <li>Added <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> method for ESPN (v1.2.2.16)</li>
+<li>Added <code><a href="../reference/ff_standings.html">ff_standings()</a></code> method for ESPN (v1.2.2.17)</li>
+<li>Added <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> method for ESPN (v1.2.2.18)</li>
 </ul>
 </div>
 <div id="minor-patches" class="section level3">
@@ -211,7 +213,11 @@
 <li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing (v1.2.2.12)</li>
 <li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/202'>#202</a>) (v1.2.2.14)</li>
 <li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/206'>#206</a>) (v1.2.2.15)</li>
+<li>Resolve bugs related to .fn_choose_season for tests (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/217'>#217</a>, <a href='https://github.com/dynastyprocess/ffscrapr/issues/219'>#219</a>) (v1.2.2.19)</li>
+<li>Resolved bug in MFL’s <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> by adding a week parameter (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/215'>#215</a>) (v1.2.2.19)</li>
+<li>Coerced <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> bid_amount into a numeric (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/210'>#210</a>) (v1.2.2.19)</li>
 </ul>
+<hr>
 </div>
 </div>
     <div id="ffscrapr-122" class="section level1">
@@ -219,7 +225,8 @@
 <a href="#ffscrapr-122" class="anchor"></a>ffscrapr 1.2.2<small> 2021-02-08 </small>
 </h1>
 <p>Minor patches to dp_import functions to address issues discovered by CRAN checks.</p>
-<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</del> Messed up the export here, whoops. Fixed for dev version.</p>
+<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</del></p>
+<p>Messed up the export here, whoops. Fixing for next release.</p>
 <div id="minor-patches-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-patches-1" class="anchor"></a>Minor patches</h3>
@@ -227,6 +234,7 @@
 <li>Refactored <code><a href="../reference/dp_values.html">dp_values()</a></code> and <code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> functions to use httr backend for compat with httptest, preventing CRAN errors.</li>
 <li>Added inst-level redactor for httptest.</li>
 </ul>
+<hr>
 </div>
 </div>
     <div id="ffscrapr-121" class="section level1">
@@ -240,6 +248,7 @@
 <li>Caching vignette outputs in tests/testthat to making vignette-rebuilding less internet reliant</li>
 <li>Changing the league_id output of <code>sleeper_userleagues</code> to be a character column (because of cran no-longdouble support)</li>
 </ul>
+<hr>
 </div>
 </div>
     <div id="ffscrapr-120" class="section level1">
@@ -273,6 +282,7 @@
 <li>
 <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> - Fleaflicker’s API returns season level data easily, week-level is not readily available yet without some workarounds. Everything else seems to be okay.</li>
 </ul>
+<hr>
 </div>
 </div>
     <div id="ffscrapr-110" class="section level1">
@@ -327,6 +337,7 @@
 <li>Uses describeIn instead of rdname for method documentation.</li>
 <li>Wrap all documentation examples in donttest - ratelimiting AND running in under 5 seconds each is pretty challenging!</li>
 </ul>
+<hr>
 </div>
 </div>
     <div id="ffscrapr-100" class="section level1">
@@ -335,7 +346,33 @@
 </h1>
 <p>This is the first (major) version of ffscrapr and it is intended to build out the full set of functions for the first API platform: MFL.</p>
 <p>Future versions will add more platforms via methods mapped to the same functions.</p>
-<p>Functions include: - <code>ff_connect</code> (and sibling <code>mfl_connect</code>) to establish connection parameters and ratelimiting - <code>mfl_getendpoint</code> as a low-level function for making GET requests from MFL - <code>ff_draft</code> gets draft results - <code>ff_draftpicks</code> gets current and future draft picks that have not yet been selected - <code>ff_franchises</code> gets franchise-level identifiers and divisions - <code>ff_league</code> gets league-level summaries of rules, players, and franchises - <code>ff_playerscores</code> gets playerweek-level scores - <code>ff_rosters</code> gets franchise-level rosters complete with naming - <code>ff_schedule</code> gets weekly fantasy schedules - <code>ff_scoring</code> gets scoring rules - <code>ff_standings</code> gets league-level season summaries - <code>ff_transactions</code> gets a list of all transactions and cleans them into a data frame.</p>
+<p>Functions include:</p>
+<ul>
+<li>
+<code>ff_connect</code> (and sibling <code>mfl_connect</code>) to establish connection parameters and ratelimiting</li>
+<li>
+<code>mfl_getendpoint</code> as a low-level function for making GET requests from MFL</li>
+<li>
+<code>ff_draft</code> gets draft results</li>
+<li>
+<code>ff_draftpicks</code> gets current and future draft picks that have not yet been selected</li>
+<li>
+<code>ff_franchises</code> gets franchise-level identifiers and divisions</li>
+<li>
+<code>ff_league</code> gets league-level summaries of rules, players, and franchises</li>
+<li>
+<code>ff_playerscores</code> gets playerweek-level scores</li>
+<li>
+<code>ff_rosters</code> gets franchise-level rosters complete with naming</li>
+<li>
+<code>ff_schedule</code> gets weekly fantasy schedules</li>
+<li>
+<code>ff_scoring</code> gets scoring rules</li>
+<li>
+<code>ff_standings</code> gets league-level season summaries</li>
+<li>
+<code>ff_transactions</code> gets a list of all transactions and cleans them into a data frame.</li>
+</ul>
 </div>
   </div>
 

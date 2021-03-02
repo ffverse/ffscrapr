@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.19</span>
       </span>
     </div>
 
@@ -209,20 +209,21 @@
     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"franchise_id"</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
+    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"willGiveUp"</span> <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
   <span class="op">)</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 9</span>
-<span class="co">#&gt;   timestamp           franchise_id willGiveUp inExchangeFor franchise_name</span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;         </span>
-<span class="co">#&gt; 1 2019-11-23 14:49:15 0001         7394       "anyone need… @JohnBoschFF  </span>
-<span class="co">#&gt; 2 2019-11-23 14:49:15 0001         13128      "anyone need… @JohnBoschFF  </span>
-<span class="co">#&gt; 3 2020-02-01 05:43:29 0003         13319      ""            The Accountant</span>
-<span class="co">#&gt; 4 2020-02-01 05:43:29 0003         13139      ""            The Accountant</span>
-<span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""            The Accountant</span>
-<span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""            Kevin Cutillo </span>
+<span class="co">#&gt;   timestamp           franchise_id willGiveUp inExchangeFor       franchise_name</span>
+<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;         </span>
+<span class="co">#&gt; 1 2019-11-23 14:49:15 0001         7394       "anyone need a QB?" @JohnBoschFF  </span>
+<span class="co">#&gt; 2 2019-11-23 14:49:15 0001         13128      "anyone need a QB?" @JohnBoschFF  </span>
+<span class="co">#&gt; 3 2020-02-01 05:43:29 0003         13319      ""                  The Accountant</span>
+<span class="co">#&gt; 4 2020-02-01 05:43:29 0003         13139      ""                  The Accountant</span>
+<span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""                  The Accountant</span>
+<span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""                  Kevin Cutillo </span>
 <span class="co">#&gt; # … with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></code></pre></div>
 </div>
   </div>

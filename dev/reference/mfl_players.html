@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.16</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.19</span>
       </span>
     </div>
 
@@ -203,19 +203,19 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>mfl_players</span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>player_list</span>, <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 25</span><span>
-#&gt;   player_id player_name pos     age team  status draft_year draft_team
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> 12757     Kaufusi, B… LB     29.6 GBP   </span><span style='color: #BB0000;'>NA</span><span>     2016       BAL       
-#&gt; </span><span style='color: #555555;'>2</span><span> 13249     White, Tre… CB     26.1 BUF   </span><span style='color: #BB0000;'>NA</span><span>     2017       BUF       
-#&gt; </span><span style='color: #555555;'>3</span><span> 14971     Washington… DT     24.2 BAL   R      2020       BAL       
-#&gt; </span><span style='color: #555555;'>4</span><span> 14258     Seibert, A… PK     24.3 CIN   </span><span style='color: #BB0000;'>NA</span><span>     2019       CLE       
-#&gt; </span><span style='color: #555555;'>5</span><span> 9763      Fewell, Pe… Coach  </span><span style='color: #BB0000;'>NA</span><span>   FA    </span><span style='color: #BB0000;'>NA</span><span>     0          FA        
-#&gt; </span><span style='color: #555555;'># … with 17 more variables: draft_round </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, draft_pick </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   stats_global_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, stats_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, fleaflicker_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, cbs_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   sportsdata_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotoworld_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, rotowire_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nfl_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   espn_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, twitter_username </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, college </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, height </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   weight </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, jersey </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, birthdate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 25</span><span>
+#&gt;   player_id player_name   pos     age team  status draft_year draft_team
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 13190     Butt, Jake    TE     25.6 DEN   </span><span style='color: #BB0000;'>NA</span><span>     2017       DEN       
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 13642     Tate, Auden   WR     24.1 CIN   </span><span style='color: #BB0000;'>NA</span><span>     2018       CIN       
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 14881     Coe, Nick     DE     23.6 MIA   </span><span style='color: #BB0000;'>NA</span><span>     2020       FA        
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 9966      Jones, Reshad S      33   FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       MIA       
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 14307     Allen, Dakota LB     25.3 JAC   </span><span style='color: #BB0000;'>NA</span><span>     2019       LAR       
+#&gt; </span><span style='color: #949494;'># … with 17 more variables: draft_round &lt;chr&gt;, draft_pick &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, cbs_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   sportsdata_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, nfl_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   espn_id &lt;chr&gt;, twitter_username &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   weight &lt;chr&gt;, birthdate &lt;date&gt;, jersey &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
