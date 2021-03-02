@@ -17,19 +17,20 @@
 #'
 #' @export
 ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
-  if (is.null(season)) season <- conn$season
 
   checkmate::assert_numeric(week, lower = 1, upper = 21)
-  checkmate::assert_number(season)
+  checkmate::assert_number(season,null.ok = TRUE)
 
-  players_endpoint <- mfl_players() %>%
+  if(!is.null(season)) conn$season <- season
+
+  players_endpoint <- mfl_players(conn) %>%
     dplyr::select("player_id", "player_name", "pos", "team")
 
   franchises_endpoint <- ff_franchises(conn) %>%
     dplyr::select("franchise_id", "franchise_name")
 
   weekly_starters <- tibble::tibble(
-    season = season,
+    season = conn$season,
     week = week
   ) %>%
     dplyr::mutate(starters = purrr::map2(week, season, .mfl_weeklystarters, conn)) %>%
