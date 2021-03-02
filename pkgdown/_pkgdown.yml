@@ -34,12 +34,15 @@ articles:
   - starts_with("mfl_basics")
   - starts_with("sleeper_basics")
   - starts_with("fleaflicker_basics")
+  - starts_with("espn_basics")
+  - starts_with("espn_authentication")
 - title: Custom API calls
   navbar: Custom API Calls
   contents:
   - starts_with("mfl_getendpoint")
   - starts_with("sleeper_getendpoint")
   - starts_with("fleaflicker_getendpoint")
+  - starts_with("espn_getendpoint")
 - title: Performance
   navbar: "Cache"
   contents:
