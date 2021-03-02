@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sleeper: Basics • ffscrapr</title>
+<title>ESPN: Basics • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -20,7 +20,7 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Sleeper: Basics">
+<meta property="og:title" content="ESPN: Basics">
 <meta property="og:description" content="ffscrapr">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
@@ -130,105 +130,87 @@
 
       
 
-      </header><script src="sleeper_basics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="espn_basics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Sleeper: Basics</h1>
+      <h1 data-toc-skip>ESPN: Basics</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/sleeper_basics.Rmd"><code>vignettes/sleeper_basics.Rmd</code></a></small>
-      <div class="hidden name"><code>sleeper_basics.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/espn_basics.Rmd"><code>vignettes/espn_basics.Rmd</code></a></small>
+      <div class="hidden name"><code>espn_basics.Rmd</code></div>
 
     </div>
 
     
     
-<p>In this vignette, I’ll walk through how to get started with a basic dynasty value analysis on Sleeper.</p>
+<p>In this vignette, I’ll walk through how to get started with a basic dynasty value analysis on ESPN, pulling in roster data.</p>
 <p>We’ll start by loading the packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
-<p>In Sleeper, unlike in other platforms, it’s very unlikely that you’ll remember the league ID - both because most people use the mobile app, and because it happens to be an 18 digit number! It’s a little more natural to start analyses from the username, so let’s start there!</p>
+<p>In ESPN, you can find the league ID by looking in the URL - it’s the number immediately after ?leagueId in this example URL: <a href="https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020" class="uri">https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020</a></p>
+<p>Let’s set up a connection to this league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">solarpool_leagues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_userleagues.html">sleeper_userleagues</a></span><span class="op">(</span><span class="st">"solarpool"</span>,<span class="fl">2020</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sucioboys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/espn_connect.html">espn_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">899513</span><span class="op">)</span>
+
+<span class="va">sucioboys</span>
+<span class="co">#&gt; &lt;ESPN connection 2020_899513&gt;</span>
+<span class="co">#&gt; List of 4</span>
+<span class="co">#&gt;  $ platform : chr "ESPN"</span>
+<span class="co">#&gt;  $ season   : chr "2020"</span>
+<span class="co">#&gt;  $ league_id: chr "899513"</span>
+<span class="co">#&gt;  $ cookies  : NULL</span>
+<span class="co">#&gt;  - attr(*, "class")= chr "espn_conn"</span></code></pre></div>
+<p>I’ve done this with the <code><a href="../reference/fleaflicker_connect.html">fleaflicker_connect()</a></code> function, although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call - they are equivalent. Most if not all of the remaining functions after this point are prefixed with “ff_”.</p>
+<p>Cool! Let’s have a quick look at what this league is like.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">sucioboys_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">solarpool_leagues</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 4</span>
-<span class="co">#&gt;   league_name                   league_id        franchise_name franchise_id    </span>
-<span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;            &lt;chr&gt;          &lt;chr&gt;           </span>
-<span class="co">#&gt; 1 z_dynastyprocess-test         633501761776197… solarpool      202892038360801…</span>
-<span class="co">#&gt; 2 The JanMichaelLarkin Dynasty… 522458773317046… solarpool      202892038360801…</span>
-<span class="co">#&gt; 3 DLP Dynasty League            521379020332068… DLP::thoriyan  202892038360801…</span></code></pre></div>
-<p>Let’s pull the JML league ID from here for analysis, and set up a Sleeper connection object.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jml_id</span> <span class="op">&lt;-</span> <span class="va">solarpool_leagues</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">league_name</span> <span class="op">==</span> <span class="st">"The JanMichaelLarkin Dynasty League"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">league_id</span><span class="op">)</span>
-
-<span class="va">jml_id</span> <span class="co"># For quick analyses, I'm not above copy-pasting the league ID instead!</span>
-<span class="co">#&gt; [1] "522458773317046272"</span>
-
-<span class="va">jml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_connect.html">sleeper_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="va">jml_id</span><span class="op">)</span>
-
-<span class="va">jml</span>
-<span class="co">#&gt; &lt;Sleeper connection 2020_522458773317046272&gt;</span>
-<span class="co">#&gt; List of 5</span>
-<span class="co">#&gt;  $ platform : chr "Sleeper"</span>
-<span class="co">#&gt;  $ season   : num 2020</span>
-<span class="co">#&gt;  $ user_name: NULL</span>
-<span class="co">#&gt;  $ league_id: chr "522458773317046272"</span>
-<span class="co">#&gt;  $ user_id  : NULL</span>
-<span class="co">#&gt;  - attr(*, "class")= chr "sleeper_conn"</span></code></pre></div>
-<p>I’ve done this with the <code><a href="../reference/sleeper_connect.html">sleeper_connect()</a></code> function, although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call - they are equivalent. Most if not all of the remaining functions after this point are prefixed with “ff_”.</p>
-<p>Cool! Let’s have a quick look at what this league is like.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jml_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">jml</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">jml_summary</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sucioboys_summary</span><span class="op">)</span>
 <span class="co">#&gt; tibble [1 × 15] (S3: tbl_df/tbl/data.frame)</span>
-<span class="co">#&gt;  $ league_id      : chr "522458773317046272"</span>
-<span class="co">#&gt;  $ league_name    : chr "The JanMichaelLarkin Dynasty League"</span>
-<span class="co">#&gt;  $ league_type    : chr "dynasty"</span>
-<span class="co">#&gt;  $ franchise_count: num 12</span>
-<span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
+<span class="co">#&gt;  $ league_id      : chr "899513"</span>
+<span class="co">#&gt;  $ league_name    : chr "Sucio Boys"</span>
+<span class="co">#&gt;  $ league_type    : chr "keeper"</span>
+<span class="co">#&gt;  $ franchise_count: int 10</span>
+<span class="co">#&gt;  $ qb_type        : chr "2QB/SF"</span>
 <span class="co">#&gt;  $ idp            : logi FALSE</span>
 <span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr"</span>
 <span class="co">#&gt;  $ best_ball      : logi FALSE</span>
 <span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
 <span class="co">#&gt;  $ player_copies  : num 1</span>
-<span class="co">#&gt;  $ years_active   : chr "2019-2020"</span>
-<span class="co">#&gt;  $ qb_count       : chr "1"</span>
-<span class="co">#&gt;  $ roster_size    : int 25</span>
-<span class="co">#&gt;  $ league_depth   : num 300</span>
-<span class="co">#&gt;  $ prev_league_ids: chr "386236959468675072"</span></code></pre></div>
-<p>Okay, so it’s the JanMichaelLarkin Dynasty League, it’s a 1QB league with 12 teams, half ppr scoring, and rosters about 300 players.</p>
+<span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
+<span class="co">#&gt;  $ qb_count       : chr "1-2"</span>
+<span class="co">#&gt;  $ roster_size    : int 24</span>
+<span class="co">#&gt;  $ league_depth   : num 240</span>
+<span class="co">#&gt;  $ keeper_count   : int 22</span></code></pre></div>
+<p>Okay, so it’s the Sucio Boys league, it’s a 2QB league with 12 teams, half ppr scoring, and rosters about 240 players.</p>
 <p>Let’s grab the rosters now.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jml_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">jml</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sucioboys_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">jml_rosters</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 7</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Paper Champs   2025      Albert Wilson   WR    MIA    28.6</span>
-<span class="co">#&gt; 2 1            Paper Champs   4089      Gerald Everett  TE    LAR    26.7</span>
-<span class="co">#&gt; 3 1            Paper Champs   6068      Devine Ozigbo   RB    JAX    24.4</span>
-<span class="co">#&gt; 4 1            Paper Champs   1339      Zach Ertz       TE    PHI    30.3</span>
-<span class="co">#&gt; 5 1            Paper Champs   5068      Kerryon Johnson RB    DET    23.7</span>
-<span class="co">#&gt; 6 1            Paper Champs   5965      Miles Boykin    WR    BAL    24.4</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sucioboys_rosters</span><span class="op">)</span> <span class="co"># quick snapshot of rosters</span>
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span>
+<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;list&gt;      </span>
+<span class="co">#&gt; 1            1 The Early GGod   4036348 Michael Gallup  DAL   WR    &lt;chr [7]&gt;   </span>
+<span class="co">#&gt; 2            1 The Early GGod   4036131 Noah Fant       DEN   TE    &lt;chr [6]&gt;   </span>
+<span class="co">#&gt; 3            1 The Early GGod    -16003 Bears D/ST      CHI   DST   &lt;chr [3]&gt;   </span>
+<span class="co">#&gt; 4            1 The Early GGod     15920 Latavius Murray NOS   RB    &lt;chr [6]&gt;   </span>
+<span class="co">#&gt; 5            1 The Early GGod   3055899 Harrison Butker KCC   K     &lt;chr [3]&gt;   </span>
+<span class="co">#&gt; 6            1 The Early GGod   4241372 Marquise Brown  BAL   WR    &lt;chr [7]&gt;   </span>
+<span class="co">#&gt; # … with 3 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   acquisition_date &lt;dttm&gt;</span></code></pre></div>
 <div id="values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#values" class="anchor"></a>Values</h2>
 <p>Cool! Let’s pull in some additional context by adding DynastyProcess player values.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
@@ -236,80 +218,83 @@
 <span class="co"># To join it to our rosters, we'll need playerID mappings.</span>
 
 <span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sleeper_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">espn_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+
+<span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span>
+<span class="co"># to just IDs, age, and values</span>
 
 <span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sleeper_id</span>,<span class="va">ecr_1qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_1qb</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">age</span>,<span class="va">ecr_2qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_2qb</span><span class="op">)</span>
 
-<span class="co"># Drilling down to just 1QB values and IDs, we'll be joining it onto rosters and don't need the extra stuff</span>
+<span class="co"># we can join the roster's player_ids on the values' espn_id, with a bit of a type conversion first</span>
+<span class="va">sucioboys_values</span> <span class="op">&lt;-</span> <span class="va">sucioboys_rosters</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>player_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">player_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"player_id"</span><span class="op">=</span><span class="st">"espn_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">jml_values</span> <span class="op">&lt;-</span> <span class="va">jml_rosters</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"player_id"</span><span class="op">=</span><span class="st">"sleeper_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">value_1qb</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">jml_values</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name    pos   team    age ecr_1qb</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Paper Champs   4866      Saquon Barkley RB    NYG    24.1     2.4</span>
-<span class="co">#&gt; 2 1            Paper Champs   1426      DeAndre Hopki… WR    ARI    28.7    12  </span>
-<span class="co">#&gt; 3 1            Paper Champs   4199      Aaron Jones    RB    GB     26.2    20.6</span>
-<span class="co">#&gt; 4 1            Paper Champs   4037      Chris Godwin   WR    TB     25      29.3</span>
-<span class="co">#&gt; 5 1            Paper Champs   4098      Kareem Hunt    RB    CLE    25.6    51  </span>
-<span class="co">#&gt; 6 1            Paper Champs   5022      Dallas Goedert TE    PHI    26.2    77.3</span>
-<span class="co">#&gt; # … with 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sucioboys_values</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 x 14</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span>
+<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;list&gt;      </span>
+<span class="co">#&gt; 1            1 The Early GGod 4242335   Jonathan Taylor IND   RB    &lt;chr [7]&gt;   </span>
+<span class="co">#&gt; 2            1 The Early GGod 4241985   J.K. Dobbins    BAL   RB    &lt;chr [7]&gt;   </span>
+<span class="co">#&gt; 3            1 The Early GGod 2976316   Michael Thomas  NOS   WR    &lt;chr [7]&gt;   </span>
+<span class="co">#&gt; 4            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    &lt;chr [5]&gt;   </span>
+<span class="co">#&gt; 5            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    &lt;chr [5]&gt;   </span>
+<span class="co">#&gt; 6            1 The Early GGod 3046779   Jared Goff      DET   QB    &lt;chr [4]&gt;   </span>
+<span class="co">#&gt; # … with 7 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   acquisition_date &lt;dttm&gt;, age &lt;lgl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">jml_values</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_1qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>team_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>, values_from <span class="op">=</span> <span class="va">total_value</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span>
 
 <span class="va">value_summary</span>
-<span class="co">#&gt; # A tibble: 12 x 8</span>
-<span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 3            solarpool              49886  7575 26031  1135 15145    NA</span>
-<span class="co">#&gt;  2 4            The FANTom Menace      45927  3093 11543  2139 29152    NA</span>
-<span class="co">#&gt;  3 11           Permian Panthers       44801  4025 13572  7492 19712    NA</span>
-<span class="co">#&gt;  4 1            Paper Champs           41544   734 21364  3048 16398    NA</span>
-<span class="co">#&gt;  5 8            Hocka Flocka           39536  1897 22538  2717 12384    NA</span>
-<span class="co">#&gt;  6 12           jaydk                  38510  2263 18955  4144 13148    NA</span>
-<span class="co">#&gt;  7 5            Barbarians             37144  5894 21055  5083  5112    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               32176  3704  5138  8377 14957    NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             27036  2722 12705  2518  9091    NA</span>
-<span class="co">#&gt; 10 7            Flipadelphia05         23118  1953  9386   245 11534    NA</span>
-<span class="co">#&gt; 11 2            KingGabe               21133   115  6515    21 14482    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               16321   386   196  1302 14437     0</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 10 x 7</span>
+<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  56392  9893 23418 16557  6524</span>
+<span class="co">#&gt;  2            2 "Coom  Dumpster"                  48221 17397  5330 23834  1660</span>
+<span class="co">#&gt;  3            6 "OBJ's Personal Porta Potty"      47722 20436 23159  1162  2965</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                   45731 14325 19006  5438  6962</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   45724  3849 19942 18464  3469</span>
+<span class="co">#&gt;  6            1 "The Early GGod"                  40519 12596 14297 10542  3084</span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                      39079 12889 12273 12304  1613</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     38921 12476 12832 12312  1301</span>
+<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            24847 10756   570 13369   152</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                     22946  8234  1817 12605   290</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="op">~</span><span class="va">.x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="va">round</span>, <span class="fl">3</span><span class="op">)</span>
 
 <span class="va">value_summary_pct</span>
-<span class="co">#&gt; # A tibble: 12 x 8</span>
-<span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 3            solarpool              0.12  0.22  0.154 0.03  0.086    NA</span>
-<span class="co">#&gt;  2 4            The FANTom Menace      0.11  0.09  0.068 0.056 0.166    NA</span>
-<span class="co">#&gt;  3 11           Permian Panthers       0.107 0.117 0.08  0.196 0.112    NA</span>
-<span class="co">#&gt;  4 1            Paper Champs           0.1   0.021 0.126 0.08  0.093    NA</span>
-<span class="co">#&gt;  5 8            Hocka Flocka           0.095 0.055 0.133 0.071 0.071    NA</span>
-<span class="co">#&gt;  6 12           jaydk                  0.092 0.066 0.112 0.108 0.075    NA</span>
-<span class="co">#&gt;  7 5            Barbarians             0.089 0.172 0.125 0.133 0.029    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               0.077 0.108 0.03  0.219 0.085    NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             0.065 0.079 0.075 0.066 0.052    NA</span>
-<span class="co">#&gt; 10 7            Flipadelphia05         0.055 0.057 0.056 0.006 0.066    NA</span>
-<span class="co">#&gt; 11 2            KingGabe               0.051 0.003 0.039 0.001 0.082    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               0.039 0.011 0.001 0.034 0.082     0</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 10 x 7</span>
+<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  0.138 0.081 0.177 0.131 0.233</span>
+<span class="co">#&gt;  2            2 "Coom  Dumpster"                  0.118 0.142 0.04  0.188 0.059</span>
+<span class="co">#&gt;  3            6 "OBJ's Personal Porta Potty"      0.116 0.166 0.175 0.009 0.106</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                   0.112 0.117 0.143 0.043 0.248</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   0.111 0.031 0.15  0.146 0.124</span>
+<span class="co">#&gt;  6            1 "The Early GGod"                  0.099 0.103 0.108 0.083 0.11 </span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                      0.095 0.105 0.093 0.097 0.058</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     0.095 0.102 0.097 0.097 0.046</span>
+<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            0.061 0.088 0.004 0.106 0.005</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                     0.056 0.067 0.014 0.1   0.01</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -317,12 +302,13 @@
 <a href="#age" class="anchor"></a>Age</h2>
 <p>Another question you might ask: what is the average age of any given team?</p>
 <p>I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team - including who might be looking to offload an older veteran!</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age_summary</span> <span class="op">&lt;-</span> <span class="va">jml_values</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">age_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pos</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_1qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_1qb</span><span class="op">/</span><span class="va">position_value</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_2qb</span><span class="op">/</span><span class="va">position_value</span>,
          weighted_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">weighted_age</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
@@ -331,29 +317,26 @@
               values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">age_summary</span>
-<span class="co">#&gt; # A tibble: 12 x 12</span>
-<span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
-<span class="co">#&gt;    franchise_id franchise_name    age_QB age_RB age_TE age_WR age_FB count_QB</span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 1            Paper Champs        33.2   25.1   26.2   27.2     NA        3</span>
-<span class="co">#&gt;  2 10           JMLarkin            28.7   27     25.8   25.2      0        3</span>
-<span class="co">#&gt;  3 11           Permian Panthers    24.2   22.9   31.3   25.4     NA        4</span>
-<span class="co">#&gt;  4 12           jaydk               31.2   25.2   25.6   27.6     NA        5</span>
-<span class="co">#&gt;  5 2            KingGabe            26.1   22.2   27     22.8     NA        5</span>
-<span class="co">#&gt;  6 3            solarpool           25.8   25.3   26.3   27.7     NA        4</span>
-<span class="co">#&gt;  7 4            The FANTom Menace   27.6   24.4   24     26.5     NA        3</span>
-<span class="co">#&gt;  8 5            Barbarians          25.1   24.5   28.4   26.5     NA        2</span>
-<span class="co">#&gt;  9 6            sox05syd            23.6   23.6   26.8   25.2     NA        4</span>
-<span class="co">#&gt; 10 7            Flipadelphia05      33.3   24.9   27.8   26.5     NA        2</span>
-<span class="co">#&gt; 11 8            Hocka Flocka        31     24.1   24.3   23.3     NA        3</span>
-<span class="co">#&gt; 12 9            ZPMiller97          24.4   23.7   26.3   25.3     NA        2</span>
-<span class="co">#&gt; # … with 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span>
-<span class="co">#&gt; #   count_FB &lt;int&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 10 x 10</span>
+<span class="co">#&gt; # Groups:   franchise_id, franchise_name [10]</span>
+<span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
+<span class="co">#&gt;  1            1 "The Early GGod"        0      0      0      0        4        6</span>
+<span class="co">#&gt;  2            2 "Coom  Dumpster"        0      0      0      0        4        7</span>
+<span class="co">#&gt;  3            3 "PAKI STANS"            0      0      0      0        3        6</span>
+<span class="co">#&gt;  4            4 "I'm Also Sad "         0      0      0      0        2        5</span>
+<span class="co">#&gt;  5            5 "The Juggernaut"        0      0      0      0        3        8</span>
+<span class="co">#&gt;  6            6 "OBJ's Personal P…      0      0      0      0        3        6</span>
+<span class="co">#&gt;  7            7 "Tony El Tigre"         0      0      0      0        3        5</span>
+<span class="co">#&gt;  8            8 "Big Coomers"           0      0      0      0        3        7</span>
+<span class="co">#&gt;  9            9 "RAFI CUNADO"           0      0      0      0        3        5</span>
+<span class="co">#&gt; 10           10 "Austin 🐐Drew Loc…      0      0      0      0        3        5</span>
+<span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">
 <h2 class="hasAnchor">
 <a href="#next-steps" class="anchor"></a>Next steps</h2>
-<p>In this vignette, I’ve used ~three functions: ff_connect, ff_league, and ff_rosters. Now that you’ve gotten this far, why not check out some of the other possibilities?</p>
+<p>In this vignette, I’ve used only a few functions: ff_connect, ff_league, ff_rosters, and dp_values. Now that you’ve gotten this far, why not check out some of the other possibilities?</p>
 </div>
   </div>
 

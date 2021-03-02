@@ -7,6 +7,12 @@
     <loc>ffscrapr.dynastyprocess.com/reference/dot-add_allplay.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_activity_map.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_api_doquery.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_lineupslot_map.html</loc>
   </url>
   <url>
@@ -143,6 +149,12 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_userleagues.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/espn_authentication.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/espn_basics.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html</loc>
