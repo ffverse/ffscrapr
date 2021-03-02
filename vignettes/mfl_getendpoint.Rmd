@@ -93,7 +93,7 @@ fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>%
     by = c("franchise_id")
   ) %>% 
   dplyr::left_join(
-    mfl_players() %>% dplyr::select("player_id","player_name","pos","age","team"),
+    mfl_players(fog) %>% dplyr::select("player_id","player_name","pos","age","team"),
     by = c("willGiveUp" = "player_id")
   )
 
