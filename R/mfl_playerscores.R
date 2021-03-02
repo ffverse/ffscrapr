@@ -42,7 +42,7 @@ ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
     dplyr::mutate(
       season = season,
       week = week,
-      score = as.numeric(score)
+      score = as.numeric(.data$score)
     ) %>%
     dplyr::select("season",
       "week",

@@ -15,7 +15,7 @@ ff_rosters(conn, ...)
 
 \method{ff_rosters}{flea_conn}(conn, ...)
 
-\method{ff_rosters}{mfl_conn}(conn, custom_players = FALSE, ...)
+\method{ff_rosters}{mfl_conn}(conn, custom_players = deprecated(), week = NULL, ...)
 
 \method{ff_rosters}{sleeper_conn}(conn, ...)
 }
@@ -24,7 +24,9 @@ ff_rosters(conn, ...)
 
 \item{...}{arguments passed to other methods (currently none)}
 
-\item{custom_players}{TRUE or FALSE - include custom players? defaults to FALSE}
+\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
+
+\item{week}{a numeric that specifies which week to return}
 }
 \value{
 A tidy dataframe of rosters, joined to basic player information and basic franchise information

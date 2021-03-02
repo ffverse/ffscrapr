@@ -27,6 +27,9 @@
 - Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing (v1.2.2.12)
 - Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202) (v1.2.2.14)
 - Resolve MFL's playerscores to handle vectorized request (Fixes #206) (v1.2.2.15)
+- Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219) (v1.2.2.19)
+- Resolved bug in MFL's `ff_rosters()` by adding a week parameter (Fixes #215) (v1.2.2.19)
+- Coerced `ff_transactions()` bid_amount into a numeric (Fixes #210) (v1.2.2.19)
 
 
 ---

@@ -3,7 +3,8 @@
 #' Get a dataframe of rosters.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players TRUE or FALSE - include custom players? defaults to FALSE
+#' @param week a numeric that specifies which week to return
+#' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
@@ -16,10 +17,15 @@
 #'
 #' @export
 
-ff_rosters.mfl_conn <- function(conn, custom_players = FALSE, ...) {
-  stopifnot(is.logical(custom_players))
+ff_rosters.mfl_conn <- function(conn, custom_players = deprecated(), week = NULL, ...) {
 
-  rosters_endpoint <- mfl_getendpoint(conn, "rosters") %>%
+  checkmate::assert_number(week,null.ok = TRUE)
+
+  if(lifecycle::is_present(custom_players)) {
+    lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
+  }
+
+  rosters_endpoint <- mfl_getendpoint(conn, "rosters", W=week) %>%
     purrr::pluck("content", "rosters", "franchise") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "player" = "player", "franchise_id" = "id") %>%
@@ -33,13 +39,7 @@ ff_rosters.mfl_conn <- function(conn, custom_players = FALSE, ...) {
     ) %>%
     dplyr::select("franchise_id", "player_id", dplyr::everything())
 
-  players_endpoint <- if (custom_players) {
-    mfl_players(conn)
-  } else {
-    mfl_players()
-  }
-
-  players_endpoint <- players_endpoint %>%
+  players_endpoint <- mfl_players(conn) %>%
     dplyr::select("player_id", "player_name", "pos", "team", "age", "draft_year", "draft_round")
 
   franchises_endpoint <- ff_franchises(conn) %>%

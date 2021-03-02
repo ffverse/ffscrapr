@@ -12,7 +12,7 @@ ff_transactions(conn, ...)
 
 \method{ff_transactions}{flea_conn}(conn, franchise_id = NULL, ...)
 
-\method{ff_transactions}{mfl_conn}(conn, custom_players = FALSE, ...)
+\method{ff_transactions}{mfl_conn}(conn, custom_players = deprecated(), ...)
 
 \method{ff_transactions}{sleeper_conn}(conn, week = 1:17, ...)
 }
@@ -23,7 +23,7 @@ ff_transactions(conn, ...)
 
 \item{franchise_id}{fleaflicker returns transactions grouped by franchise id, pass a list here to filter}
 
-\item{custom_players}{TRUE or FALSE - fetch custom players}
+\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
 
 \item{week}{A week filter for transactions - 1 returns all offseason transactions. Default 1:17 returns all transactions.}
 }

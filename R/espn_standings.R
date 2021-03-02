@@ -3,6 +3,7 @@
 #' Get a dataframe of league standings
 #'
 #' @param conn the connection object created by \code{ff_connect()}
+#' @param ... other arguments (for other platforms)
 #'
 #' @examples
 #' \donttest{
@@ -13,7 +14,7 @@
 #' @describeIn ff_standings ESPN: returns standings and points data.
 #'
 #' @export
-ff_standings.espn_conn <- function(conn) {
+ff_standings.espn_conn <- function(conn,...) {
   team_endpoint <-
     espn_getendpoint(conn, view = "mTeam") %>%
     purrr::pluck("content")
