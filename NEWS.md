@@ -16,6 +16,7 @@
 -   Added `ff_standings()` method for ESPN (v1.2.2.17)
 -   Added `ff_schedule()` method for ESPN (v1.2.2.18)
 -   Added `ff_transactions()` method for ESPN (v1.2.2.20)
+-   Added vignettes for basics and private league (v1.2.2.21)
 
 ### Minor patches
 
