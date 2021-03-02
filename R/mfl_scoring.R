@@ -80,7 +80,6 @@ ff_scoring.mfl_conn <- function(conn) {
 #'
 #' @keywords internal
 mfl_allrules <- function(conn) {
-
   conn$league_id <- NULL
 
   df <- conn %>%

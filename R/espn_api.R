@@ -54,7 +54,7 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 #'
 #' @keywords internal
 
-.espn_api_doquery <- function(conn, url_query, ...){
+.espn_api_doquery <- function(conn, url_query, ...) {
 
   ## GET FFSCRAPR ENV
 
@@ -80,7 +80,7 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 
   if (httr::http_type(response) != "application/json") {
     warning(glue::glue("ESPN API did not return json while calling {url_query}"),
-            call. = FALSE
+      call. = FALSE
     )
   }
 

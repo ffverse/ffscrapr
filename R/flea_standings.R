@@ -17,11 +17,11 @@
 #'
 #' @export
 ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...) {
-
   standings <- fleaflicker_getendpoint("FetchLeagueStandings",
-                                       league_id = conn$league_id,
-                                       season = conn$season,
-                                       sport = "NFL") %>%
+    league_id = conn$league_id,
+    season = conn$season,
+    sport = "NFL"
+  ) %>%
     purrr::pluck("content", "divisions") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "division_id" = "id", "division_name" = "name", "teams") %>%

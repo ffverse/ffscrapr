@@ -18,14 +18,13 @@
 #' @export
 
 ff_rosters.mfl_conn <- function(conn, custom_players = deprecated(), week = NULL, ...) {
+  checkmate::assert_number(week, null.ok = TRUE)
 
-  checkmate::assert_number(week,null.ok = TRUE)
-
-  if(lifecycle::is_present(custom_players)) {
+  if (lifecycle::is_present(custom_players)) {
     lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
   }
 
-  rosters_endpoint <- mfl_getendpoint(conn, "rosters", W=week) %>%
+  rosters_endpoint <- mfl_getendpoint(conn, "rosters", W = week) %>%
     purrr::pluck("content", "rosters", "franchise") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "player" = "player", "franchise_id" = "id") %>%

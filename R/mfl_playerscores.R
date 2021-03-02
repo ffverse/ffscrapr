@@ -17,16 +17,14 @@
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
-
   player_scores <- tidyr::crossing(season = season, week = week) %>%
-    dplyr::transmute(playerscore = purrr::map2(.data$season,.data$week,.mfl_playerscore,conn = conn)) %>%
+    dplyr::transmute(playerscore = purrr::map2(.data$season, .data$week, .mfl_playerscore, conn = conn)) %>%
     tidyr::unnest(playerscore)
 
   return(player_scores)
 }
 
-.mfl_playerscore <- function(season,week,conn){
-
+.mfl_playerscore <- function(season, week, conn) {
   if (!(is.numeric(week) | week %in% c("AVG", "YTD"))) {
     stop("week should be either a numeric or one of AVG or YTD")
   }

@@ -17,11 +17,10 @@
 #'
 #' @export
 ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
-
   checkmate::assert_numeric(week, lower = 1, upper = 21)
-  checkmate::assert_number(season,null.ok = TRUE)
+  checkmate::assert_number(season, null.ok = TRUE)
 
-  if(!is.null(season)) conn$season <- season
+  if (!is.null(season)) conn$season <- season
 
   players_endpoint <- mfl_players(conn) %>%
     dplyr::select("player_id", "player_name", "pos", "team")

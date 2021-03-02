@@ -1,7 +1,7 @@
 with_mock_api({
   test_that("ff_playersish calls return a tibble", {
     skippy()
-    mfl <- mfl_players(mfl_connect(2020,54040))
+    mfl <- mfl_players(mfl_connect(2020, 54040))
     expect_tibble(mfl, min.rows = 300)
 
     sleeper <- sleeper_players()

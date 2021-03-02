@@ -14,7 +14,7 @@
 #' @describeIn ff_standings ESPN: returns standings and points data.
 #'
 #' @export
-ff_standings.espn_conn <- function(conn,...) {
+ff_standings.espn_conn <- function(conn, ...) {
   team_endpoint <-
     espn_getendpoint(conn, view = "mTeam") %>%
     purrr::pluck("content")
@@ -33,8 +33,7 @@ ff_standings.espn_conn <- function(conn,...) {
         "franchise_id",
         "league_rank",
         "record"
-      )
-      )
+      ))
     )
 
   records <-
@@ -60,7 +59,7 @@ ff_standings.espn_conn <- function(conn,...) {
     .add_allplay()
 
   franchise_names <- ff_franchises(conn) %>%
-    dplyr::select("franchise_id","franchise_name")
+    dplyr::select("franchise_id", "franchise_name")
 
   standings <-
     dplyr::bind_cols(
