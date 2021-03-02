@@ -14,5 +14,10 @@ with_mock_api({
     joe_playerscores <- ff_playerscores(joe_conn, page_limit = 2)
 
     expect_tibble(joe_playerscores, min.rows = 50)
+
+    tony_conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_playerscores <- ff_playerscores(tony_conn, limit = 5)
+
+    expect_tibble(tony_playerscores, min.rows = 5)
   })
 })

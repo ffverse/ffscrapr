@@ -11,9 +11,9 @@ Authors@R:
            family = "ElHabr",
            role = c("ctb"),
            email = "anthonyelhabr@gmail.com"))
-Description: Helps access various Fantasy Football APIs by handling authentication and
-    rate-limiting, forming appropriate calls, and returning tidy
-    dataframes which can be easily connected to other data sources.
+Description: Helps access various Fantasy Football APIs by handling 
+    authentication and rate-limiting, forming appropriate calls, and returning 
+    tidy dataframes which can be easily connected to other data sources.
 License: MIT + file LICENSE
 URL: https://ffscrapr.dynastyprocess.com,
     https://github.com/dynastyprocess/ffscrapr,
