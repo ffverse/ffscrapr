@@ -146,7 +146,7 @@ Many of the API endpoints are being researched in other languages and you might 
 
 -   Christian Wendt's [espn-api](https://github.com/cwendt94/espn-api/) Python package was incredibly helpful in discovering the known and documented API endpoints.
 
--   Mike Kreiser's ESPN-Fantasy-Football-API is a well-documented JS client.
+-   Mike Kreiser's [ESPN-Fantasy-Football-API](https://github.com/mkreiser/ESPN-Fantasy-Football-API) is a well-documented JS client.
 
 -   Steven Morse also has several great [blog posts](https://stmorse.github.io/journal/espn-fantasy-v3.html) on using the API, mostly accessed via Python.
 
