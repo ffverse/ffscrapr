@@ -46,7 +46,7 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
     "communication/?view=kona_league_communication"
   )
 
-  transactions_response <- .espn_api_doquery(conn, url_query, xff)
+  transactions_response <- espn_getendpoint_raw(conn, url_query, xff)
 
   all_transactions <- transactions_response %>%
     purrr::pluck("content", "topics") %>%

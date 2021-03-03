@@ -55,9 +55,8 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.
 \examples{
 \donttest{
 
-conn <- espn_connect(season = 2020, league_id = 1178049)
-x <- ff_playerscores(conn, limit = 10)
-x
+conn <- espn_connect(season = 2020, league_id = 899513)
+ff_playerscores(conn, limit = 5)
 }
 \donttest{
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/espn_api.R
 \name{espn_getendpoint}
 \alias{espn_getendpoint}
-\title{GET any ESPN endpoint}
+\title{GET ESPN Fantasy League endpoint}
 \usage{
 espn_getendpoint(conn, ..., x_fantasy_filter = NULL)
 }
@@ -17,12 +17,23 @@ espn_getendpoint(conn, ..., x_fantasy_filter = NULL)
 A list object containing the query, response, and parsed content.
 }
 \description{
-The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE.
-Best URL help page is TBD, possibly might just be the vignette.
+This function is used to call the ESPN Fantasy API for league-based endpoints.
 }
 \details{
-Check out the vignette for more details and example usage.
+The ESPN Fantasy API is undocumented and this should be used by advanced users
+familiar with the API.
+
+It chooses the correct league endpoint based on the year (eg leagueHistory
+for <2018), checks the x_fantasy_filter for valid JSON input, builds a url
+with any optional query parameters, and executes the request with authentication
+and rate limiting.
+
+HTTP query parameters (i.e. arguments to ...) are Case Sensitive.
+
+Please see the vignette for more on how to use.
 }
 \seealso{
 \code{vignette("espn_getendpoint")}
+
+\code{espn_getendpoint_raw}
 }

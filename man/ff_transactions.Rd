@@ -54,10 +54,12 @@ Each trade is represented twice, once per each team.
 \dontrun{
 # Marked as don't run because this endpoint requires private authentication
 
-conn <- espn_connect(season = 2020,
-                     league_id = 1178049,
-                     swid = Sys.getenv("TAN_SWID"),
-                     espn_s2 = Sys.getenv("TAN_ESPN_S2"))
+conn <- espn_connect(
+  season = 2020,
+  league_id = 1178049,
+  swid = Sys.getenv("TAN_SWID"),
+  espn_s2 = Sys.getenv("TAN_ESPN_S2")
+)
 ff_transactions(conn)
 }
 
