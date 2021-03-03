@@ -26,40 +26,56 @@
     dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400), cache = cache)
     dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400), cache = cache)
 
+    # LONG TERM STORAGE
+
     mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)
     sleeper_players <<- memoise::memoise(sleeper_players, ~ memoise::timeout(604800), cache = cache)
     fleaflicker_players <<- memoise::memoise(fleaflicker_players, ~ memoise::timeout(604800), cache = cache)
+    espn_players <<- memoise::memoise(espn_players, ~ memoise::timeout(604800), cache = cache)
 
     mfl_allrules <<- memoise::memoise(mfl_allrules, ~ memoise::timeout(604800), cache = cache)
+
+    # MEDIUM TERM STORAGE
 
     ff_franchises.mfl_conn <<- memoise::memoise(ff_franchises.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.mfl_conn <<- memoise::memoise(ff_league.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-
     ff_starters.mfl_conn <<- memoise::memoise(ff_starters.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_standings.mfl_conn <<- memoise::memoise(ff_standings.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_playerscores.mfl_conn <<- memoise::memoise(ff_playerscores.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.mfl_conn <<- memoise::memoise(ff_schedule.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_userleagues.mfl_conn <<- memoise::memoise(ff_userleagues.mfl_conn, ~ memoise::timeout(3600), cache = cache)
 
     ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.sleeper_conn <<- memoise::memoise(ff_scoring.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.sleeper_conn <<- memoise::memoise(ff_league.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
-
-    ff_userleagues.sleeper_conn <<- memoise::memoise(ff_userleagues.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.sleeper_conn <<- memoise::memoise(ff_schedule.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_starters.sleeper_conn <<- memoise::memoise(ff_starters.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
 
     ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~ memoise::timeout(86400), cache = cache)
     .flea_potentialpointsweek <<- memoise::memoise(.flea_potentialpointsweek, ~ memoise::timeout(86400), cache = cache)
 
+    ff_franchises.espn_conn <<- memoise::memoise(ff_franchises.espn_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoring.espn_conn <<- memoise::memoise(ff_scoring.espn_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_league.espn_conn <<- memoise::memoise(ff_league.espn_conn, ~ memoise::timeout(86400), cache = cache)
+    # ff_starters.espn_conn <<- memoise::memoise(ff_starters.espn_conn, ~ memoise::timeout(86400), cache = cache)
+
+    # SHORT TERM STORAGE
+
+    ff_starters.sleeper_conn <<- memoise::memoise(ff_starters.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_userleagues.sleeper_conn <<- memoise::memoise(ff_userleagues.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_schedule.sleeper_conn <<- memoise::memoise(ff_schedule.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
+
+    ff_standings.mfl_conn <<- memoise::memoise(ff_standings.mfl_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_playerscores.mfl_conn <<- memoise::memoise(ff_playerscores.mfl_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_schedule.mfl_conn <<- memoise::memoise(ff_schedule.mfl_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_userleagues.mfl_conn <<- memoise::memoise(ff_userleagues.mfl_conn, ~ memoise::timeout(3600), cache = cache)
+
     ff_userleagues.flea_conn <<- memoise::memoise(ff_userleagues.flea_conn, ~ memoise::timeout(3600), cache = cache)
     ff_schedule.flea_conn <<- memoise::memoise(ff_schedule.flea_conn, ~ memoise::timeout(3600), cache = cache)
     ff_standings.flea_conn <<- memoise::memoise(ff_standings.flea_conn, ~ memoise::timeout(3600), cache = cache)
     ff_starters.flea_conn <<- memoise::memoise(ff_starters.flea_conn, ~ memoise::timeout(3600), cache = cache)
+
+    ff_standings.espn_conn <<- memoise::memoise(ff_standings.espn_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_playerscores.espn_conn <<- memoise::memoise(ff_playerscores.espn_conn, ~ memoise::timeout(3600), cache = cache)
+    ff_schedule.espn_conn <<- memoise::memoise(ff_schedule.espn_conn, ~ memoise::timeout(3600), cache = cache)
   }
 
   # if(memoise_option=="off") packageStartupMessage("ffscrapr.cache is set to 'off'")

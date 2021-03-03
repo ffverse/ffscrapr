@@ -14,17 +14,16 @@
 #'
 #' @export
 ff_scoring.espn_conn <- function(conn) {
-
-  scoring_rules <- espn_getendpoint(conn,view = "mSettings") %>%
-    purrr::pluck("content","settings","scoringSettings","scoringItems") %>%
+  scoring_rules <- espn_getendpoint(conn, view = "mSettings") %>%
+    purrr::pluck("content", "settings", "scoringSettings", "scoringItems") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::mutate(stat = .espn_stat_map()[as.character(.data$statId)] %>% unname())
 
   overrides <- scoring_rules %>%
     dplyr::mutate(
-      override_pos = purrr::map(.data$pointsOverrides,names),
-      points = purrr::map_dbl(.data$pointsOverrides,purrr::pluck,1,.default = NA_real_)
+      override_pos = purrr::map(.data$pointsOverrides, names),
+      points = purrr::map_dbl(.data$pointsOverrides, purrr::pluck, 1, .default = NA_real_)
     ) %>%
     tidyr::unnest("override_pos") %>%
     dplyr::filter(!is.na(.data$points)) %>%
@@ -36,9 +35,11 @@ ff_scoring.espn_conn <- function(conn) {
     )
 
   main_stats <- scoring_rules %>%
-    dplyr::select('stat_id' = 'statId',
-                  'stat_name' = 'stat',
-                  'points') %>%
+    dplyr::select(
+      "stat_id" = "statId",
+      "stat_name" = "stat",
+      "points"
+    ) %>%
     dplyr::bind_rows(overrides)
 
   return(main_stats)

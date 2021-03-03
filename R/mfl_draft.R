@@ -16,8 +16,7 @@
 #'
 #' @export
 ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
-
-  if(lifecycle::is_present(custom_players)) {
+  if (lifecycle::is_present(custom_players)) {
     lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
   }
 

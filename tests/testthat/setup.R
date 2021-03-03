@@ -6,7 +6,7 @@ suppressPackageStartupMessages({
 
 # Download test files and clean up afterwards, if running mocked tests
 
-if (identical(Sys.getenv("MOCK_BYPASS"),"true")) with_mock_api <- force
+if (identical(Sys.getenv("MOCK_BYPASS"), "true")) with_mock_api <- force
 
 download_mock <- !identical(Sys.getenv("MOCK_BYPASS"), "true") & !is.null(curl::nslookup("github.com", error = FALSE))
 

@@ -14,7 +14,7 @@
 #' @describeIn ff_standings ESPN: returns standings and points data.
 #'
 #' @export
-ff_standings.espn_conn <- function(conn,...) {
+ff_standings.espn_conn <- function(conn, ...) {
   team_endpoint <-
     espn_getendpoint(conn, view = "mTeam") %>%
     purrr::pluck("content")
@@ -25,20 +25,15 @@ ff_standings.espn_conn <- function(conn,...) {
     tidyr::hoist(
       .col = 1,
       "franchise_id" = "id",
-      # "points" = "points",
       "league_rank" = "rankCalculatedFinal",
-      # "league_rank" = "rankFinal",
       "record" = "record"
     ) %>%
     dplyr::select(
       dplyr::any_of(c(
         "franchise_id",
-        # "points",
         "league_rank",
-        # "league_rank",
         "record"
-      )
-      )
+      ))
     )
 
   records <-
@@ -60,10 +55,19 @@ ff_standings.espn_conn <- function(conn,...) {
     ) %>%
     dplyr::select(-.data$overall)
 
+  allplay <- ff_schedule(conn) %>%
+    .add_allplay()
+
+  franchise_names <- ff_franchises(conn) %>%
+    dplyr::select("franchise_id", "franchise_name")
+
   standings <-
     dplyr::bind_cols(
       standings_init %>% dplyr::select(-.data$record),
       records
-    )
+    ) %>%
+    dplyr::left_join(allplay, by = c("franchise_id")) %>%
+    dplyr::left_join(x = franchise_names, by = c("franchise_id"))
+
   return(standings)
 }

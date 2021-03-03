@@ -27,7 +27,7 @@ ff_schedule.espn_conn <- function(conn, ...) {
 
   .pluck_team <- function(x) {
     schedule %>%
-      purrr::map(~purrr::pluck(.x, x))
+      purrr::map(~ purrr::pluck(.x, x))
   }
   # .pluck_team_score <- function(x) {
   #    x %>% purrr::map(~purrr::pluck(.x, "cumulativeScore"))
@@ -42,13 +42,13 @@ ff_schedule.espn_conn <- function(conn, ...) {
   # There could be differences with how games that are yet-to-be-completed are treated.
   scores <-
     tibble::tibble(
-      "week" = schedule %>% purrr::map_int(~purrr::pluck(.x, "matchupPeriodId")),
+      "week" = schedule %>% purrr::map_int(~ purrr::pluck(.x, "matchupPeriodId")),
       # "winner" = schedule %>% purrr::map_chr(~purrr::pluck(.x, "winner")),
-      "home_id" = h %>% purrr::map_int(~purrr::pluck(.x, "teamId")),
-      "away_id" = a %>% purrr::map_int(~purrr::pluck(.x, "teamId")),
+      "home_id" = h %>% purrr::map_int(~ purrr::pluck(.x, "teamId")),
+      "away_id" = a %>% purrr::map_int(~ purrr::pluck(.x, "teamId")),
       # "home_w" = h_score %>% purrr::map_dbl(~purrr::pluck(.x, "wins")),
-      "home_points" = h %>% purrr::map_dbl(~purrr::pluck(.x, "totalPoints")),
-      "away_points" = a %>% purrr::map_dbl(~purrr::pluck(.x, "totalPoints"))
+      "home_points" = h %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints")),
+      "away_points" = a %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints"))
     )
   scores2 <- scores
   names(scores2) <- c("week", "away_id", "home_id", "away_points", "home_points")

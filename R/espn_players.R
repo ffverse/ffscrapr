@@ -28,9 +28,10 @@ espn_players <- function(conn = NULL, season = NULL) {
 
   xff <- httr::add_headers(`x-fantasy-filter` = xff)
 
-  url_query <- glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/players?scoringPeriodId=0&view=players_wl")
+  url_query <- glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+                          "{season}/players?scoringPeriodId=0&view=players_wl")
 
-  df_players <- .espn_api_doquery(conn,url_query,xff) %>%
+  df_players <- espn_getendpoint_raw(conn, url_query, xff) %>%
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     stats::setNames("x") %>%

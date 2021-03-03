@@ -16,8 +16,7 @@
 #' @export
 
 ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
-
-  if(lifecycle::is_present(custom_players)) {
+  if (lifecycle::is_present(custom_players)) {
     lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
   }
 
@@ -80,11 +79,13 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
   auction_transactions %>%
     dplyr::select("timestamp", "type", "franchise", "transaction") %>%
     tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|") %>%
-    dplyr::mutate("comments" = ifelse(stringr::str_length(.data$comments) == 0,
-                                      NA_character_,
-                                      .data$comments),
-                  bid_amount = as.numeric(.data$bid_amount)
-                  )
+    dplyr::mutate(
+      "comments" = ifelse(stringr::str_length(.data$comments) == 0,
+        NA_character_,
+        .data$comments
+      ),
+      bid_amount = as.numeric(.data$bid_amount)
+    )
 }
 
 ## TRADE ##
