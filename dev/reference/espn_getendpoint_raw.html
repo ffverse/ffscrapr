@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ESPN Stat ID map — .espn_stat_map • ffscrapr</title>
+<title>ESPN Get Endpoint (Raw) — espn_getendpoint_raw • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,12 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ESPN Stat ID map — .espn_stat_map" />
-<meta property="og:description" content="ESPN Stat ID map" />
+<meta property="og:title" content="ESPN Get Endpoint (Raw) — espn_getendpoint_raw" />
+<meta property="og:description" content="This function is the lower-level function that powers the API call:
+it takes a URL and headers and executes the http request with rate-limiting. It
+checks for JSON return and any warnings/errors, parses the json, and
+returns an espn_api object with the parsed content, the raw response,
+and the actual query." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -182,21 +186,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ESPN Stat ID map</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn__helpers.R'><code>R/espn__helpers.R</code></a></small>
-    <div class="hidden name"><code>dot-espn_stat_map.Rd</code></div>
+    <h1>ESPN Get Endpoint (Raw)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_api.R'><code>R/espn_api.R</code></a></small>
+    <div class="hidden name"><code>espn_getendpoint_raw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>ESPN Stat ID map</p>
+    <p>This function is the lower-level function that powers the API call:
+it takes a URL and headers and executes the http request with rate-limiting. It
+checks for JSON return and any warnings/errors, parses the json, and
+returns an espn_api object with the parsed content, the raw response,
+and the actual query.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.espn_stat_map</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>espn_getendpoint_raw</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>url_query</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>conn</th>
+      <td><p>a connection object created by ff_connect or equivalent - used for auth cookies</p></td>
+    </tr>
+    <tr>
+      <th>url_query</th>
+      <td><p>a fully-formed URL to call</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>any headers or other httr request objects to pass along</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>object of class espn_api with parsed content, request, and response</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py'>https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py</a></p></div>
+    <div class='dont-index'><p><code>espn_getendpoint</code> - a higher level wrapper that checks JSON and prepares the url query</p>
+<p><code><a href='../articles/espn_getendpoint.html'>vignette("espn_getendpoint")</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
