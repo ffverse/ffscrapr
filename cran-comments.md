@@ -7,7 +7,7 @@ This release corrects an issue where URL parameters were being programmatically 
 
 ## New features
 
-This release extends the package to support another fantasy football platform.
+This release extends the package to support another fantasy football platform, ESPN. 
 
 ## Test environments
 * local (Windows) R installation, R 4.0.2

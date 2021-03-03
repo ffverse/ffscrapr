@@ -55,13 +55,13 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Version 1.2.2 is now on CRAN 🎉 and can be installed with:
+Version 1.3.0 is now on CRAN 🎉 and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.3.0")
 ```
 
 Install the development version from GitHub with:
@@ -95,6 +95,7 @@ Platform-specific guides on getting started with ffscrapr are here:
 - [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
 - [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html) 
 - [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
+- [ESPN](https://ffscrapr.dynastyprocess.com/articles/espn_basics.html)
 
 There are also some more advanced guides for custom API calls in the [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as well as some guides on [optimizing ffscrapr's performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html). 
 
