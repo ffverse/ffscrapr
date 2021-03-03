@@ -2,7 +2,7 @@
 % Please edit documentation in R/espn_api.R
 \name{espn_getendpoint}
 \alias{espn_getendpoint}
-\title{GET ESPN Fantasy League endpoint}
+\title{GET ESPN fantasy league endpoint}
 \usage{
 espn_getendpoint(conn, ..., x_fantasy_filter = NULL)
 }
@@ -30,7 +30,7 @@ and rate limiting.
 
 HTTP query parameters (i.e. arguments to ...) are Case Sensitive.
 
-Please see the vignette for more on how to use.
+Please see the vignette for more on usage.
 }
 \seealso{
 \code{vignette("espn_getendpoint")}

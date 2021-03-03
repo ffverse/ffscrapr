@@ -19,6 +19,7 @@
 -   Added vignettes for basics and private league (v1.2.2.21)
 -   Added `ff_playerscores()` method for ESPN (v1.2.2.23) - provides season total and averages. 
 -   Refactored `espn_getendpoint()` to have a lower-level function `espn_getendpoint_raw()` (v1.2.2.24)
+-   Added vignette for custom ESPN API calls (v1.2.2.25)
 
 ### Minor patches
 
