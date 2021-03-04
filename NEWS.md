@@ -1,4 +1,4 @@
-# ffscrapr (development version)
+# ffscrapr 1.3.0
 
 ### ESPN Progress
 
