@@ -1,6 +1,5 @@
 with_mock_api({
   test_that("ff_starters returns a tibble of starters", {
-
     skippy()
 
     dlf <- mfl_connect(2020, 37920)
@@ -24,6 +23,5 @@ with_mock_api({
 
     expect_tibble(tony_starters, min.rows = 100)
     expect_tibble(tony_potentialpoints, min.rows = 100)
-
   })
 })

@@ -19,8 +19,10 @@
 
 espn_potentialpoints <- function(conn, weeks = 1:17) {
   player_weeks <- ff_starters(conn, weeks) %>%
-    dplyr::rename("actual_slot" = "lineup_slot",
-                  "player_pos" = "pos")
+    dplyr::rename(
+      "actual_slot" = "lineup_slot",
+      "player_pos" = "pos"
+    )
 
   lineup_settings <- .espn_pp_settings(conn)
 
@@ -31,7 +33,6 @@ espn_potentialpoints <- function(conn, weeks = 1:17) {
   optimal_lineups <- tibble::tibble()
 
   for (i in lineup_settings$priority) {
-
     pos <- lineup_settings %>%
       dplyr::rename("optimal_slot" = "pos") %>%
       dplyr::filter(priority == i) %>%
@@ -40,22 +41,20 @@ espn_potentialpoints <- function(conn, weeks = 1:17) {
         by = c("lineup_id" = "eligible_lineup_slots")
       ) %>%
       tidyr::unnest("unused_players") %>%
-
       dplyr::group_by(.data$week, .data$franchise_id) %>%
       dplyr::mutate(
-        rank = rank(dplyr::desc(player_score), ties.method = c("first")
-      )) %>%
+        rank = rank(dplyr::desc(player_score), ties.method = c("first"))
+      ) %>%
       dplyr::filter(.data$rank <= .data$count)
 
     optimal_lineups <- dplyr::bind_rows(optimal_lineups, pos)
 
     unused_players <- unused_players %>%
-      dplyr::anti_join(pos, by = c("week","player_id"))
-
+      dplyr::anti_join(pos, by = c("week", "player_id"))
   }
 
   finalized_optimal <- player_weeks %>%
-    dplyr::anti_join(optimal_lineups, by = c("player_id","week")) %>%
+    dplyr::anti_join(optimal_lineups, by = c("player_id", "week")) %>%
     dplyr::bind_rows(x = optimal_lineups) %>%
     dplyr::arrange(
       .data$week,
@@ -75,18 +74,17 @@ espn_potentialpoints <- function(conn, weeks = 1:17) {
       "player_pos",
       "team",
       "player_id"
-      )))
+    )))
 
   return(finalized_optimal)
 }
 
-.espn_pp_settings <- function(conn){
-
-  lineup_settings <- espn_getendpoint(conn,view = "mSettings") %>%
-    purrr::pluck("content","settings","rosterSettings","lineupSlotCounts") %>%
+.espn_pp_settings <- function(conn) {
+  lineup_settings <- espn_getendpoint(conn, view = "mSettings") %>%
+    purrr::pluck("content", "settings", "rosterSettings", "lineupSlotCounts") %>%
     tibble::enframe(name = "lineup_id", value = "count") %>%
     dplyr::mutate(pos = .espn_lineupslot_map()[as.character(.data$lineup_id)]) %>%
-    tidyr::unnest(c("pos","count")) %>%
+    tidyr::unnest(c("pos", "count")) %>%
     dplyr::left_join(.espn_pp_lineupkeys(), by = "lineup_id") %>%
     dplyr::filter(.data$count > 0, .data$priority > 0) %>%
     dplyr::arrange(.data$priority)
@@ -94,12 +92,11 @@ espn_potentialpoints <- function(conn, weeks = 1:17) {
   return(lineup_settings)
 }
 
-.espn_pp_lineupkeys <- function(){
+.espn_pp_lineupkeys <- function() {
   tibble::tibble(
-    lineup_id=c("0","2","3","4","5","6","7","16","17","20","21","23","8","9","10","11","24","12","13","14","15"),
-    priority=c(1,2,5,3,6,4,8,9,10,0,0,11,12,13,16,14,15,17,18,19,20)) %>%
+    lineup_id = c("0", "2", "3", "4", "5", "6", "7", "16", "17", "20", "21", "23", "8", "9", "10", "11", "24", "12", "13", "14", "15"),
+    priority = c(1, 2, 5, 3, 6, 4, 8, 9, 10, 0, 0, 11, 12, 13, 16, 14, 15, 17, 18, 19, 20)
+  ) %>%
     dplyr::arrange(.data$priority) %>%
     dplyr::mutate(lineup_id = as.character(lineup_id))
 }
-
-

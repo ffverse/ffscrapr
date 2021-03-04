@@ -15,12 +15,12 @@ espn_potentialpoints(conn, weeks = 1:17)
 a tibble with the best lineup for each team and whether they were started or not
 }
 \description{
-This function calculates the optimal points for a given week, using some lineup heuristics.
+This function calculates the optimal starters for a given week, using some lineup heuristics.
 }
 \examples{
 \donttest{
 
-conn <- espn_connect(season = 2020, league_id = 1178049)
+conn <- espn_connect(season = 2020, league_id = 899513)
 espn_potentialpoints(conn, weeks = 1:3)
 }
 }
