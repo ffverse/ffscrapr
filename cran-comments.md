@@ -10,9 +10,9 @@ This release corrects an issue where URL parameters were being programmatically 
 This release extends the package to support another fantasy football platform, ESPN. 
 
 ## Test environments
-* local (Windows) R installation, R 4.0.2
-* ubuntu 16.04 (on GitHub Actions), R 4.0.2
-* MacOS (on GitHub Actions), R 4.0.2
+* local (Windows) R installation, R 4.0.4
+* ubuntu 20.04 (on GitHub Actions), R 4.0.4
+* MacOS (on GitHub Actions), R 4.0.4
 * win-builder (devel)
 
 ## R CMD check results
