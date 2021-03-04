@@ -39,7 +39,7 @@
     ff_franchises.espn_conn,
     ff_scoring.espn_conn,
     ff_league.espn_conn,
-    # ff_starters.espn_conn,
+    ff_starters.espn_conn,
     ff_standings.espn_conn,
     ff_playerscores.espn_conn,
     ff_schedule.espn_conn
