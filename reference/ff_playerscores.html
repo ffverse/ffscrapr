@@ -58,7 +58,8 @@
 <meta property="og:description" content="This function returns a tidy dataframe of player scores based on league rules.
 Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
 Adding some nflfastr-based ideas to the pipeline for future iterations." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -93,7 +94,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -126,6 +127,12 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
     <li>
       <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
+    <li>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Custom API Calls</li>
     <li>
@@ -136,6 +143,9 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
     </li>
     <li>
       <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
@@ -175,7 +185,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Player Scoring History</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_playerscores.R'><code>R/flea_playerscores.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_playerscores.R'><code>R/mfl_playerscores.R</code></a>, and 1 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_playerscores.R'><code>R/espn_playerscores.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_playerscores.R'><code>R/flea_playerscores.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_playerscores.Rd</code></div>
     </div>
 
@@ -186,6 +196,9 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>1000</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -208,6 +221,10 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
       <td><p>other arguments (currently unused)</p></td>
     </tr>
     <tr>
+      <th>limit</th>
+      <td><p>A numeric describing the number of players to return - default 1000</p></td>
+    </tr>
+    <tr>
       <th>page_limit</th>
       <td><p>A numeric describing the number of pages to return - default NULL returns all available</p></td>
     </tr>
@@ -217,7 +234,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     </tr>
     <tr>
       <th>week</th>
-      <td><p>a numeric or one of YTD (year-to-date) or AVG (average to date)</p></td>
+      <td><p>a numeric vector (ie 1:17) or one of YTD (year-to-date) or AVG (average to date)</p></td>
     </tr>
     </table>
 
@@ -228,6 +245,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns total points for season and average per game, for both current and previous season.</p></li>
 <li><p><code>flea_conn</code>: Fleaflicker: returns the season, season average, and standard deviation</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: Deprecated their open API endpoint for player scores</p></li>
@@ -236,40 +254,58 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 8</span><span>
+#&gt;    season player_id player_name     pos   score_total score_average franchise_id
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020   3</span><span style='text-decoration: underline;'>054</span><span>850 Alvin Kamara    RB           337.          22.5            9
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020   3</span><span style='text-decoration: underline;'>043</span><span>078 Derrick Henry   RB           324.          20.2            4
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     </span><span style='text-decoration: underline;'>16</span><span>800 Davante Adams   WR           301.          21.5            2
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     </span><span style='text-decoration: underline;'>15</span><span>795 DeAndre Hopkins WR           230.          14.4            4
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020   2</span><span style='text-decoration: underline;'>576</span><span>925 Darren Waller   TE           225.          14.1            4
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019   3</span><span style='text-decoration: underline;'>043</span><span>078 Derrick Henry   RB           286.          19.0            4
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019     </span><span style='text-decoration: underline;'>15</span><span>795 DeAndre Hopkins WR           217.          14.4            4
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019   3</span><span style='text-decoration: underline;'>054</span><span>850 Alvin Kamara    RB           209.          14.9            9
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019   2</span><span style='text-decoration: underline;'>576</span><span>925 Darren Waller   TE           176           11              4
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019     </span><span style='text-decoration: underline;'>16</span><span>800 Davante Adams   WR           171.          14.3            2
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: franchise_name &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>x</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 60 x 8</span><span>
-#&gt;    player_id player_name        pos   team  games score_total score_avg score_sd
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>       309 Tom Brady          QB    TB       16       488.      30.5     12.2 
-#&gt; </span><span style='color: #555555;'> 2</span><span>      </span><span style='text-decoration: underline;'>6</span><span>611 Rob Gronkowski     TE    TB       16       140.       8.77     6.12
-#&gt; </span><span style='color: #555555;'> 3</span><span>     </span><span style='text-decoration: underline;'>12</span><span>920 Leonard Fournette  RB    TB       12       122.      10.1      7.49
-#&gt; </span><span style='color: #555555;'> 4</span><span>      </span><span style='text-decoration: underline;'>9</span><span>360 Travis Kelce       TE    KC       15       301.      20.1      6.44
-#&gt; </span><span style='color: #555555;'> 5</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes    QB    KC       15       520.      34.6      9.95
-#&gt; </span><span style='color: #555555;'> 6</span><span>     </span><span style='text-decoration: underline;'>12</span><span>197 Tyreek Hill        WR    KC       15       314.      20.9     11.4 
-#&gt; </span><span style='color: #555555;'> 7</span><span>      </span><span style='text-decoration: underline;'>6</span><span>660 Antonio Brown      WR    TB        8       108.      13.5      9.35
-#&gt; </span><span style='color: #555555;'> 8</span><span>     </span><span style='text-decoration: underline;'>15</span><span>539 Clyde Edwards-Hel… RB    KC       13       171.      13.1      5.59
-#&gt; </span><span style='color: #555555;'> 9</span><span>     </span><span style='text-decoration: underline;'>13</span><span>785 Ronald Jones       RB    TB       14       187.      13.3      7.22
-#&gt; </span><span style='color: #555555;'>10</span><span>     </span><span style='text-decoration: underline;'>10</span><span>991 Cameron Brate      TE    TB       13        62.7      4.82     3.45
-#&gt; </span><span style='color: #555555;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 60 x 8</span><span>
+#&gt;    player_id player_name     pos   team  games score_total score_avg score_sd
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     </span><span style='text-decoration: underline;'>13</span><span>761 Josh Allen      QB    BUF      16        550.      34.4    10.4 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      </span><span style='text-decoration: underline;'>3</span><span>452 Aaron Rodgers   QB    GB       16        542.      33.8     8.49
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     </span><span style='text-decoration: underline;'>12</span><span>894 Patrick Mahomes QB    KC       15        520.      34.6     9.95
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      </span><span style='text-decoration: underline;'>8</span><span>598 Russell Wilson  QB    SEA      16        513.      32.1    10.8 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     </span><span style='text-decoration: underline;'>14</span><span>664 Kyler Murray    QB    ARI      16        507.      31.7    11.9 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     </span><span style='text-decoration: underline;'>12</span><span>919 Deshaun Watson  QB    HOU      16        503.      31.5     7.96
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>       309 Tom Brady       QB    TB       16        488.      30.5    12.2 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      </span><span style='text-decoration: underline;'>8</span><span>514 Ryan Tannehill  QB    TEN      16        469.      29.3     9.76
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     </span><span style='text-decoration: underline;'>15</span><span>516 Justin Herbert  QB    LAC      15        459.      30.6     9.67
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      </span><span style='text-decoration: underline;'>8</span><span>625 Kirk Cousins    QB    MIN      16        446.      27.9     9.8 
+#&gt; </span><span style='color: #949494;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 597 x 8</span><span>
-#&gt;    season week  player_id player_name          pos   team  points isAvailable
-#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL   480.68 0          
-#&gt; </span><span style='color: #555555;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR   469.20 0          
-#&gt; </span><span style='color: #555555;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS   391.00 0          
-#&gt; </span><span style='color: #555555;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC   369.80 0          
-#&gt; </span><span style='color: #555555;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL   355.70 0          
-#&gt; </span><span style='color: #555555;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL   351.78 0          
-#&gt; </span><span style='color: #555555;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12626     Henry, Derrick       RB    TEN   351.60 0          
-#&gt; </span><span style='color: #555555;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU   342.08 0          
-#&gt; </span><span style='color: #555555;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA   339.70 0          
-#&gt; </span><span style='color: #555555;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP   337.90 0          
-#&gt; </span><span style='color: #555555;'># … with 587 more rows</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 597 x 8</span><span>
+#&gt;    season week  player_id player_name          pos   team  points is_available
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL     481. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR     469. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS     391  0           
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC     370. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL     356. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL     352. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12626     Henry, Derrick       RB    TEN     352. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU     342. 0           
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA     340. 0           
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP     338. 0           
+#&gt; </span><span style='color: #949494;'># … with 587 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

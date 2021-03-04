@@ -56,7 +56,8 @@
 
 <meta property="og:title" content="Get Schedule — ff_schedule" />
 <meta property="og:description" content="This function returns a tidy dataframe with one row for every team for every weekly matchup" />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -91,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -124,6 +125,12 @@
     <li>
       <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
+    <li>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Custom API Calls</li>
     <li>
@@ -134,6 +141,9 @@
     </li>
     <li>
       <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
@@ -173,7 +183,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_schedule.R'><code>R/flea_schedule.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_schedule.R'><code>R/mfl_schedule.R</code></a>, and 1 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_schedule.R'><code>R/espn_schedule.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_schedule.R'><code>R/flea_schedule.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_schedule.Rd</code></div>
     </div>
 
@@ -182,6 +192,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
 <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -216,6 +229,7 @@
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>flea_conn</code>: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns all schedule data</p></li>
@@ -223,6 +237,24 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='va'>espn_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>espn_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 140 x 6</span><span>
+#&gt;     week franchise_id franchise_score result opponent_id opponent_score
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1            1            102. L                4           130.
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1            2            156. W                3           135.
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1            3            135. L                2           156.
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1            4            130. W                1           102.
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1            5            133. W                7           131.
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1            6            119. L                9           124.
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1            7            131. L                5           133.
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1            8            120. L               10           122.
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1            9            124. W                6           119.
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1           10            122. W                8           120.
+#&gt; </span><span style='color: #949494;'># … with 130 more rows</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
 <span class='co'># }</span>
@@ -230,38 +262,38 @@
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 234 x 6</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 234 x 6</span><span>
 #&gt;     week franchise_id franchise_score result opponent_id opponent_score
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1 0001                    123. W      0002                  103.
-#&gt; </span><span style='color: #555555;'> 2</span><span>     1 0002                    103. L      0001                  123.
-#&gt; </span><span style='color: #555555;'> 3</span><span>     1 0003                    128. L      0004                  174.
-#&gt; </span><span style='color: #555555;'> 4</span><span>     1 0004                    174. W      0003                  128.
-#&gt; </span><span style='color: #555555;'> 5</span><span>     1 0005                    144. W      0011                  130.
-#&gt; </span><span style='color: #555555;'> 6</span><span>     1 0006                    173. W      0013                  125.
-#&gt; </span><span style='color: #555555;'> 7</span><span>     1 0007                    145. W      0010                  127.
-#&gt; </span><span style='color: #555555;'> 8</span><span>     1 0008                    185. W      0009                  176.
-#&gt; </span><span style='color: #555555;'> 9</span><span>     1 0009                    176. L      0008                  185.
-#&gt; </span><span style='color: #555555;'>10</span><span>     1 0010                    127. L      0007                  145.
-#&gt; </span><span style='color: #555555;'># … with 224 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1 0001                    123. W      0002                  103.
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1 0002                    103. L      0001                  123.
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1 0003                    128. L      0004                  174.
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1 0004                    174. W      0003                  128.
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1 0005                    144. W      0011                  130.
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1 0006                    173. W      0013                  125.
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1 0007                    145. W      0010                  127.
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1 0008                    185. W      0009                  176.
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1 0009                    176. L      0008                  185.
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1 0010                    127. L      0007                  145.
+#&gt; </span><span style='color: #949494;'># … with 224 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 156 x 6</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 156 x 6</span><span>
 #&gt;     week franchise_id franchise_score opponent_id opponent_score result
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1            1            97.8          12          160.  L     
-#&gt; </span><span style='color: #555555;'> 2</span><span>     1            2            65.9           8           70.2 L     
-#&gt; </span><span style='color: #555555;'> 3</span><span>     1            3           103.           10           71   W     
-#&gt; </span><span style='color: #555555;'> 4</span><span>     1            4           133.            7          106.  W     
-#&gt; </span><span style='color: #555555;'> 5</span><span>     1            5            82.4           6           99.3 L     
-#&gt; </span><span style='color: #555555;'> 6</span><span>     1            6            99.3           5           82.4 W     
-#&gt; </span><span style='color: #555555;'> 7</span><span>     1            7           106.            4          133.  L     
-#&gt; </span><span style='color: #555555;'> 8</span><span>     1            8            70.2           2           65.9 W     
-#&gt; </span><span style='color: #555555;'> 9</span><span>     1            9            78.3          11          147   L     
-#&gt; </span><span style='color: #555555;'>10</span><span>     1           10            71             3          103.  L     
-#&gt; </span><span style='color: #555555;'># … with 146 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1            1            97.8          12          160.  L     
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1            2            65.9           8           70.2 L     
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1            3           103.           10           71   W     
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1            4           133.            7          106.  W     
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1            5            82.4           6           99.3 L     
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1            6            99.3           5           82.4 W     
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1            7           106.            4          133.  L     
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1            8            70.2           2           65.9 W     
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1            9            78.3          11          147   L     
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1           10            71             3          103.  L     
+#&gt; </span><span style='color: #949494;'># … with 146 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

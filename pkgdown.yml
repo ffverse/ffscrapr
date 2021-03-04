@@ -2,6 +2,9 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  espn_authentication: espn_authentication.html
+  espn_basics: espn_basics.html
+  espn_getendpoint: espn_getendpoint.html
   ffscrapr_caching: ffscrapr_caching.html
   fleaflicker_basics: fleaflicker_basics.html
   fleaflicker_getendpoint: fleaflicker_getendpoint.html
@@ -9,7 +12,7 @@ articles:
   mfl_getendpoint: mfl_getendpoint.html
   sleeper_basics: sleeper_basics.html
   sleeper_getendpoint: sleeper_getendpoint.html
-last_built: 2021-02-08T14:55Z
+last_built: 2021-03-04T05:30Z
 urls:
   reference: ffscrapr.dynastyprocess.com/reference
   article: ffscrapr.dynastyprocess.com/articles

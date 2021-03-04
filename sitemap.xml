@@ -7,6 +7,21 @@
     <loc>ffscrapr.dynastyprocess.com/reference/dot-add_allplay.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_activity_map.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_lineupslot_map.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_pos_map.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_stat_map.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-espn_team_map.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dot-ff_clear_cache.html</loc>
   </url>
   <url>
@@ -25,13 +40,37 @@
     <loc>ffscrapr.dynastyprocess.com/reference/dot-mfl_logincookie.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-retry_get.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dot-retry_post.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dot-sleeper_userid.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/dp_cleannames.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dp_playerids.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/dp_values.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/espn_connect.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/espn_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/espn_getendpoint_raw.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/espn_players.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/espn_potentialpoints.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_connect.html</loc>
@@ -85,6 +124,9 @@
     <loc>ffscrapr.dynastyprocess.com/reference/fleaflicker_userleagues.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/mfl_allrules.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/mfl_connect.html</loc>
   </url>
   <url>
@@ -97,6 +139,9 @@
     <loc>ffscrapr.dynastyprocess.com/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/set_unescaped_cookies.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_connect.html</loc>
   </url>
   <url>
@@ -107,6 +152,15 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/sleeper_userleagues.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/espn_authentication.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/espn_basics.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/espn_getendpoint.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html</loc>

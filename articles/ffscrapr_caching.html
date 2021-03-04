@@ -22,7 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Managing ffscrapr's Cache">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -44,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -77,6 +78,12 @@
     <li>
       <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
+    <li>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
     <li class="divider">
     <li class="dropdown-header">Custom API Calls</li>
     <li>
@@ -87,6 +94,9 @@
     </li>
     <li>
       <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Cache</li>
@@ -154,7 +164,7 @@
 <p>ffscrapr’s core functions often loop over the same, stable endpoints to help return the data for each function - things like “player names/positions/teams”, “franchise IDs/names”, and “league scoring rules” are all used frequently. ffscrapr incorporates <a href="https://github.com/r-lib/memoise">memoise</a> package to help with this functionality, and (as of this writing) saves the results of these functions:</p>
 <ul>
 <li>
-<code><a href="../reference/mfl_players.html">mfl_players()</a></code>, <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code> - these functions are stored for 7 days</li>
+<code><a href="../reference/mfl_players.html">mfl_players()</a></code>, <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code>, <code><a href="../reference/fleaflicker_players.html">fleaflicker_players()</a></code> - these functions are stored for 7 days</li>
 <li>
 <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, <code><a href="../reference/ff_league.html">ff_league()</a></code> - these functions are stored for 24 hours</li>
 <li>
@@ -170,7 +180,7 @@
 <p>By default, ffscrapr will save the results of each function call (i.e. function + arguments) into memory.</p>
 <p>If you would like to have your cache stored on your local filesystem, you can adjust this behaviour by adding the following line to your (or your project) .Rprofile, or by adding it BEFORE you library/load the package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>ffscrapr.cache <span class="op">=</span> <span class="st">"filesystem"</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>ffscrapr.cache <span class="op">=</span> <span class="st">"filesystem"</span><span class="op">)</span></code></pre></div>
 <p>This will instruct ffscrapr to store the cache on your machine, as dictated by the typical cache location for your operating system. You can see where this is by running the following line of code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rappdirs</span><span class="fu">::</span><span class="fu"><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html">user_cache_dir</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span></code></pre></div>
