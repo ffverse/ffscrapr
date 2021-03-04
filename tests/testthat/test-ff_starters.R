@@ -18,9 +18,12 @@ with_mock_api({
 
     expect_tibble(got_starters, min.rows = 100)
 
-    tony_conn <- conn <- espn_connect(season = 2020, league_id = 899513)
-    tony_starters <- ff_starters(conn, weeks = 1:2)
+    tony_conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_starters <- ff_starters(tony_conn, weeks = 1:2)
+    tony_potentialpoints <- espn_potentialpoints(tony_conn, weeks = 1:2)
 
     expect_tibble(tony_starters, min.rows = 100)
+    expect_tibble(tony_potentialpoints, min.rows = 100)
+
   })
 })

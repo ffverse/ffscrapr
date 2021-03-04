@@ -21,6 +21,7 @@
 -   Refactored `espn_getendpoint()` to have a lower-level function `espn_getendpoint_raw()` (v1.2.2.24)
 -   Added vignette for custom ESPN API calls (v1.2.2.25)
 -   Added `ff_starters()` method for ESPN (v1.2.2.26)
+-   Added `espn_potentialpoints()` function for ESPN (v1.2.2.27)
 
 ### Minor patches
 
