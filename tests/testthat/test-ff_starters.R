@@ -1,6 +1,8 @@
 with_mock_api({
   test_that("ff_starters returns a tibble of starters", {
+
     skippy()
+
     dlf <- mfl_connect(2020, 37920)
     dlf_starters <- ff_starters(dlf, week = c(1:3), year = 2020)
 
@@ -15,5 +17,10 @@ with_mock_api({
     got_starters <- ff_starters(got_conn, week = 4)
 
     expect_tibble(got_starters, min.rows = 100)
+
+    tony_conn <- conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_starters <- ff_starters(conn, weeks = 1:2)
+
+    expect_tibble(tony_starters, min.rows = 100)
   })
 })
