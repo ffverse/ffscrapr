@@ -1,44 +1,40 @@
 # ffscrapr 1.3.0
 
-### ESPN Progress
+The main goal of ffscrapr 1.3.0 is to add support for the ESPN platform. It also includes several bug fixes, code quality improvements, and a major refactor of tests to reduce overall package size. 
 
--   `espn_connect()`/`ff_connect()`: implemented with SWID/ESPN_S2 arguments, which act a lot like the API keys. Will need vignettes or demos to help users find these. Python package has [not yet found a way](https://github.com/cwendt94/espn-api/discussions/128) to make username/password work yet - this is annoying and I'll let them tackle it since I'd rather just build out the R functionality first. (v1.2.1.2)
--   Fixed cookie-based authentication from connect and added `espn_getendpoint()` low-level function (v1.2.1.3)
--   Added warning for `ff_draftpicks()` - ESPN does not support draft pick trades (v1.2.1.4)
--   Added `ff_league()` method for ESPN connection. (v1.2.1.5) (Thanks, @TonyElHabr!)
--   Added warning for `ff_userleagues()` - ESPN does not support looking up user leagues (v1.2.1.6)
--   Edited `espn_getendpoint()` lower-level function to take a json-formatted `x_fantasy_filter` argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)
--   Added `espn_players()`, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)
--   Added `ff_franchises()` method for ESPN. (v1.2.1.8)
--   Added `ff_draft()` method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)
--   Added `ff_rosters()` method for ESPN (v1.2.2.14)
--   Added `ff_scoring()` method for ESPN (v1.2.2.16)
--   Added `ff_standings()` method for ESPN (v1.2.2.17)
--   Added `ff_schedule()` method for ESPN (v1.2.2.18)
--   Added `ff_transactions()` method for ESPN (v1.2.2.20)
--   Added vignettes for basics and private league (v1.2.2.21)
--   Added `ff_playerscores()` method for ESPN (v1.2.2.23) - provides season total and averages. 
--   Refactored `espn_getendpoint()` to have a lower-level function `espn_getendpoint_raw()` (v1.2.2.24)
--   Added vignette for custom ESPN API calls (v1.2.2.25)
--   Added `ff_starters()` method for ESPN (v1.2.2.26)
--   Added `espn_potentialpoints()` function for ESPN (v1.2.2.27)
+A huge thank-you goes to [Tony ElHabr](https://twitter.com/TonyElHabr) for his contributions to the package for the ESPN methods.
+
+### Breaking Changes
+
+- `custom_players` arguments are deprecated for MFL - it will now return them by default. 
+
+### ESPN Details
+ 
+ESPN is a tricky and undocumented API. Private leagues are accessible if you use the SWID/ESPN_S2 authentication arguments, which are a lot like API keys - see the ESPN authentication vignette.
+
+Unsupported functions: 
+
+- `ff_draftpicks()` - this does not apply to ESPN primarily because it does not support draft pick trades. 
+- `ff_userleagues()` - ESPN does not support looking up user's leagues, even when authenticated
+- `espn_connect()` - ESPN used to have a way to authenticate via username/password, but this has been made more difficult. It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys. 
+
+### New Functions
+
+- `dp_cleannames()` applies some heuristics that help with name-joining players. 
+- `espn_potentialpoints()` calculates the optimal lineup for each week. This is 
 
 ### Minor patches
 
-- Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/). (v1.2.1.1)
-- Documentation and vignette updates/tweaks (v1.2.1.1)
-- Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)
-- Added `dp_cleannames()`, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)
-- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (Resolves #196) (v1.2.2.11)
-- Actually export `dp_cleannames()` and add it to the NAMESPACE so it's accessible to the end user, whoops.
-- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing (v1.2.2.12)
-- Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202) (v1.2.2.14)
-- Resolve MFL's playerscores to handle vectorized request (Fixes #206) (v1.2.2.15)
-- Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219) (v1.2.2.19)
-- Resolved bug in MFL's `ff_rosters()` by adding a week parameter (Fixes #215) (v1.2.2.19)
-- Coerced `ff_transactions()` bid_amount into a numeric (Fixes #210) (v1.2.2.19)
-- Removed bye franchises from `ff_starters()` (Fixes #212) (v1.2.2.22)
-- DEPRECATED custom_players arguments - now calling custom_players by default everywhere (v1.2.2.22)
+- Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/).
+- Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores
+- Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (Resolves #196)
+- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing
+- Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202)
+- Resolve MFL's playerscores to handle vectorized request (Fixes #206)
+- Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219)
+- Resolved bug in MFL's `ff_rosters()` by adding a week parameter (Fixes #215)
+- Coerced `ff_transactions()` bid_amount into a numeric (Fixes #210)
+- Removed bye franchises from `ff_starters()` (Fixes #212)
 
 ---
 
