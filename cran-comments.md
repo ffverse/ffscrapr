@@ -1,4 +1,3 @@
-
 ## SUBMISSION
 
 ## CRAN Check Corrections

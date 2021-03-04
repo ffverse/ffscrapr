@@ -16,11 +16,11 @@ Unsupported functions:
 
 - `ff_draftpicks()` - this does not apply to ESPN primarily because it does not support draft pick trades. 
 - `ff_userleagues()` - ESPN does not support looking up user's leagues, even when authenticated
-- `espn_connect()` - ESPN used to have a way to authenticate via username/password, but this has been made more difficult. It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys. 
+- Username and password features - ESPN used to have a way to authenticate via username/password, but this has been recently [made more difficult](https://github.com/cwendt94/espn-api/discussions/128). It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys. 
 
 ### New Functions
 
-- `dp_cleannames()` applies some heuristics that help with name-joining players. 
+- `dp_cleannames()` is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.
 - `espn_potentialpoints()` calculates the optimal lineup for each week. This is 
 
 ### Minor patches
@@ -42,7 +42,7 @@ Unsupported functions:
 
 Minor patches to dp_import functions to address issues discovered by CRAN checks. 
 
-~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.~~ 
+~~Also adds minor helper function, `dp_cleannames()`, which is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.~~ 
 
 Messed up the export here, whoops. Fixing for next release.
 
