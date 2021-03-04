@@ -209,8 +209,7 @@
 <code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> - this does not apply to ESPN primarily because it does not support draft pick trades.</li>
 <li>
 <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - ESPN does not support looking up user’s leagues, even when authenticated</li>
-<li>
-<code><a href="../reference/espn_connect.html">espn_connect()</a></code> - ESPN used to have a way to authenticate via username/password, but this has been made more difficult. It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys.</li>
+<li>Username and password features - ESPN used to have a way to authenticate via username/password, but this has been recently <a href="https://github.com/cwendt94/espn-api/discussions/128">made more difficult</a>. It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys.</li>
 </ul>
 </div>
 <div id="new-functions" class="section level3">
@@ -218,7 +217,7 @@
 <a href="#new-functions" class="anchor"></a>New Functions</h3>
 <ul>
 <li>
-<code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> applies some heuristics that help with name-joining players.</li>
+<code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.</li>
 <li>
 <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code> calculates the optimal lineup for each week. This is</li>
 </ul>
@@ -246,7 +245,7 @@
 <a href="#ffscrapr-122" class="anchor"></a>ffscrapr 1.2.2<small> 2021-02-08 </small>
 </h1>
 <p>Minor patches to dp_import functions to address issues discovered by CRAN checks.</p>
-<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</del></p>
+<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.</del></p>
 <p>Messed up the export here, whoops. Fixing for next release.</p>
 <div id="minor-patches-1" class="section level3">
 <h3 class="hasAnchor">
