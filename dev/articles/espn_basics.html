@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.27</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.0001</span>
       </span>
     </div>
 
@@ -246,9 +246,9 @@
 <span class="co">#&gt; 3            1 The Early GGod 2976316   Michael Thomas  NOS   WR    &lt;chr [7]&gt;   </span>
 <span class="co">#&gt; 4            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    &lt;chr [5]&gt;   </span>
 <span class="co">#&gt; 5            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    &lt;chr [5]&gt;   </span>
-<span class="co">#&gt; 6            1 The Early GGod 3046779   Jared Goff      DET   QB    &lt;chr [4]&gt;   </span>
+<span class="co">#&gt; 6            1 The Early GGod 4239993   Tee Higgins     CIN   WR    &lt;chr [8]&gt;   </span>
 <span class="co">#&gt; # … with 7 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span>
-<span class="co">#&gt; #   acquisition_date &lt;dttm&gt;, age &lt;lgl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -267,16 +267,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                  56392  9893 23418 16557  6524</span>
-<span class="co">#&gt;  2            2 "Coom  Dumpster"                  48221 17397  5330 23834  1660</span>
-<span class="co">#&gt;  3            6 "OBJ's Personal Porta Potty"      47722 20436 23159  1162  2965</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                   45731 14325 19006  5438  6962</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                   45724  3849 19942 18464  3469</span>
-<span class="co">#&gt;  6            1 "The Early GGod"                  40519 12596 14297 10542  3084</span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                      39079 12889 12273 12304  1613</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                     38921 12476 12832 12312  1301</span>
-<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            24847 10756   570 13369   152</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                     22946  8234  1817 12605   290</span></code></pre></div>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  51211  7661 20007 17334  6209</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      47202 19545 23282  1394  2981</span>
+<span class="co">#&gt;  3            2 "Coom  Dumpster"                  46885 16317  4032 24880  1656</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                   43474 14208 17399  4988  6879</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   42807  2951 17737 17570  4549</span>
+<span class="co">#&gt;  6            1 "The Early GGod"                  39982 11452 14925 10705  2900</span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                      39150 12964 11897 12607  1682</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     36116 10172 11676 13015  1253</span>
+<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            25240 10278   414 14444   104</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                     20704  7894  1369 11281   160</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -287,16 +287,16 @@
 <span class="co">#&gt; # A tibble: 10 x 7</span>
 <span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                  0.138 0.081 0.177 0.131 0.233</span>
-<span class="co">#&gt;  2            2 "Coom  Dumpster"                  0.118 0.142 0.04  0.188 0.059</span>
-<span class="co">#&gt;  3            6 "OBJ's Personal Porta Potty"      0.116 0.166 0.175 0.009 0.106</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                   0.112 0.117 0.143 0.043 0.248</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                   0.111 0.031 0.15  0.146 0.124</span>
-<span class="co">#&gt;  6            1 "The Early GGod"                  0.099 0.103 0.108 0.083 0.11 </span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                      0.095 0.105 0.093 0.097 0.058</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                     0.095 0.102 0.097 0.097 0.046</span>
-<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            0.061 0.088 0.004 0.106 0.005</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                     0.056 0.067 0.014 0.1   0.01</span></code></pre></div>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  0.13  0.068 0.163 0.135 0.219</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      0.12  0.172 0.19  0.011 0.105</span>
+<span class="co">#&gt;  3            2 "Coom  Dumpster"                  0.119 0.144 0.033 0.194 0.058</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                   0.111 0.125 0.142 0.039 0.242</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   0.109 0.026 0.145 0.137 0.16 </span>
+<span class="co">#&gt;  6            1 "The Early GGod"                  0.102 0.101 0.122 0.083 0.102</span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                      0.1   0.114 0.097 0.098 0.059</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     0.092 0.09  0.095 0.102 0.044</span>
+<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            0.064 0.091 0.003 0.113 0.004</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                     0.053 0.07  0.011 0.088 0.006</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -323,16 +323,16 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [10]</span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1            1 "The Early GGod"        0      0      0      0        4        6</span>
-<span class="co">#&gt;  2            2 "Coom  Dumpster"        0      0      0      0        4        7</span>
-<span class="co">#&gt;  3            3 "PAKI STANS"            0      0      0      0        3        6</span>
-<span class="co">#&gt;  4            4 "I'm Also Sad "         0      0      0      0        2        5</span>
-<span class="co">#&gt;  5            5 "The Juggernaut"        0      0      0      0        3        8</span>
-<span class="co">#&gt;  6            6 "OBJ's Personal P…      0      0      0      0        3        6</span>
-<span class="co">#&gt;  7            7 "Tony El Tigre"         0      0      0      0        3        5</span>
-<span class="co">#&gt;  8            8 "Big Coomers"           0      0      0      0        3        7</span>
-<span class="co">#&gt;  9            9 "RAFI CUNADO"           0      0      0      0        3        5</span>
-<span class="co">#&gt; 10           10 "Austin 🐐Drew Loc…      0      0      0      0        3        5</span>
+<span class="co">#&gt;  1            1 "The Early GGod"     23.7   22.3   24.7   25.8        4        6</span>
+<span class="co">#&gt;  2            2 "Coom  Dumpster"     28.4   26.5   26.8   25.7        4        7</span>
+<span class="co">#&gt;  3            3 "PAKI STANS"         28.1   24.9   23.6   25.7        3        6</span>
+<span class="co">#&gt;  4            4 "I'm Also Sad "      35.8   24.6   28.4   27.1        2        5</span>
+<span class="co">#&gt;  5            5 "The Juggernaut"     24.5   24.2   31.3   25.2        3        8</span>
+<span class="co">#&gt;  6            6 "OBJ's Personal P…   24.5   24.4   25     24.3        3        6</span>
+<span class="co">#&gt;  7            7 "Tony El Tigre"      24.6   24.7   27.5   26.2        3        5</span>
+<span class="co">#&gt;  8            8 "Big Coomers"        23.8   27.1   28.7   27.2        3        7</span>
+<span class="co">#&gt;  9            9 "RAFI CUNADO"        34.6   25.5   26     24.1        3        5</span>
+<span class="co">#&gt; 10           10 "Austin 🐐Drew Loc…   31.4   27.8   31.8   24.9        3        5</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

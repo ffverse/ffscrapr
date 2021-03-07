@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.27</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.0001</span>
       </span>
     </div>
 
@@ -189,51 +189,58 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
-<div id="espn-progress" class="section level3">
+</div>
+    <div id="ffscrapr-130" class="section level1">
+<h1 class="page-header" data-toc-text="1.3.0">
+<a href="#ffscrapr-130" class="anchor"></a>ffscrapr 1.3.0<small> 2021-03-07 </small>
+</h1>
+<p>The main goal of ffscrapr 1.3.0 is to add support for the ESPN platform. It also includes several bug fixes, code quality improvements, and a major refactor of tests to reduce overall package size.</p>
+<p>A huge thank-you goes to <a href="https://twitter.com/TonyElHabr">Tony ElHabr</a> for his contributions to the package for the ESPN methods.</p>
+<div id="breaking-changes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#espn-progress" class="anchor"></a>ESPN Progress</h3>
+<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h3>
 <ul>
 <li>
-<code><a href="../reference/espn_connect.html">espn_connect()</a></code>/<code><a href="../reference/ff_connect.html">ff_connect()</a></code>: implemented with SWID/ESPN_S2 arguments, which act a lot like the API keys. Will need vignettes or demos to help users find these. Python package has <a href="https://github.com/cwendt94/espn-api/discussions/128">not yet found a way</a> to make username/password work yet - this is annoying and I’ll let them tackle it since I’d rather just build out the R functionality first. (v1.2.1.2)</li>
-<li>Fixed cookie-based authentication from connect and added <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> low-level function (v1.2.1.3)</li>
-<li>Added warning for <code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> - ESPN does not support draft pick trades (v1.2.1.4)</li>
-<li>Added <code><a href="../reference/ff_league.html">ff_league()</a></code> method for ESPN connection. (v1.2.1.5) (Thanks, <a href='https://github.com/TonyElHabr'>@TonyElHabr</a>!)</li>
-<li>Added warning for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - ESPN does not support looking up user leagues (v1.2.1.6)</li>
-<li>Edited <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> lower-level function to take a json-formatted <code>x_fantasy_filter</code> argument which is passed in as a request header. This helps filter and sort the response, somewhat. (v1.2.1.7)</li>
-<li>Added <code><a href="../reference/espn_players.html">espn_players()</a></code>, which returns just the name/team/positions/IDs. Rankings and player scores should be returned from a different function. (v1.2.1.7)</li>
-<li>Added <code><a href="../reference/ff_franchises.html">ff_franchises()</a></code> method for ESPN. (v1.2.1.8)</li>
-<li>Added <code><a href="../reference/ff_draft.html">ff_draft()</a></code> method for ESPN - hopefully covers auction/keeper as well as regular drafts. (v1.2.1.9)</li>
-<li>Added <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> method for ESPN (v1.2.2.14)</li>
-<li>Added <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> method for ESPN (v1.2.2.16)</li>
-<li>Added <code><a href="../reference/ff_standings.html">ff_standings()</a></code> method for ESPN (v1.2.2.17)</li>
-<li>Added <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> method for ESPN (v1.2.2.18)</li>
-<li>Added <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> method for ESPN (v1.2.2.20)</li>
-<li>Added vignettes for basics and private league (v1.2.2.21)</li>
-<li>Added <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> method for ESPN (v1.2.2.23) - provides season total and averages.</li>
-<li>Refactored <code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> to have a lower-level function <code><a href="../reference/espn_getendpoint_raw.html">espn_getendpoint_raw()</a></code> (v1.2.2.24)</li>
-<li>Added vignette for custom ESPN API calls (v1.2.2.25)</li>
-<li>Added <code><a href="../reference/ff_starters.html">ff_starters()</a></code> method for ESPN (v1.2.2.26)</li>
-<li>Added <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code> function for ESPN (v1.2.2.27)</li>
+<code>custom_players</code> arguments are deprecated for MFL - it will now return them by default.</li>
+</ul>
+</div>
+<div id="espn-details" class="section level3">
+<h3 class="hasAnchor">
+<a href="#espn-details" class="anchor"></a>ESPN Details</h3>
+<p>ESPN is a tricky and undocumented API. Private leagues are accessible if you use the SWID/ESPN_S2 authentication arguments, which are a lot like API keys - see the ESPN authentication vignette.</p>
+<p>Unsupported functions:</p>
+<ul>
+<li>
+<code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> - this does not apply to ESPN primarily because it does not support draft pick trades.</li>
+<li>
+<code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - ESPN does not support looking up user’s leagues, even when authenticated</li>
+<li>Username and password features - ESPN used to have a way to authenticate via username/password, but this has been recently <a href="https://github.com/cwendt94/espn-api/discussions/128">made more difficult</a>. It is an area that can be revisited if/when the Python package manages it, but at this time will only be accessible with the SWID/ESPN_S2 keys.</li>
+</ul>
+</div>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New Functions</h3>
+<ul>
+<li>
+<code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.</li>
+<li>
+<code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code> calculates the optimal lineup for each week. This is</li>
 </ul>
 </div>
 <div id="minor-patches" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-patches" class="anchor"></a>Minor patches</h3>
 <ul>
-<li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>. (v1.2.1.1)</li>
-<li>Documentation and vignette updates/tweaks (v1.2.1.1)</li>
-<li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores (v1.2.1.2)</li>
-<li>Added <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, a utility function for cleaning player names that removes common suffixes, periods, and apostrophes. (v1.2.1.9)</li>
-<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>) (v1.2.2.11)</li>
-<li>Actually export <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> and add it to the NAMESPACE so it’s accessible to the end user, whoops.</li>
-<li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing (v1.2.2.12)</li>
-<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/202'>#202</a>) (v1.2.2.14)</li>
-<li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/206'>#206</a>) (v1.2.2.15)</li>
-<li>Resolve bugs related to .fn_choose_season for tests (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/217'>#217</a>, <a href='https://github.com/dynastyprocess/ffscrapr/issues/219'>#219</a>) (v1.2.2.19)</li>
-<li>Resolved bug in MFL’s <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> by adding a week parameter (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/215'>#215</a>) (v1.2.2.19)</li>
-<li>Coerced <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> bid_amount into a numeric (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/210'>#210</a>) (v1.2.2.19)</li>
-<li>Removed bye franchises from <code><a href="../reference/ff_starters.html">ff_starters()</a></code> (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/212'>#212</a>) (v1.2.2.22)</li>
-<li>DEPRECATED custom_players arguments - now calling custom_players by default everywhere (v1.2.2.22)</li>
+<li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>.</li>
+<li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores</li>
+<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>)</li>
+<li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing</li>
+<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/202'>#202</a>)</li>
+<li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/206'>#206</a>)</li>
+<li>Resolve bugs related to .fn_choose_season for tests (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/217'>#217</a>, <a href='https://github.com/dynastyprocess/ffscrapr/issues/219'>#219</a>)</li>
+<li>Resolved bug in MFL’s <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> by adding a week parameter (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/215'>#215</a>)</li>
+<li>Coerced <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> bid_amount into a numeric (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/210'>#210</a>)</li>
+<li>Removed bye franchises from <code><a href="../reference/ff_starters.html">ff_starters()</a></code> (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/212'>#212</a>)</li>
 </ul>
 <hr>
 </div>
@@ -243,7 +250,7 @@
 <a href="#ffscrapr-122" class="anchor"></a>ffscrapr 1.2.2<small> 2021-02-08 </small>
 </h1>
 <p>Minor patches to dp_import functions to address issues discovered by CRAN checks.</p>
-<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, preiods, and apostrophes.</del></p>
+<p><del>Also adds minor helper function, <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code>, which is a utility function for cleaning player names that removes common suffixes, periods, and apostrophes.</del></p>
 <p>Messed up the export here, whoops. Fixing for next release.</p>
 <div id="minor-patches-1" class="section level3">
 <h3 class="hasAnchor">
@@ -274,9 +281,9 @@
 <a href="#ffscrapr-120" class="anchor"></a>ffscrapr 1.2.0<small> 2020-11-27 </small>
 </h1>
 <p>The main goal of ffscrapr 1.2.0 is to add a full set of methods for Fleaflicker. This release also adds improved caching options, including writing to your filesystem for persistent caching (see the vignette!), and one hotfix for sleeper_getendpoint.</p>
-<div id="breaking-changes" class="section level3">
+<div id="breaking-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>BREAKING CHANGES</h3>
+<a href="#breaking-changes-1" class="anchor"></a>BREAKING CHANGES</h3>
 <ul>
 <li>
 <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.</li>
