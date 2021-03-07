@@ -1,5 +1,7 @@
 with_mock_api({
   test_that("ff_transactions returns a tibble of transactions", {
+    skippy()
+
     ssb <- mfl_connect(2019, 54040)
     ssb_transactions <- ff_transactions(ssb)
 
@@ -22,5 +24,16 @@ with_mock_api({
 
     expect_tibble(aaa_transactions)
     expect_tibble(got_transactions)
+
+    dlp_conn <- espn_connect(
+      season = 2020,
+      league_id = 1178049,
+      swid = Sys.getenv("TAN_SWID"),
+      espn_s2 = Sys.getenv("TAN_ESPN_S2")
+    )
+
+    dlp_transactions <- ff_transactions(dlp_conn, limit = 10)
+
+    expect_tibble(dlp_transactions)
   })
 })

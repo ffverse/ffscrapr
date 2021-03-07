@@ -12,24 +12,24 @@
 #' @examples
 #' \donttest{
 #' dlf_conn <- mfl_connect(2020, league_id = 37920)
-#' ff_starters(conn = dlf_conn, week = 1:2)
+#' ff_starters(conn = dlf_conn)
 #' }
 #'
 #' @export
-ff_starters.mfl_conn <- function(conn, week = "all", season = NULL, ...) {
-  if (is.null(season)) season <- conn$season
-
+ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
   checkmate::assert_numeric(week, lower = 1, upper = 21)
-  checkmate::assert_number(season)
+  checkmate::assert_number(season, null.ok = TRUE)
 
-  players_endpoint <- sleeper_players() %>%
+  if (!is.null(season)) conn$season <- season
+
+  players_endpoint <- mfl_players(conn) %>%
     dplyr::select("player_id", "player_name", "pos", "team")
 
   franchises_endpoint <- ff_franchises(conn) %>%
     dplyr::select("franchise_id", "franchise_name")
 
   weekly_starters <- tibble::tibble(
-    season = season,
+    season = conn$season,
     week = week
   ) %>%
     dplyr::mutate(starters = purrr::map2(week, season, .mfl_weeklystarters, conn)) %>%
@@ -42,6 +42,7 @@ ff_starters.mfl_conn <- function(conn, week = "all", season = NULL, ...) {
       franchises_endpoint,
       by = "franchise_id"
     ) %>%
+    dplyr::filter(!is.na(.data$franchise_name)) %>%
     dplyr::left_join(
       players_endpoint,
       by = "player_id"

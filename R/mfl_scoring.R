@@ -45,7 +45,7 @@ ff_scoring.mfl_conn <- function(conn) {
     tidyr::unnest_wider("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
-    dplyr::left_join(mfl_allrules(), by = c("event" = "abbrev")) %>%
+    dplyr::left_join(mfl_allrules(conn), by = c("event" = "abbrev")) %>%
     dplyr::mutate_at(c("is_player", "is_team", "is_coach"), ~ as.logical(as.numeric(.x))) %>%
     dplyr::mutate(
       points = purrr::map_if(.data$points, grepl("\\/", .data$points), .fn_parsedivide),
@@ -77,10 +77,12 @@ ff_scoring.mfl_conn <- function(conn) {
 }
 
 #' MFL rules library - memoised via zzz.R
-#' @noRd
+#'
 #' @keywords internal
-mfl_allrules <- function() {
-  df <- mfl_connect(.fn_choose_season()) %>%
+mfl_allrules <- function(conn) {
+  conn$league_id <- NULL
+
+  df <- conn %>%
     mfl_getendpoint("allRules") %>%
     purrr::pluck("content", "allRules", "rule") %>%
     tibble::tibble() %>%

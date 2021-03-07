@@ -1,5 +1,6 @@
 with_mock_api({
   test_that("ff_league returns a tibble for each platform currently programmed", {
+    skippy()
     dlf_conn <- ff_connect("mfl", 37920, season = 2020)
     dlf_league <- ff_league(dlf_conn)
 
@@ -12,5 +13,9 @@ with_mock_api({
     got_conn <- fleaflicker_connect(2020, 206154)
     got_league <- ff_league(got_conn)
     expect_tibble(got_league, min.rows = 1)
+
+    espn_conn <- espn_connect(season = 2020, league_id = 899513)
+    espn_league <- ff_league(espn_conn)
+    expect_tibble(espn_league, any.missing = FALSE, min.rows = 1)
   })
 })

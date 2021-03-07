@@ -1,5 +1,6 @@
 with_mock_api({
   test_that("ff_userleagues works for MFL", {
+    skippy()
     conn <- mfl_connect(2020,
       user_name = "dynastyprocesstest",
       password = "test1234"
@@ -17,6 +18,7 @@ with_mock_api({
 
 with_mock_api({
   test_that("ff_userleagues works for Sleeper", {
+    skippy()
     conn <- sleeper_connect(2020,
       user_name = "solarpool"
     )
@@ -31,7 +33,9 @@ with_mock_api({
 
 with_mock_api({
   test_that("ff_userleagues works for Fleaflicker", {
-    conn <- fleaflicker_connect(2020,
+    skippy()
+    conn <- fleaflicker_connect(
+      season = 2020,
       user_email = "syd235@gmail.com"
     )
 
@@ -40,5 +44,15 @@ with_mock_api({
 
     expect_tibble(full_call, min.rows = 1)
     expect_tibble(quick_call, min.rows = 1)
+  })
+})
+
+with_mock_api({
+  test_that("ff_userleagues returns warning for ESPN", {
+    skippy()
+
+    espn_conn <- espn_connect(season = 2020)
+
+    expect_warning(ff_userleagues(espn_conn), regexp = "ESPN does not support")
   })
 })

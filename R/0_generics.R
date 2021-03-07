@@ -15,7 +15,9 @@
 #' @seealso \code{\link{ff_connect}}, \code{\link{sleeper_connect}}
 #'
 #' @examples
+#' \donttest{
 #' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+#' }
 #' @export ff_connect
 #' @return a connection object to be used with \code{ff_*} functions
 
@@ -25,7 +27,7 @@ ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
   x <- switch(platform,
     "fleaflicker" = ,
     "flea" = fleaflicker_connect(league_id = league_id, ...),
-    # 'espn' = espn_connect(league_id = league_id,...),
+    "espn" = espn_connect(league_id = league_id, ...),
     # 'yahoo' = yahoo_connect(league_id = league_id,...)
     "sleeper" = sleeper_connect(league_id = league_id, ...),
     "mfl" = mfl_connect(league_id = league_id, ...)

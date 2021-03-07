@@ -12,7 +12,7 @@ status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CR
 [![Dev
 status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
+stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
 coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
 [![R build
@@ -23,26 +23,26 @@ status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Te
 <!-- badges: end -->
 
 Helps access various Fantasy Football APIs (currently MFL, Sleeper,
-Fleaflicker, and eventually ESPN, Yahoo, potentially others) by handling
-authentication/rate-limiting/caching, forming appropriate calls, and
-returning tidy dataframes which can be easily connected to other data
-sources.
+Fleaflicker, and ESPN - eventually Yahoo, potentially others) by
+handling authentication/rate-limiting/caching, forming appropriate
+calls, and returning tidy dataframes which can be easily connected to
+other data sources.
 
 ### Installation
 
-Version 1.2.2 is now on CRAN 🎉 and can be installed with:
+Version 1.3.0 is now on CRAN 🎉 and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.2.2")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.3.0")
 ```
 
 Install the development version from GitHub with:
 
 ``` r
-remotes::install_github("dynastyprocess/ffscrapr")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "dev")
 ```
 
 The dev version has a [separate documentation site
@@ -62,6 +62,7 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 # Get a summary of league settings
 ff_league(ssb) %>% str()
 #> Using request.R from "ffscrapr"
+#> No encoding supplied: defaulting to UTF-8.
 #> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
@@ -82,10 +83,10 @@ ff_rosters(ssb)
 #> # A tibble: 443 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.4
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.2
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.1
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.6
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.5
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.3
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.2
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.7
 #> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26  
 #> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
@@ -110,6 +111,7 @@ Platform-specific guides on getting started with ffscrapr are here:
 -   [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
 -   [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
 -   [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
+-   [ESPN](https://ffscrapr.dynastyprocess.com/articles/espn_basics.html)
 
 There are also some more advanced guides for custom API calls in the
 [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as

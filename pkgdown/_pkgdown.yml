@@ -18,6 +18,10 @@ reference:
   desc: Additional functions designed/optimized for the Fleaflicker platform.
   contents:
   - starts_with("fleaflicker_")
+- subtitle: ESPN
+  desc: Additional functions designed/optimized for the ESPN platform
+  contents:
+  - starts_with("espn_")
 - subtitle: DynastyProcess
   desc: Functions to interface with DynastyProcess data
   contents:
@@ -34,12 +38,15 @@ articles:
   - starts_with("mfl_basics")
   - starts_with("sleeper_basics")
   - starts_with("fleaflicker_basics")
+  - starts_with("espn_basics")
+  - starts_with("espn_authentication")
 - title: Custom API calls
   navbar: Custom API Calls
   contents:
   - starts_with("mfl_getendpoint")
   - starts_with("sleeper_getendpoint")
   - starts_with("fleaflicker_getendpoint")
+  - starts_with("espn_getendpoint")
 - title: Performance
   navbar: "Cache"
   contents:
@@ -50,6 +57,8 @@ url: ffscrapr.dynastyprocess.com
 authors:
   Tan Ho:
     href: https://twitter.com/_TanHo
+  Tony ElHabr:
+    href: https://twitter.com/TonyElHabr
 
 template:
   params:
@@ -58,11 +67,13 @@ template:
       api_key: 7abddd2aa591d955b365235f35d75a38
       index_name: dynastyprocess
   opengraph:
+    image:
+      src: man/figures/ffscrapr.svg
+      alt: "ffscrapr - an R client for fantasy football platforms"
     twitter:
       creator: "@_TanHo"
       site: "@DynastyProcess"
       card: summary
-      
 
 development:
   mode: auto

@@ -3,7 +3,7 @@
 #' Get Draft Results
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param custom_players MFL: TRUE or FALSE - retrieve custom players from the MFL database? (Allows for devy, placeholder picks, slightly slower)
+#' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... args for other methods
 #'
 #' @examples
@@ -15,17 +15,14 @@
 #' @describeIn ff_draft MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)
 #'
 #' @export
-ff_draft.mfl_conn <- function(conn, custom_players = FALSE, ...) {
+ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
+  if (lifecycle::is_present(custom_players)) {
+    lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
+  }
 
   # Notes on draft endpoint: "draft unit" can dictate handling of whether it's a "league" or "division" based draft
 
-  stopifnot(is.logical(custom_players))
-
-  players_endpoint <- if (custom_players) {
-    mfl_players(conn)
-  } else {
-    mfl_players()
-  }
+  players_endpoint <- mfl_players(conn)
 
   players_endpoint <- players_endpoint %>%
     dplyr::select("player_id", "player_name", "pos", "team", "age")

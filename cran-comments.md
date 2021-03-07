@@ -1,13 +1,17 @@
-## RESUBMISSION
-Fix URL redirects.
+## SUBMISSION
 
-## Original Submission
-This release corrects the issues found by CRAN check so that it is robust against internet resource availibility. 
+## CRAN Check Corrections
+
+This release corrects an issue where URL parameters were being programmatically determined by a date threshold (which caused tests to fail when the date threshold was crossed and there were no mock files to support the new query). This has been fixed by rewriting the function to take dates from function-arguments, so that tests will not fail when the date threshold is crossed. 
+
+## New features
+
+This release extends the package to support another fantasy football platform, ESPN. 
 
 ## Test environments
-* local (Windows) R installation, R 4.0.2
-* ubuntu 16.04 (on GitHub Actions), R 4.0.2
-* MacOS (on GitHub Actions), R 4.0.2
+* local (Windows) R installation, R 4.0.4
+* ubuntu 20.04 (on GitHub Actions), R 4.0.4
+* MacOS (on GitHub Actions), R 4.0.4
 * win-builder (devel)
 
 ## R CMD check results

@@ -3,9 +3,9 @@
 #' Get a dataframe of league standings
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param ... arguments passed to other methods
 #' @param include_allplay TRUE/FALSE - return all-play win pct calculation? defaults to TRUE
 #' @param include_potentialpoints TRUE/FALSE - return potential points calculation? defaults to TRUE.
+#' @param ... arguments passed to other methods
 #'
 #' @examples
 #' \donttest{
@@ -17,7 +17,11 @@
 #'
 #' @export
 ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...) {
-  standings <- fleaflicker_getendpoint("FetchLeagueStandings", league_id = conn$league_id, sport = "NFL") %>%
+  standings <- fleaflicker_getendpoint("FetchLeagueStandings",
+    league_id = conn$league_id,
+    season = conn$season,
+    sport = "NFL"
+  ) %>%
     purrr::pluck("content", "divisions") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "division_id" = "id", "division_name" = "name", "teams") %>%
@@ -30,7 +34,7 @@ ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potenti
       "points_for" = "pointsFor",
       "points_against" = "pointsAgainst"
     ) %>%
-    dplyr::mutate(dplyr::across(c("points_for", "points_against"), purrr::map_dbl, `[[`, "value")) %>%
+    dplyr::mutate(dplyr::across(c("points_for", "points_against"), purrr::map_dbl, purrr::pluck, "value")) %>%
     tidyr::hoist("recordOverall", "h2h_wins" = "wins", "h2h_losses" = "losses", "h2h_ties" = "ties") %>%
     dplyr::mutate(
       dplyr::across(dplyr::starts_with("h2h"), tidyr::replace_na, 0),

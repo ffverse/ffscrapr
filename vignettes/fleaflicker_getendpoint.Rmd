@@ -12,15 +12,27 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-options(dplyr.summarise.inform = FALSE)
-httptest::.mockPaths("../tests/testthat")
+
+options(dplyr.summarise.inform = FALSE,
+        rmarkdown.html_vignette.check_title = FALSE)
+
+eval <- TRUE
+
+tryCatch(expr = {
+  
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.3.0.zip","f.zip")
+  unzip('f.zip', exdir = ".")
+  
+  httptest::.mockPaths(new = "ffscrapr-tests-1.3.0")},
+  warning = function(e) eval <<- FALSE,
+  error = function(e) eval <<- FALSE)
 
 httptest::use_mock_api()
 ```
 
 ## Creating custom Fleaflicker API calls
 
-```{r setup, message = FALSE}
+```{r setup, message = FALSE, eval = eval}
 library(ffscrapr)
 library(dplyr)
 library(purrr)
@@ -54,7 +66,7 @@ Parameters:
 ```
 The fleaflicker_getendpoint function already has the base url encoded, so all we'll need to do is pass in the endpoint without the `/`, and pass the HTTP parameters in as arguments to the function (these are case sensitive!)
 
-```{r}
+```{r eval = eval}
 sport <- "NFL"
 league_id <- 206154
 season <- 2020
@@ -71,7 +83,7 @@ str(response_scoreboard, max.level = 1)
 
 Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse. 
 
-```{r}
+```{r eval = eval}
 df_scoreboard <- response_scoreboard %>% 
   purrr::pluck("content","games") %>% 
   tibble::tibble() %>% 
@@ -84,7 +96,7 @@ head(df_scoreboard)
 
 From here, we'll be able to feed these IDs into the FetchLeagueBoxscore endpoint https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get as the fantasy_game_id - and from here you'll be able to get to player-level points and actual stat data for each fantasy game!
 
-```{r}
+```{r eval = eval}
 # same variables as previous endpoint call!
 onegame_lineups <- fleaflicker_getendpoint(
   "FetchLeagueBoxscore",
@@ -108,5 +120,7 @@ From here, you can keep unravelling - including the "viewingActualPoints" and "v
 
 ```{r include = FALSE}
 httptest::stop_mocking()
+
+unlink(c("ffscrapr-tests-1.3.0","f.zip"), recursive = TRUE, force = TRUE)
 ```
 

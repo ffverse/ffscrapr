@@ -1,5 +1,6 @@
 
 test_that("Unknown platforms return no-method errors", {
+  skippy()
   conn <- structure(list(platform = "dummy"),
     class = "dummy_platform"
   )

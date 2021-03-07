@@ -11,6 +11,7 @@
     dp_playerids,
     mfl_players,
     sleeper_players,
+    espn_players,
     mfl_allrules,
     ff_franchises.mfl_conn,
     ff_scoring.mfl_conn,
@@ -34,7 +35,14 @@
     ff_userleagues.flea_conn,
     ff_schedule.flea_conn,
     ff_standings.flea_conn,
-    ff_starters.flea_conn
+    ff_starters.flea_conn,
+    ff_franchises.espn_conn,
+    ff_scoring.espn_conn,
+    ff_league.espn_conn,
+    ff_starters.espn_conn,
+    ff_standings.espn_conn,
+    ff_playerscores.espn_conn,
+    ff_schedule.espn_conn
   )
 
   purrr::walk(functions, memoise::forget)

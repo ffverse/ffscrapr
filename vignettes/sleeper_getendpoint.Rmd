@@ -12,15 +12,27 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-options(dplyr.summarise.inform = FALSE)
-httptest::.mockPaths("../tests/testthat")
-httptest::use_mock_api()
 
+options(dplyr.summarise.inform = FALSE,
+        rmarkdown.html_vignette.check_title = FALSE)
+
+eval <- TRUE
+
+tryCatch(expr = {
+  
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.3.0.zip","f.zip")
+  unzip('f.zip', exdir = ".")
+  
+  httptest::.mockPaths(new = "ffscrapr-tests-1.3.0")},
+  warning = function(e) eval <<- FALSE,
+  error = function(e) eval <<- FALSE)
+
+httptest::use_mock_api()
 ```
 
 ## Creating custom Sleeper API calls
 
-```{r setup, message = FALSE}
+```{r setup, message = FALSE, eval = eval}
 library(ffscrapr)
 library(dplyr)
 library(purrr)
@@ -39,7 +51,7 @@ On first glance, you can see that it takes two parameters within the endpoint ca
 
 We can use the `glue` package to parameterise this, although you can also use base R's paste function just as easily.
 
-```{r}
+```{r eval = eval}
 
 type <- "add"
 
@@ -54,7 +66,7 @@ str(response_trending, max.level = 1)
 
 Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse. 
 
-```{r}
+```{r eval = eval}
 
 df_trending <- response_trending %>% 
   purrr::pluck("content") %>% 
@@ -65,7 +77,7 @@ head(df_trending)
 
 This isn't very helpful without knowing who these players are, so let's pull the players endpoint in as well - this one has a convenient function!
 
-```{r}
+```{r eval = eval}
 
 players <- sleeper_players() %>% 
   select(player_id, player_name, pos, team, age)
@@ -78,7 +90,9 @@ trending
 
 There - this means something to us now! As of this writing (2020-11-10), Kalen Ballage was the most added player. Haven't we been bitten by this before?
 
-```{r include = FALSE}
+```{r include = FALSE, eval = eval}
 httptest::stop_mocking()
+
+unlink(c("ffscrapr-tests-1.3.0","f.zip"), recursive = TRUE, force = TRUE)
 ```
 

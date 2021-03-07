@@ -23,6 +23,28 @@
   return(format(date - 365.25, "%Y"))
 }
 
+#' Create RETRY version of GET
+#'
+#' This wrapper on httr retries the httr::GET function based on best-practice heuristics
+#'
+#' @param ... arguments passed to \code{httr::GET}
+#'
+#' @keywords internal
+.retry_get <- function(...) {
+  httr::RETRY("GET", ...)
+}
+
+#' Create RETRY version of POST
+#'
+#' This wrapper on httr retries the httr::POST function based on best-practice heuristics.
+#'
+#' @param ... arguments passed to \code{httr::POST}
+#'
+#' @keywords internal
+.retry_post <- function(...) {
+  httr::RETRY("POST", ...)
+}
+
 #' Set rate limit
 #'
 #' A helper function that creates a new copy of the httr::GET function and stores it
@@ -36,21 +58,31 @@
 
 .fn_set_ratelimit <- function(toggle = TRUE, platform, rate_number, rate_seconds) {
   if (toggle) {
-    fn_get <- ratelimitr::limit_rate(httr::GET, ratelimitr::rate(rate_number, rate_seconds))
-    fn_post <- ratelimitr::limit_rate(httr::POST, ratelimitr::rate(rate_number, rate_seconds))
+    fn_get <- ratelimitr::limit_rate(.retry_get, ratelimitr::rate(rate_number, rate_seconds))
+    fn_post <- ratelimitr::limit_rate(.retry_post, ratelimitr::rate(rate_number, rate_seconds))
   }
 
   if (!toggle) {
-    fn_get <- httr::GET
-    fn_post <- httr::POST
+    fn_get <- .retry_get
+    fn_post <- .retry_post
   }
 
-  if (platform == "MFL") {
+  if (platform == "mfl") {
     assign("get.mfl", fn_get, envir = .ffscrapr_env)
     assign("post.mfl", fn_post, envir = .ffscrapr_env)
   }
 
-  if (platform == "Sleeper") {
+  if (platform == "sleeper") {
+    assign("get.sleeper", fn_get, envir = .ffscrapr_env)
+    assign("post.sleeper", fn_post, envir = .ffscrapr_env)
+  }
+
+  if (platform == "fleaflicker") {
+    assign("get.sleeper", fn_get, envir = .ffscrapr_env)
+    assign("post.sleeper", fn_post, envir = .ffscrapr_env)
+  }
+
+  if (platform == "espn") {
     assign("get.sleeper", fn_get, envir = .ffscrapr_env)
     assign("post.sleeper", fn_post, envir = .ffscrapr_env)
   }
@@ -99,4 +131,22 @@
       allplay_winpct = (.data$allplay_wins / (.data$allplay_wins + .data$allplay_losses)) %>% round(3)
     )
   return(all_play)
+}
+
+#' Add unescaped cookies
+#'
+#' Useful for ESPN which is already URL escaped
+#'
+#' @param ... a named cookie values
+#'
+#' @seealso \code{httr::set_cookies}
+#'
+#' @keywords internal
+
+set_unescaped_cookies <- function(...) {
+  cookies <- c(...)
+
+  cookie <- paste(names(cookies), cookies, sep = "=", collapse = ";")
+
+  httr::config(cookie = cookie)
 }

@@ -1,5 +1,7 @@
 with_mock_api({
   test_that("ff_franchises returns a tibble of franchises", {
+    skippy()
+
     ssb <- mfl_connect(2019, 54040)
     ssb_franchises <- ff_franchises(ssb)
 
@@ -15,10 +17,14 @@ with_mock_api({
     joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
     joe_franchises <- ff_franchises(joe_conn)
 
+    tony <- espn_connect(season = 2020, league_id = 899513)
+    tony_franchises <- ff_franchises(tony)
+
     expect_tibble(ssb_franchises, nrows = 14)
     expect_tibble(dlf_franchises, nrows = 16)
     expect_tibble(jml_franchises, nrow = 12)
     expect_tibble(dlp_franchises, nrow = 12)
     expect_tibble(joe_franchises, nrow = 16)
+    expect_tibble(tony_franchises, nrow = 10)
   })
 })
