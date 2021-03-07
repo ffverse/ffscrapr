@@ -8,10 +8,11 @@ name: Test APIs
 
 jobs:
   test-apis:
-    runs-on: macOS-latest
+    runs-on: ubuntu-20.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       MOCK_BYPASS: true
+      RSPM: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
     steps:
       - uses: actions/checkout@v2
 
