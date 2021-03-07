@@ -87,7 +87,7 @@ ff_rosters(ssb)
 #> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.3
 #> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.2
 #> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.7
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26  
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.1
 #> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 

@@ -1,3 +1,5 @@
+# ffscrapr (development version)
+
 # ffscrapr 1.3.0
 
 The main goal of ffscrapr 1.3.0 is to add support for the ESPN platform. It also includes several bug fixes, code quality improvements, and a major refactor of tests to reduce overall package size. 
