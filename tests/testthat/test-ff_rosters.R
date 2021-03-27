@@ -11,7 +11,7 @@ with_mock_api({
 
     joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
     joe_rosters <- ff_rosters(joe_conn)
-    expect_tibble(joe_rosters, min.rows = 300)
+    expect_tibble(joe_rosters, min.rows = 200)
 
     tony_conn <- espn_connect(season = 2020, league_id = 899513)
     tony_rosters <- ff_rosters(tony_conn)
