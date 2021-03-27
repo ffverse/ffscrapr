@@ -1,17 +1,19 @@
-@import 'https://fonts.googleapis.com/css?family=Barlow:400,700|Fira+Mono:400,700';
+@import 'https://api.fontshare.com/css?f[]=supreme@400,700&f[]=technor@400,700&display=swap';
+@import 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700|family=IBM+Plex+Sans:400,700';
+
 
 body{
-  font-family: 'Barlow', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
-h1 {
-  font-family: 'Fira Mono', sans-serif;
+h1,h2,h3 {
+  font-family: 'Technor', sans-serif;
 }
 
 pre, code {
-  font-family: 'Fira Mono';
+  font-family: 'IBM Plex Mono';
 }
 
 .navbar-brand {
-  font-family: 'Fira Mono';
+  font-family: 'Technor';
 }
