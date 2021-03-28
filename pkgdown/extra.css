@@ -1,19 +1,23 @@
-@import 'https://api.fontshare.com/css?f[]=supreme@400,700&f[]=technor@400,700&display=swap';
-@import 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700|family=IBM+Plex+Sans:400,700';
+@import 'https://fonts.googleapis.com/css?family=Fira+Mono:400,700|family=IBM+Plex+Sans:400,700';
 
 
 body{
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+h1 {
+  font-family: 'Fira Mono', sans-serif;
+}
+
 h1,h2,h3 {
-  font-family: 'Technor', sans-serif;
+  font-weight: 700;
 }
 
 pre, code {
-  font-family: 'IBM Plex Mono';
+  font-family: 'Fira Mono';
 }
 
-.navbar-brand {
-  font-family: 'Technor';
+.navbar-link {
+  font-weight: 700;
+  font-family: 'Fira Mono';
 }

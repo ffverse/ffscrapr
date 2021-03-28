@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.3.0.0003
+Version: 1.3.0.03
 Authors@R: 
     c(person(given = "Tan",
            family = "Ho",
@@ -52,5 +52,4 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.1

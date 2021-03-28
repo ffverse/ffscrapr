@@ -1,7 +1,9 @@
 # ffscrapr (development version)
 
-- Force MFL playerscores to use season + league specific players call where possible (Fixes #239) (v1.3.0.0002)
-- Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.0003)
+- Force MFL playerscores to use season + league specific players call where possible (Fixes #239) (v1.3.0.02)
+- Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.03)
+
+---
 
 # ffscrapr 1.3.0
 
