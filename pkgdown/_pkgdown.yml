@@ -1,32 +1,31 @@
 destination: docs
 
 reference:
-- title: ffscrapr reference
-- subtitle: FF
-  desc: The main interface - these functions are designed to wrap the platform-specific methods to return generic input.
-- contents:
+- title: Main
+  desc: These are the primary functions of `ffscrapr` and are designed to work for all platforms.
+  contents:
   - starts_with("ff_")
-- subtitle: MFL
+- title: MFL
   desc: Additional functions designed/optimized for the MFL platform.
   contents:
   - starts_with("mfl_")
-- subtitle: Sleeper
+- title: Sleeper
   desc: Additional functions designed/optimized for the Sleeper platform.
   contents:
   - starts_with("sleeper_")
-- subtitle: Fleaflicker
+- title: Fleaflicker
   desc: Additional functions designed/optimized for the Fleaflicker platform.
   contents:
   - starts_with("fleaflicker_")
-- subtitle: ESPN
+- title: ESPN
   desc: Additional functions designed/optimized for the ESPN platform
   contents:
   - starts_with("espn_")
-- subtitle: DynastyProcess
+- title: DynastyProcess
   desc: Functions to interface with DynastyProcess data
   contents:
   - starts_with("dp_")
-- subtitle: Misc
+- title: Miscellaneous
   desc: Additional helper functions
   contents:
   - starts_with(".ff")
