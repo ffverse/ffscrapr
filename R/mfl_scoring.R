@@ -99,4 +99,6 @@ mfl_allrules <- function(conn) {
       "is_team" = "isTeam",
       "is_coach" = "isCoach"
     )
+
+  return(df)
 }
