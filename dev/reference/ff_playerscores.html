@@ -94,7 +94,7 @@ Adding some nflfastr-based ideas to the pipeline for future iterations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.03</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.04</span>
       </span>
     </div>
 
@@ -290,22 +290,22 @@ Adding some nflfastr-based ideas to the pipeline for future iterations.</p>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>      </span><span style='text-decoration: underline;'>8</span><span>625 Kirk Cousins    QB    MIN      16        446.      27.9     9.8 
 #&gt; </span><span style='color: #949494;'># … with 50 more rows</span><span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-<span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
-<span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 597 x 8</span><span>
+<span class='va'>sfb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>65443</span><span class='op'>)</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>sfb_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 589 x 8</span><span>
 #&gt;    season week  player_id player_name          pos   team  points is_available
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL     481. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR     469. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS     391  0           
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC     370. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL     356. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL     352. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12626     Henry, Derrick       RB    TEN     352. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU     342. 0           
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA     340. 0           
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP     338. 0           
-#&gt; </span><span style='color: #949494;'># … with 587 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13593     Jackson, Lamar       QB    BAL     489. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13130     McCaffrey, Christian RB    CAR     447. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12652     Thomas, Michael      WR    NOS     338. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13113     Watson, Deshaun      QB    HOU     330. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   11244     Kelce, Travis        TE    KCC     317. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   10703     Wilson, Russell      QB    SEA     315. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12620     Prescott, Dak        QB    DAL     314. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13128     Cook, Dalvin         RB    MIN     313. 1           
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   13319     Jones, Aaron         RB    GBP     312  1           
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>019 YTD   12625     Elliott, Ezekiel     RB    DAL     309. 1           
+#&gt; </span><span style='color: #949494;'># … with 579 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
