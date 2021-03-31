@@ -80,7 +80,7 @@
     ff_schedule.espn_conn <<- memoise::memoise(ff_schedule.espn_conn, ~ memoise::timeout(3600), cache = cache)
   }
 
-  if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
+  # if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 
   env <- rlang::env(
     user_agent = glue::glue(

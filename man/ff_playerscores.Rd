@@ -65,7 +65,7 @@ x <- ff_playerscores(conn, page_limit = 2)
 x
 }
 \donttest{
-dlf_conn <- mfl_connect(2020, league_id = 37920)
-ff_playerscores(conn = dlf_conn, season = 2019, week = "YTD")
+sfb_conn <- mfl_connect(2020, league_id = 65443)
+ff_playerscores(conn = sfb_conn, season = 2019, week = "YTD")
 }
 }
