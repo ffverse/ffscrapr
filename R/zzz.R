@@ -10,16 +10,18 @@
   memoise_option <- getOption("ffscrapr.cache")
   # list of memoise options: "memory", "filesystem","off"
 
-  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) memoise_option <- "memory"
+  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) {
+    memoise_option <- "memory"
+  }
 
   if (memoise_option == "filesystem") {
     cache_dir <- rappdirs::user_cache_dir(appname = "ffscrapr")
     dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
-    cache <- memoise::cache_filesystem(cache_dir)
+    cache <- cachem::cache_disk(dir = cache_dir)
   }
 
   if (memoise_option == "memory") {
-    cache <- memoise::cache_memory()
+    cache <- cachem::cache_mem()
   }
 
   if (memoise_option != "off") {
@@ -78,7 +80,7 @@
     ff_schedule.espn_conn <<- memoise::memoise(ff_schedule.espn_conn, ~ memoise::timeout(3600), cache = cache)
   }
 
-  # if(memoise_option=="off") packageStartupMessage("ffscrapr.cache is set to 'off'")
+  # if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 
   env <- rlang::env(
     user_agent = glue::glue(

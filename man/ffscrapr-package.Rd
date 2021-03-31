@@ -8,9 +8,10 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Helps access various Fantasy Football APIs by handling 
-    authentication and rate-limiting, forming appropriate calls, and returning 
-    tidy dataframes which can be easily connected to other data sources.
+Helps access various Fantasy Football APIs by handling
+    authentication and rate-limiting, forming appropriate calls, and
+    returning tidy dataframes which can be easily connected to other data
+    sources.
 }
 \seealso{
 Useful links:
