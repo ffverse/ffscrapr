@@ -4,6 +4,7 @@
 - Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.03)
 - Fixes CRAN check issue where digest is no longer imported by memoise - switched cache package to cachem which is apparently just better designed. Resolves #244 (v1.3.0.04)
 - Eliminate LazyData to silence CRAN note. Resolves #244 (v1.3.0.04)
+- Fix sleeper transactions issue where it was not handling multiple dropped players in one transaction. Resolves #246 (v1.3.0.05)
 
 ---
 
