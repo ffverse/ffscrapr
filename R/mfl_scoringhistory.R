@@ -3,7 +3,7 @@
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param season the season of interest back to 1999
+#' @param season season a numeric vector of seasons (earliest available year is 1999)
 #' @param ... other arguments
 #'
 #' @examples
@@ -12,7 +12,7 @@
 # ff_scoringhistory(ssb_conn)
 #' }
 #'
-#' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
+#' @seealso \url{https://www.nflfastr.com/articles/nflfastR.html#yards-from-scrimmage}
 #'
 #' @describeIn ff_scoringhistory MFL: returns scoring history in a flat table, one row per player per week.
 #'
@@ -34,11 +34,11 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
   suppressMessages(
     fastr_rosters <-
       nflfastR::fast_scraper_roster(season) %>%
-      dplyr::mutate(position = dplyr::if_else(.data$position == "FB", "RB", .data$position))
+      dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB","FB"), "RB", .data$position))
   )
 
   #Load stats from nflfastr and map the rules from the internal stat_mapping file
-  nflfastR::load_player_stats() %>%
+  temp <-  nflfastR::load_player_stats() %>%
     dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
     tidyr::pivot_longer(names_to = "metric",
                         cols = c("completions", "attempts", "passing_yards", "passing_tds", "interceptions", "sacks",
@@ -51,13 +51,12 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
     dplyr::inner_join(league_rules, by = c("mfl_event" = "event", "position" = "pos")) %>%
     dplyr::filter(.data$value >= .data$lower_range, .data$value <= .data$upper_range) %>%
     dplyr::mutate(points = .data$value*.data$points) %>%
-    dplyr::group_by(.data$season, .data$week, .data$sportradar_id) %>%
+    dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE),2)) %>%
     dplyr::ungroup() %>%
-    dplyr::left_join(ffscrapr::dp_playerids() %>% dplyr::select(.data$sportradar_id, .data$mfl_id), by = "sportradar_id") %>%
-    dplyr::select(.data$season, .data$week, player_id = .data$mfl_id, .data$player_name, pos = .data$position,
-                  team = .data$recent_team, .data$metric, .data$value, .data$points) %>%
-    tidyr::pivot_wider(id_cols = c("season", "week", "player_id", "player_name", "pos", "team", "points"),
+    dplyr::select("season", "week", "gsis_id" = "player_id", "sportradar_id", "player_name", "pos" = "position",
+                  "team" = "recent_team", "metric", "value", "points") %>%
+    tidyr::pivot_wider(id_cols = c("season", "week", "gsis_id", "sportradar_id", "player_name", "pos", "team", "points"),
                        names_from = .data$metric,
                        values_from = .data$value,
                        values_fill = 0,

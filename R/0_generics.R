@@ -300,7 +300,7 @@ ff_starters.default <- function(conn, ...) {
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param season the season of interest back to 1999
+#' @param season season a numeric vector of seasons (earliest available year is 1999)
 #' @param ... other arguments
 #'
 #' @return A tidy dataframe of scoring history in a flat table, one row per player per week.
