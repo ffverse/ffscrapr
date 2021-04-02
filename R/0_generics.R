@@ -295,11 +295,6 @@ ff_starters.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_starters found for platform: {conn$platform}."))
 }
 
-#' @export
-ff_playerscores.default <- function(conn, season, week, ...) {
-  stop(glue::glue("No method of ff_playerscores found for platform: {conn$platform}."))
-}
-
 ## ff_scoringhistory ##
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
