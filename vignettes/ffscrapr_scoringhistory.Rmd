@@ -41,3 +41,6 @@ For all sites:
 For Fleaflicker:
 - Does Fleaflicker allow for ranged scoring rules like MFL?
 
+For Sleeper:
+- Does Sleeper allow for ranged scoring rules like MFL?
+- Does Sleeper allow for positional scoring rules?
