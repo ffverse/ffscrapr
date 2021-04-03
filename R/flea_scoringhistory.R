@@ -13,7 +13,7 @@
 #' x
 #' }
 #'
-#' @seealso \url{https://www.nflfastr.com/articles/nflfastR.html#yards-from-scrimmage}
+#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
 #'
 #' @describeIn ff_scoringhistory Fleaflicker: returns scoring history in a flat table, one row per player per week.
 #'
