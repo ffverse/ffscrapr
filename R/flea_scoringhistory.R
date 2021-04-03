@@ -1,4 +1,4 @@
-## ff_scoringhistory (MFL) ##
+## ff_scoringhistory (flea) ##
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
@@ -7,28 +7,24 @@
 #' @param ... other arguments
 #'
 #' @examples
-#' \donttest{
-# ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-# ff_scoringhistory(ssb_conn)
+#' \donttest{#'
+#' conn <- fleaflicker_connect(2020, 312861)
+#' x <- ff_scoringhistory(conn, season = 2020)
+#' x
 #' }
 #'
 #' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
 #'
-#' @describeIn ff_scoringhistory MFL: returns scoring history in a flat table, one row per player per week.
+#' @describeIn ff_scoringhistory Fleaflicker: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export
-ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
+ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
 
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
   #Pull in scoring rules for that league
   league_rules <-
-    ff_scoring(conn) %>%
-    tidyr::separate(col = "range",
-                    into = c("lower_range","upper_range"),
-                    sep = "-(?=[0-9]*$)") %>%
-    dplyr::mutate(dplyr::across(.cols = c("lower_range", "upper_range"),
-                                .fns = as.numeric))
+    ff_scoring(conn)
 
   #Pull Rosters from nflfastr to get positions
   suppressMessages(
@@ -48,8 +44,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
                                  "receiving_fumbles_lost", "receiving_first_downs", "receiving_2pt_conversions",
                                  "special_teams_tds")) %>%
     dplyr::inner_join(stat_mapping, by = c("metric" = "nflfastr_event")) %>%
-    dplyr::inner_join(league_rules, by = c("mfl_event" = "event", "position" = "pos")) %>%
-    dplyr::filter(.data$value >= .data$lower_range, .data$value <= .data$upper_range) %>%
+    dplyr::inner_join(league_rules, by = c("fleaflicker_event" = "event_id", "position" = "pos")) %>%
     dplyr::mutate(points = .data$value*.data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE),2)) %>%
