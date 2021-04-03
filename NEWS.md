@@ -5,8 +5,8 @@
 - Fixes CRAN check issue where digest is no longer imported by memoise - switched cache package to cachem which is apparently just better designed. Resolves #244 (v1.3.0.04)
 - Eliminate LazyData to silence CRAN note. Resolves #244 (v1.3.0.04)
 - Fix sleeper transactions issue where it was not handling multiple dropped players in one transaction. Resolves #246 (v1.3.0.05)
-- Add `ff_scoringhistory()`  for MFL to pull scoring history back to 1999 using [nflfastR](https://www.nflfastr.com/articles/nflfastR.html#yards-from-scrimmage) `load_player_stats()` function.
-
+- Add `ff_scoringhistory()`  for MFL to pull scoring history back to 1999 using [nflfastR](https://www.nflfastr.com/articles/nflfastR.html#yards-from-scrimmage) `load_player_stats()` function. (v1.3.0.06)
+- Add `ff_scoringhistory()` for Fleaflicker (v1.3.0.07)
 ---
 
 # ffscrapr 1.3.0

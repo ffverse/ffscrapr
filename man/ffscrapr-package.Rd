@@ -22,6 +22,7 @@ Useful links:
   \item \url{https://docs.sleeper.app}
   \item \url{https://www.fleaflicker.com/api-docs/index.html}
   \item \url{https://www.espn.com/fantasy/}
+  \item \url{https://www.nflfastr.com/articles/nflfastR.html#yards-from-scrimmage}
   \item Report bugs at \url{https://github.com/dynastyprocess/ffscrapr/issues}
 }
 
@@ -32,6 +33,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item Tony ElHabr \email{anthonyelhabr@gmail.com} [contributor]
+  \item Joe Sydlowski \email{syd235@gmail.com} [contributor]
 }
 
 }
