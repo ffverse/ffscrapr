@@ -14,7 +14,7 @@ Data frame where each individual row represents a player in the roster of the gi
 }
 \description{
 Fetches a copy of roster data from nflfastr's data repository.
-The same input/output as \code{nflfastr::\link[nflfastr::fast_scraper_roster]{fast_scraper_roster}}.
+The same input/output as nflfastr's fast_scraper_roster function.
 }
 \details{
 If you have any issues with the output of this data, please open an issue in

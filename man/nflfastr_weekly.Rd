@@ -14,7 +14,7 @@ Weekly stats for all passers, rushers and receivers in the nflfastR play-by-play
 }
 \description{
 Fetches a copy of the latest week-level stats from nflfastr's data repository.
-The same output as \code{nflfastr::\link[nflfastr::load_player_stats]{load_player_stats}}.
+The same output as nflfastr's load_player_stats() function.
 }
 \details{
 The goal of this data is to replicate the NFL's official weekly stats, which

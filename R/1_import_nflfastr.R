@@ -3,7 +3,7 @@
 #' Import latest nflfastr weekly stats
 #'
 #' Fetches a copy of the latest week-level stats from nflfastr's data repository.
-#' The same output as \code{nflfastr::\link[nflfastr::load_player_stats]{load_player_stats}}.
+#' The same output as nflfastr's load_player_stats() function.
 #'
 #' The goal of this data is to replicate the NFL's official weekly stats, which
 #' can diverge a bit from what fantasy data feeds display.
@@ -46,7 +46,7 @@ nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
 #' Import nflfastr roster data
 #'
 #' Fetches a copy of roster data from nflfastr's data repository.
-#' The same input/output as \code{nflfastr::\link[nflfastr::fast_scraper_roster]{fast_scraper_roster}}.
+#' The same input/output as nflfastr's fast_scraper_roster function.
 #'
 #' If you have any issues with the output of this data, please open an issue in
 #' the nflfastr repository.
