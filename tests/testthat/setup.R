@@ -2,7 +2,6 @@ suppressPackageStartupMessages({
   library(testthat)
   library(httptest)
   library(checkmate)
-  library(mockery)
 })
 
 # Download test files and clean up afterwards, if running mocked tests

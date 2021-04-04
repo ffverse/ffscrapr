@@ -25,6 +25,10 @@ reference:
   desc: Functions to interface with DynastyProcess data
   contents:
   - starts_with("dp_")
+- title: nflfastR
+  desc: Functions to interface with nflfastR data
+  contents:
+  - starts_with("nflfastr_")
 - title: Miscellaneous
   desc: Additional helper functions
   contents:
