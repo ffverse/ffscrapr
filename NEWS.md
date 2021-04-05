@@ -1,5 +1,7 @@
 # ffscrapr (development version)
 
+BREAKING CHANGES: ff_scoring for ESPN - columns removed:
+
 - Force MFL playerscores to use season + league specific players call where possible (Fixes #239) (v1.3.0.02)
 - Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.03)
 - Fixes CRAN check issue where digest is no longer imported by memoise - switched cache package to cachem which is apparently just better designed. Resolves #244 (v1.3.0.04)
@@ -8,7 +10,10 @@
 - Add `ff_scoringhistory()`  for MFL to pull scoring history back to 1999 using [nflfastR](https://www.nflfastr.com/reference/load_player_stats.html) `load_player_stats()` function. (v1.3.0.06)
 - Add `ff_scoringhistory()` for Fleaflicker (v1.3.0.07)
 - Add `ff_scoringhistory()` and breakout `ff_scoring()` by position for Sleeper (v1.3.0.08)
-- Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.09)
+- Refactored and created nflfastr_weekly and nflfastr_rosters functions - opted for a custom download of RDS rather than importing to reduce dependency issues (v1.3.0.09)
+- Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.10)
+
+
 ---
 
 # ffscrapr 1.3.0

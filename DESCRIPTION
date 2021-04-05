@@ -53,7 +53,6 @@ Suggests:
     curl (>= 4.0.0),
     httptest (>= 3.0.0),
     knitr (>= 1.0),
-    nflfastR (>= 4.1.0),
     rmarkdown (>= 2.6),
     testthat (>= 2.1.0),
     withr (>= 2.4.0)
