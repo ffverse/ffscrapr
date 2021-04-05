@@ -188,22 +188,17 @@
   c(
     "3" = "passingYards",
     "4" = "passingTouchdowns",
-
     "19" = "passing2PtConversions",
     "20" = "passingInterceptions",
-
     "24" = "rushingYards",
     "25" = "rushingTouchdowns",
     "26" = "rushing2PtConversions",
-
     "42" = "receivingYards",
     "43" = "receivingTouchdowns",
     "44" = "receiving2PtConversions",
     "53" = "receivingReceptions",
-
     "63" = "fumbleRecoveryTouchdown",
     "72" = "lostFumbles",
-
     "74" = "madeFieldGoalsFrom50Plus",
     "77" = "madeFieldGoalsFrom40To49",
     "79" = "missedFieldGoalsFrom40To49",
@@ -212,31 +207,25 @@
     "85" = "missedFieldGoals",
     "86" = "madeExtraPoints",
     "88" = "missedExtraPoints",
-
     "89" = "defensive0PointsAllowed",
     "90" = "defensive1To6PointsAllowed",
     "91" = "defensive7To13PointsAllowed",
     "92" = "defensive14To17PointsAllowed",
-
     "93" = "defensiveBlockedKickForTouchdowns",
     "95" = "defensiveInterceptions",
     "96" = "defensiveFumbles",
     "97" = "defensiveBlockedKicks",
     "98" = "defensiveSafeties",
     "99" = "defensiveSacks",
-
     "101" = "kickoffReturnTouchdown",
     "102" = "puntReturnTouchdown",
     "103" = "fumbleReturnTouchdown",
     "104" = "interceptionReturnTouchdown",
-
     "114" = "kickoffReturnYards",
     "115" = "puntReturnYards",
-
     "123" = "defensive28To34PointsAllowed",
     "124" = "defensive35To45PointsAllowed",
     "125" = "defensive46+PointsAllowed",
-
     "128" = "defensive000To099YardsAllowed",
     "129" = "defensive100To199YardsAllowed",
     "130" = "defensive200To299YardsAllowed",
@@ -270,7 +259,6 @@
     "200" = "missedFieldGoalsFrom50To59",
     "201" = "madeFieldGoalsFrom60Plus",
     "203" = "missedFieldGoalsFrom60Plus",
-
     "206" = "2PtConversionReturnedForTouchdown",
     "209" = "1PtSafety"
   )

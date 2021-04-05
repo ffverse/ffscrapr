@@ -17,7 +17,6 @@
 #' @export
 
 ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
-
   earliest_year <- ff_league(conn) %>%
     dplyr::pull(years_active) %>%
     stringr::str_extract("^[0-9]+")
@@ -28,21 +27,25 @@ ff_playerscores.mfl_conn <- function(conn, season, week, ...) {
 
   players <- dplyr::tibble(season = season) %>%
     dplyr::mutate(
-      connection = purrr::map_if(.x = .data$season,
-                                 .p = .data$season >= earliest_year,
-                                 .f = ~ mfl_connect(.x,conn$league_id),
-                                 .else = ~ mfl_connect(.x)),
+      connection = purrr::map_if(
+        .x = .data$season,
+        .p = .data$season >= earliest_year,
+        .f = ~ mfl_connect(.x, conn$league_id),
+        .else = ~ mfl_connect(.x)
+      ),
       players = purrr::map(
         .data$connection,
         ~ mfl_players(.x) %>%
-          dplyr::select("player_id","player_name","pos","team")),
-      connection = NULL) %>%
+          dplyr::select("player_id", "player_name", "pos", "team")
+      ),
+      connection = NULL
+    ) %>%
     tidyr::unnest("players")
 
   player_scores <- raw_playerscores %>%
     dplyr::left_join(
       players,
-      by = c("season","player_id")
+      by = c("season", "player_id")
     ) %>%
     dplyr::select(
       dplyr::any_of(c(

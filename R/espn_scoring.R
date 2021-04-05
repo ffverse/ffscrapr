@@ -39,7 +39,7 @@ ff_scoring.espn_conn <- function(conn) {
 
   main_stats <-
     scoring_rules %>%
-    tidyr::expand_grid(pos = c("QB","RB","WR","TE","K","P","DT","DE","LB","CB","S","HC","DST")) %>%
+    tidyr::expand_grid(pos = c("QB", "RB", "WR", "TE", "K", "P", "DT", "DE", "LB", "CB", "S", "HC", "DST")) %>%
     dplyr::select(
       "pos",
       "points",

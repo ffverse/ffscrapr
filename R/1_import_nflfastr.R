@@ -24,7 +24,6 @@
 #'
 #' @export
 nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
-
   file_name <- match.arg(type)
 
   url_query <- "https://github.com/guga31bb/nflfastR-data/raw/master/data/player_stats.rds"
@@ -64,8 +63,7 @@ nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
 #'
 #' @export
 
-nflfastr_rosters <- function(seasons){
-
+nflfastr_rosters <- function(seasons) {
   checkmate::assert_numeric(seasons, lower = 1999, upper = lubridate::year(Sys.Date()))
 
   urls <- glue::glue("https://github.com/mrcaseb/nflfastR-roster/raw/master/data/seasons/roster_{seasons}.rds")
@@ -75,8 +73,7 @@ nflfastr_rosters <- function(seasons){
   return(df_rosters)
 }
 
-.nflfastr_roster <- function(url_query){
-
+.nflfastr_roster <- function(url_query) {
   response <- httr::RETRY("GET", url_query)
 
   if (httr::http_error(response)) {
@@ -102,7 +99,6 @@ nflfastr_rosters <- function(seasons){
 #' @keywords internal
 
 parse_raw_rds <- function(raw) {
-
   con <- gzcon(rawConnection(raw))
 
   on.exit(close(con))

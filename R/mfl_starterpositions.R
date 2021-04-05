@@ -15,20 +15,21 @@
 #'
 #' @export
 
-ff_starter_positions.mfl_conn <- function(conn, ...){
-
+ff_starter_positions.mfl_conn <- function(conn, ...) {
   starter_positions <- mfl_getendpoint(conn, "league") %>%
-    purrr::pluck("content","league","starters") %>%
+    purrr::pluck("content", "league", "starters") %>%
     list() %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,"total_starters"="count","defense_starters" = "idp_starters","position") %>%
+    tidyr::hoist(1, "total_starters" = "count", "defense_starters" = "idp_starters", "position") %>%
     tidyr::unnest_longer("position") %>%
-    tidyr::hoist("position", "pos"="name","limit") %>%
-    tidyr::separate("limit",into = c("min","max"), sep = "\\-",fill = "right") %>%
-    dplyr::mutate_at(c("min","max","total_starters"), as.integer) %>%
-    dplyr::mutate(max = dplyr::coalesce(.data$max,.data$min),
-                  defense_starters = dplyr::coalesce(as.integer(.data[["defense_starters"]]),0),
-                  offense_starters = as.integer(.data$total_starters) - .data$defense_starters) %>%
+    tidyr::hoist("position", "pos" = "name", "limit") %>%
+    tidyr::separate("limit", into = c("min", "max"), sep = "\\-", fill = "right") %>%
+    dplyr::mutate_at(c("min", "max", "total_starters"), as.integer) %>%
+    dplyr::mutate(
+      max = dplyr::coalesce(.data$max, .data$min),
+      defense_starters = dplyr::coalesce(as.integer(.data[["defense_starters"]]), 0),
+      offense_starters = as.integer(.data$total_starters) - .data$defense_starters
+    ) %>%
     dplyr::select(
       "pos",
       "min",

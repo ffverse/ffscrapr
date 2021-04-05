@@ -15,7 +15,6 @@
 #'
 #' @export
 ff_starter_positions.espn_conn <- function(conn, ...) {
-
   l_s <- espn_getendpoint(conn, view = "mSettings") %>%
     purrr::pluck("content", "settings", "rosterSettings", "lineupSlotCounts") %>%
     tibble::enframe(name = "lineup_id", value = "count") %>%
@@ -23,13 +22,15 @@ ff_starter_positions.espn_conn <- function(conn, ...) {
     tidyr::unnest(c("pos", "count")) %>%
     # dplyr::left_join(.espn_pp_lineupkeys(), by = "lineup_id") %>%
     dplyr::mutate(
-      min = ifelse(.data$pos %in% c("QB","RB","WR","TE",
-                           "TQB","DT","DE","ER",
-                           "LB", "CB","S",
-                           "K","P", "DST","HC"), .data$count, NA_integer_),
-      offense_starters = sum(.data$min * stringr::str_detect(.data$pos,"QB|RB|WR|TE|OP"), na.rm = TRUE),
+      min = ifelse(.data$pos %in% c(
+        "QB", "RB", "WR", "TE",
+        "TQB", "DT", "DE", "ER",
+        "LB", "CB", "S",
+        "K", "P", "DST", "HC"
+      ), .data$count, NA_integer_),
+      offense_starters = sum(.data$min * stringr::str_detect(.data$pos, "QB|RB|WR|TE|OP"), na.rm = TRUE),
       defense_starters = sum(.data$min * stringr::str_detect(.data$pos, "DE|DT|DL|LB|CB|^S$|ER|DP"), na.rm = TRUE),
-      kdst_starters = sum(.data$min * .data$pos %in% c("K","P","DST","HC"),na.rm = TRUE),
+      kdst_starters = sum(.data$min * .data$pos %in% c("K", "P", "DST", "HC"), na.rm = TRUE),
       total_starters = .data$offense_starters + .data$defense_starters + .data$kdst_starters
     )
 
@@ -51,15 +52,15 @@ ff_starter_positions.espn_conn <- function(conn, ...) {
         .data$pos == "DT" ~ .data$min + dl + dp,
         .data$pos == "DE" ~ .data$min + dl + dp,
         .data$pos == "CB" ~ .data$min + db + dp,
-        .data$pos == "S" ~  .data$min + db + dp,
+        .data$pos == "S" ~ .data$min + db + dp,
         TRUE ~ .data$min
       ),
     ) %>%
-    dplyr::filter(!is.na(.data$min),.data$min >0) %>%
+    dplyr::filter(!is.na(.data$min), .data$min > 0) %>%
     dplyr::select(
       "pos",
       "min",
       "max",
       dplyr::contains("_starters")
     )
-  }
+}
