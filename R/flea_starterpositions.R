@@ -5,7 +5,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_starter_positions Fleaflicker: returns who was started as well as what they scored.
+#' @describeIn ff_starter_positions Fleaflicker: returns minimum and maximum starters for each player position.
 #'
 #' @examples
 #' \donttest{

@@ -306,7 +306,7 @@ ff_starters.default <- function(conn, ...) {
 #'
 #' @export ff_starters
 #'
-#' @return A tidy dataframe with every player for every week, including a flag for whether they were started or not
+#' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
 
 ff_starter_positions <- function(conn, ...) {
   UseMethod("ff_starter_positions")

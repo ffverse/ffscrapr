@@ -5,7 +5,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_starter_positions ESPN: returns who was started as well as what they scored.
+#' @describeIn ff_starter_positions ESPN: returns min/max starters for each main player position
 #'
 #' @examples
 #' \donttest{
@@ -29,7 +29,7 @@ ff_starter_positions.espn_conn <- function(conn, ...) {
                            "K","P", "DST","HC"), .data$count, NA_integer_),
       offense_starters = sum(.data$min * stringr::str_detect(.data$pos,"QB|RB|WR|TE|OP"), na.rm = TRUE),
       defense_starters = sum(.data$min * stringr::str_detect(.data$pos, "DE|DT|DL|LB|CB|^S$|ER|DP"), na.rm = TRUE),
-      kdst_starters = sum(.data$min * pos %in% c("K","P","DST","HC"),na.rm = TRUE),
+      kdst_starters = sum(.data$min * .data$pos %in% c("K","P","DST","HC"),na.rm = TRUE),
       total_starters = .data$offense_starters + .data$defense_starters + .data$kdst_starters
     )
 

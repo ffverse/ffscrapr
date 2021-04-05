@@ -26,20 +26,20 @@ ff_starter_positions(conn, ...)
 \item{...}{other arguments (currently unused)}
 }
 \value{
-A tidy dataframe with every player for every week, including a flag for whether they were started or not
+A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
 }
 \description{
 This function returns a tidy dataframe with positional lineup rules.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns who was started as well as what they scored.
+\item \code{espn_conn}: ESPN: returns min/max starters for each main player position
 
-\item \code{flea_conn}: Fleaflicker: returns who was started as well as what they scored.
+\item \code{flea_conn}: Fleaflicker: returns minimum and maximum starters for each player position.
 
-\item \code{mfl_conn}: MFL: returns the player fantasy scores for each week (not the actual stats)
+\item \code{mfl_conn}: MFL: returns minimum and maximum starters for each player position.
 
-\item \code{sleeper_conn}: Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.
+\item \code{sleeper_conn}: Sleeper: returns minimum and maximum starters for each player position.
 }}
 
 \examples{

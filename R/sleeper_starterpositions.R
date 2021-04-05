@@ -5,7 +5,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_starter_positions Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.
+#' @describeIn ff_starter_positions Sleeper: returns minimum and maximum starters for each player position.
 #'
 #' @examples
 #' \donttest{
@@ -21,11 +21,11 @@ ff_starter_positions.sleeper_conn <- function(conn, ...) {
     tibble::tibble() %>%
     purrr::set_names("pos") %>%
     dplyr::filter(.data$pos != "BN") %>%
-    dplyr::group_by(pos) %>%
+    dplyr::group_by(.data$pos) %>%
     dplyr::count(name = "min") %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(total_starters = sum(min, na.rm = TRUE),
-                  pos = purrr::map_chr(pos,unlist))
+    dplyr::mutate(total_starters = sum(.data$min, na.rm = TRUE),
+                  pos = purrr::map_chr(.data$pos,unlist))
 
   flex <- ifelse(length(df_positions$min[df_positions$pos == "FLEX"])==0,0,df_positions$min[df_positions$pos == "FLEX"])
   wrrb_flex <- ifelse(length(df_positions$min[df_positions$pos == "WRRB_FLEX"])==0,0,df_positions$min[df_positions$pos == "WRRB_FLEX"])

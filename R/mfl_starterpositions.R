@@ -5,7 +5,7 @@
 #' @param conn the list object created by \code{ff_connect()}
 #' @param ... other arguments (currently unused)
 #'
-#' @describeIn ff_starter_positions MFL: returns the player fantasy scores for each week (not the actual stats)
+#' @describeIn ff_starter_positions MFL: returns minimum and maximum starters for each player position.
 #'
 #' @examples
 #' \donttest{
