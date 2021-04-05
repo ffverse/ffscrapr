@@ -13,8 +13,8 @@ with_mock_api({
     joe_scoringhistory <- ff_scoringhistory(joe_conn, 2020)
     expect_tibble(joe_scoringhistory, min.rows = 3000)
 
-    # tony_conn <- espn_connect(season = 2020, league_id = 899513)
-    # tony_playerscores <- ff_scoringhistory(tony_conn, limit = 5)
-    # expect_tibble(tony_playerscores, min.rows = 5)
+    tony_conn <- espn_connect(season = 2020, league_id = 899513)
+    tony_scoringhistory <- ff_scoringhistory(tony_conn)
+    expect_tibble(tony_scoringhistory, min.rows = 3000)
   })
 })

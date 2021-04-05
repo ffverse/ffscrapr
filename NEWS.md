@@ -8,6 +8,7 @@
 - Add `ff_scoringhistory()`  for MFL to pull scoring history back to 1999 using [nflfastR](https://www.nflfastr.com/reference/load_player_stats.html) `load_player_stats()` function. (v1.3.0.06)
 - Add `ff_scoringhistory()` for Fleaflicker (v1.3.0.07)
 - Add `ff_scoringhistory()` and breakout `ff_scoring()` by position for Sleeper (v1.3.0.08)
+- Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.09)
 ---
 
 # ffscrapr 1.3.0
