@@ -48,8 +48,7 @@ ff_league.sleeper_conn <- function(conn) {
 }
 
 .sleeper_isdyno <- function(league_endpoint) {
-  switch(
-    as.character(league_endpoint$settings$type),
+  switch(as.character(league_endpoint$settings$type),
     "2" = "dynasty",
     "1" = "keeper",
     "0" = "redraft"

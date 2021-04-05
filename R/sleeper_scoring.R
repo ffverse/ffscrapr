@@ -20,8 +20,7 @@ ff_scoring.sleeper_conn <- function(conn) {
     purrr::pluck("content", "scoring_settings") %>%
     tibble::enframe(name = "event", value = "points") %>%
     dplyr::mutate(points = as.numeric(.data$points) %>% round(3)) %>%
-
-    #Look in data-raw `DATASET` script to change the sleeper rule mappings
+    # Look in data-raw `DATASET` script to change the sleeper rule mappings
     dplyr::inner_join(sleeper_rule_mapping, by = "event") %>%
     dplyr::select("pos", "event", "points")
 
