@@ -25,12 +25,10 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
   league_rules <-
     ff_scoring(conn)
 
-  #Pull Rosters from nflfastr to get positions
-  suppressMessages(
-    fastr_rosters <-
-      nflfastr_rosters(season) %>%
-      dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB","FB"), "RB", .data$position))
-  )
+  #Use custom ffscrapr function to get positions fron nflfastR rosters
+  fastr_rosters <-
+    nflfastr_rosters(season) %>%
+    dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB","FB"), "RB", .data$position))
 
   #Load stats from nflfastr and map the rules from the internal stat_mapping file
   nflfastr_weekly() %>%
