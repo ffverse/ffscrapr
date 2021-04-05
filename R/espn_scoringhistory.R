@@ -1,4 +1,4 @@
-## ff_scoringhistory (flea) ##
+## ff_scoringhistory (ESPN) ##
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
@@ -7,18 +7,17 @@
 #' @param ... other arguments
 #'
 #' @examples
-#' \donttest{#'
-#' conn <- fleaflicker_connect(2020, 312861)
-#' x <- ff_scoringhistory(conn, season = 2020)
-#' x
+#' \donttest{
+#' conn <- espn_connect(season = 2020, league_id = 899513)
+#' ff_scoringhistory(conn)
 #' }
 #'
 #' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
 #'
-#' @describeIn ff_scoringhistory Fleaflicker: returns scoring history in a flat table, one row per player per week.
+#' @describeIn ff_scoringhistory ESPN: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export
-ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
+ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
 
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
@@ -42,7 +41,7 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
                                  "receiving_fumbles_lost", "receiving_first_downs", "receiving_2pt_conversions",
                                  "special_teams_tds")) %>%
     dplyr::inner_join(stat_mapping, by = c("metric" = "nflfastr_event")) %>%
-    dplyr::inner_join(league_rules, by = c("fleaflicker_event" = "event_id", "position" = "pos")) %>%
+    dplyr::inner_join(league_rules, by = c("espn_event" = "stat_name", "position" = "pos")) %>%
     dplyr::mutate(points = .data$value*.data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE),2)) %>%
