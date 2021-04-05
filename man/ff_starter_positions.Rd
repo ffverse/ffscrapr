@@ -59,8 +59,8 @@ ff_starter_positions(conn = dlfidp_conn)
 }
 
 \donttest{
-test_conn <- sleeper_connect(league_id = "653543448376320000", season = 2021)
-test_starters <- ff_starter_positions(jml_conn)
+jml_conn <- sleeper_connect(league_id = "652718526494253056", season = 2021)
+jml_starters <- ff_starter_positions(jml_conn)
 }
 
 }
