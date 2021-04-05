@@ -304,9 +304,9 @@ ff_starters.default <- function(conn, ...) {
 #' @param conn a conn object created by \code{ff_connect()}
 #' @param ... additional args depending on method
 #'
-#' @export ff_starters
-#'
 #' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
+#'
+#' @export
 
 ff_starter_positions <- function(conn, ...) {
   UseMethod("ff_starter_positions")
