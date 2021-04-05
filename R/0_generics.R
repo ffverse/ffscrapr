@@ -294,3 +294,46 @@ ff_starters <- function(conn, ...) {
 ff_starters.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_starters found for platform: {conn$platform}."))
 }
+
+#### ff_starter_positions ####
+
+#' Get Starting Lineup Settings
+#'
+#' This function returns a tidy dataframe with positional lineup rules.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args depending on method
+#'
+#' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
+#'
+#' @export
+
+ff_starter_positions <- function(conn, ...) {
+  UseMethod("ff_starter_positions")
+}
+
+#' @export
+ff_starter_positions.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_starter_positions found for platform: {conn$platform}."))
+}
+
+## ff_scoringhistory ##
+
+#' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param season season a numeric vector of seasons (earliest available year is 1999)
+#' @param ... other arguments
+#'
+#' @return A tidy dataframe of scoring history in a flat table, one row per player per week.
+#'
+#' @export ff_scoringhistory
+
+ff_scoringhistory <- function(conn, season, ...) {
+  UseMethod("ff_scoringhistory")
+}
+
+#' @export
+ff_scoringhistory.default <- function(conn, season, ...) {
+  stop(glue::glue("No method of ff_scoringhistory found for platform: {conn$platform}."))
+}

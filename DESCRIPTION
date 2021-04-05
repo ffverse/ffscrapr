@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.3.0.05
+Version: 1.3.0.11
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
@@ -10,7 +10,11 @@ Authors@R:
       person(given = "Tony",
              family = "ElHabr",
              role = "ctb",
-             email = "anthonyelhabr@gmail.com"))
+             email = "anthonyelhabr@gmail.com"),
+      person(given = "Joe",
+             family = "Sydlowski",
+             role = "ctb",
+             email = "syd235@gmail.com"))
 Description: Helps access various Fantasy Football APIs by handling
     authentication and rate-limiting, forming appropriate calls, and
     returning tidy dataframes which can be easily connected to other data
@@ -21,9 +25,10 @@ URL: https://ffscrapr.dynastyprocess.com,
     https://api.myfantasyleague.com/2020/api_info,
     https://docs.sleeper.app,
     https://www.fleaflicker.com/api-docs/index.html,
-    https://www.espn.com/fantasy/
+    https://www.espn.com/fantasy/,
+    https://www.nflfastr.com/reference/load_player_stats.html
 BugReports: https://github.com/dynastyprocess/ffscrapr/issues
-Depends: 
+Depends:
     R (>= 3.0.0)
 Imports:
     cachem (>= 1.0.0),
@@ -43,7 +48,7 @@ Imports:
     stringr (>= 1.4.0),
     tibble (>= 3.0.0),
     tidyr (>= 1.0.0)
-Suggests: 
+Suggests:
     covr (>= 3.0.0),
     curl (>= 4.0.0),
     httptest (>= 3.0.0),
@@ -51,7 +56,7 @@ Suggests:
     rmarkdown (>= 2.6),
     testthat (>= 2.1.0),
     withr (>= 2.4.0)
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Encoding: UTF-8
 RoxygenNote: 7.1.1

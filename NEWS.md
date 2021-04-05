@@ -1,10 +1,20 @@
 # ffscrapr (development version)
 
+BREAKING CHANGES:
+- Removed override_pos column from ESPN ff_scoring which only had a value of 16 for D/ST specific rules
+- Expanded ESPN and Sleeper ff_scoring rules from one line per rule to one line per position per rule
+
 - Force MFL playerscores to use season + league specific players call where possible (Fixes #239) (v1.3.0.02)
 - Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.03)
 - Fixes CRAN check issue where digest is no longer imported by memoise - switched cache package to cachem which is apparently just better designed. Resolves #244 (v1.3.0.04)
 - Eliminate LazyData to silence CRAN note. Resolves #244 (v1.3.0.04)
 - Fix sleeper transactions issue where it was not handling multiple dropped players in one transaction. Resolves #246 (v1.3.0.05)
+- Add `ff_scoringhistory()`  for MFL to pull scoring history back to 1999 using [nflfastR](https://www.nflfastr.com/reference/load_player_stats.html) `load_player_stats()` function. (v1.3.0.06)
+- Add `ff_scoringhistory()` for Fleaflicker (v1.3.0.07)
+- Add `ff_scoringhistory()` and breakout `ff_scoring()` by position for Sleeper (v1.3.0.08)
+- Refactored and created nflfastr_weekly and nflfastr_rosters functions - opted for a custom download of RDS rather than importing to reduce dependency issues (v1.3.0.09)
+- Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.10)
+- Added `ff_starter_positions()` which describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like VORP. (v1.3.0.11)
 
 ---
 

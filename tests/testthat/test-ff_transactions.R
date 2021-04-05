@@ -15,7 +15,7 @@ with_mock_api({
     jml_transactions <- ff_transactions(jml_conn, week = 1:9)
 
     templer_conn <- ff_connect(platform = "sleeper", league_id = "515566249837142016", season = 2020)
-    templer_transactions <- ff_transactions(templer_conn)
+    templer_transactions <- ff_transactions(templer_conn, week = 1:9)
 
     expect_tibble(jml_transactions, min.rows = 20)
     expect_tibble(templer_transactions, min.rows = 20)
