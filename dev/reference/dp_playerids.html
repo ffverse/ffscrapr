@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.05</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.11</span>
       </span>
     </div>
 
@@ -183,7 +183,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Import latest DynastyProcess player IDs</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/dp_import.R'><code>R/dp_import.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/1_import_dp.R'><code>R/1_import_dp.R</code></a></small>
     <div class="hidden name"><code>dp_playerids.Rd</code></div>
     </div>
 
@@ -204,7 +204,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>dp_playerids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,067 x 19</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,068 x 19</span><span>
 #&gt;    mfl_id sportradar_id  gsis_id fantasypros_id ffcalculator_id pfr_id cfbref_id
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 10103  6bc584ed-82c0… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>       
@@ -217,7 +217,7 @@
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 10263  072ec285-1430… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              ClayA… adrian-c…
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 10264  f1879cfa-4c07… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              AmukP… prince-a…
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> 10265  f44b4942-1de1… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              DareM… marcell-…
-#&gt; </span><span style='color: #949494;'># … with 2,057 more rows, and 12 more variables: sleeper_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 2,058 more rows, and 12 more variables: sleeper_id &lt;chr&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   espn_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;, name &lt;chr&gt;, merge_name &lt;chr&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   position &lt;chr&gt;, team &lt;chr&gt;, age &lt;dbl&gt;, draft_year &lt;int&gt;, draft_round &lt;int&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   draft_pick &lt;int&gt;, birthdate &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>

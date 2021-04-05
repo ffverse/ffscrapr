@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Managing ffscrapr's Cache • ffscrapr</title>
+<title>ffscrapr: Player Scoring History • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -20,7 +20,7 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Managing ffscrapr's Cache">
+<meta property="og:title" content="ffscrapr: Player Scoring History">
 <meta property="og:description" content="ffscrapr">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
@@ -133,65 +133,25 @@
 
       
 
-      </header><script src="ffscrapr_caching_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="ffscrapr_scoringhistory_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Managing ffscrapr’s Cache</h1>
-                        <h4 class="author">Tan Ho</h4>
+      <h1 data-toc-skip>ffscrapr: Player Scoring History</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/ffscrapr_caching.Rmd"><code>vignettes/ffscrapr_caching.Rmd</code></a></small>
-      <div class="hidden name"><code>ffscrapr_caching.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/ffscrapr_scoringhistory.Rmd"><code>vignettes/ffscrapr_scoringhistory.Rmd</code></a></small>
+      <div class="hidden name"><code>ffscrapr_scoringhistory.Rmd</code></div>
 
     </div>
 
     
     
-<div id="caching-its-responsible-web-etiquette" class="section level2">
+<div id="limitations-of-ff_scoringhistory" class="section level2">
 <h2 class="hasAnchor">
-<a href="#caching-its-responsible-web-etiquette" class="anchor"></a>Caching: It’s Responsible Web Etiquette!</h2>
-<p>One of the many packages that inspired ffscrapr is Dmytro Perepolkin’s <a href="https://dmi3kno.github.io/polite/">polite</a> package, which sets out some pillars of responsible web etiquette, including introducing yourself, taking slowly, and never asking twice for the same thing.</p>
-<p>ffscrapr gives you convenient routes to support these:</p>
-<ul>
-<li><p>You can set a <code>user_agent</code> string with any connection to help identify yourself to the API platform (MFL actually gives you a higher rate limit if you <a href="https://api.myfantasyleague.com/2020/api_info">register with them as an API Client</a>!)</p></li>
-<li><p>You can set <code>rate_limit</code> options to help manage the load on the API (and to comply with any restrictions that APIs have set out)</p></li>
-<li><p>Behind the scenes, ffscrapr is saving the results of expensive (i.e. slow, data-heavy) and stable (i.e. not likely to change rapidly) queries so that a) it can return things faster to you and b) minimize server load.</p></li>
-</ul>
-<p>This vignette explains and helps you manage this caching.</p>
-</div>
-<div id="what-is-being-cached-how-long-is-it-being-cached-for" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-is-being-cached-how-long-is-it-being-cached-for" class="anchor"></a>What is being cached? How long is it being cached for?</h2>
-<p>ffscrapr’s core functions often loop over the same, stable endpoints to help return the data for each function - things like “player names/positions/teams”, “franchise IDs/names”, and “league scoring rules” are all used frequently. ffscrapr incorporates <a href="https://github.com/r-lib/memoise">memoise</a> package to help with this functionality, and (as of this writing) saves the results of these functions:</p>
-<ul>
-<li>
-<code><a href="../reference/mfl_players.html">mfl_players()</a></code>, <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code>, <code><a href="../reference/fleaflicker_players.html">fleaflicker_players()</a></code> - these functions are stored for 7 days</li>
-<li>
-<code><a href="../reference/ff_franchises.html">ff_franchises()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, <code><a href="../reference/ff_league.html">ff_league()</a></code> - these functions are stored for 24 hours</li>
-<li>
-<code><a href="../reference/ff_standings.html">ff_standings()</a></code>, <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code>, <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> , <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - these functions are stored for one hour</li>
-<li>
-<code><a href="../reference/dp_playerids.html">dp_playerids()</a></code> and <code><a href="../reference/dp_values.html">dp_values()</a></code> - these functions are stored for 24 hours</li>
-</ul>
-<p>You can find an updated list of cached functions in the <a href="https://github.com/dynastyprocess/ffscrapr/blob/main/R/zzz.R">zzz.R</a> source code page.</p>
-</div>
-<div id="where-is-it-being-cached" class="section level2">
-<h2 class="hasAnchor">
-<a href="#where-is-it-being-cached" class="anchor"></a>Where is it being cached?</h2>
-<p>By default, ffscrapr will save the results of each function call (i.e. function + arguments) into memory.</p>
-<p>If you would like to have your cache stored on your local filesystem, you can adjust this behaviour by adding the following line to your (or your project) .Rprofile, or by adding it BEFORE you library/load the package.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>ffscrapr.cache <span class="op">=</span> <span class="st">"filesystem"</span><span class="op">)</span></code></pre></div>
-<p>This will instruct ffscrapr to store the cache on your machine, as dictated by the typical cache location for your operating system. You can see where this is by running the following line of code:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">rappdirs</span><span class="fu">::</span><span class="fu"><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html">user_cache_dir</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="how-can-i-clear-the-cache" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-can-i-clear-the-cache" class="anchor"></a>How can I clear the cache?</h2>
-<p>You can use the following function to clear the cache (whether it is in memory or on your filesystem):</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">.ffscrapr_clear_cache</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<a href="#limitations-of-ff_scoringhistory" class="anchor"></a>Limitations of ff_scoringhistory</h2>
+<p>For all sites: - Official NFL lateral scoring may be different than MFL scoring - Special team TDs are not broken down into punt returns, kick returns, and FG returns in nflfastR <code>load_player_stats</code> so the kick return scoring was applied to all special team TDs - No support for IDPs, team defenses, kickers, coaches, fumbles, return yards, offensive fumble recoveries - Support for eccentric rules (bonuses for long plays, conditional rules) will be added on a request basis</p>
+<p>For Fleaflicker: - Does Fleaflicker allow for ranged scoring rules like MFL?</p>
+<p>For Sleeper: - Does Sleeper allow for ranged scoring rules like MFL? - Does Sleeper allow for positional scoring rules?</p>
 </div>
   </div>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Connect to Fleaflicker League — fleaflicker_connect • ffscrapr</title>
+<title>Parse Raw RDS — parse_raw_rds • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Connect to Fleaflicker League — fleaflicker_connect" />
-<meta property="og:description" content="This function creates a connection object which stores parameters and a user ID if available." />
+<meta property="og:title" content="Parse Raw RDS — parse_raw_rds" />
+<meta property="og:description" content="Useful for parsing the raw-content of RDS files downloaded from nflfastr repo, c/o Seb." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -182,66 +182,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Connect to Fleaflicker League</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_connect.R'><code>R/flea_connect.R</code></a></small>
-    <div class="hidden name"><code>fleaflicker_connect.Rd</code></div>
+    <h1>Parse Raw RDS</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/1_import_nflfastr.R'><code>R/1_import_nflfastr.R</code></a></small>
+    <div class="hidden name"><code>parse_raw_rds.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function creates a connection object which stores parameters and a user ID if available.</p>
+    <p>Useful for parsing the raw-content of RDS files downloaded from nflfastr repo, c/o Seb.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fleaflicker_connect</span><span class='op'>(</span>
-  season <span class='op'>=</span> <span class='cn'>NULL</span>,
-  league_id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  user_email <span class='op'>=</span> <span class='cn'>NULL</span>,
-  user_agent <span class='op'>=</span> <span class='cn'>NULL</span>,
-  rate_limit <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  rate_limit_number <span class='op'>=</span> <span class='cn'>NULL</span>,
-  rate_limit_seconds <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>parse_raw_rds</span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>season</th>
-      <td><p>Season to access on Fleaflicker - if missing, will guess based on system date (current year if March or later, otherwise previous year)</p></td>
-    </tr>
-    <tr>
-      <th>league_id</th>
-      <td><p>League ID</p></td>
-    </tr>
-    <tr>
-      <th>user_email</th>
-      <td><p>Optional - attempts to get user's user ID by email</p></td>
-    </tr>
-    <tr>
-      <th>user_agent</th>
-      <td><p>User agent to self-identify (optional)</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit</th>
-      <td><p>TRUE by default - turn off rate limiting with FALSE</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_number</th>
-      <td><p>number of calls per <code>rate_limit_seconds</code>, suggested is under 1000 calls per 60 seconds</p></td>
-    </tr>
-    <tr>
-      <th>rate_limit_seconds</th>
-      <td><p>number of seconds as denominator for rate_limit</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments (for other methods, for R compat)</p></td>
+      <th>raw</th>
+      <td><p>raw-content that is known to be an RDS file</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>a list that stores Fleaflicker connection objects</p>
+    <div class='dont-index'><p><code><a href='https://httr.r-lib.org/reference/set_cookies.html'>httr::set_cookies</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
