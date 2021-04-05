@@ -295,6 +295,28 @@ ff_starters.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_starters found for platform: {conn$platform}."))
 }
 
+#### ff_starter_positions ####
+
+#' Get Starting Lineup Settings
+#'
+#' This function returns a tidy dataframe with positional lineup rules.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args depending on method
+#'
+#' @export ff_starters
+#'
+#' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
+
+ff_starter_positions <- function(conn, ...) {
+  UseMethod("ff_starter_positions")
+}
+
+#' @export
+ff_starter_positions.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_starter_positions found for platform: {conn$platform}."))
+}
+
 ## ff_scoringhistory ##
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.

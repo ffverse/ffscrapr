@@ -14,6 +14,7 @@ BREAKING CHANGES:
 - Add `ff_scoringhistory()` and breakout `ff_scoring()` by position for Sleeper (v1.3.0.08)
 - Refactored and created nflfastr_weekly and nflfastr_rosters functions - opted for a custom download of RDS rather than importing to reduce dependency issues (v1.3.0.09)
 - Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.10)
+- Added `ff_starter_positions()` which describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like VORP. (v1.3.0.11)
 
 ---
 
