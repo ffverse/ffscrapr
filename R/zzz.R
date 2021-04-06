@@ -28,6 +28,9 @@
     dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400), cache = cache)
     dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400), cache = cache)
 
+    nflfastr_weekly <<- memoise::memoise(nflfastr_weekly, ~ memoise::timeout(604800), cache = cache)
+    nflfastr_rosters <<- memoise::memoise(nflfastr_rosters, ~ memoise::timeout(604800), cache = cache)
+
     # LONG TERM STORAGE
 
     mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)
