@@ -1,8 +1,10 @@
 # ffscrapr (development version)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 - Removed override_pos column from ESPN ff_scoring which only had a value of 16 for D/ST specific rules
 - Expanded ESPN and Sleeper ff_scoring rules from one line per rule to one line per position per rule
+
+###
 
 - Force MFL playerscores to use season + league specific players call where possible (Fixes #239) (v1.3.0.02)
 - Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (v1.3.0.03)
@@ -15,6 +17,7 @@ BREAKING CHANGES:
 - Refactored and created nflfastr_weekly and nflfastr_rosters functions - opted for a custom download of RDS rather than importing to reduce dependency issues (v1.3.0.09)
 - Add `ff_scoringhistory()` and breakout `ff_scoring()` by position (Breaking Change) for ESPN (v1.3.0.10)
 - Added `ff_starter_positions()` which describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like VORP. (v1.3.0.11)
+- `mfl_transactions()` - add numeric string parsing to fix bug in auction bid amount (v1.3.0.12)
 
 ---
 
