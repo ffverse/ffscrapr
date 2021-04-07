@@ -76,7 +76,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
     return(NULL)
   }
 
-  x <- auction_transactions %>%
+  auction_transactions %>%
     dplyr::select("timestamp", "type", "franchise", "transaction") %>%
     tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|",fill = "right") %>%
     dplyr::mutate(
