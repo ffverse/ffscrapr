@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions. — ff_scoringhistory • ffscrapr</title>
+<title>Get League-Specific Scoring History — ff_scoringhistory • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,12 +54,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions. — ff_scoringhistory" />
-<meta property="og:description" content="Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions." />
+<meta property="og:title" content="Get League-Specific Scoring History — ff_scoringhistory" />
+<meta property="og:description" content="(Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -96,7 +93,7 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.3.0.12</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.0.01</span>
       </span>
     </div>
 
@@ -186,17 +183,14 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</h1>
+    <h1>Get League-Specific Scoring History</h1>
     <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_scoringhistory.R'><code>R/espn_scoringhistory.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_scoringhistory.R'><code>R/flea_scoringhistory.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_scoringhistory.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</p>
-<p>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</p>
-<p>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</p>
-<p>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</p>
-<p>Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.</p>
+    <p>(Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!</p>
     </div>
 
     <pre class="usage"><span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>season</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -232,7 +226,7 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tidy dataframe of scoring history in a flat table, one row per player per week.</p>
+    <p>A tidy dataframe of weekly fantasy scoring data, one row per player per week</p>
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     
@@ -244,10 +238,7 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 </ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p>
-<p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p>
-<p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p>
-<p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p></div>
+    <div class='dont-index'><p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -274,6 +265,7 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 #&gt; </span><span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
+<span class='co'># \donttest{</span>
 <span class='co'>#'</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
@@ -296,11 +288,14 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 #&gt; </span><span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   rushing_first_downs &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;, receptions &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;, receiving_first_downs &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
+<span class='co'># ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)</span>
+<span class='co'># ff_scoringhistory(ssb_conn)</span>
 <span class='co'># }</span>
 
+<span class='co'># \donttest{</span>
 <span class='co'>#'</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
@@ -322,7 +317,7 @@ Get a dataframe of scoring history, utilizing the ff_scoring and load_player_sta
 #&gt; </span><span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
