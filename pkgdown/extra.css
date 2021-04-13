@@ -7,9 +7,10 @@ body{
 
 h1 {
   font-family: 'Fira Mono', sans-serif;
+  font-weight: 700;
 }
 
-h1,h2,h3 {
+h2,h3 {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
 }
