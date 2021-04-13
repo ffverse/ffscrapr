@@ -10,14 +10,15 @@ h1 {
 }
 
 h1,h2,h3 {
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
 }
 
 pre, code {
-  font-family: 'Fira Mono';
+  font-family: 'Fira Mono', monospace;
 }
 
 .navbar-link {
   font-weight: 700;
-  font-family: 'Fira Mono';
+  font-family: 'Fira Mono', sans-serif;
 }
