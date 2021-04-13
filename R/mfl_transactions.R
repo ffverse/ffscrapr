@@ -86,7 +86,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
       ),
       bid_amount = stringr::str_extract(.data$bid_amount, "[0-9,\\.]+") %>% as.numeric()
     ) %>%
-    dplyr::filter(is.na(bid_amount))
+    dplyr::filter(is.na(.data$bid_amount))
 }
 
 ## TRADE ##

@@ -25,7 +25,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
   players_endpoint <- mfl_players(conn)
 
   players_endpoint <- players_endpoint %>%
-    dplyr::select("player_id", "player_name", "pos", "team", "age")
+    dplyr::select("player_id", "player_name", "pos", "team", "birthdate")
 
   raw_draftresults <- mfl_getendpoint(conn, "draftResults") %>%
     purrr::pluck("content", "draftResults", "draftUnit")
@@ -51,12 +51,13 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         "timestamp" = lubridate::as_datetime(as.numeric(.data$timestamp)),
         .data$round,
         .data$pick,
+        .data$overall,
         .data$franchise_id,
         .data$franchise_name,
         .data$player_id,
         .data$player_name,
         .data$pos,
-        .data$age,
+        age = round(as.numeric(lubridate::as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
         .data$team
       )
   } else {
@@ -82,12 +83,13 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         .data$division_name,
         .data$round,
         .data$pick,
+        .data$overall,
         .data$franchise_id,
         .data$franchise_name,
         .data$player_id,
         .data$player_name,
         .data$pos,
-        .data$age,
+        age = round(as.numeric(lubridate::as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
         .data$team
       )
   }
@@ -107,6 +109,9 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
   df_1 %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
+    dplyr::mutate(
+      overall = dplyr::row_number()
+    ) %>%
     dplyr::rename(
       "franchise_id" = .data$franchise,
       "player_id" = .data$player

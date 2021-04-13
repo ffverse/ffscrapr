@@ -7,7 +7,7 @@
 \alias{ff_scoringhistory.flea_conn}
 \alias{ff_scoringhistory.mfl_conn}
 \alias{ff_scoringhistory.sleeper_conn}
-\title{Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.}
+\title{Use nflfastr to build league-specific scoring history}
 \usage{
 ff_scoringhistory(conn, season, ...)
 
@@ -27,18 +27,11 @@ ff_scoringhistory(conn, season, ...)
 \item{...}{other arguments}
 }
 \value{
-A tidy dataframe of scoring history in a flat table, one row per player per week.
+A tidy dataframe of weekly fantasy scoring data, one row per player per week
 }
 \description{
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
-
-Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
+(Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!
 }
 \section{Methods (by class)}{
 \itemize{
@@ -57,16 +50,20 @@ conn <- espn_connect(season = 2020, league_id = 899513)
 ff_scoringhistory(conn)
 }
 
-\donttest{#'
+\donttest{
+#'
 conn <- fleaflicker_connect(2020, 312861)
 x <- ff_scoringhistory(conn, season = 2020)
 x
 }
 
 \donttest{
+# ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+# ff_scoringhistory(ssb_conn)
 }
 
-\donttest{#'
+\donttest{
+#'
 conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_scoringhistory(conn, season = 2020)
 }

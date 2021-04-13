@@ -28,6 +28,9 @@
     dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400), cache = cache)
     dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400), cache = cache)
 
+    nflfastr_weekly <<- memoise::memoise(nflfastr_weekly, ~ memoise::timeout(604800), cache = cache)
+    nflfastr_rosters <<- memoise::memoise(nflfastr_rosters, ~ memoise::timeout(86400), cache = cache)
+
     # LONG TERM STORAGE
 
     mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)
@@ -43,20 +46,24 @@
     ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.mfl_conn <<- memoise::memoise(ff_league.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_starters.mfl_conn <<- memoise::memoise(ff_starters.mfl_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.mfl_conn <<-memoise::memoise(ff_scoringhistory.mfl_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.sleeper_conn <<- memoise::memoise(ff_scoring.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.sleeper_conn <<- memoise::memoise(ff_league.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.sleeper_conn <<-memoise::memoise(ff_scoringhistory.sleeper_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~ memoise::timeout(86400), cache = cache)
     .flea_potentialpointsweek <<- memoise::memoise(.flea_potentialpointsweek, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.flea_conn <<-memoise::memoise(ff_scoringhistory.flea_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.espn_conn <<- memoise::memoise(ff_franchises.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.espn_conn <<- memoise::memoise(ff_scoring.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.espn_conn <<- memoise::memoise(ff_league.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_starters.espn_conn <<- memoise::memoise(ff_starters.espn_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.espn_conn <<-memoise::memoise(ff_scoringhistory.espn_conn, ~memoise::timeout(86400), cache = cache)
 
     # SHORT TERM STORAGE
 
