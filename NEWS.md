@@ -1,3 +1,28 @@
+# ffscrapr 1.4.0
+
+The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0.
+
+## New Features
+- `nflfastr_weekly()` imports weekly offensive statistics from nflfastR's [data repository](https://github.com/guga31bb/nflfastR-data).
+- `nflfastr_rosters()` imports team rosters from nflfastR's [roster repository](https://github.com/mrcaseb/nflfastR-roster).
+- `ff_scoringhistory()` connects your league's scoring settings to the nflfastr data (c/o the functions above), and allows you to reconstruct historical scoring for your league!
+- `ff_starterpositions()` describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!
+
+## Breaking Changes
+- `ff_scoring` for ESPN loses the "override_pos" which only had a value of 16 for D/ST specific rules
+- `ff_scoring` rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule
+
+## Minor Changes
+
+- Force MFL playerscores to use season + league specific players call where possible (#239)
+- Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (#242)
+- Switching memoise backend to cachem package, fixes CRAN check issue where digest is no longer imported by memoise. Cachem also apparently more performant! (#244)
+- `sleeper_transactions` now correctly handles multiple dropped players in one transaction. (#246).
+- `mfl_transactions` - adds numeric string parsing to fix bug in auction bid amount (#)
+-  `mfl_draft` now calculates age as of timestamp and also adds an overall column. (#259, #260)
+
+---
+
 # ffscrapr 1.3.0
 
 The main goal of ffscrapr 1.3.0 is to add support for the ESPN platform. It also includes several bug fixes, code quality improvements, and a major refactor of tests to reduce overall package size. 

@@ -8,7 +8,7 @@ with_mock_api({
     expect_tibble(dlf_starters, min.rows = 100)
 
     jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
-    jml_starters <- ff_starters(jml_conn)
+    jml_starters <- ff_starters(jml_conn, week = 1:4)
 
     expect_tibble(jml_starters, min.rows = 100)
 

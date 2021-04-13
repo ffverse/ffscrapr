@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='#'><img src='man/figures/logo.png' align="right" height="200" /></a>
+# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" height="200"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -30,13 +30,13 @@ other data sources.
 
 ### Installation
 
-Version 1.3.0 is now on CRAN 🎉 and can be installed with:
+Version 1.4.0 is now on CRAN :tada: and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.3.0")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.0")
 ```
 
 Install the development version from GitHub with:
@@ -83,11 +83,11 @@ ff_rosters(ssb)
 #> # A tibble: 443 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.5
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.3
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.2
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.7
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26  
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.6
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.4
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.3
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.8
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.2
 #> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 

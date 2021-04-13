@@ -1,0 +1,46 @@
+---
+title: "ffscrapr: Player Scoring History"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ff_scoringhistory}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+options(dplyr.summarise.inform = FALSE,
+        rmarkdown.html_vignette.check_title = FALSE)
+
+eval <- TRUE
+
+tryCatch(expr = {
+  
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.0.zip","f.zip")
+  unzip('f.zip', exdir = ".")
+  
+  httptest::.mockPaths(new = "ffscrapr-tests-1.4.0")},
+  warning = function(e) eval <<- FALSE,
+  error = function(e) eval <<- FALSE)
+
+httptest::use_mock_api()
+```
+
+## Limitations of ff_scoringhistory
+
+For all sites: 
+- Official NFL lateral scoring may be different than MFL scoring
+- Special team TDs are not broken down into punt returns, kick returns, and FG returns in nflfastR `load_player_stats` so the kick return scoring was applied to all special team TDs
+- No support for IDPs, team defenses, kickers, coaches, fumbles, return yards, offensive fumble recoveries
+- Support for eccentric rules (bonuses for long plays, conditional rules) will be added on a request basis
+
+For Fleaflicker:
+- Does Fleaflicker allow for ranged scoring rules like MFL?
+
+For Sleeper:
+- Does Sleeper allow for ranged scoring rules like MFL?
+- Does Sleeper allow for positional scoring rules?

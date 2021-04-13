@@ -53,6 +53,8 @@ ff_scoring.mfl_conn <- function(conn) {
       points = as.double(.data$points)
     ) %>%
     dplyr::select("pos" = .data$positions, .data$points, .data$range, .data$event, .data$short_desc, .data$long_desc)
+
+  return(df)
 }
 
 #' Parse the scoring rule chars into numeric.
@@ -99,4 +101,6 @@ mfl_allrules <- function(conn) {
       "is_team" = "isTeam",
       "is_coach" = "isCoach"
     )
+
+  return(df)
 }

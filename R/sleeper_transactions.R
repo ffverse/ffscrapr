@@ -157,9 +157,9 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
     ))) %>%
     dplyr::mutate(
       added = purrr::map(.data$added, names),
-      added = purrr::map_chr(.data$added, ~ replace(.x, is.null(.x), NA_character_)),
+      added = purrr::map(.data$added, ~ replace(.x, is.null(.x), NA_character_)),
       dropped = purrr::map(.data$dropped, names),
-      dropped = purrr::map_chr(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
+      dropped = purrr::map(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
       franchise_id = purrr::map_chr(.data$franchise_id, unlist),
       timestamp = .data$timestamp / 1000,
       timestamp = lubridate::as_datetime(.data$timestamp),

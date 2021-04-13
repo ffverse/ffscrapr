@@ -12,7 +12,7 @@
 #' @param league_id league_id (currently assuming one league at a time)
 #' @param ... other parameters passed to the connect function for each specific platform.
 #'
-#' @seealso \code{\link{ff_connect}}, \code{\link{sleeper_connect}}
+#' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}, \code{\link{fleaflicker_connect}}, \code{\link{espn_connect}}
 #'
 #' @examples
 #' \donttest{
@@ -61,7 +61,7 @@ ff_league.default <- function(conn) {
 
 #### ff_scoring ####
 
-#' Get League Scoring settings
+#' Get League Scoring Settings
 #'
 #' This function returns a dataframe with detailed scoring settings for each league - broken down by event, points, and (if available) position.
 #'
@@ -293,4 +293,52 @@ ff_starters <- function(conn, ...) {
 #' @export
 ff_starters.default <- function(conn, ...) {
   stop(glue::glue("No method of ff_starters found for platform: {conn$platform}."))
+}
+
+#### ff_starter_positions ####
+
+#' Get Starting Lineup Settings
+#'
+#' This function returns a tidy dataframe with positional lineup rules.
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param ... additional args depending on method
+#'
+#' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
+#'
+#' @export
+
+ff_starter_positions <- function(conn, ...) {
+  UseMethod("ff_starter_positions")
+}
+
+#' @export
+ff_starter_positions.default <- function(conn, ...) {
+  stop(glue::glue("No method of ff_starter_positions found for platform: {conn$platform}."))
+}
+
+## ff_scoringhistory ##
+
+#' Get League-Specific Scoring History
+#'
+#' (Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+#' Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!
+#'
+#' @param conn a conn object created by \code{ff_connect()}
+#' @param season a numeric vector of seasons (earliest available year is 1999, default is 1999:2020)
+#' @param ... other arguments
+#'
+#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
+#'
+#' @return A tidy dataframe of weekly fantasy scoring data, one row per player per week
+#'
+#' @export ff_scoringhistory
+
+ff_scoringhistory <- function(conn, season, ...) {
+  UseMethod("ff_scoringhistory")
+}
+
+#' @export
+ff_scoringhistory.default <- function(conn, season, ...) {
+  stop(glue::glue("No method of ff_scoringhistory found for platform: {conn$platform}."))
 }

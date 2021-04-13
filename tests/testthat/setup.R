@@ -15,13 +15,13 @@ skip <- FALSE
 if (download_mock) {
   tryCatch(
     expr = {
-      download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.3.0.zip", "f.zip")
+      download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.0.zip", "f.zip")
       unzip("f.zip", exdir = ".")
 
-      httptest::.mockPaths(new = "ffscrapr-tests-1.3.0")
+      httptest::.mockPaths(new = "ffscrapr-tests-1.4.0")
 
       withr::defer(
-        unlink(c("ffscrapr-tests-1.3.0", "f.zip"), recursive = TRUE, force = TRUE),
+        unlink(c("ffscrapr-tests-1.4.0", "f.zip"), recursive = TRUE, force = TRUE),
         testthat::teardown_env()
       )
     },

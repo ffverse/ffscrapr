@@ -10,21 +10,26 @@
   memoise_option <- getOption("ffscrapr.cache")
   # list of memoise options: "memory", "filesystem","off"
 
-  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) memoise_option <- "memory"
+  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) {
+    memoise_option <- "memory"
+  }
 
   if (memoise_option == "filesystem") {
     cache_dir <- rappdirs::user_cache_dir(appname = "ffscrapr")
     dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
-    cache <- memoise::cache_filesystem(cache_dir)
+    cache <- cachem::cache_disk(dir = cache_dir)
   }
 
   if (memoise_option == "memory") {
-    cache <- memoise::cache_memory()
+    cache <- cachem::cache_mem()
   }
 
   if (memoise_option != "off") {
     dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400), cache = cache)
     dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400), cache = cache)
+
+    nflfastr_weekly <<- memoise::memoise(nflfastr_weekly, ~ memoise::timeout(604800), cache = cache)
+    nflfastr_rosters <<- memoise::memoise(nflfastr_rosters, ~ memoise::timeout(86400), cache = cache)
 
     # LONG TERM STORAGE
 
@@ -41,20 +46,24 @@
     ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.mfl_conn <<- memoise::memoise(ff_league.mfl_conn, ~ memoise::timeout(86400), cache = cache)
     ff_starters.mfl_conn <<- memoise::memoise(ff_starters.mfl_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.mfl_conn <<-memoise::memoise(ff_scoringhistory.mfl_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.sleeper_conn <<- memoise::memoise(ff_scoring.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.sleeper_conn <<- memoise::memoise(ff_league.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.sleeper_conn <<-memoise::memoise(ff_scoringhistory.sleeper_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~ memoise::timeout(86400), cache = cache)
     .flea_potentialpointsweek <<- memoise::memoise(.flea_potentialpointsweek, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.flea_conn <<-memoise::memoise(ff_scoringhistory.flea_conn, ~memoise::timeout(86400), cache = cache)
 
     ff_franchises.espn_conn <<- memoise::memoise(ff_franchises.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_scoring.espn_conn <<- memoise::memoise(ff_scoring.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_league.espn_conn <<- memoise::memoise(ff_league.espn_conn, ~ memoise::timeout(86400), cache = cache)
     ff_starters.espn_conn <<- memoise::memoise(ff_starters.espn_conn, ~ memoise::timeout(86400), cache = cache)
+    ff_scoringhistory.espn_conn <<-memoise::memoise(ff_scoringhistory.espn_conn, ~memoise::timeout(86400), cache = cache)
 
     # SHORT TERM STORAGE
 
@@ -78,7 +87,7 @@
     ff_schedule.espn_conn <<- memoise::memoise(ff_schedule.espn_conn, ~ memoise::timeout(3600), cache = cache)
   }
 
-  # if(memoise_option=="off") packageStartupMessage("ffscrapr.cache is set to 'off'")
+  # if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 
   env <- rlang::env(
     user_agent = glue::glue(
