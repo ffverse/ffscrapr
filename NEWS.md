@@ -1,3 +1,11 @@
+# ffscrapr (development version)
+
+## Notes
+
+- Added `release_questions` to help remind me to maintain test infrastructure
+
+---
+
 # ffscrapr 1.4.0
 
 The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to [Joe Sydlowski](https://twitter.com/JoeSydlowskiFF) for his contributions on scoring history (and everything else DynastyProcess!)
