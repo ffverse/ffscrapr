@@ -25,5 +25,5 @@ ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALS
 }
 }
 \seealso{
-\code{\link{ff_connect}}, \code{\link{sleeper_connect}}
+\code{\link{mfl_connect}}, \code{\link{sleeper_connect}}, \code{\link{fleaflicker_connect}}, \code{\link{espn_connect}}
 }

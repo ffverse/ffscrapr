@@ -7,7 +7,7 @@
 \alias{ff_scoring.flea_conn}
 \alias{ff_scoring.mfl_conn}
 \alias{ff_scoring.sleeper_conn}
-\title{Get League Scoring settings}
+\title{Get League Scoring Settings}
 \usage{
 ff_scoring(conn)
 

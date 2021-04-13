@@ -12,8 +12,6 @@
 #' ff_scoringhistory(conn)
 #' }
 #'
-#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
-#'
 #' @describeIn ff_scoringhistory ESPN: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export

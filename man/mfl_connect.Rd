@@ -50,6 +50,3 @@ mfl_connect(season = 2020, league_id = 54040)
 mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 }
 }
-\seealso{
-\code{\link{ff_connect}}, \code{\link{sleeper_connect}}
-}

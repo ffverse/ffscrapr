@@ -7,7 +7,7 @@
 \alias{ff_scoringhistory.flea_conn}
 \alias{ff_scoringhistory.mfl_conn}
 \alias{ff_scoringhistory.sleeper_conn}
-\title{Use nflfastr to build league-specific scoring history}
+\title{Get League-Specific Scoring History}
 \usage{
 ff_scoringhistory(conn, season, ...)
 
@@ -70,11 +70,5 @@ ff_scoringhistory(conn, season = 2020)
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
-
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
-
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
-
 \url{https://www.nflfastr.com/reference/load_player_stats.html}
 }

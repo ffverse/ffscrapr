@@ -13,8 +13,6 @@
 #' ff_scoringhistory(conn, season = 2020)
 #' }
 #'
-#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
-#'
 #' @describeIn ff_scoringhistory Sleeper: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export

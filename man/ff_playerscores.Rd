@@ -39,7 +39,7 @@ A tibble of historical player scoring
 This function returns a tidy dataframe of player scores based on league rules.
 
 Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
-Adding some nflfastr-based ideas to the pipeline for future iterations.
+Please see `ff_scoringhistory()` for an alternative reconstruction.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -68,4 +68,7 @@ x
 sfb_conn <- mfl_connect(2020, league_id = 65443)
 ff_playerscores(conn = sfb_conn, season = 2019, week = "YTD")
 }
+}
+\seealso{
+ff_scoringhistory
 }
