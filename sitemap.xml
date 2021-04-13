@@ -100,7 +100,13 @@
     <loc>ffscrapr.dynastyprocess.com/reference/ff_scoring.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_scoringhistory.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_standings.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/ff_starter_positions.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/ff_starters.html</loc>
@@ -139,6 +145,15 @@
     <loc>ffscrapr.dynastyprocess.com/reference/mfl_players.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/nflfastr_rosters.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/nflfastr_weekly.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/parse_raw_rds.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/pipe.html</loc>
   </url>
   <url>
@@ -167,6 +182,9 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/articles/ffscrapr_scoringhistory.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html</loc>

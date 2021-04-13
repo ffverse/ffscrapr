@@ -1,17 +1,23 @@
-@import 'https://fonts.googleapis.com/css?family=Barlow:400,700|Fira+Mono:400,700';
+@import 'https://fonts.googleapis.com/css?family=Fira+Mono:400,700|family=IBM+Plex+Sans:400,700';
+
 
 body{
-  font-family: 'Barlow', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 h1 {
   font-family: 'Fira Mono', sans-serif;
 }
 
+h1,h2,h3 {
+  font-weight: 700;
+}
+
 pre, code {
   font-family: 'Fira Mono';
 }
 
-.navbar-brand {
+.navbar-link {
+  font-weight: 700;
   font-family: 'Fira Mono';
 }

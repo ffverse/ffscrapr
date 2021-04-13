@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Empty Function Cache — .ff_clear_cache • ffscrapr</title>
+<title>Import latest nflfastr weekly stats — nflfastr_weekly • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Empty Function Cache — .ff_clear_cache" />
-<meta property="og:description" content="This function will reset the cache for any and all ffscrapr cached functions." />
+<meta property="og:title" content="Import latest nflfastr weekly stats — nflfastr_weekly" />
+<meta property="og:description" content="Fetches a copy of the latest week-level stats from nflfastr's data repository.
+The same output as nflfastr's load_player_stats() function." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -182,19 +183,71 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Empty Function Cache</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_cache.R'><code>R/0_cache.R</code></a></small>
-    <div class="hidden name"><code>dot-ff_clear_cache.Rd</code></div>
+    <h1>Import latest nflfastr weekly stats</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/1_import_nflfastr.R'><code>R/1_import_nflfastr.R</code></a></small>
+    <div class="hidden name"><code>nflfastr_weekly.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will reset the cache for any and all ffscrapr cached functions.</p>
+    <p>Fetches a copy of the latest week-level stats from nflfastr's data repository.
+The same output as nflfastr's load_player_stats() function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.ff_clear_cache</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>nflfastr_weekly</span><span class='op'>(</span>type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"offense"</span>, <span class='st'>"defense"</span>, <span class='st'>"all"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>type</th>
+      <td><p>One of "offense", "defense", or "all" - currently, only "offense" is available.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Weekly stats for all passers, rushers and receivers in the nflfastR play-by-play data from the 1999 season to the most recent season</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The goal of this data is to replicate the NFL's official weekly stats, which
+can diverge a bit from what fantasy data feeds display.</p>
+<p>If you have any issues with the output of this data, please open an issue in
+the nflfastr repository.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://www.nflfastr.com/reference/load_player_stats.html'>https://www.nflfastr.com/reference/load_player_stats.html</a></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>nflfastr_weekly</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,757 x 38</span><span>
+#&gt;    player_id  player_name recent_team season  week completions attempts
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 00-0000003 A.al-Jabbar MIA           </span><span style='text-decoration: underline;'>1</span><span>999     1           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 00-0000003 A.al-Jabbar MIA           </span><span style='text-decoration: underline;'>1</span><span>999     2           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 00-0000003 A.al-Jabbar MIA           </span><span style='text-decoration: underline;'>1</span><span>999     4           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999     7           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999     8           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999     9           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999    10           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999    11           0        0
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999    12           0        0
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 00-0000003 A.al-Jabbar CLE           </span><span style='text-decoration: underline;'>1</span><span>999    13           0        0
+#&gt; </span><span style='color: #949494;'># … with 112,747 more rows, and 31 more variables: passing_yards &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   passing_tds &lt;int&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   sack_fumbles_lost &lt;int&gt;, passing_air_yards &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   passing_yards_after_catch &lt;dbl&gt;, passing_first_downs &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   passing_epa &lt;dbl&gt;, passing_2pt_conversions &lt;int&gt;, dakota &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   carries &lt;int&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_first_downs &lt;dbl&gt;, rushing_epa &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   rushing_2pt_conversions &lt;int&gt;, receptions &lt;int&gt;, targets &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   receiving_yards &lt;dbl&gt;, receiving_tds &lt;int&gt;, receiving_fumbles_lost &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   receiving_air_yards &lt;dbl&gt;, receiving_yards_after_catch &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   receiving_first_downs &lt;dbl&gt;, receiving_epa &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   receiving_2pt_conversions &lt;int&gt;, special_teams_tds &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   fantasy_points &lt;dbl&gt;, fantasy_points_ppr &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
