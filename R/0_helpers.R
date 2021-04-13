@@ -150,3 +150,16 @@ set_unescaped_cookies <- function(...) {
 
   httr::config(cookie = cookie)
 }
+
+#' Release questions
+#'
+#' @keywords internal
+#'
+release_bullets <- function(){
+
+  c(
+    "Tag the current version of ffscrapr-tests as a release version",
+    'Switch all vignettes and tests to use "ffscrapr-tests-v1.x.x" and download "archive/v1.x.x"'
+  )
+
+}
