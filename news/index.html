@@ -189,7 +189,7 @@
 <h1 class="page-header" data-toc-text="1.4.0">
 <a href="#ffscrapr-140" class="anchor"></a>ffscrapr 1.4.0<small> 2021-04-13 </small>
 </h1>
-<p>The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0.</p>
+<p>The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to <a href="https://twitter.com/JoeSydlowskiFF">Joe Sydlowski</a> for his contributions on scoring history (and everything else DynastyProcess!)</p>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New Features</h2>
@@ -201,7 +201,7 @@
 <li>
 <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> connects your league’s scoring settings to the nflfastr data (c/o the functions above), and allows you to reconstruct historical scoring for your league!</li>
 <li>
-<code>ff_starterpositions()</code> describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!</li>
+<code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code> describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!</li>
 </ul>
 </div>
 <div id="breaking-changes" class="section level2">
@@ -218,8 +218,8 @@
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
 <ul>
-<li>Force MFL playerscores to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
-<li>Reduce minimum rows for flea rosters test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>
+<li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
+<li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>
 <li>Switching memoise backend to cachem package, fixes CRAN check issue where digest is no longer imported by memoise. Cachem also apparently more performant! (<a href='https://github.com/dynastyprocess/ffscrapr/issues/244'>#244</a>)</li>
 <li>
 <code>sleeper_transactions</code> now correctly handles multiple dropped players in one transaction. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/246'>#246</a>).</li>
