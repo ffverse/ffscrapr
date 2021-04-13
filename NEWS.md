@@ -9,8 +9,8 @@ The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to
 - `ff_starterpositions()` describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!
 
 ## Breaking Changes
-- Removed override_pos column from espn_scoring which only had a value of 16 for D/ST specific rules
-- Expanded ESPN and Sleeper ff_scoring rules from one line per rule to one line per position per rule
+- `ff_scoring` for ESPN loses the "override_pos" which only had a value of 16 for D/ST specific rules
+- `ff_scoring` rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule
 
 ## Minor Changes
 
