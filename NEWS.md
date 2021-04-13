@@ -2,7 +2,8 @@
 
 ## Notes
 
-- Added `release_questions` to help remind me to maintain test infrastructure
+- Added `release_questions` to help remind me to maintain test infrastructure (v1.4.0.01)
+- `mfl_starter_positions` now correctly calculates offensive starters (first via "iop_starters" if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves #264) (v1.4.0.02)
 
 ---
 

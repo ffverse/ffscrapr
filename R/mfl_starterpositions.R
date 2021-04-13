@@ -9,18 +9,24 @@
 #'
 #' @examples
 #' \donttest{
-#' dlfidp_conn <- mfl_connect(2020, league_id = 54040)
+#' dlfidp_conn <- mfl_connect(2020, league_id = 33158)
 #' ff_starter_positions(conn = dlfidp_conn)
 #' }
 #'
 #' @export
 
 ff_starter_positions.mfl_conn <- function(conn, ...) {
+
   starter_positions <- mfl_getendpoint(conn, "league") %>%
     purrr::pluck("content", "league", "starters") %>%
     list() %>%
     tibble::tibble() %>%
-    tidyr::hoist(1, "total_starters" = "count", "defense_starters" = "idp_starters", "position") %>%
+    tidyr::hoist(
+      1,
+      "total_starters" = "count",
+      "defense_starters" = "idp_starters",
+      "offense_starters" = "iop_starters",
+      "position") %>%
     tidyr::unnest_longer("position") %>%
     tidyr::hoist("position", "pos" = "name", "limit") %>%
     tidyr::separate("limit", into = c("min", "max"), sep = "\\-", fill = "right") %>%
@@ -28,7 +34,10 @@ ff_starter_positions.mfl_conn <- function(conn, ...) {
     dplyr::mutate(
       max = dplyr::coalesce(.data$max, .data$min),
       defense_starters = dplyr::coalesce(as.integer(.data[["defense_starters"]]), 0),
-      offense_starters = as.integer(.data$total_starters) - .data$defense_starters
+      kdst_starters = sum(.data$pos %in% c("DEF","PK","PN","TMPK","TMPN","Coach","ST") * .data$min),
+      offense_starters = dplyr::coalesce(
+        as.integer(.data[["offense_starters"]]),
+        as.integer(.data$total_starters) - .data$defense_starters - .data$kdst_starters)
     ) %>%
     dplyr::select(
       "pos",
@@ -36,6 +45,7 @@ ff_starter_positions.mfl_conn <- function(conn, ...) {
       "max",
       "offense_starters",
       "defense_starters",
+      "kdst_starters",
       "total_starters"
     )
 
