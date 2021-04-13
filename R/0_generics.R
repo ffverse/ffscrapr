@@ -319,13 +319,16 @@ ff_starter_positions.default <- function(conn, ...) {
 
 ## ff_scoringhistory ##
 
-#' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
+#' Use nflfastr to build league-specific scoring history
+#'
+#' (Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+#' Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!
 #'
 #' @param conn a conn object created by \code{ff_connect()}
-#' @param season season a numeric vector of seasons (earliest available year is 1999)
+#' @param season a numeric vector of seasons (earliest available year is 1999, default is 1999:2020)
 #' @param ... other arguments
 #'
-#' @return A tidy dataframe of scoring history in a flat table, one row per player per week.
+#' @return A tidy dataframe of weekly fantasy scoring data, one row per player per week
 #'
 #' @export ff_scoringhistory
 
