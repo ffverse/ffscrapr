@@ -2,11 +2,11 @@
 
 ## CRAN Check Corrections
 
-This release corrects an issue where URL parameters were being programmatically determined by a date threshold (which caused tests to fail when the date threshold was crossed and there were no mock files to support the new query). This has been fixed by rewriting the function to take dates from function-arguments, so that tests will not fail when the date threshold is crossed. 
+This release corrects a CRAN check issue where a dependency changed from using digest to cachem as an underlying package. ffscrapr has been rewritten to use cachem as per memoise's suggestions on best practice. 
 
 ## New features
 
-This release extends the package to support another fantasy football platform, ESPN. 
+This release adds functions to connect to another source of data. 
 
 ## Test environments
 * local (Windows) R installation, R 4.0.4
