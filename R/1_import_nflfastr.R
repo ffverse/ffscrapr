@@ -26,7 +26,7 @@
 nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
   file_name <- match.arg(type)
 
-  url_query <- "https://github.com/guga31bb/nflfastR-data/raw/master/data/player_stats.rds"
+  url_query <- "https://github.com/nflverse/nflfastR-data/raw/master/data/player_stats.rds"
 
   response <- httr::RETRY("GET", url_query)
 
@@ -66,7 +66,7 @@ nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
 nflfastr_rosters <- function(seasons) {
   checkmate::assert_numeric(seasons, lower = 1999, upper = lubridate::year(Sys.Date()))
 
-  urls <- glue::glue("https://github.com/mrcaseb/nflfastR-roster/raw/master/data/seasons/roster_{seasons}.rds")
+  urls <- glue::glue("https://github.com/nflverse/nflfastR-roster/raw/master/data/seasons/roster_{seasons}.rds")
 
   df_rosters <- purrr::map_df(urls, .nflfastr_roster)
 
