@@ -63,8 +63,9 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
     purrr::pluck("content")
 
   draft_rounds <- league_settings %>%
-    purrr::pluck("settings", "draft_rounds") %>%
-    seq_len()
+    purrr::pluck("settings", "draft_rounds")
+
+  draft_rounds <- seq_len(draft_rounds)
 
   # Seems to be that you can only trade three years in advance, hard-coded into the platform
   seasons <- league_settings %>%

@@ -1,5 +1,7 @@
 #### On Load ####
 
+.ffscrapr_env <- new.env(parent = emptyenv())
+
 .onLoad <- function(libname, pkgname) {
 
   # nocov start
@@ -89,21 +91,25 @@
 
   # if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 
-  env <- rlang::env(
-    user_agent = glue::glue(
-      "ffscrapr/{utils::packageVersion('ffscrapr')} API client package",
-      " https://github.com/dynastyprocess/ffscrapr"
-    ) %>%
-      httr::user_agent(),
-    get = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(60, 60)),
-    get.mfl = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(2, 3)),
-    get.sleeper = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
-    get.flea = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
-    get.espn = ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2)),
-    post = ratelimitr::limit_rate(.retry_post, ratelimitr::rate(60, 60))
-  )
+  user_agent <-  glue::glue("ffscrapr/{utils::packageVersion('ffscrapr')} ",
+                            "API client package ",
+                            "https://github.com/dynastyprocess/ffscrapr") %>%
+    httr::user_agent()
 
-  assign(".ffscrapr_env", env, envir = baseenv())
+  # get <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(60, 60))
+  get.mfl <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(2, 3))
+  get.sleeper <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2))
+  get.flea <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2))
+  get.espn <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(30, 2))
+  post <-  ratelimitr::limit_rate(.retry_post, ratelimitr::rate(60, 60))
+
+
+  assign("user_agent",user_agent, envir = .ffscrapr_env)
+  assign("get.mfl",get.mfl, envir = .ffscrapr_env)
+  assign("get.sleeper",get.sleeper, envir = .ffscrapr_env)
+  assign("get.flea",get.flea, envir = .ffscrapr_env)
+  assign("get.espn",get.espn, envir = .ffscrapr_env)
+  assign("post",post, envir = .ffscrapr_env)
 
   # nocov end
 }
