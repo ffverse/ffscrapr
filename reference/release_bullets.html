@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get User Leagues — ff_userleagues • ffscrapr</title>
+<title>Release questions — release_bullets • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get User Leagues — ff_userleagues" />
-<meta property="og:description" content="This function returns a tidy dataframe with one row for every league a user is in. This requries authentication cookies for MFL usage." />
+<meta property="og:title" content="Release questions — release_bullets" />
+<meta property="og:description" content="Release questions" />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -182,70 +182,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get User Leagues</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_userleagues.R'><code>R/espn_userleagues.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_userleagues.R'><code>R/flea_userleagues.R</code></a>, and 2 more</small>
-    <div class="hidden name"><code>ff_userleagues.Rd</code></div>
+    <h1>Release questions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_helpers.R'><code>R/0_helpers.R</code></a></small>
+    <div class="hidden name"><code>release_bullets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function returns a tidy dataframe with one row for every league a user is in. This requries authentication cookies for MFL usage.</p>
+    <p>Release questions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_userleagues</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>release_bullets</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-<span class='co'># S3 method for espn_conn</span>
-<span class='fu'>ff_userleagues</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S3 method for flea_conn</span>
-<span class='fu'>ff_userleagues</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='cn'>NULL</span>, user_email <span class='op'>=</span> <span class='cn'>NULL</span>, season <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_userleagues</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S3 method for sleeper_conn</span>
-<span class='fu'>ff_userleagues</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='cn'>NULL</span>, user_name <span class='op'>=</span> <span class='cn'>NULL</span>, season <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>conn</th>
-      <td><p>a connection object created by <code><a href='ff_connect.html'>ff_connect()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>arguments that may be passed to other methods (for method consistency)</p></td>
-    </tr>
-    <tr>
-      <th>user_email</th>
-      <td><p>the username to look up - defaults to user created in conn if available</p></td>
-    </tr>
-    <tr>
-      <th>season</th>
-      <td><p>the season to look up leagues for</p></td>
-    </tr>
-    <tr>
-      <th>user_name</th>
-      <td><p>the username to look up - defaults to user created in conn if available</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tidy dataframe with one row for every league a user is in</p>
-    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
-
-    
-<ul>
-<li><p><code>espn_conn</code>: ESPN: does not support a lookup of user leagues by email or user ID at this time.</p></li>
-<li><p><code>flea_conn</code>: flea: returns a listing of leagues for a given user_email</p></li>
-<li><p><code>mfl_conn</code>: MFL: With username/password, it will return a list of user leagues.</p></li>
-<li><p><code>sleeper_conn</code>: Sleeper: returns a listing of leagues for a given user_id or user_name</p></li>
-</ul>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='fleaflicker_userleagues.html'>fleaflicker_userleagues</a></code> to call this function for flea leagues without first creating a connection object.</p>
-<p><code><a href='sleeper_userleagues.html'>sleeper_userleagues</a></code> to call this function for Sleeper leagues without first creating a connection object.</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

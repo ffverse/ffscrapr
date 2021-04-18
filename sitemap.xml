@@ -148,6 +148,9 @@
     <loc>ffscrapr.dynastyprocess.com/reference/nflfastr_rosters.html</loc>
   </url>
   <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/nflfastr_stat_mapping.html</loc>
+  </url>
+  <url>
     <loc>ffscrapr.dynastyprocess.com/reference/nflfastr_weekly.html</loc>
   </url>
   <url>
@@ -155,6 +158,9 @@
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>ffscrapr.dynastyprocess.com/reference/release_bullets.html</loc>
   </url>
   <url>
     <loc>ffscrapr.dynastyprocess.com/reference/set_unescaped_cookies.html</loc>
