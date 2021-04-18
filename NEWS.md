@@ -1,11 +1,18 @@
-# ffscrapr (development version)
+# ffscrapr 1.4.1
 
-## Notes
+The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental `ff_scoringhistory` and `ff_starter_positions` functions released in v1.4.0. 
 
-- Added `release_questions` to help remind me to maintain test infrastructure (v1.4.0.01)
-- `mfl_starter_positions` now correctly calculates offensive starters (first via "iop_starters" if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves #264) (v1.4.0.02)
-- Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves #268) (v1.4.0.03)
-- `.ffscrapr_env` relocated from being a child of the base environment to being a child of the empty environment (Resolves #269) (v1.4.0.04)
+## New features
+
+- `nflfastr_stat_mapping` is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of `ff_scoringhistory()`.
+
+## Minor changes
+
+- Added `release_questions` to help remind me to maintain test infrastructure
+- `mfl_starter_positions` now correctly calculates offensive starters (first via "iop_starters" if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves #264)
+- Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves #268)
+- `.ffscrapr_env` relocated from being a child of the base environment to being a child of the empty environment (Resolves #269)
+- `ff_scoringhistory` refactored and adds better support for MFL's fumbles and firstdowns. (Resolves #265)
 
 ---
 

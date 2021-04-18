@@ -51,10 +51,8 @@ ff_scoringhistory(conn)
 }
 
 \donttest{
-#'
-conn <- fleaflicker_connect(2020, 312861)
-x <- ff_scoringhistory(conn, season = 2020)
-x
+# conn <- fleaflicker_connect(2020, 312861)
+ff_scoringhistory(conn, season = 2020)
 }
 
 \donttest{
@@ -64,8 +62,8 @@ x
 
 \donttest{
 #'
-conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_scoringhistory(conn, season = 2020)
+# conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+# ff_scoringhistory(conn, season = 2020)
 }
 
 }
