@@ -175,4 +175,4 @@ release_bullets <- function(){
 #'   \item{ff_event}{name of the statistic for that platform}
 #' }
 #' @source \url{DynastyProcess.com}
-"nflfastr_stat_mappings"
+"nflfastr_stat_mapping"
