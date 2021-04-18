@@ -8,10 +8,8 @@
 #'
 #' @examples
 #' \donttest{
-#' #'
-#' conn <- fleaflicker_connect(2020, 312861)
-#' x <- ff_scoringhistory(conn, season = 2020)
-#' x
+#' # conn <- fleaflicker_connect(2020, 312861)
+#' ff_scoringhistory(conn, season = 2020)
 #' }
 #'
 #' @describeIn ff_scoringhistory Fleaflicker: returns scoring history in a flat table, one row per player per week.
@@ -22,7 +20,12 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
 
   # Pull in scoring rules for that league
   league_rules <-
-    ff_scoring(conn)
+    ff_scoring(conn) %>%
+    dplyr::left_join(
+      nflfastr_stat_mapping %>%
+        dplyr::filter(.data$platform == "fleaflicker") %>%
+        dplyr::mutate(ff_event = as.integer(.data$ff_event)),
+      by = c("event_id" = "ff_event"))
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters
   fastr_rosters <-
@@ -43,8 +46,7 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
         "special_teams_tds"
       )
     ) %>%
-    dplyr::inner_join(stat_mapping, by = c("metric" = "nflfastr_event")) %>%
-    dplyr::inner_join(league_rules, by = c("fleaflicker_event" = "event_id", "position" = "pos")) %>%
+    dplyr::inner_join(league_rules, by = c("metric" = "nflfastr_event", "position" = "pos")) %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
