@@ -6,6 +6,8 @@
 - `mfl_starter_positions` now correctly calculates offensive starters (first via "iop_starters" if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves #264) (v1.4.0.02)
 - Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves #268) (v1.4.0.03)
 - `.ffscrapr_env` relocated from being a child of the base environment to being a child of the empty environment (Resolves #269) (v1.4.0.04)
+- `ff_stat_mapping` converted from internal dataframe to exported dataframe. It is a long table of conversions between nflfastr player stats columns to specific fantasy platform columns.
+- `ff_scoringhistory` refactored and adds better support for MFL's fumbles and firstdowns. (Resolves #265) (v1.4.0.05)
 
 ---
 

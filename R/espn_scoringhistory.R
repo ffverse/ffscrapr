@@ -20,7 +20,10 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
 
   # Pull in scoring rules for that league
   league_rules <-
-    ff_scoring(conn)
+    ff_scoring(conn) %>%
+    dplyr::left_join(
+      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "espn"),
+      by = c("stat_name" = "ff_event"))
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters
   fastr_rosters <-
@@ -41,8 +44,7 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
         "special_teams_tds"
       )
     ) %>%
-    dplyr::inner_join(stat_mapping, by = c("metric" = "nflfastr_event")) %>%
-    dplyr::inner_join(league_rules, by = c("espn_event" = "stat_name", "position" = "pos")) %>%
+    dplyr::inner_join(league_rules, by = c("metric" = "nflfastr_event", "position" = "pos")) %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
