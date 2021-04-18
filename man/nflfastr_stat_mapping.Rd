@@ -13,7 +13,7 @@ A data frame with ~85 rows and 3 variables:
 }
 }
 \source{
-\url{DynastyProcess.com}
+Manually created for ffscrapr by Joe & Tan
 }
 \usage{
 nflfastr_stat_mapping

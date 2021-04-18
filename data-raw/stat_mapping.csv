@@ -61,7 +61,7 @@ sack_fumbles_lost,mfl,FL
 sacks,mfl,TSK
 special_teams_tds,mfl,#KT
 targets,mfl,TGT
-sack_yards ,mfl,TSY
+sack_yards,mfl,TSY
 attempts,sleeper,pass_att
 carries,sleeper,rush_att
 completions,sleeper,pass_cmp

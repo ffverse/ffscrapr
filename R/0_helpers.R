@@ -157,10 +157,14 @@ set_unescaped_cookies <- function(...) {
 #'
 release_bullets <- function(){
 
+  #nocov start
+
   c(
     "Tag the current version of ffscrapr-tests as a release version",
     'Switch all vignettes and tests to use "ffscrapr-tests-v1.x.x" and download "archive/v1.x.x"'
   )
+
+  #nocov end
 
 }
 
@@ -174,5 +178,5 @@ release_bullets <- function(){
 #'   \item{platform}{specific platform that this mapping applies to}
 #'   \item{ff_event}{name of the statistic for that platform}
 #' }
-#' @source \url{DynastyProcess.com}
+#' @source Manually created for ffscrapr by Joe & Tan
 "nflfastr_stat_mapping"
