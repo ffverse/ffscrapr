@@ -178,5 +178,5 @@ release_bullets <- function(){
 #'   \item{platform}{specific platform that this mapping applies to}
 #'   \item{ff_event}{name of the statistic for that platform}
 #' }
-#' @source Manually created for ffscrapr by Joe & Tan
+#'
 "nflfastr_stat_mapping"

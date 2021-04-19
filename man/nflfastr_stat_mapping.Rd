@@ -12,9 +12,6 @@ A data frame with ~85 rows and 3 variables:
   \item{ff_event}{name of the statistic for that platform}
 }
 }
-\source{
-Manually created for ffscrapr by Joe & Tan
-}
 \usage{
 nflfastr_stat_mapping
 }

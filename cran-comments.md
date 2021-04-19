@@ -1,4 +1,6 @@
-## SUBMISSION
+## RESUBMISSION
+
+Corrected url issue in man/nflfastr_stat_mapping.Rd
 
 ## CRAN Check Corrections
 
