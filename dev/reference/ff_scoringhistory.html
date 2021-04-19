@@ -93,7 +93,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.0.04</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.00</span>
       </span>
     </div>
 
@@ -266,40 +266,9 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 #&gt; </span><span style='color: #949494;'>#   special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='co'>#'</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='va'>x</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5,400 x 23</span><span>
-#&gt;    season  week gsis_id   sportradar_id           player_name pos   team  points
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     1 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     29.5 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     2 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     16.4 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     3 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     32.9 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     4 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     48.5 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     5 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     19.1 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     6 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     20.9 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     7 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     50.6 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     8 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     27.6 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     9 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB      7.86
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020    10 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     42.6 
-#&gt; </span><span style='color: #949494;'># … with 5,390 more rows, and 15 more variables: passing_yards &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;, passing_first_downs &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   rushing_first_downs &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;, receptions &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;, receiving_first_downs &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='co'># ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)</span>
-<span class='co'># ff_scoringhistory(ssb_conn)</span>
-<span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='co'>#'</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='co'># conn &lt;- fleaflicker_connect(2020, 312861)</span>
 <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5,414 x 22</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5,423 x 23</span><span>
 #&gt;    season  week gsis_id   sportradar_id           player_name pos   team  points
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     1 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     20.5 
@@ -312,12 +281,24 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     8 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     19.1 
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020     9 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB      2.36
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>020    10 00-00195… 41c44740-d0f6-44ab-834… T.Brady     QB    TB     31.8 
-#&gt; </span><span style='color: #949494;'># … with 5,404 more rows, and 14 more variables: passing_yards &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 5,413 more rows, and 15 more variables: passing_yards &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;, sack_fumbles_lost &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span><span>
 #&gt; </span><span style='color: #949494;'>#   receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt; </span><span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   special_teams_tds &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='co'># ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)</span>
+<span class='co'># ff_scoringhistory(ssb_conn)</span>
+<span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='co'>#'</span>
+<span class='co'># conn &lt;- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)</span>
+<span class='co'># ff_scoringhistory(conn, season = 2020)</span>
+<span class='co'># }</span>
 
 </div></span></pre>
   </div>

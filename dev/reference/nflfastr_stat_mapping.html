@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get MFL Login Cookie — .mfl_logincookie • ffscrapr</title>
+<title>Mappings for nflfastr to fantasy platform scoring — nflfastr_stat_mapping • ffscrapr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,9 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get MFL Login Cookie — .mfl_logincookie" />
-<meta property="og:description" content="Gets login cookie for MFL based on user_name/password
-Docs: https://api.myfantasyleague.com/2020/api_info#login_info" />
+<meta property="og:title" content="Mappings for nflfastr to fantasy platform scoring — nflfastr_stat_mapping" />
+<meta property="og:description" content="A small helper dataframe for connecting nflfastr to specific fantasy platform rules." />
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
@@ -183,38 +182,27 @@ Docs: https://api.myfantasyleague.com/2020/api_info#login_info" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get MFL Login Cookie</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_connect.R'><code>R/mfl_connect.R</code></a></small>
-    <div class="hidden name"><code>dot-mfl_logincookie.Rd</code></div>
+    <h1>Mappings for nflfastr to fantasy platform scoring</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_helpers.R'><code>R/0_helpers.R</code></a></small>
+    <div class="hidden name"><code>nflfastr_stat_mapping.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Gets login cookie for MFL based on user_name/password
-Docs: https://api.myfantasyleague.com/2020/api_info#login_info</p>
+    <p>A small helper dataframe for connecting nflfastr to specific fantasy platform rules.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>.mfl_logincookie</span><span class='op'>(</span><span class='va'>user_name</span>, <span class='va'>password</span>, <span class='va'>season</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>nflfastr_stat_mapping</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>user_name</th>
-      <td><p>MFL user_name (as string)</p></td>
-    </tr>
-    <tr>
-      <th>password</th>
-      <td><p>MFL password (as string)</p></td>
-    </tr>
-    <tr>
-      <th>season</th>
-      <td><p>Season</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>a login cookie, which should be included as a parameter in an httr GET request</p>
+    <p>A data frame with ~85 rows and 3 variables:</p><dl>
+  <dt>nflfastr_event</dt><dd><p>the column name of the statistic in the nflfastr_weekly dataset</p></dd>
+  <dt>platform</dt><dd><p>specific platform that this mapping applies to</p></dd>
+  <dt>ff_event</dt><dd><p>name of the statistic for that platform</p></dd>
+
+</dl>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

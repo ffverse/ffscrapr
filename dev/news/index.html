@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.0.04</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.00</span>
       </span>
     </div>
 
@@ -189,16 +189,32 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
-<div id="notes" class="section level2">
+</div>
+    <div id="ffscrapr-141" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.1">
+<a href="#ffscrapr-141" class="anchor"></a>ffscrapr 1.4.1<small> 2021-04-18 </small>
+</h1>
+<p>The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental <code>ff_scoringhistory</code> and <code>ff_starter_positions</code> functions released in v1.4.0.</p>
+<div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#notes" class="anchor"></a>Notes</h2>
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>Added <code>release_questions</code> to help remind me to maintain test infrastructure (v1.4.0.01)</li>
 <li>
-<code>mfl_starter_positions</code> now correctly calculates offensive starters (first via “iop_starters” if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/264'>#264</a>) (v1.4.0.02)</li>
-<li>Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/268'>#268</a>) (v1.4.0.03)</li>
+<code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
 <li>
-<code>.ffscrapr_env</code> relocated from being a child of the base environment to being a child of the empty environment (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/269'>#269</a>) (v1.4.0.04)</li>
+<code>mfl_starter_positions</code> now correctly calculates offensive starters (first via “iop_starters” if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/264'>#264</a>)</li>
+<li>Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/268'>#268</a>)</li>
+<li>
+<code>.ffscrapr_env</code> relocated from being a child of the base environment to being a child of the empty environment (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/269'>#269</a>)</li>
+<li>
+<code>ff_scoringhistory</code> refactored and adds better support for MFL’s fumbles and firstdowns. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/265'>#265</a>)</li>
 </ul>
 <hr>
 </div>
@@ -208,14 +224,14 @@
 <a href="#ffscrapr-140" class="anchor"></a>ffscrapr 1.4.0<small> 2021-04-13 </small>
 </h1>
 <p>The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to <a href="https://twitter.com/JoeSydlowskiFF">Joe Sydlowski</a> for his contributions on scoring history (and everything else DynastyProcess!)</p>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New Features</h2>
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
 <ul>
 <li>
-<code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> imports weekly offensive statistics from nflfastR’s <a href="https://github.com/guga31bb/nflfastR-data">data repository</a>.</li>
+<code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> imports weekly offensive statistics from nflfastR’s <a href="https://github.com/nflverse/nflfastR-data">data repository</a>.</li>
 <li>
-<code><a href="../reference/nflfastr_rosters.html">nflfastr_rosters()</a></code> imports team rosters from nflfastR’s <a href="https://github.com/mrcaseb/nflfastR-roster">roster repository</a>.</li>
+<code><a href="../reference/nflfastr_rosters.html">nflfastr_rosters()</a></code> imports team rosters from nflfastR’s <a href="https://github.com/nflverse/nflfastR-roster">roster repository</a>.</li>
 <li>
 <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> connects your league’s scoring settings to the nflfastr data (c/o the functions above), and allows you to reconstruct historical scoring for your league!</li>
 <li>
@@ -232,9 +248,9 @@
 <code>ff_scoring</code> rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
+<div id="minor-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-1" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
 <li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>
