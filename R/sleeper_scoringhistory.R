@@ -9,8 +9,8 @@
 #' @examples
 #' \donttest{
 #' #'
-#' conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_scoringhistory(conn, season = 2020)
+#' # conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#' # ff_scoringhistory(conn, season = 2020)
 #' }
 #'
 #' @describeIn ff_scoringhistory Sleeper: returns scoring history in a flat table, one row per player per week.
@@ -21,7 +21,10 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
 
   # Pull in scoring rules for that league
   league_rules <-
-    ff_scoring(conn)
+    ff_scoring(conn) %>%
+    dplyr::left_join(
+      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
+      by = c("event" = "ff_event"))
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters
   fastr_rosters <-
@@ -42,8 +45,7 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
         "special_teams_tds"
       )
     ) %>%
-    dplyr::inner_join(stat_mapping, by = c("metric" = "nflfastr_event")) %>%
-    dplyr::inner_join(league_rules, by = c("sleeper_event" = "event", "position" = "pos")) %>%
+    dplyr::inner_join(league_rules, by = c("metric" = "nflfastr_event", "position" = "pos")) %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%

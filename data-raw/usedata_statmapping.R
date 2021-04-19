@@ -1,5 +1,5 @@
 # Import Stat Mapping CSV
-stat_mapping <- read.csv("data-raw/stat_mapping.csv")
+nflfastr_stat_mapping <- read.csv("data-raw/stat_mapping.csv")
 
 # Create Sleeper Rule to Position Mapping
 conn <- ff_connect(platform = "sleeper", league_id = "653543448376320000", season = 2020)
@@ -35,4 +35,6 @@ sleeper_rule_mapping <-
   tidyr::unnest_longer(col = "pos") %>%
   dplyr::select(-"points")
 
-usethis::use_data(sleeper_rule_mapping, stat_mapping, overwrite = TRUE, internal = TRUE)
+usethis::use_data(nflfastr_stat_mapping, overwrite = TRUE)
+
+usethis::use_data(sleeper_rule_mapping, overwrite = TRUE, internal = TRUE)

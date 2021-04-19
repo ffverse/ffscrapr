@@ -150,3 +150,33 @@ set_unescaped_cookies <- function(...) {
 
   httr::config(cookie = cookie)
 }
+
+#' Release questions
+#'
+#' @keywords internal
+#'
+release_bullets <- function(){
+
+  #nocov start
+
+  c(
+    "Tag the current version of ffscrapr-tests as a release version",
+    'Switch all vignettes and tests to use "ffscrapr-tests-v1.x.x" and download "archive/v1.x.x"'
+  )
+
+  #nocov end
+
+}
+
+#' Mappings for nflfastr to fantasy platform scoring
+#'
+#' A small helper dataframe for connecting nflfastr to specific fantasy platform rules.
+#'
+#' @format A data frame with ~85 rows and 3 variables:
+#' \describe{
+#'   \item{nflfastr_event}{the column name of the statistic in the nflfastr_weekly dataset}
+#'   \item{platform}{specific platform that this mapping applies to}
+#'   \item{ff_event}{name of the statistic for that platform}
+#' }
+#'
+"nflfastr_stat_mapping"

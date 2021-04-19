@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" height="200"/></a>
+# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" width="25%" min-width="120px"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -30,13 +30,13 @@ other data sources.
 
 ### Installation
 
-Version 1.4.0 is now on CRAN :tada: and can be installed with:
+Version 1.4.1 is now on CRAN :tada: and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.0")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.1")
 ```
 
 Install the development version from GitHub with:

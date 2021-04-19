@@ -54,7 +54,7 @@ ff_starter_positions(conn)
 }
 
 \donttest{
-dlfidp_conn <- mfl_connect(2020, league_id = 54040)
+dlfidp_conn <- mfl_connect(2020, league_id = 33158)
 ff_starter_positions(conn = dlfidp_conn)
 }
 
