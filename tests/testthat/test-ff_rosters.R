@@ -1,9 +1,12 @@
 with_mock_api({
   test_that("ff_rosters returns a tibble", {
     skippy()
+
     ssb <- mfl_connect(2020, 54040)
     ssb_rosters <- ff_rosters(ssb)
+    ssb_rosters_w2 <- ff_rosters(ssb, week = 2)
     expect_tibble(ssb_rosters, min.rows = 300)
+    expect_tibble(ssb_rosters_w2, min.rows = 300)
 
     jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
     jml_rosters <- ff_rosters(jml_conn)
@@ -15,7 +18,9 @@ with_mock_api({
 
     tony_conn <- espn_connect(season = 2020, league_id = 899513)
     tony_rosters <- ff_rosters(tony_conn)
+    tony_rosters_w2 <- ff_rosters(tony_conn, week = 2)
 
     expect_tibble(tony_rosters, min.rows = 200)
+    expect_tibble(tony_rosters_w2, min.rows = 200)
   })
 })
