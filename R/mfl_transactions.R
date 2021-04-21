@@ -2,7 +2,7 @@
 
 #' Get full transactions table
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... additional args
 #'

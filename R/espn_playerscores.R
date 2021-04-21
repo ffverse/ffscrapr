@@ -2,7 +2,7 @@
 
 #' ESPN Player Scores
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param limit A numeric describing the number of players to return - default 1000
 #' @param ... other arguments (for other platform/methods)
 #'

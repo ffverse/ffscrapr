@@ -39,7 +39,7 @@ A tibble of historical player scoring
 This function returns a tidy dataframe of player scores based on league rules.
 
 Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
-Please see `ff_scoringhistory()` for an alternative reconstruction.
+Please see \code{ff_scoringhistory()} for an alternative reconstruction.
 }
 \section{Methods (by class)}{
 \itemize{

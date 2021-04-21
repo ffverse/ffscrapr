@@ -2,7 +2,7 @@
 
 #' Get User Leagues
 #'
-#' @param conn a connection object created by \code{ff_connect()}
+#' @param conn a connection object created by `ff_connect()`
 #' @param season the MFL platform season to look for
 #' @param ... arguments that may be passed to other methods (for method consistency)
 #'

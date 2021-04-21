@@ -2,7 +2,7 @@
 
 #' Get Draft Results
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... args for other methods
 #'

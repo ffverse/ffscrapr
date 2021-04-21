@@ -2,7 +2,7 @@
 
 #' Get full transactions table
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param franchise_id fleaflicker returns transactions grouped by franchise id, pass a list here to filter
 #' @param ... additional args for other methods
 #'

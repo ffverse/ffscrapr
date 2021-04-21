@@ -2,7 +2,7 @@
 
 #' MFL PlayerScores
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
 #' @param week a numeric vector (ie 1:17) or one of YTD (year-to-date) or AVG (average to date)
 #' @param ... other arguments

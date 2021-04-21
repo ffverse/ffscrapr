@@ -2,7 +2,7 @@
 
 #' MFL ff_starters
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param season the season of interest - generally only the most recent 2-3 seasons are available
 #' @param week a numeric vector (ie 1:3 or 1:17 etc)
 #' @param ... other arguments (currently unused)
