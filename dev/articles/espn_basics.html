@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.00</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.01</span>
       </span>
     </div>
 
@@ -265,18 +265,18 @@
 
 <span class="va">value_summary</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
-<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                  51211  7661 20007 17334  6209</span>
-<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      47172 19545 23252  1394  2981</span>
-<span class="co">#&gt;  3            2 "Coom  Dumpster"                  46885 16317  4032 24880  1656</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                   43408 14142 17399  4988  6879</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                   42807  2951 17737 17570  4549</span>
-<span class="co">#&gt;  6            1 "The Early GGod"                  39982 11452 14925 10705  2900</span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                      39137 12951 11897 12607  1682</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                     36116 10172 11676 13015  1253</span>
-<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            25240 10278   414 14444   104</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                     20671  7894  1336 11281   160</span></code></pre></div>
+<span class="co">#&gt;    franchise_id franchise_name                team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                              &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                   51211  7661 20007 17334  6209</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"       47172 19545 23252  1394  2981</span>
+<span class="co">#&gt;  3            2 "Coom  Dumpster"                   46885 16317  4032 24880  1656</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                    43408 14142 17399  4988  6879</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                    42807  2951 17737 17570  4549</span>
+<span class="co">#&gt;  6            1 "The Early GGod"                   39982 11452 14925 10705  2900</span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                       39137 12951 11897 12607  1682</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                      36116 10172 11676 13015  1253</span>
+<span class="co">#&gt;  9           10 "Austin &lt;U+0001F410&gt;Drew Loc…      25240 10278   414 14444   104</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                      20671  7894  1336 11281   160</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -285,18 +285,18 @@
 
 <span class="va">value_summary_pct</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
-<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                  0.13  0.068 0.163 0.135 0.219</span>
-<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      0.12  0.172 0.19  0.011 0.105</span>
-<span class="co">#&gt;  3            2 "Coom  Dumpster"                  0.119 0.144 0.033 0.194 0.058</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                   0.111 0.125 0.142 0.039 0.242</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                   0.109 0.026 0.145 0.137 0.16 </span>
-<span class="co">#&gt;  6            1 "The Early GGod"                  0.102 0.101 0.122 0.083 0.102</span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                      0.1   0.114 0.097 0.098 0.059</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                     0.092 0.09  0.095 0.102 0.044</span>
-<span class="co">#&gt;  9           10 "Austin 🐐Drew Lock🐐"            0.064 0.091 0.003 0.113 0.004</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                     0.053 0.07  0.011 0.088 0.006</span></code></pre></div>
+<span class="co">#&gt;    franchise_id franchise_name                team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                   0.13  0.068 0.163 0.135 0.219</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"       0.12  0.172 0.19  0.011 0.105</span>
+<span class="co">#&gt;  3            2 "Coom  Dumpster"                   0.119 0.144 0.033 0.194 0.058</span>
+<span class="co">#&gt;  4            7 "Tony El Tigre"                    0.111 0.125 0.142 0.039 0.242</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                    0.109 0.026 0.145 0.137 0.16 </span>
+<span class="co">#&gt;  6            1 "The Early GGod"                   0.102 0.101 0.122 0.083 0.102</span>
+<span class="co">#&gt;  7            3 "PAKI STANS"                       0.1   0.114 0.097 0.098 0.059</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                      0.092 0.09  0.095 0.102 0.044</span>
+<span class="co">#&gt;  9           10 "Austin &lt;U+0001F410&gt;Drew Loc…      0.064 0.091 0.003 0.113 0.004</span>
+<span class="co">#&gt; 10            8 "Big Coomers"                      0.053 0.07  0.011 0.088 0.006</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -332,7 +332,7 @@
 <span class="co">#&gt;  7            7 "Tony El Tigre"      24.5   24.7   27.5   26.2        3        5</span>
 <span class="co">#&gt;  8            8 "Big Coomers"        23.8   27     28.7   27.2        3        7</span>
 <span class="co">#&gt;  9            9 "RAFI CUNADO"        34.6   25.5   26     24.1        3        5</span>
-<span class="co">#&gt; 10           10 "Austin 🐐Drew Lo…   31.4   27.8   31.8   24.9        3        5</span>
+<span class="co">#&gt; 10           10 "Austin &lt;U+0001F4…   31.4   27.8   31.8   24.9        3        5</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

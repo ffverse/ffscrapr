@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.00</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.01</span>
       </span>
     </div>
 
@@ -194,7 +194,7 @@
     <pre class="usage"><span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for espn_conn</span>
-<span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for flea_conn</span>
 <span class='fu'>ff_rosters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -217,12 +217,12 @@
       <td><p>arguments passed to other methods (currently none)</p></td>
     </tr>
     <tr>
-      <th>custom_players</th>
-      <td><p>`r lifecycle::badge("deprecated")` - now returns custom players by default</p></td>
-    </tr>
-    <tr>
       <th>week</th>
       <td><p>a numeric that specifies which week to return</p></td>
+    </tr>
+    <tr>
+      <th>custom_players</th>
+      <td><p>`r lifecycle::badge("deprecated")` - now returns custom players by default</p></td>
     </tr>
     </table>
 
