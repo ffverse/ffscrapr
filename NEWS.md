@@ -4,6 +4,7 @@
 
 - `espn_rosters` now has a `week` argument to return a specific week of data. (Fixes #276, thanks @scottfrechette!) (v1.4.1.01)
 - `ff_scoringhistory` now tries to return a platform-specific player ID, where available. (Fixes #275) (v1.4.1.02)
+- Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues? (v1.4.1.03)
 
 # ffscrapr 1.4.1
 
