@@ -40,7 +40,13 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
   # Use custom ffscrapr function to get positions from nflfastR rosters
   fastr_rosters <-
     nflfastr_rosters(season) %>%
-    dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB", "FB"), "RB", .data$position))
+    dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB", "FB"), "RB", .data$position)) %>%
+    dplyr::left_join(
+      dp_playerids() %>%
+        dplyr::select("mfl_id","sportradar_id") %>%
+        dplyr::filter(!is.na(.data$sportradar_id)),
+      by = "sportradar_id"
+    )
 
   # Load stats from nflfastr and map the rules from the internal stat_mapping file
   fastr_weekly <- nflfastr_weekly() %>%
@@ -72,11 +78,11 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
     dplyr::ungroup() %>%
     dplyr::select("season", "week",
-      "gsis_id" = "player_id", "sportradar_id", "player_name"="full_name", "pos" = "position",
+      "gsis_id" = "player_id", "sportradar_id", "mfl_id", "player_name"="full_name", "pos" = "position",
       "team" = "recent_team", "metric", "value", "points"
     ) %>%
     tidyr::pivot_wider(
-      id_cols = c("season", "week", "gsis_id", "sportradar_id", "player_name", "pos", "team", "points"),
+      id_cols = c("season", "week", "gsis_id", "sportradar_id", "mfl_id", "player_name", "pos", "team", "points"),
       names_from = .data$metric,
       values_from = .data$value,
       values_fill = 0,

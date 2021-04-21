@@ -51,11 +51,11 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
     dplyr::ungroup() %>%
     dplyr::select("season", "week",
-      "gsis_id" = "player_id", "sportradar_id", "player_name", "pos" = "position",
+      "gsis_id" = "player_id", "sportradar_id", "sleeper_id", "player_name", "pos" = "position",
       "team" = "recent_team", "metric", "value", "points"
     ) %>%
     tidyr::pivot_wider(
-      id_cols = c("season", "week", "gsis_id", "sportradar_id", "player_name", "pos", "team", "points"),
+      id_cols = c("season", "week", "gsis_id", "sportradar_id", "sleeper_id", "player_name", "pos", "team", "points"),
       names_from = .data$metric,
       values_from = .data$value,
       values_fill = 0,
