@@ -7,7 +7,7 @@
 #' @param user_name Sleeper user_name - optional - attempts to get user's user ID
 #' @param user_agent User agent to self-identify (optional)
 #' @param rate_limit TRUE by default - turn off rate limiting with FALSE
-#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is under 1000 calls per 60 seconds
+#' @param rate_limit_number number of calls per `rate_limit_seconds`, suggested is under 1000 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
 #' @param ... other arguments (for other methods)
 #'

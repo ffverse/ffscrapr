@@ -2,7 +2,7 @@
 
 #' Fleaflicker Player Scores
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param ... other arguments (for other platform/methods)
 #' @param page_limit A numeric describing the number of pages to return - default NULL returns all available
 #'

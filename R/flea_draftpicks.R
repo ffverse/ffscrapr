@@ -2,7 +2,7 @@
 
 #' Fleaflicker Draft Picks
 #'
-#' @param conn the connection object created by \code{ff_connect()}
+#' @param conn the connection object created by `ff_connect()`
 #' @param ... other arguments (currently unused)
 #' @param franchise_id A list of franchise IDs to pull, if NULL will return all franchise IDs
 #'

@@ -26,7 +26,7 @@ ff_rosters(conn, ...)
 
 \item{week}{a numeric that specifies which week to return}
 
-\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
+\item{custom_players}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} - now returns custom players by default}
 }
 \value{
 A tidy dataframe of rosters, joined to basic player information and basic franchise information

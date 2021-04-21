@@ -2,7 +2,7 @@
 
 #' ESPN Draft Picks
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param ... other arguments (currently unused)
 #'
 #' @describeIn ff_draftpicks ESPN: does not support future/draft pick trades - for draft results, please use ff_draft.

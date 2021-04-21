@@ -10,12 +10,12 @@
 #'
 #' Check out the vignette for more details and example usage.
 #'
-#' @param conn the list object created by \code{mfl_connect()}
+#' @param conn the list object created by `mfl_connect()`
 #' @param endpoint a string defining which endpoint to return from the API
 #' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #'
-#' @seealso \url{https://api.myfantasyleague.com/2020/api_info?STATE=details}
-#' @seealso \code{vignette("mfl_getendpoint")}
+#' @seealso <https://api.myfantasyleague.com/2020/api_info?STATE=details>
+#' @seealso `vignette("mfl_getendpoint")`
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export

@@ -16,12 +16,12 @@
 #'
 #' Please see the vignette for more on usage.
 #'
-#' @param conn a connection object created by \code{espn_connect} or \code{ff_connect()}
+#' @param conn a connection object created by `espn_connect` or `ff_connect()`
 #' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #' @param x_fantasy_filter a JSON-encoded character string that specifies a filter for the data
 #'
-#' @seealso \code{vignette("espn_getendpoint")}
-#' @seealso \code{espn_getendpoint_raw}
+#' @seealso `vignette("espn_getendpoint")`
+#' @seealso `espn_getendpoint_raw`
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export
@@ -72,8 +72,8 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 #' @param url_query a fully-formed URL to call
 #' @param ... any headers or other httr request objects to pass along
 #'
-#' @seealso \code{espn_getendpoint()} - a higher level wrapper that checks JSON and prepares the url query
-#' @seealso \code{vignette("espn_getendpoint")}
+#' @seealso `espn_getendpoint()` - a higher level wrapper that checks JSON and prepares the url query
+#' @seealso `vignette("espn_getendpoint")`
 #'
 #' @return object of class espn_api with parsed content, request, and response
 #'

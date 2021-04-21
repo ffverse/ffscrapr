@@ -7,7 +7,9 @@
 .add_allplay(schedule)
 }
 \arguments{
-\item{schedule}{- an output from ff_schedule}
+\item{schedule}{\itemize{
+\item an output from ff_schedule
+}}
 }
 \description{
 Add allplay from a standardised schedule output

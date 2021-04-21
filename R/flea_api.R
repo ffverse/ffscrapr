@@ -9,8 +9,8 @@
 #' @param endpoint a string defining which endpoint to return from the API
 #' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #'
-#' @seealso \url{https://www.fleaflicker.com/api-docs/index.html}
-#' @seealso \code{vignette("fleaflicker_getendpoint")}
+#' @seealso <https://www.fleaflicker.com/api-docs/index.html>
+#' @seealso `vignette("fleaflicker_getendpoint")`
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export

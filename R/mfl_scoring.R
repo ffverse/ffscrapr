@@ -2,7 +2,7 @@
 
 #' Get a dataframe of scoring settings, referencing the "all rules" library endpoint.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #'
 #' @examples
 #' \donttest{
@@ -10,7 +10,7 @@
 #' ff_scoring(ssb_conn)
 #' }
 #'
-#' @seealso \url{http://www03.myfantasyleague.com/2020/scoring_rules#rules}
+#' @seealso <http://www03.myfantasyleague.com/2020/scoring_rules#rules>
 #'
 #' @describeIn ff_scoring MFL: returns scoring settings in a flat table, one row per position per rule.
 #'

@@ -27,7 +27,7 @@
 #'
 #' This wrapper on httr retries the httr::GET function based on best-practice heuristics
 #'
-#' @param ... arguments passed to \code{httr::GET}
+#' @param ... arguments passed to `httr::GET`
 #'
 #' @keywords internal
 .retry_get <- function(...) {
@@ -38,7 +38,7 @@
 #'
 #' This wrapper on httr retries the httr::POST function based on best-practice heuristics.
 #'
-#' @param ... arguments passed to \code{httr::POST}
+#' @param ... arguments passed to `httr::POST`
 #'
 #' @keywords internal
 .retry_post <- function(...) {
@@ -51,7 +51,7 @@
 #' in the .ffscrapr_env hidden object
 #'
 #' @param toggle a logical to turn on rate_limiting if TRUE and off if FALSE
-#' @param rate_number number of calls per \code{rate_seconds}
+#' @param rate_number number of calls per `rate_seconds`
 #' @param rate_seconds number of seconds
 #'
 #' @keywords internal
@@ -139,7 +139,7 @@
 #'
 #' @param ... a named cookie values
 #'
-#' @seealso \code{httr::set_cookies}
+#' @seealso `httr::set_cookies`
 #'
 #' @keywords internal
 

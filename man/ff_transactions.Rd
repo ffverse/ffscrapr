@@ -28,7 +28,7 @@ ff_transactions(conn, ...)
 
 \item{franchise_id}{fleaflicker returns transactions grouped by franchise id, pass a list here to filter}
 
-\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
+\item{custom_players}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} - now returns custom players by default}
 
 \item{week}{A week filter for transactions - 1 returns all offseason transactions. Default 1:17 returns all transactions.}
 }

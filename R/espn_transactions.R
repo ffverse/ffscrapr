@@ -2,7 +2,7 @@
 
 #' Get full transactions table
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param limit number of most recent transactions to return
 #' @param ... additional args
 #'

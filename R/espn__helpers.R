@@ -2,10 +2,10 @@
 
 #' ESPN Lineup Slot map
 #'
-#' This is for the starting lineup specifically - primary positions is accessible via \code{.espn_pos_map}
+#' This is for the starting lineup specifically - primary positions is accessible via `.espn_pos_map`
 #'
 #' @keywords internal
-#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
+#' @seealso <https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py>
 .espn_lineupslot_map <- function() {
   c(
     "0" = "QB",
@@ -107,7 +107,7 @@
 #' Abbreviations are consistently three letters.
 #'
 #' @keywords internal
-#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
+#' @seealso <https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py>
 .espn_team_map <- function() {
   c(
     "0" = "FA",
@@ -183,7 +183,7 @@
 #' ESPN Stat ID map
 #'
 #' @keywords internal
-#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py}
+#' @seealso <https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py>
 .espn_stat_map <- function() {
   c(
     "3" = "passingYards",
@@ -268,7 +268,7 @@
 #'
 #' @keywords internal
 #'
-#' @seealso \url{https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py#L82-92}
+#' @seealso <https://github.com/cwendt94/espn-api/blob/master/espn_api/football/constant.py#L82-92>
 
 .espn_activity_map <- function() {
   c(

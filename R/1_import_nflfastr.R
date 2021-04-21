@@ -13,7 +13,7 @@
 #'
 #' @param type One of "offense", "defense", or "all" - currently, only "offense" is available.
 #'
-#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
+#' @seealso <https://www.nflfastr.com/reference/load_player_stats.html>
 #'
 #' @examples
 #' \donttest{
@@ -52,7 +52,7 @@ nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
 #'
 #' @param seasons A numeric vector of seasons, earliest of which is 1999
 #'
-#' @seealso \url{https://www.nflfastr.com/reference/fast_scraper_roster.html}
+#' @seealso <https://www.nflfastr.com/reference/fast_scraper_roster.html>
 #'
 #' @examples
 #' \donttest{
@@ -94,7 +94,7 @@ nflfastr_rosters <- function(seasons) {
 #'
 #' @param raw raw-content that is known to be an RDS file
 #'
-#' @seealso \code{httr::set_cookies}
+#' @seealso `httr::set_cookies`
 #'
 #' @keywords internal
 

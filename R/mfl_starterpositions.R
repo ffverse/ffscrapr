@@ -2,7 +2,7 @@
 
 #' MFL ff_starter_positions
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param ... other arguments (currently unused)
 #'
 #' @describeIn ff_starter_positions MFL: returns minimum and maximum starters for each player position.

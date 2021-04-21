@@ -2,7 +2,7 @@
 
 #' Get full transactions table
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param week A week filter for transactions - 1 returns all offseason transactions. Default 1:17 returns all transactions.
 #' @param ... additional args for other methods
 #'

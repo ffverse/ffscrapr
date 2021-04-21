@@ -2,7 +2,7 @@
 
 #' Get a dataframe of league standings
 #'
-#' @param conn the connection object created by \code{ff_connect()}
+#' @param conn the connection object created by `ff_connect()`
 #' @param ... other arguments (for other platforms)
 #'
 #' @examples

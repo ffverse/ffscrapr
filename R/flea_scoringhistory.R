@@ -2,7 +2,7 @@
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param season season a numeric vector of seasons (earliest available year is 1999)
 #' @param ... other arguments
 #'
