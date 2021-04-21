@@ -6,6 +6,7 @@
 - `ff_scoringhistory` now tries to return a platform-specific player ID, where available. (Fixes #275) (v1.4.1.02)
 - Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues? (v1.4.1.03)
 
+
 # ffscrapr 1.4.1
 
 The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental `ff_scoringhistory` and `ff_starter_positions` functions released in v1.4.0. 

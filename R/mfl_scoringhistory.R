@@ -52,7 +52,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
   fastr_weekly <- nflfastr_weekly() %>%
     dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
     dplyr::select(
-      "season", "player_id", "sportradar_id", "position", "full_name","recent_team","week",
+      "season", "player_id", "sportradar_id", "mfl_id", "position", "full_name","recent_team","week",
       "completions", "attempts", "passing_yards", "passing_tds", "interceptions", "sacks",
       "sack_fumbles_lost", "passing_first_downs", "passing_2pt_conversions", "carries",
       "rushing_yards", "rushing_tds", "rushing_fumbles_lost", "rushing_first_downs",
