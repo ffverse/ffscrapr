@@ -1,5 +1,9 @@
 # ffscrapr (development version)
 
+## Minor Changes
+
+- `espn_rosters` now has a `week` argument to return a specific week of data. (Fixes #276, thanks @scottfrechette!) (v1.4.1.01)
+
 # ffscrapr 1.4.1
 
 The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental `ff_scoringhistory` and `ff_starter_positions` functions released in v1.4.0. 
