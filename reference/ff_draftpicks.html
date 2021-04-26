@@ -255,25 +255,14 @@
 <span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 5</span><span>
-#&gt;    season franchise_id franchise_name round original_franchise_id
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          1 0001                 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          2 0001                 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          3 0001                 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          5 0001                 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0001         @dibari22          2 0009                 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         OPEN               1 0002                 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         OPEN               2 0002                 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         OPEN               3 0002                 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         OPEN               4 0002                 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>   </span><span style='text-decoration: underline;'>2</span><span>021 0002         OPEN               5 0002                 
-#&gt; </span><span style='color: #949494;'># … with 70 more rows</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1.2 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2020/export?TYPE=futureDraftPicks&amp;L=37920&amp;JSON=1&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 144 x 5</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 144 x 5</span><span>
 #&gt;    season franchise_id franchise_name round original_franchise_id
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2021              1 Fake News          3                     1

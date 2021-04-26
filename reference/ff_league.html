@@ -253,12 +253,9 @@
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 13</span><span>
-#&gt;   league_id league_name    franchise_count qb_type idp   scoring_flags best_ball
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 54040     The Super Sma…              14 1QB     FALSE 0.5_ppr, TEP… FALSE    
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;, league_depth &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1.2 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2020/export?TYPE=league&amp;L=54040&amp;JSON=1&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
