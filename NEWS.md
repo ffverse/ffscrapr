@@ -5,7 +5,8 @@
 - `espn_rosters` now has a `week` argument to return a specific week of data. (Fixes #276, thanks @scottfrechette!) (v1.4.1.01)
 - `ff_scoringhistory` now tries to return a platform-specific player ID, where available. (Fixes #275) (v1.4.1.02)
 - Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues? (v1.4.1.03)
-- `sleeper_players()` - gsis_id gets str_squish applied to it to resolve some stowaway whitespaces. (v1.4.1.04)
+- `sleeper_players()` - gsis_id gets `str_squish` applied to it to resolve some stowaway whitespaces. (v1.4.1.04)
+- `mfl_players()` - add `any_of` handling for columns to handle column name changes (v1.4.1.05)
 
 ---
 

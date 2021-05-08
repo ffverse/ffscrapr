@@ -29,17 +29,20 @@ mfl_players <- function(conn = NULL) {
     purrr::pluck("content", "players", "player") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    dplyr::mutate_at("birthdate", ~ as.numeric(.x) %>%
-      lubridate::as_datetime() %>%
-      lubridate::as_date()) %>%
+    dplyr::mutate_at(
+      "birthdate", ~ as.numeric(.x) %>%
+        lubridate::as_datetime() %>%
+        lubridate::as_date()) %>%
     dplyr::mutate("age" = round(as.numeric(Sys.Date() - .data$birthdate) / 365.25, 1)) %>%
     dplyr::select(
-      "player_id" = .data$id,
-      "player_name" = .data$name,
-      "pos" = .data$position,
-      .data$age,
-      .data$team,
-      .data$status,
+      dplyr::any_of(c(
+        "player_id" = "id",
+        "player_name" = "name",
+        "pos" = "position",
+        "age",
+        "team",
+        "status"
+      )),
       dplyr::starts_with("draft_"),
       dplyr::ends_with("_id"),
       dplyr::everything()
