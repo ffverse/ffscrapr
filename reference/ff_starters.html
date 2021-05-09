@@ -271,9 +271,21 @@
 <span class='co'># \donttest{</span>
 <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
 <span class='fu'>ff_starters</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 2.7 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2020/export?TYPE=players&amp;L=37920&amp;DETAILS=1&amp;JSON=1&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6,371 x 11</span><span>
+#&gt;    franchise_id franchise_name          season  week starter_status should_start
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0013         Advance Reptilian Sola…   </span><span style='text-decoration: underline;'>2</span><span>020     1 nonstarter                0
+#&gt; </span><span style='color: #949494;'># … with 6,361 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   player_id &lt;chr&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>

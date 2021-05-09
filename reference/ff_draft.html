@@ -281,9 +281,21 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 3.3 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2020/export?TYPE=players&amp;L=54040&amp;DETAILS=1&amp;JSON=1&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 90 x 11</span><span>
+#&gt;    timestamp           round pick  overall franchise_id franchise_name player_id
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2021-02-08 </span><span style='color: #949494;'>18:52:22</span><span> 01    01          1 0014         Team Luigi     11244    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2021-02-08 </span><span style='color: #949494;'>19:20:07</span><span> 01    02          2 0003         Team Donkey K… 14073    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2021-02-08 </span><span style='color: #949494;'>20:01:16</span><span> 01    03          3 0008         Team Bowser    11678    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2021-02-08 </span><span style='color: #949494;'>20:01:30</span><span> 02    01          4 0008         Team Bowser    13131    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2021-02-08 </span><span style='color: #949494;'>20:12:30</span><span> 02    02          5 0003         Team Donkey K… 11671    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2021-02-09 </span><span style='color: #949494;'>02:55:39</span><span> 02    03          6 0012         Team Mewtwo    13593    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2021-02-09 </span><span style='color: #949494;'>03:09:50</span><span> 03    01          7 0014         Team Luigi     0829     
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2021-02-09 </span><span style='color: #949494;'>03:12:44</span><span> 03    02          8 0003         Team Donkey K… 11222    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2021-02-09 </span><span style='color: #949494;'>03:22:50</span><span> 03    03          9 0008         Team Bowser    14208    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2021-02-09 </span><span style='color: #949494;'>03:23:01</span><span> 04    01         10 0008         Team Bowser    13156    
+#&gt; </span><span style='color: #949494;'># … with 80 more rows, and 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   age &lt;dbl&gt;, team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>

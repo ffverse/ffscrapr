@@ -211,12 +211,22 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>mfl_players</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 2 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 3 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2021/export?TYPE=players&amp;DETAILS=1&amp;JSON=1&gt;</span></div><div class='input'><span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>player_list</span>, <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in dplyr::sample_n(player_list, 5): object 'player_list' not found</span></div><div class='input'><span class='co'># }</span>
+<span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>player_list</span>, <span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 25</span><span>
+#&gt;   player_id player_name      pos     age team  status draft_year draft_team
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 13189     Engram, Evan     TE     26.7 NYG   </span><span style='color: #BB0000;'>NA</span><span>     2017       NYG       
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 13641     McCloud, Ray-Ray WR     24.6 PIT   </span><span style='color: #BB0000;'>NA</span><span>     2018       FA        
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 15393     Odighizuwa, Osa  DT     </span><span style='color: #BB0000;'>NA</span><span>   DAL   R      2021       DAL       
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 14879     Epenesa, A.J.    DE     22.6 BUF   </span><span style='color: #BB0000;'>NA</span><span>     2020       BUF       
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 9966      Jones, Reshad    S      33.2 FA    </span><span style='color: #BB0000;'>NA</span><span>     2010       MIA       
+#&gt; </span><span style='color: #949494;'># … with 17 more variables: draft_round &lt;chr&gt;, draft_pick &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, cbs_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   sportsdata_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, nfl_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   espn_id &lt;chr&gt;, twitter_username &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   weight &lt;chr&gt;, birthdate &lt;date&gt;, jersey &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

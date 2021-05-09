@@ -279,9 +279,24 @@
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_franchises</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [503]. Retrying in 1.9 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error: MFL API request failed with error: &lt;503&gt; </span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>while calling &lt;https://api.myfantasyleague.com/2020/export?TYPE=league&amp;L=54040&amp;JSON=1&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 14 x 7</span><span>
+#&gt;    franchise_id franchise_name  logo         icon        abbrev bbidAvailableBa…
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0001         Team Pikachu    https://i.i… https://i.… PIKA   159.00          
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0002         Team Simon Bel… https://i.i… https://i.… SIMN   99.00           
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0003         Team Donkey Ko… https://i.i… https://i.… DK     50.00           
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0004         Team Ice Climb… https://i.i… https://i.… ICE    0.00            
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 0005         Team Dr. Mario  https://i.i… https://i.… DRM    84.00           
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 0006         Team King Dede… https://i.i… https://i.… KDDD   87.00           
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 0007         Team Kirby      https://i.i… https://i.… KRBY   40.00           
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0008         Team Bowser     https://i.i… https://i.… BWSR   0.00            
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0009         Team Link       https://i.i… https://i.… LINK   81.00           
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0010         Team Yoshi      https://i.i… https://i.… YSHI   0.00            
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> 0011         Team Diddy Kong https://i.i… https://i.… DDY    173.00          
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> 0012         Team Mewtwo     https://i.i… https://i.… MEW2   0.00            
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> 0013         Team Ness       https://i.i… https://i.… NESS   0.00            
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> 0014         Team Luigi      https://i.i… https://i.… LUIG   0.00            
+#&gt; </span><span style='color: #949494;'># … with 1 more variable: waiverSortOrder &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
