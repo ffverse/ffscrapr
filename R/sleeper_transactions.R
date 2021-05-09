@@ -21,6 +21,8 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
   max_week <- sleeper_getendpoint(glue::glue("league/{conn$league_id}")) %>%
     purrr::pluck("content", "settings", "last_scored_leg")
 
+  max_week <- max_week %||% 1
+
   week <- week[week <= max_week]
 
   raw_transactions <- glue::glue("league/{conn$league_id}/transactions/{week}") %>%

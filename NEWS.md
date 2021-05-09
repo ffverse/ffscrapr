@@ -7,6 +7,7 @@
 - Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues? (v1.4.1.03)
 - `sleeper_players()` - gsis_id gets `str_squish` applied to it to resolve some stowaway whitespaces. (v1.4.1.04)
 - `mfl_players()` - add `any_of` handling for columns to handle column name changes (v1.4.1.05)
+- `sleeper_transactions` now handles offseason transactions correctly! (v1.4.1.06)
 
 ---
 
