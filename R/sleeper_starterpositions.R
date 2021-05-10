@@ -2,7 +2,7 @@
 
 #' Get starters and bench
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param ... other arguments (currently unused)
 #'
 #' @describeIn ff_starter_positions Sleeper: returns minimum and maximum starters for each player position.

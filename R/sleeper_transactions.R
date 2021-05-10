@@ -2,7 +2,7 @@
 
 #' Get full transactions table
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param week A week filter for transactions - 1 returns all offseason transactions. Default 1:17 returns all transactions.
 #' @param ... additional args for other methods
 #'
@@ -20,6 +20,8 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
 
   max_week <- sleeper_getendpoint(glue::glue("league/{conn$league_id}")) %>%
     purrr::pluck("content", "settings", "last_scored_leg")
+
+  max_week <- max_week %||% 1
 
   week <- week[week <= max_week]
 

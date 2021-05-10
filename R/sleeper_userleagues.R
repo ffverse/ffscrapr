@@ -2,14 +2,14 @@
 
 #' Get User Leagues
 #'
-#' @param conn a connection object created by \code{ff_connect()}
+#' @param conn a connection object created by `ff_connect()`
 #' @param user_name the username to look up - defaults to user created in conn if available
 #' @param season the season to look up leagues for
 #' @param ... arguments that may be passed to other methods (for method consistency)
 #'
 #' @describeIn ff_userleagues Sleeper: returns a listing of leagues for a given user_id or user_name
 #'
-#' @seealso \code{\link{sleeper_userleagues}} to call this function for Sleeper leagues without first creating a connection object.
+#' @seealso [sleeper_userleagues()] to call this function for Sleeper leagues without first creating a connection object.
 #'
 #' @export
 
@@ -51,7 +51,7 @@ ff_userleagues.sleeper_conn <- function(conn = NULL, user_name = NULL, season = 
 #' @param user_name the username to look up
 #' @param season the season to return leagues from - defaults to current year based on heuristics
 #'
-#' @seealso \code{\link{ff_userleagues}}
+#' @seealso [ff_userleagues()]
 #'
 #' @return a dataframe of leagues for the specified user
 #' @export

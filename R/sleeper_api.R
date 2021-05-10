@@ -9,8 +9,8 @@
 #' @param endpoint a string defining which endpoint to return from the API
 #' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
 #'
-#' @seealso \url{https://docs.sleeper.app}
-#' @seealso \code{vignette("sleeper_getendpoint")}
+#' @seealso <https://docs.sleeper.app>
+#' @seealso `vignette("sleeper_getendpoint")`
 #'
 #' @return A list object containing the query, response, and parsed content.
 #' @export

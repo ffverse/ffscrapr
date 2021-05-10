@@ -4,7 +4,7 @@
 #'
 #' This function calculates the optimal starters for a given week, using some lineup heuristics.
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param weeks a numeric vector for determining which weeks to calculate
 #'
 #' @return a tibble with the best lineup for each team and whether they were started or not

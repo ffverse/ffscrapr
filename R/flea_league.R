@@ -2,7 +2,7 @@
 
 #' Get a summary of common league settings
 #'
-#' @param conn the connection object created by \code{ff_connect()}
+#' @param conn the connection object created by `ff_connect()`
 #'
 #' @examples
 #' \donttest{

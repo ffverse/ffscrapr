@@ -48,7 +48,7 @@ This function returns a tidy dataframe with one row for every league a user is i
 }}
 
 \seealso{
-\code{\link{fleaflicker_userleagues}} to call this function for flea leagues without first creating a connection object.
+\code{\link[=fleaflicker_userleagues]{fleaflicker_userleagues()}} to call this function for flea leagues without first creating a connection object.
 
-\code{\link{sleeper_userleagues}} to call this function for Sleeper leagues without first creating a connection object.
+\code{\link[=sleeper_userleagues]{sleeper_userleagues()}} to call this function for Sleeper leagues without first creating a connection object.
 }

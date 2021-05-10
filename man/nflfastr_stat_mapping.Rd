@@ -7,9 +7,9 @@
 \format{
 A data frame with ~85 rows and 3 variables:
 \describe{
-  \item{nflfastr_event}{the column name of the statistic in the nflfastr_weekly dataset}
-  \item{platform}{specific platform that this mapping applies to}
-  \item{ff_event}{name of the statistic for that platform}
+\item{nflfastr_event}{the column name of the statistic in the nflfastr_weekly dataset}
+\item{platform}{specific platform that this mapping applies to}
+\item{ff_event}{name of the statistic for that platform}
 }
 }
 \usage{

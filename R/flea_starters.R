@@ -2,7 +2,7 @@
 
 #' Get starters and bench
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param week a numeric or numeric vector
 #' @param ... other arguments (currently unused)
 #'

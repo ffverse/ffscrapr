@@ -12,14 +12,14 @@
 #' @param league_id league_id (currently assuming one league at a time)
 #' @param ... other parameters passed to the connect function for each specific platform.
 #'
-#' @seealso \code{\link{mfl_connect}}, \code{\link{sleeper_connect}}, \code{\link{fleaflicker_connect}}, \code{\link{espn_connect}}
+#' @seealso [mfl_connect()], [sleeper_connect()], [fleaflicker_connect()], [espn_connect()]
 #'
 #' @examples
 #' \donttest{
 #' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
 #' }
 #' @export ff_connect
-#' @return a connection object to be used with \code{ff_*} functions
+#' @return a connection object to be used with `ff_*` functions
 
 ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
   platform <- tolower(platform)
@@ -44,7 +44,7 @@ ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
 #'
 #' This function returns a tidy dataframe of common league settings, including details like "1QB" or "2QB/SF", scoring, best ball, team count, IDP etc. This is potentially useful in summarising the features of multiple leagues.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #'
 #' @export ff_league
 #'
@@ -65,7 +65,7 @@ ff_league.default <- function(conn) {
 #'
 #' This function returns a dataframe with detailed scoring settings for each league - broken down by event, points, and (if available) position.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #'
 #' @return A tibble of league scoring rules for each position defined.
 #' @export
@@ -85,7 +85,7 @@ ff_scoring.default <- function(conn) {
 #'
 #' This function returns a tidy dataframe of team rosters
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... arguments passed to other methods
 #'
 #' @return A tidy dataframe of rosters, joined to basic player information and basic franchise information
@@ -106,7 +106,7 @@ ff_rosters.default <- function(conn, ...) {
 #'
 #' Return franchise-level data (including divisions, usernames, etc) - available data may vary slightly based on platform.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #'
 #' @return A tidy dataframe of franchises, complete with IDs
 #'
@@ -128,7 +128,7 @@ ff_franchises.default <- function(conn) {
 #' This function returns a tidy dataframe of transactions - generally one row per player per transaction per team.
 #' Each trade is represented twice, once per each team.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to platform-specific methods
 #'
 #' @return A tidy dataframe of transaction data
@@ -151,7 +151,7 @@ ff_transactions.default <- function(conn, ...) {
 #' This function gets a tidy dataframe of draft results for the current year.
 #' Can handle MFL devy drafts or startup drafts by specifying the custom_players argument
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to each platform
 #'
 #' @return A tidy dataframe of draft results
@@ -173,7 +173,7 @@ ff_draft.default <- function(conn, ...) {
 #'
 #' This function returns a tidy dataframe of player scores based on league rules.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... arguments passed to other methods
 #'
 #' @return A tibble of historical player scoring
@@ -194,7 +194,7 @@ ff_playerscores.default <- function(conn, season, week, ...) {
 #'
 #' This function returns a tidy dataframe of season-long fantasy team stats, including H2H wins as well as points, potential points, and all-play.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to platform-specific methods
 #'
 #' @return A tidy dataframe of standings data
@@ -216,7 +216,7 @@ ff_standings.default <- function(conn, ...) {
 #'
 #' Returns all draft picks (current and future) that belong to a specific franchise and have not yet been converted into players (i.e. selected.)
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to specific methods
 #'
 #' @return Returns a dataframe with current and future draft picks for each franchise
@@ -237,7 +237,7 @@ ff_draftpicks.default <- function(conn, ...) {
 #'
 #' This function returns a tidy dataframe with one row for every team for every weekly matchup
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to each platform
 #'
 #' @return A tidy dataframe with one row per game per franchise per week
@@ -258,7 +258,7 @@ ff_schedule.default <- function(conn, ...) {
 #'
 #' This function returns a tidy dataframe with one row for every league a user is in. This requries authentication cookies for MFL usage.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args passed to specific platform methods
 #'
 #' @return A tidy dataframe with one row for every league a user is in
@@ -279,7 +279,7 @@ ff_userleagues.default <- function(conn, ...) {
 #'
 #' This function returns a tidy dataframe with one row for every starter (and bench) for every week and their scoring, if available.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args depending on method
 #'
 #' @export ff_starters
@@ -301,7 +301,7 @@ ff_starters.default <- function(conn, ...) {
 #'
 #' This function returns a tidy dataframe with positional lineup rules.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param ... additional args depending on method
 #'
 #' @return A tidy dataframe of positional lineup rules, one row per position with minimum and maximum starters as well as total starter calculations.
@@ -324,11 +324,11 @@ ff_starter_positions.default <- function(conn, ...) {
 #' (Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
 #' Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param season a numeric vector of seasons (earliest available year is 1999, default is 1999:2020)
 #' @param ... other arguments
 #'
-#' @seealso \url{https://www.nflfastr.com/reference/load_player_stats.html}
+#' @seealso <https://www.nflfastr.com/reference/load_player_stats.html>
 #'
 #' @return A tidy dataframe of weekly fantasy scoring data, one row per player per week
 #'

@@ -2,7 +2,7 @@
 
 #' Get starters and bench
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param week a numeric or one of YTD (year-to-date) or AVG (average to date)
 #' @param ... other arguments (currently unused)
 #'

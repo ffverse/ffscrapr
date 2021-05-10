@@ -3,7 +3,7 @@
 #' A cached table of ESPN NFL players. Will store in memory for each session!
 #' (via memoise in zzz.R)
 #'
-#' @param conn a connection object created by \code{espn_connect} or \code{ff_connect()}
+#' @param conn a connection object created by `espn_connect` or `ff_connect()`
 #' @param season a season to fetch
 #'
 #' @examples

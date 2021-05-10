@@ -4,9 +4,9 @@
 #'
 #' Fetches a copy of the latest DynastyProcess dynasty trade values sheets
 #'
-#' @param file one of \code{c("values.csv","values-players.csv","values-picks.csv")}
+#' @param file one of `c("values.csv","values-players.csv","values-picks.csv")`
 #'
-#' @seealso \url{https://github.com/DynastyProcess/data}
+#' @seealso <https://github.com/DynastyProcess/data>
 #'
 #' @examples
 #' \donttest{
@@ -45,7 +45,7 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 #' dp_playerids()
 #' }
 #'
-#' @seealso \url{https://github.com/DynastyProcess/data}
+#' @seealso <https://github.com/DynastyProcess/data>
 #'
 #' @return a tibble of player IDs
 #'

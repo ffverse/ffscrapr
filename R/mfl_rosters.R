@@ -2,7 +2,7 @@
 
 #' Get a dataframe of rosters.
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param week a numeric that specifies which week to return
 #' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
 #' @param ... arguments passed to other methods (currently none)

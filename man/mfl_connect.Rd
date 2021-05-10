@@ -39,7 +39,7 @@ mfl_connect(
 \item{...}{silently swallows up unused arguments}
 }
 \value{
-a connection object to be used with \code{ff_*} functions
+a connection object to be used with \verb{ff_*} functions
 }
 \description{
 This function creates a connection object which stores parameters and gets a login-cookie if available

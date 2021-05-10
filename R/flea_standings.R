@@ -2,7 +2,7 @@
 
 #' Get a dataframe of league standings
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param include_allplay TRUE/FALSE - return all-play win pct calculation? defaults to TRUE
 #' @param include_potentialpoints TRUE/FALSE - return potential points calculation? defaults to TRUE.
 #' @param ... arguments passed to other methods

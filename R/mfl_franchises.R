@@ -2,7 +2,7 @@
 
 #' Get a dataframe of franchise information
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #'
 #' @examples
 #' \donttest{

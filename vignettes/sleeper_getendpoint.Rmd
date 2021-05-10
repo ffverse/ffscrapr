@@ -20,10 +20,10 @@ eval <- TRUE
 
 tryCatch(expr = {
   
-  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.1.zip","f.zip")
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.2.zip","f.zip")
   unzip('f.zip', exdir = ".")
   
-  httptest::.mockPaths(new = "ffscrapr-tests-1.4.1")},
+  httptest::.mockPaths(new = "ffscrapr-tests-1.4.2")},
   warning = function(e) eval <<- FALSE,
   error = function(e) eval <<- FALSE)
 
@@ -93,6 +93,6 @@ There - this means something to us now! As of this writing (2020-11-10), Kalen B
 ```{r include = FALSE, eval = eval}
 httptest::stop_mocking()
 
-unlink(c("ffscrapr-tests-1.4.1","f.zip"), recursive = TRUE, force = TRUE)
+unlink(c("ffscrapr-tests-1.4.2","f.zip"), recursive = TRUE, force = TRUE)
 ```
 

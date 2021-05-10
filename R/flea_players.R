@@ -3,7 +3,7 @@
 #' A cached table of Fleaflicker NFL players. Will store in memory for each session!
 #' (via memoise in zzz.R)
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect()`
 #' @param page_limit A number limiting the number of players to return, or NULL (default) returns all
 #'
 #' @examples

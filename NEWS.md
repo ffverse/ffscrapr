@@ -1,3 +1,18 @@
+# ffscrapr 1.4.2
+
+The main goal of v1.4.2 is to patch some minor bugs.
+
+## Minor changes
+
+- `espn_rosters` now has a `week` argument to return a specific week of data. (Fixes #276, thanks @scottfrechette!)
+- `ff_scoringhistory` now tries to return a platform-specific player ID, where available. (Fixes #275)
+- Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues?
+- `sleeper_players()` - gsis_id gets `str_squish` applied to it to resolve some stowaway whitespaces.
+- `mfl_players()` - add `any_of` handling for columns to handle column name changes.
+- `sleeper_transactions` now handles offseason transactions correctly
+
+---
+
 # ffscrapr 1.4.1
 
 The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental `ff_scoringhistory` and `ff_starter_positions` functions released in v1.4.0. 

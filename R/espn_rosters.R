@@ -2,7 +2,8 @@
 
 #' Get a dataframe of roster data
 #'
-#' @param conn a conn object created by \code{ff_connect()}
+#' @param conn a conn object created by `ff_connect`
+#' @param week a numeric that specifies which week to return
 #' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
@@ -12,11 +13,14 @@
 #' }
 #' @describeIn ff_rosters ESPN: Returns all roster data.
 #' @export
-ff_rosters.espn_conn <- function(conn, ...) {
+ff_rosters.espn_conn <- function(conn, week = NULL, ...) {
+
+  checkmate::assert_number(week, null.ok = TRUE)
+
   franchises <- ff_franchises(conn) %>%
     dplyr::select("franchise_id", "franchise_name")
 
-  roster_endpoint <- espn_getendpoint(conn, view = "mRoster") %>%
+  roster_endpoint <- espn_getendpoint(conn, view = "mRoster", scoringPeriodId = week) %>%
     purrr::pluck("content", "teams") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "franchise_id" = "id", "roster") %>%

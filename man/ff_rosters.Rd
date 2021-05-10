@@ -11,7 +11,7 @@
 \usage{
 ff_rosters(conn, ...)
 
-\method{ff_rosters}{espn_conn}(conn, ...)
+\method{ff_rosters}{espn_conn}(conn, week = NULL, ...)
 
 \method{ff_rosters}{flea_conn}(conn, ...)
 
@@ -24,9 +24,9 @@ ff_rosters(conn, ...)
 
 \item{...}{arguments passed to other methods (currently none)}
 
-\item{custom_players}{`r lifecycle::badge("deprecated")` - now returns custom players by default}
-
 \item{week}{a numeric that specifies which week to return}
+
+\item{custom_players}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} - now returns custom players by default}
 }
 \value{
 A tidy dataframe of rosters, joined to basic player information and basic franchise information

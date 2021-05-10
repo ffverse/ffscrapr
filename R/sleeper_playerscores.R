@@ -5,7 +5,7 @@
 #' Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
 #' Please see `ff_scoringhistory()` for an alternative reconstruction.
 #'
-#' @param conn the list object created by \code{ff_connect()}
+#' @param conn the list object created by `ff_connect()`
 #' @param ... other arguments (currently unused)
 #'
 #' @describeIn ff_playerscores Sleeper: Deprecated their open API endpoint for player scores

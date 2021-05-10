@@ -14,7 +14,7 @@ ff_connect(platform = "mfl", league_id = NULL, ...)
 \item{...}{other parameters passed to the connect function for each specific platform.}
 }
 \value{
-a connection object to be used with \code{ff_*} functions
+a connection object to be used with \verb{ff_*} functions
 }
 \description{
 This function creates a connection object which stores parameters and gets a login-cookie if available - it does so by passing arguments to the appropriate league-based handler.
@@ -25,5 +25,5 @@ ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALS
 }
 }
 \seealso{
-\code{\link{mfl_connect}}, \code{\link{sleeper_connect}}, \code{\link{fleaflicker_connect}}, \code{\link{espn_connect}}
+\code{\link[=mfl_connect]{mfl_connect()}}, \code{\link[=sleeper_connect]{sleeper_connect()}}, \code{\link[=fleaflicker_connect]{fleaflicker_connect()}}, \code{\link[=espn_connect]{espn_connect()}}
 }

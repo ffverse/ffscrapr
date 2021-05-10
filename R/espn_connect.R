@@ -8,7 +8,7 @@
 #' @param swid SWID parameter for accessing private leagues - see vignette for details
 #' @param espn_s2 ESPN_S2 parameter for accessing private leagues - see vignette for details
 #' @param rate_limit TRUE by default - turn off rate limiting with FALSE
-#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is under 1000 calls per 60 seconds
+#' @param rate_limit_number number of calls per `rate_limit_seconds`, suggested is under 1000 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
 #' @param ... other arguments (for other methods, for R compat)
 #'

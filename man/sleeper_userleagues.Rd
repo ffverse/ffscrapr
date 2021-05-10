@@ -19,5 +19,5 @@ This function returns the leagues that a specific user is in.
 This variant can be used without first creating a connection object.
 }
 \seealso{
-\code{\link{ff_userleagues}}
+\code{\link[=ff_userleagues]{ff_userleagues()}}
 }

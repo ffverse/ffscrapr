@@ -13,7 +13,7 @@
 #' @param password MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token
 #' @param user_agent A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token
 #' @param rate_limit TRUE by default, pass FALSE to turn off rate limiting
-#' @param rate_limit_number number of calls per \code{rate_limit_seconds}, suggested is 60 calls per 60 seconds
+#' @param rate_limit_number number of calls per `rate_limit_seconds`, suggested is 60 calls per 60 seconds
 #' @param rate_limit_seconds number of seconds as denominator for rate_limit
 #' @param ... silently swallows up unused arguments
 #'
@@ -24,7 +24,7 @@
 #' mfl_connect(season = 2020, league_id = 54040)
 #' mfl_connect(season = 2019, league_id = 54040, rate_limit = FALSE)
 #' }
-#' @return a connection object to be used with \code{ff_*} functions
+#' @return a connection object to be used with `ff_*` functions
 
 mfl_connect <- function(season = NULL,
                         league_id = NULL,

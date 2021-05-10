@@ -4,9 +4,9 @@ with_mock_api({
 
     if (!identical(Sys.getenv("MOCK_BYPASS"), "true")) {
       testthat::local_mock(
-        nflfastr_weekly = function() readRDS("ffscrapr-tests-1.4.1/gh_nflfastr/player_stats.rds"),
+        nflfastr_weekly = function() readRDS("ffscrapr-tests-1.4.2/gh_nflfastr/player_stats.rds"),
         nflfastr_rosters = function(seasons) {
-          purrr::map_df(seasons, ~ readRDS(glue::glue("ffscrapr-tests-1.4.1/gh_nflfastr/roster_{.x}.rds")))
+          purrr::map_df(seasons, ~ readRDS(glue::glue("ffscrapr-tests-1.4.2/gh_nflfastr/roster_{.x}.rds")))
         }
       )
     }
