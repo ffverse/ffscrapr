@@ -30,13 +30,13 @@ other data sources.
 
 ### Installation
 
-Version 1.4.1 is now on CRAN :tada: and can be installed with:
+Version 1.4.2 is now on CRAN :tada: and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.1")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.2")
 ```
 
 Install the development version from GitHub with:
@@ -63,6 +63,7 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 ff_league(ssb) %>% str()
 #> Using request.R from "ffscrapr"
 #> No encoding supplied: defaulting to UTF-8.
+#> No encoding supplied: defaulting to UTF-8.
 #> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
@@ -70,25 +71,28 @@ ff_league(ssb) %>% str()
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
 #>  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"
-#>  $ best_ball      : logi TRUE
+#>  $ best_ball      : logi FALSE
 #>  $ salary_cap     : logi FALSE
 #>  $ player_copies  : num 1
-#>  $ years_active   : chr "2018-2020"
+#>  $ years_active   : chr "2018-2021"
 #>  $ qb_count       : chr "1"
-#>  $ roster_size    : num 28
-#>  $ league_depth   : num 392
+#>  $ roster_size    : num 33
+#>  $ league_depth   : num 462
 
 # Get rosters
 ff_rosters(ssb)
-#> # A tibble: 443 x 11
+#> No encoding supplied: defaulting to UTF-8.
+#> No encoding supplied: defaulting to UTF-8.
+#> No encoding supplied: defaulting to UTF-8.
+#> # A tibble: 442 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.6
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.7
 #> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.4
 #> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.3
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.8
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9
 #> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.2
-#> # ... with 438 more rows, and 4 more variables: roster_status <chr>,
+#> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
