@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.1.06</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.00</span>
       </span>
     </div>
 
@@ -150,12 +150,12 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<p>Version 1.4.1 is now on CRAN <span class="emoji" data-emoji="tada">🎉</span> and can be installed with:</p>
+<p>Version 1.4.2 is now on CRAN <span class="emoji" data-emoji="tada">🎉</span> and can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span>
 <span class="co"># or from GitHub release with the remotes package via:</span>
 <span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"v1.4.1"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"v1.4.2"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"dev"</span><span class="op">)</span></code></pre></div>
@@ -173,6 +173,7 @@
 <span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; tibble [1 x 13] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "54040"</span>
 <span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
@@ -180,25 +181,28 @@
 <span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
 <span class="co">#&gt;  $ idp            : logi FALSE</span>
 <span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"</span>
-<span class="co">#&gt;  $ best_ball      : logi TRUE</span>
+<span class="co">#&gt;  $ best_ball      : logi FALSE</span>
 <span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
 <span class="co">#&gt;  $ player_copies  : num 1</span>
-<span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
+<span class="co">#&gt;  $ years_active   : chr "2018-2021"</span>
 <span class="co">#&gt;  $ qb_count       : chr "1"</span>
-<span class="co">#&gt;  $ roster_size    : num 28</span>
-<span class="co">#&gt;  $ league_depth   : num 392</span>
+<span class="co">#&gt;  $ roster_size    : num 33</span>
+<span class="co">#&gt;  $ league_depth   : num 462</span>
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 443 x 11</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; # A tibble: 442 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.6</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.7</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.4</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.3</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.8</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.2</span>
-<span class="co">#&gt; # ... with 438 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
+<span class="co">#&gt; # ... with 437 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
