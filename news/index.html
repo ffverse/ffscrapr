@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -185,6 +185,30 @@
       <small>Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="ffscrapr-142" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.2">
+<a href="#ffscrapr-142" class="anchor"></a>ffscrapr 1.4.2<small> Unreleased </small>
+</h1>
+<p>The main goal of v1.4.2 is to patch some minor bugs.</p>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>
+<code>espn_rosters</code> now has a <code>week</code> argument to return a specific week of data. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/276'>#276</a>, thanks <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
+<li>
+<code>ff_scoringhistory</code> now tries to return a platform-specific player ID, where available. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/275'>#275</a>)</li>
+<li>Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues?</li>
+<li>
+<code><a href="../reference/sleeper_players.html">sleeper_players()</a></code> - gsis_id gets <code>str_squish</code> applied to it to resolve some stowaway whitespaces.</li>
+<li>
+<code><a href="../reference/mfl_players.html">mfl_players()</a></code> - add <code>any_of</code> handling for columns to handle column name changes.</li>
+<li>
+<code>sleeper_transactions</code> now handles offseason transactions correctly</li>
+</ul>
+<hr>
+</div>
+</div>
     <div id="ffscrapr-141" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.1">
 <a href="#ffscrapr-141" class="anchor"></a>ffscrapr 1.4.1<small> 2021-04-18 </small>
@@ -198,9 +222,9 @@
 <code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
+<div id="minor-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
 <li>
@@ -243,9 +267,9 @@
 <code>ff_scoring</code> rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule</li>
 </ul>
 </div>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
 <li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>

@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
       </span>
     </div>
 
@@ -204,23 +204,25 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>dp_playerids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,073 x 19</span><span>
-#&gt;    mfl_id sportradar_id  gsis_id fantasypros_id ffcalculator_id pfr_id cfbref_id
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 10103  6bc584ed-82c0… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 10143  cee49408-2e91… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 10149  688f7a3b-4d66… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              BrocT… </span><span style='color: #BB0000;'>NA</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 10220  39ee3bee-1177… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              SendA… </span><span style='color: #BB0000;'>NA</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 10260  9f3b934e-52d6… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              PeteP… patrick-…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 10261  c9701373-23f6… 00-002… 9857           </span><span style='color: #BB0000;'>NA</span><span>              GreeA… aj-green…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 10262  de816e24-8442… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              GabbB… blaine-g…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 10263  072ec285-1430… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              ClayA… adrian-c…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 10264  f1879cfa-4c07… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              AmukP… prince-a…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 10265  f44b4942-1de1… 00-002… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>              DareM… marcell-…
-#&gt; </span><span style='color: #949494;'># … with 2,063 more rows, and 12 more variables: sleeper_id &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   espn_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;, name &lt;chr&gt;, merge_name &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   position &lt;chr&gt;, team &lt;chr&gt;, age &lt;dbl&gt;, draft_year &lt;int&gt;, draft_round &lt;int&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   draft_pick &lt;int&gt;, birthdate &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10,501 x 27</span><span>
+#&gt;    mfl_id sportradar_id  fantasypros_id gsis_id pff_id sleeper_id nfl_id espn_id
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 15237  aaa8b42c-4d87… 19780          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7523       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 15238  cf15be8f-9117… 19781          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7591       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 15239  17bb63b1-1b0e… 22679          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7538       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 15240  676a508c-c65f… 20082          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7610       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 15241  1fd00ec3-b758… 20156          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7527       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 15242  13038760-a019… 19800          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7605       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 15243  631e6ad5-0a97… 19383          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7581       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 15244  </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 15245  </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 15246  0d3113f7-2a82… 20159          </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     7589       </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     
+#&gt; </span><span style='color: #949494;'># … with 10,491 more rows, and 19 more variables: yahoo_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   fleaflicker_id &lt;chr&gt;, cbs_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   ktc_id &lt;chr&gt;, stats_id &lt;chr&gt;, stats_global_id &lt;chr&gt;, fantasy_data_id &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   name &lt;chr&gt;, merge_name &lt;chr&gt;, position &lt;chr&gt;, team &lt;chr&gt;, birthdate &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   draft_year &lt;int&gt;, draft_round &lt;int&gt;, draft_pick &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   twitter_username &lt;chr&gt;, season &lt;int&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
