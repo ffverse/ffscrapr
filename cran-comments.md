@@ -1,14 +1,6 @@
-## RESUBMISSION
+## SUBMISSION
 
-Corrected url issue in man/nflfastr_stat_mapping.Rd
-
-## CRAN Check Corrections
-
-This release corrects a CRAN check issue where a new binding was created in the base environment - this environment binding is now being created inside the empty environment. 
-
-## New features
-
-This release also patches some bugs. 
+This release patches some bugs. 
 
 ## Test environments
 * local (Windows) R installation, R 4.0.5
