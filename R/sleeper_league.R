@@ -31,6 +31,7 @@ ff_league.sleeper_conn <- function(conn) {
   tibble::tibble(
     league_id = as.character(conn$league_id),
     league_name = league_endpoint$name,
+    season = as.integer(conn$season),
     league_type = .sleeper_isdyno(league_endpoint),
     franchise_count = as.numeric(league_endpoint$total_rosters),
     qb_type = .sleeper_qbtype(starting_positions)$type,

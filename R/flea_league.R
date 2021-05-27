@@ -20,6 +20,7 @@ ff_league.flea_conn <- function(conn) {
   tibble::tibble(
     league_id = as.character(conn$league_id),
     league_name = league_endpoint$league$name,
+    season = as.integer(conn$season),
     league_type = .flea_isdyno(league_endpoint),
     franchise_count = as.numeric(league_endpoint$league[["capacity"]]),
     qb_type = .flea_qbtype(league_endpoint)$type,

@@ -27,6 +27,7 @@ ff_league.espn_conn <- function(conn) {
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$content$settings$name,
+    season = as.integer(conn$season),
     league_type = .espn_is_keeper(league_endpoint),
     franchise_count = franchise_count,
     qb_type = .espn_is_qbtype(league_endpoint)$type,
