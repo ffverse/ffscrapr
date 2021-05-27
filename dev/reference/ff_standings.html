@@ -243,22 +243,22 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>espn_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
 <span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>espn_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 12</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 12</span>
 #&gt;    franchise_id franchise_name          league_rank h2h_wins h2h_losses h2h_ties
-#&gt;           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>            1 </span><span style='color: #949494;'>"</span><span>The Early GGod</span><span style='color: #949494;'>"</span><span>                  7        3          9        0
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>            2 </span><span style='color: #949494;'>"</span><span>Coom  Dumpster</span><span style='color: #949494;'>"</span><span>                  3        7          5        0
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>            3 </span><span style='color: #949494;'>"</span><span>PAKI STANS</span><span style='color: #949494;'>"</span><span>                      6        4          8        0
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>            4 </span><span style='color: #949494;'>"</span><span>I'm Also Sad </span><span style='color: #949494;'>"</span><span>                   5        7          5        0
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>            5 </span><span style='color: #949494;'>"</span><span>The Juggernaut</span><span style='color: #949494;'>"</span><span>                  1        9          3        0
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>            6 </span><span style='color: #949494;'>"</span><span>OBJ's Personal Porta …           4        8          4        0
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>            7 </span><span style='color: #949494;'>"</span><span>Tony El Tigre</span><span style='color: #949494;'>"</span><span>                   9        5          7        0
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>            8 </span><span style='color: #949494;'>"</span><span>Big Coomers</span><span style='color: #949494;'>"</span><span>                     8        6          6        0
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>            9 </span><span style='color: #949494;'>"</span><span>RAFI CUNADO</span><span style='color: #949494;'>"</span><span>                     2        7          5        0
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>           10 </span><span style='color: #949494;'>"</span><span>Austin 🐐Drew Lock🐐</span><span style='color: #949494;'>"</span><span>           10        4          8        0
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: h2h_winpct &lt;dbl&gt;, points_for &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   points_against &lt;dbl&gt;, allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   allplay_winpct &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>            1 <span style='color: #949494;'>"</span>The Early GGod<span style='color: #949494;'>"</span>                  7        3          9        0
+#&gt; <span style='color: #BCBCBC;'> 2</span>            2 <span style='color: #949494;'>"</span>Coom  Dumpster<span style='color: #949494;'>"</span>                  3        7          5        0
+#&gt; <span style='color: #BCBCBC;'> 3</span>            3 <span style='color: #949494;'>"</span>PAKI STANS<span style='color: #949494;'>"</span>                      6        4          8        0
+#&gt; <span style='color: #BCBCBC;'> 4</span>            4 <span style='color: #949494;'>"</span>I'm Also Sad <span style='color: #949494;'>"</span>                   5        7          5        0
+#&gt; <span style='color: #BCBCBC;'> 5</span>            5 <span style='color: #949494;'>"</span>The Juggernaut<span style='color: #949494;'>"</span>                  1        9          3        0
+#&gt; <span style='color: #BCBCBC;'> 6</span>            6 <span style='color: #949494;'>"</span>OBJ's Personal Porta …           4        8          4        0
+#&gt; <span style='color: #BCBCBC;'> 7</span>            7 <span style='color: #949494;'>"</span>Tony El Tigre<span style='color: #949494;'>"</span>                   9        5          7        0
+#&gt; <span style='color: #BCBCBC;'> 8</span>            8 <span style='color: #949494;'>"</span>Big Coomers<span style='color: #949494;'>"</span>                     8        6          6        0
+#&gt; <span style='color: #BCBCBC;'> 9</span>            9 <span style='color: #949494;'>"</span>RAFI CUNADO<span style='color: #949494;'>"</span>                     2        7          5        0
+#&gt; <span style='color: #BCBCBC;'>10</span>           10 <span style='color: #949494;'>"</span>Austin 🐐Drew Lock🐐<span style='color: #949494;'>"</span>           10        4          8        0
+#&gt; <span style='color: #949494;'># … with 6 more variables: h2h_winpct &lt;dbl&gt;, points_for &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   points_against &lt;dbl&gt;, allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   allplay_winpct &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
@@ -268,52 +268,52 @@
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 14 x 20</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 14 x 20</span>
 #&gt;    franchise_id franchise_name     h2h_wins h2h_losses h2h_ties h2h_winpct
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0009         Team Link                10          3        0      0.769
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0010         Team Yoshi                9          4        0      0.692
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0014         Team Luigi               10          3        0      0.769
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0003         Team Donkey Kong          6          7        0      0.462
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 0006         Team King Dedede          8          5        0      0.615
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 0011         Team Diddy Kong           8          5        0      0.615
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 0008         Team Bowser               7          6        0      0.538
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0007         Team Kirby                7          6        0      0.538
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0002         Team Simon Belmont        6          7        0      0.462
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0004         Team Ice Climbers         5          8        0      0.385
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> 0005         Team Dr. Mario            5          8        0      0.385
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> 0013         Team Ness                 3         10        0      0.231
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> 0012         Team Mewtwo               4          9        0      0.308
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> 0001         Team Pikachu              3         10        0      0.231
-#&gt; </span><span style='color: #949494;'># … with 14 more variables: allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   allplay_ties &lt;dbl&gt;, allplay_winpct &lt;dbl&gt;, points_for &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   points_against &lt;dbl&gt;, max_points_against &lt;dbl&gt;, min_points_against &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   potential_points &lt;dbl&gt;, victory_points &lt;dbl&gt;, offensive_points &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   defensive_points &lt;dbl&gt;, power_rank &lt;dbl&gt;, power_rank_alt &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 0009         Team Link                10          3        0      0.769
+#&gt; <span style='color: #BCBCBC;'> 2</span> 0010         Team Yoshi                9          4        0      0.692
+#&gt; <span style='color: #BCBCBC;'> 3</span> 0014         Team Luigi               10          3        0      0.769
+#&gt; <span style='color: #BCBCBC;'> 4</span> 0003         Team Donkey Kong          6          7        0      0.462
+#&gt; <span style='color: #BCBCBC;'> 5</span> 0006         Team King Dedede          8          5        0      0.615
+#&gt; <span style='color: #BCBCBC;'> 6</span> 0011         Team Diddy Kong           8          5        0      0.615
+#&gt; <span style='color: #BCBCBC;'> 7</span> 0008         Team Bowser               7          6        0      0.538
+#&gt; <span style='color: #BCBCBC;'> 8</span> 0007         Team Kirby                7          6        0      0.538
+#&gt; <span style='color: #BCBCBC;'> 9</span> 0002         Team Simon Belmont        6          7        0      0.462
+#&gt; <span style='color: #BCBCBC;'>10</span> 0004         Team Ice Climbers         5          8        0      0.385
+#&gt; <span style='color: #BCBCBC;'>11</span> 0005         Team Dr. Mario            5          8        0      0.385
+#&gt; <span style='color: #BCBCBC;'>12</span> 0013         Team Ness                 3         10        0      0.231
+#&gt; <span style='color: #BCBCBC;'>13</span> 0012         Team Mewtwo               4          9        0      0.308
+#&gt; <span style='color: #BCBCBC;'>14</span> 0001         Team Pikachu              3         10        0      0.231
+#&gt; <span style='color: #949494;'># … with 14 more variables: allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   allplay_ties &lt;dbl&gt;, allplay_winpct &lt;dbl&gt;, points_for &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   points_against &lt;dbl&gt;, max_points_against &lt;dbl&gt;, min_points_against &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   potential_points &lt;dbl&gt;, victory_points &lt;dbl&gt;, offensive_points &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   defensive_points &lt;dbl&gt;, power_rank &lt;dbl&gt;, power_rank_alt &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_standings</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 12 x 12</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 12 x 12</span>
 #&gt;    franchise_id franchise_name    h2h_wins h2h_losses h2h_ties h2h_winpct
-#&gt;           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>            1 Fake News                8          5        0     0.615 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>            2 KingGabe                 1         12        0     0.076</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>            3 solarpool                8          5        0     0.615 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>            4 The FANTom Menace        8          5        0     0.615 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>            5 Barbarians               6          7        0     0.462 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>            6 sox05syd                 8          5        0     0.615 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>            7 Flipadelphia05          10          3        0     0.769 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>            8 Hocka Flocka             7          6        0     0.538 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>            9 ZPMiller97               4          9        0     0.308 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>           10 JMLarkin                 1         12        0     0.076</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span>           11 Permian Panthers         8          5        0     0.615 
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span>           12 jaydk                    9          4        0     0.692 
-#&gt; </span><span style='color: #949494;'># … with 6 more variables: points_for &lt;dbl&gt;, points_against &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   potential_points &lt;dbl&gt;, allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   allplay_winpct &lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>            1 Fake News                8          5        0     0.615 
+#&gt; <span style='color: #BCBCBC;'> 2</span>            2 KingGabe                 1         12        0     0.076<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span>            3 solarpool                8          5        0     0.615 
+#&gt; <span style='color: #BCBCBC;'> 4</span>            4 The FANTom Menace        8          5        0     0.615 
+#&gt; <span style='color: #BCBCBC;'> 5</span>            5 Barbarians               6          7        0     0.462 
+#&gt; <span style='color: #BCBCBC;'> 6</span>            6 sox05syd                 8          5        0     0.615 
+#&gt; <span style='color: #BCBCBC;'> 7</span>            7 Flipadelphia05          10          3        0     0.769 
+#&gt; <span style='color: #BCBCBC;'> 8</span>            8 Hocka Flocka             7          6        0     0.538 
+#&gt; <span style='color: #BCBCBC;'> 9</span>            9 ZPMiller97               4          9        0     0.308 
+#&gt; <span style='color: #BCBCBC;'>10</span>           10 JMLarkin                 1         12        0     0.076<span style='text-decoration: underline;'>9</span>
+#&gt; <span style='color: #BCBCBC;'>11</span>           11 Permian Panthers         8          5        0     0.615 
+#&gt; <span style='color: #BCBCBC;'>12</span>           12 jaydk                    9          4        0     0.692 
+#&gt; <span style='color: #949494;'># … with 6 more variables: points_for &lt;dbl&gt;, points_against &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   potential_points &lt;dbl&gt;, allplay_wins &lt;dbl&gt;, allplay_losses &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   allplay_winpct &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

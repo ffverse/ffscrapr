@@ -241,82 +241,82 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
 <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 220 x 21</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 220 x 21</span>
 #&gt;    round  pick overall franchise_id franchise_name       user_nickname player_id
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1     1       1            9 </span><span style='color: #949494;'>"</span><span>RAFI CUNADO</span><span style='color: #949494;'>"</span><span>        Brandon11598    3</span><span style='text-decoration: underline;'>120</span><span>348
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1     2       2            5 </span><span style='color: #949494;'>"</span><span>The Juggernaut</span><span style='color: #949494;'>"</span><span>     longhorn0010    4</span><span style='text-decoration: underline;'>047</span><span>646
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1     3       3            1 </span><span style='color: #949494;'>"</span><span>The Early GGod</span><span style='color: #949494;'>"</span><span>     dachosenJuan…   2</span><span style='text-decoration: underline;'>977</span><span>644
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1     4       4            4 </span><span style='color: #949494;'>"</span><span>I'm Also Sad </span><span style='color: #949494;'>"</span><span>      Ciavalen5th     3</span><span style='text-decoration: underline;'>121</span><span>422
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1     5       5            8 </span><span style='color: #949494;'>"</span><span>Big Coomers</span><span style='color: #949494;'>"</span><span>        Zarkoa           -</span><span style='color: #BB0000;text-decoration: underline;'>16</span><span style='color: #BB0000;'>033</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1     6       6            3 </span><span style='color: #949494;'>"</span><span>PAKI STANS</span><span style='color: #949494;'>"</span><span>         erodriguezk     3</span><span style='text-decoration: underline;'>122</span><span>840
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1     7       7            2 </span><span style='color: #949494;'>"</span><span>Coom  Dumpster</span><span style='color: #949494;'>"</span><span>     mfespinosaIV      </span><span style='text-decoration: underline;'>16</span><span>800
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1     8       8            6 </span><span style='color: #949494;'>"</span><span>OBJ's Personal Por… drake iz yoda     </span><span style='text-decoration: underline;'>15</span><span>683
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1     9       9           10 </span><span style='color: #949494;'>"</span><span>Austin 🐐Drew Lock… espn14856151      </span><span style='text-decoration: underline;'>14</span><span>880
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1    10      10            7 </span><span style='color: #949494;'>"</span><span>Tony El Tigre</span><span style='color: #949494;'>"</span><span>      anthon8821581   2</span><span style='text-decoration: underline;'>573</span><span>079
-#&gt; </span><span style='color: #949494;'># … with 210 more rows, and 14 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   team &lt;chr&gt;, bid_amount &lt;int&gt;, nominating_team_id &lt;int&gt;, is_keeper &lt;lgl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   can_keeper &lt;lgl&gt;, autodraft_type &lt;int&gt;, complete_date &lt;dttm&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   in_progress &lt;lgl&gt;, pick_id &lt;int&gt;, drafted &lt;lgl&gt;, lineupSlotId &lt;int&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   tradeLocked &lt;lgl&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     1     1       1            9 <span style='color: #949494;'>"</span>RAFI CUNADO<span style='color: #949494;'>"</span>        Brandon11598    3<span style='text-decoration: underline;'>120</span>348
+#&gt; <span style='color: #BCBCBC;'> 2</span>     1     2       2            5 <span style='color: #949494;'>"</span>The Juggernaut<span style='color: #949494;'>"</span>     longhorn0010    4<span style='text-decoration: underline;'>047</span>646
+#&gt; <span style='color: #BCBCBC;'> 3</span>     1     3       3            1 <span style='color: #949494;'>"</span>The Early GGod<span style='color: #949494;'>"</span>     dachosenJuan…   2<span style='text-decoration: underline;'>977</span>644
+#&gt; <span style='color: #BCBCBC;'> 4</span>     1     4       4            4 <span style='color: #949494;'>"</span>I'm Also Sad <span style='color: #949494;'>"</span>      Ciavalen5th     3<span style='text-decoration: underline;'>121</span>422
+#&gt; <span style='color: #BCBCBC;'> 5</span>     1     5       5            8 <span style='color: #949494;'>"</span>Big Coomers<span style='color: #949494;'>"</span>        Zarkoa           -<span style='color: #BB0000; text-decoration: underline;'>16</span><span style='color: #BB0000;'>033</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span>     1     6       6            3 <span style='color: #949494;'>"</span>PAKI STANS<span style='color: #949494;'>"</span>         erodriguezk     3<span style='text-decoration: underline;'>122</span>840
+#&gt; <span style='color: #BCBCBC;'> 7</span>     1     7       7            2 <span style='color: #949494;'>"</span>Coom  Dumpster<span style='color: #949494;'>"</span>     mfespinosaIV      <span style='text-decoration: underline;'>16</span>800
+#&gt; <span style='color: #BCBCBC;'> 8</span>     1     8       8            6 <span style='color: #949494;'>"</span>OBJ's Personal Por… drake iz yoda     <span style='text-decoration: underline;'>15</span>683
+#&gt; <span style='color: #BCBCBC;'> 9</span>     1     9       9           10 <span style='color: #949494;'>"</span>Austin 🐐Drew Lock… espn14856151      <span style='text-decoration: underline;'>14</span>880
+#&gt; <span style='color: #BCBCBC;'>10</span>     1    10      10            7 <span style='color: #949494;'>"</span>Tony El Tigre<span style='color: #949494;'>"</span>      anthon8821581   2<span style='text-decoration: underline;'>573</span>079
+#&gt; <span style='color: #949494;'># … with 210 more rows, and 14 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, bid_amount &lt;int&gt;, nominating_team_id &lt;int&gt;, is_keeper &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   can_keeper &lt;lgl&gt;, autodraft_type &lt;int&gt;, complete_date &lt;dttm&gt;,</span>
+#&gt; <span style='color: #949494;'>#   in_progress &lt;lgl&gt;, pick_id &lt;int&gt;, drafted &lt;lgl&gt;, lineupSlotId &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   tradeLocked &lt;lgl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
 <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 80 x 9</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 9</span>
 #&gt;    round  pick overall franchise_id franchise_name  player_id player_name  pos  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1     1       1      1</span><span style='text-decoration: underline;'>373</span><span>970 Bamenda Herd        </span><span style='text-decoration: underline;'>15</span><span>539 Clyde Edwar… RB   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1     2       2      1</span><span style='text-decoration: underline;'>374</span><span>252 Central City C…     </span><span style='text-decoration: underline;'>15</span><span>604 Jonathan Ta… RB   
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1     3       3      1</span><span style='text-decoration: underline;'>373</span><span>991 Top City Terro…     </span><span style='text-decoration: underline;'>15</span><span>523 CeeDee Lamb  WR   
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1     4       4      1</span><span style='text-decoration: underline;'>374</span><span>315 Shanghai Commu…     </span><span style='text-decoration: underline;'>15</span><span>555 J.K. Dobbins RB   
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1     5       5      1</span><span style='text-decoration: underline;'>374</span><span>271 Clutch City Ba…     </span><span style='text-decoration: underline;'>15</span><span>601 D'Andre Swi… RB   
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1     6       6      1</span><span style='text-decoration: underline;'>374</span><span>271 Clutch City Ba…     </span><span style='text-decoration: underline;'>15</span><span>563 Cam Akers    RB   
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1     7       7      1</span><span style='text-decoration: underline;'>373</span><span>883 Manitoba Marmo…     </span><span style='text-decoration: underline;'>15</span><span>540 Justin Jeff… WR   
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1     8       8      1</span><span style='text-decoration: underline;'>373</span><span>973 Red River Land…     </span><span style='text-decoration: underline;'>15</span><span>544 Jerry Jeudy  WR   
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1     9       9      1</span><span style='text-decoration: underline;'>374</span><span>271 Clutch City Ba…     </span><span style='text-decoration: underline;'>15</span><span>537 Chase Young  EDR  
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1    10      10      1</span><span style='text-decoration: underline;'>373</span><span>535 Winterthur Ang…     </span><span style='text-decoration: underline;'>15</span><span>620 Ke'Shawn Va… RB   
-#&gt; </span><span style='color: #949494;'># … with 70 more rows, and 1 more variable: team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     1     1       1      1<span style='text-decoration: underline;'>373</span>970 Bamenda Herd        <span style='text-decoration: underline;'>15</span>539 Clyde Edwar… RB   
+#&gt; <span style='color: #BCBCBC;'> 2</span>     1     2       2      1<span style='text-decoration: underline;'>374</span>252 Central City C…     <span style='text-decoration: underline;'>15</span>604 Jonathan Ta… RB   
+#&gt; <span style='color: #BCBCBC;'> 3</span>     1     3       3      1<span style='text-decoration: underline;'>373</span>991 Top City Terro…     <span style='text-decoration: underline;'>15</span>523 CeeDee Lamb  WR   
+#&gt; <span style='color: #BCBCBC;'> 4</span>     1     4       4      1<span style='text-decoration: underline;'>374</span>315 Shanghai Commu…     <span style='text-decoration: underline;'>15</span>555 J.K. Dobbins RB   
+#&gt; <span style='color: #BCBCBC;'> 5</span>     1     5       5      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>601 D'Andre Swi… RB   
+#&gt; <span style='color: #BCBCBC;'> 6</span>     1     6       6      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>563 Cam Akers    RB   
+#&gt; <span style='color: #BCBCBC;'> 7</span>     1     7       7      1<span style='text-decoration: underline;'>373</span>883 Manitoba Marmo…     <span style='text-decoration: underline;'>15</span>540 Justin Jeff… WR   
+#&gt; <span style='color: #BCBCBC;'> 8</span>     1     8       8      1<span style='text-decoration: underline;'>373</span>973 Red River Land…     <span style='text-decoration: underline;'>15</span>544 Jerry Jeudy  WR   
+#&gt; <span style='color: #BCBCBC;'> 9</span>     1     9       9      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>537 Chase Young  EDR  
+#&gt; <span style='color: #BCBCBC;'>10</span>     1    10      10      1<span style='text-decoration: underline;'>373</span>535 Winterthur Ang…     <span style='text-decoration: underline;'>15</span>620 Ke'Shawn Va… RB   
+#&gt; <span style='color: #949494;'># … with 70 more rows, and 1 more variable: team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 90 x 11</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 90 x 11</span>
 #&gt;    timestamp           round pick  overall franchise_id franchise_name player_id
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2021-02-08 </span><span style='color: #949494;'>18:52:22</span><span> 01    01          1 0014         Team Luigi     11244    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2021-02-08 </span><span style='color: #949494;'>19:20:07</span><span> 01    02          2 0003         Team Donkey K… 14073    
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2021-02-08 </span><span style='color: #949494;'>20:01:16</span><span> 01    03          3 0008         Team Bowser    11678    
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2021-02-08 </span><span style='color: #949494;'>20:01:30</span><span> 02    01          4 0008         Team Bowser    13131    
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2021-02-08 </span><span style='color: #949494;'>20:12:30</span><span> 02    02          5 0003         Team Donkey K… 11671    
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2021-02-09 </span><span style='color: #949494;'>02:55:39</span><span> 02    03          6 0012         Team Mewtwo    13593    
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2021-02-09 </span><span style='color: #949494;'>03:09:50</span><span> 03    01          7 0014         Team Luigi     0829     
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2021-02-09 </span><span style='color: #949494;'>03:12:44</span><span> 03    02          8 0003         Team Donkey K… 11222    
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2021-02-09 </span><span style='color: #949494;'>03:22:50</span><span> 03    03          9 0008         Team Bowser    14208    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2021-02-09 </span><span style='color: #949494;'>03:23:01</span><span> 04    01         10 0008         Team Bowser    13156    
-#&gt; </span><span style='color: #949494;'># … with 80 more rows, and 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   age &lt;dbl&gt;, team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-02-08 <span style='color: #949494;'>18:52:22</span> 01    01          1 0014         Team Luigi     11244    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-02-08 <span style='color: #949494;'>19:20:07</span> 01    02          2 0003         Team Donkey K… 14073    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-02-08 <span style='color: #949494;'>20:01:16</span> 01    03          3 0008         Team Bowser    11678    
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-02-08 <span style='color: #949494;'>20:01:30</span> 02    01          4 0008         Team Bowser    13131    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-02-08 <span style='color: #949494;'>20:12:30</span> 02    02          5 0003         Team Donkey K… 11671    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-02-09 <span style='color: #949494;'>02:55:39</span> 02    03          6 0012         Team Mewtwo    13593    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-02-09 <span style='color: #949494;'>03:09:50</span> 03    01          7 0014         Team Luigi     0829     
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-02-09 <span style='color: #949494;'>03:12:44</span> 03    02          8 0003         Team Donkey K… 11222    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-02-09 <span style='color: #949494;'>03:22:50</span> 03    03          9 0008         Team Bowser    14208    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-02-09 <span style='color: #949494;'>03:23:01</span> 04    01         10 0008         Team Bowser    13156    
+#&gt; <span style='color: #949494;'># … with 80 more rows, and 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   age &lt;dbl&gt;, team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 48 x 13</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 48 x 13</span>
 #&gt;    draft_id       status   type  season round  pick franchise_id franchise_name 
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 5224587733212… complete line… 2020       1     1            4 The FANTom Men…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 5224587733212… complete line… 2020       1     2            5 Barbarians     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 5224587733212… complete line… 2020       1     3           11 Permian Panthe…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 5224587733212… complete line… 2020       1     4            2 KingGabe       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 5224587733212… complete line… 2020       1     5            8 Hocka Flocka   
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 5224587733212… complete line… 2020       1     6            2 KingGabe       
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 5224587733212… complete line… 2020       1     7            2 KingGabe       
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 5224587733212… complete line… 2020       1     8            2 KingGabe       
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 5224587733212… complete line… 2020       1     9            6 sox05syd       
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 5224587733212… complete line… 2020       1    10            9 ZPMiller97     
-#&gt; </span><span style='color: #949494;'># … with 38 more rows, and 5 more variables: player_id &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          
+#&gt; <span style='color: #BCBCBC;'> 1</span> 5224587733212… complete line… 2020       1     1            4 The FANTom Men…
+#&gt; <span style='color: #BCBCBC;'> 2</span> 5224587733212… complete line… 2020       1     2            5 Barbarians     
+#&gt; <span style='color: #BCBCBC;'> 3</span> 5224587733212… complete line… 2020       1     3           11 Permian Panthe…
+#&gt; <span style='color: #BCBCBC;'> 4</span> 5224587733212… complete line… 2020       1     4            2 KingGabe       
+#&gt; <span style='color: #BCBCBC;'> 5</span> 5224587733212… complete line… 2020       1     5            8 Hocka Flocka   
+#&gt; <span style='color: #BCBCBC;'> 6</span> 5224587733212… complete line… 2020       1     6            2 KingGabe       
+#&gt; <span style='color: #BCBCBC;'> 7</span> 5224587733212… complete line… 2020       1     7            2 KingGabe       
+#&gt; <span style='color: #BCBCBC;'> 8</span> 5224587733212… complete line… 2020       1     8            2 KingGabe       
+#&gt; <span style='color: #BCBCBC;'> 9</span> 5224587733212… complete line… 2020       1     9            6 sox05syd       
+#&gt; <span style='color: #BCBCBC;'>10</span> 5224587733212… complete line… 2020       1    10            9 ZPMiller97     
+#&gt; <span style='color: #949494;'># … with 38 more rows, and 5 more variables: player_id &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
