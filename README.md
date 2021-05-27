@@ -64,9 +64,10 @@ ff_league(ssb) %>% str()
 #> Using request.R from "ffscrapr"
 #> No encoding supplied: defaulting to UTF-8.
 #> No encoding supplied: defaulting to UTF-8.
-#> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
+#> tibble [1 x 14] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
+#>  $ season         : num 2020
 #>  $ franchise_count: num 14
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
