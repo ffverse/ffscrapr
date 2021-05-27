@@ -3,6 +3,7 @@
 ## Minor changes
 
 - `ff_league()` now has a column that returns the platform's season - this is most useful when running ff_league in batch. Thank you to @joeflan for the contribution!  (Fixes #287) (v1.4.2.01)
+- Added helper script in dev/ for switching between test cache versions. (v1.4.2.02)
 
 ---
 
