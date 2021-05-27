@@ -1,6 +1,8 @@
 # ffscrapr (development version)
 
+## Minor changes
 
+- `ff_league()` now has a column that returns the platform's season - this is most useful when running ff_league in batch. Thank you to @joeflan for the contribution!  (Fixes #287) (v1.4.2.01)
 
 ---
 
