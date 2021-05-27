@@ -67,7 +67,7 @@ ff_league(ssb) %>% str()
 #> tibble [1 x 14] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
-#>  $ season         : num 2020
+#>  $ season         : int 2020
 #>  $ franchise_count: num 14
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
