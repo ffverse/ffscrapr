@@ -22,7 +22,9 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
   last_scored_week <- sleeper_getendpoint(league_path) %>%
     purrr::pluck("content", "settings", "last_scored_leg")
 
-  weeks <- seq_len(regular_season_end)
+  max_week <- max(c(regular_season_end, last_scored_week), na.rm = TRUE)
+
+  weeks <- seq_len(max_week)
 
   matchups <- purrr::map_dfr(weeks, .sleeper_matchup, conn, last_scored_week)
 
@@ -49,14 +51,12 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
 
   df_matchups <- df_matchup %>%
     dplyr::left_join(
-      dplyr::select(
-        df_matchup,
-        dplyr::any_of(c(
-          "opponent_id" = "franchise_id",
-          "opponent_score" = "franchise_score",
-          "matchup_id"
-        ))
-      ),
+      dplyr::select(df_matchup,
+                    dplyr::any_of(c(
+                      "opponent_id" = "franchise_id",
+                      "opponent_score" = "franchise_score",
+                      "matchup_id"))) %>%
+        dplyr::filter(!is.na(matchup_id)),
       by = "matchup_id"
     ) %>%
     dplyr::filter(.data$franchise_id != .data$opponent_id) %>%
