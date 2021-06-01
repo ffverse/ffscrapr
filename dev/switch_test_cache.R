@@ -25,8 +25,8 @@ use_ffscrapr_tests_version <- function(version){
 
   stopifnot(length(version)==1)
 
-  gsub_dir("archive/main", paste0("archive/",version), dir = "tests", ext = c("R","Rmd"),recursive = TRUE)
-  gsub_dir("archive/main", paste0("archive/",version), dir = "vignettes", ext = c("R","Rmd"),recursive = TRUE)
+  gsub_dir("archive/main", paste0("archive/",version), dir = "tests", ext = c("R","Rmd"), recursive = TRUE)
+  gsub_dir("archive/main", paste0("archive/",version), dir = "vignettes", ext = c("R","Rmd"), recursive = TRUE)
 
   gsub_dir("ffscrapr\\-tests\\-main", paste0("ffscrapr-tests-",version), dir = "tests", ext = c("R","Rmd"), recursive = TRUE)
   gsub_dir("ffscrapr\\-tests\\-main", paste0("ffscrapr-tests-",version), dir = "vignettes", ext = c("R","Rmd"), recursive = TRUE)
