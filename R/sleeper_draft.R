@@ -35,6 +35,7 @@ ff_draft.sleeper_conn <- function(conn, ...) {
       "season",
       "round",
       "pick",
+      "auction_amount",
       "franchise_id",
       "franchise_name",
       "player_id",
