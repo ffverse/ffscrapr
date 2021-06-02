@@ -5,6 +5,7 @@
 - `ff_league()` now has a column that returns the platform's season - this is most useful when running ff_league in batch. Thank you to @joeflan for the contribution!  (Fixes #287) (v1.4.2.01)
 - Added helper script in dev/ for switching between test cache versions. (v1.4.2.02)
 - `ff_schedule()` for Sleeper now should extend into playoff weeks. (Fixes #289) (v1.4.2.03)
+- `ff_draft()` for Sleeper now has an auction_amount column if it is an auction draft. (Fixes #291) (v1.4.2.04)
 
 ---
 
