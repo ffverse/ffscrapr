@@ -234,76 +234,76 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 627 x 4</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 627 x 4</span>
 #&gt;    pos   points stat_id stat_name                    
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> QB         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> RB         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WR         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TE         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> K          0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> P          0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> DT         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> DE         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> LB         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> CB         0     133 defensive400To449YardsAllowed
-#&gt; </span><span style='color: #949494;'># … with 617 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        
+#&gt; <span style='color: #BCBCBC;'> 1</span> QB         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 2</span> RB         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 3</span> WR         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 4</span> TE         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 5</span> K          0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 6</span> P          0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 7</span> DT         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 8</span> DE         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'> 9</span> LB         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #BCBCBC;'>10</span> CB         0     133 defensive400To449YardsAllowed
+#&gt; <span style='color: #949494;'># … with 617 more rows</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>joe_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"fleaflicker"</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>joe_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 72 x 7</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 72 x 7</span>
 #&gt;    pos   event           abbrev points label  desc                      event_id
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> QB    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> RB    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WR    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TE    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> QB    Passing TD      TD       6    Passi… 6 points for every Passi…        5
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> RB    Passing TD      TD       6    Passi… 6 points for every Passi…        5
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> WR    Passing TD      TD       6    Passi… 6 points for every Passi…        5
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> TE    Passing TD      TD       6    Passi… 6 points for every Passi…        5
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> QB    2 Pt Conversio… 2PC      2    Passi… 2 points for every 2 Pt …        4
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> RB    2 Pt Conversio… 2PC      2    Passi… 2 points for every 2 Pt …        4
-#&gt; </span><span style='color: #949494;'># … with 62 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> QB    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
+#&gt; <span style='color: #BCBCBC;'> 2</span> RB    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
+#&gt; <span style='color: #BCBCBC;'> 3</span> WR    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
+#&gt; <span style='color: #BCBCBC;'> 4</span> TE    Passing Yard    Yd       0.04 Passi… 1 point for every 25 Pas…        3
+#&gt; <span style='color: #BCBCBC;'> 5</span> QB    Passing TD      TD       6    Passi… 6 points for every Passi…        5
+#&gt; <span style='color: #BCBCBC;'> 6</span> RB    Passing TD      TD       6    Passi… 6 points for every Passi…        5
+#&gt; <span style='color: #BCBCBC;'> 7</span> WR    Passing TD      TD       6    Passi… 6 points for every Passi…        5
+#&gt; <span style='color: #BCBCBC;'> 8</span> TE    Passing TD      TD       6    Passi… 6 points for every Passi…        5
+#&gt; <span style='color: #BCBCBC;'> 9</span> QB    2 Pt Conversio… 2PC      2    Passi… 2 points for every 2 Pt …        4
+#&gt; <span style='color: #BCBCBC;'>10</span> RB    2 Pt Conversio… 2PC      2    Passi… 2 points for every 2 Pt …        4
+#&gt; <span style='color: #949494;'># … with 62 more rows</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 71 x 6</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 71 x 6</span>
 #&gt;    pos   points range  event short_desc       long_desc                         
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                             
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> QB      6    0-10   #P    Number of Passi… </span><span style='color: #949494;'>"</span><span>This is the total number of Pass…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> RB      6    0-10   #P    Number of Passi… </span><span style='color: #949494;'>"</span><span>This is the total number of Pass…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WR      6    0-10   #P    Number of Passi… </span><span style='color: #949494;'>"</span><span>This is the total number of Pass…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TE      6    0-10   #P    Number of Passi… </span><span style='color: #949494;'>"</span><span>This is the total number of Pass…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> QB      0.04 -50-9… PY    Passing Yards    </span><span style='color: #949494;'>"</span><span>This is the total passing yardag…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> RB      0.04 -50-9… PY    Passing Yards    </span><span style='color: #949494;'>"</span><span>This is the total passing yardag…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> WR      0.04 -50-9… PY    Passing Yards    </span><span style='color: #949494;'>"</span><span>This is the total passing yardag…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> TE      0.04 -50-9… PY    Passing Yards    </span><span style='color: #949494;'>"</span><span>This is the total passing yardag…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> QB     -</span><span style='color: #BB0000;'>4</span><span>    0-10   IN    Pass Intercepti… </span><span style='color: #949494;'>"</span><span>This is the number of pass inter…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> RB     -</span><span style='color: #BB0000;'>4</span><span>    0-10   IN    Pass Intercepti… </span><span style='color: #949494;'>"</span><span>This is the number of pass inter…
-#&gt; </span><span style='color: #949494;'># … with 61 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                             
+#&gt; <span style='color: #BCBCBC;'> 1</span> QB      6    0-10   #P    Number of Passi… <span style='color: #949494;'>"</span>This is the total number of Pass…
+#&gt; <span style='color: #BCBCBC;'> 2</span> RB      6    0-10   #P    Number of Passi… <span style='color: #949494;'>"</span>This is the total number of Pass…
+#&gt; <span style='color: #BCBCBC;'> 3</span> WR      6    0-10   #P    Number of Passi… <span style='color: #949494;'>"</span>This is the total number of Pass…
+#&gt; <span style='color: #BCBCBC;'> 4</span> TE      6    0-10   #P    Number of Passi… <span style='color: #949494;'>"</span>This is the total number of Pass…
+#&gt; <span style='color: #BCBCBC;'> 5</span> QB      0.04 -50-9… PY    Passing Yards    <span style='color: #949494;'>"</span>This is the total passing yardag…
+#&gt; <span style='color: #BCBCBC;'> 6</span> RB      0.04 -50-9… PY    Passing Yards    <span style='color: #949494;'>"</span>This is the total passing yardag…
+#&gt; <span style='color: #BCBCBC;'> 7</span> WR      0.04 -50-9… PY    Passing Yards    <span style='color: #949494;'>"</span>This is the total passing yardag…
+#&gt; <span style='color: #BCBCBC;'> 8</span> TE      0.04 -50-9… PY    Passing Yards    <span style='color: #949494;'>"</span>This is the total passing yardag…
+#&gt; <span style='color: #BCBCBC;'> 9</span> QB     -<span style='color: #BB0000;'>4</span>    0-10   IN    Pass Intercepti… <span style='color: #949494;'>"</span>This is the number of pass inter…
+#&gt; <span style='color: #BCBCBC;'>10</span> RB     -<span style='color: #BB0000;'>4</span>    0-10   IN    Pass Intercepti… <span style='color: #949494;'>"</span>This is the number of pass inter…
+#&gt; <span style='color: #949494;'># … with 61 more rows</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_scoring</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 169 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 169 x 3</span>
 #&gt;    pos   event    points
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> QB    pass_2pt      2
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> RB    pass_2pt      2
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WR    pass_2pt      2
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> TE    pass_2pt      2
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> K     pass_2pt      2
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> QB    pass_int     -</span><span style='color: #BB0000;'>2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> RB    pass_int     -</span><span style='color: #BB0000;'>2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WR    pass_int     -</span><span style='color: #BB0000;'>2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> TE    pass_int     -</span><span style='color: #BB0000;'>2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> K     pass_int     -</span><span style='color: #BB0000;'>2</span><span>
-#&gt; </span><span style='color: #949494;'># … with 159 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> QB    pass_2pt      2
+#&gt; <span style='color: #BCBCBC;'> 2</span> RB    pass_2pt      2
+#&gt; <span style='color: #BCBCBC;'> 3</span> WR    pass_2pt      2
+#&gt; <span style='color: #BCBCBC;'> 4</span> TE    pass_2pt      2
+#&gt; <span style='color: #BCBCBC;'> 5</span> K     pass_2pt      2
+#&gt; <span style='color: #BCBCBC;'> 6</span> QB    pass_int     -<span style='color: #BB0000;'>2</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> RB    pass_int     -<span style='color: #BB0000;'>2</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> WR    pass_int     -<span style='color: #BB0000;'>2</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> TE    pass_int     -<span style='color: #BB0000;'>2</span>
+#&gt; <span style='color: #BCBCBC;'>10</span> K     pass_int     -<span style='color: #BB0000;'>2</span>
+#&gt; <span style='color: #949494;'># … with 159 more rows</span></div><div class='input'><span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
