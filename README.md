@@ -62,9 +62,6 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
 ff_league(ssb) %>% str()
-#> Using request.R from "ffscrapr"
-#> No encoding supplied: defaulting to UTF-8.
-#> No encoding supplied: defaulting to UTF-8.
 #> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
@@ -82,9 +79,6 @@ ff_league(ssb) %>% str()
 
 # Get rosters
 ff_rosters(ssb)
-#> No encoding supplied: defaulting to UTF-8.
-#> No encoding supplied: defaulting to UTF-8.
-#> No encoding supplied: defaulting to UTF-8.
 #> # A tibble: 442 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
