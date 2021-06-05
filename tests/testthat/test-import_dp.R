@@ -23,7 +23,7 @@ test_that("dp_cleannames removes periods, apostrophes, and suffixes", {
 
 test_that("dp_cleannames fixes MFL names and does custom name substitutions", {
 
-  mixed_names <- c("Trubisky, Mitch", "Chartarius Atwell",
+  mixed_names <- c("Trubisky, Mitch", "Chatarius Atwell",
                    "Zeke Elliott", "Devante Parker",
                    "A.J. Green", "Beckham Jr., Odell")
 
