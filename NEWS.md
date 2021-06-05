@@ -6,6 +6,7 @@
 - Added helper script in dev/ for switching between test cache versions. (v1.4.2.02)
 - `ff_schedule()` for Sleeper now should extend into playoff weeks. (Fixes #289) (v1.4.2.03)
 - `ff_draft()` for Sleeper now has an auction_amount column if it is an auction draft. (Fixes #291) (v1.4.2.04)
+- `dp_cleannames()` now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one. (v1.4.2.05) 
 
 ---
 
