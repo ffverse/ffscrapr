@@ -76,25 +76,53 @@ dp_playerids <- function() {
 #'
 #' @param player_name a character (or character vector)
 #' @param lowercase defaults to FALSE - if TRUE, converts to lowercase
+#' @param convert_lastfirst converts names from "Last, First" to "First Last" (i.e. MFL style)
+#' @param use_name_database uses internal name database to do common substitutions (Mitchell Trubisky to Mitch Trubisky etc)
 #'
 #' @examples
 #' \donttest{
 #' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
+#'
+#' dp_cleannames(c("Trubisky, Mitch", "Atwell, Chartarius", "Elliott, Zeke", "Roethlisberger, Ben"),
+#'               convert_lastfirst = TRUE,
+#'               use_name_database = TRUE)
 #' }
+#'
+#' @seealso
 #'
 #' @return a character vector of cleaned names
 #'
 #' @export
 
-dp_cleannames <- function(player_name, lowercase = FALSE) {
-  checkmate::assert_logical(lowercase)
+dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = FALSE, use_name_database = TRUE) {
   checkmate::assert_character(player_name)
+  checkmate::assert_flag(lowercase)
+  checkmate::assert_flag(convert_lastfirst)
+  checkmate::assert_flag(use_name_database)
 
-  n <- stringr::str_remove_all(player_name, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
+  n <- player_name
 
-  if (lowercase) n <- tolower(n)
+  if(convert_lastfirst) n <- stringr::str_replace_all(n, "^(.+), (.+)$", "\\2 \\1")
+
+  n <- stringr::str_remove_all(n, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
 
   n <- stringr::str_squish(n)
 
+  if(use_name_database) n <- unname(dplyr::coalesce(dp_name_mapping[n],n))
+
+  if(lowercase) n <- tolower(n)
+
   return(n)
 }
+
+#' Alternate name mappings
+#'
+#' A named character vector mapping common alternate names
+#'
+#' @format A named character vector
+#' \describe{
+#'   \item{name attribute}{The name of each element of the vector is the "alternate" name}
+#'   \item{value attribute}{The value of each element of the vector is the "correct" name.}
+#' }
+#'
+"dp_name_mapping"

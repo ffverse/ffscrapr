@@ -4,12 +4,21 @@
 \alias{dp_cleannames}
 \title{Clean Names}
 \usage{
-dp_cleannames(player_name, lowercase = FALSE)
+dp_cleannames(
+  player_name,
+  lowercase = FALSE,
+  convert_lastfirst = FALSE,
+  use_name_database = TRUE
+)
 }
 \arguments{
 \item{player_name}{a character (or character vector)}
 
 \item{lowercase}{defaults to FALSE - if TRUE, converts to lowercase}
+
+\item{convert_lastfirst}{converts names from "Last, First" to "First Last" (i.e. MFL style)}
+
+\item{use_name_database}{uses internal name database to do common substitutions (Mitchell Trubisky to Mitch Trubisky etc)}
 }
 \value{
 a character vector of cleaned names
@@ -21,6 +30,13 @@ May eventually refer to a name-cleaning database, for now will just include basi
 \examples{
 \donttest{
 dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
+
+dp_cleannames(c("Trubisky, Mitch", "Atwell, Chartarius", "Elliott, Zeke", "Roethlisberger, Ben"),
+              convert_lastfirst = TRUE,
+              use_name_database = TRUE)
 }
+
+}
+\seealso{
 
 }
