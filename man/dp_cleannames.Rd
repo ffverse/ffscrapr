@@ -24,19 +24,24 @@ dp_cleannames(
 a character vector of cleaned names
 }
 \description{
-Applies some name-cleaning heuristics to facilitate joins.
-May eventually refer to a name-cleaning database, for now will just include basic regex.
+Applies some name-cleaning heuristics to facilitate joins. These heuristics may include:
+\itemize{
+\item removing periods and apostrophes
+\item removing common suffixes, such as Jr, Sr, II, III, IV
+\item converting to lowercase
+\item using \code{dp_name_mapping} to do common name substitutions, such as Mitch Trubisky to Mitchell Trubisky
+}
 }
 \examples{
 \donttest{
 dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 
-dp_cleannames(c("Trubisky, Mitch", "Atwell, Chartarius", "Elliott, Zeke", "Roethlisberger, Ben"),
+dp_cleannames(c("Trubisky, Mitch", "Atwell, Chatarius", "Elliott, Zeke", "Elijah Moore"),
               convert_lastfirst = TRUE,
               use_name_database = TRUE)
 }
 
 }
 \seealso{
-
+\code{dp_name_mapping}
 }

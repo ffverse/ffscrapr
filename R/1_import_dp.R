@@ -71,8 +71,11 @@ dp_playerids <- function() {
 
 #' Clean Names
 #'
-#' Applies some name-cleaning heuristics to facilitate joins.
-#' May eventually refer to a name-cleaning database, for now will just include basic regex.
+#' Applies some name-cleaning heuristics to facilitate joins. These heuristics may include:
+#'  - removing periods and apostrophes
+#'  - removing common suffixes, such as Jr, Sr, II, III, IV
+#'  - converting to lowercase
+#'  - using `dp_name_mapping` to do common name substitutions, such as Mitch Trubisky to Mitchell Trubisky
 #'
 #' @param player_name a character (or character vector)
 #' @param lowercase defaults to FALSE - if TRUE, converts to lowercase
@@ -83,12 +86,12 @@ dp_playerids <- function() {
 #' \donttest{
 #' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 #'
-#' dp_cleannames(c("Trubisky, Mitch", "Atwell, Chartarius", "Elliott, Zeke", "Roethlisberger, Ben"),
+#' dp_cleannames(c("Trubisky, Mitch", "Atwell, Chatarius", "Elliott, Zeke", "Elijah Moore"),
 #'               convert_lastfirst = TRUE,
 #'               use_name_database = TRUE)
 #' }
 #'
-#' @seealso
+#' @seealso `dp_name_mapping`
 #'
 #' @return a character vector of cleaned names
 #'
@@ -119,10 +122,15 @@ dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = FA
 #'
 #' A named character vector mapping common alternate names
 #'
+#' @examples
+#' \donttest{
+#' dp_name_mapping[c("Chatarius Atwell", "Robert Kelley")]
+#' }
+#'
 #' @format A named character vector
 #' \describe{
-#'   \item{name attribute}{The name of each element of the vector is the "alternate" name}
-#'   \item{value attribute}{The value of each element of the vector is the "correct" name.}
+#'   \item{name attribute}{The "alternate" name.}
+#'   \item{value attribute}{The "correct" name.}
 #' }
 #'
 "dp_name_mapping"

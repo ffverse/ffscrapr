@@ -7,8 +7,8 @@
 \format{
 A named character vector
 \describe{
-\item{name attribute}{The name of each element of the vector is the "alternate" name}
-\item{value attribute}{The value of each element of the vector is the "correct" name.}
+\item{name attribute}{The "alternate" name.}
+\item{value attribute}{The "correct" name.}
 }
 }
 \usage{
@@ -16,5 +16,11 @@ dp_name_mapping
 }
 \description{
 A named character vector mapping common alternate names
+}
+\examples{
+\donttest{
+dp_name_mapping[c("Chatarius Atwell", "Robert Kelley")]
+}
+
 }
 \keyword{datasets}
