@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" width="25%" min-width="120px"/></a>
+# ffscrapr <a href='#'><img src="man/figures/ffscrapr.svg" align="right" width="25%" min-width="120px"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -19,7 +19,8 @@ coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=
 status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
 [![API
 status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
-[![nflverse discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
+[![nflverse
+discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
 
 <!-- badges: end -->
 
@@ -89,11 +90,11 @@ ff_rosters(ssb)
 #> # A tibble: 442 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.7
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.4
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.3
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.8
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.5
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.4
 #> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.2
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.3
 #> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 

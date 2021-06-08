@@ -8,12 +8,15 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="207.26576mm"
-   height="225.86987mm"
-   viewBox="0 0 207.26576 225.86987"
+   height="239.83647mm"
+   viewBox="0 0 207.26576 239.83647"
    version="1.1"
    id="svg51"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="ffscrapr-v2.svg">
+   sodipodi:docname="ffscrapr-v2.svg"
+   inkscape:export-filename="C:\Users\Tan\Documents\GitHub\__dynastyprocess\graphics\ffscrapr\ffscrapr-logo-v2.png"
+   inkscape:export-xdpi="53.799999"
+   inkscape:export-ydpi="53.799999">
   <defs
      id="defs45" />
   <sodipodi:namedview
@@ -23,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="397.50034"
-     inkscape:cy="298.26931"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="117.93455"
+     inkscape:cy="312.43332"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -47,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,10 +58,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-0.66136852,-69.249578)">
+     transform="translate(-0.66136852,-55.572237)">
     <g
        id="g5250"
-       transform="matrix(1.3693735,0,0,1.3703759,292.87125,-68.162974)"
+       transform="matrix(-1.3693735,0,0,1.4551127,-84.282755,-90.337181)"
        style="stroke-width:1.24787">
       <path
          transform="matrix(0.69800919,0,0,0.65828752,-256.73934,-86.742506)"
