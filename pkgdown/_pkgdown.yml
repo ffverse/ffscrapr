@@ -53,14 +53,24 @@ navbar:
     more:
       text: "More"
       menu:
-      - text: ffsimulator
-        href: https://ffsimulator.dynastyprocess.com
-      - text: DynastyProcess.com
-        href: https://www.dynastyprocess.com/
-      - text: ffverse
-        href: https://github.com/ffverse/
-      - text: nflverse
-        href: https://www.nflfastr.com
+        - text: ffverse
+          menu:
+          - text: ffsimulator
+            href: https://ffsimulator.dynastyprocess.com
+          - text: GitHub
+            href: https://www.github.com/ffverse
+          - text: R-Universe
+            href: https://ffverse.r-universe.dev
+        - text: "nflverse"
+          menu:
+          - text: nflfastR
+            href: https://www.nflfastr.com
+          - text: GitHub
+            href: https://github.com/nflverse
+          - text: R-Universe
+            href: https://nflverse.r-universe.dev
+        - text: "DynastyProcess.com"
+          href: https://dynastyprocess.com
 
 articles:
 - title: Getting Started
