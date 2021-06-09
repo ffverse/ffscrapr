@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Client for Fantasy Football League Platforms • ffscrapr</title>
+<title>ffscrapr • an R package for Fantasy Football APIs • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -20,11 +20,9 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="API Client for Fantasy Football League Platforms">
-<meta property="og:description" content="Helps access various Fantasy Football APIs by handling
-    authentication and rate-limiting, forming appropriate calls, and
-    returning tidy dataframes which can be easily connected to other data
-    sources.">
+<meta property="og:title" content="ffscrapr • an R package for Fantasy Football APIs">
+<meta property="og:description" content="An R package that helps connect to fantasy football platforms (such MyFantasyLeague, Sleeper, Fleaflicker, ESPN) while handling authentication, rate-limiting, and caching and returning tidy data frames for easy analysis.
+">
 <meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
 <meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
 <meta name="twitter:card" content="summary">
@@ -172,7 +170,7 @@
   <div class="contents col-md-9">
 <div id="ffscrapr-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="#"><img src="reference/figures/ffscrapr.svg" align="right" width="25%" min-width="120px"></a>
+<a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="#"><img src="reference/figures/logo.svg" align="right" width="25%" min-width="120px"></a>
 </h1></div>
 <p><em>An R Client for Fantasy Football League APIs</em></p>
 <!-- badges: start -->
@@ -203,9 +201,6 @@
 
 <span class="co"># Get a summary of league settings</span>
 <span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Using request.R from "ffscrapr"</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; tibble [1 x 14] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "54040"</span>
 <span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
@@ -224,9 +219,6 @@
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; # A tibble: 442 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
