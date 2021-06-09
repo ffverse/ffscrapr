@@ -1,9 +1,10 @@
 ---
-title: "Managing ffscrapr's Cache"
-author: "Tan Ho"
+title: "ffscrapr: Managing Cache"
+author: Tan Ho
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ffscrapr_caching}
+  %\VignetteIndexEntry{ffscrapr: Managing Cache}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

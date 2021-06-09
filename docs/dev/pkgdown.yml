@@ -1,13 +1,19 @@
-pandoc: 2.9.2.1
+pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  espn_authentication: espn_authentication.html
+  espn_basics: espn_basics.html
+  espn_getendpoint: espn_getendpoint.html
   ffscrapr_caching: ffscrapr_caching.html
+  ffscrapr_scoringhistory: ffscrapr_scoringhistory.html
+  fleaflicker_basics: fleaflicker_basics.html
+  fleaflicker_getendpoint: fleaflicker_getendpoint.html
   mfl_basics: mfl_basics.html
   mfl_getendpoint: mfl_getendpoint.html
   sleeper_basics: sleeper_basics.html
   sleeper_getendpoint: sleeper_getendpoint.html
-last_built: 2020-11-17T20:41Z
+last_built: 2021-06-09T16:07Z
 urls:
   reference: ffscrapr.dynastyprocess.com/reference
   article: ffscrapr.dynastyprocess.com/articles

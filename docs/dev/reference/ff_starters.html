@@ -44,13 +44,20 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
 
 <meta property="og:title" content="Get Starting Lineups — ff_starters" />
 <meta property="og:description" content="This function returns a tidy dataframe with one row for every starter (and bench) for every week and their scoring, if available." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -85,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
       </span>
     </div>
 
@@ -93,7 +100,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -107,22 +114,46 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Other</li>
+    <li>
+      <a href="../articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
     </li>
   </ul>
 </li>
@@ -132,12 +163,56 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
      
   </a>
 </li>
+<li>
+  <a href="https://github.com/dynastyprocess/ffscrapr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -151,7 +226,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Starting Lineups</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_starters.R'><code>R/mfl_starters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_starters.R'><code>R/sleeper_starters.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_starters.R'><code>R/espn_starters.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_starters.R'><code>R/flea_starters.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_starters.Rd</code></div>
     </div>
 
@@ -159,13 +234,19 @@
     <p>This function returns a tidy dataframe with one row for every starter (and bench) for every week and their scoring, if available.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_starters</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for flea_conn</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_starters</span>(<span class='kw'>conn</span>, week = <span class='st'>"all"</span>, season = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, season <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for sleeper_conn</span>
-<span class='fu'>ff_starters</span>(<span class='kw'>conn</span>, week = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,6 +258,10 @@
     <tr>
       <th>...</th>
       <td><p>other arguments (currently unused)</p></td>
+    </tr>
+    <tr>
+      <th>weeks</th>
+      <td><p>which weeks to calculate, a number or numeric vector</p></td>
     </tr>
     <tr>
       <th>week</th>
@@ -195,33 +280,59 @@
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns who was started as well as what they scored.</p></li>
+<li><p><code>flea_conn</code>: Fleaflicker: returns who was started as well as what they scored.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2020</span>, league_id = <span class='fl'>37920</span>)
-<span class='fu'>ff_starters</span>(conn = <span class='kw'>dlf_conn</span>, week = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 938 x 11</span><span>
-#&gt;    franchise_id franchise_name season  week starter_status should_start
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 2</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 3</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 4</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 5</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 6</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 7</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 8</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'> 9</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
-#&gt; </span><span style='color: #555555;'>10</span><span> 0013         Advance Repti~   </span><span style='text-decoration: underline;'>2</span><span>020     1 nonstarter                0
-#&gt; </span><span style='color: #555555;'># ... with 928 more rows, and 5 more variables: player_score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   player_id </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 714 x 11</span><span>
+#&gt;     week franchise_id franchise_name    franchise_score lineup_slot player_score
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1            1 Rushin' Collusion             118 QB                  27.5
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1            1 Rushin' Collusion             118 RB                   9.2
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1            1 Rushin' Collusion             118 RB                   6.7
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1            1 Rushin' Collusion             118 WR                  13.1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1            1 Rushin' Collusion             118 WR                   8.6
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1            1 Rushin' Collusion             118 WR                  12.6
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1            1 Rushin' Collusion             118 TE                  16.6
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1            1 Rushin' Collusion             118 DST                  0  
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1            1 Rushin' Collusion             118 K                    9  
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1            1 Rushin' Collusion             118 BE                   4.8
+#&gt; </span><span style='color: #949494;'># ... with 704 more rows, and 5 more variables: player_id &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;, eligible_lineup_slots &lt;list&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span>(league_id = <span class='fl'>522458773317046272</span>, season = <span class='fl'>2020</span>)
-<span class='kw'>jml_starters</span> <span class='op'>&lt;-</span> <span class='fu'>ff_starters</span>(<span class='kw'>jml_conn</span>)
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
+<span class='fu'>ff_starters</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6,371 x 11</span><span>
+#&gt;    franchise_id franchise_name          season  week starter_status should_start
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 starter                   1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0013         Advance Reptilian Sola~   </span><span style='text-decoration: underline;'>2</span><span>020     1 nonstarter                0
+#&gt; </span><span style='color: #949494;'># ... with 6,361 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   player_id &lt;chr&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='va'>jml_starters</span> <span class='op'>&lt;-</span> <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
 <span class='co'># }</span>
 
 </div></span></pre>
@@ -247,6 +358,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

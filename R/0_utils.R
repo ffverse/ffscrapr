@@ -10,7 +10,7 @@ NULL
 
 #' Pipe operator
 #'
-#' See `magrittr::[\%>\%][magrittr::pipe]` for details.
+#' See [`magrittr::%>%`](https://magrittr.tidyverse.org/reference/pipe.html) for details.
 #'
 #' @name %>%
 #' @rdname pipe

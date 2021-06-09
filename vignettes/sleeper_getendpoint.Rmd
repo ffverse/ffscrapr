@@ -1,8 +1,10 @@
 ---
 title: "Sleeper: Get Endpoint"
 output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{sleeper_getendpoint}
+  %\VignetteIndexEntry{Sleeper: Get Endpoint}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

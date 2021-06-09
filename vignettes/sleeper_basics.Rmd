@@ -1,8 +1,10 @@
 ---
 title: "Sleeper: Basics"
 output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{sleeper_basics}
+  %\VignetteIndexEntry{Sleeper: Basics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

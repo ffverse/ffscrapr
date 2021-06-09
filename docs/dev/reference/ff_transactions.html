@@ -44,6 +44,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
@@ -51,7 +57,8 @@
 <meta property="og:title" content="Get League Transactions — ff_transactions" />
 <meta property="og:description" content="This function returns a tidy dataframe of transactions - generally one row per player per transaction per team.
 Each trade is represented twice, once per each team." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -86,7 +93,7 @@ Each trade is represented twice, once per each team." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
       </span>
     </div>
 
@@ -94,7 +101,7 @@ Each trade is represented twice, once per each team." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,22 +115,46 @@ Each trade is represented twice, once per each team." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Other</li>
+    <li>
+      <a href="../articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
     </li>
   </ul>
 </li>
@@ -133,12 +164,56 @@ Each trade is represented twice, once per each team." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
      
   </a>
 </li>
+<li>
+  <a href="https://github.com/dynastyprocess/ffscrapr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -152,7 +227,7 @@ Each trade is represented twice, once per each team." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League Transactions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_transactions.R'><code>R/mfl_transactions.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_transactions.R'><code>R/sleeper_transactions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_transactions.R'><code>R/espn_transactions.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_transactions.R'><code>R/flea_transactions.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_transactions.Rd</code></div>
     </div>
 
@@ -161,13 +236,19 @@ Each trade is represented twice, once per each team." />
 Each trade is represented twice, once per each team.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_transactions</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>1000</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for flea_conn</span>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span>, franchise_id <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_transactions</span>(<span class='kw'>conn</span>, custom_players = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span>, custom_players <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Deprecated.html'>deprecated</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for sleeper_conn</span>
-<span class='fu'>ff_transactions</span>(<span class='kw'>conn</span>, week = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,8 +262,16 @@ Each trade is represented twice, once per each team.</p>
       <td><p>additional args for other methods</p></td>
     </tr>
     <tr>
+      <th>limit</th>
+      <td><p>number of most recent transactions to return</p></td>
+    </tr>
+    <tr>
+      <th>franchise_id</th>
+      <td><p>fleaflicker returns transactions grouped by franchise id, pass a list here to filter</p></td>
+    </tr>
+    <tr>
       <th>custom_players</th>
-      <td><p>TRUE or FALSE - fetch custom players</p></td>
+      <td><p><a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a> - now returns custom players by default</p></td>
     </tr>
     <tr>
       <th>week</th>
@@ -197,47 +286,67 @@ Each trade is represented twice, once per each team.</p>
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns adds, drops, and trades. Requires private/auth-cookie.</p></li>
+<li><p><code>flea_conn</code>: Fleaflicker: returns all transactions, including free agents, waivers, and trades.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns all transactions, including free agents, waivers, and trades.</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span>(<span class='fl'>2019</span>, league_id = <span class='fl'>37920</span>)
-<span class='fu'>ff_transactions</span>(<span class='kw'>dlf_conn</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,146 x 12</span><span>
-#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ added     0003         Electric Spid~ 13868    
-#&gt; </span><span style='color: #555555;'> 2</span><span> 2019-12-19 </span><span style='color: #555555;'>11:56:49</span><span> FREE~ dropped   0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'> 3</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ added     0019         Advance Repti~ 12857    
-#&gt; </span><span style='color: #555555;'> 4</span><span> 2019-12-19 </span><span style='color: #555555;'>03:03:13</span><span> FREE~ dropped   0019         Advance Repti~ 11186    
-#&gt; </span><span style='color: #555555;'> 5</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ added     0019         Advance Repti~ 13868    
-#&gt; </span><span style='color: #555555;'> 6</span><span> 2019-12-19 </span><span style='color: #555555;'>03:02:26</span><span> FREE~ dropped   0019         Advance Repti~ 14305    
-#&gt; </span><span style='color: #555555;'> 7</span><span> 2019-12-15 </span><span style='color: #555555;'>17:28:15</span><span> FREE~ added     0003         Electric Spid~ 12197    
-#&gt; </span><span style='color: #555555;'> 8</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:28</span><span> FREE~ dropped   0003         Electric Spid~ 12623    
-#&gt; </span><span style='color: #555555;'> 9</span><span> 2019-12-15 </span><span style='color: #555555;'>17:27:00</span><span> FREE~ added     0003         Electric Spid~ 13387    
-#&gt; </span><span style='color: #555555;'>10</span><span> 2019-12-15 </span><span style='color: #555555;'>17:26:27</span><span> IR    deactiva~ 0003         Electric Spid~ 14138    
-#&gt; </span><span style='color: #555555;'># ... with 1,136 more rows, and 6 more variables: player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, bbid_spent </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, trade_partner </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, comments </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># Marked as don't run because this endpoint requires private authentication</span>
+
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>
+  season <span class='op'>=</span> <span class='fl'>2020</span>,
+  league_id <span class='op'>=</span> <span class='fl'>1178049</span>,
+  swid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"TAN_SWID"</span><span class='op'>)</span>,
+  espn_s2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"TAN_ESPN_S2"</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+<span class='op'>}</span>
+
 <span class='co'># \donttest{</span>
-<span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"sleeper"</span>, league_id = <span class='st'>"522458773317046272"</span>, season = <span class='fl'>2020</span>)
-<span class='fu'>ff_transactions</span>(<span class='kw'>jml_conn</span>,week = <span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span>)
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 109 x 12</span><span>
-#&gt;    timestamp           type  type_desc franchise_id franchise_name player_id
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     1            Fake News      4992     
-#&gt; </span><span style='color: #555555;'> 2</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     1            Fake News      4994     
-#&gt; </span><span style='color: #555555;'> 3</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     1            Fake News      5113     
-#&gt; </span><span style='color: #555555;'> 4</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     1            Fake News      5102     
-#&gt; </span><span style='color: #555555;'> 5</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     7            Flipadelphia05 4994     
-#&gt; </span><span style='color: #555555;'> 6</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ dropped   7            Flipadelphia05 7050     
-#&gt; </span><span style='color: #555555;'> 7</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     7            Flipadelphia05 5285     
-#&gt; </span><span style='color: #555555;'> 8</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ dropped   7            Flipadelphia05 7050     
-#&gt; </span><span style='color: #555555;'> 9</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     4            The FANTom Me~ 5102     
-#&gt; </span><span style='color: #555555;'>10</span><span> 2020-09-30 </span><span style='color: #555555;'>07:04:24</span><span> waiv~ added     3            solarpool      2390     
-#&gt; </span><span style='color: #555555;'># ... with 99 more rows, and 6 more variables: player_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, pos </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   team </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, bbid_amount </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>, trade_partner </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, comment </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 283 x 12</span><span>
+#&gt;    timestamp           type     type_desc franchise_id franchise_name  player_id
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;glue&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2021-06-07 </span><span style='color: #949494;'>12:28:41</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>803 ZachFarni's Te~ 15662    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2021-06-07 </span><span style='color: #949494;'>11:55:56</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>719 Jmuthers's Team 11455    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2021-06-06 </span><span style='color: #949494;'>16:45:46</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>726 SCJaguars's Te~ 15814    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2021-06-04 </span><span style='color: #949494;'>13:00:05</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear    15723    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2021-06-01 </span><span style='color: #949494;'>15:56:47</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>721 Mjenkyns2004's~ 11194    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2021-06-01 </span><span style='color: #949494;'>11:50:42</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>719 Jmuthers's Team 14774    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2021-06-01 </span><span style='color: #949494;'>11:50:33</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>581</span><span>719 Jmuthers's Team 14709    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2021-05-31 </span><span style='color: #949494;'>10:43:46</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear    14714    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2021-05-31 </span><span style='color: #949494;'>10:43:30</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear    11188    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2021-05-31 </span><span style='color: #949494;'>10:43:22</span><span> free_ag~ dropped        1</span><span style='text-decoration: underline;'>578</span><span>553 Running Bear    14749    
+#&gt; </span><span style='color: #949494;'># ... with 273 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   team &lt;chr&gt;, trade_partner_id &lt;int&gt;, trade_partner_name &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   trade_id &lt;int&gt;</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
+<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>dlf_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,146 x 12</span><span>
+#&gt;    timestamp           type   type_desc franchise_id franchise_name    player_id
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 2019-12-19 </span><span style='color: #949494;'>11:56:49</span><span> FREE_~ added     0003         Electric Spiders  13868    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 2019-12-19 </span><span style='color: #949494;'>11:56:49</span><span> FREE_~ dropped   0003         Electric Spiders  13387    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 2019-12-19 </span><span style='color: #949494;'>03:03:13</span><span> FREE_~ added     0019         Advance Reptilia~ 12857    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 2019-12-19 </span><span style='color: #949494;'>03:03:13</span><span> FREE_~ dropped   0019         Advance Reptilia~ 11186    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 2019-12-19 </span><span style='color: #949494;'>03:02:26</span><span> FREE_~ added     0019         Advance Reptilia~ 13868    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 2019-12-19 </span><span style='color: #949494;'>03:02:26</span><span> FREE_~ dropped   0019         Advance Reptilia~ 14305    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 2019-12-15 </span><span style='color: #949494;'>17:28:15</span><span> FREE_~ added     0003         Electric Spiders  12197    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 2019-12-15 </span><span style='color: #949494;'>17:27:28</span><span> FREE_~ dropped   0003         Electric Spiders  12623    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 2019-12-15 </span><span style='color: #949494;'>17:27:00</span><span> FREE_~ added     0003         Electric Spiders  13387    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 2019-12-15 </span><span style='color: #949494;'>17:26:27</span><span> IR     deactiva~ 0003         Electric Spiders  14138    
+#&gt; </span><span style='color: #949494;'># ... with 1,136 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span><span></div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>jml_conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span><span class='op'>)</span>
+<span class='co'># }</span>
 
 </div></span></pre>
   </div>
@@ -262,6 +371,23 @@ Each trade is represented twice, once per each team.</p>
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>

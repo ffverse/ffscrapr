@@ -1,8 +1,10 @@
 ---
 title: "ESPN: Get Endpoint"
 output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{espn_getendpoint}
+  %\VignetteIndexEntry{ESPN: Get Endpoint}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

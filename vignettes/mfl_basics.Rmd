@@ -1,8 +1,10 @@
 ---
 title: "MFL: Basics"
 output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{mfl_basics}
+  %\VignetteIndexEntry{MFL: Basics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

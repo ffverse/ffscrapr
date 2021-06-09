@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Client for Fantasy Football League Platforms • ffscrapr</title>
+<title>ffscrapr • an R package for Fantasy Football APIs • ffscrapr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -17,12 +17,14 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="API Client for Fantasy Football League Platforms">
-<meta property="og:description" content="Helps access various Fantasy Football APIs by handling authentication and
-    rate-limiting, forming appropriate calls, and returning tidy
-    dataframes which can be easily connected to other data sources.">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png">
+<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<link href="docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="ffscrapr • an R package for Fantasy Football APIs">
+<meta property="og:description" content="An R package that helps connect to fantasy football platforms (such MyFantasyLeague, Sleeper, Fleaflicker, ESPN) while handling authentication, rate-limiting, and caching and returning tidy data frames for easy analysis.
+">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -45,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
       </span>
     </div>
 
@@ -53,7 +55,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,22 +69,46 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/mfl_basics.html">Getting Started: MFL Basics</a>
+<li class="divider">
+    <li class="dropdown-header">Getting Started</li>
+    <li>
+      <a href="articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
     <li>
-      <a href="articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+      <a href="articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Other</li>
+    <li>
+      <a href="articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
     </li>
   </ul>
 </li>
@@ -92,13 +118,57 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
      
   </a>
 </li>
+<li>
+  <a href="https://github.com/dynastyprocess/ffscrapr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
+</li>
       </ul>
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -111,83 +181,89 @@
   <div class="contents col-md-9">
 <div id="ffscrapr-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="#"><img src="reference/figures/logo.png" align="right" height="120"></a>
+<a href="#ffscrapr-" class="anchor"></a>ffscrapr <a href="#"><img src="reference/figures/logo.svg" align="right" width="25%" min-width="120px"></a>
 </h1></div>
 <p><em>An R Client for Fantasy Football League APIs</em></p>
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>Helps access various Fantasy Football APIs (i.e. MFL, Sleeper, Fleaflicker, ESPN, Yahoo, potentially other platforms) by handling authentication/rate-limiting/caching, forming appropriate calls, and returning tidy dataframes which can be easily connected to other data sources.</p>
+<p>Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker, and ESPN - eventually Yahoo, potentially others) by handling authentication/rate-limiting/caching, forming appropriate calls, and returning tidy dataframes which can be easily connected to other data sources.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<p>Version 1.1.0 is now on CRAN 🎉 and can be installed with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ffscrapr"</span>)
-<span class="co"># or from GitHub release</span>
-<span class="co"># install.packages("devtools") OR install.packages("remotes")</span>
-<span class="co"># remotes is a subpackage of devtools</span>
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>,ref = <span class="st">"v1.0.0"</span>)
-</pre></div>
+<p>Version 1.4.2 is now on CRAN <span class="emoji" data-emoji="tada">🎉</span> and can be installed with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span>
+<span class="co"># or from GitHub release with the remotes package via:</span>
+<span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"v1.4.2"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"dynastyprocess/ffscrapr"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"dev"</span><span class="op">)</span></code></pre></div>
 <p>The dev version has a <a href="https://ffscrapr.dynastyprocess.com/dev/">separate documentation site here</a>.</p>
 </div>
 <div id="usage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h3>
 <p>All <code>ffscrapr</code> functions start with a connection object created by <code><a href="reference/ff_connect.html">ff_connect()</a></code>, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span>)
-<span class="co">#&gt; memorycache</span>
-<span class="kw">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span>(platform = <span class="st">"mfl"</span>, league_id = <span class="st">"54040"</span>, season = <span class="fl">2020</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
+<span class="va">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span><span class="op">(</span>platform <span class="op">=</span> <span class="st">"mfl"</span>, league_id <span class="op">=</span> <span class="st">"54040"</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span>
 
 <span class="co"># Get a summary of league settings</span>
-<span class="fu"><a href="reference/ff_league.html">ff_league</a></span>(<span class="kw">ssb</span>) <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>()
-<span class="co">#&gt; tibble [1 x 13] (S3: tbl_df/tbl/data.frame)</span>
+<span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; tibble [1 x 14] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "54040"</span>
 <span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
+<span class="co">#&gt;  $ season         : int 2020</span>
 <span class="co">#&gt;  $ franchise_count: num 14</span>
 <span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
 <span class="co">#&gt;  $ idp            : logi FALSE</span>
 <span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"</span>
-<span class="co">#&gt;  $ best_ball      : logi TRUE</span>
+<span class="co">#&gt;  $ best_ball      : logi FALSE</span>
 <span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
 <span class="co">#&gt;  $ player_copies  : num 1</span>
-<span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
+<span class="co">#&gt;  $ years_active   : chr "2018-2021"</span>
 <span class="co">#&gt;  $ qb_count       : chr "1"</span>
-<span class="co">#&gt;  $ roster_size    : num 28</span>
-<span class="co">#&gt;  $ league_depth   : num 392</span>
+<span class="co">#&gt;  $ roster_size    : num 33</span>
+<span class="co">#&gt;  $ league_depth   : num 462</span>
 
 <span class="co"># Get rosters</span>
-<span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span>(<span class="kw">ssb</span>)
-<span class="co">#&gt; # A tibble: 435 x 11</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name pos   team    age</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Ev~ TE    NYG    26.2</span>
-<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Ja~ WR    CLE    28  </span>
-<span class="co">#&gt; 3 0001         Team Pikachu   14085     Pollard, T~ RB    DAL    23.6</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   13645     Smith, Tre~ WR    NOS    24.9</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   12110     Brate, Cam~ TE    TBB    29.4</span>
-<span class="co">#&gt; # ... with 430 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
+<span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 442 x 11</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.8</span>
+<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.5</span>
+<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.4</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.3</span>
+<span class="co">#&gt; # ... with 437 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
-<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span>(<span class="kw">ssb</span>)
-<span class="co">#&gt; # A tibble: 843 x 12</span>
-<span class="co">#&gt;   timestamp           type  type_desc franchise_id franchise_name player_id</span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;    </span>
-<span class="co">#&gt; 1 2020-11-15 17:54:18 IR    activated 0004         Team Ice Clim~ 14840    </span>
-<span class="co">#&gt; 2 2020-11-15 17:54:08 FREE~ dropped   0004         Team Ice Clim~ 13316    </span>
-<span class="co">#&gt; 3 2020-11-15 17:23:51 FREE~ added     0010         Team Yoshi     10708    </span>
-<span class="co">#&gt; 4 2020-11-15 17:23:25 IR    deactiva~ 0010         Team Yoshi     14126    </span>
-<span class="co">#&gt; 5 2020-11-15 16:45:09 TAXI  promoted  0013         Team Ness      14125    </span>
-<span class="co">#&gt; # ... with 838 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
-<span class="co">#&gt; #   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span>
-</pre></div>
-<p>For a more detailed usage example, including a template dynasty league analysis script, please check out the reference articles and/or vignettes!</p>
+<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 152 x 12</span>
+<span class="co">#&gt;   timestamp           type       type_desc franchise_id franchise_name   </span>
+<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            </span>
+<span class="co">#&gt; 1 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers</span>
+<span class="co">#&gt; 2 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers</span>
+<span class="co">#&gt; 3 2020-06-16 01:56:49 TAXI       promoted  0014         Team Luigi       </span>
+<span class="co">#&gt; 4 2020-06-16 01:56:49 TAXI       demoted   0014         Team Luigi       </span>
+<span class="co">#&gt; 5 2020-06-12 23:51:44 FREE_AGENT dropped   0010         Team Yoshi       </span>
+<span class="co">#&gt; # ... with 147 more rows, and 7 more variables: player_id &lt;chr&gt;,</span>
+<span class="co">#&gt; #   player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;, bbid_spent &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></code></pre></div>
+<p>Platform-specific guides on getting started with ffscrapr are here:</p>
+<ul>
+<li>
+<a href="https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html">MyFantasyLeague</a><br>
+</li>
+<li><a href="https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html">Sleeper</a></li>
+<li><a href="https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html">Fleaflicker</a></li>
+<li><a href="https://ffscrapr.dynastyprocess.com/articles/espn_basics.html">ESPN</a></li>
+</ul>
+<p>There are also some more advanced guides for custom API calls in the <a href="https://ffscrapr.dynastyprocess.com/articles/">Articles section</a>, as well as some guides on <a href="https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html">optimizing ffscrapr’s performance</a>.</p>
 </div>
 <div id="contributing" class="section level3">
 <h3 class="hasAnchor">
@@ -239,16 +315,20 @@
 <ul class="list-unstyled">
 <li>
 <a href="https://twitter.com/_TanHo">Tan Ho</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=ffscrapr"><img src="https://img.shields.io/cran/v/ffscrapr?style=flat-square" alt="CRAN status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=test%20coverage&amp;style=flat-square" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R-CMD-check&amp;style=flat-square" alt="R build status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=ffscrapr"><img src="https://img.shields.io/cran/v/ffscrapr?style=flat-square&amp;logo=R&amp;label=CRAN" alt="CRAN status"></a></li>
+<li><a href="https://ffscrapr.dynastyprocess.com/dev/"><img src="https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&amp;style=flat-square&amp;logo=github" alt="Dev status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square" alt="Lifecycle: stable"></a></li>
+<li><a href="https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main"><img src="https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&amp;style=flat-square&amp;logo=codecov" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&amp;style=flat-square&amp;logo=github" alt="R build status"></a></li>
+<li><a href="https://github.com/DynastyProcess/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&amp;style=flat-square&amp;logo=github" alt="API status"></a></li>
+<li><a href="https://discord.com/invite/5Er2FBnnQa"><img src="https://img.shields.io/discord/591914197219016707.svg?color=5865F2&amp;label=nflverse%20discord&amp;logo=discord&amp;logoColor=5865F2&amp;style=flat-square" alt="nflverse discord"></a></li>
 </ul>
 </div>
 </div>
@@ -267,7 +347,20 @@
 </div>
 
   
-
-
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>

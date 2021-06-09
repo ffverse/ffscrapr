@@ -33,6 +33,7 @@ reference:
   desc: Additional helper functions
   contents:
   - starts_with(".ff")
+  - "`%>%`"
 
 home:
   title: ffscrapr • an R package for Fantasy Football APIs
@@ -44,7 +45,7 @@ home:
 
 navbar:
   structure:
-    left:  [home, reference, news, articles]
+    left:  [home, reference, articles, news]
     right: [discord,  github, more]
   components:
     discord:
@@ -54,23 +55,22 @@ navbar:
       text: "More"
       menu:
         - text: ffverse
-          menu:
-          - text: ffsimulator
-            href: https://ffsimulator.dynastyprocess.com
-          - text: GitHub
-            href: https://www.github.com/ffverse
-          - text: R-Universe
-            href: https://ffverse.r-universe.dev
+        - text: ffsimulator package
+          href: https://ffsimulator.dynastyprocess.com
+        - text: ffverse GitHub
+          href: https://www.github.com/ffverse
+        - text: ------
         - text: "nflverse"
-          menu:
-          - text: nflfastR
-            href: https://www.nflfastr.com
-          - text: GitHub
-            href: https://github.com/nflverse
-          - text: R-Universe
-            href: https://nflverse.r-universe.dev
+        - text: nflfastR package
+          href: https://www.nflfastr.com
+        - text: nflverse GitHub
+          href: https://github.com/nflverse
+        - text: ------
+        - text: "DynastyProcess"
         - text: "DynastyProcess.com"
           href: https://dynastyprocess.com
+        - text: DynastyProcess GitHub
+          href: https://github.com/dynastyprocess
 
 articles:
 - title: Getting Started

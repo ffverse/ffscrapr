@@ -4,5 +4,5 @@
 \alias{\%>\%}
 \title{Pipe operator}
 \description{
-See \verb{magrittr::[\\\%>\\\%][magrittr::pipe]} for details.
+See \href{https://magrittr.tidyverse.org/reference/pipe.html}{\verb{magrittr::\%>\%}} for details.
 }

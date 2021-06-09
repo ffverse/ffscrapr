@@ -44,13 +44,20 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
   <link href="../extra.css" rel="stylesheet">
   
 
 <meta property="og:title" content="Get Schedule — ff_schedule" />
 <meta property="og:description" content="This function returns a tidy dataframe with one row for every team for every weekly matchup" />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/logo.png" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -85,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
       </span>
     </div>
 
@@ -93,7 +100,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -107,22 +114,46 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting Started</li>
     <li>
-      <a href="../articles/mfl_basics.html">Getting Started: MFL Basics</a>
+      <a href="../articles/mfl_basics.html">MFL: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_basics.html">Getting Started: Sleeper Basics</a>
+      <a href="../articles/sleeper_basics.html">Sleeper: Basics</a>
     </li>
     <li>
-      <a href="../articles/mfl_getendpoint.html">MFL: Get Any API Endpoint</a>
+      <a href="../articles/fleaflicker_basics.html">Fleaflicker: Basics</a>
     </li>
     <li>
-      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Any API Endpoint</a>
+      <a href="../articles/espn_basics.html">ESPN: Basics</a>
+    </li>
+    <li>
+      <a href="../articles/espn_authentication.html">ESPN: Private Leagues</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Custom API Calls</li>
+    <li>
+      <a href="../articles/mfl_getendpoint.html">MFL: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/sleeper_getendpoint.html">Sleeper: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/fleaflicker_getendpoint.html">Fleaflicker: Get Endpoint</a>
+    </li>
+    <li>
+      <a href="../articles/espn_getendpoint.html">ESPN: Get Endpoint</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Other</li>
+    <li>
+      <a href="../articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
     </li>
   </ul>
 </li>
@@ -132,12 +163,56 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
      
   </a>
 </li>
+<li>
+  <a href="https://github.com/dynastyprocess/ffscrapr/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
+</li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -151,7 +226,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get Schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/generics.R'><code>R/generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_schedule.R'><code>R/mfl_schedule.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/sleeper_schedule.R'><code>R/sleeper_schedule.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/espn_schedule.R'><code>R/espn_schedule.R</code></a>, <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/flea_schedule.R'><code>R/flea_schedule.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>ff_schedule.Rd</code></div>
     </div>
 
@@ -159,13 +234,19 @@
     <p>This function returns a tidy dataframe with one row for every team for every weekly matchup</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ff_schedule</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for espn_conn</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for flea_conn</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>17</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for mfl_conn</span>
-<span class='fu'>ff_schedule</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for sleeper_conn</span>
-<span class='fu'>ff_schedule</span>(<span class='kw'>conn</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,7 +257,11 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional args passed to each platform</p></td>
+      <td><p>for other platforms</p></td>
+    </tr>
+    <tr>
+      <th>week</th>
+      <td><p>a numeric or numeric vector specifying which weeks to pull</p></td>
     </tr>
     </table>
 
@@ -187,46 +272,71 @@
 
     
 <ul>
+<li><p><code>espn_conn</code>: ESPN: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
+<li><p><code>flea_conn</code>: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns all schedule data</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"mfl"</span>, league_id = <span class='fl'>54040</span>, season = <span class='fl'>2020</span>)
-<span class='fu'>ff_schedule</span>(<span class='kw'>ssb_conn</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 190 x 7</span><span>
-#&gt;     week franchise_id franchise_score spread result opponent_id opponent_score
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1 0001                    123.     </span><span style='color: #BB0000;'>NA</span><span> W      0002                  103.
-#&gt; </span><span style='color: #555555;'> 2</span><span>     1 0002                    103.     </span><span style='color: #BB0000;'>NA</span><span> L      0001                  123.
-#&gt; </span><span style='color: #555555;'> 3</span><span>     1 0003                    128.     </span><span style='color: #BB0000;'>NA</span><span> L      0004                  174.
-#&gt; </span><span style='color: #555555;'> 4</span><span>     1 0004                    174.     </span><span style='color: #BB0000;'>NA</span><span> W      0003                  128.
-#&gt; </span><span style='color: #555555;'> 5</span><span>     1 0005                    144.     </span><span style='color: #BB0000;'>NA</span><span> W      0011                  130.
-#&gt; </span><span style='color: #555555;'> 6</span><span>     1 0006                    173.     </span><span style='color: #BB0000;'>NA</span><span> W      0013                  125.
-#&gt; </span><span style='color: #555555;'> 7</span><span>     1 0007                    145.     </span><span style='color: #BB0000;'>NA</span><span> W      0010                  127.
-#&gt; </span><span style='color: #555555;'> 8</span><span>     1 0008                    185.     </span><span style='color: #BB0000;'>NA</span><span> W      0009                  176.
-#&gt; </span><span style='color: #555555;'> 9</span><span>     1 0009                    176.     </span><span style='color: #BB0000;'>NA</span><span> L      0008                  185.
-#&gt; </span><span style='color: #555555;'>10</span><span>     1 0010                    127.     </span><span style='color: #BB0000;'>NA</span><span> L      0007                  145.
-#&gt; </span><span style='color: #555555;'># ... with 180 more rows</span><span></div><div class='input'><span class='co'># }</span>
+<span class='va'>espn_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>espn_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 140 x 6</span><span>
+#&gt;     week franchise_id franchise_score result opponent_id opponent_score
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1            1            102. L                4           130.
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1            2            156. W                3           135.
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1            3            135. L                2           156.
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1            4            130. W                1           102.
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1            5            133. W                7           131.
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1            6            119. L                9           124.
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1            7            131. L                5           133.
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1            8            120. L               10           122.
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1            9            124. W                6           119.
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1           10            122. W                8           120.
+#&gt; </span><span style='color: #949494;'># ... with 130 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='kw'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span>(platform = <span class='st'>"sleeper"</span>, league_id = <span class='fl'>522458773317046272</span>, season = <span class='fl'>2020</span>)
-<span class='fu'>ff_schedule</span>(<span class='kw'>jml_conn</span>)
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 156 x 6</span><span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 234 x 6</span><span>
+#&gt;     week franchise_id franchise_score result opponent_id opponent_score
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1 0001                    123. W      0002                  103.
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1 0002                    103. L      0001                  123.
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1 0003                    128. L      0004                  174.
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1 0004                    174. W      0003                  128.
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1 0005                    144. W      0011                  130.
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1 0006                    173. W      0013                  125.
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1 0007                    145. W      0010                  127.
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1 0008                    185. W      0009                  176.
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1 0009                    176. L      0008                  185.
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1 0010                    127. L      0007                  145.
+#&gt; </span><span style='color: #949494;'># ... with 224 more rows</span><span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 184 x 6</span><span>
 #&gt;     week franchise_id franchise_score opponent_id opponent_score result
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1            1            97.8          12          160.  L     
-#&gt; </span><span style='color: #555555;'> 2</span><span>     1            2            65.9           8           70.2 L     
-#&gt; </span><span style='color: #555555;'> 3</span><span>     1            3           103.           10           71   W     
-#&gt; </span><span style='color: #555555;'> 4</span><span>     1            4           133.            7          106.  W     
-#&gt; </span><span style='color: #555555;'> 5</span><span>     1            5            82.4           6           99.3 L     
-#&gt; </span><span style='color: #555555;'> 6</span><span>     1            6            99.3           5           82.4 W     
-#&gt; </span><span style='color: #555555;'> 7</span><span>     1            7           106.            4          133.  L     
-#&gt; </span><span style='color: #555555;'> 8</span><span>     1            8            70.2           2           65.9 W     
-#&gt; </span><span style='color: #555555;'> 9</span><span>     1            9            78.3          11          147   L     
-#&gt; </span><span style='color: #555555;'>10</span><span>     1           10            71             3          103.  L     
-#&gt; </span><span style='color: #555555;'># ... with 146 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1            1            97.8          12          160.  L     
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     1            2            65.9           8           70.2 L     
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     1            3           103.           10           71   W     
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     1            4           133.            7          106.  W     
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     1            5            82.4           6           99.3 L     
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     1            6            99.3           5           82.4 W     
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     1            7           106.            4          133.  L     
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     1            8            70.2           2           65.9 W     
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     1            9            78.3          11          147   L     
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     1           10            71             3          103.  L     
+#&gt; </span><span style='color: #949494;'># ... with 174 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>
@@ -251,6 +361,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7abddd2aa591d955b365235f35d75a38',
+    indexName: 'dynastyprocess',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>
