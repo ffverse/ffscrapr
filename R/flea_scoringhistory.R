@@ -22,7 +22,7 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
   league_rules <-
     ff_scoring(conn) %>%
     dplyr::left_join(
-      nflfastr_stat_mapping %>%
+      ffscrapr::nflfastr_stat_mapping %>%
         dplyr::filter(.data$platform == "fleaflicker") %>%
         dplyr::mutate(ff_event = as.integer(.data$ff_event)),
       by = c("event_id" = "ff_event"))

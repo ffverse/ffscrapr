@@ -111,7 +111,7 @@ dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = FA
 
   n <- stringr::str_squish(n)
 
-  if(use_name_database) n <- unname(dplyr::coalesce(dp_name_mapping[n],n))
+  if(use_name_database) n <- unname(dplyr::coalesce(ffscrapr::dp_name_mapping[n],n))
 
   if(lowercase) n <- tolower(n)
 
