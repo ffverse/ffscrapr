@@ -23,7 +23,7 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
   league_rules <-
     ff_scoring(conn) %>%
     dplyr::left_join(
-      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
+      ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
       by = c("event" = "ff_event"))
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters

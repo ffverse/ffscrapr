@@ -31,6 +31,7 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
   return(matchups)
 }
 
+#' individual sleeper matchup
 #' @keywords internal
 .sleeper_matchup <- function(week, conn, last_scored_week) {
   endpoint <- glue::glue("league/{conn$league_id}/matchups/{week}")
