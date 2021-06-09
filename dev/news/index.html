@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.05</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
       </span>
     </div>
 
@@ -253,6 +253,8 @@
 <code><a href="../reference/ff_draft.html">ff_draft()</a></code> for Sleeper now has an auction_amount column if it is an auction draft. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/291'>#291</a>) (v1.4.2.04)</li>
 <li>
 <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one. (v1.4.2.05)</li>
+<li>
+<code>nflfastr_stat_mapping</code> and <code>dp_name_mapping</code> are namespaced within the package, so that they can be used internally and externally a little more robustly. (v1.4.2.06)</li>
 </ul>
 <hr>
 </div>
