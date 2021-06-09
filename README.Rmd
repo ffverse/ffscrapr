@@ -33,7 +33,7 @@ tryCatch(expr = {
 httptest::use_mock_api()
 ```
 
-# ffscrapr <a href='#'><img src="man/figures/ffscrapr.svg" align="right" width="25%" min-width="120px"/></a>
+# ffscrapr <a href='#'><img src="man/figures/logo.svg" align="right" width="25%" min-width="120px"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -74,7 +74,7 @@ The dev version has a [separate documentation site here](https://ffscrapr.dynast
 
 All `ffscrapr` functions start with a connection object created by `ff_connect()`, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.
 
-```{r eval = eval}
+```{r eval = eval, message = FALSE}
 library(ffscrapr)
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 

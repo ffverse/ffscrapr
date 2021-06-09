@@ -34,6 +34,14 @@ reference:
   contents:
   - starts_with(".ff")
 
+home:
+  title: ffscrapr • an R package for Fantasy Football APIs
+  description: >
+    An R package that helps connect to fantasy football platforms
+    (such MyFantasyLeague, Sleeper, Fleaflicker, ESPN) while
+    handling authentication, rate-limiting, and caching and returning tidy
+    data frames for easy analysis.
+
 navbar:
   structure:
     left:  [home, reference, news, articles]
