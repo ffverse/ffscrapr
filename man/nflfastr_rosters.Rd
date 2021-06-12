@@ -27,5 +27,5 @@ nflfastr_rosters(seasons = 2019:2020)
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/fast_scraper_roster.html}
+\url{https://nflfastr.com/reference/fast_scraper_roster.html}
 }

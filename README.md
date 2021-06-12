@@ -32,13 +32,13 @@ other data sources.
 
 ### Installation
 
-Version 1.4.2 is now on CRAN :tada: and can be installed with:
+Version 1.4.3 is now on CRAN :tada: and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.2")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.3")
 ```
 
 Install the development version from GitHub with:
@@ -94,15 +94,15 @@ ff_rosters(ssb)
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 152 x 12
-#>   timestamp           type       type_desc franchise_id franchise_name   
-#>   <dttm>              <chr>      <chr>     <chr>        <chr>            
-#> 1 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
-#> 2 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
-#> 3 2020-06-16 01:56:49 TAXI       promoted  0014         Team Luigi       
-#> 4 2020-06-16 01:56:49 TAXI       demoted   0014         Team Luigi       
-#> 5 2020-06-12 23:51:44 FREE_AGENT dropped   0010         Team Yoshi       
-#> # ... with 147 more rows, and 7 more variables: player_id <chr>,
+#> # A tibble: 1,145 x 12
+#>   timestamp           type  type_desc   franchise_id franchise_name
+#>   <dttm>              <chr> <chr>       <chr>        <chr>         
+#> 1 2021-02-12 14:32:39 TRADE traded_away 0008         Team Bowser   
+#> 2 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 3 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 4 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 5 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> # ... with 1,140 more rows, and 7 more variables: player_id <chr>,
 #> #   player_name <chr>, pos <chr>, team <chr>, bbid_spent <dbl>,
 #> #   trade_partner <chr>, comments <chr>
 ```
