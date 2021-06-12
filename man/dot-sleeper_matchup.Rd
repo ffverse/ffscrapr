@@ -2,11 +2,11 @@
 % Please edit documentation in R/sleeper_schedule.R
 \name{.sleeper_matchup}
 \alias{.sleeper_matchup}
-\title{individual sleeper matchup}
+\title{Individual sleeper matchup}
 \usage{
 .sleeper_matchup(week, conn, last_scored_week)
 }
 \description{
-individual sleeper matchup
+Individual sleeper matchup
 }
 \keyword{internal}

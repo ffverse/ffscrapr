@@ -3,9 +3,9 @@
 This release patches some bugs. 
 
 ## Test environments
-* local (Windows) R installation, R 4.0.5
-* ubuntu 20.04 (on GitHub Actions), R 4.0.5
-* MacOS (on GitHub Actions), R 4.0.5
+* local (Windows) R installation, R 4.1.0
+* ubuntu 20.04 (on GitHub Actions), R 4.1.0
+* MacOS (on GitHub Actions), R 4.1.0
 * win-builder (devel)
 
 ## R CMD check results

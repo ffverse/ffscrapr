@@ -7,7 +7,7 @@
 dp_cleannames(
   player_name,
   lowercase = FALSE,
-  convert_lastfirst = FALSE,
+  convert_lastfirst = TRUE,
   use_name_database = TRUE
 )
 }

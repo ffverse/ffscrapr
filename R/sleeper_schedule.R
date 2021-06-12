@@ -31,8 +31,11 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
   return(matchups)
 }
 
-#' individual sleeper matchup
+#' Individual sleeper matchup
+#'
+#'
 #' @keywords internal
+#'
 .sleeper_matchup <- function(week, conn, last_scored_week) {
   endpoint <- glue::glue("league/{conn$league_id}/matchups/{week}")
 
@@ -57,7 +60,7 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
                       "opponent_id" = "franchise_id",
                       "opponent_score" = "franchise_score",
                       "matchup_id"))) %>%
-        dplyr::filter(!is.na(matchup_id)),
+        dplyr::filter(!is.na(.data$matchup_id)),
       by = "matchup_id"
     ) %>%
     dplyr::filter(.data$franchise_id != .data$opponent_id) %>%
