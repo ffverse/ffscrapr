@@ -72,6 +72,7 @@ navbar:
         - text: DynastyProcess GitHub
           href: https://github.com/dynastyprocess
 
+
 articles:
 - title: Getting Started
   navbar: Getting Started
@@ -92,16 +93,15 @@ articles:
   navbar: "Cache"
   contents:
   - starts_with("ffscrapr_caching")
-- title: Other
-  navbar: "Other"
-  contents:
-  - "ffscrapr_scoringhistory"
+
 
 url: ffscrapr.dynastyprocess.com
 
 authors:
   Tan Ho:
     href: https://twitter.com/_TanHo
+  Joe Sydlowski:
+    href: https://twitter.com/JoeSydlowskiFF
   Tony ElHabr:
     href: https://twitter.com/TonyElHabr
 
@@ -113,8 +113,8 @@ template:
       index_name: dynastyprocess
   opengraph:
     image:
-      src: man/figures/ffscrapr.svg
-      alt: "ffscrapr - an R client for fantasy football platforms"
+      src: man/figures/logo.svg
+      alt: "ffscrapr - an R package for Fantasy Football APIs"
     twitter:
       creator: "@_TanHo"
       site: "@DynastyProcess"

@@ -119,6 +119,15 @@ There are also some more advanced guides for custom API calls in the
 well as some guides on [optimizing ffscrapr’s
 performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
 
+### Support
+
+The best places to get help on this package are:
+
+-   the [nflverse discord](https://discord.com/invite/5Er2FBnnQa) (for
+    both this package as well as anything R/NFL related)
+-   opening [an
+    issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
+
 ### Contributing
 
 Many hands make light work! Here are some ways you can contribute to
