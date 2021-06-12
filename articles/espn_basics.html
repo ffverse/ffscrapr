@@ -22,8 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="ESPN: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
-<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
     <li class="divider">
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
     </li>
   </ul>
 </li>
@@ -111,10 +111,48 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/dynastyprocess/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
@@ -136,7 +174,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>ESPN: Basics</h1>
+                        <h4 class="author">Tan Ho</h4>
             
+            <h4 class="date">2021-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/espn_basics.Rmd"><code>vignettes/espn_basics.Rmd</code></a></small>
       <div class="hidden name"><code>espn_basics.Rmd</code></div>
@@ -169,12 +209,12 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sucioboys_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sucioboys_summary</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 × 15] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble [1 × 16] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "899513"</span>
 <span class="co">#&gt;  $ league_name    : chr "Sucio Boys"</span>
+<span class="co">#&gt;  $ season         : int 2020</span>
 <span class="co">#&gt;  $ league_type    : chr "keeper"</span>
 <span class="co">#&gt;  $ franchise_count: int 10</span>
 <span class="co">#&gt;  $ qb_type        : chr "2QB/SF"</span>
@@ -192,8 +232,6 @@
 <p>Let’s grab the rosters now.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sucioboys_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sucioboys_rosters</span><span class="op">)</span> <span class="co"># quick snapshot of rosters</span>
 <span class="co">#&gt; # A tibble: 6 x 10</span>
@@ -213,7 +251,6 @@
 <p>Cool! Let’s pull in some additional context by adding DynastyProcess player values.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="co"># The values are stored by fantasypros ID since that's where the data comes from. </span>
 <span class="co"># To join it to our rosters, we'll need playerID mappings.</span>
@@ -221,7 +258,6 @@
 <span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">espn_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span>
 <span class="co"># to just IDs, age, and values</span>
@@ -243,9 +279,9 @@
 <span class="co">#&gt; 1            1 The Early GGod 4242335   Jonathan Taylor IND   RB    &lt;chr [7]&gt;   </span>
 <span class="co">#&gt; 2            1 The Early GGod 4241985   J.K. Dobbins    BAL   RB    &lt;chr [7]&gt;   </span>
 <span class="co">#&gt; 3            1 The Early GGod 2976316   Michael Thomas  NOS   WR    &lt;chr [7]&gt;   </span>
-<span class="co">#&gt; 4            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    &lt;chr [5]&gt;   </span>
-<span class="co">#&gt; 5            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    &lt;chr [5]&gt;   </span>
-<span class="co">#&gt; 6            1 The Early GGod 4239993   Tee Higgins     CIN   WR    &lt;chr [8]&gt;   </span>
+<span class="co">#&gt; 4            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    &lt;chr [5]&gt;   </span>
+<span class="co">#&gt; 5            1 The Early GGod 4239993   Tee Higgins     CIN   WR    &lt;chr [8]&gt;   </span>
+<span class="co">#&gt; 6            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    &lt;chr [5]&gt;   </span>
 <span class="co">#&gt; # … with 7 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span>
 <span class="co">#&gt; #   acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
@@ -264,18 +300,18 @@
 
 <span class="va">value_summary</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
-<span class="co">#&gt;    franchise_id franchise_name                team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                              &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                   51211  7661 20007 17334  6209</span>
-<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"       47172 19545 23252  1394  2981</span>
-<span class="co">#&gt;  3            2 "Coom  Dumpster"                   46885 16317  4032 24880  1656</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                    43408 14142 17399  4988  6879</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                    42807  2951 17737 17570  4549</span>
-<span class="co">#&gt;  6            1 "The Early GGod"                   39982 11452 14925 10705  2900</span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                       39137 12951 11897 12607  1682</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                      36116 10172 11676 13015  1253</span>
-<span class="co">#&gt;  9           10 "Austin &lt;U+0001F410&gt;Drew Loc…      25240 10278   414 14444   104</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                      20671  7894  1336 11281   160</span></code></pre></div>
+<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  49693  8628 18592 16747  5726</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      46447 20424 22738   997  2288</span>
+<span class="co">#&gt;  3            7 "Tony El Tigre"                   44547 15508 17020  5921  6098</span>
+<span class="co">#&gt;  4            2 "Coom  Dumpster"                  41599 13314  2329 24668  1288</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   37216  1467 15597 16565  3587</span>
+<span class="co">#&gt;  6            3 "PAKI STANS"                      32697  6048 11980 12829  1840</span>
+<span class="co">#&gt;  7            1 "The Early GGod"                  32247  6642 13916  9406  2283</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     31958  6878 10726 13365   989</span>
+<span class="co">#&gt;  9            8 "Big Coomers"                     21493  7416  1453 12408   216</span>
+<span class="co">#&gt; 10           10 "Austin 🐐Drew Lock🐐"            20832  7153   276 13324    79</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -284,18 +320,18 @@
 
 <span class="va">value_summary_pct</span>
 <span class="co">#&gt; # A tibble: 10 x 7</span>
-<span class="co">#&gt;    franchise_id franchise_name                team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1            5 "The Juggernaut"                   0.13  0.068 0.163 0.135 0.219</span>
-<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"       0.12  0.172 0.19  0.011 0.105</span>
-<span class="co">#&gt;  3            2 "Coom  Dumpster"                   0.119 0.144 0.033 0.194 0.058</span>
-<span class="co">#&gt;  4            7 "Tony El Tigre"                    0.111 0.125 0.142 0.039 0.242</span>
-<span class="co">#&gt;  5            4 "I'm Also Sad "                    0.109 0.026 0.145 0.137 0.16 </span>
-<span class="co">#&gt;  6            1 "The Early GGod"                   0.102 0.101 0.122 0.083 0.102</span>
-<span class="co">#&gt;  7            3 "PAKI STANS"                       0.1   0.114 0.097 0.098 0.059</span>
-<span class="co">#&gt;  8            9 "RAFI CUNADO"                      0.092 0.09  0.095 0.102 0.044</span>
-<span class="co">#&gt;  9           10 "Austin &lt;U+0001F410&gt;Drew Loc…      0.064 0.091 0.003 0.113 0.004</span>
-<span class="co">#&gt; 10            8 "Big Coomers"                      0.053 0.07  0.011 0.088 0.006</span></code></pre></div>
+<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
+<span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1            5 "The Juggernaut"                  0.139 0.092 0.162 0.133 0.235</span>
+<span class="co">#&gt;  2            6 "OBJ's Personal Porta Potty"      0.129 0.218 0.198 0.008 0.094</span>
+<span class="co">#&gt;  3            7 "Tony El Tigre"                   0.124 0.166 0.148 0.047 0.25 </span>
+<span class="co">#&gt;  4            2 "Coom  Dumpster"                  0.116 0.142 0.02  0.195 0.053</span>
+<span class="co">#&gt;  5            4 "I'm Also Sad "                   0.104 0.016 0.136 0.131 0.147</span>
+<span class="co">#&gt;  6            3 "PAKI STANS"                      0.091 0.065 0.105 0.102 0.075</span>
+<span class="co">#&gt;  7            1 "The Early GGod"                  0.09  0.071 0.121 0.075 0.094</span>
+<span class="co">#&gt;  8            9 "RAFI CUNADO"                     0.089 0.074 0.094 0.106 0.041</span>
+<span class="co">#&gt;  9            8 "Big Coomers"                     0.06  0.079 0.013 0.098 0.009</span>
+<span class="co">#&gt; 10           10 "Austin 🐐Drew Lock🐐"            0.058 0.077 0.002 0.106 0.003</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -322,16 +358,16 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [10]</span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1            1 "The Early GGod"     23.7   22.3   24.7   25.8        4        6</span>
-<span class="co">#&gt;  2            2 "Coom  Dumpster"     28.4   26.5   26.8   25.7        4        7</span>
-<span class="co">#&gt;  3            3 "PAKI STANS"         28.3   24.9   23.6   25.7        3        6</span>
-<span class="co">#&gt;  4            4 "I'm Also Sad "      35.8   24.6   28.4   27.1        2        5</span>
-<span class="co">#&gt;  5            5 "The Juggernaut"     24.5   24.2   31.3   25.2        3        8</span>
-<span class="co">#&gt;  6            6 "OBJ's Personal P…   24.5   24.4   25     24.3        3        6</span>
-<span class="co">#&gt;  7            7 "Tony El Tigre"      24.5   24.7   27.5   26.2        3        5</span>
-<span class="co">#&gt;  8            8 "Big Coomers"        23.8   27     28.7   27.2        3        7</span>
-<span class="co">#&gt;  9            9 "RAFI CUNADO"        34.6   25.5   26     24.1        3        5</span>
-<span class="co">#&gt; 10           10 "Austin &lt;U+0001F4…   31.4   27.8   31.8   24.9        3        5</span>
+<span class="co">#&gt;  1            1 "The Early GGod"     23.5   22.4   24.7   26          4        6</span>
+<span class="co">#&gt;  2            2 "Coom  Dumpster"     28.7   25.9   26.8   25.6        4        7</span>
+<span class="co">#&gt;  3            3 "PAKI STANS"         29.1   25.3   23.9   25.9        3        6</span>
+<span class="co">#&gt;  4            4 "I'm Also Sad "      35.4   24.8   28.7   27.4        2        5</span>
+<span class="co">#&gt;  5            5 "The Juggernaut"     25     24.6   31.6   25.3        3        8</span>
+<span class="co">#&gt;  6            6 "OBJ's Personal P…   24.8   24.7   25.3   23.4        3        6</span>
+<span class="co">#&gt;  7            7 "Tony El Tigre"      24.8   25.3   27.8   26.6        3        5</span>
+<span class="co">#&gt;  8            8 "Big Coomers"        23.5   26     27.2   27.1        3        7</span>
+<span class="co">#&gt;  9            9 "RAFI CUNADO"        35.1   25.9   26.4   24.4        3        5</span>
+<span class="co">#&gt; 10           10 "Austin 🐐Drew Lo…   32.2   24.4   32.2   25.5        3        5</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

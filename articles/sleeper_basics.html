@@ -22,8 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Sleeper: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
-<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
     <li class="divider">
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
     </li>
   </ul>
 </li>
@@ -111,10 +111,48 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/dynastyprocess/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
@@ -136,7 +174,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Sleeper: Basics</h1>
+                        <h4 class="author">Tan Ho</h4>
             
+            <h4 class="date">2021-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/sleeper_basics.Rmd"><code>vignettes/sleeper_basics.Rmd</code></a></small>
       <div class="hidden name"><code>sleeper_basics.Rmd</code></div>
@@ -157,14 +197,17 @@
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">solarpool_leagues</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 4</span>
 <span class="co">#&gt;   league_name                   league_id        franchise_name franchise_id    </span>
 <span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;            &lt;chr&gt;          &lt;chr&gt;           </span>
-<span class="co">#&gt; 1 z_dynastyprocess-test         633501761776197… solarpool      202892038360801…</span>
-<span class="co">#&gt; 2 The JanMichaelLarkin Dynasty… 522458773317046… solarpool      202892038360801…</span>
-<span class="co">#&gt; 3 DLP Dynasty League            521379020332068… DLP::thoriyan  202892038360801…</span></code></pre></div>
+<span class="co">#&gt; 1 The JanMichaelLarkin Dynasty… 522458773317046… solarpool      202892038360801…</span>
+<span class="co">#&gt; 2 DLP Dynasty League            521379020332068… DLP::thoriyan  202892038360801…</span>
+<span class="co">#&gt; 3 z_dynastyprocess-test         633501761776197… solarpool      202892038360801…</span></code></pre></div>
 <p>Let’s pull the JML league ID from here for analysis, and set up a Sleeper connection object.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jml_id</span> <span class="op">&lt;-</span> <span class="va">solarpool_leagues</span> <span class="op">%&gt;%</span> 
@@ -190,11 +233,14 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jml_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">jml</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">jml_summary</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 × 15] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt; tibble [1 × 16] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "522458773317046272"</span>
 <span class="co">#&gt;  $ league_name    : chr "The JanMichaelLarkin Dynasty League"</span>
+<span class="co">#&gt;  $ season         : int 2020</span>
 <span class="co">#&gt;  $ league_type    : chr "dynasty"</span>
 <span class="co">#&gt;  $ franchise_count: num 12</span>
 <span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
@@ -221,26 +267,24 @@
 <span class="co">#&gt; # A tibble: 6 x 7</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Paper Champs   2025      Albert Wilson   WR    MIA    28.9</span>
-<span class="co">#&gt; 2 1            Paper Champs   4089      Gerald Everett  TE    SEA    26.9</span>
-<span class="co">#&gt; 3 1            Paper Champs   6068      Devine Ozigbo   RB    JAX    24.7</span>
-<span class="co">#&gt; 4 1            Paper Champs   1339      Zach Ertz       TE    PHI    30.6</span>
-<span class="co">#&gt; 5 1            Paper Champs   5068      Kerryon Johnson RB    DET    23.9</span>
-<span class="co">#&gt; 6 1            Paper Champs   5965      Miles Boykin    WR    BAL    24.6</span></code></pre></div>
+<span class="co">#&gt; 1 1            Fake News      1110      T.Y. Hilton     WR    IND    31.6</span>
+<span class="co">#&gt; 2 1            Fake News      1339      Zach Ertz       TE    PHI    30.6</span>
+<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopkins WR    ARI    29  </span>
+<span class="co">#&gt; 4 1            Fake News      1825      Jarvis Landry   WR    CLE    28.5</span>
+<span class="co">#&gt; 5 1            Fake News      2025      Albert Wilson   WR    MIA    28.9</span>
+<span class="co">#&gt; 6 1            Fake News      2197      Brandin Cooks   WR    HOU    27.7</span></code></pre></div>
 <div id="values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#values" class="anchor"></a>Values</h2>
 <p>Cool! Let’s pull in some additional context by adding DynastyProcess player values.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="co"># The values are stored by fantasypros ID since that's where the data comes from. </span>
 <span class="co"># To join it to our rosters, we'll need playerID mappings.</span>
 
 <span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sleeper_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 
 <span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -256,12 +300,12 @@
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name    pos   team    age ecr_1qb</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Paper Champs   4866      Saquon Barkley RB    NYG    24.3     3.2</span>
-<span class="co">#&gt; 2 1            Paper Champs   1426      DeAndre Hopki… WR    ARI    29      17.2</span>
-<span class="co">#&gt; 3 1            Paper Champs   4199      Aaron Jones    RB    GB     26.5    21.5</span>
-<span class="co">#&gt; 4 1            Paper Champs   4037      Chris Godwin   WR    TB     25.3    31.7</span>
-<span class="co">#&gt; 5 1            Paper Champs   4098      Kareem Hunt    RB    CLE    25.8    57  </span>
-<span class="co">#&gt; 6 1            Paper Champs   5022      Dallas Goedert TE    PHI    26.4    73  </span>
+<span class="co">#&gt; 1 1            Fake News      4866      Saquon Barkley RB    NYG    24.3     3.4</span>
+<span class="co">#&gt; 2 1            Fake News      4199      Aaron Jones    RB    GB     26.5    21  </span>
+<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopki… WR    ARI    29      21.1</span>
+<span class="co">#&gt; 4 1            Fake News      4037      Chris Godwin   WR    TB     25.3    33.7</span>
+<span class="co">#&gt; 5 1            Fake News      4098      Kareem Hunt    RB    CLE    25.9    63.7</span>
+<span class="co">#&gt; 6 1            Fake News      5022      Dallas Goedert TE    PHI    25.9    83.2</span>
 <span class="co">#&gt; # … with 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -279,18 +323,18 @@
 <span class="co">#&gt; # A tibble: 12 x 8</span>
 <span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 3            solarpool              47364  7228 23817   732 15587    NA</span>
-<span class="co">#&gt;  2 11           Permian Panthers       44237  3304 13669  7221 20043    NA</span>
-<span class="co">#&gt;  3 4            The FANTom Menace      44108  2770  9588  2386 29364    NA</span>
-<span class="co">#&gt;  4 8            Hocka Flocka           40355  1450 22172  3366 13367    NA</span>
-<span class="co">#&gt;  5 1            Paper Champs           38714   384 20238  3466 14626    NA</span>
-<span class="co">#&gt;  6 5            Barbarians             37521  6236 19624  6112  5549    NA</span>
-<span class="co">#&gt;  7 12           jaydk                  36440  1885 18221  3510 12824    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               30297  3458  4217  8436 14186    NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             27334  2414 12722  2141 10057    NA</span>
-<span class="co">#&gt; 10 2            KingGabe               22835   101  6722    17 15995    NA</span>
-<span class="co">#&gt; 11 7            Flipadelphia05         21424  2316  7972   167 10969    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               16741   449   105   962 15225     0</span></code></pre></div>
+<span class="co">#&gt;  1 3            solarpool              45406  7664 23920   529 13293    NA</span>
+<span class="co">#&gt;  2 4            The FANTom Menace      41754  3051  7594  1820 29289    NA</span>
+<span class="co">#&gt;  3 11           Permian Panthers       40081  3889  9902  6997 19293    NA</span>
+<span class="co">#&gt;  4 1            Fake News              37716  1505 19221  2730 14260    NA</span>
+<span class="co">#&gt;  5 8            Hocka Flocka           37314  1234 20459  2511 13110    NA</span>
+<span class="co">#&gt;  6 12           jaydk                  33981  1696 17692  2936 11657    NA</span>
+<span class="co">#&gt;  7 5            Barbarians             32614  3770 19492  4629  4723    NA</span>
+<span class="co">#&gt;  8 6            sox05syd               30780  4329  5614  8136 12701    NA</span>
+<span class="co">#&gt;  9 9            ZPMiller97             24697  2941 12782   998  7976    NA</span>
+<span class="co">#&gt; 10 2            KingGabe               19931    41  6327    15 13548    NA</span>
+<span class="co">#&gt; 11 7            Flipadelphia05         18140  1951  4799   789 10601    NA</span>
+<span class="co">#&gt; 12 10           JMLarkin               14197   336    67   884 12908     2</span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op">%&gt;%</span> 
@@ -301,18 +345,18 @@
 <span class="co">#&gt; # A tibble: 12 x 8</span>
 <span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 3            solarpool              0.116 0.226 0.15  0.019 0.088    NA</span>
-<span class="co">#&gt;  2 11           Permian Panthers       0.109 0.103 0.086 0.187 0.113    NA</span>
-<span class="co">#&gt;  3 4            The FANTom Menace      0.108 0.087 0.06  0.062 0.165    NA</span>
-<span class="co">#&gt;  4 8            Hocka Flocka           0.099 0.045 0.139 0.087 0.075    NA</span>
-<span class="co">#&gt;  5 1            Paper Champs           0.095 0.012 0.127 0.09  0.082    NA</span>
-<span class="co">#&gt;  6 5            Barbarians             0.092 0.195 0.123 0.159 0.031    NA</span>
-<span class="co">#&gt;  7 12           jaydk                  0.089 0.059 0.115 0.091 0.072    NA</span>
-<span class="co">#&gt;  8 6            sox05syd               0.074 0.108 0.027 0.219 0.08     NA</span>
-<span class="co">#&gt;  9 9            ZPMiller97             0.067 0.075 0.08  0.056 0.057    NA</span>
-<span class="co">#&gt; 10 2            KingGabe               0.056 0.003 0.042 0     0.09     NA</span>
-<span class="co">#&gt; 11 7            Flipadelphia05         0.053 0.072 0.05  0.004 0.062    NA</span>
-<span class="co">#&gt; 12 10           JMLarkin               0.041 0.014 0.001 0.025 0.086     0</span></code></pre></div>
+<span class="co">#&gt;  1 3            solarpool              0.121 0.236 0.162 0.016 0.081    NA</span>
+<span class="co">#&gt;  2 4            The FANTom Menace      0.111 0.094 0.051 0.055 0.179    NA</span>
+<span class="co">#&gt;  3 11           Permian Panthers       0.106 0.12  0.067 0.212 0.118    NA</span>
+<span class="co">#&gt;  4 1            Fake News              0.1   0.046 0.13  0.083 0.087    NA</span>
+<span class="co">#&gt;  5 8            Hocka Flocka           0.099 0.038 0.138 0.076 0.08     NA</span>
+<span class="co">#&gt;  6 12           jaydk                  0.09  0.052 0.12  0.089 0.071    NA</span>
+<span class="co">#&gt;  7 5            Barbarians             0.087 0.116 0.132 0.14  0.029    NA</span>
+<span class="co">#&gt;  8 6            sox05syd               0.082 0.134 0.038 0.247 0.078    NA</span>
+<span class="co">#&gt;  9 9            ZPMiller97             0.066 0.091 0.086 0.03  0.049    NA</span>
+<span class="co">#&gt; 10 2            KingGabe               0.053 0.001 0.043 0     0.083    NA</span>
+<span class="co">#&gt; 11 7            Flipadelphia05         0.048 0.06  0.032 0.024 0.065    NA</span>
+<span class="co">#&gt; 12 10           JMLarkin               0.038 0.01  0     0.027 0.079     2</span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
 </div>
 <div id="age" class="section level2">
@@ -338,18 +382,18 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name    age_QB age_RB age_TE age_WR age_FB count_QB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 1            Paper Champs        33.1   25.3   26.2   27.4     NA        3</span>
-<span class="co">#&gt;  2 10           JMLarkin            28.4   27.3   26     25.4      0        3</span>
-<span class="co">#&gt;  3 11           Permian Panthers    24.2   23.1   31.6   25.8     NA        4</span>
-<span class="co">#&gt;  4 12           jaydk               31.8   25.5   25.8   27.9     NA        5</span>
-<span class="co">#&gt;  5 2            KingGabe            27     22.5   26.7   22.9     NA        5</span>
-<span class="co">#&gt;  6 3            solarpool           25.8   25.5   26.5   27.7     NA        4</span>
-<span class="co">#&gt;  7 4            The FANTom Menace   27.8   24.5   24.3   26.8     NA        3</span>
-<span class="co">#&gt;  8 5            Barbarians          25.3   24.7   28.7   26.8     NA        2</span>
-<span class="co">#&gt;  9 6            sox05syd            23.8   23.9   27     25.3     NA        4</span>
-<span class="co">#&gt; 10 7            Flipadelphia05      33     25.1   27.8   26.6     NA        2</span>
-<span class="co">#&gt; 11 8            Hocka Flocka        31.5   24.3   24.9   23.5     NA        3</span>
-<span class="co">#&gt; 12 9            ZPMiller97          24.6   23.8   26.6   25.3     NA        2</span>
+<span class="co">#&gt;  1 1            Fake News           28.7   25.3   25.5   27.4   NA          3</span>
+<span class="co">#&gt;  2 10           JMLarkin            28.4   27.3   25.9   25.1   30.1        3</span>
+<span class="co">#&gt;  3 11           Permian Panthers    24     23     31.6   25.5   NA          4</span>
+<span class="co">#&gt;  4 12           jaydk               32.1   25.6   26.1   27.8   NA          4</span>
+<span class="co">#&gt;  5 2            KingGabe            28.8   22.5   27.2   22.3   NA          5</span>
+<span class="co">#&gt;  6 3            solarpool           25.3   25.5   26.6   27.6   NA          5</span>
+<span class="co">#&gt;  7 4            The FANTom Menace   28.8   23.5   23.8   27     NA          5</span>
+<span class="co">#&gt;  8 5            Barbarians          25.1   24.5   28.7   26.2   NA          3</span>
+<span class="co">#&gt;  9 6            sox05syd            23.8   24     27.3   25.3   NA          3</span>
+<span class="co">#&gt; 10 7            Flipadelphia05      32.9   25.7   27.4   26.7   NA          2</span>
+<span class="co">#&gt; 11 8            Hocka Flocka        31.4   24.1   23.8   23.5   NA          3</span>
+<span class="co">#&gt; 12 9            ZPMiller97          24.4   24     26.6   25     NA          3</span>
 <span class="co">#&gt; # … with 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span>
 <span class="co">#&gt; #   count_FB &lt;int&gt;</span></code></pre></div>
 </div>

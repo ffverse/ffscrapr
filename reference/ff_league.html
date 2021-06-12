@@ -56,8 +56,8 @@
 
 <meta property="og:title" content="Get League Summary — ff_league" />
 <meta property="og:description" content="This function returns a tidy dataframe of common league settings, including details like &quot;1QB&quot; or &quot;2QB/SF&quot;, scoring, best ball, team count, IDP etc. This is potentially useful in summarising the features of multiple leagues." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg" />
-<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms" />
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg" />
+<meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
 <meta name="twitter:site" content="@DynastyProcess" />
@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
       </span>
     </div>
 
@@ -148,7 +148,7 @@
     <li class="divider"></li>
     <li class="dropdown-header">Cache</li>
     <li>
-      <a href="../articles/ffscrapr_caching.html">Managing ffscrapr's Cache</a>
+      <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
     </li>
   </ul>
 </li>
@@ -158,10 +158,48 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
+  <a href="https://discord.com/invite/5Er2FBnnQa">
+    <span class="fab fa-discord fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://github.com/dynastyprocess/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/ffverse">ffverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">nflverse</li>
+    <li>
+      <a href="https://www.nflfastr.com">nflfastR package</a>
+    </li>
+    <li>
+      <a href="https://github.com/nflverse">nflverse GitHub</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">DynastyProcess</li>
+    <li>
+      <a href="https://dynastyprocess.com">DynastyProcess.com</a>
+    </li>
+    <li>
+      <a href="https://github.com/dynastyprocess">DynastyProcess GitHub</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -231,45 +269,46 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
 <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 15</span>
-#&gt;   league_id league_name league_type franchise_count qb_type idp   scoring_flags
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        
-#&gt; <span style='color: #BCBCBC;'>1</span> 899513    Sucio Boys  keeper                   10 2QB/SF  FALSE 0.5_ppr      
-#&gt; <span style='color: #949494;'># … with 8 more variables: best_ball &lt;lgl&gt;, salary_cap &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   league_depth &lt;dbl&gt;, keeper_count &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 16</span>
+#&gt;   league_id league_name season league_type franchise_count qb_type idp  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 899513    Sucio Boys    <span style='text-decoration: underline;'>2</span>020 keeper                   10 2QB/SF  FALSE
+#&gt; <span style='color: #949494;'># … with 9 more variables: scoring_flags &lt;chr&gt;, best_ball &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   roster_size &lt;int&gt;, league_depth &lt;dbl&gt;, keeper_count &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>206154</span><span class='op'>)</span>
 <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 14</span>
-#&gt;   league_id league_name  league_type franchise_count qb_type idp   scoring_flags
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        
-#&gt; <span style='color: #BCBCBC;'>1</span> 206154    Jackpot Dyn… dynasty                  16 1QB     TRUE  0.5_ppr, TEP…
-#&gt; <span style='color: #949494;'># … with 7 more variables: best_ball &lt;lgl&gt;, salary_cap &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_copies &lt;dbl&gt;, qb_count &lt;chr&gt;, roster_size &lt;int&gt;, league_depth &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   keeper_count &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 15</span>
+#&gt;   league_id league_name         season league_type franchise_count qb_type idp  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 206154    Jackpot Dynasty Le…   <span style='text-decoration: underline;'>2</span>020 dynasty                  16 1QB     TRUE 
+#&gt; <span style='color: #949494;'># … with 8 more variables: scoring_flags &lt;chr&gt;, best_ball &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;, qb_count &lt;chr&gt;, roster_size &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   league_depth &lt;dbl&gt;, keeper_count &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 13</span>
-#&gt;   league_id league_name    franchise_count qb_type idp   scoring_flags best_ball
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'>1</span> 54040     The Super Sma…              14 1QB     FALSE 0.5_ppr, TEP… FALSE    
-#&gt; <span style='color: #949494;'># … with 6 more variables: salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;, league_depth &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 14</span>
+#&gt;   league_id league_name      season franchise_count qb_type idp   scoring_flags 
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
+#&gt; <span style='color: #BCBCBC;'>1</span> 54040     The Super Smash…   <span style='text-decoration: underline;'>2</span>020              14 1QB     FALSE 0.5_ppr, TEPr…
+#&gt; <span style='color: #949494;'># … with 7 more variables: best_ball &lt;lgl&gt;, salary_cap &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   league_depth &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 15</span>
-#&gt;   league_id  league_name league_type franchise_count qb_type idp   scoring_flags
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        
-#&gt; <span style='color: #BCBCBC;'>1</span> 522458773… The JanMic… dynasty                  12 1QB     FALSE 0.5_ppr      
-#&gt; <span style='color: #949494;'># … with 8 more variables: best_ball &lt;lgl&gt;, salary_cap &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   league_depth &lt;dbl&gt;, prev_league_ids &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 16</span>
+#&gt;   league_id    league_name      season league_type franchise_count qb_type idp  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 52245877331… The JanMichaelL…   <span style='text-decoration: underline;'>2</span>020 dynasty                  12 1QB     FALSE
+#&gt; <span style='color: #949494;'># … with 9 more variables: scoring_flags &lt;chr&gt;, best_ball &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   roster_size &lt;int&gt;, league_depth &lt;dbl&gt;, prev_league_ids &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
