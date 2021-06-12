@@ -1,8 +1,10 @@
 ---
 title: "ESPN: Private Leagues"
 output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{espn_authentication}
+  %\VignetteIndexEntry{ESPN: Private Leagues}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

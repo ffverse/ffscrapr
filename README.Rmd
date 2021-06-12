@@ -23,23 +23,29 @@ eval <- TRUE
 
 tryCatch(expr = {
   
-  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.2.zip","f.zip")
+  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip","f.zip")
   unzip('f.zip', exdir = ".")
   
-  httptest::.mockPaths(new = "ffscrapr-tests-1.4.2")},
+  httptest::.mockPaths(new = "ffscrapr-tests-main")},
   warning = function(e) eval <<- FALSE,
   error = function(e) eval <<- FALSE)
 
 httptest::use_mock_api()
 ```
 
-# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" width="25%" min-width="120px"/></a>
+# ffscrapr <a href='#'><img src="man/figures/logo.svg" align="right" width="25%" min-width="120px"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
 <!-- badges: start -->
 
-[![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) [![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/) [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html) [![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) [![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) [![API status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) [![nflverse discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
+[![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
+[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/) 
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html) 
+[![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) 
+[![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
+[![API status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
+[![nflverse discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
 
 <!-- badges: end -->
 
@@ -47,13 +53,13 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Version 1.4.2 is now on CRAN :tada: and can be installed with:
+Version 1.4.3 is now on CRAN :tada: and can be installed with:
 
 ```{r eval = FALSE}
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.2")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.3")
 ```
 
 Install the development version from GitHub with:
@@ -68,7 +74,7 @@ The dev version has a [separate documentation site here](https://ffscrapr.dynast
 
 All `ffscrapr` functions start with a connection object created by `ff_connect()`, which stores connection, authentication, and other user-defined parameters. This object is used by all other functions to help return the correct data.
 
-```{r eval = eval}
+```{r eval = eval, message = FALSE}
 library(ffscrapr)
 ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
@@ -91,6 +97,13 @@ Platform-specific guides on getting started with ffscrapr are here:
 
 There are also some more advanced guides for custom API calls in the [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as well as some guides on [optimizing ffscrapr's performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
 
+### Support
+
+The best places to get help on this package are:
+
+- the [nflverse discord](https://discord.com/invite/5Er2FBnnQa) (for both this package as well as anything R/NFL related)
+- opening [an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
+
 ### Contributing
 
 Many hands make light work! Here are some ways you can contribute to this project:
@@ -109,5 +122,5 @@ The APIs and data accessed by this package belong to their respective owners, an
 
 ```{r include = FALSE}
 httptest::stop_mocking()
-unlink(c("ffscrapr-tests-1.4.2","f.zip"), recursive = TRUE, force = TRUE)
+unlink(c("ffscrapr-tests-main","f.zip"), recursive = TRUE, force = TRUE)
 ```

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ffscrapr <a href='#'><img src="man/figures/logo.png" align="right" width="25%" min-width="120px"/></a>
+# ffscrapr <a href='#'><img src="man/figures/logo.svg" align="right" width="25%" min-width="120px"/></a>
 
 *An R Client for Fantasy Football League APIs*
 
@@ -19,7 +19,9 @@ coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=
 status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
 [![API
 status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
-[![nflverse discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
+[![nflverse
+discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
+
 
 <!-- badges: end -->
 
@@ -31,13 +33,13 @@ other data sources.
 
 ### Installation
 
-Version 1.4.2 is now on CRAN :tada: and can be installed with:
+Version 1.4.3 is now on CRAN :tada: and can be installed with:
 
 ``` r
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.2")
+remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.3")
 ```
 
 Install the development version from GitHub with:
@@ -62,9 +64,10 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
 ff_league(ssb) %>% str()
-#> tibble [1 x 13] (S3: tbl_df/tbl/data.frame)
+#> tibble [1 x 14] (S3: tbl_df/tbl/data.frame)
 #>  $ league_id      : chr "54040"
 #>  $ league_name    : chr "The Super Smash Bros Dynasty League"
+#>  $ season         : int 2020
 #>  $ franchise_count: num 14
 #>  $ qb_type        : chr "1QB"
 #>  $ idp            : logi FALSE
@@ -82,25 +85,25 @@ ff_rosters(ssb)
 #> # A tibble: 442 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.7
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.4
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.3
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.8
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.5
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.4
 #> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.2
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.3
 #> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
-#> # A tibble: 152 x 12
-#>   timestamp           type       type_desc franchise_id franchise_name   
-#>   <dttm>              <chr>      <chr>     <chr>        <chr>            
-#> 1 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
-#> 2 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers
-#> 3 2020-06-16 01:56:49 TAXI       promoted  0014         Team Luigi       
-#> 4 2020-06-16 01:56:49 TAXI       demoted   0014         Team Luigi       
-#> 5 2020-06-12 23:51:44 FREE_AGENT dropped   0010         Team Yoshi       
-#> # ... with 147 more rows, and 7 more variables: player_id <chr>,
+#> # A tibble: 1,145 x 12
+#>   timestamp           type  type_desc   franchise_id franchise_name
+#>   <dttm>              <chr> <chr>       <chr>        <chr>         
+#> 1 2021-02-12 14:32:39 TRADE traded_away 0008         Team Bowser   
+#> 2 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 3 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 4 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 5 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> # ... with 1,140 more rows, and 7 more variables: player_id <chr>,
 #> #   player_name <chr>, pos <chr>, team <chr>, bbid_spent <dbl>,
 #> #   trade_partner <chr>, comments <chr>
 ```
@@ -116,6 +119,15 @@ There are also some more advanced guides for custom API calls in the
 [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as
 well as some guides on [optimizing ffscrapr’s
 performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
+
+### Support
+
+The best places to get help on this package are:
+
+-   the [nflverse discord](https://discord.com/invite/5Er2FBnnQa) (for
+    both this package as well as anything R/NFL related)
+-   opening [an
+    issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
 
 ### Contributing
 

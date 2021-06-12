@@ -20,6 +20,7 @@ ff_league.mfl_conn <- function(conn) {
   tibble::tibble(
     league_id = conn$league_id,
     league_name = league_endpoint$name,
+    season = as.integer(conn$season),
     franchise_count = as.numeric(league_endpoint$franchises$count),
     qb_type = .mfl_is_qbtype(league_endpoint)$type,
     idp = .mfl_is_idp(league_endpoint),

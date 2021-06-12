@@ -31,7 +31,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
       .fns = as.numeric
     )) %>%
     dplyr::left_join(
-      nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
+      ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
       by = c("event" = "ff_event")) %>%
     dplyr::select(
       "pos","points","lower_range","upper_range","event", "nflfastr_event", "short_desc"

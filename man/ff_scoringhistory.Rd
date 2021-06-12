@@ -68,5 +68,5 @@ ff_scoringhistory(conn, season = 2020)
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
+\url{https://nflfastr.com/reference/load_player_stats.html}
 }

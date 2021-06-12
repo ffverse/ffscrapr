@@ -17,6 +17,11 @@ with_mock_api({
 
     expect_tibble(jml_draftresults, min.rows = 40)
 
+    auction_conn <- ff_connect(platform = "sleeper", league_id = "695482984576385024", season = 2021)
+    auction_draftresults <- ff_draft(auction_conn)
+
+    expect_tibble(auction_draftresults, min.rows = 250)
+
     joe_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
     joe_draftresults <- ff_draft(joe_conn)
 

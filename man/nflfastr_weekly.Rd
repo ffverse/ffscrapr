@@ -30,5 +30,5 @@ nflfastr_weekly()
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
+\url{https://nflfastr.com/reference/load_player_stats.html}
 }
