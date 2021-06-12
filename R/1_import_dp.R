@@ -97,7 +97,7 @@ dp_playerids <- function() {
 #'
 #' @export
 
-dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = FALSE, use_name_database = TRUE) {
+dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = TRUE, use_name_database = TRUE) {
   checkmate::assert_character(player_name)
   checkmate::assert_flag(lowercase)
   checkmate::assert_flag(convert_lastfirst)
