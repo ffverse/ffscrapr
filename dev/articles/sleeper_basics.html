@@ -22,8 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Sleeper: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
-<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -104,11 +104,6 @@
     <li>
       <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
     </li>
-    <li class="divider">
-    <li class="dropdown-header">Other</li>
-    <li>
-      <a href="../articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -182,7 +177,7 @@
       <h1 data-toc-skip>Sleeper: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-06-09</h4>
+            <h4 class="date">2021-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/sleeper_basics.Rmd"><code>vignettes/sleeper_basics.Rmd</code></a></small>
       <div class="hidden name"><code>sleeper_basics.Rmd</code></div>
@@ -308,7 +303,7 @@
 <span class="co">#&gt; 3 1            Fake News      4199      Aaron Jones    RB    GB     26.5    21.5</span>
 <span class="co">#&gt; 4 1            Fake News      4037      Chris Godwin   WR    TB     25.3    31.7</span>
 <span class="co">#&gt; 5 1            Fake News      4017      Deshaun Watson QB    HOU    25.7    52.2</span>
-<span class="co">#&gt; 6 1            Fake News      4098      Kareem Hunt    RB    CLE    25.8    57  </span>
+<span class="co">#&gt; 6 1            Fake News      4098      Kareem Hunt    RB    CLE    25.9    57  </span>
 <span class="co">#&gt; # … with 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -393,10 +388,10 @@
 <span class="co">#&gt;  6 3            solarpool           25.5   25.5   26.5   27.7     NA        5</span>
 <span class="co">#&gt;  7 4            The FANTom Menace   28.4   24.7   24.4   26.8     NA        5</span>
 <span class="co">#&gt;  8 5            Barbarians          25.2   24.4   28.5   26.9     NA        3</span>
-<span class="co">#&gt;  9 6            sox05syd            23.8   23.9   27.3   25.4     NA        3</span>
+<span class="co">#&gt;  9 6            sox05syd            23.9   23.9   27.3   25.4     NA        3</span>
 <span class="co">#&gt; 10 7            Flipadelphia05      33     25.1   27.4   26.6     NA        2</span>
 <span class="co">#&gt; 11 8            Hocka Flocka        31.5   24.2   23.9   23.7     NA        3</span>
-<span class="co">#&gt; 12 9            ZPMiller97          24.6   23.9   26.6   24.9     NA        3</span>
+<span class="co">#&gt; 12 9            ZPMiller97          24.6   23.9   26.6   25       NA        3</span>
 <span class="co">#&gt; # … with 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span>
 <span class="co">#&gt; #   count_FB &lt;int&gt;</span></code></pre></div>
 </div>

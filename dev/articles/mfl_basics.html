@@ -22,8 +22,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/ffscrapr.svg">
-<meta property="og:image:alt" content="ffscrapr - an R client for fantasy football platforms">
+<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
 <meta name="twitter:site" content="@DynastyProcess">
@@ -104,11 +104,6 @@
     <li>
       <a href="../articles/ffscrapr_caching.html">ffscrapr: Managing Cache</a>
     </li>
-    <li class="divider">
-    <li class="dropdown-header">Other</li>
-    <li>
-      <a href="../articles/ffscrapr_scoringhistory.html">ffscrapr: ff_scoringhistory Limitations</a>
-    </li>
   </ul>
 </li>
 <li>
@@ -182,7 +177,7 @@
       <h1 data-toc-skip>MFL: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-06-09</h4>
+            <h4 class="date">2021-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/mfl_basics.Rmd"><code>vignettes/mfl_basics.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_basics.Rmd</code></div>
@@ -295,7 +290,7 @@
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.2</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.4</span>
-<span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.2</span>
+<span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.3</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    24.5</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    22.7</span>
 <span class="co">#&gt; 6 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.5</span>
@@ -380,11 +375,11 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [14]</span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 0001         Team Pikachu         23.8   22.9   26.4   23.5        4        8</span>
+<span class="co">#&gt;  1 0001         Team Pikachu         23.9   22.9   26.4   23.5        4        8</span>
 <span class="co">#&gt;  2 0002         Team Simon Belmont   23.1   25.2   24.9   24.4        8       11</span>
 <span class="co">#&gt;  3 0003         Team Donkey Kong     25.3   23.6   31.6   26.9        5        8</span>
 <span class="co">#&gt;  4 0004         Team Ice Climbers    29.5   25.5   26.6   27.4        5        9</span>
-<span class="co">#&gt;  5 0005         Team Dr. Mario       32.3   23.2   24.9   24.7        2        7</span>
+<span class="co">#&gt;  5 0005         Team Dr. Mario       32.3   23.3   24.9   24.7        2        7</span>
 <span class="co">#&gt;  6 0006         Team King Dedede     25.8   26.1   26.5   25.0        3       10</span>
 <span class="co">#&gt;  7 0007         Team Kirby           24.1   25.1   29.1   28.4        4        9</span>
 <span class="co">#&gt;  8 0008         Team Bowser          26.2   26.9   33.7   28.3        4       11</span>
