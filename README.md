@@ -22,6 +22,7 @@ status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Te
 [![nflverse
 discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
 
+
 <!-- badges: end -->
 
 Helps access various Fantasy Football APIs (currently MFL, Sleeper,
