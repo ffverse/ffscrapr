@@ -1,13 +1,16 @@
 # ffscrapr (development version)
 
+The main goal of v1.4.3 is to patch some minor bugs.
+
 ## Minor changes
 
-- `ff_league()` now has a column that returns the platform's season - this is most useful when running ff_league in batch. Thank you to @joeflan for the contribution!  (Fixes #287) (v1.4.2.01)
-- Added helper script in dev/ for switching between test cache versions. (v1.4.2.02)
-- `ff_schedule()` for Sleeper now should extend into playoff weeks. (Fixes #289) (v1.4.2.03)
-- `ff_draft()` for Sleeper now has an auction_amount column if it is an auction draft. (Fixes #291) (v1.4.2.04)
-- `dp_cleannames()` now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one. (v1.4.2.05) 
-- `nflfastr_stat_mapping` and `dp_name_mapping` are namespaced within the package, so that they can be used internally and externally a little more robustly. (v1.4.2.06)
+- `ff_league()` now has a column that returns the platform's season - this is most useful when running ff_league in batch. Thank you to @joeflan for the contribution!  (Fixes #287)
+- Added helper script in dev/ for switching between test cache versions.
+- `ff_schedule()` for Sleeper now should extend into playoff weeks. (Fixes #289) 
+- `ff_draft()` for Sleeper now has an auction_amount column if it is an auction draft. (Fixes #291)
+- `dp_cleannames()` now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one.
+- `nflfastr_stat_mapping` and `dp_name_mapping` are namespaced within the package, so that they can be used internally and externally a little more robustly.
+- Rebuilt test cache
 
 ---
 
