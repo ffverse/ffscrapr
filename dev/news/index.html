@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.07</span>
       </span>
     </div>
 
@@ -223,25 +223,28 @@
       <small>Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="ffscrapr-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
+    <div id="ffscrapr-143" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.3">
+<a href="#ffscrapr-143" class="anchor"></a>ffscrapr 1.4.3<small> Unreleased </small>
 </h1>
+<p>The main goal of v1.4.3 is to patch some minor bugs.</p>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
-<code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/287'>#287</a>) (v1.4.2.01)</li>
-<li>Added helper script in dev/ for switching between test cache versions. (v1.4.2.02)</li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/287'>#287</a>)</li>
+<li>Added helper script in dev/ for switching between test cache versions.</li>
+<li>Added helper script in dev/ for rebuilding test cache.</li>
 <li>
-<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper now should extend into playoff weeks. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/289'>#289</a>) (v1.4.2.03)</li>
+<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper now should extend into playoff weeks. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/289'>#289</a>)</li>
 <li>
-<code><a href="../reference/ff_draft.html">ff_draft()</a></code> for Sleeper now has an auction_amount column if it is an auction draft. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/291'>#291</a>) (v1.4.2.04)</li>
+<code><a href="../reference/ff_draft.html">ff_draft()</a></code> for Sleeper now has an auction_amount column if it is an auction draft. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/291'>#291</a>)</li>
 <li>
-<code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one. (v1.4.2.05)</li>
+<code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one.</li>
 <li>
-<code>nflfastr_stat_mapping</code> and <code>dp_name_mapping</code> are namespaced within the package, so that they can be used internally and externally a little more robustly. (v1.4.2.06)</li>
+<code>nflfastr_stat_mapping</code> and <code>dp_name_mapping</code> are namespaced within the package, so that they can be used internally and externally a little more robustly.</li>
+<li>Rebuilt test cache in ffscrapr-tests.</li>
 </ul>
 <hr>
 </div>
@@ -489,7 +492,7 @@
 <li>
 <code><a href="../reference/sleeper_userleagues.html">sleeper_userleagues()</a></code> is a wrapper on <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> that makes it easier to look up user leagues without first creating a connection object.</li>
 <li>
-<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://www.nflfastr.com">nflfastr</a>.</li>
+<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://nflfastr.com/">nflfastr</a>.</li>
 <li>
 <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> is a little more simple than MFL’s equivalent - just pass a string url (minus api.sleeper.app/v1) or pass in chunks of code, the function will automatically paste them together with “/”.</li>
 <li>Added generic and method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user’s league_ids by username first. MFL does have a parallel feature even if used for different purposes.</li>

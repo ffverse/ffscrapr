@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.06</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.2.07</span>
       </span>
     </div>
 
@@ -186,12 +186,12 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
-<p>Version 1.4.2 is now on CRAN <span class="emoji" data-emoji="tada">🎉</span> and can be installed with:</p>
+<p>Version 1.4.3 is now on CRAN <span class="emoji" data-emoji="tada">🎉</span> and can be installed with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ffscrapr"</span><span class="op">)</span>
 <span class="co"># or from GitHub release with the remotes package via:</span>
 <span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"v1.4.2"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"v1.4.3"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dynastyprocess/ffscrapr"</span>, ref <span class="op">=</span> <span class="st">"dev"</span><span class="op">)</span></code></pre></div>
@@ -238,15 +238,15 @@
 
 <span class="co"># Get transactions</span>
 <span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 152 x 12</span>
-<span class="co">#&gt;   timestamp           type       type_desc franchise_id franchise_name   </span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers</span>
-<span class="co">#&gt; 2 2020-07-09 17:25:20 FREE_AGENT dropped   0004         Team Ice Climbers</span>
-<span class="co">#&gt; 3 2020-06-16 01:56:49 TAXI       promoted  0014         Team Luigi       </span>
-<span class="co">#&gt; 4 2020-06-16 01:56:49 TAXI       demoted   0014         Team Luigi       </span>
-<span class="co">#&gt; 5 2020-06-12 23:51:44 FREE_AGENT dropped   0010         Team Yoshi       </span>
-<span class="co">#&gt; # ... with 147 more rows, and 7 more variables: player_id &lt;chr&gt;,</span>
+<span class="co">#&gt; # A tibble: 1,145 x 12</span>
+<span class="co">#&gt;   timestamp           type  type_desc   franchise_id franchise_name</span>
+<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;         </span>
+<span class="co">#&gt; 1 2021-02-12 14:32:39 TRADE traded_away 0008         Team Bowser   </span>
+<span class="co">#&gt; 2 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
+<span class="co">#&gt; 3 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
+<span class="co">#&gt; 4 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
+<span class="co">#&gt; 5 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
+<span class="co">#&gt; # ... with 1,140 more rows, and 7 more variables: player_id &lt;chr&gt;,</span>
 <span class="co">#&gt; #   player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;, bbid_spent &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></code></pre></div>
 <p>Platform-specific guides on getting started with ffscrapr are here:</p>
