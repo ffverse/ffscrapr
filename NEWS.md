@@ -1,5 +1,11 @@
 # ffscrapr (development version)
 
+## Minor changes
+
+- `mfl_getendpoint()` and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)
+
+---
+
 # ffscrapr 1.4.3
 
 The main goal of v1.4.3 is to patch some minor bugs.
