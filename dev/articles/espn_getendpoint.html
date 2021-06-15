@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.01</span>
       </span>
     </div>
 
@@ -177,7 +177,7 @@
       <h1 data-toc-skip>ESPN: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-06-12</h4>
+            <h4 class="date">2021-06-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/espn_getendpoint.Rmd"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>espn_getendpoint.Rmd</code></div>
@@ -231,7 +231,8 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
 <span class="va">draft_details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/espn_getendpoint.html">espn_getendpoint</a></span><span class="op">(</span><span class="va">conn</span>, view <span class="op">=</span> <span class="st">"mDraftDetail"</span><span class="op">)</span>
 
 <span class="va">draft_details</span>
-<span class="co">#&gt; &lt;ESPN - GET https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
+<span class="co">#&gt; &lt;ESPN - GET - Success: (200) OK&gt;</span>
+<span class="co">#&gt; QUERY: &lt;https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
 <span class="co">#&gt; List of 8</span>
 <span class="co">#&gt;  $ draftDetail    :List of 4</span>
 <span class="co">#&gt;  $ gameId         : int 1</span>
@@ -249,7 +250,8 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
   <span class="st">"https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail"</span><span class="op">)</span>
 
 <span class="va">draft_details_raw</span>
-<span class="co">#&gt; &lt;ESPN - GET https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
+<span class="co">#&gt; &lt;ESPN - GET - Success: (200) OK&gt;</span>
+<span class="co">#&gt; QUERY: &lt;https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
 <span class="co">#&gt; List of 8</span>
 <span class="co">#&gt;  $ draftDetail    :List of 4</span>
 <span class="co">#&gt;  $ gameId         : int 1</span>

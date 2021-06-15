@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.01</span>
       </span>
     </div>
 
@@ -227,15 +227,24 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>
+<code><a href="../reference/mfl_getendpoint.html">mfl_getendpoint()</a></code> and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)</li>
+</ul>
+<hr>
+</div>
 </div>
     <div id="ffscrapr-143" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.3">
 <a href="#ffscrapr-143" class="anchor"></a>ffscrapr 1.4.3<small> 2021-06-12 </small>
 </h1>
 <p>The main goal of v1.4.3 is to patch some minor bugs.</p>
-<div id="minor-changes" class="section level2">
+<div id="minor-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/287'>#287</a>)</li>
@@ -259,9 +268,9 @@
 <a href="#ffscrapr-142" class="anchor"></a>ffscrapr 1.4.2<small> 2021-05-10 </small>
 </h1>
 <p>The main goal of v1.4.2 is to patch some minor bugs.</p>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code>espn_rosters</code> now has a <code>week</code> argument to return a specific week of data. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/276'>#276</a>, thanks <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
@@ -291,9 +300,9 @@
 <code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
 </ul>
 </div>
-<div id="minor-changes-2" class="section level2">
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
 <li>
@@ -336,9 +345,9 @@
 <code>ff_scoring</code> rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule</li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
 <li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>
