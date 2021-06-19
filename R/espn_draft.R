@@ -15,11 +15,23 @@
 #'
 #' @export
 ff_draft.espn_conn <- function(conn, ...) {
+
   draft_endpoint <- espn_getendpoint(conn, view = "mDraftDetail") %>%
-    purrr::pluck("content", "draftDetail") %>%
+    purrr::pluck("content", "draftDetail")
+
+
+  if(!draft_endpoint$drafted) {
+    warning(
+      glue::glue("ESPN league_id {conn$league_id} has not drafted yet!"),
+      call. = FALSE)
+  }
+
+  draft_tibble <- draft_endpoint %>%
     tibble::as_tibble() %>%
     tidyr::unnest_wider("picks") %>%
-    dplyr::mutate(completeDate = lubridate::as_datetime(.data$completeDate / 1000)) %>%
+    dplyr::mutate_at(
+      dplyr::vars(dplyr::contains("completeDate")),
+      ~ lubridate::as_datetime(.x / 1000)) %>%
     dplyr::rename(
       "player_id" = "playerId",
       "franchise_id" = "teamId"
@@ -30,7 +42,7 @@ ff_draft.espn_conn <- function(conn, ...) {
       by = c("franchise_id")
     )
 
-  x <- draft_endpoint %>%
+  x <- draft_tibble %>%
     dplyr::left_join(
       espn_players(conn) %>%
         dplyr::select("player_id", "player_name", "pos", "team"),
