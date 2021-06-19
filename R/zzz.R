@@ -113,3 +113,14 @@
 
   # nocov end
 }
+
+.onAttach <- function(libname, pkgname){
+
+  memoise_option <- getOption("ffscrapr.cache")
+
+  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) {
+    memoise_option <- "memory"
+  }
+
+  if(memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
+}

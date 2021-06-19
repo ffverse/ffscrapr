@@ -57,6 +57,8 @@ navbar:
         - text: ffverse
         - text: ffsimulator package
           href: https://ffsimulator.dynastyprocess.com
+        - text: ffpros package
+          href: https://ffpros.dynastyprocess.com
         - text: ffverse GitHub
           href: https://www.github.com/ffverse
         - text: ------
