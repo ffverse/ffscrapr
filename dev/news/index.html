@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.04</span>
       </span>
     </div>
 
@@ -180,6 +180,9 @@
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
     </li>
     <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
+    </li>
+    <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
     </li>
     <li class="divider"></li>
@@ -233,6 +236,13 @@
 <ul>
 <li>
 <code><a href="../reference/mfl_getendpoint.html">mfl_getendpoint()</a></code> and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)</li>
+<li>Added errorhandling for ESPN methods of <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code>, <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code>, <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code>, <code><a href="../reference/ff_draft.html">ff_draft()</a></code>. Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/297'>#297</a>, thanks for the report <a href='https://github.com/jpiburn'>@jpiburn</a>! (v1.4.3.02)</li>
+<li>Added message to warn if memoise is turned off, onAttach. (v1.4.3.02)</li>
+<li>Tweak pkgdown (v1.4.3.02)</li>
+<li>
+<code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> now correctly handles leagues using waiver priority, fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/299'>#299</a> - thanks for the report <a href='https://github.com/BarkovMVP'>@BarkovMVP</a>! (v1.4.3.03)</li>
+<li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for Sleeper now identifies best ball leagues, fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/300'>#300</a> (v1.4.3.04)</li>
 </ul>
 <hr>
 </div>
