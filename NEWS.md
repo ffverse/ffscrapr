@@ -3,6 +3,11 @@
 ## Minor changes
 
 - `mfl_getendpoint()` and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)
+- Added errorhandling for ESPN methods of `ff_starters()`, `ff_transactions()`, `ff_rosters()`, `espn_potentialpoints()`, `ff_draft()`. Fixes #297, thanks for the report @jpiburn! (v1.4.3.02)
+- Added message to warn if memoise is turned off, onAttach. (v1.4.3.02)
+- Tweak pkgdown (v1.4.3.02)
+- `ff_transactions()` now correctly handles leagues using waiver priority, fixes #299 - thanks for the report @BarkovMVP! (v1.4.3.03)
+- `ff_league()` for Sleeper now identifies best ball leagues, fixes #300 (v1.4.3.04)
 
 ---
 

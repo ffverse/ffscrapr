@@ -37,7 +37,7 @@ ff_league.sleeper_conn <- function(conn) {
     qb_type = .sleeper_qbtype(starting_positions)$type,
     idp = .sleeper_isidp(starting_positions),
     scoring_flags = .sleeper_flag_scoring(scoring_settings),
-    best_ball = FALSE,
+    best_ball = .sleeper_isbestball(league_endpoint),
     salary_cap = FALSE,
     player_copies = 1,
     years_active = .sleeper_history(league_endpoint)$season,
@@ -46,6 +46,15 @@ ff_league.sleeper_conn <- function(conn) {
     league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies),
     prev_league_ids = .sleeper_history(league_endpoint)$league_id
   )
+}
+
+.sleeper_isbestball <- function(league_endpoint){
+
+  x <- league_endpoint$settings[["best_ball"]]
+
+  if(!is.null(x) && as.logical(x)) return(TRUE)
+
+  return(FALSE)
 }
 
 .sleeper_isdyno <- function(league_endpoint) {
@@ -125,7 +134,7 @@ ff_league.sleeper_conn <- function(conn) {
 
   prev <- league_endpoint$previous_league_id
 
-  while (prev != "0") {
+  while (!is.null(prev) && prev != "0") {
     prev_endpoint <- glue::glue("league/{prev}") %>%
       sleeper_getendpoint() %>%
       purrr::pluck("content")

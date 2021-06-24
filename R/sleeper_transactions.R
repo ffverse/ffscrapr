@@ -71,6 +71,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
 }
 
 .sleeper_transactions_freeagent <- function(raw_transactions) {
+
   fa_transactions <- raw_transactions %>%
     dplyr::filter(.data$type == "free_agent", .data$status == "complete")
 
@@ -144,7 +145,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       tibble::add_column(x)
   }
 
-  waiver_transactions <- waiver_transactions %>%
+  df_waivers <- waiver_transactions %>%
     tidyr::unnest_wider("settings") %>%
     dplyr::select(dplyr::any_of(c(
       "timestamp" = "status_updated",
@@ -153,6 +154,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       "added" = "adds",
       "dropped" = "drops",
       "bbid_amount" = "waiver_bid",
+      "waiver_priority" = "priority",
       "waiver_status" = "status",
       "settings",
       "metadata"
@@ -176,20 +178,24 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
     dplyr::filter(!is.na(.data$player_id)) %>%
     dplyr::mutate(
       type = paste(.data$type, .data$waiver_status, sep = "_"),
-      bbid_amount = dplyr::case_when(
-        .data$type_desc == "dropped" ~ NA_integer_,
-        TRUE ~ .data$bbid_amount
-      ),
       comment = ifelse(.data$waiver_status == "complete", NA_character_, .data$comment)
     ) %>%
+    dplyr::mutate_at(
+      dplyr::vars(dplyr::contains("bbid_amount")),
+      ~ dplyr::case_when(.data$type_desc == "dropped" ~ NA_integer_,
+                        TRUE ~ .x)
+    ) %>%
     dplyr::select(
+      dplyr::any_of(c(
       "timestamp",
       "type",
       "franchise_id",
       "type_desc",
       "player_id",
       "bbid_amount",
+      "waiver_priority",
       "comment"
+      ))
     )
 }
 

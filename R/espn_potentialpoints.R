@@ -18,7 +18,11 @@
 #' @export
 
 espn_potentialpoints <- function(conn, weeks = 1:17) {
-  player_weeks <- ff_starters(conn, weeks) %>%
+  player_weeks <- ff_starters(conn, weeks)
+
+  if(is.null(player_weeks)) return(NULL)
+
+  player_weeks <- player_weeks %>%
     dplyr::rename(
       "actual_slot" = "lineup_slot",
       "player_pos" = "pos"

@@ -48,8 +48,17 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
 
   transactions_response <- espn_getendpoint_raw(conn, url_query, xff)
 
-  all_transactions <- transactions_response %>%
-    purrr::pluck("content", "topics") %>%
+  all_transactions_list <- transactions_response %>%
+    purrr::pluck("content", "topics")
+
+  if(is.null(all_transactions_list)) {
+    warning(glue::glue("No transactions found for {conn$season} - {conn$league_id}!"),
+            call. = FALSE)
+
+    return(NULL)
+  }
+
+  all_transactions <- all_transactions_list %>%
     tibble::tibble() %>%
     purrr::set_names("x") %>%
     tidyr::hoist("x", "messages", "date") %>%

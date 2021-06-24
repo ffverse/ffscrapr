@@ -14,11 +14,17 @@ with_mock_api({
     jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
     jml_transactions <- ff_transactions(jml_conn, week = 1:9)
 
+    ## Sleeper - test for simultaneous drops (#246) ##
     templer_conn <- ff_connect(platform = "sleeper", league_id = "515566249837142016", season = 2020)
     templer_transactions <- ff_transactions(templer_conn, week = 1:9)
 
+    ## Sleeper - test for waiver priority handling (#299) ##
+    fflm <- ff_connect(platform = "sleeper", league_id = "649647301366755328", season = 2021)
+    fflm_transactions <- ff_transactions(fflm, week = 1)
+
     expect_tibble(jml_transactions, min.rows = 20)
     expect_tibble(templer_transactions, min.rows = 20)
+    expect_tibble(fflm_transactions, min.rows = 20)
 
     got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
     got_transactions <- ff_transactions(got_conn, franchise_id = 1373475)
