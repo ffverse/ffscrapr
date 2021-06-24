@@ -7,6 +7,7 @@
 - Added message to warn if memoise is turned off, onAttach. (v1.4.3.02)
 - Tweak pkgdown (v1.4.3.02)
 - `ff_transactions()` now correctly handles leagues using waiver priority, fixes #299 - thanks for the report @BarkovMVP! (v1.4.3.03)
+- `ff_league()` for Sleeper now identifies best ball leagues, fixes #300 (v1.4.3.04)
 
 ---
 
