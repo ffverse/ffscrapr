@@ -50,7 +50,9 @@ ff_league.sleeper_conn <- function(conn) {
 
 .sleeper_isbestball <- function(league_endpoint){
 
-  if(league_endpoint$settings[["best_ball"]] == 1) return(TRUE)
+  x <- league_endpoint$settings[["best_ball"]]
+
+  if(!is.null(x) && as.logical(x)) return(TRUE)
 
   return(FALSE)
 }
