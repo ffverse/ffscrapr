@@ -34,7 +34,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
       by = c("event" = "ff_event")) %>%
     dplyr::select(
-      "pos","points","lower_range","upper_range","event", "nflfastr_event", "short_desc"
+      "pos","points","lower_range","upper_range","event", "points_type", "nflfastr_event", "short_desc"
     )
 
   # Use custom ffscrapr function to get positions from nflfastR rosters
@@ -73,16 +73,20 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
     ) %>%
     dplyr::inner_join(league_rules, by = c("metric" = "nflfastr_event", "position" = "pos")) %>%
     dplyr::filter(.data$value >= .data$lower_range, .data$value <= .data$upper_range) %>%
-    dplyr::mutate(points = .data$value * .data$points) %>%
+    dplyr::mutate(
+      value = dplyr::case_when(.data$points_type == "once" ~ 1, TRUE ~ .data$value),
+      points = .data$value * .data$points
+    ) %>%
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
     dplyr::ungroup() %>%
-    dplyr::select("season", "week",
-      "gsis_id" = "player_id", "sportradar_id", "mfl_id", "player_name"="full_name", "pos" = "position",
-      "team" = "recent_team", "metric", "value", "points"
+    dplyr::select("season", "week", "gsis_id" = "player_id", "sportradar_id",
+                  "mfl_id", "player_name"="full_name", "pos" = "position",
+                  "team" = "recent_team", "metric", "value", "points"
     ) %>%
     tidyr::pivot_wider(
-      id_cols = c("season", "week", "gsis_id", "sportradar_id", "mfl_id", "player_name", "pos", "team", "points"),
+      id_cols = c("season", "week", "gsis_id", "sportradar_id",
+                  "mfl_id", "player_name", "pos", "team", "points"),
       names_from = .data$metric,
       values_from = .data$value,
       values_fill = 0,
