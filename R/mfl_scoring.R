@@ -48,11 +48,18 @@ ff_scoring.mfl_conn <- function(conn) {
     dplyr::left_join(mfl_allrules(conn), by = c("event" = "abbrev")) %>%
     dplyr::mutate_at(c("is_player", "is_team", "is_coach"), ~ as.logical(as.numeric(.x))) %>%
     dplyr::mutate(
+      points_type = ifelse(stringr::str_detect(.data$points,"\\*|\\/"),"each","once"),
       points = purrr::map_if(.data$points, grepl("\\/", .data$points), .fn_parsedivide),
       points = purrr::map_if(.data$points, grepl("\\*", .data$points), .fn_parsemultiply),
       points = as.double(.data$points)
     ) %>%
-    dplyr::select("pos" = .data$positions, .data$points, .data$range, .data$event, .data$short_desc, .data$long_desc)
+    dplyr::select("pos" = .data$positions,
+                  "points",
+                  "range",
+                  "event",
+                  "points_type",
+                  "short_desc",
+                  "long_desc")
 
   return(df)
 }
