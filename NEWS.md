@@ -11,6 +11,7 @@
 - `ff_scoring()` for MFL now has a `points_type` column that is either "each" or "once" - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes #301 (v1.4.3.05)
 - `ff_scoringhistory()` for MFL applies the new `ff_scoring()` `points_type` column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes #301. (v1.4.3.05)
 - Add more mismatch names (Michael -> Mike Vick, Chris Wells -> Beanie Wells) (v1.4.3.06)
+- Add `dp_clean_html` to clean html from names (cough MFL cough) (v1.4.3.07)
 
 ---
 
