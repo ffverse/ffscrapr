@@ -328,7 +328,7 @@ ff_starter_positions.default <- function(conn, ...) {
 #' @param season a numeric vector of seasons (earliest available year is 1999, default is 1999:2020)
 #' @param ... other arguments
 #'
-#' @seealso <https://nflfastr.com/reference/load_player_stats.html>
+#' @seealso <https://www.nflfastr.com/reference/load_player_stats.html>
 #'
 #' @return A tidy dataframe of weekly fantasy scoring data, one row per player per week
 #'
