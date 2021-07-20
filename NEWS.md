@@ -1,5 +1,9 @@
 # ffscrapr (development version)
 
+---
+
+# ffscrapr 1.4.4
+
 The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.
 
 ## Minor changes
