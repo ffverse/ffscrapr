@@ -32,13 +32,12 @@ other data sources.
 
 ### Installation
 
-Version 1.4.3 is now on CRAN :tada: and can be installed with:
+Install the stable version of this package from CRAN or the [ffverse
+r-universe repository](https://ffverse.r-universe.dev):
 
 ``` r
-install.packages("ffscrapr")
-# or from GitHub release with the remotes package via:
-# install.packages("remotes")
-remotes::install_github("ffverse/ffscrapr", ref = "v1.4.3")
+install.packages("ffscrapr") # CRAN
+install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
 ```
 
 Install the development version from GitHub with:
@@ -115,8 +114,8 @@ Platform-specific guides on getting started with ffscrapr are here:
 -   [ESPN](https://ffscrapr.ffverse.com/articles/espn_basics.html)
 
 There are also some more advanced guides for custom API calls in the
-[Articles section](https://ffscrapr.ffverse.com/articles/), as
-well as some guides on [optimizing ffscrapr’s
+[Articles section](https://ffscrapr.ffverse.com/articles/), as well as
+some guides on [optimizing ffscrapr’s
 performance](https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html).
 
 ### Support
@@ -134,8 +133,8 @@ Many hands make light work! Here are some ways you can contribute to
 this project:
 
 -   You can [open an
-    issue](https://github.com/ffverse/ffscrapr/issues/new/choose)
-    if you’d like to request specific data or report a bug/error.
+    issue](https://github.com/ffverse/ffscrapr/issues/new/choose) if
+    you’d like to request specific data or report a bug/error.
 
 -   You can [sponsor this project with
     donations](https://github.com/sponsors/tanho63)!

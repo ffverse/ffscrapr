@@ -1,18 +1,19 @@
 # ffscrapr (development version)
 
+The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.
+
 ## Minor changes
 
-- `mfl_getendpoint()` and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)
-- Added errorhandling for ESPN methods of `ff_starters()`, `ff_transactions()`, `ff_rosters()`, `espn_potentialpoints()`, `ff_draft()`. Fixes #297, thanks for the report @jpiburn! (v1.4.3.02)
-- Added message to warn if memoise is turned off, onAttach. (v1.4.3.02)
-- Tweak pkgdown (v1.4.3.02)
-- `ff_transactions()` now correctly handles leagues using waiver priority, fixes #299 - thanks for the report @BarkovMVP! (v1.4.3.03)
-- `ff_league()` for Sleeper now identifies best ball leagues, fixes #300 (v1.4.3.04)
-- `ff_scoring()` for MFL now has a `points_type` column that is either "each" or "once" - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes #301 (v1.4.3.05)
-- `ff_scoringhistory()` for MFL applies the new `ff_scoring()` `points_type` column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes #301. (v1.4.3.05)
-- Add more mismatch names (Michael -> Mike Vick, Chris Wells -> Beanie Wells) (v1.4.3.06)
-- Add `dp_clean_html()` to clean html from names (cough MFL cough) (v1.4.3.07)
-- `ff_starter_positions()` now handles a "range" inside of the total_starters column for MFL (v1.4.3.08), resolves #304
+- `mfl_getendpoint()` and similar get_endpoint functions have an improved print method that tells you whether the request was successful.
+- Added errorhandling for ESPN methods of `ff_starters()`, `ff_transactions()`, `ff_rosters()`, `espn_potentialpoints()`, `ff_draft()`. Fixes #297, thanks for the report @jpiburn!
+- Added message to warn if memoise is turned off, onAttach.
+- `ff_transactions()` now correctly handles leagues using waiver priority, fixes #299 - thanks for the report @BarkovMVP!
+- `ff_league()` for Sleeper now identifies best ball leagues, fixes #300
+- `ff_scoring()` for MFL now has a `points_type` column that is either "each" or "once" - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes #301 
+- `ff_scoringhistory()` for MFL applies the new `ff_scoring()` `points_type` column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes #301. 
+- Add more mismatch names (Michael -> Mike Vick, Chris Wells -> Beanie Wells) 
+- Add `dp_clean_html()` to clean html from names (cough MFL cough) 
+- `ff_starter_positions()` now handles a "range" inside of the total_starters column for MFL, resolves #304
 - Cutover to ffverse.com domain and github organization
 
 ---
