@@ -175,12 +175,14 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">ffverse</li>
     <li>
-      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+      <a href="https://www.ffverse.com">ffverse</a>
     </li>
     <li>
-      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.ffverse.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -525,7 +527,7 @@
 <li>
 <code><a href="../reference/sleeper_userleagues.html">sleeper_userleagues()</a></code> is a wrapper on <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> that makes it easier to look up user leagues without first creating a connection object.</li>
 <li>
-<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://nflfastr.com/">nflfastr</a>.</li>
+<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://www.nflfastr.com/">nflfastr</a>.</li>
 <li>
 <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> is a little more simple than MFL’s equivalent - just pass a string url (minus api.sleeper.app/v1) or pass in chunks of code, the function will automatically paste them together with “/”.</li>
 <li>Added generic and method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user’s league_ids by username first. MFL does have a parallel feature even if used for different purposes.</li>
