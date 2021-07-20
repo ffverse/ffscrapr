@@ -15,7 +15,7 @@ skip <- FALSE
 if (download_mock) {
   tryCatch(
     expr = {
-      download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip", "f.zip")
+      download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip", "f.zip")
       unzip("f.zip", exdir = ".")
 
       httptest::.mockPaths(new = "ffscrapr-tests-main")

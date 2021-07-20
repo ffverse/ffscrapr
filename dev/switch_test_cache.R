@@ -3,8 +3,8 @@ library(xfun)
 paths <- c(
   "ffscrapr-tests-1.4.2",
   "ffscrapr-tests-main",
-  "https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip",
-  "https://github.com/dynastyprocess/ffscrapr-tests/archive/1.4.2.zip"
+  "https://github.com/ffverse/ffscrapr-tests/archive/main.zip",
+  "https://github.com/ffverse/ffscrapr-tests/archive/1.4.2.zip"
 )
 
 use_ffscrapr_tests_main <- function(){

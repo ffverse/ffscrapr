@@ -23,7 +23,7 @@ eval <- TRUE
 
 tryCatch(expr = {
   
-  download.file("https://github.com/dynastyprocess/ffscrapr-tests/archive/main.zip","f.zip")
+  download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip","f.zip")
   unzip('f.zip', exdir = ".")
   
   httptest::.mockPaths(new = "ffscrapr-tests-main")},
@@ -40,11 +40,11 @@ httptest::use_mock_api()
 <!-- badges: start -->
 
 [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
-[![Dev status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/) 
+[![Dev status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/) 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html) 
-[![Codecov test coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main) 
-[![R build status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
-[![API status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions) 
+[![Codecov test coverage](https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/ffverse/ffscrapr?branch=main) 
+[![R build status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions) 
+[![API status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions) 
 [![nflverse discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
 
 <!-- badges: end -->
@@ -59,16 +59,16 @@ Version 1.4.3 is now on CRAN :tada: and can be installed with:
 install.packages("ffscrapr")
 # or from GitHub release with the remotes package via:
 # install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.3")
+remotes::install_github("ffverse/ffscrapr", ref = "v1.4.3")
 ```
 
 Install the development version from GitHub with:
 
 ```{r eval = FALSE}
-remotes::install_github("dynastyprocess/ffscrapr", ref = "dev")
+remotes::install_github("ffverse/ffscrapr", ref = "dev")
 ```
 
-The dev version has a [separate documentation site here](https://ffscrapr.dynastyprocess.com/dev/).
+The dev version has a [separate documentation site here](https://ffscrapr.ffverse.com/dev/).
 
 ### Usage
 
@@ -90,33 +90,33 @@ ff_transactions(ssb)
 
 Platform-specific guides on getting started with ffscrapr are here:
 
--   [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
--   [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
--   [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
--   [ESPN](https://ffscrapr.dynastyprocess.com/articles/espn_basics.html)
+-   [MyFantasyLeague](https://ffscrapr.ffverse.com/articles/mfl_basics.html)  
+-   [Sleeper](https://ffscrapr.ffverse.com/articles/sleeper_basics.html)
+-   [Fleaflicker](https://ffscrapr.ffverse.com/articles/fleaflicker_basics.html)
+-   [ESPN](https://ffscrapr.ffverse.com/articles/espn_basics.html)
 
-There are also some more advanced guides for custom API calls in the [Articles section](https://ffscrapr.dynastyprocess.com/articles/), as well as some guides on [optimizing ffscrapr's performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
+There are also some more advanced guides for custom API calls in the [Articles section](https://ffscrapr.ffverse.com/articles/), as well as some guides on [optimizing ffscrapr's performance](https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html).
 
 ### Support
 
 The best places to get help on this package are:
 
 - the [nflverse discord](https://discord.com/invite/5Er2FBnnQa) (for both this package as well as anything R/NFL related)
-- opening [an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
+- opening [an issue](https://github.com/ffverse/ffscrapr/issues/new/choose)
 
 ### Contributing
 
 Many hands make light work! Here are some ways you can contribute to this project:
 
--   You can [open an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose) if you'd like to request specific data or report a bug/error.
+-   You can [open an issue](https://github.com/ffverse/ffscrapr/issues/new/choose) if you'd like to request specific data or report a bug/error.
 
 -   You can [sponsor this project with donations](https://github.com/sponsors/tanho63)!
 
--   If you'd like to contribute code, please check out [the contribution guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
+-   If you'd like to contribute code, please check out [the contribution guidelines](https://ffscrapr.ffverse.com/CONTRIBUTING.html).
 
 ### Terms of Use
 
-The R code for this package is released as open source under the [MIT license](https://ffscrapr.dynastyprocess.com/LICENSE.html).
+The R code for this package is released as open source under the [MIT license](https://ffscrapr.ffverse.com/LICENSE.html).
 
 The APIs and data accessed by this package belong to their respective owners, and are governed by their terms of use.
 

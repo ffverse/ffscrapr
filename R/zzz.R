@@ -93,7 +93,7 @@
 
   user_agent <-  glue::glue("ffscrapr/{utils::packageVersion('ffscrapr')} ",
                             "API client package ",
-                            "https://github.com/dynastyprocess/ffscrapr") %>%
+                            "https://github.com/ffverse/ffscrapr") %>%
     httr::user_agent()
 
   # get <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(60, 60))

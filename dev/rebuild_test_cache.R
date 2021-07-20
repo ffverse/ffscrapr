@@ -22,6 +22,6 @@ rebuild_test_cache <- function(cache_dir){
   })
 }
 
-cache_dir <- "/home/tan/dynastyprocess/ffscrapr-tests"
+cache_dir <- "/home/tan/ffverse/ffscrapr-tests"
 rebuild_test_cache(cache_dir)
 

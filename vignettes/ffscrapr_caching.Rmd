@@ -39,7 +39,7 @@ ffscrapr's core functions often loop over the same, stable endpoints to help ret
 -   `ff_standings()`, `ff_playerscores()`, `ff_starters()`, `ff_schedule()` , `ff_userleagues()` - these functions are stored for one hour
 -   `dp_playerids()` and `dp_values()` - these functions are stored for 24 hours
 
-You can find an updated list of cached functions in the [zzz.R](https://github.com/dynastyprocess/ffscrapr/blob/main/R/zzz.R) source code page.
+You can find an updated list of cached functions in the [zzz.R](https://github.com/ffverse/ffscrapr/blob/main/R/zzz.R) source code page.
 
 ## Where is it being cached? 
 

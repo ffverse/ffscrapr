@@ -7,7 +7,7 @@ Many hands make light work! Here are some ways you can contribute to this projec
 
 ### Open an issue
 
-- You can [open an issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose) if you'd like to request a specific function or report a bug/error.
+- You can [open an issue](https://github.com/ffverse/ffscrapr/issues/new/choose) if you'd like to request a specific function or report a bug/error.
 
 ### Fixing typos
 
@@ -31,7 +31,7 @@ You can find the `.R` file that generates the `.Rd` by reading the comment in th
 
 ### Pull request process
 
-*   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("dynastyprocess/ffscrapr", fork = TRUE)`.
+*   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("ffverse/ffscrapr", fork = TRUE)`.
 
 *   Install all development dependencies with `devtools::install_dev_deps()`, and then make sure the package passes R CMD check by running `devtools::check()`. 
     If R CMD check doesn't pass cleanly, it's a good idea to ask for help before continuing. 

@@ -121,7 +121,7 @@ Unsupported functions:
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/).
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores
 - Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (Resolves #196)
-- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing
+- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/ffverse/ffscrapr-tests) - so that it is not included in CRAN's package sizing
 - Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202)
 - Resolve MFL's playerscores to handle vectorized request (Fixes #206)
 - Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219)
