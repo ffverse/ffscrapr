@@ -57,7 +57,7 @@
 <meta property="og:title" content="MFL players library — mfl_players" />
 <meta property="og:description" content="A cached table of MFL players. Will store in memory for each session!
 (via memoise in zzz.R)" />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg" />
+<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
       </span>
     </div>
 
@@ -165,7 +165,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
+  <a href="https://github.com/ffverse/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -180,6 +180,9 @@
     <li class="dropdown-header">ffverse</li>
     <li>
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -222,7 +225,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>MFL players library</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/mfl_players.R'><code>R/mfl_players.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/R/mfl_players.R'><code>R/mfl_players.R</code></a></small>
     <div class="hidden name"><code>mfl_players.Rd</code></div>
     </div>
 
@@ -251,15 +254,15 @@
 <span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>mfl_players</span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>player_list</span>, <span class='fl'>5</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 25</span>
-#&gt;   player_id player_name        pos     age team  status draft_year draft_team
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
-#&gt; <span style='color: #BCBCBC;'>1</span> 13188     Howard, O.J.       TE     26.6 TBB   <span style='color: #BB0000;'>NA</span>     2017       TBB       
-#&gt; <span style='color: #BCBCBC;'>2</span> 13640     Callaway, Antonio  WR     24.4 KCC   <span style='color: #BB0000;'>NA</span>     2018       CLE       
-#&gt; <span style='color: #BCBCBC;'>3</span> 15392     St-Juste, Benjamin CB     23.8 WAS   R      2021       WAS       
-#&gt; <span style='color: #BCBCBC;'>4</span> 14878     Gross-Matos, Yetur DE     23.3 CAR   <span style='color: #BB0000;'>NA</span>     2020       CAR       
-#&gt; <span style='color: #BCBCBC;'>5</span> 9940      Woods, Al          DT     34.2 SEA   <span style='color: #BB0000;'>NA</span>     2010       NOS       
+#&gt;   player_id player_name     pos     age team  status draft_year draft_team
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
+#&gt; <span style='color: #BCBCBC;'>1</span> 13183     Hansen, Chad    WR     26.5 DET   <span style='color: #BB0000;'>NA</span>     2017       NYJ       
+#&gt; <span style='color: #BCBCBC;'>2</span> 13639     Miller, Anthony WR     26.8 CHI   <span style='color: #BB0000;'>NA</span>     2018       CHI       
+#&gt; <span style='color: #BCBCBC;'>3</span> 15388     Ossai, Joseph   DE     21.3 CIN   R      2021       CIN       
+#&gt; <span style='color: #BCBCBC;'>4</span> 14876     Deguara, Josiah TE     24.4 GBP   <span style='color: #BB0000;'>NA</span>     2020       GBP       
+#&gt; <span style='color: #BCBCBC;'>5</span> 9940      Woods, Al       DT     34.3 SEA   <span style='color: #BB0000;'>NA</span>     2010       NOS       
 #&gt; <span style='color: #949494;'># … with 17 more variables: draft_round &lt;chr&gt;, draft_pick &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, cbs_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;, cbs_id &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   sportsdata_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, nfl_id &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   espn_id &lt;chr&gt;, twitter_username &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   weight &lt;chr&gt;, birthdate &lt;date&gt;, jersey &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>

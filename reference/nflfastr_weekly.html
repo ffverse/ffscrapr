@@ -57,7 +57,7 @@
 <meta property="og:title" content="Import latest nflfastr weekly stats — nflfastr_weekly" />
 <meta property="og:description" content="Fetches a copy of the latest week-level stats from nflfastr's data repository.
 The same output as nflfastr's load_player_stats() function." />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg" />
+<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -93,7 +93,7 @@ The same output as nflfastr's load_player_stats() function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
       </span>
     </div>
 
@@ -165,7 +165,7 @@ The same output as nflfastr's load_player_stats() function." />
   </a>
 </li>
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
+  <a href="https://github.com/ffverse/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -180,6 +180,9 @@ The same output as nflfastr's load_player_stats() function." />
     <li class="dropdown-header">ffverse</li>
     <li>
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -222,7 +225,7 @@ The same output as nflfastr's load_player_stats() function." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Import latest nflfastr weekly stats</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/R/1_import_nflfastr.R'><code>R/1_import_nflfastr.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/R/1_import_nflfastr.R'><code>R/1_import_nflfastr.R</code></a></small>
     <div class="hidden name"><code>nflfastr_weekly.Rd</code></div>
     </div>
 
@@ -258,27 +261,27 @@ the nflfastr repository.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>nflfastr_weekly</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,757 x 42</span>
-#&gt;    player_id  player_name recent_team season  week completions attempts
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     1           0        0
-#&gt; <span style='color: #BCBCBC;'> 2</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     2           0        0
-#&gt; <span style='color: #BCBCBC;'> 3</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     4           0        0
-#&gt; <span style='color: #BCBCBC;'> 4</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     7           0        0
-#&gt; <span style='color: #BCBCBC;'> 5</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     8           0        0
-#&gt; <span style='color: #BCBCBC;'> 6</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     9           0        0
-#&gt; <span style='color: #BCBCBC;'> 7</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    10           0        0
-#&gt; <span style='color: #BCBCBC;'> 8</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    11           0        0
-#&gt; <span style='color: #BCBCBC;'> 9</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    12           0        0
-#&gt; <span style='color: #BCBCBC;'>10</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    13           0        0
-#&gt; <span style='color: #949494;'># … with 112,747 more rows, and 35 more variables: passing_yards &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   passing_tds &lt;int&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;, sack_yards &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   sack_fumbles &lt;int&gt;, sack_fumbles_lost &lt;int&gt;, passing_air_yards &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   passing_yards_after_catch &lt;dbl&gt;, passing_first_downs &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   passing_epa &lt;dbl&gt;, passing_2pt_conversions &lt;int&gt;, dakota &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   carries &lt;int&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   rushing_fumbles &lt;dbl&gt;, rushing_fumbles_lost &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   rushing_first_downs &lt;dbl&gt;, rushing_epa &lt;dbl&gt;,</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,757 x 43</span>
+#&gt;    player_id  player_name recent_team season  week season_type completions
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     1 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 2</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     2 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 3</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     4 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 4</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     7 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 5</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     8 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 6</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     9 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 7</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    10 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 8</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    11 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 9</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    12 REG                   0
+#&gt; <span style='color: #BCBCBC;'>10</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    13 REG                   0
+#&gt; <span style='color: #949494;'># … with 112,747 more rows, and 36 more variables: attempts &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_yards &lt;dbl&gt;, passing_tds &lt;int&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   sack_yards &lt;dbl&gt;, sack_fumbles &lt;int&gt;, sack_fumbles_lost &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_air_yards &lt;dbl&gt;, passing_yards_after_catch &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_first_downs &lt;dbl&gt;, passing_epa &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_2pt_conversions &lt;int&gt;, dakota &lt;dbl&gt;, carries &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_yards &lt;dbl&gt;, rushing_tds &lt;int&gt;, rushing_fumbles &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_first_downs &lt;dbl&gt;, rushing_epa &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   rushing_2pt_conversions &lt;int&gt;, receptions &lt;int&gt;, targets &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   receiving_yards &lt;dbl&gt;, receiving_tds &lt;int&gt;, receiving_fumbles &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_air_yards &lt;dbl&gt;,</span>

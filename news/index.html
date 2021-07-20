@@ -55,7 +55,7 @@
   
 
 <meta property="og:title" content="Changelog" />
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg" />
+<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
       </span>
     </div>
 
@@ -163,7 +163,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
+  <a href="https://github.com/ffverse/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -178,6 +178,9 @@
     <li class="dropdown-header">ffverse</li>
     <li>
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -220,26 +223,56 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/dynastyprocess/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <small>Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="ffscrapr-143" class="section level1">
-<h1 class="page-header" data-toc-text="1.4.3">
-<a href="#ffscrapr-143" class="anchor"></a>ffscrapr 1.4.3<small> Unreleased </small>
+    <div id="ffscrapr-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
-<p>The main goal of v1.4.3 is to patch some minor bugs.</p>
+<p>The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.</p>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
-<code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/287'>#287</a>)</li>
+<code><a href="../reference/mfl_getendpoint.html">mfl_getendpoint()</a></code> and similar get_endpoint functions have an improved print method that tells you whether the request was successful.</li>
+<li>Added errorhandling for ESPN methods of <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code>, <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code>, <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code>, <code><a href="../reference/ff_draft.html">ff_draft()</a></code>. Fixes <a href='https://github.com/ffverse/ffscrapr/issues/297'>#297</a>, thanks for the report <a href='https://github.com/jpiburn'>@jpiburn</a>!</li>
+<li>Added message to warn if memoise is turned off, onAttach.</li>
+<li>
+<code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> now correctly handles leagues using waiver priority, fixes <a href='https://github.com/ffverse/ffscrapr/issues/299'>#299</a> - thanks for the report <a href='https://github.com/BarkovMVP'>@BarkovMVP</a>!</li>
+<li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for Sleeper now identifies best ball leagues, fixes <a href='https://github.com/ffverse/ffscrapr/issues/300'>#300</a></li>
+<li>
+<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> for MFL now has a <code>points_type</code> column that is either “each” or “once” - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a></li>
+<li>
+<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> for MFL applies the new <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> <code>points_type</code> column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a>.</li>
+<li>Add more mismatch names (Michael -&gt; Mike Vick, Chris Wells -&gt; Beanie Wells)</li>
+<li>Add <code><a href="../reference/dp_clean_html.html">dp_clean_html()</a></code> to clean html from names (cough MFL cough)</li>
+<li>
+<code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code> now handles a “range” inside of the total_starters column for MFL, resolves <a href='https://github.com/ffverse/ffscrapr/issues/304'>#304</a></li>
+<li>Cutover to ffverse.com domain and github organization</li>
+</ul>
+<hr>
+</div>
+</div>
+    <div id="ffscrapr-143" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.3">
+<a href="#ffscrapr-143" class="anchor"></a>ffscrapr 1.4.3<small> 2021-06-12 </small>
+</h1>
+<p>The main goal of v1.4.3 is to patch some minor bugs.</p>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/287'>#287</a>)</li>
 <li>Added helper script in dev/ for switching between test cache versions.</li>
 <li>Added helper script in dev/ for rebuilding test cache.</li>
 <li>
-<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper now should extend into playoff weeks. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/289'>#289</a>)</li>
+<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper now should extend into playoff weeks. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/289'>#289</a>)</li>
 <li>
-<code><a href="../reference/ff_draft.html">ff_draft()</a></code> for Sleeper now has an auction_amount column if it is an auction draft. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/291'>#291</a>)</li>
+<code><a href="../reference/ff_draft.html">ff_draft()</a></code> for Sleeper now has an auction_amount column if it is an auction draft. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/291'>#291</a>)</li>
 <li>
 <code><a href="../reference/dp_cleannames.html">dp_cleannames()</a></code> now can flip names originally presented in LastName, FirstName order into First Last, and also has a custom name database to convert common alternate names to a unified one.</li>
 <li>
@@ -254,14 +287,14 @@
 <a href="#ffscrapr-142" class="anchor"></a>ffscrapr 1.4.2<small> 2021-05-10 </small>
 </h1>
 <p>The main goal of v1.4.2 is to patch some minor bugs.</p>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
-<code>espn_rosters</code> now has a <code>week</code> argument to return a specific week of data. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/276'>#276</a>, thanks <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
+<code>espn_rosters</code> now has a <code>week</code> argument to return a specific week of data. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/276'>#276</a>, thanks <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
 <li>
-<code>ff_scoringhistory</code> now tries to return a platform-specific player ID, where available. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/275'>#275</a>)</li>
+<code>ff_scoringhistory</code> now tries to return a platform-specific player ID, where available. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/275'>#275</a>)</li>
 <li>Roxygen configured to use markdown (with the roxygen2md package) - hopefully fixes the lifecycle badge issues?</li>
 <li>
 <code><a href="../reference/sleeper_players.html">sleeper_players()</a></code> - gsis_id gets <code>str_squish</code> applied to it to resolve some stowaway whitespaces.</li>
@@ -286,18 +319,18 @@
 <code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
 </ul>
 </div>
-<div id="minor-changes-2" class="section level2">
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
 <li>
-<code>mfl_starter_positions</code> now correctly calculates offensive starters (first via “iop_starters” if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/264'>#264</a>)</li>
-<li>Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/268'>#268</a>)</li>
+<code>mfl_starter_positions</code> now correctly calculates offensive starters (first via “iop_starters” if defined and then otherwise by subtracting idp starters) as well as kdst_starters (Resolves <a href='https://github.com/ffverse/ffscrapr/issues/264'>#264</a>)</li>
+<li>Redirected nflfastr download functions to the new nflverse/ repository locations. (Resolves <a href='https://github.com/ffverse/ffscrapr/issues/268'>#268</a>)</li>
 <li>
-<code>.ffscrapr_env</code> relocated from being a child of the base environment to being a child of the empty environment (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/269'>#269</a>)</li>
+<code>.ffscrapr_env</code> relocated from being a child of the base environment to being a child of the empty environment (Resolves <a href='https://github.com/ffverse/ffscrapr/issues/269'>#269</a>)</li>
 <li>
-<code>ff_scoringhistory</code> refactored and adds better support for MFL’s fumbles and firstdowns. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/265'>#265</a>)</li>
+<code>ff_scoringhistory</code> refactored and adds better support for MFL’s fumbles and firstdowns. (Resolves <a href='https://github.com/ffverse/ffscrapr/issues/265'>#265</a>)</li>
 </ul>
 <hr>
 </div>
@@ -331,19 +364,19 @@
 <code>ff_scoring</code> rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule</li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor Changes</h2>
 <ul>
-<li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/dynastyprocess/ffscrapr/issues/239'>#239</a>)</li>
-<li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/dynastyprocess/ffscrapr/issues/242'>#242</a>)</li>
-<li>Switching memoise backend to cachem package, fixes CRAN check issue where digest is no longer imported by memoise. Cachem also apparently more performant! (<a href='https://github.com/dynastyprocess/ffscrapr/issues/244'>#244</a>)</li>
+<li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/ffverse/ffscrapr/issues/239'>#239</a>)</li>
+<li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/ffverse/ffscrapr/issues/242'>#242</a>)</li>
+<li>Switching memoise backend to cachem package, fixes CRAN check issue where digest is no longer imported by memoise. Cachem also apparently more performant! (<a href='https://github.com/ffverse/ffscrapr/issues/244'>#244</a>)</li>
 <li>
-<code>sleeper_transactions</code> now correctly handles multiple dropped players in one transaction. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/246'>#246</a>).</li>
+<code>sleeper_transactions</code> now correctly handles multiple dropped players in one transaction. (<a href='https://github.com/ffverse/ffscrapr/issues/246'>#246</a>).</li>
 <li>
 <code>mfl_transactions</code> - adds numeric string parsing to fix bug in auction bid amount (#)</li>
 <li>
-<code>mfl_draft</code> now calculates age as of timestamp and also adds an overall column. (<a href='https://github.com/dynastyprocess/ffscrapr/issues/259'>#259</a>, <a href='https://github.com/dynastyprocess/ffscrapr/issues/260'>#260</a>)</li>
+<code>mfl_draft</code> now calculates age as of timestamp and also adds an overall column. (<a href='https://github.com/ffverse/ffscrapr/issues/259'>#259</a>, <a href='https://github.com/ffverse/ffscrapr/issues/260'>#260</a>)</li>
 </ul>
 <hr>
 </div>
@@ -391,14 +424,14 @@
 <ul>
 <li>Converted GET requests to use <code><a href="https://httr.r-lib.org/reference/RETRY.html">httr::RETRY</a></code> instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon’s blog post on <a href="https://blog.r-hub.io/2020/04/07/retry-wheel/">not reinventing the wheel</a>.</li>
 <li>Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores</li>
-<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (Resolves <a href='https://github.com/dynastyprocess/ffscrapr/issues/196'>#196</a>)</li>
-<li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/dynastyprocess/ffscrapr-tests" class="uri">https://github.com/dynastyprocess/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing</li>
-<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/202'>#202</a>)</li>
-<li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/206'>#206</a>)</li>
-<li>Resolve bugs related to .fn_choose_season for tests (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/217'>#217</a>, <a href='https://github.com/dynastyprocess/ffscrapr/issues/219'>#219</a>)</li>
-<li>Resolved bug in MFL’s <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> by adding a week parameter (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/215'>#215</a>)</li>
-<li>Coerced <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> bid_amount into a numeric (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/210'>#210</a>)</li>
-<li>Removed bye franchises from <code><a href="../reference/ff_starters.html">ff_starters()</a></code> (Fixes <a href='https://github.com/dynastyprocess/ffscrapr/issues/212'>#212</a>)</li>
+<li>Fixed bug in MFL’s <code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> function so that it correctly pulls older names. (Resolves <a href='https://github.com/ffverse/ffscrapr/issues/196'>#196</a>)</li>
+<li>Refactored all tests to move test cache files to a separate/non-package location (<a href="https://github.com/ffverse/ffscrapr-tests" class="uri">https://github.com/ffverse/ffscrapr-tests</a>) - so that it is not included in CRAN’s package sizing</li>
+<li>Fixed bugs in MFL’s <code><a href="../reference/ff_starters.html">ff_starters()</a></code> function - bad default arg, bad players call. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/202'>#202</a>)</li>
+<li>Resolve MFL’s playerscores to handle vectorized request (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/206'>#206</a>)</li>
+<li>Resolve bugs related to .fn_choose_season for tests (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/217'>#217</a>, <a href='https://github.com/ffverse/ffscrapr/issues/219'>#219</a>)</li>
+<li>Resolved bug in MFL’s <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code> by adding a week parameter (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/215'>#215</a>)</li>
+<li>Coerced <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> bid_amount into a numeric (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/210'>#210</a>)</li>
+<li>Removed bye franchises from <code><a href="../reference/ff_starters.html">ff_starters()</a></code> (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/212'>#212</a>)</li>
 </ul>
 <hr>
 </div>
@@ -505,8 +538,8 @@
 <ul>
 <li>Added method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code>
 </li>
-<li>Added handling for offensive_points and defensive_points in <code><a href="../reference/ff_standings.html">ff_standings()</a></code> (<a href='https://github.com/dynastyprocess/ffscrapr/issues/69'>#69</a>, nice.)</li>
-<li>Added <code><a href="../reference/ff_starters.html">ff_starters()</a></code> as requested by <a href='https://github.com/dynastyprocess/ffscrapr/issues/76'>#76</a> (thanks, Mike!)</li>
+<li>Added handling for offensive_points and defensive_points in <code><a href="../reference/ff_standings.html">ff_standings()</a></code> (<a href='https://github.com/ffverse/ffscrapr/issues/69'>#69</a>, nice.)</li>
+<li>Added <code><a href="../reference/ff_starters.html">ff_starters()</a></code> as requested by <a href='https://github.com/ffverse/ffscrapr/issues/76'>#76</a> (thanks, Mike!)</li>
 <li>Added an <code><a href="https://httr.r-lib.org/reference/handle_pool.html">httr::handle_reset()</a></code> call to fix login-caching bug.</li>
 <li>Polished vignettes a little.</li>
 </ul>

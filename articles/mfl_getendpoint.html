@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Get Endpoint">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg">
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
+  <a href="https://github.com/ffverse/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -132,6 +132,9 @@
 <li class="dropdown-header">ffverse</li>
     <li>
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -176,9 +179,9 @@
       <h1 data-toc-skip>MFL: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-06-12</h4>
+            <h4 class="date">2021-07-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/mfl_getendpoint.Rmd"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/mfl_getendpoint.Rmd"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_getendpoint.Rmd</code></div>
 
     </div>
@@ -189,7 +192,7 @@
 <h2 class="hasAnchor">
 <a href="#creating-custom-mfl-api-calls" class="anchor"></a>Creating custom MFL API calls</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span></code></pre></div>
 <p>The <a href="https://api.myfantasyleague.com/2020/api_info?STATE=details">MFL API is extensive</a>. If there is something you’d like to access beyond the current scope of ffscrapr, you can use the lower-level “<code>mfl_getendpoint</code>” function to create a GET request and access the data, while still using the authentication and rate-limiting features I’ve already created.</p>
 <p>Here is an example of how you can call one of the endpoints - in this case, let’s try searching for SFBX leagues through the leagueSearch endpoint.</p>
 <p>We’ll start by opening up this page, <a href="https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch" class="uri">https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch</a>, which is the “test” page for this particular endpoint. From here, we can see that the only parameter required is “SEARCH”.</p>

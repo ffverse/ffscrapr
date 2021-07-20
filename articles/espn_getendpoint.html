@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="ESPN: Get Endpoint">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.dynastyprocess.com/reference/figures/logo.svg">
+<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg">
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/dynastyprocess/ffscrapr/">
+  <a href="https://github.com/ffverse/ffscrapr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -132,6 +132,9 @@
 <li class="dropdown-header">ffverse</li>
     <li>
       <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -176,9 +179,9 @@
       <h1 data-toc-skip>ESPN: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-06-12</h4>
+            <h4 class="date">2021-07-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/dynastyprocess/ffscrapr/blob/master/vignettes/espn_getendpoint.Rmd"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/espn_getendpoint.Rmd"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>espn_getendpoint.Rmd</code></div>
 
     </div>
@@ -189,7 +192,7 @@
 <h2 class="hasAnchor">
 <a href="#espn-api---an-adventure-into-uncharted-territory" class="anchor"></a>ESPN API - An Adventure Into Uncharted Territory</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.dynastyprocess.com">ffscrapr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
@@ -230,7 +233,8 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
 <span class="va">draft_details</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/espn_getendpoint.html">espn_getendpoint</a></span><span class="op">(</span><span class="va">conn</span>, view <span class="op">=</span> <span class="st">"mDraftDetail"</span><span class="op">)</span>
 
 <span class="va">draft_details</span>
-<span class="co">#&gt; &lt;ESPN - GET https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
+<span class="co">#&gt; &lt;ESPN - GET - Success: (200) OK&gt;</span>
+<span class="co">#&gt; QUERY: &lt;https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
 <span class="co">#&gt; List of 8</span>
 <span class="co">#&gt;  $ draftDetail    :List of 4</span>
 <span class="co">#&gt;  $ gameId         : int 1</span>
@@ -248,7 +252,8 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
   <span class="st">"https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail"</span><span class="op">)</span>
 
 <span class="va">draft_details_raw</span>
-<span class="co">#&gt; &lt;ESPN - GET https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
+<span class="co">#&gt; &lt;ESPN - GET - Success: (200) OK&gt;</span>
+<span class="co">#&gt; QUERY: &lt;https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail&gt;</span>
 <span class="co">#&gt; List of 8</span>
 <span class="co">#&gt;  $ draftDetail    :List of 4</span>
 <span class="co">#&gt;  $ gameId         : int 1</span>
