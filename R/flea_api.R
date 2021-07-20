@@ -84,8 +84,8 @@ print.fleaflicker_api <- function(x, ...) {
 
   # nocov start
 
-  cat("<Fleaflicker - GET ", x$query, ">\n", sep = "")
-
+  cat("<Fleaflicker - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
+  cat("QUERY: <",x$query,">\n", sep = "")
   str(x$content, max.level = 1)
 
   invisible(x)

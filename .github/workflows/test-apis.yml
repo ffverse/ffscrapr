@@ -2,7 +2,7 @@ on:
   schedule:
     - cron: 3 6 * * 5
   workflow_dispatch:
-  
+
 
 name: Test APIs
 
@@ -22,28 +22,32 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v1
 
-      - name: Query dependencies
+      - name: Install pak and query dependencies
         run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
 
-      - name: Cache R packages
+      - name: Restore R package cache
         uses: actions/cache@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          path: |
+            ${{ env.R_LIBS_USER }}/*
+            !${{ env.R_LIBS_USER }}/pak
+          key: ffscrapr-${{ hashFiles('DESCRIPTION') }}-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: |
+            ffscrapr-${{ hashFiles('DESCRIPTION') }}
+            ffscrapr-
 
-      - name: Install dependencies
+      - name: Install system dependencies
         run: |
-          install.packages(c("remotes"))
-          remotes::install_deps(dependencies = TRUE)
+          pak::local_system_requirements(execute = TRUE)
+          pak::local_install_dev_deps()
+          pak::pak("rcmdcheck")
         shell: Rscript {0}
 
       - name: Run Tests
-        run: | 
+        run: |
           print(Sys.getenv("MOCK_BYPASS"))
           testthat::test_local()
         shell: Rscript {0}

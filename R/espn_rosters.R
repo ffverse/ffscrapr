@@ -20,7 +20,18 @@ ff_rosters.espn_conn <- function(conn, week = NULL, ...) {
   franchises <- ff_franchises(conn) %>%
     dplyr::select("franchise_id", "franchise_name")
 
-  roster_endpoint <- espn_getendpoint(conn, view = "mRoster", scoringPeriodId = week) %>%
+  roster_endpoint <- espn_getendpoint(conn, view = "mRoster", scoringPeriodId = week)
+
+  if(!roster_endpoint$content$draftDetail$drafted) {
+    warning(
+      glue::glue("ESPN league_id {conn$league_id} has not drafted yet!"),
+      call. = FALSE
+    )
+
+    return(NULL)
+  }
+
+  roster_endpoint <- roster_endpoint %>%
     purrr::pluck("content", "teams") %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "franchise_id" = "id", "roster") %>%

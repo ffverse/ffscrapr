@@ -1,3 +1,4 @@
+url: ffscrapr.ffverse.com
 destination: docs
 
 reference:
@@ -55,8 +56,11 @@ navbar:
       text: "More"
       menu:
         - text: ffverse
+          href: https://www.ffverse.com
         - text: ffsimulator package
-          href: https://ffsimulator.dynastyprocess.com
+          href: https://ffsimulator.ffverse.com
+        - text: ffpros package
+          href: https://ffpros.ffverse.com
         - text: ffverse GitHub
           href: https://www.github.com/ffverse
         - text: ------
@@ -93,9 +97,6 @@ articles:
   navbar: "Cache"
   contents:
   - starts_with("ffscrapr_caching")
-
-
-url: ffscrapr.dynastyprocess.com
 
 authors:
   Tan Ho:

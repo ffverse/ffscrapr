@@ -93,7 +93,7 @@
 
   user_agent <-  glue::glue("ffscrapr/{utils::packageVersion('ffscrapr')} ",
                             "API client package ",
-                            "https://github.com/dynastyprocess/ffscrapr") %>%
+                            "https://github.com/ffverse/ffscrapr") %>%
     httr::user_agent()
 
   # get <-  ratelimitr::limit_rate(.retry_get, ratelimitr::rate(60, 60))
@@ -112,4 +112,15 @@
   assign("post",post, envir = .ffscrapr_env)
 
   # nocov end
+}
+
+.onAttach <- function(libname, pkgname){
+
+  memoise_option <- getOption("ffscrapr.cache")
+
+  if (is.null(memoise_option) || !memoise_option %in% c("memory", "filesystem", "off")) {
+    memoise_option <- "memory"
+  }
+
+  if(memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 }

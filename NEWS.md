@@ -1,3 +1,23 @@
+# ffscrapr (development version)
+
+The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.
+
+## Minor changes
+
+- `mfl_getendpoint()` and similar get_endpoint functions have an improved print method that tells you whether the request was successful.
+- Added errorhandling for ESPN methods of `ff_starters()`, `ff_transactions()`, `ff_rosters()`, `espn_potentialpoints()`, `ff_draft()`. Fixes #297, thanks for the report @jpiburn!
+- Added message to warn if memoise is turned off, onAttach.
+- `ff_transactions()` now correctly handles leagues using waiver priority, fixes #299 - thanks for the report @BarkovMVP!
+- `ff_league()` for Sleeper now identifies best ball leagues, fixes #300
+- `ff_scoring()` for MFL now has a `points_type` column that is either "each" or "once" - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes #301 
+- `ff_scoringhistory()` for MFL applies the new `ff_scoring()` `points_type` column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes #301. 
+- Add more mismatch names (Michael -> Mike Vick, Chris Wells -> Beanie Wells) 
+- Add `dp_clean_html()` to clean html from names (cough MFL cough) 
+- `ff_starter_positions()` now handles a "range" inside of the total_starters column for MFL, resolves #304
+- Cutover to ffverse.com domain and github organization
+
+---
+
 # ffscrapr 1.4.3
 
 The main goal of v1.4.3 is to patch some minor bugs.
@@ -103,7 +123,7 @@ Unsupported functions:
 - Converted GET requests to use `httr::RETRY` instead - this adds some robustness for server-side issues. As suggested by Maelle Salmon's blog post on [not reinventing the wheel](https://blog.r-hub.io/2020/04/07/retry-wheel/).
 - Added some type conversions and renaming for snake_case consistency to mfl_rosters and mfl_playerscores
 - Fixed bug in MFL's `ff_playerscores()` function so that it correctly pulls older names. (Resolves #196)
-- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/dynastyprocess/ffscrapr-tests) - so that it is not included in CRAN's package sizing
+- Refactored all tests to move test cache files to a separate/non-package location (https://github.com/ffverse/ffscrapr-tests) - so that it is not included in CRAN's package sizing
 - Fixed bugs in MFL's `ff_starters()` function - bad default arg, bad players call. (Fixes #202)
 - Resolve MFL's playerscores to handle vectorized request (Fixes #206)
 - Resolve bugs related to .fn_choose_season for tests (Fixes #217, #219)
@@ -174,7 +194,7 @@ Here is a list of new functions available at the top level (ie for all platforms
 Almost all functions now have Sleeper methods - implemented in what hopes to be relatively familiar manner to MFL. Outlining the specifics of what ***isn't*** the same:
 
 -   `sleeper_userleagues()` is a wrapper on `ff_userleagues()` that makes it easier to look up user leagues without first creating a connection object.
--   `ff_playerscores()` is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on [nflfastr](https://nflfastr.com/).
+-   `ff_playerscores()` is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on [nflfastr](https://www.nflfastr.com/).
 -   `sleeper_getendpoint()` is a little more simple than MFL's equivalent - just pass a string url (minus api.sleeper.app/v1) or pass in chunks of code, the function will automatically paste them together with "/".
 -   Added generic and method for `ff_userleagues()` - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user's league_ids by username first. MFL does have a parallel feature even if used for different purposes.
 -   Added two vignettes, showing "Getting Started" as well as one for custom API calls

@@ -14,14 +14,14 @@ Helps access various Fantasy Football APIs by handling
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://ffscrapr.dynastyprocess.com}
-  \item \url{https://github.com/dynastyprocess/ffscrapr}
+  \item \url{https://ffscrapr.ffverse.com}
+  \item \url{https://github.com/ffverse/ffscrapr}
   \item \url{https://api.myfantasyleague.com/2020/api_info}
   \item \url{https://docs.sleeper.app}
   \item \url{https://www.fleaflicker.com/api-docs/index.html}
   \item \url{https://www.espn.com/fantasy/}
-  \item \url{https://nflfastr.com/reference/load_player_stats.html}
-  \item Report bugs at \url{https://github.com/dynastyprocess/ffscrapr/issues}
+  \item \url{https://www.nflfastr.com/reference/load_player_stats.html}
+  \item Report bugs at \url{https://github.com/ffverse/ffscrapr/issues}
 }
 
 }

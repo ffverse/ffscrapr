@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.4.3
+Version: 1.4.4
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
@@ -20,14 +20,14 @@ Description: Helps access various Fantasy Football APIs by handling
     returning tidy dataframes which can be easily connected to other data
     sources.
 License: MIT + file LICENSE
-URL: https://ffscrapr.dynastyprocess.com,
-    https://github.com/dynastyprocess/ffscrapr,
+URL: https://ffscrapr.ffverse.com,
+    https://github.com/ffverse/ffscrapr,
     https://api.myfantasyleague.com/2020/api_info,
     https://docs.sleeper.app,
     https://www.fleaflicker.com/api-docs/index.html,
     https://www.espn.com/fantasy/,
-    https://nflfastr.com/reference/load_player_stats.html
-BugReports: https://github.com/dynastyprocess/ffscrapr/issues
+    https://www.nflfastr.com/reference/load_player_stats.html
+BugReports: https://github.com/ffverse/ffscrapr/issues
 Depends:
     R (>= 3.0.0)
 Imports:

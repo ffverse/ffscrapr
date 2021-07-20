@@ -136,7 +136,8 @@ print.espn_api <- function(x, ...) {
 
   # nocov start
 
-  cat("<ESPN - GET ", x$query, ">\n", sep = "")
+  cat("<ESPN - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
+  cat("QUERY: <",x$query,">\n", sep = "")
 
   str(x$content, max.level = 1)
 

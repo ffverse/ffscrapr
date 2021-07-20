@@ -20,9 +20,20 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
 
   max_week <- .espn_week_checkmax(conn)
 
-  weeks <- weeks[weeks < max_week]
+  run_weeks <- weeks[weeks < max_week]
 
-  starters <- purrr::map_dfr(weeks, .espn_week_starter, conn) %>%
+  if(length(run_weeks)==0) {
+
+    warning(
+        glue::glue("ESPN league_id {conn$league_id} does not have lineups for ",
+                   "{conn$season} weeks {paste(min(weeks),max(weeks), sep = '-')}."),
+        call. = FALSE
+      )
+
+      return(NULL)
+  }
+
+  starters <- purrr::map_dfr(run_weeks, .espn_week_starter, conn) %>%
     dplyr::mutate(
       lineup_slot = .espn_lineupslot_map()[as.character(.data$lineup_id)] %>% unname(),
       pos = .espn_pos_map()[as.character(.data$pos)] %>% unname(),
@@ -62,8 +73,10 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   current_week <- settings %>%
     purrr::pluck("content", "status", "latestScoringPeriod")
 
-  max_week <- settings %>%
+  final_week <- settings %>%
     purrr::pluck("content", "status", "finalScoringPeriod")
+
+  max_week <- min(current_week,final_week, na.rm = TRUE)
 
   return(max_week)
 }
@@ -83,7 +96,9 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     dplyr::filter(.data$week == .env$week) %>%
     tidyr::pivot_longer(c(.data$home, .data$away), names_to = NULL, values_to = "team") %>%
     tidyr::hoist("team", "starting_lineup" = "rosterForCurrentScoringPeriod", "franchise_id" = "teamId") %>%
-    dplyr::select(-"team", -"x") %>%
+    dplyr::select(-"team", -"x")
+
+  week_scores <- week_scores %>%
     tidyr::hoist("starting_lineup", "franchise_score" = "appliedStatTotal", "entries") %>%
     tidyr::unnest_longer("entries") %>%
     tidyr::hoist("entries", "player_id" = "playerId", "lineup_id" = "lineupSlotId", "player_data" = "playerPoolEntry", ) %>%

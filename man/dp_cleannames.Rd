@@ -2,9 +2,17 @@
 % Please edit documentation in R/1_import_dp.R
 \name{dp_cleannames}
 \alias{dp_cleannames}
+\alias{dp_clean_names}
 \title{Clean Names}
 \usage{
 dp_cleannames(
+  player_name,
+  lowercase = FALSE,
+  convert_lastfirst = TRUE,
+  use_name_database = TRUE
+)
+
+dp_clean_names(
   player_name,
   lowercase = FALSE,
   convert_lastfirst = TRUE,

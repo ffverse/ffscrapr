@@ -118,6 +118,10 @@ dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = TR
   return(n)
 }
 
+#' @export
+#' @rdname dp_cleannames
+dp_clean_names <- dp_cleannames
+
 #' Alternate name mappings
 #'
 #' A named character vector mapping common alternate names
@@ -134,3 +138,26 @@ dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = TR
 #' }
 #'
 "dp_name_mapping"
+
+#' Remove HTML from string
+#'
+#' Applies some regex to clean html tags from strings. This is useful for platforms such as MFL that interpret HTML in their franchise name fields.
+#'
+#' @param names a character (or character vector)
+#'
+#' @examples
+#'
+#' c("<b><font color= Cyan>Kevin OBrien (@kevinobrienff) </FONT></B>",
+#'   "<em><font color= Purple> Other fun names</font></em>"
+#'   ) %>% dp_clean_html()
+#'
+#' @return a character vector of cleaned strings
+#'
+#' @export
+dp_clean_html <- function(names) {
+  checkmate::assert_character(names)
+
+  n <- stringr::str_remove_all(names,"<[^>]*>") %>% stringr::str_squish()
+
+  return(n)
+}

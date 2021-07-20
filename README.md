@@ -10,18 +10,17 @@
 [![CRAN
 status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr)
 [![Dev
-status](https://img.shields.io/github/r-package/v/dynastyprocess/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.dynastyprocess.com/dev/)
+status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/dynastyprocess/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/DynastyProcess/ffscrapr?branch=main)
+coverage](https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/ffverse/ffscrapr?branch=main)
 [![R build
-status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions)
 [![API
-status](https://img.shields.io/github/workflow/status/dynastyprocess/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/DynastyProcess/ffscrapr/actions)
+status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions)
 [![nflverse
 discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
-
 
 <!-- badges: end -->
 
@@ -33,23 +32,22 @@ other data sources.
 
 ### Installation
 
-Version 1.4.3 is now on CRAN :tada: and can be installed with:
+Install the stable version of this package from CRAN or the [ffverse
+r-universe repository](https://ffverse.r-universe.dev):
 
 ``` r
-install.packages("ffscrapr")
-# or from GitHub release with the remotes package via:
-# install.packages("remotes")
-remotes::install_github("dynastyprocess/ffscrapr", ref = "v1.4.3")
+install.packages("ffscrapr") # CRAN
+install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
 ```
 
 Install the development version from GitHub with:
 
 ``` r
-remotes::install_github("dynastyprocess/ffscrapr", ref = "dev")
+remotes::install_github("ffverse/ffscrapr", ref = "dev")
 ```
 
 The dev version has a [separate documentation site
-here](https://ffscrapr.dynastyprocess.com/dev/).
+here](https://ffscrapr.ffverse.com/dev/).
 
 ### Usage
 
@@ -85,11 +83,11 @@ ff_rosters(ssb)
 #> # A tibble: 442 x 11
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
-#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.8
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.5
-#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.4
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    29.9
-#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.3
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.9
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.6
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.5
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30  
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.4
 #> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
@@ -110,15 +108,15 @@ ff_transactions(ssb)
 
 Platform-specific guides on getting started with ffscrapr are here:
 
--   [MyFantasyLeague](https://ffscrapr.dynastyprocess.com/articles/mfl_basics.html)  
--   [Sleeper](https://ffscrapr.dynastyprocess.com/articles/sleeper_basics.html)
--   [Fleaflicker](https://ffscrapr.dynastyprocess.com/articles/fleaflicker_basics.html)
--   [ESPN](https://ffscrapr.dynastyprocess.com/articles/espn_basics.html)
+-   [MyFantasyLeague](https://ffscrapr.ffverse.com/articles/mfl_basics.html)  
+-   [Sleeper](https://ffscrapr.ffverse.com/articles/sleeper_basics.html)
+-   [Fleaflicker](https://ffscrapr.ffverse.com/articles/fleaflicker_basics.html)
+-   [ESPN](https://ffscrapr.ffverse.com/articles/espn_basics.html)
 
 There are also some more advanced guides for custom API calls in the
-[Articles section](https://ffscrapr.dynastyprocess.com/articles/), as
-well as some guides on [optimizing ffscrapr’s
-performance](https://ffscrapr.dynastyprocess.com/articles/ffscrapr_caching.html).
+[Articles section](https://ffscrapr.ffverse.com/articles/), as well as
+some guides on [optimizing ffscrapr’s
+performance](https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html).
 
 ### Support
 
@@ -127,7 +125,7 @@ The best places to get help on this package are:
 -   the [nflverse discord](https://discord.com/invite/5Er2FBnnQa) (for
     both this package as well as anything R/NFL related)
 -   opening [an
-    issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
+    issue](https://github.com/ffverse/ffscrapr/issues/new/choose)
 
 ### Contributing
 
@@ -135,19 +133,19 @@ Many hands make light work! Here are some ways you can contribute to
 this project:
 
 -   You can [open an
-    issue](https://github.com/DynastyProcess/ffscrapr/issues/new/choose)
-    if you’d like to request specific data or report a bug/error.
+    issue](https://github.com/ffverse/ffscrapr/issues/new/choose) if
+    you’d like to request specific data or report a bug/error.
 
 -   You can [sponsor this project with
     donations](https://github.com/sponsors/tanho63)!
 
 -   If you’d like to contribute code, please check out [the contribution
-    guidelines](https://ffscrapr.dynastyprocess.com/CONTRIBUTING.html).
+    guidelines](https://ffscrapr.ffverse.com/CONTRIBUTING.html).
 
 ### Terms of Use
 
 The R code for this package is released as open source under the [MIT
-license](https://ffscrapr.dynastyprocess.com/LICENSE.html).
+license](https://ffscrapr.ffverse.com/LICENSE.html).
 
 The APIs and data accessed by this package belong to their respective
 owners, and are governed by their terms of use.
