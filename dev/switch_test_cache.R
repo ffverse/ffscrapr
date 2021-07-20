@@ -17,7 +17,7 @@ use_ffscrapr_tests_main <- function(){
   invisible()
 }
 
-# use_ffscrapr_tests_main()
+use_ffscrapr_tests_main()
 
 use_ffscrapr_tests_version <- function(version){
 

@@ -1,3 +1,7 @@
+## RESUBMISSION
+
+Removed stray revdep/ folder that was missed in Rbuildignore.
+
 ## SUBMISSION
 
 This release patches some bugs and extends features to support a new related package, ffsimulator.
