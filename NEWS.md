@@ -13,6 +13,7 @@
 - Add more mismatch names (Michael -> Mike Vick, Chris Wells -> Beanie Wells) (v1.4.3.06)
 - Add `dp_clean_html()` to clean html from names (cough MFL cough) (v1.4.3.07)
 - `ff_starter_positions()` now handles a "range" inside of the total_starters column for MFL (v1.4.3.08), resolves #304
+- Cutover to ffverse.com domain and github organization
 
 ---
 
