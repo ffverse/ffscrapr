@@ -30,6 +30,10 @@ ff_starter_positions.mfl_conn <- function(conn, ...) {
     tidyr::unnest_longer("position") %>%
     tidyr::hoist("position", "pos" = "name", "limit") %>%
     tidyr::separate("limit", into = c("min", "max"), sep = "\\-", fill = "right") %>%
+    dplyr::mutate(total_starters = dplyr::if_else(stringr::str_detect(.data$total_starters,"\\-"),
+                                                  stringr::str_extract(.data$total_starters,"([0-9]+)$") %>%
+                                                    unlist(),
+                                                  .data$total_starters)) %>%
     dplyr::mutate_at(c("min", "max", "total_starters"), as.integer) %>%
     dplyr::mutate(
       max = dplyr::coalesce(.data$max, .data$min),
