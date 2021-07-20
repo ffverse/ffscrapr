@@ -1,6 +1,6 @@
 ## SUBMISSION
 
-This release patches some bugs. 
+This release patches some bugs and extends features to support a new related package, ffsimulator.
 
 ## Test environments
 * local (Windows) R installation, R 4.1.0

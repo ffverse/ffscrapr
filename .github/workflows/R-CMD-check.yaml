@@ -58,7 +58,6 @@ jobs:
             ffscrapr-
 
       - name: Install system dependencies
-        if: runner.os == 'Linux'
         run: |
           pak::local_system_requirements(execute = TRUE)
           pak::local_install_dev_deps()
