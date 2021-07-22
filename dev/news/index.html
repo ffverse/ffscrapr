@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.3.08</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
       </span>
     </div>
 
@@ -175,12 +175,14 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">ffverse</li>
     <li>
-      <a href="https://ffsimulator.dynastyprocess.com">ffsimulator package</a>
+      <a href="https://www.ffverse.com">ffverse</a>
     </li>
     <li>
-      <a href="https://ffpros.dynastyprocess.com">ffpros package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+    </li>
+    <li>
+      <a href="https://ffpros.ffverse.com">ffpros package</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -235,22 +237,37 @@
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
-<code><a href="../reference/mfl_getendpoint.html">mfl_getendpoint()</a></code> and similar get_endpoint functions have an improved print method that tells you whether the request was successful. (v1.4.3.01)</li>
-<li>Added errorhandling for ESPN methods of <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code>, <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code>, <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code>, <code><a href="../reference/ff_draft.html">ff_draft()</a></code>. Fixes <a href='https://github.com/ffverse/ffscrapr/issues/297'>#297</a>, thanks for the report <a href='https://github.com/jpiburn'>@jpiburn</a>! (v1.4.3.02)</li>
-<li>Added message to warn if memoise is turned off, onAttach. (v1.4.3.02)</li>
-<li>Tweak pkgdown (v1.4.3.02)</li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for ESPN now works for non-ppr leagues. (v1.4.4.01)</li>
+</ul>
+<hr>
+</div>
+</div>
+    <div id="ffscrapr-144" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.4">
+<a href="#ffscrapr-144" class="anchor"></a>ffscrapr 1.4.4<small> 2021-07-20 </small>
+</h1>
+<p>The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.</p>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<ul>
 <li>
-<code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> now correctly handles leagues using waiver priority, fixes <a href='https://github.com/ffverse/ffscrapr/issues/299'>#299</a> - thanks for the report <a href='https://github.com/BarkovMVP'>@BarkovMVP</a>! (v1.4.3.03)</li>
+<code><a href="../reference/mfl_getendpoint.html">mfl_getendpoint()</a></code> and similar get_endpoint functions have an improved print method that tells you whether the request was successful.</li>
+<li>Added errorhandling for ESPN methods of <code><a href="../reference/ff_starters.html">ff_starters()</a></code>, <code><a href="../reference/ff_transactions.html">ff_transactions()</a></code>, <code><a href="../reference/ff_rosters.html">ff_rosters()</a></code>, <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code>, <code><a href="../reference/ff_draft.html">ff_draft()</a></code>. Fixes <a href='https://github.com/ffverse/ffscrapr/issues/297'>#297</a>, thanks for the report <a href='https://github.com/jpiburn'>@jpiburn</a>!</li>
+<li>Added message to warn if memoise is turned off, onAttach.</li>
 <li>
-<code><a href="../reference/ff_league.html">ff_league()</a></code> for Sleeper now identifies best ball leagues, fixes <a href='https://github.com/ffverse/ffscrapr/issues/300'>#300</a> (v1.4.3.04)</li>
+<code><a href="../reference/ff_transactions.html">ff_transactions()</a></code> now correctly handles leagues using waiver priority, fixes <a href='https://github.com/ffverse/ffscrapr/issues/299'>#299</a> - thanks for the report <a href='https://github.com/BarkovMVP'>@BarkovMVP</a>!</li>
 <li>
-<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> for MFL now has a <code>points_type</code> column that is either “each” or “once” - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a> (v1.4.3.05)</li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for Sleeper now identifies best ball leagues, fixes <a href='https://github.com/ffverse/ffscrapr/issues/300'>#300</a></li>
 <li>
-<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> for MFL applies the new <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> <code>points_type</code> column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a>. (v1.4.3.05)</li>
-<li>Add more mismatch names (Michael -&gt; Mike Vick, Chris Wells -&gt; Beanie Wells) (v1.4.3.06)</li>
-<li>Add <code><a href="../reference/dp_clean_html.html">dp_clean_html()</a></code> to clean html from names (cough MFL cough) (v1.4.3.07)</li>
+<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> for MFL now has a <code>points_type</code> column that is either “each” or “once” - this helps delineate fantasy points awarded for meeting thresholds/bonuses from points awarded per-stat, fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a></li>
 <li>
-<code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code> now handles a “range” inside of the total_starters column for MFL (v1.4.3.08), resolves <a href='https://github.com/ffverse/ffscrapr/issues/304'>#304</a></li>
+<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> for MFL applies the new <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> <code>points_type</code> column to calculate scoring history. This should result in more sensible results for leagues with bonus scoring! Fixes <a href='https://github.com/ffverse/ffscrapr/issues/301'>#301</a>.</li>
+<li>Add more mismatch names (Michael -&gt; Mike Vick, Chris Wells -&gt; Beanie Wells)</li>
+<li>Add <code><a href="../reference/dp_clean_html.html">dp_clean_html()</a></code> to clean html from names (cough MFL cough)</li>
+<li>
+<code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code> now handles a “range” inside of the total_starters column for MFL, resolves <a href='https://github.com/ffverse/ffscrapr/issues/304'>#304</a></li>
+<li>Cutover to ffverse.com domain and github organization</li>
 </ul>
 <hr>
 </div>
@@ -260,9 +277,9 @@
 <a href="#ffscrapr-143" class="anchor"></a>ffscrapr 1.4.3<small> 2021-06-12 </small>
 </h1>
 <p>The main goal of v1.4.3 is to patch some minor bugs.</p>
-<div id="minor-changes-1" class="section level2">
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code><a href="../reference/ff_league.html">ff_league()</a></code> now has a column that returns the platform’s season - this is most useful when running ff_league in batch. Thank you to <a href='https://github.com/joeflan'>@joeflan</a> for the contribution! (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/287'>#287</a>)</li>
@@ -286,9 +303,9 @@
 <a href="#ffscrapr-142" class="anchor"></a>ffscrapr 1.4.2<small> 2021-05-10 </small>
 </h1>
 <p>The main goal of v1.4.2 is to patch some minor bugs.</p>
-<div id="minor-changes-2" class="section level2">
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>
 <code>espn_rosters</code> now has a <code>week</code> argument to return a specific week of data. (Fixes <a href='https://github.com/ffverse/ffscrapr/issues/276'>#276</a>, thanks <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
@@ -318,9 +335,9 @@
 <code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
 <ul>
 <li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
 <li>
@@ -363,9 +380,9 @@
 <code>ff_scoring</code> rules for ESPN and Sleeper have been expanded from one line per rule to one line per position per rule</li>
 </ul>
 </div>
-<div id="minor-changes-4" class="section level2">
+<div id="minor-changes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-changes-5" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>Force <code>mfl_playerscores</code> to use season + league specific players call where possible (<a href='https://github.com/ffverse/ffscrapr/issues/239'>#239</a>)</li>
 <li>Reduce minimum rows for <code>flea_rosters</code> test to 200, which fixes an API check issue (<a href='https://github.com/ffverse/ffscrapr/issues/242'>#242</a>)</li>
@@ -524,7 +541,7 @@
 <li>
 <code><a href="../reference/sleeper_userleagues.html">sleeper_userleagues()</a></code> is a wrapper on <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> that makes it easier to look up user leagues without first creating a connection object.</li>
 <li>
-<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://nflfastr.com/">nflfastr</a>.</li>
+<code><a href="../reference/ff_playerscores.html">ff_playerscores()</a></code> is not available for Sleeper because Sleeper removed the player stats endpoint - it will generate a warning (rather than an error). Thinking about creating some functions to calculate scoring based on <a href="https://www.nflfastr.com/">nflfastr</a>.</li>
 <li>
 <code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> is a little more simple than MFL’s equivalent - just pass a string url (minus api.sleeper.app/v1) or pass in chunks of code, the function will automatically paste them together with “/”.</li>
 <li>Added generic and method for <code><a href="../reference/ff_userleagues.html">ff_userleagues()</a></code> - Sleeper league IDs are more annoying than MFL to handle, so the more intuitive way is to look up the user’s league_ids by username first. MFL does have a parallel feature even if used for different purposes.</li>
