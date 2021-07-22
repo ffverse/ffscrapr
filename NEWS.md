@@ -1,5 +1,8 @@
 # ffscrapr (development version)
 
+## Minor changes
+- `ff_league()` for ESPN now works for non-ppr leagues. (v1.4.4.01)
+
 ---
 
 # ffscrapr 1.4.4
