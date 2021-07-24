@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
       </span>
     </div>
 
@@ -257,10 +257,27 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 
-<span class='va'>player_list</span> <span class='op'>&lt;-</span> <span class='fu'>espn_players</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='co'># }</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
+
+  <span class='fu'>espn_players</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,656 × 5</span>
+#&gt;    player_id player_name          pos   eligible_pos team 
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   4<span style='text-decoration: underline;'>029</span>893 Antonio Gandy-Golden WR    <span style='color: #949494;'>&lt;chr [8]&gt;</span>    WAS  
+#&gt; <span style='color: #BCBCBC;'> 2</span>   3<span style='text-decoration: underline;'>915</span>196 D'Andre Walker       DE    <span style='color: #949494;'>&lt;chr [6]&gt;</span>    FA   
+#&gt; <span style='color: #BCBCBC;'> 3</span>   2<span style='text-decoration: underline;'>588</span>098 Tye Smith            CB    <span style='color: #949494;'>&lt;chr [5]&gt;</span>    TEN  
+#&gt; <span style='color: #BCBCBC;'> 4</span>   3<span style='text-decoration: underline;'>915</span>190 Jayson Stanley       CB    <span style='color: #949494;'>&lt;chr [5]&gt;</span>    SEA  
+#&gt; <span style='color: #BCBCBC;'> 5</span>   3<span style='text-decoration: underline;'>915</span>189 Roquan Smith         LB    <span style='color: #949494;'>&lt;chr [4]&gt;</span>    CHI  
+#&gt; <span style='color: #BCBCBC;'> 6</span>     <span style='text-decoration: underline;'>15</span>773 Darren Fells         TE    <span style='color: #949494;'>&lt;chr [6]&gt;</span>    HOU  
+#&gt; <span style='color: #BCBCBC;'> 7</span>   3<span style='text-decoration: underline;'>128</span>774 Kalen Ballage        RB    <span style='color: #949494;'>&lt;chr [6]&gt;</span>    LAC  
+#&gt; <span style='color: #BCBCBC;'> 8</span>     <span style='text-decoration: underline;'>15</span>782 Chris Banjo          S     <span style='color: #949494;'>&lt;chr [5]&gt;</span>    ARI  
+#&gt; <span style='color: #BCBCBC;'> 9</span>   3<span style='text-decoration: underline;'>915</span>186 Chauncey Rivers      DE    <span style='color: #949494;'>&lt;chr [6]&gt;</span>    BAL  
+#&gt; <span style='color: #BCBCBC;'>10</span>     <span style='text-decoration: underline;'>15</span>785 Ezekiel Ansah        DE    <span style='color: #949494;'>&lt;chr [6]&gt;</span>    SFO  
+#&gt; <span style='color: #949494;'># … with 2,646 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

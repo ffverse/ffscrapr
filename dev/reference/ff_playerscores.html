@@ -94,7 +94,7 @@ Please see ff_scoringhistory() for an alternative reconstruction." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
       </span>
     </div>
 
@@ -299,10 +299,14 @@ Please see <code><a href='ff_scoringhistory.html'>ff_scoringhistory()</a></code>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
-<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 8</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+
+  <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, limit <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 8</span>
 #&gt;   season player_id player_name     pos   score_total score_average franchise_id
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>   <span style='text-decoration: underline;'>2</span>020   3<span style='text-decoration: underline;'>054</span>850 Alvin Kamara    RB           337.          22.5            9
@@ -312,11 +316,11 @@ Please see <code><a href='ff_scoringhistory.html'>ff_scoringhistory()</a></code>
 #&gt; <span style='color: #BCBCBC;'>5</span>   <span style='text-decoration: underline;'>2</span>020   2<span style='text-decoration: underline;'>576</span>925 Darren Waller   TE           225.          14.1            4
 #&gt; <span style='color: #949494;'># … with 1 more variable: franchise_name &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
-
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>x</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 60 x 8</span>
+<span class='fu'>ff_playerscores</span><span class='op'>(</span><span class='va'>conn</span>, page_limit <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 60 × 8</span>
 #&gt;    player_id player_name     pos   team  games score_total score_avg score_sd
 #&gt;        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>     <span style='text-decoration: underline;'>13</span>761 Josh Allen      QB    BUF      16        550.      34.4    10.4 
@@ -329,11 +333,14 @@ Please see <code><a href='ff_scoringhistory.html'>ff_scoringhistory()</a></code>
 #&gt; <span style='color: #BCBCBC;'> 8</span>      <span style='text-decoration: underline;'>8</span>514 Ryan Tannehill  QB    TEN      16        469.      29.3     9.76
 #&gt; <span style='color: #BCBCBC;'> 9</span>     <span style='text-decoration: underline;'>15</span>516 Justin Herbert  QB    LAC      15        459.      30.6     9.67
 #&gt; <span style='color: #BCBCBC;'>10</span>      <span style='text-decoration: underline;'>8</span>625 Kirk Cousins    QB    MIN      16        446.      27.9     9.8 
-#&gt; <span style='color: #949494;'># … with 50 more rows</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #949494;'># … with 50 more rows</span></div><div class='input'>
+<span class='co'># }</span>
 <span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 <span class='va'>sfb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>65443</span><span class='op'>)</span>
 <span class='fu'>ff_playerscores</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>sfb_conn</span>, season <span class='op'>=</span> <span class='fl'>2019</span>, week <span class='op'>=</span> <span class='st'>"YTD"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 589 x 8</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 589 × 8</span>
 #&gt;    season week  player_id player_name          pos   team  points is_available
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
 #&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>019 YTD   13593     Jackson, Lamar       QB    BAL     489. 1           

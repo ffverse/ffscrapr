@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
       </span>
     </div>
 
@@ -280,6 +280,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>
   season <span class='op'>=</span> <span class='fl'>2018</span>,
   league_id <span class='op'>=</span> <span class='fl'>1178049</span>,
@@ -288,17 +289,22 @@
 <span class='op'>)</span>
 
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: ESPN does not support draft pick trades. For draft results, please use ff_draft()</span></div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>206154</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>conn</span>, franchise_id <span class='op'>=</span> <span class='fl'>1373475</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 <span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
-<span class='fu'>ff_draftpicks</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 5</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+  <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
+  <span class='fu'>ff_draftpicks</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 × 5</span>
 #&gt;    season franchise_id franchise_name round original_franchise_id
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                
 #&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>021 0001         @dibari22          1 0001                 
@@ -314,9 +320,11 @@
 #&gt; <span style='color: #949494;'># … with 70 more rows</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
 <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='fu'>ff_draftpicks</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 144 x 5</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 144 × 5</span>
 #&gt;    season franchise_id franchise_name round original_franchise_id
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> 2021              1 Fake News          3                     1

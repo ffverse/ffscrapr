@@ -93,7 +93,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
       </span>
     </div>
 
@@ -285,9 +285,11 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
-<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,291 x 24</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
+  <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,291 × 24</span>
 #&gt;    season  week gsis_id    sportradar_id espn_id player_name pos   team  points
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>1</span>999     1 00-0000003 <span style='color: #BB0000;'>NA</span>                 <span style='color: #BB0000;'>NA</span> A.al-Jabbar RB    MIA     13.2
@@ -309,39 +311,82 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 #&gt; <span style='color: #949494;'>#   special_teams_tds &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
-<span class='co'># conn &lt;- fleaflicker_connect(2020, 312861)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
 <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,423 x 24</span>
-#&gt;    season  week gsis_id  sportradar_id    espn_id player_name pos   team  points
-#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>020     1 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     20.5 
-#&gt; <span style='color: #BCBCBC;'> 2</span>   <span style='text-decoration: underline;'>2</span>020     2 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB      8.68
-#&gt; <span style='color: #BCBCBC;'> 3</span>   <span style='text-decoration: underline;'>2</span>020     3 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     23.9 
-#&gt; <span style='color: #BCBCBC;'> 4</span>   <span style='text-decoration: underline;'>2</span>020     4 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     32.5 
-#&gt; <span style='color: #BCBCBC;'> 5</span>   <span style='text-decoration: underline;'>2</span>020     5 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     14.1 
-#&gt; <span style='color: #BCBCBC;'> 6</span>   <span style='text-decoration: underline;'>2</span>020     6 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     14.6 
-#&gt; <span style='color: #BCBCBC;'> 7</span>   <span style='text-decoration: underline;'>2</span>020     7 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     36.9 
-#&gt; <span style='color: #BCBCBC;'> 8</span>   <span style='text-decoration: underline;'>2</span>020     8 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     19.1 
-#&gt; <span style='color: #BCBCBC;'> 9</span>   <span style='text-decoration: underline;'>2</span>020     9 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB      2.36
-#&gt; <span style='color: #BCBCBC;'>10</span>   <span style='text-decoration: underline;'>2</span>020    10 00-0019… 41c44740-d0f6-4…    <span style='text-decoration: underline;'>2</span>330 T.Brady     QB    TB     31.8 
-#&gt; <span style='color: #949494;'># … with 5,413 more rows, and 15 more variables: passing_yards &lt;dbl&gt;,</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,400 × 24</span>
+#&gt;    season  week gsis_id  sportradar_id    fleaflicker_id player_name pos   team 
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>020     1 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 2</span>   <span style='text-decoration: underline;'>2</span>020     2 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 3</span>   <span style='text-decoration: underline;'>2</span>020     3 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 4</span>   <span style='text-decoration: underline;'>2</span>020     4 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 5</span>   <span style='text-decoration: underline;'>2</span>020     5 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 6</span>   <span style='text-decoration: underline;'>2</span>020     6 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 7</span>   <span style='text-decoration: underline;'>2</span>020     7 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 8</span>   <span style='text-decoration: underline;'>2</span>020     8 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'> 9</span>   <span style='text-decoration: underline;'>2</span>020     9 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #BCBCBC;'>10</span>   <span style='text-decoration: underline;'>2</span>020    10 00-0019… 41c44740-d0f6-4… 309            T.Brady     QB    TB   
+#&gt; <span style='color: #949494;'># … with 5,390 more rows, and 16 more variables: points &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_yards &lt;dbl&gt;, passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_first_downs &lt;dbl&gt;, passing_2pt_conversions &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;, rushing_first_downs &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_2pt_conversions &lt;dbl&gt;, receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_tds &lt;dbl&gt;, receiving_first_downs &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 111,553 × 26</span>
+#&gt;    season  week gsis_id   sportradar_id mfl_id player_name    pos   team  points
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>1</span>999     1 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    MIA     15.2
+#&gt; <span style='color: #BCBCBC;'> 2</span>   <span style='text-decoration: underline;'>1</span>999     2 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    MIA      7.6
+#&gt; <span style='color: #BCBCBC;'> 3</span>   <span style='text-decoration: underline;'>1</span>999     4 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    MIA      0.2
+#&gt; <span style='color: #BCBCBC;'> 4</span>   <span style='text-decoration: underline;'>1</span>999     7 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      4.5
+#&gt; <span style='color: #BCBCBC;'> 5</span>   <span style='text-decoration: underline;'>1</span>999     8 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      4.9
+#&gt; <span style='color: #BCBCBC;'> 6</span>   <span style='text-decoration: underline;'>1</span>999     9 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      3.5
+#&gt; <span style='color: #BCBCBC;'> 7</span>   <span style='text-decoration: underline;'>1</span>999    10 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      9.1
+#&gt; <span style='color: #BCBCBC;'> 8</span>   <span style='text-decoration: underline;'>1</span>999    11 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      2.8
+#&gt; <span style='color: #BCBCBC;'> 9</span>   <span style='text-decoration: underline;'>1</span>999    12 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      4.6
+#&gt; <span style='color: #BCBCBC;'>10</span>   <span style='text-decoration: underline;'>1</span>999    13 00-00000… <span style='color: #BB0000;'>NA</span>            <span style='color: #BB0000;'>NA</span>     Abdul-Karim a… RB    CLE      6.5
+#&gt; <span style='color: #949494;'># … with 111,543 more rows, and 17 more variables: passing_yards &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;, sack_fumbles_lost &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_first_downs &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_2pt_conversions &lt;dbl&gt;, receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_tds &lt;dbl&gt;, receiving_fumbles_lost &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_first_downs &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,414 × 23</span>
+#&gt;    season  week gsis_id  sportradar_id sleeper_id player_name pos   team  points
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>020     1 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     20.5 
+#&gt; <span style='color: #BCBCBC;'> 2</span>   <span style='text-decoration: underline;'>2</span>020     2 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB      8.68
+#&gt; <span style='color: #BCBCBC;'> 3</span>   <span style='text-decoration: underline;'>2</span>020     3 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     23.9 
+#&gt; <span style='color: #BCBCBC;'> 4</span>   <span style='text-decoration: underline;'>2</span>020     4 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     32.5 
+#&gt; <span style='color: #BCBCBC;'> 5</span>   <span style='text-decoration: underline;'>2</span>020     5 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     14.1 
+#&gt; <span style='color: #BCBCBC;'> 6</span>   <span style='text-decoration: underline;'>2</span>020     6 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     14.6 
+#&gt; <span style='color: #BCBCBC;'> 7</span>   <span style='text-decoration: underline;'>2</span>020     7 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     36.9 
+#&gt; <span style='color: #BCBCBC;'> 8</span>   <span style='text-decoration: underline;'>2</span>020     8 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     19.1 
+#&gt; <span style='color: #BCBCBC;'> 9</span>   <span style='text-decoration: underline;'>2</span>020     9 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB      2.36
+#&gt; <span style='color: #BCBCBC;'>10</span>   <span style='text-decoration: underline;'>2</span>020    10 00-0019… 41c44740-d0f… 167        T.Brady     QB    TB     31.8 
+#&gt; <span style='color: #949494;'># … with 5,404 more rows, and 14 more variables: passing_yards &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;, sack_fumbles_lost &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   special_teams_tds &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='co'># ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)</span>
-<span class='co'># ff_scoringhistory(ssb_conn)</span>
-<span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='co'>#'</span>
-<span class='co'># conn &lt;- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)</span>
-<span class='co'># ff_scoringhistory(conn, season = 2020)</span>
-<span class='co'># }</span>
+#&gt; <span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

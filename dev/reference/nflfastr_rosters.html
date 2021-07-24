@@ -93,7 +93,7 @@ The same input/output as nflfastr's fast_scraper_roster function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.01</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
       </span>
     </div>
 
@@ -260,8 +260,10 @@ the nflfastr repository.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>nflfastr_rosters</span><span class='op'>(</span>seasons <span class='op'>=</span> <span class='fl'>2019</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7,735 x 24</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+  <span class='fu'>nflfastr_rosters</span><span class='op'>(</span>seasons <span class='op'>=</span> <span class='fl'>2019</span><span class='op'>:</span><span class='fl'>2020</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7,735 × 24</span>
 #&gt;    season team  position depth_chart_positi… jersey_number status full_name     
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
 #&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>019 ARI   C        <span style='color: #BB0000;'>NA</span>                             60 CUT    Jacob Ohnesor…
