@@ -9,8 +9,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' dlfidp_conn <- mfl_connect(2020, league_id = 33158)
 #' ff_starter_positions(conn = dlfidp_conn)
+#' }) # end try
 #' }
 #'
 #' @export

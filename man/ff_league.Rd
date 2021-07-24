@@ -41,22 +41,32 @@ This function returns a tidy dataframe of common league settings, including deta
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_league(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+
+  conn <- espn_connect(season = 2020, league_id = 899513)
+
+  ff_league(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(2020, 206154)
 ff_league(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_league(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_league(jml_conn)
+}) # end try
 }
 }

@@ -6,9 +6,13 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 1178049)
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #'
-#' ff_franchises(conn)
+#'   conn <- espn_connect(season = 2020, league_id = 1178049)
+#'
+#'   ff_franchises(conn)
+#'
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_franchises ESPN: returns franchise and division information.

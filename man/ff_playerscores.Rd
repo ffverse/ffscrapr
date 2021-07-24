@@ -54,19 +54,26 @@ Please see \code{ff_scoringhistory()} for an alternative reconstruction.
 
 \examples{
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_playerscores(conn, limit = 5)
+  conn <- espn_connect(season = 2020, league_id = 899513)
+
+  ff_playerscores(conn, limit = 5)
+
+}) # end try
 }
 \donttest{
-
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(2020, 312861)
-x <- ff_playerscores(conn, page_limit = 2)
-x
+ff_playerscores(conn, page_limit = 2)
+}) # end try
+
 }
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 sfb_conn <- mfl_connect(2020, league_id = 65443)
 ff_playerscores(conn = sfb_conn, season = 2019, week = "YTD")
+}) # end try
 }
 }
 \seealso{

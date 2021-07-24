@@ -10,9 +10,13 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #'
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_playerscores(conn, limit = 5)
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'
+#'   ff_playerscores(conn, limit = 5)
+#'
+#' }) # end try
 #' }
 #' @export
 ff_playerscores.espn_conn <- function(conn, limit = 1000, ...) {

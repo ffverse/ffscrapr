@@ -10,8 +10,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
-#' jml_starters <- ff_starters(jml_conn)
+#' ff_starters(jml_conn, week = 3)
+#' }) # end try
 #' }
 #'
 #' @export

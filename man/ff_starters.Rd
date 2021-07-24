@@ -49,23 +49,31 @@ This function returns a tidy dataframe with one row for every starter (and bench
 
 \examples{
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- espn_connect(season = 2020, league_id = 1178049)
 ff_starters(conn, weeks = 1:3)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(season = 2020, league_id = 206154)
 ff_starters(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 dlf_conn <- mfl_connect(2020, league_id = 37920)
 ff_starters(conn = dlf_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
-jml_starters <- ff_starters(jml_conn)
+ff_starters(jml_conn, week = 3)
+}) # end try
 }
 
 }

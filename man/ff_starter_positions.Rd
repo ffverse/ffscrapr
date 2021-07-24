@@ -44,23 +44,31 @@ This function returns a tidy dataframe with positional lineup rules.
 
 \examples{
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- espn_connect(season = 2020, league_id = 1178049)
 ff_starter_positions(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(season = 2020, league_id = 206154)
 ff_starter_positions(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 dlfidp_conn <- mfl_connect(2020, league_id = 33158)
 ff_starter_positions(conn = dlfidp_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- sleeper_connect(league_id = "652718526494253056", season = 2021)
-jml_starters <- ff_starter_positions(jml_conn)
+ff_starter_positions(jml_conn)
+}) # end try
 }
 
 }

@@ -41,24 +41,34 @@ Return franchise-level data (including divisions, usernames, etc) - available da
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 1178049)
+try({ # try only shown here because sometimes CRAN checks are weird
 
-ff_franchises(conn)
+  conn <- espn_connect(season = 2020, league_id = 1178049)
+
+  ff_franchises(conn)
+
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(season = 2020, league_id = 206154)
 ff_franchises(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_franchises(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_franchises(jml_conn)
+}) # end try
 }
 
 }

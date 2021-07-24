@@ -26,7 +26,7 @@ ff_rosters(conn, ...)
 
 \item{week}{a numeric that specifies which week to return}
 
-\item{custom_players}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} - now returns custom players by default}
+\item{custom_players}{"\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}" - now returns custom players by default}
 }
 \value{
 A tidy dataframe of rosters, joined to basic player information and basic franchise information
@@ -47,20 +47,29 @@ This function returns a tidy dataframe of team rosters
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_league(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn <- espn_connect(season = 2020, league_id = 899513)
+  ff_league(conn)
+}) # end try
 }
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
+
 ff_rosters(joe_conn)
+}) # end try
 }
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_rosters(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_rosters(jml_conn)
+}) # end try
 }
 }

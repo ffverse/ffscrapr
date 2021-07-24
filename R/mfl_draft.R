@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' ff_draft(ssb_conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+#'   ff_draft(ssb_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_draft MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)

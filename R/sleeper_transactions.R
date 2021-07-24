@@ -10,8 +10,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' x <- ff_transactions(jml_conn, week = 1:17)
+#' ff_transactions(jml_conn, week = 1:2)
+#' }) # end try
 #' }
 #'
 #' @export

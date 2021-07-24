@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' player_list <- mfl_players()
 #' dplyr::sample_n(player_list, 5)
+#' }) # end try
 #' }
 #'
 #' @return a dataframe containing all ~2000+ players in the MFL database

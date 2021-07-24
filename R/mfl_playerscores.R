@@ -11,8 +11,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' sfb_conn <- mfl_connect(2020, league_id = 65443)
 #' ff_playerscores(conn = sfb_conn, season = 2019, week = "YTD")
+#' }) # end try
 #' }
 #' @export
 

@@ -10,10 +10,11 @@
 #'
 #' @examples
 #' \donttest{
-#'
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- fleaflicker_connect(2020, 312861)
-#' x <- ff_playerscores(conn, page_limit = 2)
-#' x
+#' ff_playerscores(conn, page_limit = 2)
+#' }) # end try
+#'
 #' }
 #' @export
 ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {

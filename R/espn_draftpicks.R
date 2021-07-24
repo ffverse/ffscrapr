@@ -9,6 +9,7 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- espn_connect(
 #'   season = 2018,
 #'   league_id = 1178049,
@@ -17,6 +18,7 @@
 #' )
 #'
 #' ff_draftpicks(conn)
+#' }) # end try
 #' }
 #'
 #' @export

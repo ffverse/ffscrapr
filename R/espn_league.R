@@ -6,8 +6,12 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_league(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'
+#'   ff_league(conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_league ESPN: returns a summary of league features.
@@ -92,7 +96,7 @@ ff_league.espn_conn <- function(conn) {
     purrr::map(`[`,c("statId","points")) %>%
     dplyr::bind_rows() %>%
     dplyr::mutate(
-      stat_name = .espn_stat_map()[as.character(statId)]
+      stat_name = .espn_stat_map()[as.character(.data$statId)]
     ) %>%
     dplyr::filter(.data$stat_name == "receivingReceptions") %>%
     dplyr::pull("points")

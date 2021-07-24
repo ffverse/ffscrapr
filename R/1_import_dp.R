@@ -10,7 +10,9 @@
 #'
 #' @examples
 #' \donttest{
-#' dp_values()
+#' try( # try only shown here because sometimes CRAN checks are weird
+#'   dp_values()
+#' )
 #' }
 #'
 #' @return a tibble of trade values from DynastyProcess
@@ -42,7 +44,9 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
 #'
 #' @examples
 #' \donttest{
-#' dp_playerids()
+#' try( # try only shown here because sometimes CRAN checks are weird
+#'   dp_playerids()
+#' )
 #' }
 #'
 #' @seealso <https://github.com/DynastyProcess/data>
@@ -84,6 +88,7 @@ dp_playerids <- function() {
 #'
 #' @examples
 #' \donttest{
+#'
 #' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 #'
 #' dp_cleannames(c("Trubisky, Mitch", "Atwell, Chatarius", "Elliott, Zeke", "Elijah Moore"),

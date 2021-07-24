@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' # ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' # ff_scoringhistory(ssb_conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+#' ff_scoringhistory(ssb_conn, season = 2020)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_scoringhistory MFL: returns scoring history in a flat table, one row per player per week.

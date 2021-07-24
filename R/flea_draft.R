@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-#' ff_draft(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+#'   ff_draft(conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_draft Fleaflicker: returns a table of drafts for the current year

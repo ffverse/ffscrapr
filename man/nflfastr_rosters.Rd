@@ -22,7 +22,9 @@ the nflfastr repository.
 }
 \examples{
 \donttest{
-nflfastr_rosters(seasons = 2019:2020)
+try( # try only shown here because sometimes CRAN checks are weird
+  nflfastr_rosters(seasons = 2019:2020)
+)
 }
 
 }

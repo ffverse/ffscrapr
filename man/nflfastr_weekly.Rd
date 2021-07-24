@@ -25,7 +25,9 @@ the nflfastr repository.
 }
 \examples{
 \donttest{
-nflfastr_weekly()
+try( # try only shown here because sometimes CRAN checks are weird
+  nflfastr_weekly()
+)
 }
 
 }

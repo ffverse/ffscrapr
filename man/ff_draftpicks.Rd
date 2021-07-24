@@ -45,6 +45,7 @@ Returns all draft picks (current and future) that belong to a specific franchise
 
 \examples{
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- espn_connect(
   season = 2018,
   league_id = 1178049,
@@ -53,21 +54,28 @@ conn <- espn_connect(
 )
 
 ff_draftpicks(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(2020, 206154)
 ff_draftpicks(conn, franchise_id = 1373475)
+}) # end try
 }
 
 \donttest{
-dlf_conn <- mfl_connect(2020, league_id = 37920)
-ff_draftpicks(conn = dlf_conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  dlf_conn <- mfl_connect(2020, league_id = 37920)
+  ff_draftpicks(conn = dlf_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_draftpicks(jml_conn)
+}) # end try
 }
 
 }

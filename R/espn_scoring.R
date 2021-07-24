@@ -6,8 +6,10 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_scoring(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_scoring(conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_scoring ESPN: returns scoring settings in a flat table, override positions have their own scoring.
