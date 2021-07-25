@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
       </span>
     </div>
 
@@ -181,7 +181,7 @@
       <h1 data-toc-skip>Fleaflicker: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-07-20</h4>
+            <h4 class="date">2021-07-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/fleaflicker_basics.Rmd"><code>vignettes/fleaflicker_basics.Rmd</code></a></small>
       <div class="hidden name"><code>fleaflicker_basics.Rmd</code></div>
@@ -239,7 +239,7 @@
 <code class="sourceCode R"><span class="va">aaa_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_rosters</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 7</span>
+<span class="co">#&gt; # A tibble: 6 × 7</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name  pos   team  sportradar_id  </span>
 <span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt; 1      1578553 Running Bear       12032 Carson Wentz QB    IND   e9a5c16b-4472-…</span>
@@ -276,7 +276,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt; # A tibble: 6 × 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name  pos   team  sportradar_id  </span>
 <span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Prescott QB    DAL   86197778-8d4b-…</span>
@@ -301,7 +301,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span>
 
 <span class="va">value_summary</span>
-<span class="co">#&gt; # A tibble: 12 x 7</span>
+<span class="co">#&gt; # A tibble: 12 × 7</span>
 <span class="co">#&gt;    franchise_id franchise_name        team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1      1581722 syd12nyjets's Team         42601 12120 10478 19263   740</span>
@@ -323,7 +323,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="va">round</span>, <span class="fl">3</span><span class="op">)</span>
 
 <span class="va">value_summary_pct</span>
-<span class="co">#&gt; # A tibble: 12 x 7</span>
+<span class="co">#&gt; # A tibble: 12 × 7</span>
 <span class="co">#&gt;    franchise_id franchise_name        team_value    QB    RB    WR    TE</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;                      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      1581722 syd12nyjets's Team         0.112    NA 0.086 0.147 0.026</span>
@@ -360,7 +360,7 @@
               values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">age_summary</span>
-<span class="co">#&gt; # A tibble: 12 x 10</span>
+<span class="co">#&gt; # A tibble: 12 × 10</span>
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;           &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
