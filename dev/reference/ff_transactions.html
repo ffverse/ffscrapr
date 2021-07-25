@@ -93,7 +93,7 @@ Each trade is represented twice, once per each team." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.4.02</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.00</span>
       </span>
     </div>
 
@@ -310,20 +310,20 @@ Each trade is represented twice, once per each team.</p>
 <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
 <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 305 × 12</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 303 × 12</span>
 #&gt;    timestamp           type     type_desc franchise_id franchise_name  player_id
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;glue&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-07 <span style='color: #949494;'>01:54:05</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 16397    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-06 <span style='color: #949494;'>01:40:32</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14018    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-03 <span style='color: #949494;'>14:24:59</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14849    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-06-30 <span style='color: #949494;'>19:56:06</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's Te… 16576    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-06-30 <span style='color: #949494;'>13:59:25</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 12058    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-06-30 <span style='color: #949494;'>13:59:22</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 11398    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-06-30 <span style='color: #949494;'>13:58:24</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 15707    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-30 <span style='color: #949494;'>13:58:19</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 10256    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-24 <span style='color: #949494;'>04:58:55</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>722 syd12nyjets's … 14725    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-24 <span style='color: #949494;'>00:28:18</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>722 syd12nyjets's … 13845    
-#&gt; <span style='color: #949494;'># … with 295 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    13782    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    15642    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    16630    
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    16386    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-07 <span style='color: #949494;'>01:54:05</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 16397    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-06 <span style='color: #949494;'>01:40:32</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14018    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-03 <span style='color: #949494;'>14:24:59</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14849    
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-30 <span style='color: #949494;'>19:56:06</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's Te… 16576    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-30 <span style='color: #949494;'>13:59:25</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 12058    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-30 <span style='color: #949494;'>13:59:22</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 11398    
+#&gt; <span style='color: #949494;'># … with 293 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, trade_partner_id &lt;int&gt;, trade_partner_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   trade_id &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
 
