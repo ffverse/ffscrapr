@@ -10,8 +10,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- fleaflicker_connect(2020, 206154)
 #' ff_draftpicks(conn, franchise_id = 1373475)
+#' }) # end try
 #' }
 #'
 #' @export

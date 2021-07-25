@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' # conn <- fleaflicker_connect(2020, 312861)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#' conn <- fleaflicker_connect(2020, 312861)
 #' ff_scoringhistory(conn, season = 2020)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_scoringhistory Fleaflicker: returns scoring history in a flat table, one row per player per week.

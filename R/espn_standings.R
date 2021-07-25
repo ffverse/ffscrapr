@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
-#' espn_conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_standings(espn_conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   espn_conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_standings(espn_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_standings ESPN: returns standings and points data.

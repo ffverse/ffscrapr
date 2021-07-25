@@ -9,8 +9,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- fleaflicker_connect(season = 2020, league_id = 206154)
 #' ff_starter_positions(conn)
+#' }) # end try
 #' }
 #'
 #' @export

@@ -14,7 +14,9 @@ Fetches a copy of the latest DynastyProcess player IDs csv
 }
 \examples{
 \donttest{
-dp_playerids()
+try( # try only shown here because sometimes CRAN checks are weird
+  dp_playerids()
+)
 }
 
 }

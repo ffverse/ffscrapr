@@ -31,4 +31,4 @@ use_ffscrapr_tests_version <- function(version){
   invisible()
 }
 
-# use_ffscrapr_tests_version('1.4.4')
+use_ffscrapr_tests_version('1.4.5')

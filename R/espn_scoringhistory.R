@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_scoringhistory(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_scoringhistory(conn, season = 2020)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_scoringhistory ESPN: returns scoring history in a flat table, one row per player per week.

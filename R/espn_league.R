@@ -6,8 +6,12 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_league(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'
+#'   ff_league(conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_league ESPN: returns a summary of league features.
@@ -87,12 +91,17 @@ ff_league.espn_conn <- function(conn) {
 #' @noRd
 .espn_check_ppr <- function(league_endpoint) {
   stat_map <- .espn_stat_map()
-  stat_ids <- league_endpoint$content$settings$scoringSettings$scoringItems %>% purrr::map_chr(~ .x$statId)
-  stat_ids_named <- stat_map[stat_ids] # %>% purrr::discard(~is.na(.x))
-  idx_rec <- which(stat_ids_named == "receivingReceptions")
-  seq_stat_ids <- seq_along(stat_ids)
-  ppr <- league_endpoint$content$settings$scoringSettings$scoringItems[idx_rec][[1]]$point
-  ifelse(ppr > 0, paste0(ppr, "_ppr"), "zero_ppr")
+  ppr <- league_endpoint %>%
+    purrr::pluck("content","settings","scoringSettings","scoringItems") %>%
+    purrr::map(`[`,c("statId","points")) %>%
+    dplyr::bind_rows() %>%
+    dplyr::mutate(
+      stat_name = .espn_stat_map()[as.character(.data$statId)]
+    ) %>%
+    dplyr::filter(.data$stat_name == "receivingReceptions") %>%
+    dplyr::pull("points")
+
+  ifelse(length(ppr) > 0 && ppr!=0, paste0(ppr, "_ppr"), "zero_ppr")
 }
 
 #' @noRd

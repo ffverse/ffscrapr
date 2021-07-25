@@ -1,3 +1,13 @@
+# ffscrapr 1.4.5
+
+The main goal of v1.4.5 is to comply with CRAN somehow testing our examples.
+
+## Minor changes
+- `ff_league()` for ESPN now works for non-ppr leagues.
+- Include `try()` in all examples because apparently `\donttest` doesn't do anything anymore 😡 (fixes #308)
+
+---
+
 # ffscrapr 1.4.4
 
 The main goal of v1.4.4 is to patch minor bugs and to add some minor extensions such as an HTML cleaning function. v1.4.4 is also served from a different github organization and website domain.

@@ -64,17 +64,23 @@ ff_transactions(conn)
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(season = 2020, league_id = 312861)
 ff_transactions(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 dlf_conn <- mfl_connect(2019, league_id = 37920)
 ff_transactions(dlf_conn)
+}) # end try
 }
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-x <- ff_transactions(jml_conn, week = 1:17)
+ff_transactions(jml_conn, week = 1:2)
+}) # end try
 }
 
 }

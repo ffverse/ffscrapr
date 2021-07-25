@@ -15,7 +15,10 @@ A cached table of Sleeper NFL players. Will store in memory for each session!
 }
 \examples{
 \donttest{
-player_list <- sleeper_players()
+try({ # try only shown here because sometimes CRAN checks are weird
+x <- sleeper_players()
+dplyr::sample_n(x,5)
+}) # end try
 }
 
 }

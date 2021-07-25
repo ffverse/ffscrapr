@@ -17,7 +17,9 @@
 #'
 #' @examples
 #' \donttest{
-#' nflfastr_weekly()
+#' try( # try only shown here because sometimes CRAN checks are weird
+#'   nflfastr_weekly()
+#' )
 #' }
 #'
 #' @return Weekly stats for all passers, rushers and receivers in the nflfastR play-by-play data from the 1999 season to the most recent season
@@ -56,7 +58,9 @@ nflfastr_weekly <- function(type = c("offense", "defense", "all")) {
 #'
 #' @examples
 #' \donttest{
-#' nflfastr_rosters(seasons = 2019:2020)
+#' try( # try only shown here because sometimes CRAN checks are weird
+#'   nflfastr_rosters(seasons = 2019:2020)
+#' )
 #' }
 #'
 #' @return Data frame where each individual row represents a player in the roster of the given team and season

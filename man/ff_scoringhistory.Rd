@@ -46,24 +46,31 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_scoringhistory(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn <- espn_connect(season = 2020, league_id = 899513)
+  ff_scoringhistory(conn, season = 2020)
+}) # end try
 }
 
 \donttest{
-# conn <- fleaflicker_connect(2020, 312861)
+try({ # try only shown here because sometimes CRAN checks are weird
+conn <- fleaflicker_connect(2020, 312861)
 ff_scoringhistory(conn, season = 2020)
+}) # end try
 }
 
 \donttest{
-# ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-# ff_scoringhistory(ssb_conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+ff_scoringhistory(ssb_conn, season = 2020)
+}) # end try
 }
 
 \donttest{
-#'
-# conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-# ff_scoringhistory(conn, season = 2020)
+try({ # try only shown here because sometimes CRAN checks are weird
+conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+ff_scoringhistory(conn, season = 2020)
+}) # end try
 }
 
 }

@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_league(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_league(conn)
+#' }) # end try
 #' }
 #' @describeIn ff_rosters ESPN: Returns all roster data.
 #' @export

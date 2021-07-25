@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_standings(jml_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_standings Sleeper: returns all standings and points data and manually calculates allplay results.

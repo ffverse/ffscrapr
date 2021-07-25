@@ -45,23 +45,31 @@ This function returns a tidy dataframe with one row for every team for every wee
 
 \examples{
 \donttest{
-espn_conn <- espn_connect(season = 2020, league_id = 899513)
-ff_schedule(espn_conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  espn_conn <- espn_connect(season = 2020, league_id = 899513)
+  ff_schedule(espn_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 conn <- fleaflicker_connect(season = 2019, league_id = 206154)
-x <- ff_schedule(conn, week = 2:4)
+ff_schedule(conn, week = 2:4)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_schedule(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_schedule(jml_conn)
+}) # end try
 }
 
 }

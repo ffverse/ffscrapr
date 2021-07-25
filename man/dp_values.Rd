@@ -17,7 +17,9 @@ Fetches a copy of the latest DynastyProcess dynasty trade values sheets
 }
 \examples{
 \donttest{
-dp_values()
+try( # try only shown here because sometimes CRAN checks are weird
+  dp_values()
+)
 }
 
 }

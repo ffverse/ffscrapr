@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 #' ff_draft(jml_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_draft Sleeper: returns a dataframe of all drafts and draft selections, if available.

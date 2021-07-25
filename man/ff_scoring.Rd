@@ -41,23 +41,31 @@ This function returns a dataframe with detailed scoring settings for each league
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_scoring(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn <- espn_connect(season = 2020, league_id = 899513)
+  ff_scoring(conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
 ff_scoring(joe_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 ff_scoring(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_scoring(jml_conn)
+}) # end try
 }
 
 }

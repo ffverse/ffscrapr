@@ -46,23 +46,31 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 
 \examples{
 \donttest{
-conn <- espn_connect(season = 2020, league_id = 899513)
-ff_draft(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn <- espn_connect(season = 2020, league_id = 899513)
+  ff_draft(conn)
+}) # end try
 }
 
 \donttest{
-conn <- fleaflicker_connect(season = 2020, league_id = 206154)
-ff_draft(conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn <- fleaflicker_connect(season = 2020, league_id = 206154)
+  ff_draft(conn)
+}) # end try
 }
 
 \donttest{
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-ff_draft(ssb_conn)
+try({ # try only shown here because sometimes CRAN checks are weird
+  ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_draft(ssb_conn)
+}) # end try
 }
 
 \donttest{
+try({ # try only shown here because sometimes CRAN checks are weird
 jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
 ff_draft(jml_conn)
+}) # end try
 }
 
 }

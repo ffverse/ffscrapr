@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- fleaflicker_connect(season = 2019, league_id = 206154)
-#' x <- ff_schedule(conn, week = 2:4)
+#' ff_schedule(conn, week = 2:4)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_schedule Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.

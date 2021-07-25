@@ -8,9 +8,13 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 1178049)
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #'
-#' player_list <- espn_players(conn, season = 2020)
+#'   conn <- espn_connect(season = 2020, league_id = 1178049)
+#'
+#'   espn_players(conn, season = 2020)
+#'
+#' }) # end try
 #' }
 #'
 #' @return a dataframe containing all ~2000+ active players in the ESPN database

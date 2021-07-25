@@ -8,9 +8,10 @@
 #'
 #' @examples
 #' \donttest{
-#' #'
-#' # conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' # ff_scoringhistory(conn, season = 2020)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#' conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#' ff_scoringhistory(conn, season = 2020)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_scoringhistory Sleeper: returns scoring history in a flat table, one row per player per week.

@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
-#' conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_draft(conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_draft(conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_draft ESPN: returns the current year's draft/auction, including details on keepers

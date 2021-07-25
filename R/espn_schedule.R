@@ -6,8 +6,10 @@
 #'
 #' @examples
 #' \donttest{
-#' espn_conn <- espn_connect(season = 2020, league_id = 899513)
-#' ff_schedule(espn_conn)
+#' try({ # try only shown here because sometimes CRAN checks are weird
+#'   espn_conn <- espn_connect(season = 2020, league_id = 899513)
+#'   ff_schedule(espn_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_schedule ESPN: returns schedule data, one row for every franchise for every week. Completed games have result data.

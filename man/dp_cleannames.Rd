@@ -42,6 +42,7 @@ Applies some name-cleaning heuristics to facilitate joins. These heuristics may 
 }
 \examples{
 \donttest{
+
 dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 
 dp_cleannames(c("Trubisky, Mitch", "Atwell, Chatarius", "Elliott, Zeke", "Elijah Moore"),

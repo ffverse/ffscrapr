@@ -8,8 +8,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' conn <- fleaflicker_connect(2020, 312861)
 #' player_list <- fleaflicker_players(conn, page_limit = 2)
+#' }) # end try
 #' }
 #'
 #' @return a dataframe containing all ~7000+ players in the Fleaflicker database

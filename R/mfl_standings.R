@@ -7,8 +7,10 @@
 #'
 #' @examples
 #' \donttest{
+#' try({ # try only shown here because sometimes CRAN checks are weird
 #' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
 #' ff_standings(ssb_conn)
+#' }) # end try
 #' }
 #'
 #' @describeIn ff_standings MFL: returns H2H/points/all-play/best-ball data in a table.
