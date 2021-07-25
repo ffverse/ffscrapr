@@ -1,8 +1,10 @@
 # ffscrapr 1.4.5
 
+The main goal of v1.4.5 is to comply with CRAN somehow testing our examples.
+
 ## Minor changes
-- `ff_league()` for ESPN now works for non-ppr leagues. (v1.4.4.01)
-- Include `try()` in all examples because apparently `\donttest` doesn't do anything anymore 😡 (fixes #308) (v1.4.4.02)
+- `ff_league()` for ESPN now works for non-ppr leagues.
+- Include `try()` in all examples because apparently `\donttest` doesn't do anything anymore 😡 (fixes #308)
 
 ---
 

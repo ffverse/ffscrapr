@@ -1,16 +1,13 @@
-## RESUBMISSION
-
-Removed stray revdep/ folder that was missed in Rbuildignore.
-
 ## SUBMISSION
 
-This release patches some bugs and extends features to support a new related package, ffsimulator.
+This release patches some CRAN check errors.
 
 ## Test environments
-* local (Windows) R installation, R 4.1.0
+* local (Windows) R installation,   R 4.1.0
+* ubuntu 20.04 (on GitHub Actions), R devel
 * ubuntu 20.04 (on GitHub Actions), R 4.1.0
-* MacOS (on GitHub Actions), R 4.1.0
-* win-builder (devel)
+* MacOS        (on GitHub Actions), R 4.1.0
+* Windows      (on GitHub Actions), R 4.1.0
 
 ## R CMD check results
 

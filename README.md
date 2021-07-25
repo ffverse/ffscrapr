@@ -84,9 +84,9 @@ ff_rosters(ssb)
 #>   franchise_id franchise_name player_id player_name     pos   team    age
 #>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
 #> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.9
-#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.6
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.7
 #> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.5
-#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30  
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30.1
 #> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.4
 #> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
 #> #   drafted <chr>, draft_year <chr>, draft_round <chr>
