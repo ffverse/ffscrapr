@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.00</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.01</span>
       </span>
     </div>
 
@@ -182,7 +182,7 @@
       <h1 data-toc-skip>Fleaflicker: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-07-25</h4>
+            <h4 class="date">2021-07-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/fleaflicker_getendpoint.Rmd"><code>vignettes/fleaflicker_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>fleaflicker_getendpoint.Rmd</code></div>
@@ -250,14 +250,14 @@ Parameters:
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_scoreboard</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 8</span>
-<span class="co">#&gt;   id     away     home    awayScore homeScore homeResult awayResult isFinalScore</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;lgl&gt;       </span>
-<span class="co">#&gt; 1 46301… Winterf… Top Ci…      207.      162. LOSE       WIN        TRUE        </span>
-<span class="co">#&gt; 2 46301… Goldenr… Winter…      145.      157. WIN        LOSE       TRUE        </span>
-<span class="co">#&gt; 3 46301… Wintert… Clutch…      153.      192. WIN        LOSE       TRUE        </span>
-<span class="co">#&gt; 4 46301… Manitob… Bamend…      182.      183. WIN        LOSE       TRUE        </span>
-<span class="co">#&gt; 5 46301… Springf… Shangh…      176.      129. LOSE       WIN        TRUE        </span>
-<span class="co">#&gt; 6 46301… Boomtow… Philad…      199.      200. WIN        LOSE       TRUE</span></code></pre></div>
+<span class="co">#&gt;   id       away    home   awayScore homeScore homeResult awayResult isFinalScore</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;lgl&gt;       </span>
+<span class="co">#&gt; 1 46301923 Winter… Top C…      207.      162. LOSE       WIN        TRUE        </span>
+<span class="co">#&gt; 2 46301919 Golden… Winte…      145.      157. WIN        LOSE       TRUE        </span>
+<span class="co">#&gt; 3 46301921 Winter… Clutc…      153.      192. WIN        LOSE       TRUE        </span>
+<span class="co">#&gt; 4 46301922 Manito… Bamen…      182.      183. WIN        LOSE       TRUE        </span>
+<span class="co">#&gt; 5 46301920 Spring… Shang…      176.      129. LOSE       WIN        TRUE        </span>
+<span class="co">#&gt; 6 46301926 Boomto… Phila…      199.      200. WIN        LOSE       TRUE</span></code></pre></div>
 <p>From here, we’ll be able to feed these IDs into the FetchLeagueBoxscore endpoint <a href="https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get" class="uri">https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get</a> as the fantasy_game_id - and from here you’ll be able to get to player-level points and actual stat data for each fantasy game!</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># same variables as previous endpoint call!</span>

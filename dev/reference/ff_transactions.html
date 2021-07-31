@@ -93,7 +93,7 @@ Each trade is represented twice, once per each team." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.00</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.01</span>
       </span>
     </div>
 
@@ -311,18 +311,18 @@ Each trade is represented twice, once per each team.</p>
 <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 303 × 12</span>
-#&gt;    timestamp           type     type_desc franchise_id franchise_name  player_id
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;glue&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    13782    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    15642    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    16630    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_ag… dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear    16386    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-07 <span style='color: #949494;'>01:54:05</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 16397    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-06 <span style='color: #949494;'>01:40:32</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14018    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-03 <span style='color: #949494;'>14:24:59</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004's… 14849    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-30 <span style='color: #949494;'>19:56:06</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's Te… 16576    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-30 <span style='color: #949494;'>13:59:25</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 12058    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-30 <span style='color: #949494;'>13:59:22</span> free_ag… dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Team 11398    
+#&gt;    timestamp           type        type_desc franchise_id franchise_name player_id
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;glue&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   13782    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   15642    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   16630    
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-07-25 <span style='color: #949494;'>13:19:07</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   16386    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-07-07 <span style='color: #949494;'>01:54:05</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004'… 16397    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-07-06 <span style='color: #949494;'>01:40:32</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004'… 14018    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-07-03 <span style='color: #949494;'>14:24:59</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004'… 14849    
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-06-30 <span style='color: #949494;'>19:56:06</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16576    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-06-30 <span style='color: #949494;'>13:59:25</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Te… 12058    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-06-30 <span style='color: #949494;'>13:59:22</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>719 Jmuthers's Te… 11398    
 #&gt; <span style='color: #949494;'># … with 293 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, trade_partner_id &lt;int&gt;, trade_partner_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   trade_id &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
@@ -333,18 +333,18 @@ Each trade is represented twice, once per each team.</p>
 <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>dlf_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,146 × 12</span>
-#&gt;    timestamp           type   type_desc franchise_id franchise_name    player_id
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2019-12-19 <span style='color: #949494;'>11:56:49</span> FREE_… added     0003         Electric Spiders  13868    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2019-12-19 <span style='color: #949494;'>11:56:49</span> FREE_… dropped   0003         Electric Spiders  13387    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2019-12-19 <span style='color: #949494;'>03:03:13</span> FREE_… added     0019         Advance Reptilia… 12857    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2019-12-19 <span style='color: #949494;'>03:03:13</span> FREE_… dropped   0019         Advance Reptilia… 11186    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2019-12-19 <span style='color: #949494;'>03:02:26</span> FREE_… added     0019         Advance Reptilia… 13868    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2019-12-19 <span style='color: #949494;'>03:02:26</span> FREE_… dropped   0019         Advance Reptilia… 14305    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2019-12-15 <span style='color: #949494;'>17:28:15</span> FREE_… added     0003         Electric Spiders  12197    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2019-12-15 <span style='color: #949494;'>17:27:28</span> FREE_… dropped   0003         Electric Spiders  12623    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2019-12-15 <span style='color: #949494;'>17:27:00</span> FREE_… added     0003         Electric Spiders  13387    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2019-12-15 <span style='color: #949494;'>17:26:27</span> IR     deactiva… 0003         Electric Spiders  14138    
+#&gt;    timestamp           type       type_desc franchise_id franchise_name player_id
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2019-12-19 <span style='color: #949494;'>11:56:49</span> FREE_AGENT added     0003         Electric Spid… 13868    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2019-12-19 <span style='color: #949494;'>11:56:49</span> FREE_AGENT dropped   0003         Electric Spid… 13387    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2019-12-19 <span style='color: #949494;'>03:03:13</span> FREE_AGENT added     0019         Advance Repti… 12857    
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2019-12-19 <span style='color: #949494;'>03:03:13</span> FREE_AGENT dropped   0019         Advance Repti… 11186    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2019-12-19 <span style='color: #949494;'>03:02:26</span> FREE_AGENT added     0019         Advance Repti… 13868    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2019-12-19 <span style='color: #949494;'>03:02:26</span> FREE_AGENT dropped   0019         Advance Repti… 14305    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2019-12-15 <span style='color: #949494;'>17:28:15</span> FREE_AGENT added     0003         Electric Spid… 12197    
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2019-12-15 <span style='color: #949494;'>17:27:28</span> FREE_AGENT dropped   0003         Electric Spid… 12623    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2019-12-15 <span style='color: #949494;'>17:27:00</span> FREE_AGENT added     0003         Electric Spid… 13387    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2019-12-15 <span style='color: #949494;'>17:26:27</span> IR         deactiva… 0003         Electric Spid… 14138    
 #&gt; <span style='color: #949494;'># … with 1,136 more rows, and 6 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>

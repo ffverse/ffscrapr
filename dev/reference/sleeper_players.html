@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.00</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.01</span>
       </span>
     </div>
 
@@ -250,21 +250,20 @@
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>x</span>,<span class='fl'>5</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 33</span>
-#&gt;   player_id player_name      pos     age team  status  years_exp fantasy_data_id
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 6904      Jalen Hurts      QB     23   PHI   Active          1           <span style='text-decoration: underline;'>21</span>831
-#&gt; <span style='color: #BCBCBC;'>2</span> 3255      Kyler Fackrell   LB     29.7 LAC   Active          5           <span style='text-decoration: underline;'>18</span>016
-#&gt; <span style='color: #BCBCBC;'>3</span> 3707      Boston Stiverson G      28.8 <span style='color: #BB0000;'>NA</span>    Inacti…         0           <span style='text-decoration: underline;'>18</span>513
-#&gt; <span style='color: #BCBCBC;'>4</span> 7103      Tavien Feaster   RB     23.6 ARI   Active          1           <span style='text-decoration: underline;'>21</span>850
-#&gt; <span style='color: #BCBCBC;'>5</span> 6790      D'Andre Swift    RB     22.5 DET   Active          1           <span style='text-decoration: underline;'>21</span>684
-#&gt; <span style='color: #949494;'># … with 25 more variables: rotowire_id &lt;int&gt;, sportradar_id &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   espn_id &lt;int&gt;, yahoo_id &lt;int&gt;, rotoworld_id &lt;int&gt;, gsis_id &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   stats_id &lt;int&gt;, college &lt;chr&gt;, number &lt;int&gt;, hashtag &lt;chr&gt;, height &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   sport &lt;chr&gt;, birth_date &lt;date&gt;, fantasy_positions &lt;chr&gt;, weight &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   active &lt;lgl&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   depth_chart_position &lt;chr&gt;, depth_chart_order &lt;int&gt;, high_school &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_description &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   practice_participation &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+#&gt;   player_id player_name      pos     age team  status   years_exp espn_id
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 6904      Jalen Hurts      QB     23   PHI   Active           1 4<span style='text-decoration: underline;'>040</span>715
+#&gt; <span style='color: #BCBCBC;'>2</span> 3255      Kyler Fackrell   LB     29.7 LAC   Active           5 2<span style='text-decoration: underline;'>574</span>229
+#&gt; <span style='color: #BCBCBC;'>3</span> 3707      Boston Stiverson G      28.8 <span style='color: #BB0000;'>NA</span>    Inactive         0      <span style='color: #BB0000;'>NA</span>
+#&gt; <span style='color: #BCBCBC;'>4</span> 7103      Tavien Feaster   RB     23.6 ARI   Active           1 4<span style='text-decoration: underline;'>035</span>470
+#&gt; <span style='color: #BCBCBC;'>5</span> 6790      D'Andre Swift    RB     22.5 DET   Active           1 4<span style='text-decoration: underline;'>259</span>545
+#&gt; <span style='color: #949494;'># … with 25 more variables: fantasy_data_id &lt;int&gt;, sportradar_id &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rotowire_id &lt;int&gt;, yahoo_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   stats_id &lt;int&gt;, hashtag &lt;chr&gt;, weight &lt;chr&gt;, fantasy_positions &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   college &lt;chr&gt;, height &lt;chr&gt;, active &lt;lgl&gt;, sport &lt;chr&gt;, birth_date &lt;date&gt;,</span>
+#&gt; <span style='color: #949494;'>#   number &lt;int&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   depth_chart_order &lt;int&gt;, depth_chart_position &lt;chr&gt;, high_school &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_participation &lt;chr&gt;, …</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
