@@ -58,7 +58,7 @@ ff_league(conn)
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+ssb_conn <- ff_connect(platform = "mfl", league_id = 22627, season = 2021)
 ff_league(ssb_conn)
 }) # end try
 }
