@@ -1,5 +1,11 @@
 # ffscrapr (development version)
 
+## Minor changes
+
+- `ff_league()` for MFL now returns league type ("dynasty", "keeper", "redraft") if the field is set.
+- `ff_league()` for MFL now returns draft type (e.g. "email draft", "live auction") if the field is set.
+- `ff_league()` for MFL now returns draft player pool (e.g. "Rookie", "Veteran", "Both") if the field is set. (These three changes fix #311, thanks @maat7043!)
+
 ---
 
 # ffscrapr 1.4.5
@@ -7,6 +13,7 @@
 The main goal of v1.4.5 is to comply with CRAN somehow testing our examples.
 
 ## Minor changes
+
 - `ff_league()` for ESPN now works for non-ppr leagues.
 - Include `try()` in all examples because apparently `\donttest` doesn't do anything anymore 😡 (fixes #308)
 
