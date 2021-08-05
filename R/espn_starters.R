@@ -19,7 +19,7 @@
 #' @export
 ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
 
-  if (conn$season < 2019) stop("Starting lineups not available before 2019")
+  if (conn$season < 2018) stop("Starting lineups not available before 2018")
 
   checkmate::assert_numeric(weeks)
 
