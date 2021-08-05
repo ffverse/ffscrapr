@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.02</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.03</span>
       </span>
     </div>
 
@@ -250,20 +250,20 @@
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>x</span>,<span class='fl'>5</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 33</span>
-#&gt;   player_id player_name    pos     age team  status   years_exp fantasy_data_id
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 424       T.J. Lang      G      33.9 <span style='color: #BB0000;'>NA</span>    Active          11            <span style='text-decoration: underline;'>9</span>050
-#&gt; <span style='color: #BCBCBC;'>2</span> 604       Toby Gerhart   RB     34.4 <span style='color: #BB0000;'>NA</span>    Inactive        10           <span style='text-decoration: underline;'>11</span>413
-#&gt; <span style='color: #BCBCBC;'>3</span> 7211      Zimari Manning WR     <span style='color: #BB0000;'>NA</span>   <span style='color: #BB0000;'>NA</span>    Inactive         0           <span style='text-decoration: underline;'>22</span>214
-#&gt; <span style='color: #BCBCBC;'>4</span> 2572      Justin Coleman CB     28.4 MIA   Active           6           <span style='text-decoration: underline;'>17</span>037
-#&gt; <span style='color: #BCBCBC;'>5</span> 6411      Kyle Vasey     LS     25.3 <span style='color: #BB0000;'>NA</span>    Inactive         1           <span style='text-decoration: underline;'>21</span>308
-#&gt; <span style='color: #949494;'># … with 25 more variables: sportradar_id &lt;chr&gt;, rotowire_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   espn_id &lt;int&gt;, yahoo_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   stats_id &lt;int&gt;, sport &lt;chr&gt;, weight &lt;chr&gt;, birth_date &lt;date&gt;, height &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   hashtag &lt;chr&gt;, college &lt;chr&gt;, number &lt;int&gt;, fantasy_positions &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   active &lt;lgl&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   depth_chart_order &lt;int&gt;, depth_chart_position &lt;chr&gt;, high_school &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_participation &lt;chr&gt;, …</span></div><div class='input'><span class='co'># }</span>
+#&gt;   player_id player_name    pos     age team  status   years_exp rotowire_id
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 424       T.J. Lang      G      33.9 <span style='color: #BB0000;'>NA</span>    Active          11        <span style='text-decoration: underline;'>6</span>337
+#&gt; <span style='color: #BCBCBC;'>2</span> 604       Toby Gerhart   RB     34.4 <span style='color: #BB0000;'>NA</span>    Inactive        10        <span style='text-decoration: underline;'>6</span>445
+#&gt; <span style='color: #BCBCBC;'>3</span> 7211      Zimari Manning WR     <span style='color: #BB0000;'>NA</span>   <span style='color: #BB0000;'>NA</span>    Inactive         0       <span style='text-decoration: underline;'>14</span>854
+#&gt; <span style='color: #BCBCBC;'>4</span> 2572      Justin Coleman CB     28.4 MIA   Active           6       <span style='text-decoration: underline;'>10</span>430
+#&gt; <span style='color: #BCBCBC;'>5</span> 6411      Kyle Vasey     LS     25.3 <span style='color: #BB0000;'>NA</span>    Inactive         1       <span style='text-decoration: underline;'>14</span>030
+#&gt; <span style='color: #949494;'># … with 25 more variables: fantasy_data_id &lt;int&gt;, espn_id &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   sportradar_id &lt;chr&gt;, yahoo_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   stats_id &lt;int&gt;, weight &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;, sport &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   number &lt;int&gt;, fantasy_positions &lt;chr&gt;, birth_date &lt;date&gt;, active &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   hashtag &lt;chr&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;, high_school &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   depth_chart_position &lt;chr&gt;, depth_chart_order &lt;int&gt;, injury_notes &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   injury_body_part &lt;chr&gt;, practice_description &lt;chr&gt;, …</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
