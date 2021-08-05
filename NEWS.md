@@ -6,6 +6,7 @@
 - `ff_league()` for MFL now returns draft type (e.g. "email draft", "live auction") if the field is set.
 - `ff_league()` for MFL now returns draft player pool (e.g. "Rookie", "Veteran", "Both") if the field is set. (These three changes fix #311, thanks @maat7043!)
 - `ff_schedule()` for ESPN now credits a bye team with a win instead of causing an error.
+- `espn_getendpoint()` no longer returns an error for seasons prior to 2018.
 
 ---
 
