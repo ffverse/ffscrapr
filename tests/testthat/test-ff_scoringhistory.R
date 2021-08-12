@@ -31,5 +31,10 @@ with_mock_api({
     tony_conn <- espn_connect(season = 2020, league_id = 899513)
     tony_scoringhistory <- ff_scoringhistory(tony_conn, 2019:2020)
     expect_tibble(tony_scoringhistory, min.rows = 3000)
+
+    template_scoringhistory <- ff_template(scoring_type = "sfb11",roster_type = "sfb11") %>%
+      ff_scoringhistory(2019:2020)
+
+    expect_tibble(template_scoringhistory, min.rows = 6000)
   })
 })
