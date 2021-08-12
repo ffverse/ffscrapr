@@ -9,8 +9,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_scoringhistory(conn, season = 2020)
+#'   conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#'   ff_scoringhistory(conn, season = 2020)
 #' }) # end try
 #' }
 #'
@@ -25,7 +25,8 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:2020, ...) {
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
-      by = c("event" = "ff_event"))
+      by = c("event" = "ff_event")
+    )
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters
   fastr_rosters <-

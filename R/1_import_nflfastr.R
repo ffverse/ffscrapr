@@ -59,7 +59,6 @@ nflfastr_weekly <- function(seasons = TRUE,
 #' @export
 
 nflfastr_rosters <- function(seasons) {
-
   df_rosters <- nflreadr::load_rosters(seasons = seasons)
 
   return(df_rosters)

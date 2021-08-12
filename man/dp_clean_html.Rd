@@ -17,8 +17,8 @@ Applies some regex to clean html tags from strings. This is useful for platforms
 }
 \examples{
 
-c("<b><font color= Cyan>Kevin OBrien (@kevinobrienff) </FONT></B>",
+c(
+  "<b><font color= Cyan>Kevin OBrien (@kevinobrienff) </FONT></B>",
   "<em><font color= Purple> Other fun names</font></em>"
-  ) \%>\% dp_clean_html()
-
+) \%>\% dp_clean_html()
 }

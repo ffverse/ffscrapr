@@ -51,9 +51,10 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
   all_transactions_list <- transactions_response %>%
     purrr::pluck("content", "topics")
 
-  if(is.null(all_transactions_list)) {
+  if (is.null(all_transactions_list)) {
     warning(glue::glue("No transactions found for {conn$season} - {conn$league_id}!"),
-            call. = FALSE)
+      call. = FALSE
+    )
 
     return(NULL)
   }

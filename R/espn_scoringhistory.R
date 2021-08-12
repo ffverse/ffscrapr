@@ -25,7 +25,8 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "espn"),
-      by = c("stat_name" = "ff_event"))
+      by = c("stat_name" = "ff_event")
+    )
 
   # Use custom ffscrapr function to get positions fron nflfastR rosters
   fastr_rosters <-

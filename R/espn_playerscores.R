@@ -15,7 +15,6 @@
 #'   conn <- espn_connect(season = 2020, league_id = 899513)
 #'
 #'   ff_playerscores(conn, limit = 5)
-#'
 #' }) # end try
 #' }
 #' @export

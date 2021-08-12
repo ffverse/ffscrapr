@@ -10,8 +10,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_draftpicks(jml_conn)
+#'   jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#'   ff_draftpicks(jml_conn)
 #' }) # end try
 #' }
 #'
@@ -56,10 +56,10 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
     purrr::map(`[`, c("round", "draft_slot", "roster_id", "player_id", "metadata")) %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    tidyr::hoist("metadata","auction_amount"="amount") %>%
-    dplyr::select(dplyr::any_of(c("round", "pick" = "draft_slot", "franchise_id" = "roster_id", "player_id","auction_amount")))
+    tidyr::hoist("metadata", "auction_amount" = "amount") %>%
+    dplyr::select(dplyr::any_of(c("round", "pick" = "draft_slot", "franchise_id" = "roster_id", "player_id", "auction_amount")))
 
-  if(all(is.na(picks$auction_amount))) {
+  if (all(is.na(picks$auction_amount))) {
     picks$auction_amount <- NULL
   } else {
     picks$auction_amount <- as.numeric(picks$auction_amount)
