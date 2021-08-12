@@ -23,9 +23,8 @@
 #' @return a connection object that can be used with `ff_scoring()`, `ff_scoringhistory()`, and `ff_starterpositions()`
 #' @export
 
-ff_template <- function(scoring_type = c("ppr","half_ppr","zero_ppr","sfb11"),
-                       roster_type = c("1qb","superflex","sfb11","idp")){
-
+ff_template <- function(scoring_type = c("ppr", "half_ppr", "zero_ppr", "sfb11"),
+                        roster_type = c("1qb", "superflex", "sfb11", "idp")) {
   scoring_type <- match.arg(scoring_type)
   roster_type <- match.arg(roster_type)
 
@@ -43,8 +42,7 @@ ff_template <- function(scoring_type = c("ppr","half_ppr","zero_ppr","sfb11"),
 #' @noRd
 #' @export
 print.template_conn <- function(x, ...) {
-  cat("<Default league: ", x$scoring_type, "·", x$roster_type, ">\n", sep = "")
-  str(x)
+  cat("<Default league: ", x$scoring_type, " - ", x$roster_type, ">\n", sep = "")
   invisible(x)
 }
 # nocov end
