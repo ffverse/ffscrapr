@@ -41,7 +41,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
 
   # Use custom ffscrapr function to get positions from nflfastR rosters
   fastr_rosters <-
-    nflfastr_rosters(season) %>%
+    nflfastr_rosters(seasons = season) %>%
     dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB", "FB"), "RB", .data$position)) %>%
     dplyr::left_join(
       dp_playerids() %>%
@@ -51,7 +51,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
     )
 
   # Load stats from nflfastr and map the rules from the internal stat_mapping file
-  fastr_weekly <- nflfastr_weekly() %>%
+  fastr_weekly <- nflfastr_weekly(seasons = season) %>%
     dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
     dplyr::select(
       "season", "player_id", "sportradar_id", "mfl_id", "position", "full_name","recent_team","week",

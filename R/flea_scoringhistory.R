@@ -41,7 +41,7 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
     )
 
   # Load stats from nflfastr and map the rules from the internal stat_mapping file
-  nflfastr_weekly() %>%
+  nflfastr_weekly(seasons = season) %>%
     dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
     tidyr::pivot_longer(
       names_to = "metric",

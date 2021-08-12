@@ -4,9 +4,10 @@
 
 - `ff_league()` for MFL now returns league type ("dynasty", "keeper", "redraft") if the field is set.
 - `ff_league()` for MFL now returns draft type (e.g. "email draft", "live auction") if the field is set.
-- `ff_league()` for MFL now returns draft player pool (e.g. "Rookie", "Veteran", "Both") if the field is set. (These three changes fix #311, thanks @maat7043!)
+- `ff_league()` for MFL now returns draft player pool (e.g. "Rookie", "Veteran", "Both") if the field is set. (These three changes fix #311, thanks @maat7043!) (1.4.5.02)
 - `ff_schedule()` for ESPN now credits a bye team with a win instead of causing an error.
-- `espn_getendpoint()` no longer returns an error for seasons prior to 2018.
+- `espn_getendpoint()` no longer returns an error for seasons prior to 2018. (Thanks, @JoeSydlowski!) (1.4.5.03)
+- `nflfastr_weekly()` and `nflfastr_roster()` now use the [nflreadr](https://nflreadr.nflverse.com) package functions back-end (1.4.5.04)
 
 ---
 
