@@ -29,5 +29,5 @@ try( # try only shown here because sometimes CRAN checks are weird
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/fast_scraper_roster.html}
+\url{https://nflreadr.nflverse.com}
 }

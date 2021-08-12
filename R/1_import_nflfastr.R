@@ -2,7 +2,7 @@
 
 #' Import latest nflfastr weekly stats
 #'
-#' Fetches a copy of the latest week-level stats from nflfastr's data repository, via the [`{nflreadr}`](https://nflreadr.nflverse.com) package.
+#' Fetches a copy of the latest week-level stats from nflfastr's data repository, via the [nflreadr](https://nflreadr.nflverse.com) package.
 #'
 #' The goal of this data is to replicate the NFL's official weekly stats, which
 #' can diverge a bit from what fantasy data feeds display.
@@ -45,7 +45,7 @@ nflfastr_weekly <- function(seasons = TRUE,
 #'
 #' @param seasons A numeric vector of seasons, earliest of which is 1999. TRUE returns all seasons, NULL returns latest season.
 #'
-#' @seealso <https://www.nflfastr.com/reference/fast_scraper_roster.html>
+#' @seealso <https://nflreadr.nflverse.com>
 #'
 #' @examples
 #' \donttest{

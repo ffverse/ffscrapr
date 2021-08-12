@@ -15,7 +15,7 @@ nflfastr_weekly(seasons = TRUE, type = c("offense", "defense", "all"))
 Weekly stats for all passers, rushers and receivers in the nflverse play-by-play data from the 1999 season to the most recent season
 }
 \description{
-Fetches a copy of the latest week-level stats from nflfastr's data repository, via the \code{\link{{nflreadr}}} package.
+Fetches a copy of the latest week-level stats from nflfastr's data repository, via the \href{https://nflreadr.nflverse.com}{nflreadr} package.
 }
 \details{
 The goal of this data is to replicate the NFL's official weekly stats, which
