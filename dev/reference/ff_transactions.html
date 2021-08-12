@@ -93,7 +93,7 @@ Each trade is represented twice, once per each team." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.04</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.05</span>
       </span>
     </div>
 
@@ -307,8 +307,8 @@ Each trade is represented twice, once per each team.</p>
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
-<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
+  <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 317 × 12</span>
 #&gt;    timestamp           type   type_desc franchise_id franchise_name   player_id
@@ -329,8 +329,8 @@ Each trade is represented twice, once per each team.</p>
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
-<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>dlf_conn</span><span class='op'>)</span>
+  <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
+  <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>dlf_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,146 × 12</span>
 #&gt;    timestamp           type       type_desc franchise_id franchise_name player_id
@@ -349,8 +349,8 @@ Each trade is represented twice, once per each team.</p>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, bbid_spent &lt;dbl&gt;, trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>jml_conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>
+  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>jml_conn</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 661 × 13</span>
 #&gt;    timestamp           type      type_desc franchise_id franchise_name player_id

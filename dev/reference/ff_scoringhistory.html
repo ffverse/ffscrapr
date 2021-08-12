@@ -93,7 +93,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.04</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.05</span>
       </span>
     </div>
 
@@ -227,7 +227,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get League-Specific Scoring History</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/ffverse/ffscrapr/blob/master/R/espn_scoringhistory.R'><code>R/espn_scoringhistory.R</code></a>, <a href='https://github.com/ffverse/ffscrapr/blob/master/R/flea_scoringhistory.R'><code>R/flea_scoringhistory.R</code></a>, and 2 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/R/0_generics.R'><code>R/0_generics.R</code></a>, <a href='https://github.com/ffverse/ffscrapr/blob/master/R/espn_scoringhistory.R'><code>R/espn_scoringhistory.R</code></a>, <a href='https://github.com/ffverse/ffscrapr/blob/master/R/flea_scoringhistory.R'><code>R/flea_scoringhistory.R</code></a>, and 3 more</small>
     <div class="hidden name"><code>ff_scoringhistory.Rd</code></div>
     </div>
 
@@ -248,6 +248,9 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>1999</span><span class='op'>:</span><span class='fl'>2020</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for sleeper_conn</span>
+<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>1999</span><span class='op'>:</span><span class='fl'>2020</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for template_conn</span>
 <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>1999</span><span class='op'>:</span><span class='fl'>2020</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -278,6 +281,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <li><p><code>flea_conn</code>: Fleaflicker: returns scoring history in a flat table, one row per player per week.</p></li>
 <li><p><code>mfl_conn</code>: MFL: returns scoring history in a flat table, one row per player per week.</p></li>
 <li><p><code>sleeper_conn</code>: Sleeper: returns scoring history in a flat table, one row per player per week.</p></li>
+<li><p><code>template_conn</code>: template: returns scoring history in a flat table, one row per player per week.</p></li>
 </ul>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -312,8 +316,8 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
-<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>312861</span><span class='op'>)</span>
+  <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,400 × 24</span>
 #&gt;    season  week gsis_id  sportradar_id    fleaflicker_id player_name pos   team 
@@ -338,8 +342,8 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>ssb_conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>ssb_conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,400 × 26</span>
 #&gt;    season  week gsis_id    sportradar_id   mfl_id player_name pos   team  points
@@ -364,8 +368,8 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,414 × 23</span>
 #&gt;    season  week gsis_id  sportradar_id sleeper_id player_name pos   team  points
@@ -386,6 +390,32 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 #&gt; <span style='color: #949494;'>#   rushing_fumbles_lost &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   receptions &lt;dbl&gt;, receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   receiving_fumbles_lost &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+
+<span class='co'># \donttest{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
+  <span class='va'>template_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_template.html'>ff_template</a></span><span class='op'>(</span>scoring_type <span class='op'>=</span> <span class='st'>"sfb11"</span>, roster_type <span class='op'>=</span> <span class='st'>"sfb11"</span><span class='op'>)</span>
+  <span class='fu'>ff_scoringhistory</span><span class='op'>(</span><span class='va'>template_conn</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,400 × 26</span>
+#&gt;    season  week gsis_id    sportradar_id   mfl_id player_name pos   team  points
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>   <span style='text-decoration: underline;'>2</span>020     1 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     30.0 
+#&gt; <span style='color: #BCBCBC;'> 2</span>   <span style='text-decoration: underline;'>2</span>020     2 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     22.2 
+#&gt; <span style='color: #BCBCBC;'> 3</span>   <span style='text-decoration: underline;'>2</span>020     3 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     40.4 
+#&gt; <span style='color: #BCBCBC;'> 4</span>   <span style='text-decoration: underline;'>2</span>020     4 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     55.5 
+#&gt; <span style='color: #BCBCBC;'> 5</span>   <span style='text-decoration: underline;'>2</span>020     5 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     26.1 
+#&gt; <span style='color: #BCBCBC;'> 6</span>   <span style='text-decoration: underline;'>2</span>020     6 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     27.1 
+#&gt; <span style='color: #BCBCBC;'> 7</span>   <span style='text-decoration: underline;'>2</span>020     7 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     61.9 
+#&gt; <span style='color: #BCBCBC;'> 8</span>   <span style='text-decoration: underline;'>2</span>020     8 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     35.1 
+#&gt; <span style='color: #BCBCBC;'> 9</span>   <span style='text-decoration: underline;'>2</span>020     9 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB      4.36
+#&gt; <span style='color: #BCBCBC;'>10</span>   <span style='text-decoration: underline;'>2</span>020    10 00-0019596 41c44740-d0f6-… 5848   Tom Brady   QB    TB     51.3 
+#&gt; <span style='color: #949494;'># … with 5,390 more rows, and 17 more variables: completions &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_yards &lt;dbl&gt;, passing_tds &lt;dbl&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_2pt_conversions &lt;dbl&gt;, rushing_yards &lt;dbl&gt;, rushing_tds &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_first_downs &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;, receptions &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_yards &lt;dbl&gt;, receiving_tds &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_2pt_conversions &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   receiving_first_downs &lt;dbl&gt;, passing_first_downs &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
