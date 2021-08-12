@@ -7,7 +7,7 @@
 nflfastr_rosters(seasons)
 }
 \arguments{
-\item{seasons}{A numeric vector of seasons, earliest of which is 1999}
+\item{seasons}{A numeric vector of seasons, earliest of which is 1999. TRUE returns all seasons, NULL returns latest season.}
 }
 \value{
 Data frame where each individual row represents a player in the roster of the given team and season
