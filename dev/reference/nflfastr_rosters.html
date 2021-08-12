@@ -93,7 +93,7 @@ The same input/output as nflfastr's fast_scraper_roster function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.03</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.04</span>
       </span>
     </div>
 
@@ -243,7 +243,7 @@ The same input/output as nflfastr's fast_scraper_roster function.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>seasons</th>
-      <td><p>A numeric vector of seasons, earliest of which is 1999</p></td>
+      <td><p>A numeric vector of seasons, earliest of which is 1999. TRUE returns all seasons, NULL returns latest season.</p></td>
     </tr>
     </table>
 
@@ -256,7 +256,7 @@ The same input/output as nflfastr's fast_scraper_roster function.</p>
 the nflfastr repository.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://www.nflfastr.com/reference/fast_scraper_roster.html'>https://www.nflfastr.com/reference/fast_scraper_roster.html</a></p></div>
+    <div class='dont-index'><p><a href='https://nflreadr.nflverse.com'>https://nflreadr.nflverse.com</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
@@ -279,7 +279,7 @@ the nflfastr repository.</p>
 #&gt; <span style='color: #949494;'># … with 7,725 more rows, and 17 more variables: first_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   last_name &lt;chr&gt;, birth_date &lt;date&gt;, height &lt;chr&gt;, weight &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   college &lt;chr&gt;, high_school &lt;chr&gt;, gsis_id &lt;chr&gt;, espn_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   yahoo_id &lt;int&gt;, rotowire_id &lt;int&gt;, pff_id &lt;int&gt;, headshot_url &lt;glue&gt;,</span>
+#&gt; <span style='color: #949494;'>#   yahoo_id &lt;int&gt;, rotowire_id &lt;int&gt;, pff_id &lt;int&gt;, headshot_url &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   fantasy_data_id &lt;int&gt;, sleeper_id &lt;chr&gt;, years_exp &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   sportradar_id &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 

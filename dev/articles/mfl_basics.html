@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.03</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.04</span>
       </span>
     </div>
 
@@ -182,7 +182,7 @@
       <h1 data-toc-skip>MFL: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-08-05</h4>
+            <h4 class="date">2021-08-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/mfl_basics.Rmd"><code>vignettes/mfl_basics.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_basics.Rmd</code></div>
@@ -196,6 +196,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.2.0</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
@@ -204,7 +205,8 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.2.0</span></code></pre></div>
 <p>Set up the connection to the league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, 
@@ -294,7 +296,7 @@
 <span class="co">#&gt; 2 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.5</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.4</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    24.7</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    22.8</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    22.9</span>
 <span class="co">#&gt; 6 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.7</span>
 <span class="co">#&gt; # … with 7 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
 <span class="co">#&gt; #   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
@@ -378,19 +380,19 @@
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
 <span class="co">#&gt;  1 0001         Team Pikachu         24.0   22.8   26.2   23.4        4        8</span>
-<span class="co">#&gt;  2 0002         Team Simon Belmont   25.0   25.6   24.8   24.5        8       11</span>
-<span class="co">#&gt;  3 0003         Team Donkey Kong     25.0   23.8   31.7   27.2        5        8</span>
-<span class="co">#&gt;  4 0004         Team Ice Climbers    28.7   25.6   26.8   27.1        5        9</span>
+<span class="co">#&gt;  2 0002         Team Simon Belmont   25.0   25.6   24.8   24.6        8       11</span>
+<span class="co">#&gt;  3 0003         Team Donkey Kong     25.0   23.8   31.8   27.2        5        8</span>
+<span class="co">#&gt;  4 0004         Team Ice Climbers    28.8   25.6   26.8   27.1        5        9</span>
 <span class="co">#&gt;  5 0005         Team Dr. Mario       35.9   23.3   25.0   24.8        2        7</span>
 <span class="co">#&gt;  6 0006         Team King Dedede     25.9   25.9   26.7   25.2        3       10</span>
-<span class="co">#&gt;  7 0007         Team Kirby           24.6   25.3   28.9   28.9        4        9</span>
+<span class="co">#&gt;  7 0007         Team Kirby           24.6   25.3   29.0   28.9        4        9</span>
 <span class="co">#&gt;  8 0008         Team Bowser          26.3   26.9   33.2   28.4        4       11</span>
 <span class="co">#&gt;  9 0009         Team Link            27.5   26.3   28.6   28.4        3       11</span>
 <span class="co">#&gt; 10 0010         Team Yoshi           27.9   22.4   27.9   26.2        2        6</span>
 <span class="co">#&gt; 11 0011         Team Diddy Kong      31.6   27.0   24.2   23.6        4       12</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo          33.2   24.1   24.6   24.0        5        7</span>
-<span class="co">#&gt; 13 0013         Team Ness            32.9   23.8   23.7   25.4        5        9</span>
-<span class="co">#&gt; 14 0014         Team Luigi           32.7   25.4   23.8   27.3        3       10</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo          33.2   24.2   24.7   24.0        5        7</span>
+<span class="co">#&gt; 13 0013         Team Ness            32.9   23.8   23.7   25.5        5        9</span>
+<span class="co">#&gt; 14 0014         Team Luigi           32.7   25.5   23.8   27.3        3       10</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

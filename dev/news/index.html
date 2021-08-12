@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.03</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.04</span>
       </span>
     </div>
 
@@ -241,11 +241,13 @@
 <li>
 <code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft type (e.g. “email draft”, “live auction”) if the field is set.</li>
 <li>
-<code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft player pool (e.g. “Rookie”, “Veteran”, “Both”) if the field is set. (These three changes fix <a href='https://github.com/ffverse/ffscrapr/issues/311'>#311</a>, thanks <a href='https://github.com/maat7043'>@maat7043</a>!)</li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft player pool (e.g. “Rookie”, “Veteran”, “Both”) if the field is set. (These three changes fix <a href='https://github.com/ffverse/ffscrapr/issues/311'>#311</a>, thanks <a href='https://github.com/maat7043'>@maat7043</a>!) (1.4.5.02)</li>
 <li>
 <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for ESPN now credits a bye team with a win instead of causing an error.</li>
 <li>
-<code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> no longer returns an error for seasons prior to 2018.</li>
+<code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> no longer returns an error for seasons prior to 2018. (Thanks, <a href='https://github.com/JoeSydlowski'>@JoeSydlowski</a>!) (1.4.5.03)</li>
+<li>
+<code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> and <code>nflfastr_roster()</code> now use the <a href="https://nflreadr.nflverse.com">nflreadr</a> package functions back-end (1.4.5.04)</li>
 </ul>
 <hr>
 </div>
