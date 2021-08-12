@@ -155,17 +155,16 @@ set_unescaped_cookies <- function(...) {
 #'
 #' @keywords internal
 #'
-release_bullets <- function(){
+release_bullets <- function() {
 
-  #nocov start
+  # nocov start
 
   c(
     "Tag the current version of ffscrapr-tests as a release version",
     'Switch all vignettes and tests to use "ffscrapr-tests-v1.x.x" and download "archive/v1.x.x"'
   )
 
-  #nocov end
-
+  # nocov end
 }
 
 #' Mappings for nflfastr to fantasy platform scoring

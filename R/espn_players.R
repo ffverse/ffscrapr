@@ -13,7 +13,6 @@
 #'   conn <- espn_connect(season = 2020, league_id = 1178049)
 #'
 #'   espn_players(conn, season = 2020)
-#'
 #' }) # end try
 #' }
 #'

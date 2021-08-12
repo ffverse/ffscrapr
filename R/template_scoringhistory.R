@@ -9,8 +9,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' template_conn <- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
-#' ff_scoringhistory(template_conn, season = 2020)
+#'   template_conn <- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
+#'   ff_scoringhistory(template_conn, season = 2020)
 #' }) # end try
 #' }
 #'
@@ -34,9 +34,10 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:2020, ...) {
     )) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
-      by = c("event" = "ff_event")) %>%
+      by = c("event" = "ff_event")
+    ) %>%
     dplyr::select(
-      "pos","points","lower_range","upper_range","event", "points_type", "nflfastr_event", "short_desc"
+      "pos", "points", "lower_range", "upper_range", "event", "points_type", "nflfastr_event", "short_desc"
     )
 
   # Use custom ffscrapr function to get positions from nflfastR rosters
@@ -45,7 +46,7 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:2020, ...) {
     dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB", "FB"), "RB", .data$position)) %>%
     dplyr::left_join(
       dp_playerids() %>%
-        dplyr::select("mfl_id","sportradar_id") %>%
+        dplyr::select("mfl_id", "sportradar_id") %>%
         dplyr::filter(!is.na(.data$sportradar_id)),
       by = "sportradar_id"
     )
@@ -54,7 +55,7 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:2020, ...) {
   fastr_weekly <- nflfastr_weekly(seasons = season) %>%
     dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
     dplyr::select(
-      "season", "player_id", "sportradar_id", "mfl_id", "position", "full_name","recent_team","week",
+      "season", "player_id", "sportradar_id", "mfl_id", "position", "full_name", "recent_team", "week",
       "completions", "attempts", "passing_yards", "passing_tds", "interceptions", "sacks",
       "sack_fumbles_lost", "passing_first_downs", "passing_2pt_conversions", "carries",
       "rushing_yards", "rushing_tds", "rushing_fumbles_lost", "rushing_first_downs",
@@ -82,13 +83,16 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:2020, ...) {
     dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
     dplyr::ungroup() %>%
-    dplyr::select("season", "week", "gsis_id" = "player_id", "sportradar_id",
-                  "mfl_id", "player_name"="full_name", "pos" = "position",
-                  "team" = "recent_team", "metric", "value", "points"
+    dplyr::select("season", "week",
+      "gsis_id" = "player_id", "sportradar_id",
+      "mfl_id", "player_name" = "full_name", "pos" = "position",
+      "team" = "recent_team", "metric", "value", "points"
     ) %>%
     tidyr::pivot_wider(
-      id_cols = c("season", "week", "gsis_id", "sportradar_id",
-                  "mfl_id", "player_name", "pos", "team", "points"),
+      id_cols = c(
+        "season", "week", "gsis_id", "sportradar_id",
+        "mfl_id", "player_name", "pos", "team", "points"
+      ),
       names_from = .data$metric,
       values_from = .data$value,
       values_fill = 0,

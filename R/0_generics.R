@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' \donttest{
-#'   ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
+#' ff_connect(platform = "mfl", season = 2019, league_id = 54040, rate_limit = FALSE)
 #' }
 #' @export ff_connect
 #' @return a connection object to be used with `ff_*` functions

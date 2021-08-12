@@ -8,9 +8,9 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
+#'   joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
 #'
-#' ff_rosters(joe_conn)
+#'   ff_rosters(joe_conn)
 #' }) # end try
 #' }
 #' @describeIn ff_rosters Fleaflicker: Returns roster data (minus age as of right now)

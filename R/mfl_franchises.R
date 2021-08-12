@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' ff_franchises(ssb_conn)
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+#'   ff_franchises(ssb_conn)
 #' }) # end try
 #' }
 #'

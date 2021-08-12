@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 22627, season = 2021)
-#' ff_league(ssb_conn)
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 22627, season = 2021)
+#'   ff_league(ssb_conn)
 #' }) # end try
 #' }
 #'
@@ -40,23 +40,24 @@ ff_league.mfl_conn <- function(conn) {
   )
 }
 
-.mfl_draft_type <- function(league_endpoint){
-
+.mfl_draft_type <- function(league_endpoint) {
   x <- NULL
 
-  if(!is.null(league_endpoint[["draft_kind"]])) x <- c(x,paste(league_endpoint[["draft_kind"]], "draft"))
+  if (!is.null(league_endpoint[["draft_kind"]])) x <- c(x, paste(league_endpoint[["draft_kind"]], "draft"))
 
-  if(!is.null(league_endpoint[["auction_kind"]])) x <- c(x,paste(league_endpoint[["auction_kind"]], "auction"))
+  if (!is.null(league_endpoint[["auction_kind"]])) x <- c(x, paste(league_endpoint[["auction_kind"]], "auction"))
 
-  if(is.null(x)) x <- NA_character_
+  if (is.null(x)) x <- NA_character_
 
   x
 }
 
-.mfl_league_type <- function(league_endpoint){
+.mfl_league_type <- function(league_endpoint) {
   x <- league_endpoint[["keeperType"]]
-  if(is.null(x)) return(NA_character_)
-  if(x == "none") x <- "redraft"
+  if (is.null(x)) {
+    return(NA_character_)
+  }
+  if (x == "none") x <- "redraft"
   x
 }
 

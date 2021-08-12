@@ -3,18 +3,20 @@ library(ffscrapr)
 library(usethis)
 library(tidyverse)
 
-conn_sfb11 <- mfl_connect(2021,47747)
+conn_sfb11 <- mfl_connect(2021, 47747)
 scoring_sfb11 <- ff_scoring(conn_sfb11)
 starterpositions_sfb11 <- ff_starter_positions(conn_sfb11)
 
-conn_ppr <- mfl_connect(2021,33158)
+conn_ppr <- mfl_connect(2021, 33158)
 scoring_ppr <- ff_scoring(conn_ppr) %>%
-  filter(!event %in% c("1R","1C")) %>%
-  distinct(pos,event,.keep_all = TRUE) %>%
-  mutate(points = case_when(event == "CC" ~ 1,
-                            event == "IN" ~ -2,
-                            event == "#P" ~ 4,
-                            TRUE ~ points)) %>%
+  filter(!event %in% c("1R", "1C")) %>%
+  distinct(pos, event, .keep_all = TRUE) %>%
+  mutate(points = case_when(
+    event == "CC" ~ 1,
+    event == "IN" ~ -2,
+    event == "#P" ~ 4,
+    TRUE ~ points
+  )) %>%
   arrange(event)
 
 scoring_hppr <- scoring_ppr %>%
@@ -26,29 +28,34 @@ scoring_zeroppr <- scoring_ppr %>%
   arrange(event)
 
 starterpositions_1qb <- ff_starter_positions(conn_ppr) %>%
-  filter(pos %in% c("QB","RB","WR","TE")) %>%
-  mutate(min = c(1,2,3,1),
-         max = c(1,4,5,3),
-         offense_starters = 9,
-         defense_starters = 0,
-         kdst_starters = 0,
-         total_starters = 9
-         )
+  filter(pos %in% c("QB", "RB", "WR", "TE")) %>%
+  mutate(
+    min = c(1, 2, 3, 1),
+    max = c(1, 4, 5, 3),
+    offense_starters = 9,
+    defense_starters = 0,
+    kdst_starters = 0,
+    total_starters = 9
+  )
 
 
 starterpositions_sf <- starterpositions_1qb %>%
-  mutate(min = c(1,2,3,1),
-         max = c(2,5,6,4),
-         offense_starters = 10,
-         total_starters = 10)
+  mutate(
+    min = c(1, 2, 3, 1),
+    max = c(2, 5, 6, 4),
+    offense_starters = 10,
+    total_starters = 10
+  )
 
 starterpositions_idp <- ff_starter_positions(conn_ppr) %>%
-  mutate(min = c(1,2,3,1, 1,2,2,2,1),
-         max = c(2,5,6,4, 3,4,4,4,3),
-         offense_starters = 10,
-         defense_starters = 10,
-         kdst_starters = 0,
-         total_starters= 20)
+  mutate(
+    min = c(1, 2, 3, 1, 1, 2, 2, 2, 1),
+    max = c(2, 5, 6, 4, 3, 4, 4, 4, 3),
+    offense_starters = 10,
+    defense_starters = 10,
+    kdst_starters = 0,
+    total_starters = 20
+  )
 
 
 # Create Sleeper Rule to Position Mapping
@@ -86,4 +93,4 @@ sleeper_rule_mapping <-
   dplyr::select(-"points")
 
 
-use_data(scoring_sfb11, starterpositions_sfb11, scoring_ppr,scoring_hppr,scoring_zeroppr, starterpositions_1qb,starterpositions_sf,starterpositions_idp,sleeper_rule_mapping, internal = TRUE, overwrite = TRUE)
+use_data(scoring_sfb11, starterpositions_sfb11, scoring_ppr, scoring_hppr, scoring_zeroppr, starterpositions_1qb, starterpositions_sf, starterpositions_idp, sleeper_rule_mapping, internal = TRUE, overwrite = TRUE)

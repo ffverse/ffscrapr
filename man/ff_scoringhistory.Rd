@@ -60,29 +60,29 @@ try({ # try only shown here because sometimes CRAN checks are weird
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-conn <- fleaflicker_connect(2020, 312861)
-ff_scoringhistory(conn, season = 2020)
+  conn <- fleaflicker_connect(2020, 312861)
+  ff_scoringhistory(conn, season = 2020)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-ff_scoringhistory(ssb_conn, season = 2020)
+  ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_scoringhistory(ssb_conn, season = 2020)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_scoringhistory(conn, season = 2020)
+  conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_scoringhistory(conn, season = 2020)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-template_conn <- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
-ff_scoringhistory(template_conn, season = 2020)
+  template_conn <- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
+  ff_scoringhistory(template_conn, season = 2020)
 }) # end try
 }
 

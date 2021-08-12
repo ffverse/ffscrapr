@@ -16,7 +16,6 @@
 #' @describeIn ff_rosters ESPN: Returns all roster data.
 #' @export
 ff_rosters.espn_conn <- function(conn, week = NULL, ...) {
-
   checkmate::assert_number(week, null.ok = TRUE)
 
   franchises <- ff_franchises(conn) %>%
@@ -24,7 +23,7 @@ ff_rosters.espn_conn <- function(conn, week = NULL, ...) {
 
   roster_endpoint <- espn_getendpoint(conn, view = "mRoster", scoringPeriodId = week)
 
-  if(!roster_endpoint$content$draftDetail$drafted) {
+  if (!roster_endpoint$content$draftDetail$drafted) {
     warning(
       glue::glue("ESPN league_id {conn$league_id} has not drafted yet!"),
       call. = FALSE

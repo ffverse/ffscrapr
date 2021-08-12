@@ -54,7 +54,7 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
   endpoint_raw <- espn_getendpoint_raw(conn, url_query, xff)
 
   if (as.numeric(conn$season) < 2018) {
-    endpoint_raw$content <-  endpoint_raw$content[[1]]
+    endpoint_raw$content <- endpoint_raw$content[[1]]
   }
 
   return(endpoint_raw)
@@ -137,7 +137,7 @@ print.espn_api <- function(x, ...) {
   # nocov start
 
   cat("<ESPN - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
-  cat("QUERY: <",x$query,">\n", sep = "")
+  cat("QUERY: <", x$query, ">\n", sep = "")
 
   str(x$content, max.level = 1)
 

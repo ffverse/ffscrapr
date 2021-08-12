@@ -24,8 +24,7 @@ with_mock_api({
   })
 })
 
-test_that("ff_scoring for templates return tibbles",{
-
+test_that("ff_scoring for templates return tibbles", {
   oneqb <- ff_template(roster_type = "1qb") %>% ff_starter_positions()
   sf <- ff_template(roster_type = "superflex") %>% ff_starter_positions()
   sfb11 <- ff_template(roster_type = "sfb11") %>% ff_starter_positions()
@@ -35,5 +34,4 @@ test_that("ff_scoring for templates return tibbles",{
   expect_tibble(sf)
   expect_tibble(sfb11)
   expect_tibble(idp)
-
 })

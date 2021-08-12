@@ -86,7 +86,7 @@ print.mfl_api <- function(x, ...) {
   # nocov start
 
   cat("<MFL - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
-  cat("QUERY: <",x$query,">\n", sep = "")
+  cat("QUERY: <", x$query, ">\n", sep = "")
   str(x$content, max.level = 1)
 
   invisible(x)

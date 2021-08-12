@@ -11,8 +11,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_transactions(jml_conn, week = 1:2)
+#'   jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#'   ff_transactions(jml_conn, week = 1:2)
 #' }) # end try
 #' }
 #'
@@ -73,7 +73,6 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
 }
 
 .sleeper_transactions_freeagent <- function(raw_transactions) {
-
   fa_transactions <- raw_transactions %>%
     dplyr::filter(.data$type == "free_agent", .data$status == "complete")
 
@@ -184,19 +183,21 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
     ) %>%
     dplyr::mutate_at(
       dplyr::vars(dplyr::contains("bbid_amount")),
-      ~ dplyr::case_when(.data$type_desc == "dropped" ~ NA_integer_,
-                        TRUE ~ .x)
+      ~ dplyr::case_when(
+        .data$type_desc == "dropped" ~ NA_integer_,
+        TRUE ~ .x
+      )
     ) %>%
     dplyr::select(
       dplyr::any_of(c(
-      "timestamp",
-      "type",
-      "franchise_id",
-      "type_desc",
-      "player_id",
-      "bbid_amount",
-      "waiver_priority",
-      "comment"
+        "timestamp",
+        "type",
+        "franchise_id",
+        "type_desc",
+        "player_id",
+        "bbid_amount",
+        "waiver_priority",
+        "comment"
       ))
     )
 }

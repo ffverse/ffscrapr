@@ -12,8 +12,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' dlf_conn <- mfl_connect(2020, league_id = 37920)
-#' ff_starters(conn = dlf_conn)
+#'   dlf_conn <- mfl_connect(2020, league_id = 37920)
+#'   ff_starters(conn = dlf_conn)
 #' }) # end try
 #' }
 #'

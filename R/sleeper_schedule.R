@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-#' ff_schedule(jml_conn)
+#'   jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+#'   ff_schedule(jml_conn)
 #' }) # end try
 #' }
 #'
@@ -57,11 +57,14 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
 
   df_matchups <- df_matchup %>%
     dplyr::left_join(
-      dplyr::select(df_matchup,
-                    dplyr::any_of(c(
-                      "opponent_id" = "franchise_id",
-                      "opponent_score" = "franchise_score",
-                      "matchup_id"))) %>%
+      dplyr::select(
+        df_matchup,
+        dplyr::any_of(c(
+          "opponent_id" = "franchise_id",
+          "opponent_score" = "franchise_score",
+          "matchup_id"
+        ))
+      ) %>%
         dplyr::filter(!is.na(.data$matchup_id)),
       by = "matchup_id"
     ) %>%

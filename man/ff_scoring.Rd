@@ -20,7 +20,7 @@ ff_scoring(conn)
 
 \method{ff_scoring}{sleeper_conn}(conn)
 
-\method{ff_scoring}{template_conn}(conn, ...)
+\method{ff_scoring}{template_conn}(conn)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}
@@ -54,28 +54,28 @@ try({ # try only shown here because sometimes CRAN checks are weird
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
-ff_scoring(joe_conn)
+  joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
+  ff_scoring(joe_conn)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-ff_scoring(ssb_conn)
+  ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_scoring(ssb_conn)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_scoring(jml_conn)
+  jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_scoring(jml_conn)
 }) # end try
 }
 
 \donttest{
-  template_ppr <- ff_template(scoring_type = "ppr")
-  ff_scoring(template_ppr)
+template_ppr <- ff_template(scoring_type = "ppr")
+ff_scoring(template_ppr)
 }
 
 }

@@ -20,8 +20,7 @@ with_mock_api({
   })
 })
 
-test_that("ff_scoring for templates return tibbles",{
-
+test_that("ff_scoring for templates return tibbles", {
   ppr <- ff_template(scoring_type = "ppr") %>% ff_scoring()
   half_ppr <- ff_template(scoring_type = "half_ppr") %>% ff_scoring()
   zero_ppr <- ff_template(scoring_type = "zero_ppr") %>% ff_scoring()
@@ -31,5 +30,4 @@ test_that("ff_scoring for templates return tibbles",{
   expect_tibble(half_ppr)
   expect_tibble(zero_ppr)
   expect_tibble(sfb11)
-
 })

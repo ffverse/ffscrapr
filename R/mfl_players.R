@@ -8,8 +8,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' player_list <- mfl_players()
-#' dplyr::sample_n(player_list, 5)
+#'   player_list <- mfl_players()
+#'   dplyr::sample_n(player_list, 5)
 #' }) # end try
 #' }
 #'
@@ -34,7 +34,8 @@ mfl_players <- function(conn = NULL) {
     dplyr::mutate_at(
       "birthdate", ~ as.numeric(.x) %>%
         lubridate::as_datetime() %>%
-        lubridate::as_date()) %>%
+        lubridate::as_date()
+    ) %>%
     dplyr::mutate("age" = round(as.numeric(Sys.Date() - .data$birthdate) / 365.25, 1)) %>%
     dplyr::select(
       dplyr::any_of(c(
