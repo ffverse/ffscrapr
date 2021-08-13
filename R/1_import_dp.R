@@ -92,8 +92,9 @@ dp_playerids <- function() {
 #' dp_cleannames(c("A.J. Green", "Odell Beckham Jr.", "Le'Veon Bell Sr."))
 #'
 #' dp_cleannames(c("Trubisky, Mitch", "Atwell, Chatarius", "Elliott, Zeke", "Elijah Moore"),
-#'               convert_lastfirst = TRUE,
-#'               use_name_database = TRUE)
+#'   convert_lastfirst = TRUE,
+#'   use_name_database = TRUE
+#' )
 #' }
 #'
 #' @seealso `dp_name_mapping`
@@ -110,15 +111,15 @@ dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = TR
 
   n <- player_name
 
-  if(convert_lastfirst) n <- stringr::str_replace_all(n, "^(.+), (.+)$", "\\2 \\1")
+  if (convert_lastfirst) n <- stringr::str_replace_all(n, "^(.+), (.+)$", "\\2 \\1")
 
   n <- stringr::str_remove_all(n, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
 
   n <- stringr::str_squish(n)
 
-  if(use_name_database) n <- unname(dplyr::coalesce(ffscrapr::dp_name_mapping[n],n))
+  if (use_name_database) n <- unname(dplyr::coalesce(ffscrapr::dp_name_mapping[n], n))
 
-  if(lowercase) n <- tolower(n)
+  if (lowercase) n <- tolower(n)
 
   return(n)
 }
@@ -152,17 +153,17 @@ dp_clean_names <- dp_cleannames
 #'
 #' @examples
 #'
-#' c("<b><font color= Cyan>Kevin OBrien (@kevinobrienff) </FONT></B>",
+#' c(
+#'   "<b><font color= Cyan>Kevin OBrien (@kevinobrienff) </FONT></B>",
 #'   "<em><font color= Purple> Other fun names</font></em>"
-#'   ) %>% dp_clean_html()
-#'
+#' ) %>% dp_clean_html()
 #' @return a character vector of cleaned strings
 #'
 #' @export
 dp_clean_html <- function(names) {
   checkmate::assert_character(names)
 
-  n <- stringr::str_remove_all(names,"<[^>]*>") %>% stringr::str_squish()
+  n <- stringr::str_remove_all(names, "<[^>]*>") %>% stringr::str_squish()
 
   return(n)
 }

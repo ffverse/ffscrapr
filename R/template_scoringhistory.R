@@ -1,4 +1,4 @@
-## ff_scoringhistory (MFL) ##
+## ff_scoringhistory (Template) ##
 
 #' Get a dataframe of scoring history, utilizing the ff_scoring and load_player_stats functions.
 #'
@@ -9,15 +9,15 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#'   ff_scoringhistory(ssb_conn, season = 2020)
+#'   template_conn <- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
+#'   ff_scoringhistory(template_conn, season = 2020)
 #' }) # end try
 #' }
 #'
-#' @describeIn ff_scoringhistory MFL: returns scoring history in a flat table, one row per player per week.
+#' @describeIn ff_scoringhistory template: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export
-ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
+ff_scoringhistory.template_conn <- function(conn, season = 1999:2020, ...) {
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
   # Pull in scoring rules for that league

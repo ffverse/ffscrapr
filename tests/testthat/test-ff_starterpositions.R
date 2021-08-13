@@ -23,3 +23,15 @@ with_mock_api({
     expect_tibble(tony_starter_positions, min.rows = 5)
   })
 })
+
+test_that("ff_scoring for templates return tibbles", {
+  oneqb <- ff_template(roster_type = "1qb") %>% ff_starter_positions()
+  sf <- ff_template(roster_type = "superflex") %>% ff_starter_positions()
+  sfb11 <- ff_template(roster_type = "sfb11") %>% ff_starter_positions()
+  idp <- ff_template(roster_type = "idp") %>% ff_starter_positions()
+
+  expect_tibble(oneqb)
+  expect_tibble(sf)
+  expect_tibble(sfb11)
+  expect_tibble(idp)
+})

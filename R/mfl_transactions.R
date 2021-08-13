@@ -11,8 +11,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' dlf_conn <- mfl_connect(2019, league_id = 37920)
-#' ff_transactions(dlf_conn)
+#'   dlf_conn <- mfl_connect(2019, league_id = 37920)
+#'   ff_transactions(dlf_conn)
 #' }) # end try
 #' }
 #' @export
@@ -80,7 +80,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
 
   auction_transactions %>%
     dplyr::select("timestamp", "type", "franchise", "transaction") %>%
-    tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|",fill = "right") %>%
+    tidyr::separate("transaction", into = c("player_id", "bid_amount", "comments"), sep = "\\|", fill = "right") %>%
     dplyr::mutate(
       "comments" = ifelse(stringr::str_length(.data$comments) == 0,
         NA_character_,

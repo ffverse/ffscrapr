@@ -46,11 +46,11 @@ ff_schedule.espn_conn <- function(conn, ...) {
     tibble::tibble(
       "week" = schedule %>% purrr::map_int(~ purrr::pluck(.x, "matchupPeriodId")),
       # "winner" = schedule %>% purrr::map_chr(~purrr::pluck(.x, "winner")),
-      "home_id" = h %>% purrr::map_int(~ purrr::pluck(.x, "teamId")),
-      "away_id" = a %>% purrr::map_int(~ purrr::pluck(.x, "teamId")),
+      "home_id" = h %>% purrr::map_int(~ purrr::pluck(.x, "teamId", .default = NA_integer_)),
+      "away_id" = a %>% purrr::map_int(~ purrr::pluck(.x, "teamId", .default = NA_integer_)),
       # "home_w" = h_score %>% purrr::map_dbl(~purrr::pluck(.x, "wins")),
-      "home_points" = h %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints")),
-      "away_points" = a %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints"))
+      "home_points" = h %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints", .default = 0)),
+      "away_points" = a %>% purrr::map_dbl(~ purrr::pluck(.x, "totalPoints", .default = 0))
     )
   scores2 <- scores
   names(scores2) <- c("week", "away_id", "home_id", "away_points", "home_points")
@@ -79,6 +79,7 @@ ff_schedule.espn_conn <- function(conn, ...) {
       .data$result,
       .data$opponent_id,
       .data$opponent_score
-    )
+    ) %>%
+    dplyr::filter(!is.na(.data$franchise_id))
   return(schedule)
 }

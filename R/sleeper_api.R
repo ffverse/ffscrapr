@@ -85,7 +85,7 @@ print.sleeper_api <- function(x, ...) {
 
   cat("<Sleeper - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
 
-  cat("QUERY: <",x$query,">\n", sep = "")
+  cat("QUERY: <", x$query, ">\n", sep = "")
 
   str(x$content, max.level = 1)
 

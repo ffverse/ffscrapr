@@ -9,8 +9,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' conn <- fleaflicker_connect(season = 2019, league_id = 206154)
-#' ff_schedule(conn, week = 2:4)
+#'   conn <- fleaflicker_connect(season = 2019, league_id = 206154)
+#'   ff_schedule(conn, week = 2:4)
 #' }) # end try
 #' }
 #'

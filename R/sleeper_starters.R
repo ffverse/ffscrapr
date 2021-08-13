@@ -11,8 +11,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
-#' ff_starters(jml_conn, week = 3)
+#'   jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
+#'   ff_starters(jml_conn, week = 3)
 #' }) # end try
 #' }
 #'

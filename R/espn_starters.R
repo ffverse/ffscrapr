@@ -11,28 +11,31 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' conn <- espn_connect(season = 2020, league_id = 1178049)
-#' ff_starters(conn, weeks = 1:3)
+#'   conn <- espn_connect(season = 2020, league_id = 1178049)
+#'   ff_starters(conn, weeks = 1:3)
 #' }) # end try
 #' }
 #'
 #' @export
 ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
+  if (conn$season < 2018) stop("Starting lineups not available before 2018")
+
   checkmate::assert_numeric(weeks)
 
   max_week <- .espn_week_checkmax(conn)
 
   run_weeks <- weeks[weeks < max_week]
 
-  if(length(run_weeks)==0) {
-
+  if (length(run_weeks) == 0) {
     warning(
-        glue::glue("ESPN league_id {conn$league_id} does not have lineups for ",
-                   "{conn$season} weeks {paste(min(weeks),max(weeks), sep = '-')}."),
-        call. = FALSE
-      )
+      glue::glue(
+        "ESPN league_id {conn$league_id} does not have lineups for ",
+        "{conn$season} weeks {paste(min(weeks),max(weeks), sep = '-')}."
+      ),
+      call. = FALSE
+    )
 
-      return(NULL)
+    return(NULL)
   }
 
   starters <- purrr::map_dfr(run_weeks, .espn_week_starter, conn) %>%
@@ -78,7 +81,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   final_week <- settings %>%
     purrr::pluck("content", "status", "finalScoringPeriod")
 
-  max_week <- min(current_week,final_week, na.rm = TRUE)
+  max_week <- min(current_week, final_week, na.rm = TRUE)
 
   return(max_week)
 }
