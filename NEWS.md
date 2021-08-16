@@ -9,6 +9,7 @@
 - `espn_getendpoint()` no longer returns an error for seasons prior to 2018. (Thanks, @JoeSydlowski!) (1.4.5.03)
 - `nflfastr_weekly()` and `nflfastr_roster()` now use the [nflreadr](https://nflreadr.nflverse.com) package functions back-end (1.4.5.04)
 - `ff_template()` adds a template feature for `ff_starter_positions()`, `ff_scoring()`, and `ff_scoringhistory()` to more quickly pull common scoring templates.
+- Added some names to the name database, c/o @scasanova via #320 - thank you, Santiago! (v1.4.5.06)
 
 ---
 
