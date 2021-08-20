@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.06</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.07</span>
       </span>
     </div>
 
@@ -292,7 +292,7 @@
   <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
   <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 714 × 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 714 × 12</span>
 #&gt;     week franchise_id franchise_name    franchise_score lineup_slot player_score
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>     1            1 Rushin' Collusion             118 QB                  27.5
@@ -305,8 +305,9 @@
 #&gt; <span style='color: #BCBCBC;'> 8</span>     1            1 Rushin' Collusion             118 DST                  0  
 #&gt; <span style='color: #BCBCBC;'> 9</span>     1            1 Rushin' Collusion             118 K                    9  
 #&gt; <span style='color: #BCBCBC;'>10</span>     1            1 Rushin' Collusion             118 BE                   4.8
-#&gt; <span style='color: #949494;'># … with 704 more rows, and 5 more variables: player_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;, eligible_lineup_slots &lt;list&gt;</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #949494;'># … with 704 more rows, and 6 more variables: projected_score &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   player_id &lt;int&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   eligible_lineup_slots &lt;list&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
