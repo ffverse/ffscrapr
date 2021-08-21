@@ -72,12 +72,12 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
     dplyr::mutate(week = week) %>%
     dplyr::select(dplyr::any_of(c("week", "franchise_id", "franchise_score", "opponent_id", "opponent_score")))
 
-  if (!"franchise_score" %in% names(df_matchups)) {
+  if (is.null(last_scored_week) || !"franchise_score" %in% names(df_matchups)) {
     df_matchups <- df_matchups %>%
       dplyr::mutate(result = NA_character_)
   }
 
-  if ("franchise_score" %in% names(df_matchups)) {
+  if (!is.null(last_scored_week) && "franchise_score" %in% names(df_matchups)) {
     df_matchups <- df_matchups %>%
       dplyr::mutate(result = dplyr::case_when(
         .data$week <= last_scored_week & .data$franchise_score > .data$opponent_score ~ "W",

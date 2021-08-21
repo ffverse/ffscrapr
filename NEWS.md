@@ -11,6 +11,8 @@
 - `ff_template()` adds a template feature for `ff_starter_positions()`, `ff_scoring()`, and `ff_scoringhistory()` to more quickly pull common scoring templates.
 - Added some names to the name database, c/o @scasanova via #320 - thank you, Santiago! (v1.4.5.06)
 - `ff_starters()` for ESPN now also tries to return a projected score for the week - thank you, @scottfrechette! Resolves #323. (1.4.5.07)
+- `ff_schedule()` for Sleeper no longer broken - resolves #322
+- `ff_schedule()` for MFL now returns NA as the result for unplayed games and becomes consistent with other platforms. (1.4.5.08)
 
 ---
 
