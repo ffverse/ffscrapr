@@ -13,6 +13,7 @@
 - `ff_starters()` for ESPN now also tries to return a projected score for the week - thank you, @scottfrechette! Resolves #323. (1.4.5.07)
 - `ff_schedule()` for Sleeper no longer broken - resolves #322
 - `ff_schedule()` for MFL now returns NA as the result for unplayed games and becomes consistent with other platforms. (1.4.5.08)
+- `ff_scoringhistory()` for MFL now parses decimal ranges correctly (1.4.5.09)
 
 ---
 

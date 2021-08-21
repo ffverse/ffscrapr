@@ -26,7 +26,7 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:2020, ...) {
     tidyr::separate(
       col = "range",
       into = c("lower_range", "upper_range"),
-      sep = "-(?=[0-9]*$)"
+      sep = "-(?=[0-9,\\.]*$)"
     ) %>%
     dplyr::mutate(dplyr::across(
       .cols = c("lower_range", "upper_range"),
