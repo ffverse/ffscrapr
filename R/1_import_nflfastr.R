@@ -11,7 +11,7 @@
 #' the nflfastr repository.
 #'
 #' @param seasons The seasons to return, TRUE returns all data available.
-#' @param type One of "offense", "defense", or "all" - currently, only "offense" is available.
+#' @param type One of "offense" or "kicking"
 #'
 #' @seealso <https://nflreadr.nflverse.com>
 #'
@@ -26,11 +26,11 @@
 #'
 #' @export
 nflfastr_weekly <- function(seasons = TRUE,
-                            type = c("offense", "defense", "all")) {
+                            type = c("offense", "kicking")) {
 
-  # type <- match.arg(type)
+  type <- match.arg(type)
 
-  df_weekly <- nflreadr::load_player_stats(seasons = seasons)
+  df_weekly <- nflreadr::load_player_stats(seasons = seasons, stat_type = type)
 
   return(df_weekly)
 }
