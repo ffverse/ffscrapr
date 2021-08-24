@@ -33,6 +33,10 @@
     nflfastr_weekly <<- memoise::memoise(nflfastr_weekly, ~ memoise::timeout(604800), cache = cache)
     nflfastr_rosters <<- memoise::memoise(nflfastr_rosters, ~ memoise::timeout(86400), cache = cache)
 
+    .nflfastr_kicking_long <<- memoise::memoise(.nflfastr_kicking_long, ~ memoise::timeout(604800), cache = cache)
+    .nflfastr_offense_long <<- memoise::memoise(.nflfastr_offense_long, ~ memoise::timeout(604800), cache = cache)
+    .nflfastr_roster <<- memoise::memoise(.nflfastr_roster, ~ memoise::timeout(604800), cache = cache)
+
     # LONG TERM STORAGE
 
     mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)

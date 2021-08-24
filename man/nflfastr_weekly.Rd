@@ -4,12 +4,12 @@
 \alias{nflfastr_weekly}
 \title{Import latest nflfastr weekly stats}
 \usage{
-nflfastr_weekly(seasons = TRUE, type = c("offense", "defense", "all"))
+nflfastr_weekly(seasons = TRUE, type = c("offense", "kicking"))
 }
 \arguments{
 \item{seasons}{The seasons to return, TRUE returns all data available.}
 
-\item{type}{One of "offense", "defense", or "all" - currently, only "offense" is available.}
+\item{type}{One of "offense" or "kicking"}
 }
 \value{
 Weekly stats for all passers, rushers and receivers in the nflverse play-by-play data from the 1999 season to the most recent season

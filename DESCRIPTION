@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.4.5.09
+Version: 1.4.5.10
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
