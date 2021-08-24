@@ -43,6 +43,7 @@ jobs:
         run: |
           pak::local_system_requirements(execute = TRUE)
           pak::local_install_dev_deps()
+          pak::pak("nflverse/nflreadr")
           pak::pak("covr")
         shell: Rscript {0}
 
