@@ -46,7 +46,7 @@ mfl_getendpoint <- function(conn, endpoint, ...) {
   }
 
   if (httr::http_error(response)) {
-    stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n
+    stop(glue::glue("MFL API request failed with <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 

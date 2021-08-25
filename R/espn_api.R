@@ -99,7 +99,7 @@ espn_getendpoint_raw <- function(conn, url_query, ...) {
   }
 
   if (httr::http_error(response)) {
-    warning(glue::glue("ESPN API request failed with error: <{httr::status_code(response)}> \n
+    warning(glue::glue("ESPN API request failed with <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 

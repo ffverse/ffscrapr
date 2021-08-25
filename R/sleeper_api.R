@@ -44,7 +44,7 @@ sleeper_getendpoint <- function(endpoint, ...) {
   }
 
   if (httr::http_error(response)) {
-    stop(glue::glue("Sleeper API request failed with error: <{httr::status_code(response)}> \n
+    stop(glue::glue("Sleeper API request failed with error: <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 

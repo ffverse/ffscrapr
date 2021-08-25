@@ -45,7 +45,7 @@ fleaflicker_getendpoint <- function(endpoint, ...) {
   }
 
   if (httr::http_error(response)) {
-    stop(glue::glue("Fleaflicker API request failed with error: <{httr::status_code(response)}> \n
+    stop(glue::glue("Fleaflicker API request failed with <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 
