@@ -16,6 +16,7 @@
 - `ff_scoringhistory()` for MFL now parses decimal ranges correctly (1.4.5.09)
 - Refactor `ff_scoringhistory()` into memoisable pieces (`.nflfastr_offense_long`, `.nflfastr_kicker_long`, `.nflfastr_roster`)
 - Add kicker stat mappings for `ff_scoringhistory()` and support ~ most kicker scorings (MFL's may be weird.) (1.4.5.10)
+- Update http error messages for user readability (1.4.5.11)
 
 ---
 
