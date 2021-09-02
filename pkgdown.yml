@@ -6,14 +6,13 @@ articles:
   espn_basics: espn_basics.html
   espn_getendpoint: espn_getendpoint.html
   ffscrapr_caching: ffscrapr_caching.html
-  ffscrapr_scoringhistory: ffscrapr_scoringhistory.html
   fleaflicker_basics: fleaflicker_basics.html
   fleaflicker_getendpoint: fleaflicker_getendpoint.html
   mfl_basics: mfl_basics.html
   mfl_getendpoint: mfl_getendpoint.html
   sleeper_basics: sleeper_basics.html
   sleeper_getendpoint: sleeper_getendpoint.html
-last_built: 2021-07-25T00:49Z
+last_built: 2021-09-02T12:16Z
 urls:
   reference: ffscrapr.ffverse.com/reference
   article: ffscrapr.ffverse.com/articles

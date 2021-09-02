@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
       </span>
     </div>
 
@@ -288,8 +288,8 @@
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>206154</span><span class='op'>)</span>
-<span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, <span class='fl'>206154</span><span class='op'>)</span>
+  <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 15</span>
 #&gt;   league_id league_name         season league_type franchise_count qb_type idp  
@@ -301,21 +301,22 @@
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
+  <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>22627</span>, season <span class='op'>=</span> <span class='fl'>2021</span><span class='op'>)</span>
+  <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 14</span>
-#&gt;   league_id league_name      season franchise_count qb_type idp   scoring_flags 
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
-#&gt; <span style='color: #BCBCBC;'>1</span> 54040     The Super Smash…   <span style='text-decoration: underline;'>2</span>020              14 1QB     FALSE 0.5_ppr, TEPr…
-#&gt; <span style='color: #949494;'># … with 7 more variables: best_ball &lt;lgl&gt;, salary_cap &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;, roster_size &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   league_depth &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 17</span>
+#&gt;   league_id league_name         season league_type franchise_count qb_type idp  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 22627     Four-Eight Dynasty…   <span style='text-decoration: underline;'>2</span>021 dynasty                  12 2QB/SF  TRUE 
+#&gt; <span style='color: #949494;'># … with 10 more variables: scoring_flags &lt;chr&gt;, best_ball &lt;lgl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   salary_cap &lt;lgl&gt;, player_copies &lt;dbl&gt;, years_active &lt;chr&gt;, qb_count &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   roster_size &lt;dbl&gt;, league_depth &lt;dbl&gt;, draft_type &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   draft_player_pool &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
+  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_league</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 16</span>
 #&gt;   league_id    league_name      season league_type franchise_count qb_type idp  

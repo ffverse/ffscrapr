@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
       </span>
     </div>
 
@@ -301,22 +301,22 @@
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
-<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
+  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2019</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
+  <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>conn</span>, week <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 48 × 14</span>
-#&gt;     week franchise_id franchise_name          franchise_score result opponent_id
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     2      1<span style='text-decoration: underline;'>373</span>991 Top City Terrors                   226. WIN        1<span style='text-decoration: underline;'>373</span>393
-#&gt; <span style='color: #BCBCBC;'> 2</span>     2      1<span style='text-decoration: underline;'>373</span>480 Goldenrod City Nightma…            161. LOSE       1<span style='text-decoration: underline;'>373</span>475
-#&gt; <span style='color: #BCBCBC;'> 3</span>     2      1<span style='text-decoration: underline;'>371</span>776 Winter Hill Black Sham…            178. WIN        1<span style='text-decoration: underline;'>373</span>501
-#&gt; <span style='color: #BCBCBC;'> 4</span>     2      1<span style='text-decoration: underline;'>373</span>993 Boomtown Sly Foxes                 167. WIN        1<span style='text-decoration: underline;'>373</span>970
-#&gt; <span style='color: #BCBCBC;'> 5</span>     2      1<span style='text-decoration: underline;'>373</span>883 Manitoba Marmots                   201. WIN        1<span style='text-decoration: underline;'>373</span>973
-#&gt; <span style='color: #BCBCBC;'> 6</span>     2      1<span style='text-decoration: underline;'>373</span>535 Winterthur Angry Ducks             147. LOSE       1<span style='text-decoration: underline;'>373</span>988
-#&gt; <span style='color: #BCBCBC;'> 7</span>     2      1<span style='text-decoration: underline;'>374</span>252 Central City Crusaders             160. LOSE       1<span style='text-decoration: underline;'>374</span>255
-#&gt; <span style='color: #BCBCBC;'> 8</span>     2      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ballers                174. WIN        1<span style='text-decoration: underline;'>374</span>315
-#&gt; <span style='color: #BCBCBC;'> 9</span>     2      1<span style='text-decoration: underline;'>373</span>393 Philadelphia Fire                  138. LOSE       1<span style='text-decoration: underline;'>373</span>991
-#&gt; <span style='color: #BCBCBC;'>10</span>     2      1<span style='text-decoration: underline;'>373</span>475 Winterfell Dire Wolves             300. WIN        1<span style='text-decoration: underline;'>373</span>480
+#&gt;     week franchise_id franchise_name              franchise_score result opponent_id
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     2      1<span style='text-decoration: underline;'>373</span>991 Top City Terrors                       226. WIN        1<span style='text-decoration: underline;'>373</span>393
+#&gt; <span style='color: #BCBCBC;'> 2</span>     2      1<span style='text-decoration: underline;'>373</span>480 Goldenrod City Nightmares              161. LOSE       1<span style='text-decoration: underline;'>373</span>475
+#&gt; <span style='color: #BCBCBC;'> 3</span>     2      1<span style='text-decoration: underline;'>371</span>776 Winter Hill Black Shamrocks            178. WIN        1<span style='text-decoration: underline;'>373</span>501
+#&gt; <span style='color: #BCBCBC;'> 4</span>     2      1<span style='text-decoration: underline;'>373</span>993 Boomtown Sly Foxes                     167. WIN        1<span style='text-decoration: underline;'>373</span>970
+#&gt; <span style='color: #BCBCBC;'> 5</span>     2      1<span style='text-decoration: underline;'>373</span>883 Manitoba Marmots                       201. WIN        1<span style='text-decoration: underline;'>373</span>973
+#&gt; <span style='color: #BCBCBC;'> 6</span>     2      1<span style='text-decoration: underline;'>373</span>535 Winterthur Angry Ducks                 147. LOSE       1<span style='text-decoration: underline;'>373</span>988
+#&gt; <span style='color: #BCBCBC;'> 7</span>     2      1<span style='text-decoration: underline;'>374</span>252 Central City Crusaders                 160. LOSE       1<span style='text-decoration: underline;'>374</span>255
+#&gt; <span style='color: #BCBCBC;'> 8</span>     2      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ballers                    174. WIN        1<span style='text-decoration: underline;'>374</span>315
+#&gt; <span style='color: #BCBCBC;'> 9</span>     2      1<span style='text-decoration: underline;'>373</span>393 Philadelphia Fire                      138. LOSE       1<span style='text-decoration: underline;'>373</span>991
+#&gt; <span style='color: #BCBCBC;'>10</span>     2      1<span style='text-decoration: underline;'>373</span>475 Winterfell Dire Wolves                 300. WIN        1<span style='text-decoration: underline;'>373</span>480
 #&gt; <span style='color: #949494;'># … with 38 more rows, and 8 more variables: opponent_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   opponent_score &lt;dbl&gt;, game_id &lt;chr&gt;, isFinalScore &lt;lgl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   isDivisional &lt;lgl&gt;, isPlayoffs &lt;lgl&gt;, isThirdPlaceGame &lt;lgl&gt;,</span>
@@ -324,8 +324,8 @@
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
+  <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 234 × 6</span>
 #&gt;     week franchise_id franchise_score result opponent_id opponent_score
@@ -344,8 +344,8 @@
 
 <span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-<span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-<span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
+  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
+  <span class='fu'>ff_schedule</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 184 × 6</span>
 #&gt;     week franchise_id franchise_score opponent_id opponent_score result

@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
       </span>
     </div>
 
@@ -181,7 +181,7 @@
       <h1 data-toc-skip>Fleaflicker: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-07-25</h4>
+            <h4 class="date">2021-09-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/fleaflicker_basics.Rmd"><code>vignettes/fleaflicker_basics.Rmd</code></a></small>
       <div class="hidden name"><code>fleaflicker_basics.Rmd</code></div>
@@ -195,7 +195,9 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
+<span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.2.0</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.2.0</span></code></pre></div>
 <p>In Fleaflicker, you can find the league ID by looking in the URL - it’s the number immediately after /league/ in this example URL: <a href="https://www.fleaflicker.com/nfl/leagues/312861" class="uri">https://www.fleaflicker.com/nfl/leagues/312861</a>.</p>
 <p>Let’s set up a connection to this league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -240,14 +242,14 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_rosters</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 7</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name  pos   team  sportradar_id  </span>
-<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          </span>
-<span class="co">#&gt; 1      1578553 Running Bear       12032 Carson Wentz QB    IND   e9a5c16b-4472-…</span>
-<span class="co">#&gt; 2      1578553 Running Bear       12159 Dak Prescott QB    DAL   86197778-8d4b-…</span>
-<span class="co">#&gt; 3      1578553 Running Bear       13325 Austin Ekel… RB    LAC   e5b8c439-a48a-…</span>
-<span class="co">#&gt; 4      1578553 Running Bear       12926 Chris Godwin WR    TB    baa61bb5-f8d0-…</span>
-<span class="co">#&gt; 5      1578553 Running Bear       16250 Ja'Marr Cha… WR    CIN   fa99e984-d63b-…</span>
-<span class="co">#&gt; 6      1578553 Running Bear        6660 Antonio Bro… WR    TB    16e33176-b73e-…</span></code></pre></div>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name   pos   team  sportradar_id </span>
+<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         </span>
+<span class="co">#&gt; 1      1578553 Running Bear       12032 Carson Wentz  QB    IND   e9a5c16b-4472…</span>
+<span class="co">#&gt; 2      1578553 Running Bear       12159 Dak Prescott  QB    DAL   86197778-8d4b…</span>
+<span class="co">#&gt; 3      1578553 Running Bear       13325 Austin Ekeler RB    LAC   e5b8c439-a48a…</span>
+<span class="co">#&gt; 4      1578553 Running Bear       12926 Chris Godwin  WR    TB    baa61bb5-f8d0…</span>
+<span class="co">#&gt; 5      1578553 Running Bear       16250 Ja'Marr Chase WR    CIN   fa99e984-d63b…</span>
+<span class="co">#&gt; 6      1578553 Running Bear        6660 Antonio Brown WR    TB    16e33176-b73e…</span></code></pre></div>
 <div id="values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#values" class="anchor"></a>Values</h2>
@@ -277,14 +279,14 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 11</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name  pos   team  sportradar_id  </span>
-<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;          </span>
-<span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Prescott QB    DAL   86197778-8d4b-…</span>
-<span class="co">#&gt; 2      1578553 Running Bear       16250 Ja'Marr Cha… WR    CIN   fa99e984-d63b-…</span>
-<span class="co">#&gt; 3      1578553 Running Bear       12926 Chris Godwin WR    TB    baa61bb5-f8d0-…</span>
-<span class="co">#&gt; 4      1578553 Running Bear       16259 Trey Lance   QB    SF    676a508c-c65f-…</span>
-<span class="co">#&gt; 5      1578553 Running Bear       13325 Austin Ekel… RB    LAC   e5b8c439-a48a-…</span>
-<span class="co">#&gt; 6      1578553 Running Bear       15531 Brandon Aiy… WR    SF    c90471cc-fa60-…</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name   pos   team  sportradar_id </span>
+<span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         </span>
+<span class="co">#&gt; 1      1578553 Running Bear       12159 Dak Prescott  QB    DAL   86197778-8d4b…</span>
+<span class="co">#&gt; 2      1578553 Running Bear       16250 Ja'Marr Chase WR    CIN   fa99e984-d63b…</span>
+<span class="co">#&gt; 3      1578553 Running Bear       12926 Chris Godwin  WR    TB    baa61bb5-f8d0…</span>
+<span class="co">#&gt; 4      1578553 Running Bear       16259 Trey Lance    QB    SF    676a508c-c65f…</span>
+<span class="co">#&gt; 5      1578553 Running Bear       13325 Austin Ekeler RB    LAC   e5b8c439-a48a…</span>
+<span class="co">#&gt; 6      1578553 Running Bear       15531 Brandon Aiyuk WR    SF    c90471cc-fa60…</span>
 <span class="co">#&gt; # … with 4 more variables: age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_2qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
