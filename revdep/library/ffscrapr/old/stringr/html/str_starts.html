@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Detect the presence or absence of a pattern at the beginning...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_starts {stringr}"><tr><td>str_starts {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Detect the presence or absence of a pattern at the beginning or end of a
+string.</h2>
+
+<h3>Description</h3>
+
+<p>Vectorised over <code>string</code> and <code>pattern</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_starts(string, pattern, negate = FALSE)
+
+str_ends(string, pattern, negate = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>Input vector. Either a character vector, or something
+coercible to one.</p>
+</td></tr>
+<tr valign="top"><td><code>pattern</code></td>
+<td>
+<p>Pattern with which the string starts or ends.
+</p>
+<p>The default interpretation is a regular expression, as described in
+<a href="../../stringi/help/stringi-search-regex.html">stringi::stringi-search-regex</a>. Control options with <code><a href="../../stringr/help/regex.html">regex()</a></code>.
+</p>
+<p>Match a fixed string (i.e. by comparing only bytes), using <code><a href="../../stringr/help/fixed.html">fixed()</a></code>. This
+is fast, but approximate. Generally, for matching human text, you'll want
+<code><a href="../../stringr/help/coll.html">coll()</a></code> which respects character matching rules for the specified locale.</p>
+</td></tr>
+<tr valign="top"><td><code>negate</code></td>
+<td>
+<p>If <code>TRUE</code>, return non-matching elements.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A logical vector.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringr/help/str_detect.html">str_detect()</a></code> which this function wraps when pattern is regex.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fruit &lt;- c("apple", "banana", "pear", "pinapple")
+str_starts(fruit, "p")
+str_starts(fruit, "p", negate = TRUE)
+str_ends(fruit, "e")
+str_ends(fruit, "e", negate = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

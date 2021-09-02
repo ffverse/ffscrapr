@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a webserver to listen for OAuth callback.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for oauth_listener {httr}"><tr><td>oauth_listener {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a webserver to listen for OAuth callback.</h2>
+
+<h3>Description</h3>
+
+<p>This opens a web browser pointing to <code>request_url</code>, and opens a
+webserver on port 1410 to listen to the reponse.  The redirect url should
+either be set previously (during the OAuth authentication dance) or
+supplied as a parameter to the url.  See <code><a href="../../httr/help/oauth1.0_token.html">oauth1.0_token()</a></code> and
+<code><a href="../../httr/help/oauth2.0_token.html">oauth2.0_token()</a></code> for examples of both techniques.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+oauth_listener(request_url, is_interactive = interactive())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>request_url</code></td>
+<td>
+<p>the url to send the browser to</p>
+</td></tr>
+<tr valign="top"><td><code>is_interactive</code></td>
+<td>
+<p>DEPRECATED</p>
+</td></tr>
+<tr valign="top"><td><code>host</code></td>
+<td>
+<p>ip address for the listener</p>
+</td></tr>
+<tr valign="top"><td><code>port</code></td>
+<td>
+<p>for the listener</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function should not normally be called directly by the user.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

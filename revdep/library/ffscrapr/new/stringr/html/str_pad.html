@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Pad a string.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_pad {stringr}"><tr><td>str_pad {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Pad a string.</h2>
+
+<h3>Description</h3>
+
+<p>Vectorised over <code>string</code>, <code>width</code> and <code>pad</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_pad(string, width, side = c("left", "right", "both"), pad = " ")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>A character vector.</p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Minimum width of padded strings.</p>
+</td></tr>
+<tr valign="top"><td><code>side</code></td>
+<td>
+<p>Side on which padding character is added (left, right or both).</p>
+</td></tr>
+<tr valign="top"><td><code>pad</code></td>
+<td>
+<p>Single padding character (default is a space).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A character vector.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringr/help/str_trim.html">str_trim()</a></code> to remove whitespace;
+<code><a href="../../stringr/help/str_trunc.html">str_trunc()</a></code> to decrease the maximum width of a string.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+rbind(
+  str_pad("hadley", 30, "left"),
+  str_pad("hadley", 30, "right"),
+  str_pad("hadley", 30, "both")
+)
+
+# All arguments are vectorised except side
+str_pad(c("a", "abc", "abcdef"), 10)
+str_pad("a", c(5, 10, 20))
+str_pad("a", 10, pad = c("-", "_", " "))
+
+# Longer strings are returned unchanged
+str_pad("hadley", 3)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

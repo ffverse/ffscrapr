@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create an OAuth application.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for oauth_app {httr}"><tr><td>oauth_app {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create an OAuth application.</h2>
+
+<h3>Description</h3>
+
+<p>See the demos for instructions on how to create an OAuth app for linkedin,
+twitter, vimeo, facebook, github and google. When wrapping an API from a
+package, the author may want to include a default app to facilitate early and
+casual use and then provide a method for heavy or advanced users to supply
+their own app or key and secret.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+oauth_app(appname, key, secret = NULL, redirect_uri = oauth_callback())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>appname</code></td>
+<td>
+<p>name of the application.  This is not used for OAuth, but is
+used to make it easier to identify different applications.</p>
+</td></tr>
+<tr valign="top"><td><code>key</code></td>
+<td>
+<p>consumer key, also sometimes called the client ID</p>
+</td></tr>
+<tr valign="top"><td><code>secret</code></td>
+<td>
+<p>consumer secret, also sometimes called the client secret.
+Despite its name, this does not necessarily need to be protected like a
+password, i.e. the user still has to authenticate themselves and grant the
+app permission to access resources on their behalf. For example, see
+Google's docs for
+<a href="https://developers.google.com/identity/protocols/OAuth2#installed">OAuth2 for installed applications</a>.</p>
+</td></tr>
+<tr valign="top"><td><code>redirect_uri</code></td>
+<td>
+<p>The URL that user will be redirected to after
+authorisation is complete. You should generally leave this as the default
+unless you're using a non-standard auth flow (like with shiny).</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other OAuth: 
+<code><a href="../../httr/help/oauth1.0_token.html">oauth1.0_token</a>()</code>,
+<code><a href="../../httr/help/oauth2.0_token.html">oauth2.0_token</a>()</code>,
+<code><a href="../../httr/help/oauth_endpoint.html">oauth_endpoint</a>()</code>,
+<code><a href="../../httr/help/oauth_service_token.html">oauth_service_token</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+google_app &lt;- oauth_app(
+  "google",
+  key = "123456789.apps.googleusercontent.com",
+  secret = "abcdefghijklmnopqrstuvwxyz"
+)
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

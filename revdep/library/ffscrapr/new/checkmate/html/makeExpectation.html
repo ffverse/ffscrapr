@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Turn a Check into an Expectation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for makeExpectation {checkmate}"><tr><td>makeExpectation {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Turn a Check into an Expectation</h2>
+
+<h3>Description</h3>
+
+<p><code>makeExpectation</code> is the internal function used to evaluate the result of a
+check and turn it into an <code><a href="../../testthat/help/expectation.html">expectation</a></code>.
+<code>makeExceptionFunction</code> can be used to automatically create an expectation
+function based on a check function (see example).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+makeExpectation(x, res, info, label)
+
+makeExpectationFunction(
+  check.fun,
+  c.fun = NULL,
+  use.namespace = FALSE,
+  env = parent.frame()
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[any]<br />
+Object to check.</p>
+</td></tr>
+<tr valign="top"><td><code>res</code></td>
+<td>
+<p>[<code>TRUE</code> | <code>character(1)</code>]<br />
+The result of a check function: <code>TRUE</code> for successful checks,
+and an error message as string otherwise.</p>
+</td></tr>
+<tr valign="top"><td><code>info</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+See <code><a href="../../testthat/help/expect_that.html">expect_that</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+See <code><a href="../../testthat/help/expect_that.html">expect_that</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>check.fun</code></td>
+<td>
+<p>[<code>function</code>]<br />
+Function which checks the input. Must return <code>TRUE</code> on success and a string with the error message otherwise.</p>
+</td></tr>
+<tr valign="top"><td><code>c.fun</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+If not <code>NULL</code>, instead of calling the function <code>check.fun</code>, use <code>.Call</code> to call a C function &ldquo;c.fun&rdquo; with the identical
+set of parameters. The C function must be registered as a native symbol, see <code><a href="../../base/help/.Call.html">.Call</a></code>.
+Useful if <code>check.fun</code> is just a simple wrapper.</p>
+</td></tr>
+<tr valign="top"><td><code>use.namespace</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+Call functions of <span class="pkg">checkmate</span> using its namespace explicitly.
+Can be set to <code>FALSE</code> so save some microseconds, but the checkmate package needs to be imported.
+Default is <code>TRUE</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>env</code></td>
+<td>
+<p>[<code>environment</code>]<br />
+The environment of the created function. Default is the <code><a href="../../base/help/parent.frame.html">parent.frame</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>makeExpectation</code> invisibly returns the checked object.
+<code>makeExpectationFunction</code> returns a <code>function</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other CustomConstructors: 
+<code><a href="../../checkmate/help/makeAssertion.html">makeAssertion</a>()</code>,
+<code><a href="../../checkmate/help/makeTest.html">makeTest</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Simple custom check function
+checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
+
+# Create the respective expect function
+expect_false = function(x, info = NULL, label = vname(x)) {
+  res = checkFalse(x)
+  makeExpectation(x, res, info = info, label = label)
+}
+
+# Alternative: Automatically create such a function
+expect_false = makeExpectationFunction(checkFalse)
+print(expect_false)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

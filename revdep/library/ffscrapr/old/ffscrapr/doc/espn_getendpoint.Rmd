@@ -1,0 +1,159 @@
+---
+title: "ESPN: Get Endpoint"
+output: rmarkdown::html_vignette
+author: Tan Ho
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{ESPN: Get Endpoint}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+options(dplyr.summarise.inform = FALSE,
+        rmarkdown.html_vignette.check_title = FALSE)
+
+eval <- TRUE
+
+tryCatch(expr = {
+  
+  download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.5.zip","f.zip")
+  unzip('f.zip', exdir = ".")
+  
+  httptest::.mockPaths(new = "ffscrapr-tests-1.4.5")},
+  warning = function(e) eval <<- FALSE,
+  error = function(e) eval <<- FALSE)
+
+httptest::use_mock_api()
+```
+
+## ESPN API - An Adventure Into Uncharted Territory
+
+```{r setup, message = FALSE, eval = eval}
+library(ffscrapr)
+library(httr)
+library(jsonlite)
+library(glue)
+```
+
+Accessing the ESPN Fantasy API is a bit of an adventure into an undocumented abyss. This vignette will give you a bit of a rundown on how to use `espn_getendpoint` and the lower-level `espn_getendpoint_raw`, talk about the `x-fantasy-filter`, and detail some of the known view parameters that could be helpful.
+
+## Known Endpoints
+
+The ESPN Fantasy API is typically accessed from two endpoints: 
+
+```
+https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/segments/0/leagues/{league_id} # for 2018 onward
+https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={season} # for 2017 or earlier
+```
+
+Here's a non-exhaustive list of view endpoints that I know of:
+
+-   mTeam
+-   mMatchup
+-   mRoster
+-   mSettings
+-   mBoxscore
+-   mMatchupScore
+-   kona_player_info
+-   player_wl
+-   mSchedule
+-   mScoreboard
+
+Please note that calling various combinations of these views at once can often return different results than calling them separately.
+
+A good way to stumble on these endpoints is to load Developer Tools in your browser, go to the Network tab, and then interact with the fantasy.espn.com site to see what API requests the main page is making.
+
+Alternatively, you can consult the source code of other API packages (including those in other languages) which might give you a bit of a better idea of what's possible!
+
+## Using espn_getendpoint
+
+ESPN's API is mostly structured as making requests of different views against the main league endpoint.
+
+For example, [https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail](https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail)
+
+will pull up draft details for the 2020 league ID 899513. `espn_getendpoint` helps facilitate this request by allowing you to instead write:
+
+```{r message = FALSE, eval = eval}
+conn <- espn_connect(season = 2020, league_id = 899513)
+
+draft_details <- espn_getendpoint(conn, view = "mDraftDetail")
+
+draft_details
+```
+
+This will automatically pass in the league ID, season, and authentication cookies (if used) from the `conn` object and place it into the request. 
+
+You can also use the lower-level equivalent, `espn_getendpoint_raw`, which does not build the URL from the `conn` object but still uses the conn object to pass along any authentication cookies:
+
+```{r message = FALSE, eval = eval}
+draft_details_raw <- espn_getendpoint_raw(
+  conn,
+  "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail")
+
+draft_details_raw
+```
+
+These are equivalent requests. One reason to use the "raw" version is to be able to pass multiple view parameters such as `view=mDraftDetail&view=mSettings` as the query, which is not possible with the main endpoint function because it only accepts one option for the view http query. 
+
+## X-Fantasy-Filter
+
+Many of the endpoints are also affected by a JSON header, `X-Fantasy-Filter`, which can filter/sort/limit (or remove limits) from the API response. Here is an example of how to build up a valid JSON x-fantasy-filter, sourced from the code for `ff_playerscores`:
+
+```{r xfantasyfilter, message = FALSE, eval = eval}
+
+xff <- list(players = list(
+  limit = 5,
+  sortPercOwned = 
+    list(sortAsc = FALSE,
+         sortPriority = 1),
+  filterStatsForTopScoringPeriodIDs = 
+    list(value = 2,
+         additionalValue = c(paste0("00", conn$season)))
+  )) %>%
+  jsonlite::toJSON(auto_unbox = TRUE)
+
+xff
+```
+
+This JSON limits the total responses to 5, filters the "statIDs" returned to just the ones prefixed by "00", and sorts the whole thing by percent owned, descending.
+
+I'm not exactly clear on what all of the options for x-fantasy-filter are, but you can use it to emulate what's happening in the request on `fantasy.espn.com`.
+
+Both the `espn_getendpoint` and `espn_getendpoint_raw` functions can accept x-fantasy-filters. `espn_getendpoint` has an `x_fantasy_filter`argument that takes the JSON object created above, while `espn_getendpoint_raw` requires that the object is converted into an HTTP header first. 
+
+Examples here:
+
+```{r message = FALSE, eval = eval}
+player_scores <- espn_getendpoint(conn, view = "kona_player_info", x_fantasy_filter = xff)
+
+player_scores_2 <- espn_getendpoint_raw(
+  conn,
+  "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=kona_player_info",
+  httr::add_headers(`X-Fantasy-Filter` = xff))
+
+```
+
+
+## Other ESPN API resources
+
+Kiernan Nichols's [fflr R package](https://github.com/kiernann/fflr) is an R package available on CRAN that is built specifically for ESPN API access. As of this writing (2021-03-03) it only supports public leagues, and has a few style differences as a light-weight/lower-dependency package.
+
+Many of the API endpoints are being researched in other languages and you might be able to draw inspiration on what's possible by checking them out:
+
+-   Christian Wendt's [espn-api](https://github.com/cwendt94/espn-api/) Python package was incredibly helpful in discovering the known and documented API endpoints.
+
+-   Mike Kreiser's [ESPN-Fantasy-Football-API](https://github.com/mkreiser/ESPN-Fantasy-Football-API) is a well-documented JS client.
+
+-   Steven Morse also has several great [blog posts](https://stmorse.github.io/journal/espn-fantasy-v3.html) on using the API, mostly accessed via Python.
+
+```{r include = FALSE}
+httptest::stop_mocking()
+
+unlink(c("ffscrapr-tests-1.4.5","f.zip"), recursive = TRUE, force = TRUE)
+```

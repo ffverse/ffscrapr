@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Partial Argument Matching</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for matchArg {checkmate}"><tr><td>matchArg {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Partial Argument Matching</h2>
+
+<h3>Description</h3>
+
+<p>This is an extensions to <code><a href="../../base/help/match.arg.html">match.arg</a></code> with support for <code><a href="../../checkmate/help/AssertCollection.html">AssertCollection</a></code>.
+The behavior is very similar to <code><a href="../../base/help/match.arg.html">match.arg</a></code>, except that <code>NULL</code> is not
+a valid value for <code>x</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+matchArg(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[character]<br />
+User provided argument to match.</p>
+</td></tr>
+<tr valign="top"><td><code>choices</code></td>
+<td>
+<p>[character()]<br />
+Candidates to match <code>x</code> with.</p>
+</td></tr>
+<tr valign="top"><td><code>several.ok</code></td>
+<td>
+<p>[logical(1)]<br />
+If <code>TRUE</code>, multiple matches are allowed, cf. <code><a href="../../base/help/match.arg.html">match.arg</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+<p>[<code>AssertCollection</code>]<br />
+Collection to store assertions. See <code><a href="../../checkmate/help/AssertCollection.html">AssertCollection</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Subset of <code>choices</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+matchArg("k", choices = c("kendall", "pearson"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

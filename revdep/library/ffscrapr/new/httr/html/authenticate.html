@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Use http authentication.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for authenticate {httr}"><tr><td>authenticate {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Use http authentication.</h2>
+
+<h3>Description</h3>
+
+<p>It's not obvious how to turn authentication off after using it, so
+I recommend using custom handles with authentication.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+authenticate(user, password, type = "basic")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>user</code></td>
+<td>
+<p>user name</p>
+</td></tr>
+<tr valign="top"><td><code>password</code></td>
+<td>
+<p>password</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>type of HTTP authentication.  Should be one of the following
+types supported by Curl: basic, digest, digest_ie, gssnegotiate,
+ntlm, any.  It defaults to &quot;basic&quot;, the most common type.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other config: 
+<code><a href="../../httr/help/add_headers.html">add_headers</a>()</code>,
+<code><a href="../../httr/help/config.html">config</a>()</code>,
+<code><a href="../../httr/help/set_cookies.html">set_cookies</a>()</code>,
+<code><a href="../../httr/help/timeout.html">timeout</a>()</code>,
+<code><a href="../../httr/help/use_proxy.html">use_proxy</a>()</code>,
+<code><a href="../../httr/help/user_agent.html">user_agent</a>()</code>,
+<code><a href="../../httr/help/verbose.html">verbose</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+GET("http://httpbin.org/basic-auth/user/passwd")
+GET(
+  "http://httpbin.org/basic-auth/user/passwd",
+  authenticate("user", "passwd")
+)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

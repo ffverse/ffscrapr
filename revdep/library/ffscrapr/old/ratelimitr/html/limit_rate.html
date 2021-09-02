@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Limit the rate at which a function will execute</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for limit_rate {ratelimitr}"><tr><td>limit_rate {ratelimitr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Limit the rate at which a function will execute</h2>
+
+<h3>Description</h3>
+
+<p>Limit the rate at which a function will execute
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+limit_rate(f, ..., precision = 60)
+
+## S3 method for class 'list'
+limit_rate(f, ..., precision = 60)
+
+## S3 method for class 'function_list'
+limit_rate(f, ..., precision = 60)
+
+## S3 method for class 'function'
+limit_rate(f, ..., precision = 60)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>f</code></td>
+<td>
+<p>A single function to be rate-limited, or a named list of functions</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>One or more rates, created using <code><a href="../../ratelimitr/help/rate.html">rate</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>precision</code></td>
+<td>
+<p>The precision with which time intervals can be measured, in hertz</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>If <code>f</code> is a single function, then a new function with the same
+signature and (eventual) behavior as the original function, but rate limited.
+If <code>f</code> is a named list of functions, then a new list of functions with the
+same names and signatures, but collectively bound by a shared rate limit.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../ratelimitr/help/rate.html">rate</a></code>, <code><a href="../../ratelimitr/help/UPDATE_RATE.html">UPDATE_RATE</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## limiting a single function
+f &lt;- limit_rate(Sys.time, rate(n = 5, period = .1))
+res &lt;- replicate(10, f())
+## show the elapsed time between each function call:
+round(res[-1] - head(res, -1), 3)
+
+## for multiple functions, make sure the list is named:
+f &lt;- function() 1
+g &lt;- function() 2
+limited &lt;- limit_rate(list(f = f, g = g), rate(n = 1, period = .1))
+system.time({limited$f(); limited$g()})
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ratelimitr</em> version 0.4.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

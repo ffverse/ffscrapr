@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get League-Specific Scoring History</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ff_scoringhistory {ffscrapr}"><tr><td>ff_scoringhistory {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get League-Specific Scoring History</h2>
+
+<h3>Description</h3>
+
+<p>(Experimental!) This function reads your league's ff_scoring rules and maps them to nflfastr week-level data.
+Not all of the scoring rules from your league may have nflfastr equivalents, but most of the common ones are available!
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ff_scoringhistory(conn, season, ...)
+
+## S3 method for class 'espn_conn'
+ff_scoringhistory(conn, season = 1999:2020, ...)
+
+## S3 method for class 'flea_conn'
+ff_scoringhistory(conn, season = 1999:2020, ...)
+
+## S3 method for class 'mfl_conn'
+ff_scoringhistory(conn, season = 1999:2020, ...)
+
+## S3 method for class 'sleeper_conn'
+ff_scoringhistory(conn, season = 1999:2020, ...)
+
+## S3 method for class 'template_conn'
+ff_scoringhistory(conn, season = 1999:2020, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>conn</code></td>
+<td>
+<p>a conn object created by <code>ff_connect()</code></p>
+</td></tr>
+<tr valign="top"><td><code>season</code></td>
+<td>
+<p>season a numeric vector of seasons (earliest available year is 1999)</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other arguments</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A tidy dataframe of weekly fantasy scoring data, one row per player per week
+</p>
+
+
+<h3>Methods (by class)</h3>
+
+
+<ul>
+<li> <p><code>espn_conn</code>: ESPN: returns scoring history in a flat table, one row per player per week.
+</p>
+</li>
+<li> <p><code>flea_conn</code>: Fleaflicker: returns scoring history in a flat table, one row per player per week.
+</p>
+</li>
+<li> <p><code>mfl_conn</code>: MFL: returns scoring history in a flat table, one row per player per week.
+</p>
+</li>
+<li> <p><code>sleeper_conn</code>: Sleeper: returns scoring history in a flat table, one row per player per week.
+</p>
+</li>
+<li> <p><code>template_conn</code>: template: returns scoring history in a flat table, one row per player per week.
+</p>
+</li></ul>
+
+
+<h3>See Also</h3>
+
+<p><a href="https://www.nflfastr.com/reference/load_player_stats.html">https://www.nflfastr.com/reference/load_player_stats.html</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn &lt;- espn_connect(season = 2020, league_id = 899513)
+  ff_scoringhistory(conn, season = 2020)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn &lt;- fleaflicker_connect(2020, 312861)
+  ff_scoringhistory(conn, season = 2020)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_scoringhistory(ssb_conn, season = 2020)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn &lt;- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_scoringhistory(conn, season = 2020)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  template_conn &lt;- ff_template(scoring_type = "sfb11", roster_type = "sfb11")
+  ff_scoringhistory(template_conn, season = 2020)
+}) # end try
+
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get MFL Login Cookie</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for .mfl_logincookie {ffscrapr}"><tr><td>.mfl_logincookie {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get MFL Login Cookie</h2>
+
+<h3>Description</h3>
+
+<p>Gets login cookie for MFL based on user_name/password
+Docs: https://api.myfantasyleague.com/2020/api_info#login_info
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+.mfl_logincookie(user_name, password, season)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>user_name</code></td>
+<td>
+<p>MFL user_name (as string)</p>
+</td></tr>
+<tr valign="top"><td><code>password</code></td>
+<td>
+<p>MFL password (as string)</p>
+</td></tr>
+<tr valign="top"><td><code>season</code></td>
+<td>
+<p>Season</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a login cookie, which should be included as a parameter in an httr GET request
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

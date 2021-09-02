@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Missing is functions.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for assert-is {assertthat}"><tr><td>assert-is {assertthat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Missing is functions.</h2>
+
+<h3>Description</h3>
+
+<p>Missing is functions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+is.error(x)
+
+is.time(x)
+
+is.date(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>object to test</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other assertions: <code><a href="../../assertthat/help/are_equal.html">are_equal</a></code>,
+<code><a href="../../assertthat/help/is.scalar.html">is.scalar</a></code>, <code><a href="../../assertthat/help/noNA.html">noNA</a></code>,
+<code><a href="../../assertthat/help/not_empty.html">not_empty</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+a &lt;- Sys.time()
+is.time(a)
+b &lt;- Sys.Date()
+is.date(b)
+c &lt;- try(stop("!!"))
+is.error(c)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>assertthat</em> version 0.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

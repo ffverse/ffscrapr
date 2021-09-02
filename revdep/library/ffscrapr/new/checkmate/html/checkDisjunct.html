@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check if an argument is disjunct from a given set</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for checkDisjunct {checkmate}"><tr><td>checkDisjunct {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check if an argument is disjunct from a given set</h2>
+
+<h3>Description</h3>
+
+<p>Check if an argument is disjunct from a given set
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+checkDisjunct(x, y, fmatch = FALSE)
+
+check_disjunct(x, y, fmatch = FALSE)
+
+assertDisjunct(x, y, fmatch = FALSE, .var.name = vname(x), add = NULL)
+
+assert_disjunct(x, y, fmatch = FALSE, .var.name = vname(x), add = NULL)
+
+testDisjunct(x, y, fmatch = FALSE)
+
+test_disjunct(x, y, fmatch = FALSE)
+
+expect_disjunct(x, y, fmatch = FALSE, info = NULL, label = vname(x))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[any]<br />
+Object to check.</p>
+</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>[<code>atomic</code>]<br />
+Other Set.</p>
+</td></tr>
+<tr valign="top"><td><code>fmatch</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+Use the set operations implemented in <code><a href="../../fastmatch/help/fmatch.html">fmatch</a></code> in package <span class="pkg">fastmatch</span>.
+If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href="../../base/help/match.html">match</a></code>.
+<code><a href="../../fastmatch/help/fmatch.html">fmatch</a></code> modifies <code>y</code> by reference:
+A hash table is added as attribute which is used in subsequent calls.</p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+<p>[<code>AssertCollection</code>]<br />
+Collection to store assertion messages. See <code><a href="../../checkmate/help/AssertCollection.html">AssertCollection</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>info</code></td>
+<td>
+<p>[character(1)]<br />
+Extra information to be included in the message for the testthat reporter.
+See <code><a href="../../testthat/help/expect_that.html">expect_that</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Depending on the function prefix:
+If the check is successful, the functions 
+<code>assertDisjunct</code>/<code>assert_disjunct</code> return 
+<code>x</code> invisibly, whereas
+<code>checkDisjunct</code>/<code>check_disjunct</code> and 
+<code>testDisjunct</code>/<code>test_disjunct</code> return 
+<code>TRUE</code>.
+If the check is not successful, 
+<code>assertDisjunct</code>/<code>assert_disjunct</code>
+throws an error message, 
+<code>testDisjunct</code>/<code>test_disjunct</code>
+returns <code>FALSE</code>,
+and <code>checkDisjunct</code> returns a string with the error message.
+The function <code>expect_disjunct</code> always returns an
+<code><a href="../../testthat/help/expectation.html">expectation</a></code>.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The object <code>x</code> must be of the same type as the set w.r.t. <code><a href="../../base/help/typeof.html">typeof</a></code>.
+Integers and doubles are both treated as numeric.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other set: 
+<code><a href="../../checkmate/help/checkChoice.html">checkChoice</a>()</code>,
+<code><a href="../../checkmate/help/checkSetEqual.html">checkSetEqual</a>()</code>,
+<code><a href="../../checkmate/help/checkSubset.html">checkSubset</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+testDisjunct(1L, letters)
+testDisjunct(c("a", "z"), letters)
+
+# x is not converted before the comparison (except for numerics)
+testDisjunct(factor("a"), "a")
+testDisjunct(1, "1")
+testDisjunct(1, as.integer(1))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

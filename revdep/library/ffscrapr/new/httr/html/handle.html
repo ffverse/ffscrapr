@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a handle tied to a particular host.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for handle {httr}"><tr><td>handle {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a handle tied to a particular host.</h2>
+
+<h3>Description</h3>
+
+<p>This handle preserves settings and cookies across multiple requests. It is
+the foundation of all requests performed through the httr package, although
+it will mostly be hidden from the user.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+handle(url, cookies = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>url</code></td>
+<td>
+<p>full url to site</p>
+</td></tr>
+<tr valign="top"><td><code>cookies</code></td>
+<td>
+<p>DEPRECATED</p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>Because of the way argument dispatch works in R, using handle() in the
+http methods (See <code><a href="../../httr/help/GET.html">GET()</a></code>) will cause problems when trying to
+pass configuration arguments (See examples below). Directly specifying the
+handle when using http methods is not recommended in general, since the
+selection of the correct handle is taken care of when the user passes an url
+(See <code><a href="../../httr/help/handle_pool.html">handle_pool()</a></code>).
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+handle("http://google.com")
+handle("https://google.com")
+
+h &lt;- handle("http://google.com")
+GET(handle = h)
+# Should see cookies sent back to server
+GET(handle = h, config = verbose())
+
+h &lt;- handle("http://google.com", cookies = FALSE)
+GET(handle = h)$cookies
+## Not run: 
+# Using the preferred way of configuring the http methods
+# will not work when using handle():
+GET(handle = h, timeout(10))
+# Passing named arguments will work properly:
+GET(handle = h, config = list(timeout(10), add_headers(Accept = "")))
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

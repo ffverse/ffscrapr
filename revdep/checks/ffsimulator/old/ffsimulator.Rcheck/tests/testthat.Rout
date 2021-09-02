@@ -1,0 +1,40 @@
+
+R version 4.1.0 (2021-05-18) -- "Camp Pontanezen"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(ffsimulator)
+> library(checkmate)
+> 
+> test_check("ffsimulator")
+
+Attaching package: 'purrr'
+
+The following object is masked from 'package:testthat':
+
+    is_null
+
+== Skipped tests ===============================================================
+* On CRAN (5)
+
+[ FAIL 0 | WARN 0 | SKIP 5 | PASS 24 ]
+Deleting unused snapshots:
+* _snaps/ffs_autoplot/points-plot.svg
+* _snaps/ffs_autoplot/rank-plot.svg
+> 
+> proc.time()
+   user  system elapsed 
+   3.95    0.21    5.03 

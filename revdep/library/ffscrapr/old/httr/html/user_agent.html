@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set user agent.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for user_agent {httr}"><tr><td>user_agent {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set user agent.</h2>
+
+<h3>Description</h3>
+
+<p>Override the default RCurl user agent of <code>NULL</code>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+user_agent(agent)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>agent</code></td>
+<td>
+<p>string giving user agent</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other config: 
+<code><a href="../../httr/help/add_headers.html">add_headers</a>()</code>,
+<code><a href="../../httr/help/authenticate.html">authenticate</a>()</code>,
+<code><a href="../../httr/help/config.html">config</a>()</code>,
+<code><a href="../../httr/help/set_cookies.html">set_cookies</a>()</code>,
+<code><a href="../../httr/help/timeout.html">timeout</a>()</code>,
+<code><a href="../../httr/help/use_proxy.html">use_proxy</a>()</code>,
+<code><a href="../../httr/help/verbose.html">verbose</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+GET("http://httpbin.org/user-agent")
+GET("http://httpbin.org/user-agent", user_agent("httr"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

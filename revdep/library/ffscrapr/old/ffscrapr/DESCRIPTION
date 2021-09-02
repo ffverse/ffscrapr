@@ -1,0 +1,52 @@
+Type: Package
+Package: ffscrapr
+Title: API Client for Fantasy Football League Platforms
+Version: 1.4.5
+Authors@R: 
+    c(person(given = "Tan",
+             family = "Ho",
+             role = c("aut", "cre"),
+             email = "tan@tanho.ca"),
+      person(given = "Tony",
+             family = "ElHabr",
+             role = "ctb",
+             email = "anthonyelhabr@gmail.com"),
+      person(given = "Joe",
+             family = "Sydlowski",
+             role = "ctb",
+             email = "syd235@gmail.com"))
+Description: Helps access various Fantasy Football APIs by handling
+    authentication and rate-limiting, forming appropriate calls, and
+    returning tidy dataframes which can be easily connected to other data
+    sources.
+License: MIT + file LICENSE
+URL: https://ffscrapr.ffverse.com, https://github.com/ffverse/ffscrapr,
+        https://api.myfantasyleague.com/2020/api_info,
+        https://docs.sleeper.app,
+        https://www.fleaflicker.com/api-docs/index.html,
+        https://www.espn.com/fantasy/,
+        https://www.nflfastr.com/reference/load_player_stats.html
+BugReports: https://github.com/ffverse/ffscrapr/issues
+Depends: R (>= 3.0.0)
+Imports: cachem (>= 1.0.0), checkmate (>= 2.0.0), dplyr (>= 1.0.0),
+        glue (>= 1.3.0), httr (>= 1.4.0), jsonlite (>= 1.6.0),
+        lifecycle, lubridate (>= 1.5.0), magrittr (>= 1.5.0), memoise
+        (>= 2.0.0), purrr (>= 0.3.0), rappdirs (>= 0.3.0), ratelimitr
+        (>= 0.4.0), rlang (>= 0.4.0), stringr (>= 1.4.0), tibble (>=
+        3.0.0), tidyr (>= 1.0.0)
+Suggests: covr (>= 3.0.0), curl (>= 4.0.0), httptest (>= 3.0.0), knitr
+        (>= 1.0), rmarkdown (>= 2.6), testthat (>= 2.1.0), withr (>=
+        2.4.0)
+LazyData: true
+VignetteBuilder: knitr
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+NeedsCompilation: no
+Packaged: 2021-07-25 00:37:50 UTC; Tan
+Author: Tan Ho [aut, cre],
+  Tony ElHabr [ctb],
+  Joe Sydlowski [ctb]
+Maintainer: Tan Ho <tan@tanho.ca>
+Repository: RSPM
+Date/Publication: 2021-07-25 14:30:05 UTC
+Built: R 4.1.0; ; 2021-07-26 11:24:41 UTC; windows

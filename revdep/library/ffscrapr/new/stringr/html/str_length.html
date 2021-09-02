@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The length of a string.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_length {stringr}"><tr><td>str_length {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>The length of a string.</h2>
+
+<h3>Description</h3>
+
+<p>Technically this returns the number of &quot;code points&quot;, in a string. One
+code point usually corresponds to one character, but not always. For example,
+an u with a umlaut might be represented as a single character or as the
+combination a u and an umlaut.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_length(string)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>Input vector. Either a character vector, or something
+coercible to one.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A numeric vector giving number of characters (code points) in each
+element of the character vector. Missing string have missing length.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringi/help/stri_length.html">stringi::stri_length()</a></code> which this function wraps.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+str_length(letters)
+str_length(NA)
+str_length(factor("abc"))
+str_length(c("i", "like", "programming", NA))
+
+# Two ways of representing a u with an umlaut
+u1 &lt;- "\u00fc"
+u2 &lt;- stringi::stri_trans_nfd(u1)
+# The print the same:
+u1
+u2
+# But have a different length
+str_length(u1)
+str_length(u2)
+# Even though they have the same number of characters
+str_count(u1)
+str_count(u2)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

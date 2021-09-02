@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fleaflicker players library</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fleaflicker_players {ffscrapr}"><tr><td>fleaflicker_players {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Fleaflicker players library</h2>
+
+<h3>Description</h3>
+
+<p>A cached table of Fleaflicker NFL players. Will store in memory for each session!
+(via memoise in zzz.R)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fleaflicker_players(conn, page_limit = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>conn</code></td>
+<td>
+<p>a conn object created by <code>ff_connect()</code></p>
+</td></tr>
+<tr valign="top"><td><code>page_limit</code></td>
+<td>
+<p>A number limiting the number of players to return, or NULL (default) returns all</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a dataframe containing all ~7000+ players in the Fleaflicker database
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn &lt;- fleaflicker_connect(2020, 312861)
+  player_list &lt;- fleaflicker_players(conn, page_limit = 2)
+}) # end try
+
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

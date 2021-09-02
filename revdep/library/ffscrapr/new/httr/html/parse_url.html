@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parse and build urls according to RFC3986.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for parse_url {httr}"><tr><td>parse_url {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Parse and build urls according to RFC3986.</h2>
+
+<h3>Description</h3>
+
+<p>See <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a> for details of parsing
+algorithm.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+parse_url(url)
+
+build_url(url)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>url</code></td>
+<td>
+<p>For <code>parse_url</code> a character vector (of length 1) to parse
+into components; for <code>build_url</code> a list of components to turn back
+into a string.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list containing:
+</p>
+
+<ul>
+<li><p> scheme
+</p>
+</li>
+<li><p> hostname
+</p>
+</li>
+<li><p> port
+</p>
+</li>
+<li><p> path
+</p>
+</li>
+<li><p> params
+</p>
+</li>
+<li><p> fragment
+</p>
+</li>
+<li><p> query, a list
+</p>
+</li>
+<li><p> username
+</p>
+</li>
+<li><p> password
+</p>
+</li></ul>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+parse_url("http://google.com/")
+parse_url("http://google.com:80/")
+parse_url("http://google.com:80/?a=1&amp;b=2")
+
+url &lt;- parse_url("http://google.com/")
+url$scheme &lt;- "https"
+url$query &lt;- list(q = "hello")
+build_url(url)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

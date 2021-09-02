@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert case of a string.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for case {stringr}"><tr><td>case {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Convert case of a string.</h2>
+
+<h3>Description</h3>
+
+<p>Convert case of a string.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_to_upper(string, locale = "en")
+
+str_to_lower(string, locale = "en")
+
+str_to_title(string, locale = "en")
+
+str_to_sentence(string, locale = "en")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>String to modify</p>
+</td></tr>
+<tr valign="top"><td><code>locale</code></td>
+<td>
+<p>Locale to use for translations. Defaults to &quot;en&quot; (English)
+to ensure consistent default ordering across platforms.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+dog &lt;- "The quick brown dog"
+str_to_upper(dog)
+str_to_lower(dog)
+str_to_title(dog)
+str_to_sentence("the quick brown dog")
+
+# Locale matters!
+str_to_upper("i") # English
+str_to_upper("i", "tr") # Turkish
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

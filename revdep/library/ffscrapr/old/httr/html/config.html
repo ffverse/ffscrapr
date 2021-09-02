@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set curl options.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for config {httr}"><tr><td>config {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set curl options.</h2>
+
+<h3>Description</h3>
+
+<p>Generally you should only need to use this function to set CURL options
+directly if there isn't already a helpful wrapper function, like
+<code><a href="../../httr/help/set_cookies.html">set_cookies()</a></code>, <code><a href="../../httr/help/add_headers.html">add_headers()</a></code> or
+<code><a href="../../httr/help/authenticate.html">authenticate()</a></code>. To use this function effectively requires
+some knowledge of CURL, and CURL options. Use <code><a href="../../httr/help/httr_options.html">httr_options()</a></code> to
+see a complete list of available options. To see the libcurl documentation
+for a given option, use <code><a href="../../httr/help/curl_docs.html">curl_docs()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+config(..., token = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>named Curl options.</p>
+</td></tr>
+<tr valign="top"><td><code>token</code></td>
+<td>
+<p>An OAuth token (1.0 or 2.0)</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Unlike Curl (and RCurl), all configuration options are per request, not
+per handle.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../httr/help/set_config.html">set_config()</a></code> to set global config defaults, and
+<code><a href="../../httr/help/with_config.html">with_config()</a></code> to temporarily run code with set options.
+</p>
+<p>All known available options are listed in <code><a href="../../httr/help/httr_options.html">httr_options()</a></code>
+</p>
+<p>Other config: 
+<code><a href="../../httr/help/add_headers.html">add_headers</a>()</code>,
+<code><a href="../../httr/help/authenticate.html">authenticate</a>()</code>,
+<code><a href="../../httr/help/set_cookies.html">set_cookies</a>()</code>,
+<code><a href="../../httr/help/timeout.html">timeout</a>()</code>,
+<code><a href="../../httr/help/use_proxy.html">use_proxy</a>()</code>,
+<code><a href="../../httr/help/user_agent.html">user_agent</a>()</code>,
+<code><a href="../../httr/help/verbose.html">verbose</a>()</code>
+</p>
+<p>Other ways to set configuration: 
+<code><a href="../../httr/help/set_config.html">set_config</a>()</code>,
+<code><a href="../../httr/help/with_config.html">with_config</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# There are a number of ways to modify the configuration of a request
+# * you can add directly to a request
+HEAD("https://www.google.com", verbose())
+
+# * you can wrap with with_config()
+with_config(verbose(), HEAD("https://www.google.com"))
+
+# * you can set global with set_config()
+old &lt;- set_config(verbose())
+HEAD("https://www.google.com")
+# and re-establish the previous settings with
+set_config(old, override = TRUE)
+HEAD("https://www.google.com")
+# or
+reset_config()
+HEAD("https://www.google.com")
+
+# If available, you should use a friendly httr wrapper over RCurl
+# options. But you can pass Curl options (as listed in httr_options())
+# in config
+HEAD("https://www.google.com/", config(verbose = TRUE))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

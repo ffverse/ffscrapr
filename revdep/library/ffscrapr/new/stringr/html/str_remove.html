@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Remove matched patterns in a string.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_remove {stringr}"><tr><td>str_remove {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Remove matched patterns in a string.</h2>
+
+<h3>Description</h3>
+
+<p>Alias for <code>str_replace(string, pattern, "")</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_remove(string, pattern)
+
+str_remove_all(string, pattern)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>Input vector. Either a character vector, or something
+coercible to one.</p>
+</td></tr>
+<tr valign="top"><td><code>pattern</code></td>
+<td>
+<p>Pattern to look for.
+</p>
+<p>The default interpretation is a regular expression, as described
+in <a href="../../stringi/help/stringi-search-regex.html">stringi::stringi-search-regex</a>. Control options with
+<code><a href="../../stringr/help/regex.html">regex()</a></code>.
+</p>
+<p>Match a fixed string (i.e. by comparing only bytes), using
+<code><a href="../../stringr/help/fixed.html">fixed()</a></code>. This is fast, but approximate. Generally,
+for matching human text, you'll want <code><a href="../../stringr/help/coll.html">coll()</a></code> which
+respects character matching rules for the specified locale.
+</p>
+<p>Match character, word, line and sentence boundaries with
+<code><a href="../../stringr/help/boundary.html">boundary()</a></code>. An empty pattern, &quot;&quot;, is equivalent to
+<code>boundary("character")</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A character vector.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringr/help/str_replace.html">str_replace()</a></code> for the underlying implementation.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fruits &lt;- c("one apple", "two pears", "three bananas")
+str_remove(fruits, "[aeiou]")
+str_remove_all(fruits, "[aeiou]")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

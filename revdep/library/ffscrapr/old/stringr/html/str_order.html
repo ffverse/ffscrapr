@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Order or sort a character vector.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_order {stringr}"><tr><td>str_order {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Order or sort a character vector.</h2>
+
+<h3>Description</h3>
+
+<p>Order or sort a character vector.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_order(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+
+str_sort(x, decreasing = FALSE, na_last = TRUE, locale = "en",
+  numeric = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A character vector to sort.</p>
+</td></tr>
+<tr valign="top"><td><code>decreasing</code></td>
+<td>
+<p>A boolean. If <code>FALSE</code>, the default, sorts from
+lowest to highest; if <code>TRUE</code> sorts from highest to lowest.</p>
+</td></tr>
+<tr valign="top"><td><code>na_last</code></td>
+<td>
+<p>Where should <code>NA</code> go? <code>TRUE</code> at the end,
+<code>FALSE</code> at the beginning, <code>NA</code> dropped.</p>
+</td></tr>
+<tr valign="top"><td><code>locale</code></td>
+<td>
+<p>In which locale should the sorting occur? Defaults to
+the English. This ensures that code behaves the same way across
+platforms.</p>
+</td></tr>
+<tr valign="top"><td><code>numeric</code></td>
+<td>
+<p>If <code>TRUE</code>, will sort digits numerically, instead
+of as strings.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other options used to control sorting order. Passed on to
+<code><a href="../../stringi/help/stri_opts_collator.html">stringi::stri_opts_collator()</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringi/help/stri_order.html">stringi::stri_order()</a></code> for the underlying implementation.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+str_order(letters)
+str_sort(letters)
+
+str_order(letters, locale = "haw")
+str_sort(letters, locale = "haw")
+
+x &lt;- c("100a10", "100a5", "2b", "2a")
+str_sort(x)
+str_sort(x, numeric = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

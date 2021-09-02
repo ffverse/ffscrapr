@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate oauth signature.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for oauth_signature {httr}"><tr><td>oauth_signature {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Generate oauth signature.</h2>
+
+<h3>Description</h3>
+
+<p>For advanced use only. Occassionally needed for sites that use some
+components of the OAuth spec, but not all of them (e.g. 2-legged oauth)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+oauth_signature(
+  url,
+  method = "GET",
+  app,
+  token = NULL,
+  token_secret = NULL,
+  private_key = NULL,
+  other_params = NULL
+)
+
+oauth_header(info)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>url, method</code></td>
+<td>
+<p>Url and http method of request.</p>
+</td></tr>
+<tr valign="top"><td><code>app</code></td>
+<td>
+<p><code><a href="../../httr/help/oauth_app.html">oauth_app()</a></code> object representing application.</p>
+</td></tr>
+<tr valign="top"><td><code>token, token_secret</code></td>
+<td>
+<p>OAuth token and secret.</p>
+</td></tr>
+<tr valign="top"><td><code>other_params</code></td>
+<td>
+<p>Named argument providing additional parameters
+(e.g. <code>oauth_callback</code> or <code>oauth_body_hash</code>).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list of oauth parameters.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

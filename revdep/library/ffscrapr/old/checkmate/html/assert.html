@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Combine multiple checks into one assertion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for assert {checkmate}"><tr><td>assert {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Combine multiple checks into one assertion</h2>
+
+<h3>Description</h3>
+
+<p>You can call this function with an arbitrary number of of <code>check*</code>
+functions, i.e. functions provided by this package or your own functions which
+return <code>TRUE</code> on success and the error message as <code>character(1)</code> otherwise.
+The resulting assertion is successful, if <code>combine</code> is
+&ldquo;or&rdquo; (default) and at least one check evaluates to <code>TRUE</code> or
+<code>combine</code> is &ldquo;and&rdquo; and all checks evaluate to <code>TRUE</code>.
+Otherwise, <code>assert</code> throws an informative error message.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+assert(..., combine = "or", .var.name = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>[any]<br />
+List of calls to check functions.</p>
+</td></tr>
+<tr valign="top"><td><code>combine</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+&ldquo;or&rdquo; or &ldquo;and&rdquo; to combine the check functions with an OR
+or AND, respectively.</p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Throws an error if all checks fail and invisibly returns
+<code>TRUE</code> otherwise.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+x = 1:10
+assert(checkNull(x), checkInteger(x, any.missing = FALSE))
+## Not run: 
+x = 1
+assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

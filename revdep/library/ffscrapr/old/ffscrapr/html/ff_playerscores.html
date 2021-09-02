@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get Player Scoring History</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ff_playerscores {ffscrapr}"><tr><td>ff_playerscores {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get Player Scoring History</h2>
+
+<h3>Description</h3>
+
+<p>This function returns a tidy dataframe of player scores based on league rules.
+</p>
+<p>Unfortunately, Sleeper has deprecated their player stats endpoint from their supported/open API.
+Please see <code>ff_scoringhistory()</code> for an alternative reconstruction.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ff_playerscores(conn, ...)
+
+## S3 method for class 'espn_conn'
+ff_playerscores(conn, limit = 1000, ...)
+
+## S3 method for class 'flea_conn'
+ff_playerscores(conn, page_limit = NULL, ...)
+
+## S3 method for class 'mfl_conn'
+ff_playerscores(conn, season, week, ...)
+
+## S3 method for class 'sleeper_conn'
+ff_playerscores(conn, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>conn</code></td>
+<td>
+<p>the list object created by <code>ff_connect()</code></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other arguments (currently unused)</p>
+</td></tr>
+<tr valign="top"><td><code>limit</code></td>
+<td>
+<p>A numeric describing the number of players to return - default 1000</p>
+</td></tr>
+<tr valign="top"><td><code>page_limit</code></td>
+<td>
+<p>A numeric describing the number of pages to return - default NULL returns all available</p>
+</td></tr>
+<tr valign="top"><td><code>season</code></td>
+<td>
+<p>the season of interest - generally only the most recent 2-3 seasons are available</p>
+</td></tr>
+<tr valign="top"><td><code>week</code></td>
+<td>
+<p>a numeric vector (ie 1:17) or one of YTD (year-to-date) or AVG (average to date)</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A tibble of historical player scoring
+</p>
+
+
+<h3>Methods (by class)</h3>
+
+
+<ul>
+<li> <p><code>espn_conn</code>: ESPN: returns total points for season and average per game, for both current and previous season.
+</p>
+</li>
+<li> <p><code>flea_conn</code>: Fleaflicker: returns the season, season average, and standard deviation
+</p>
+</li>
+<li> <p><code>mfl_conn</code>: MFL: returns the player fantasy scores for each week (not the actual stats)
+</p>
+</li>
+<li> <p><code>sleeper_conn</code>: Sleeper: Deprecated their open API endpoint for player scores
+</p>
+</li></ul>
+
+
+<h3>See Also</h3>
+
+<p>ff_scoringhistory
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+try({ # try only shown here because sometimes CRAN checks are weird
+
+  conn &lt;- espn_connect(season = 2020, league_id = 899513)
+
+  ff_playerscores(conn, limit = 5)
+
+}) # end try
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+conn &lt;- fleaflicker_connect(2020, 312861)
+ff_playerscores(conn, page_limit = 2)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+sfb_conn &lt;- mfl_connect(2020, league_id = 65443)
+ff_playerscores(conn = sfb_conn, season = 2019, week = "YTD")
+}) # end try
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.5 <a href="00Index.html">Index</a>]</div>
+</body></html>

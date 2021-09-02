@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Connect to Fleaflicker League</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for fleaflicker_connect {ffscrapr}"><tr><td>fleaflicker_connect {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Connect to Fleaflicker League</h2>
+
+<h3>Description</h3>
+
+<p>This function creates a connection object which stores parameters and a user ID if available.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fleaflicker_connect(
+  season = NULL,
+  league_id = NULL,
+  user_email = NULL,
+  user_agent = NULL,
+  rate_limit = TRUE,
+  rate_limit_number = NULL,
+  rate_limit_seconds = NULL,
+  ...
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>season</code></td>
+<td>
+<p>Season to access on Fleaflicker - if missing, will guess based on system date (current year if March or later, otherwise previous year)</p>
+</td></tr>
+<tr valign="top"><td><code>league_id</code></td>
+<td>
+<p>League ID</p>
+</td></tr>
+<tr valign="top"><td><code>user_email</code></td>
+<td>
+<p>Optional - attempts to get user's user ID by email</p>
+</td></tr>
+<tr valign="top"><td><code>user_agent</code></td>
+<td>
+<p>User agent to self-identify (optional)</p>
+</td></tr>
+<tr valign="top"><td><code>rate_limit</code></td>
+<td>
+<p>TRUE by default - turn off rate limiting with FALSE</p>
+</td></tr>
+<tr valign="top"><td><code>rate_limit_number</code></td>
+<td>
+<p>number of calls per <code>rate_limit_seconds</code>, suggested is under 1000 calls per 60 seconds</p>
+</td></tr>
+<tr valign="top"><td><code>rate_limit_seconds</code></td>
+<td>
+<p>number of seconds as denominator for rate_limit</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other arguments (for other methods, for R compat)</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list that stores Fleaflicker connection objects
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.6 <a href="00Index.html">Index</a>]</div>
+</body></html>

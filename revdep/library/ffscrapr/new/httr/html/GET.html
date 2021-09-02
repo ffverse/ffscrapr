@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: GET a url.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for GET {httr}"><tr><td>GET {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>GET a url.</h2>
+
+<h3>Description</h3>
+
+<p>GET a url.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+GET(url = NULL, config = list(), ..., handle = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>url</code></td>
+<td>
+<p>the url of the page to retrieve</p>
+</td></tr>
+<tr valign="top"><td><code>config</code></td>
+<td>
+<p>Additional configuration settings such as http
+authentication (<code><a href="../../httr/help/authenticate.html">authenticate()</a></code>), additional headers
+(<code><a href="../../httr/help/add_headers.html">add_headers()</a></code>), cookies (<code><a href="../../httr/help/set_cookies.html">set_cookies()</a></code>) etc.
+See <code><a href="../../httr/help/config.html">config()</a></code> for full details and list of helpers.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further named parameters, such as <code>query</code>, <code>path</code>, etc,
+passed on to <code><a href="../../httr/help/modify_url.html">modify_url()</a></code>. Unnamed parameters will be combined
+with <code><a href="../../httr/help/config.html">config()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>handle</code></td>
+<td>
+<p>The handle to use with this request. If not
+supplied, will be retrieved and reused from the <code><a href="../../httr/help/handle_pool.html">handle_pool()</a></code>
+based on the scheme, hostname and port of the url. By default <span class="pkg">httr</span>
+requests to the same scheme/host/port combo. This substantially reduces
+connection time, and ensures that cookies are maintained over multiple
+requests to the same host. See <code><a href="../../httr/help/handle_pool.html">handle_pool()</a></code> for more
+details.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A <code><a href="../../httr/help/response.html">response()</a></code> object.
+</p>
+
+
+<h3>RFC2616</h3>
+
+<p>The GET method means retrieve whatever information (in the form of an
+entity) is identified by the Request-URI. If the Request-URI refers to a
+data-producing process, it is the produced data which shall be returned as
+the entity in the response and not the source text of the process, unless
+that text happens to be the output of the process.
+</p>
+<p>The semantics of the GET method change to a &quot;conditional GET&quot; if the
+request message includes an If-Modified-Since, If-Unmodified-Since,
+If-Match, If-None-Match, or If-Range header field. A conditional GET method
+requests that the entity be transferred only under the circumstances
+described by the conditional header field(s). The conditional GET method is
+intended to reduce unnecessary network usage by allowing cached entities to
+be refreshed without requiring multiple requests or transferring data
+already held by the client.
+</p>
+<p>The semantics of the GET method change to a &quot;partial GET&quot; if the request
+message includes a Range header field. A partial GET requests that only
+part of the entity be transferred, as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</a>
+The partial GET method is intended to reduce unnecessary network usage by
+allowing partially-retrieved entities to be completed without transferring
+data already held by the client.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other http methods: 
+<code><a href="../../httr/help/BROWSE.html">BROWSE</a>()</code>,
+<code><a href="../../httr/help/DELETE.html">DELETE</a>()</code>,
+<code><a href="../../httr/help/HEAD.html">HEAD</a>()</code>,
+<code><a href="../../httr/help/PATCH.html">PATCH</a>()</code>,
+<code><a href="../../httr/help/POST.html">POST</a>()</code>,
+<code><a href="../../httr/help/PUT.html">PUT</a>()</code>,
+<code><a href="../../httr/help/VERB.html">VERB</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+GET("http://google.com/")
+GET("http://google.com/", path = "search")
+GET("http://google.com/", path = "search", query = list(q = "ham"))
+
+# See what GET is doing with httpbin.org
+url &lt;- "http://httpbin.org/get"
+GET(url)
+GET(url, add_headers(a = 1, b = 2))
+GET(url, set_cookies(a = 1, b = 2))
+GET(url, add_headers(a = 1, b = 2), set_cookies(a = 1, b = 2))
+GET(url, authenticate("username", "password"))
+GET(url, verbose())
+
+# You might want to manually specify the handle so you can have multiple
+# independent logins to the same website.
+google &lt;- handle("http://google.com")
+GET(handle = google, path = "/")
+GET(handle = google, path = "search")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>
