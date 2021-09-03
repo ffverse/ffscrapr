@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.00</span>
       </span>
     </div>
 
@@ -249,20 +249,20 @@
   <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>sleeper_players</span><span class='op'>(</span><span class='op'>)</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>5</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 33</span>
-#&gt;   player_id player_name      pos     age team  status   years_exp fantasy_data_id
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 6617      Andre Lindsey    WR     <span style='color: #BB0000;'>NA</span>   KC    Active           1           <span style='text-decoration: underline;'>21</span>382
-#&gt; <span style='color: #BCBCBC;'>2</span> 5783      Christian Boutte CB     25.7 <span style='color: #BB0000;'>NA</span>    Inactive         2           <span style='text-decoration: underline;'>20</span>685
-#&gt; <span style='color: #BCBCBC;'>3</span> 2447      Mykkele Thompson FS     28.3 <span style='color: #BB0000;'>NA</span>    Inactive         4           <span style='text-decoration: underline;'>16</span>904
-#&gt; <span style='color: #BCBCBC;'>4</span> 6457      Calvin Anderson  OT     25.4 DEN   Active           2           <span style='text-decoration: underline;'>21</span>228
-#&gt; <span style='color: #BCBCBC;'>5</span> 6411      Kyle Vasey       LS     25.3 <span style='color: #BB0000;'>NA</span>    Inactive         1           <span style='text-decoration: underline;'>21</span>308
-#&gt; <span style='color: #949494;'># … with 25 more variables: sportradar_id &lt;chr&gt;, espn_id &lt;int&gt;, yahoo_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   rotowire_id &lt;int&gt;, rotoworld_id &lt;int&gt;, gsis_id &lt;chr&gt;, stats_id &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   college &lt;chr&gt;, height &lt;chr&gt;, hashtag &lt;chr&gt;, number &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   fantasy_positions &lt;chr&gt;, weight &lt;chr&gt;, active &lt;lgl&gt;, sport &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   birth_date &lt;date&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   depth_chart_order &lt;int&gt;, depth_chart_position &lt;chr&gt;, high_school &lt;chr&gt;,</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 34</span>
+#&gt;   player_id player_name      pos     age team  status   years_exp sportradar_id 
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
+#&gt; <span style='color: #BCBCBC;'>1</span> 542       Dorin Dickerson  TE     33.4 <span style='color: #BB0000;'>NA</span>    Inactive         4 eae0d42b-d336…
+#&gt; <span style='color: #BCBCBC;'>2</span> 4739      Jack Lynn        OLB    28.1 <span style='color: #BB0000;'>NA</span>    Inactive         2 3f04b229-d38a…
+#&gt; <span style='color: #BCBCBC;'>3</span> 2447      Mykkele Thompson FS     28.4 <span style='color: #BB0000;'>NA</span>    Inactive         4 5135d596-becd…
+#&gt; <span style='color: #BCBCBC;'>4</span> 7847      Gunnar Vogel     OT     23.1 CIN   Active           0 8f107315-e78c…
+#&gt; <span style='color: #BCBCBC;'>5</span> 6411      Kyle Vasey       LS     25.4 <span style='color: #BB0000;'>NA</span>    Inactive         1 7d8a8d31-8628…
+#&gt; <span style='color: #949494;'># … with 26 more variables: yahoo_id &lt;int&gt;, fantasy_data_id &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rotowire_id &lt;int&gt;, espn_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   swish_id &lt;int&gt;, stats_id &lt;int&gt;, hashtag &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   fantasy_positions &lt;chr&gt;, birth_date &lt;date&gt;, number &lt;int&gt;, weight &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   active &lt;lgl&gt;, sport &lt;chr&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   depth_chart_position &lt;chr&gt;, high_school &lt;chr&gt;, depth_chart_order &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_participation &lt;chr&gt;, …</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>

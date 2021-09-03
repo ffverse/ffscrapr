@@ -93,7 +93,7 @@ Each trade is represented twice, once per each team." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.00</span>
       </span>
     </div>
 
@@ -310,20 +310,20 @@ Each trade is represented twice, once per each team.</p>
   <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
   <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 314 × 12</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 329 × 12</span>
 #&gt;    timestamp           type        type_desc franchise_id franchise_name player_id
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;glue&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-08-25 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   16411    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-08-25 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>578</span>553 Running Bear   15999    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-08-25 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 15550    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-08-23 <span style='color: #949494;'>17:59:29</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16645    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-08-22 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>722 syd12nyjets's… 16044    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-08-04 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 13261    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-08-04 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 11182    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-08-04 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 13194    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-08-04 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 12106    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-08-04 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 12223    
-#&gt; <span style='color: #949494;'># … with 304 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 16418    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 15629    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 14329    
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 13080    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 13886    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>803 ZachFarni's T… 15872    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>988 The DK Crew    16630    
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>582</span>423 The Verblande… 15685    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-09-01 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>582</span>423 The Verblande… 12891    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-08-30 <span style='color: #949494;'>16:01:05</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>988 The DK Crew    12891    
+#&gt; <span style='color: #949494;'># … with 319 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, trade_partner_id &lt;int&gt;, trade_partner_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   trade_id &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
 

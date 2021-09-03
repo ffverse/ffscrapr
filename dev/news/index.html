@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.00</span>
       </span>
     </div>
 
@@ -232,6 +232,21 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#ffscrapr-development-version" class="anchor"></a>ffscrapr (development version)<small> Unreleased </small>
 </h1>
+</div>
+    <div id="ffscrapr-146" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.6">
+<a href="#ffscrapr-146" class="anchor"></a>ffscrapr 1.4.6<small> 2021-09-02 </small>
+</h1>
+<p>The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.</p>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>
+<code><a href="../reference/ff_template.html">ff_template()</a></code> adds a template connection for <code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, and <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> to more easily pull common scoring templates.</li>
+<li>Add kicker stat mappings for <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> and support ~ most kicker scorings (MFL’s may be weird.)</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
@@ -241,28 +256,31 @@
 <li>
 <code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft type (e.g. “email draft”, “live auction”) if the field is set.</li>
 <li>
-<code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft player pool (e.g. “Rookie”, “Veteran”, “Both”) if the field is set. (These three changes fix <a href='https://github.com/ffverse/ffscrapr/issues/311'>#311</a>, thanks <a href='https://github.com/maat7043'>@maat7043</a>!) (1.4.5.02)</li>
+<code><a href="../reference/ff_league.html">ff_league()</a></code> for MFL now returns draft player pool (e.g. “Rookie”, “Veteran”, “Both”) if the field is set. (These three changes fix <a href='https://github.com/ffverse/ffscrapr/issues/311'>#311</a>, thanks <a href='https://github.com/maat7043'>@maat7043</a>!)</li>
 <li>
 <code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for ESPN now credits a bye team with a win instead of causing an error.</li>
 <li>
-<code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> no longer returns an error for seasons prior to 2018. (Thanks, <a href='https://github.com/JoeSydlowski'>@JoeSydlowski</a>!) (1.4.5.03)</li>
+<code><a href="../reference/espn_getendpoint.html">espn_getendpoint()</a></code> no longer returns an error for seasons prior to 2018. (Thanks, <a href='https://github.com/JoeSydlowski'>@JoeSydlowski</a>!)</li>
 <li>
-<code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> and <code>nflfastr_roster()</code> now use the <a href="https://nflreadr.nflverse.com">nflreadr</a> package functions back-end (1.4.5.04)</li>
+<code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> and <code>nflfastr_roster()</code> now use the <a href="https://nflreadr.nflverse.com">nflreadr</a> package functions back-end</li>
+<li>Added some names to the name database, c/o <a href='https://github.com/scasanova'>@scasanova</a> via <a href='https://github.com/ffverse/ffscrapr/issues/320'>#320</a> - thank you, Santiago!</li>
 <li>
-<code><a href="../reference/ff_template.html">ff_template()</a></code> adds a template feature for <code><a href="../reference/ff_starter_positions.html">ff_starter_positions()</a></code>, <code><a href="../reference/ff_scoring.html">ff_scoring()</a></code>, and <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> to more quickly pull common scoring templates.</li>
-<li>Added some names to the name database, c/o <a href='https://github.com/scasanova'>@scasanova</a> via <a href='https://github.com/ffverse/ffscrapr/issues/320'>#320</a> - thank you, Santiago! (v1.4.5.06)</li>
+<code><a href="../reference/ff_starters.html">ff_starters()</a></code> for ESPN now also tries to return a projected score for the week - thank you, <a href='https://github.com/scottfrechette'>@scottfrechette</a>! Resolves <a href='https://github.com/ffverse/ffscrapr/issues/323'>#323</a>.</li>
 <li>
-<code><a href="../reference/ff_starters.html">ff_starters()</a></code> for ESPN now also tries to return a projected score for the week - thank you, <a href='https://github.com/scottfrechette'>@scottfrechette</a>! Resolves <a href='https://github.com/ffverse/ffscrapr/issues/323'>#323</a>. (1.4.5.07)</li>
+<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper no longer broken - resolves <a href='https://github.com/ffverse/ffscrapr/issues/322'>#322</a>.</li>
 <li>
-<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for Sleeper no longer broken - resolves <a href='https://github.com/ffverse/ffscrapr/issues/322'>#322</a></li>
+<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for MFL now returns NA as the result for unplayed games and becomes consistent with other platforms.</li>
 <li>
-<code><a href="../reference/ff_schedule.html">ff_schedule()</a></code> for MFL now returns NA as the result for unplayed games and becomes consistent with other platforms. (1.4.5.08)</li>
-<li>
-<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> for MFL now parses decimal ranges correctly (1.4.5.09)</li>
+<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> for MFL now parses decimal ranges correctly</li>
 <li>Refactor <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> into memoisable pieces (<code>.nflfastr_offense_long</code>, <code>.nflfastr_kicker_long</code>, <code>.nflfastr_roster</code>)</li>
-<li>Add kicker stat mappings for <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> and support ~ most kicker scorings (MFL’s may be weird.) (1.4.5.10)</li>
-<li>Update http error messages for user readability (1.4.5.11)</li>
+<li>Update http error messages for user readability.</li>
+<li>Minimum R version bumped to 3.6.0 - nflreadr uses RDS versions that require a minimum of R3.6.</li>
 </ul>
+</div>
+<div id="thanks" class="section level2">
+<h2 class="hasAnchor">
+<a href="#thanks" class="anchor"></a>Thanks</h2>
+<p>Immensely grateful to: Joe Sydlowski, Matt Spencer, Santiago Casanova, Scott Frechette, and all others who raised issues and contributed code towards this release!</p>
 <hr>
 </div>
 </div>
@@ -367,9 +385,9 @@
 <a href="#ffscrapr-141" class="anchor"></a>ffscrapr 1.4.1<small> 2021-04-18 </small>
 </h1>
 <p>The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also correct some bugs in the new experimental <code>ff_scoringhistory</code> and <code>ff_starter_positions</code> functions released in v1.4.0.</p>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>
 <code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
@@ -396,9 +414,9 @@
 <a href="#ffscrapr-140" class="anchor"></a>ffscrapr 1.4.0<small> 2021-04-13 </small>
 </h1>
 <p>The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to <a href="https://twitter.com/JoeSydlowskiFF">Joe Sydlowski</a> for his contributions on scoring history (and everything else DynastyProcess!)</p>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<a href="#new-features-2" class="anchor"></a>New Features</h2>
 <ul>
 <li>
 <code><a href="../reference/nflfastr_weekly.html">nflfastr_weekly()</a></code> imports weekly offensive statistics from nflfastR’s <a href="https://github.com/nflverse/nflfastR-data">data repository</a>.</li>

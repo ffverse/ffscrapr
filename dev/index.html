@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.00</span>
       </span>
     </div>
 
@@ -210,32 +210,35 @@
 
 <span class="co"># Get a summary of league settings</span>
 <span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 x 14] (S3: tbl_df/tbl/data.frame)</span>
-<span class="co">#&gt;  $ league_id      : chr "54040"</span>
-<span class="co">#&gt;  $ league_name    : chr "The Super Smash Bros Dynasty League"</span>
-<span class="co">#&gt;  $ season         : int 2020</span>
-<span class="co">#&gt;  $ franchise_count: num 14</span>
-<span class="co">#&gt;  $ qb_type        : chr "1QB"</span>
-<span class="co">#&gt;  $ idp            : logi FALSE</span>
-<span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, TEPrem, PP1D"</span>
-<span class="co">#&gt;  $ best_ball      : logi FALSE</span>
-<span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
-<span class="co">#&gt;  $ player_copies  : num 1</span>
-<span class="co">#&gt;  $ years_active   : chr "2018-2021"</span>
-<span class="co">#&gt;  $ qb_count       : chr "1"</span>
-<span class="co">#&gt;  $ roster_size    : num 33</span>
-<span class="co">#&gt;  $ league_depth   : num 462</span>
+<span class="co">#&gt; tibble [1 x 17] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ league_id        : chr "54040"</span>
+<span class="co">#&gt;  $ league_name      : chr "The Super Smash Bros Dynasty League"</span>
+<span class="co">#&gt;  $ season           : int 2020</span>
+<span class="co">#&gt;  $ league_type      : chr NA</span>
+<span class="co">#&gt;  $ franchise_count  : num 14</span>
+<span class="co">#&gt;  $ qb_type          : chr "1QB"</span>
+<span class="co">#&gt;  $ idp              : logi FALSE</span>
+<span class="co">#&gt;  $ scoring_flags    : chr "0.5_ppr, TEPrem, PP1D"</span>
+<span class="co">#&gt;  $ best_ball        : logi FALSE</span>
+<span class="co">#&gt;  $ salary_cap       : logi FALSE</span>
+<span class="co">#&gt;  $ player_copies    : num 1</span>
+<span class="co">#&gt;  $ years_active     : chr "2018-2021"</span>
+<span class="co">#&gt;  $ qb_count         : chr "1"</span>
+<span class="co">#&gt;  $ roster_size      : num 33</span>
+<span class="co">#&gt;  $ league_depth     : num 462</span>
+<span class="co">#&gt;  $ draft_type       : chr "email draft"</span>
+<span class="co">#&gt;  $ draft_player_pool: chr "Both"</span>
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 442 x 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    26.9</span>
-<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.7</span>
-<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.5</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30.1</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.4</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    27  </span>
+<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.8</span>
+<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.7</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30.2</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.5</span>
 <span class="co">#&gt; # ... with 437 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
 <span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 

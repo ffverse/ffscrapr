@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.5.11</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.00</span>
       </span>
     </div>
 
@@ -267,8 +267,26 @@ the nflfastr repository.</p>
 <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
   <span class='fu'>nflfastr_weekly</span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; Error in nflreadr::load_player_stats(seasons = seasons, stat_type = type) : 
-#&gt;   unused argument (stat_type = type)</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 112,757 × 48</span>
+#&gt;    player_id  player_name recent_team season  week season_type completions
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     1 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 2</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     2 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 3</span> 00-0000003 A.al-Jabbar MIA           <span style='text-decoration: underline;'>1</span>999     4 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 4</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     7 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 5</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     8 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 6</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999     9 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 7</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    10 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 8</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    11 REG                   0
+#&gt; <span style='color: #BCBCBC;'> 9</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    12 REG                   0
+#&gt; <span style='color: #BCBCBC;'>10</span> 00-0000003 A.al-Jabbar CLE           <span style='text-decoration: underline;'>1</span>999    13 REG                   0
+#&gt; <span style='color: #949494;'># … with 112,747 more rows, and 41 more variables: attempts &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_yards &lt;dbl&gt;, passing_tds &lt;int&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   sack_yards &lt;dbl&gt;, sack_fumbles &lt;int&gt;, sack_fumbles_lost &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_air_yards &lt;dbl&gt;, passing_yards_after_catch &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_first_downs &lt;dbl&gt;, passing_epa &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   passing_2pt_conversions &lt;int&gt;, pacr &lt;dbl&gt;, dakota &lt;dbl&gt;, carries &lt;int&gt;,</span>
+#&gt; <span style='color: #949494;'>#   rushing_yards &lt;dbl&gt;, rushing_tds &lt;int&gt;, rushing_fumbles &lt;dbl&gt;, …</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
