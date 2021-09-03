@@ -1,3 +1,5 @@
+# ffscrapr (development version)
+
 # ffscrapr 1.4.6
 
 The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.
