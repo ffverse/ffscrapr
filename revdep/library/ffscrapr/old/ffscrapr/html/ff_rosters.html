@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get League Rosters</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ff_rosters {ffscrapr}"><tr><td>ff_rosters {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get League Rosters</h2>
+
+<h3>Description</h3>
+
+<p>This function returns a tidy dataframe of team rosters
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ff_rosters(conn, ...)
+
+## S3 method for class 'espn_conn'
+ff_rosters(conn, week = NULL, ...)
+
+## S3 method for class 'flea_conn'
+ff_rosters(conn, ...)
+
+## S3 method for class 'mfl_conn'
+ff_rosters(conn, custom_players = deprecated(), week = NULL, ...)
+
+## S3 method for class 'sleeper_conn'
+ff_rosters(conn, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>conn</code></td>
+<td>
+<p>a conn object created by <code>ff_connect()</code></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>arguments passed to other methods (currently none)</p>
+</td></tr>
+<tr valign="top"><td><code>week</code></td>
+<td>
+<p>a numeric that specifies which week to return</p>
+</td></tr>
+<tr valign="top"><td><code>custom_players</code></td>
+<td>
+<p>&quot;<a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated"><img src="../help/figures/lifecycle-deprecated.svg" alt='[Deprecated]' /></a>&quot; - now returns custom players by default</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A tidy dataframe of rosters, joined to basic player information and basic franchise information
+</p>
+
+
+<h3>Methods (by class)</h3>
+
+
+<ul>
+<li> <p><code>espn_conn</code>: ESPN: Returns all roster data.
+</p>
+</li>
+<li> <p><code>flea_conn</code>: Fleaflicker: Returns roster data (minus age as of right now)
+</p>
+</li>
+<li> <p><code>mfl_conn</code>: MFL: returns roster data
+</p>
+</li>
+<li> <p><code>sleeper_conn</code>: Sleeper: Returns all roster data.
+</p>
+</li></ul>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+try({ # try only shown here because sometimes CRAN checks are weird
+  conn &lt;- espn_connect(season = 2020, league_id = 899513)
+  ff_league(conn)
+}) # end try
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+joe_conn &lt;- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
+
+ff_rosters(joe_conn)
+}) # end try
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+ssb_conn &lt;- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+ff_rosters(ssb_conn)
+}) # end try
+
+
+
+try({ # try only shown here because sometimes CRAN checks are weird
+jml_conn &lt;- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+ff_rosters(jml_conn)
+}) # end try
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.5 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -11,7 +11,6 @@
 #'   conn <- espn_connect(season = 2020, league_id = 1178049)
 #'
 #'   ff_franchises(conn)
-#'
 #' }) # end try
 #' }
 #'

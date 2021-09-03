@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Import latest nflfastr weekly stats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for nflfastr_weekly {ffscrapr}"><tr><td>nflfastr_weekly {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Import latest nflfastr weekly stats</h2>
+
+<h3>Description</h3>
+
+<p>Fetches a copy of the latest week-level stats from nflfastr's data repository.
+The same output as nflfastr's load_player_stats() function.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+nflfastr_weekly(type = c("offense", "defense", "all"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>One of &quot;offense&quot;, &quot;defense&quot;, or &quot;all&quot; - currently, only &quot;offense&quot; is available.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The goal of this data is to replicate the NFL's official weekly stats, which
+can diverge a bit from what fantasy data feeds display.
+</p>
+<p>If you have any issues with the output of this data, please open an issue in
+the nflfastr repository.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Weekly stats for all passers, rushers and receivers in the nflfastR play-by-play data from the 1999 season to the most recent season
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="https://www.nflfastr.com/reference/load_player_stats.html">https://www.nflfastr.com/reference/load_player_stats.html</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+try( # try only shown here because sometimes CRAN checks are weird
+  nflfastr_weekly()
+)
+
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.5 <a href="00Index.html">Index</a>]</div>
+</body></html>

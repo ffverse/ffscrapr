@@ -46,7 +46,7 @@ mfl_getendpoint <- function(conn, endpoint, ...) {
   }
 
   if (httr::http_error(response)) {
-    stop(glue::glue("MFL API request failed with error: <{httr::status_code(response)}> \n
+    stop(glue::glue("MFL API request failed with <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
 
@@ -86,7 +86,7 @@ print.mfl_api <- function(x, ...) {
   # nocov start
 
   cat("<MFL - GET - ", httr::http_status(x$response)$message, ">\n", sep = "")
-  cat("QUERY: <",x$query,">\n", sep = "")
+  cat("QUERY: <", x$query, ">\n", sep = "")
   str(x$content, max.level = 1)
 
   invisible(x)

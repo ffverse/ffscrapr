@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check if an argument is a single missing value</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for checkScalarNA {checkmate}"><tr><td>checkScalarNA {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check if an argument is a single missing value</h2>
+
+<h3>Description</h3>
+
+<p>Check if an argument is a single missing value
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+checkScalarNA(x, null.ok = FALSE)
+
+check_scalar_na(x, null.ok = FALSE)
+
+assertScalarNA(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
+
+assert_scalar_na(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
+
+testScalarNA(x, null.ok = FALSE)
+
+test_scalar_na(x, null.ok = FALSE)
+
+expect_scalar_na(x, null.ok = FALSE, info = NULL, label = vname(x))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[any]<br />
+Object to check.</p>
+</td></tr>
+<tr valign="top"><td><code>null.ok</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+<p>[<code>AssertCollection</code>]<br />
+Collection to store assertion messages. See <code><a href="../../checkmate/help/AssertCollection.html">AssertCollection</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>info</code></td>
+<td>
+<p>[character(1)]<br />
+Extra information to be included in the message for the testthat reporter.
+See <code><a href="../../testthat/help/expect_that.html">expect_that</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Depending on the function prefix:
+If the check is successful, the functions 
+<code>assertScalarNA</code>/<code>assert_scalar_na</code> return 
+<code>x</code> invisibly, whereas
+<code>checkScalarNA</code>/<code>check_scalar_na</code> and 
+<code>testScalarNA</code>/<code>test_scalar_na</code> return 
+<code>TRUE</code>.
+If the check is not successful, 
+<code>assertScalarNA</code>/<code>assert_scalar_na</code>
+throws an error message, 
+<code>testScalarNA</code>/<code>test_scalar_na</code>
+returns <code>FALSE</code>,
+and <code>checkScalarNA</code> returns a string with the error message.
+The function <code>expect_scalar_na</code> always returns an
+<code><a href="../../testthat/help/expectation.html">expectation</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other scalars: 
+<code><a href="../../checkmate/help/checkCount.html">checkCount</a>()</code>,
+<code><a href="../../checkmate/help/checkFlag.html">checkFlag</a>()</code>,
+<code><a href="../../checkmate/help/checkInt.html">checkInt</a>()</code>,
+<code><a href="../../checkmate/help/checkNumber.html">checkNumber</a>()</code>,
+<code><a href="../../checkmate/help/checkScalar.html">checkScalar</a>()</code>,
+<code><a href="../../checkmate/help/checkString.html">checkString</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+testScalarNA(1)
+testScalarNA(NA_real_)
+testScalarNA(rep(NA, 2))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

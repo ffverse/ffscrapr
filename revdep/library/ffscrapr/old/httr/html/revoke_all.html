@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Revoke all OAuth tokens in the cache.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for revoke_all {httr}"><tr><td>revoke_all {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Revoke all OAuth tokens in the cache.</h2>
+
+<h3>Description</h3>
+
+<p>Use this function if you think that your token may have been compromised,
+e.g. you accidentally uploaded the cache file to github. It's not possible
+to automatically revoke all tokens - this function will warn when it can't.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+revoke_all(cache_path = NA)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cache_path</code></td>
+<td>
+<p>Path to cache file. Defaults to <code>.httr-oauth</code> in
+current directory.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

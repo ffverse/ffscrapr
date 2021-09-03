@@ -25,36 +25,28 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "espn"),
-      by = c("stat_name" = "ff_event"))
+      by = c("stat_name" = "ff_event")
+    )
 
-  # Use custom ffscrapr function to get positions fron nflfastR rosters
-  fastr_rosters <-
-    nflfastr_rosters(season) %>%
-    dplyr::mutate(position = dplyr::if_else(.data$position %in% c("HB", "FB"), "RB", .data$position))
+  ## CHECK IF KICKING IS IN THE RULESET FOR THIS LEAGUE, IF SO, USE KICKER
 
-  # Load stats from nflfastr and map the rules from the internal stat_mapping file
-  nflfastr_weekly() %>%
-    dplyr::inner_join(fastr_rosters, by = c("player_id" = "gsis_id", "season" = "season")) %>%
-    tidyr::pivot_longer(
-      names_to = "metric",
-      cols = c(
-        "completions", "attempts", "passing_yards", "passing_tds", "interceptions", "sacks",
-        "sack_fumbles_lost", "passing_first_downs", "passing_2pt_conversions", "carries",
-        "rushing_yards", "rushing_tds", "rushing_fumbles_lost", "rushing_first_downs",
-        "rushing_2pt_conversions", "receptions", "targets", "receiving_yards", "receiving_tds",
-        "receiving_fumbles_lost", "receiving_first_downs", "receiving_2pt_conversions",
-        "special_teams_tds"
-      )
-    ) %>%
-    dplyr::inner_join(league_rules, by = c("metric" = "nflfastr_event", "position" = "pos")) %>%
+  ros <- .nflfastr_roster(season)
+
+  ps <- .nflfastr_offense_long(season)
+
+  if("K" %in% league_rules$pos){
+    ps <- dplyr::bind_rows(
+      ps,
+      .nflfastr_kicking_long(season))
+  }
+
+  ros %>%
+    dplyr::inner_join(ps, by = c("gsis_id"="player_id","season")) %>%
+    dplyr::inner_join(league_rules, by = c("metric"="nflfastr_event","pos")) %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
-    dplyr::group_by(.data$season, .data$week, .data$player_id, .data$sportradar_id) %>%
+    dplyr::group_by(.data$season, .data$week, .data$gsis_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
     dplyr::ungroup() %>%
-    dplyr::select("season", "week",
-      "gsis_id" = "player_id", "sportradar_id", "espn_id", "player_name", "pos" = "position",
-      "team" = "recent_team", "metric", "value", "points"
-    ) %>%
     tidyr::pivot_wider(
       id_cols = c("season", "week", "gsis_id", "sportradar_id", "espn_id", "player_name", "pos", "team", "points"),
       names_from = .data$metric,
@@ -62,4 +54,5 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
       values_fill = 0,
       values_fn = max
     )
+
 }

@@ -19,3 +19,15 @@ with_mock_api({
     expect_tibble(tony_scoring, min.rows = 10)
   })
 })
+
+test_that("ff_scoring for templates return tibbles", {
+  ppr <- ff_template(scoring_type = "ppr") %>% ff_scoring()
+  half_ppr <- ff_template(scoring_type = "half_ppr") %>% ff_scoring()
+  zero_ppr <- ff_template(scoring_type = "zero_ppr") %>% ff_scoring()
+  sfb11 <- ff_template(scoring_type = "sfb11") %>% ff_scoring()
+
+  expect_tibble(ppr)
+  expect_tibble(half_ppr)
+  expect_tibble(zero_ppr)
+  expect_tibble(sfb11)
+})

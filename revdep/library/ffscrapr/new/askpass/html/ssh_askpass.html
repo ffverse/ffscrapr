@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: ASKPASS CMD TOOL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ssh_askpass {askpass}"><tr><td>ssh_askpass {askpass}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>ASKPASS CMD TOOL</h2>
+
+<h3>Description</h3>
+
+<p>This returns the path to the native askpass executable which can be used
+by git-credential or ssh-agent. Most users don't have worry about this.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ssh_askpass()
+</pre>
+
+
+<h3>Details</h3>
+
+<p>On Windows and MacOS the package automatically sets the <code>SSH_ASKPASS</code> and
+<code>GIT_ASKPASS</code> variables on load (if not already set). If these are set
+you should be able to run e.g. <code>sys::exec_wait("ssh-add")</code> and you should
+be prompted for a passphrase if your key is protected.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>askpass</em> version 1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

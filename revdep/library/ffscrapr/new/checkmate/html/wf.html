@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get the index of the first/last TRUE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for wf {checkmate}"><tr><td>wf {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Get the index of the first/last TRUE</h2>
+
+<h3>Description</h3>
+
+<p>A quick C implementation for &ldquo;which.first&rdquo; (<code>head(which(x), 1)</code>) and
+&ldquo;which.last&rdquo; (<code>tail(which(x), 1)</code>).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+wf(x, use.names = TRUE)
+
+wl(x, use.names = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[<code>logical</code>]<br />
+Logical vector.</p>
+</td></tr>
+<tr valign="top"><td><code>use.names</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+If <code>TRUE</code> and <code>x</code> is named, the result is also
+named.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>[<code>integer(1)</code> | <code>integer(0)</code>].
+Returns the index of the first/last <code>TRUE</code> value in <code>x</code> or
+an empty integer vector if none is found. NAs are ignored.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+wf(c(FALSE, TRUE))
+wl(c(FALSE, FALSE))
+wf(NA)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

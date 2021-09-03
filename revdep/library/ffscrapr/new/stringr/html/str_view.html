@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: View HTML rendering of regular expression match.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_view {stringr}"><tr><td>str_view {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>View HTML rendering of regular expression match.</h2>
+
+<h3>Description</h3>
+
+<p><code>str_view</code> shows the first match; <code>str_view_all</code> shows all
+the matches. To build regular expressions interactively, check out the
+<a href="https://www.garrickadenbuie.com/project/regexplain/">RegExplain RStudio addin</a>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_view(string, pattern, match = NA)
+
+str_view_all(string, pattern, match = NA)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>Input vector. Either a character vector, or something
+coercible to one.</p>
+</td></tr>
+<tr valign="top"><td><code>pattern</code></td>
+<td>
+<p>Pattern to look for.
+</p>
+<p>The default interpretation is a regular expression, as described
+in <a href="../../stringi/help/stringi-search-regex.html">stringi::stringi-search-regex</a>. Control options with
+<code><a href="../../stringr/help/regex.html">regex()</a></code>.
+</p>
+<p>Match a fixed string (i.e. by comparing only bytes), using
+<code><a href="../../stringr/help/fixed.html">fixed()</a></code>. This is fast, but approximate. Generally,
+for matching human text, you'll want <code><a href="../../stringr/help/coll.html">coll()</a></code> which
+respects character matching rules for the specified locale.
+</p>
+<p>Match character, word, line and sentence boundaries with
+<code><a href="../../stringr/help/boundary.html">boundary()</a></code>. An empty pattern, &quot;&quot;, is equivalent to
+<code>boundary("character")</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>match</code></td>
+<td>
+<p>If <code>TRUE</code>, shows only strings that match the pattern.
+If <code>FALSE</code>, shows only the strings that don't match the pattern.
+Otherwise (the default, <code>NA</code>) displays both matches and non-matches.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+str_view(c("abc", "def", "fgh"), "[aeiou]")
+str_view(c("abc", "def", "fgh"), "^")
+str_view(c("abc", "def", "fgh"), "..")
+
+# Show all matches with str_view_all
+str_view_all(c("abc", "def", "fgh"), "d|e")
+
+# Use match to control what is shown
+str_view(c("abc", "def", "fgh"), "d|e")
+str_view(c("abc", "def", "fgh"), "d|e", match = TRUE)
+str_view(c("abc", "def", "fgh"), "d|e", match = FALSE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

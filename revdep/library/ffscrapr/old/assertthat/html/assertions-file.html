@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Useful test related to files</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for assertions-file {assertthat}"><tr><td>assertions-file {assertthat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Useful test related to files</h2>
+
+<h3>Description</h3>
+
+<p>Useful test related to files
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+is.dir(path)
+
+is.writeable(path)
+
+is.readable(path)
+
+has_extension(path, ext)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>path</code></td>
+<td>
+<p>a file path to examine</p>
+</td></tr>
+<tr valign="top"><td><code>ext</code></td>
+<td>
+<p>extension to test for (<code>has_extension</code> only)</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+see_if(is.dir(1))
+
+tmp &lt;- tempfile()
+see_if(file.exists(tmp))
+see_if(is.dir(tmp))
+
+writeLines("x", tmp)
+see_if(file.exists(tmp))
+see_if(is.dir(tmp))
+see_if(is.writeable(tmp))
+see_if(is.readable(tmp))
+unlink(tmp)
+
+see_if(is.readable(tmp))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>assertthat</em> version 0.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

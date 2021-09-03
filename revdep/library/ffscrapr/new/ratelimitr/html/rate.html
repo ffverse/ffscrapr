@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a new rate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rate {ratelimitr}"><tr><td>rate {ratelimitr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a new rate</h2>
+
+<h3>Description</h3>
+
+<p>Create a new rate
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rate(n, period)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Number of allowed events within a period</p>
+</td></tr>
+<tr valign="top"><td><code>period</code></td>
+<td>
+<p>Length (in seconds) of measurement period</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../ratelimitr/help/limit_rate.html">limit_rate</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## a function
+f &lt;- function() NULL
+
+## limit f to 10 calls per second
+limited_f &lt;- limit_rate(f, rate(n = 10, period = 1))
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ratelimitr</em> version 0.4.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Install or uninstall a callback function</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for get_callback {httr}"><tr><td>get_callback {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Install or uninstall a callback function</h2>
+
+<h3>Description</h3>
+
+<p>Supported callback functions: </p>
+
+<dl>
+<dt>&lsquo;request&rsquo;</dt><dd><p>This callback is called before an HTTP request
+is performed, with the <code>request</code> object as an argument.
+If the callback returns a value other than <code>NULL</code>, the HTTP
+request is not performed at all, and the return value of the callback
+is returned. This mechanism can be used to replay previously
+recorded HTTP responses.
+</p>
+</dd>
+<dt>&lsquo;response&rsquo;</dt><dd><p>This callback is called after an HTTP request
+is performed. The callback is called with two arguments: the
+<code>request</code> object and the <code>response</code> object of the HTTP
+request. If this callback returns a value other than <code>NULL</code>,
+then this value is returned by <code>httr</code>.</p>
+</dd>
+</dl>
+
+
+
+<h3>Usage</h3>
+
+<pre>
+get_callback(name)
+
+set_callback(name, new_callback = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>Character scalar, name of the callback to query or set.</p>
+</td></tr>
+<tr valign="top"><td><code>new_callback</code></td>
+<td>
+<p>The callback function to install, a function object;
+or <code>NULL</code> to remove the currently installed callback (if any).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Note that it is not possible to install multiple callbacks of the same
+type. The installed callback overwrites the previously intalled one.
+To uninstall a callback function, set it to <code>NULL</code> with
+<code>set_callback()</code>.
+</p>
+<p>See the <code>httrmock</code> package for a proper example that uses
+callbacks.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>get_callback</code> returns the currently installed
+callback, or <code>NULL</code> if none is installed.
+</p>
+<p><code>set_callback</code> returns the previously installed callback,
+or <code>NULL</code> if none was installed.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+## Log all HTTP requests to the screeen
+req_logger &lt;- function(req) {
+  cat("HTTP request to", sQuote(req$url), "\n")
+}
+
+old &lt;- set_callback("request", req_logger)
+g1 &lt;- GET("https://httpbin.org")
+g2 &lt;- GET("https://httpbin.org/ip")
+set_callback("request", old)
+
+## Log all HTTP requests and response status codes as well
+req_logger2 &lt;- function(req) {
+  cat("HTTP request to", sQuote(req$url), "... ")
+}
+res_logger &lt;- function(req, res) {
+  cat(res$status_code, "\n")
+}
+
+old_req &lt;- set_callback("request", req_logger2)
+old_res &lt;- set_callback("response", res_logger)
+g3 &lt;- GET("https://httpbin.org")
+g4 &lt;- GET("https://httpbin.org/ip")
+set_callback("request", old_req)
+set_callback("response", old_res)
+
+## Return a recorded response, without performing the HTTP request
+replay &lt;- function(req) {
+  if (req$url == "https://httpbin.org") g3
+}
+old_req &lt;- set_callback("request", replay)
+grec &lt;- GET("https://httpbin.org")
+grec$date == g3$date
+set_callback("request", old_req)
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

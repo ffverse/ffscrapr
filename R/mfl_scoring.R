@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' ff_scoring(ssb_conn)
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+#'   ff_scoring(ssb_conn)
 #' }) # end try
 #' }
 #'
@@ -50,18 +50,20 @@ ff_scoring.mfl_conn <- function(conn) {
     dplyr::left_join(mfl_allrules(conn), by = c("event" = "abbrev")) %>%
     dplyr::mutate_at(c("is_player", "is_team", "is_coach"), ~ as.logical(as.numeric(.x))) %>%
     dplyr::mutate(
-      points_type = ifelse(stringr::str_detect(.data$points,"\\*|\\/"),"each","once"),
+      points_type = ifelse(stringr::str_detect(.data$points, "\\*|\\/"), "each", "once"),
       points = purrr::map_if(.data$points, grepl("\\/", .data$points), .fn_parsedivide),
       points = purrr::map_if(.data$points, grepl("\\*", .data$points), .fn_parsemultiply),
       points = as.double(.data$points)
     ) %>%
-    dplyr::select("pos" = .data$positions,
-                  "points",
-                  "range",
-                  "event",
-                  "points_type",
-                  "short_desc",
-                  "long_desc")
+    dplyr::select(
+      "pos" = .data$positions,
+      "points",
+      "range",
+      "event",
+      "points_type",
+      "short_desc",
+      "long_desc"
+    )
 
   return(df)
 }

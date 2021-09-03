@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Set cookies.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for set_cookies {httr}"><tr><td>set_cookies {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Set cookies.</h2>
+
+<h3>Description</h3>
+
+<p>Set cookies.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+set_cookies(..., .cookies = character(0))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>a named cookie values</p>
+</td></tr>
+<tr valign="top"><td><code>.cookies</code></td>
+<td>
+<p>a named character vector</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../httr/help/cookies.html">cookies()</a></code> to see cookies in response.
+</p>
+<p>Other config: 
+<code><a href="../../httr/help/add_headers.html">add_headers</a>()</code>,
+<code><a href="../../httr/help/authenticate.html">authenticate</a>()</code>,
+<code><a href="../../httr/help/config.html">config</a>()</code>,
+<code><a href="../../httr/help/timeout.html">timeout</a>()</code>,
+<code><a href="../../httr/help/use_proxy.html">use_proxy</a>()</code>,
+<code><a href="../../httr/help/user_agent.html">user_agent</a>()</code>,
+<code><a href="../../httr/help/verbose.html">verbose</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+set_cookies(a = 1, b = 2)
+set_cookies(.cookies = c(a = "1", b = "2"))
+
+GET("http://httpbin.org/cookies")
+GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -46,21 +46,21 @@ Returns all draft picks (current and future) that belong to a specific franchise
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-conn <- espn_connect(
-  season = 2018,
-  league_id = 1178049,
-  espn_s2 = Sys.getenv("TAN_ESPN_S2"),
-  swid = Sys.getenv("TAN_SWID")
-)
+  conn <- espn_connect(
+    season = 2018,
+    league_id = 1178049,
+    espn_s2 = Sys.getenv("TAN_ESPN_S2"),
+    swid = Sys.getenv("TAN_SWID")
+  )
 
-ff_draftpicks(conn)
+  ff_draftpicks(conn)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-conn <- fleaflicker_connect(2020, 206154)
-ff_draftpicks(conn, franchise_id = 1373475)
+  conn <- fleaflicker_connect(2020, 206154)
+  ff_draftpicks(conn, franchise_id = 1373475)
 }) # end try
 }
 
@@ -73,8 +73,8 @@ try({ # try only shown here because sometimes CRAN checks are weird
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_draftpicks(jml_conn)
+  jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_draftpicks(jml_conn)
 }) # end try
 }
 

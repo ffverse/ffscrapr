@@ -53,22 +53,22 @@ try({ # try only shown here because sometimes CRAN checks are weird
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-conn <- fleaflicker_connect(season = 2019, league_id = 206154)
-ff_schedule(conn, week = 2:4)
+  conn <- fleaflicker_connect(season = 2019, league_id = 206154)
+  ff_schedule(conn, week = 2:4)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-ff_schedule(ssb_conn)
+  ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_schedule(ssb_conn)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_schedule(jml_conn)
+  jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_schedule(jml_conn)
 }) # end try
 }
 

@@ -4,17 +4,18 @@
 \alias{nflfastr_weekly}
 \title{Import latest nflfastr weekly stats}
 \usage{
-nflfastr_weekly(type = c("offense", "defense", "all"))
+nflfastr_weekly(seasons = TRUE, type = c("offense", "kicking"))
 }
 \arguments{
-\item{type}{One of "offense", "defense", or "all" - currently, only "offense" is available.}
+\item{seasons}{The seasons to return, TRUE returns all data available.}
+
+\item{type}{One of "offense" or "kicking"}
 }
 \value{
-Weekly stats for all passers, rushers and receivers in the nflfastR play-by-play data from the 1999 season to the most recent season
+Weekly stats for all passers, rushers and receivers in the nflverse play-by-play data from the 1999 season to the most recent season
 }
 \description{
-Fetches a copy of the latest week-level stats from nflfastr's data repository.
-The same output as nflfastr's load_player_stats() function.
+Fetches a copy of the latest week-level stats from nflfastr's data repository, via the \href{https://nflreadr.nflverse.com}{nflreadr} package.
 }
 \details{
 The goal of this data is to replicate the NFL's official weekly stats, which
@@ -32,5 +33,5 @@ try( # try only shown here because sometimes CRAN checks are weird
 
 }
 \seealso{
-\url{https://www.nflfastr.com/reference/load_player_stats.html}
+\url{https://nflreadr.nflverse.com}
 }

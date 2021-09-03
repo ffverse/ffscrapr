@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add additional headers to a request.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for add_headers {httr}"><tr><td>add_headers {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add additional headers to a request.</h2>
+
+<h3>Description</h3>
+
+<p>Wikipedia provides a useful list of common http headers:
+<a href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields">http://en.wikipedia.org/wiki/List_of_HTTP_header_fields</a>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+add_headers(..., .headers = character())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>named header values.  To stop an existing header from being
+set, pass an empty string: <code>""</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>.headers</code></td>
+<td>
+<p>a named character vector</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../httr/help/accept.html">accept()</a></code> and <code><a href="../../httr/help/content_type.html">content_type()</a></code> for
+convenience functions for setting accept and content-type headers.
+</p>
+<p>Other config: 
+<code><a href="../../httr/help/authenticate.html">authenticate</a>()</code>,
+<code><a href="../../httr/help/config.html">config</a>()</code>,
+<code><a href="../../httr/help/set_cookies.html">set_cookies</a>()</code>,
+<code><a href="../../httr/help/timeout.html">timeout</a>()</code>,
+<code><a href="../../httr/help/use_proxy.html">use_proxy</a>()</code>,
+<code><a href="../../httr/help/user_agent.html">user_agent</a>()</code>,
+<code><a href="../../httr/help/verbose.html">verbose</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+add_headers(a = 1, b = 2)
+add_headers(.headers = c(a = "1", b = "2"))
+
+GET("http://httpbin.org/headers")
+
+# Add arbitrary headers
+GET(
+  "http://httpbin.org/headers",
+  add_headers(version = version$version.string)
+)
+
+# Override default headers with empty strings
+GET("http://httpbin.org/headers", add_headers(Accept = ""))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

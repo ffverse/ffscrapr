@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parse a media type.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for parse_media {httr}"><tr><td>parse_media {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Parse a media type.</h2>
+
+<h3>Description</h3>
+
+<p>Parsed according to RFC 2616, as at
+<a href="http://pretty-rfc.herokuapp.com/RFC2616#media.types">http://pretty-rfc.herokuapp.com/RFC2616#media.types</a>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+parse_media(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>String to parse</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>A simplified minimal EBNF is:
+</p>
+
+<ul>
+<li><p> media-type     = <code style="white-space: pre;">type "/" subtype *( ";" parameter )</code>
+</p>
+</li>
+<li><p> type           = <code>token</code>
+</p>
+</li>
+<li><p> subtype        = <code>token</code>
+</p>
+</li>
+<li><p> parameter      = <code style="white-space: pre;">attribute "=" value</code>
+</p>
+</li>
+<li><p> attribute      = <code>token</code>
+</p>
+</li>
+<li><p> value          = <code>token | quoted-string</code>
+</p>
+</li>
+<li><p> token          = <code style="white-space: pre;">1*&lt;any CHAR except CTLs or ()&lt;&gt;@,;:\"/[]?=\{\}</code>
+</p>
+</li></ul>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+parse_media("text/plain")
+parse_media("text/plain; charset=utf-8")
+parse_media("text/plain; charset=\"utf-8\"")
+parse_media("text/plain; randomparam=\";=;=\"")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

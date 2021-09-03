@@ -92,8 +92,8 @@ ff_league.espn_conn <- function(conn) {
 .espn_check_ppr <- function(league_endpoint) {
   stat_map <- .espn_stat_map()
   ppr <- league_endpoint %>%
-    purrr::pluck("content","settings","scoringSettings","scoringItems") %>%
-    purrr::map(`[`,c("statId","points")) %>%
+    purrr::pluck("content", "settings", "scoringSettings", "scoringItems") %>%
+    purrr::map(`[`, c("statId", "points")) %>%
     dplyr::bind_rows() %>%
     dplyr::mutate(
       stat_name = .espn_stat_map()[as.character(.data$statId)]
@@ -101,7 +101,7 @@ ff_league.espn_conn <- function(conn) {
     dplyr::filter(.data$stat_name == "receivingReceptions") %>%
     dplyr::pull("points")
 
-  ifelse(length(ppr) > 0 && ppr!=0, paste0(ppr, "_ppr"), "zero_ppr")
+  ifelse(length(ppr) > 0 && ppr != 0, paste0(ppr, "_ppr"), "zero_ppr")
 }
 
 #' @noRd

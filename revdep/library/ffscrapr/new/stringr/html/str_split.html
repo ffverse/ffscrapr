@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Split up a string into pieces.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_split {stringr}"><tr><td>str_split {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Split up a string into pieces.</h2>
+
+<h3>Description</h3>
+
+<p>Vectorised over <code>string</code> and <code>pattern</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_split(string, pattern, n = Inf, simplify = FALSE)
+
+str_split_fixed(string, pattern, n)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>Input vector. Either a character vector, or something
+coercible to one.</p>
+</td></tr>
+<tr valign="top"><td><code>pattern</code></td>
+<td>
+<p>Pattern to look for.
+</p>
+<p>The default interpretation is a regular expression, as described
+in <a href="../../stringi/help/stringi-search-regex.html">stringi::stringi-search-regex</a>. Control options with
+<code><a href="../../stringr/help/regex.html">regex()</a></code>.
+</p>
+<p>Match a fixed string (i.e. by comparing only bytes), using
+<code><a href="../../stringr/help/fixed.html">fixed()</a></code>. This is fast, but approximate. Generally,
+for matching human text, you'll want <code><a href="../../stringr/help/coll.html">coll()</a></code> which
+respects character matching rules for the specified locale.
+</p>
+<p>Match character, word, line and sentence boundaries with
+<code><a href="../../stringr/help/boundary.html">boundary()</a></code>. An empty pattern, &quot;&quot;, is equivalent to
+<code>boundary("character")</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>number of pieces to return.  Default (Inf) uses all
+possible split positions.
+</p>
+<p>For <code>str_split_fixed</code>, if n is greater than the number of pieces,
+the result will be padded with empty strings.</p>
+</td></tr>
+<tr valign="top"><td><code>simplify</code></td>
+<td>
+<p>If <code>FALSE</code>, the default, returns a list of character
+vectors. If <code>TRUE</code> returns a character matrix.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>For <code>str_split_fixed</code>, a character matrix with <code>n</code> columns.
+For <code>str_split</code>, a list of character vectors.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringi/html/stri_split.html">stri_split()</a></code> for the underlying implementation.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fruits &lt;- c(
+  "apples and oranges and pears and bananas",
+  "pineapples and mangos and guavas"
+)
+
+str_split(fruits, " and ")
+str_split(fruits, " and ", simplify = TRUE)
+
+# Specify n to restrict the number of possible matches
+str_split(fruits, " and ", n = 3)
+str_split(fruits, " and ", n = 2)
+# If n greater than number of pieces, no padding occurs
+str_split(fruits, " and ", n = 5)
+
+# Use fixed to return a character matrix
+str_split_fixed(fruits, " and ", 3)
+str_split_fixed(fruits, " and ", 4)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

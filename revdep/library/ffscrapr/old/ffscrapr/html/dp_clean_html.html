@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Remove HTML from string</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for dp_clean_html {ffscrapr}"><tr><td>dp_clean_html {ffscrapr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Remove HTML from string</h2>
+
+<h3>Description</h3>
+
+<p>Applies some regex to clean html tags from strings. This is useful for platforms such as MFL that interpret HTML in their franchise name fields.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+dp_clean_html(names)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>names</code></td>
+<td>
+<p>a character (or character vector)</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a character vector of cleaned strings
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+c("&lt;b&gt;&lt;font color= Cyan&gt;Kevin OBrien (@kevinobrienff) &lt;/FONT&gt;&lt;/B&gt;",
+  "&lt;em&gt;&lt;font color= Purple&gt; Other fun names&lt;/font&gt;&lt;/em&gt;"
+  ) %&gt;% dp_clean_html()
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ffscrapr</em> version 1.4.5 <a href="00Index.html">Index</a>]</div>
+</body></html>

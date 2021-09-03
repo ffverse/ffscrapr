@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Maintain a pool of handles.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for handle_pool {httr}"><tr><td>handle_pool {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Maintain a pool of handles.</h2>
+
+<h3>Description</h3>
+
+<p>The handle pool is used to automatically reuse Curl handles for the same
+scheme/host/port combination. This ensures that the http session is
+automatically reused, and cookies are maintained across requests to a site
+without user intervention.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+handle_pool
+
+handle_find(url)
+
+handle_reset(url)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>An environment.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

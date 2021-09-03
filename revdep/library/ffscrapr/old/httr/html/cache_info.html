@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Compute caching information for a response.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for cache_info {httr}"><tr><td>cache_info {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Compute caching information for a response.</h2>
+
+<h3>Description</h3>
+
+<p><code>cache_info()</code> gives details of cacheability of a response,
+<code>rerequest()</code> re-performs the original request doing as little work
+as possible (if not expired, returns response as is, or performs
+revalidation if Etag or Last-Modified headers are present).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cache_info(r)
+
+rerequest(r)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>r</code></td>
+<td>
+<p>A response</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Never cached, always causes redownload
+r1 &lt;- GET("https://www.google.com")
+cache_info(r1)
+r1$date
+rerequest(r1)$date
+
+# Expires in a year
+r2 &lt;- GET("https://www.google.com/images/srpr/logo11w.png")
+cache_info(r2)
+r2$date
+rerequest(r2)$date
+
+# Has last-modified and etag, so does revalidation
+r3 &lt;- GET("http://httpbin.org/cache")
+cache_info(r3)
+r3$date
+rerequest(r3)$date
+
+# Expires after 5 seconds
+## Not run: 
+r4 &lt;- GET("http://httpbin.org/cache/5")
+cache_info(r4)
+r4$date
+rerequest(r4)$date
+Sys.sleep(5)
+cache_info(r4)
+rerequest(r4)$date
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,10 @@
+UPDATE_RATE             Update the rate limit of an existing rate
+                        limited function
+get_function            Access the original function from a rate
+                        limited function
+get_precision           Access the rate limit precision
+get_rates               Access the rate limit(s) of a rate limited
+                        function
+limit_rate              Limit the rate at which a function will execute
+rate                    Create a new rate
+reset                   Re-create a rate-limited function

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: String interpolation.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_interp {stringr}"><tr><td>str_interp {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>String interpolation.</h2>
+
+<h3>Description</h3>
+
+<p>String interpolation is a useful way of specifying a character string which
+depends on values in a certain environment. It allows for string creation
+which is easier to read and write when compared to using e.g.
+<code><a href="../../base/html/paste.html">paste()</a></code> or <code><a href="../../base/html/sprintf.html">sprintf()</a></code>. The (template) string can
+include expression placeholders of the form <code>${expression}</code> or
+<code>$[format]{expression}</code>, where expressions are valid R expressions that
+can be evaluated in the given environment, and <code>format</code> is a format
+specification valid for use with <code><a href="../../base/html/sprintf.html">sprintf()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_interp(string, env = parent.frame())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>A template character string. This function is not vectorised:
+a character vector will be collapsed into a single string.</p>
+</td></tr>
+<tr valign="top"><td><code>env</code></td>
+<td>
+<p>The environment in which to evaluate the expressions.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An interpolated character string.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Stefan Milton Bache
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../stringr/help/str_glue.html">str_glue()</a></code> and <code><a href="../../stringr/help/str_glue_data.html">str_glue_data()</a></code> for alternative approaches to
+the same problem.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Using values from the environment, and some formats
+user_name &lt;- "smbache"
+amount &lt;- 6.656
+account &lt;- 1337
+str_interp("User ${user_name} (account $[08d]{account}) has $$[.2f]{amount}.")
+
+# Nested brace pairs work inside expressions too, and any braces can be
+# placed outside the expressions.
+str_interp("Works with } nested { braces too: $[.2f]{{{2 + 2}*{amount}}}")
+
+# Values can also come from a list
+str_interp(
+  "One value, ${value1}, and then another, ${value2*2}.",
+  list(value1 = 10, value2 = 20)
+)
+
+# Or a data frame
+str_interp(
+  "Values are $[.2f]{max(Sepal.Width)} and $[.2f]{min(Sepal.Width)}.",
+  iris
+)
+
+# Use a vector when the string is long:
+max_char &lt;- 80
+str_interp(c(
+  "This particular line is so long that it is hard to write ",
+  "without breaking the ${max_char}-char barrier!"
+))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

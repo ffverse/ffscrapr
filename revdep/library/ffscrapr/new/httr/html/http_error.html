@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check for an http error.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for http_error {httr}"><tr><td>http_error {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check for an http error.</h2>
+
+<h3>Description</h3>
+
+<p>Check for an http error.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+http_error(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Object to check. Default methods are provided for strings
+(which perform an <code><a href="../../httr/help/HEAD.html">HEAD()</a></code> request), responses, and
+integer status codes.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments passed on to methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>TRUE</code> if the request fails (status code 400 or above),
+otherwise <code>FALSE</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other response methods: 
+<code><a href="../../httr/help/content.html">content</a>()</code>,
+<code><a href="../../httr/help/http_status.html">http_status</a>()</code>,
+<code><a href="../../httr/help/response.html">response</a>()</code>,
+<code><a href="../../httr/help/stop_for_status.html">stop_for_status</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# You can pass a url:
+http_error("http://www.google.com")
+http_error("http://httpbin.org/status/404")
+
+# Or a request
+r &lt;- GET("http://httpbin.org/status/201")
+http_error(r)
+
+# Or an (integer) status code
+http_error(200L)
+http_error(404L)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

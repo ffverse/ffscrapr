@@ -7,8 +7,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' ff_league(ssb_conn)
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 22627, season = 2021)
+#'   ff_league(ssb_conn)
 #' }) # end try
 #' }
 #'
@@ -23,6 +23,7 @@ ff_league.mfl_conn <- function(conn) {
     league_id = conn$league_id,
     league_name = league_endpoint$name,
     season = as.integer(conn$season),
+    league_type = .mfl_league_type(league_endpoint),
     franchise_count = as.numeric(league_endpoint$franchises$count),
     qb_type = .mfl_is_qbtype(league_endpoint)$type,
     idp = .mfl_is_idp(league_endpoint),
@@ -33,8 +34,31 @@ ff_league.mfl_conn <- function(conn) {
     years_active = .mfl_years_active(league_endpoint),
     qb_count = .mfl_is_qbtype(league_endpoint)$count,
     roster_size = .mfl_roster_size(league_endpoint),
-    league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies)
+    league_depth = as.numeric(.data$roster_size) * as.numeric(.data$franchise_count) / as.numeric(.data$player_copies),
+    draft_type = .mfl_draft_type(league_endpoint),
+    draft_player_pool = league_endpoint[["draftPlayerPool"]] %||% NA_character_
   )
+}
+
+.mfl_draft_type <- function(league_endpoint) {
+  x <- NULL
+
+  if (!is.null(league_endpoint[["draft_kind"]])) x <- c(x, paste(league_endpoint[["draft_kind"]], "draft"))
+
+  if (!is.null(league_endpoint[["auction_kind"]])) x <- c(x, paste(league_endpoint[["auction_kind"]], "auction"))
+
+  if (is.null(x)) x <- NA_character_
+
+  x
+}
+
+.mfl_league_type <- function(league_endpoint) {
+  x <- league_endpoint[["keeperType"]]
+  if (is.null(x)) {
+    return(NA_character_)
+  }
+  if (x == "none") x <- "redraft"
+  x
 }
 
 ## League Summary Helper Functions ##

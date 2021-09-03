@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.4.5
+Version: 1.4.6
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
@@ -29,7 +29,7 @@ URL: https://ffscrapr.ffverse.com,
     https://www.nflfastr.com/reference/load_player_stats.html
 BugReports: https://github.com/ffverse/ffscrapr/issues
 Depends:
-    R (>= 3.0.0)
+    R (>= 3.6.0)
 Imports:
     cachem (>= 1.0.0),
     checkmate (>= 2.0.0),
@@ -40,6 +40,7 @@ Imports:
     lifecycle,
     lubridate (>= 1.5.0),
     magrittr (>= 1.5.0),
+    nflreadr (>= 1.1.0),
     memoise (>= 2.0.0),
     purrr (>= 0.3.0),
     rappdirs (>= 0.3.0),

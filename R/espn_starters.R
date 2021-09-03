@@ -2,7 +2,7 @@
 
 #' Get starters and bench
 #'
-#' @param conn the list object created by `ff_connect()`
+#' @param conn the connection object created by `ff_connect()`
 #' @param weeks which weeks to calculate, a number or numeric vector
 #' @param ... other arguments (currently unused)
 #'
@@ -11,28 +11,31 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' conn <- espn_connect(season = 2020, league_id = 1178049)
-#' ff_starters(conn, weeks = 1:3)
+#'   conn <- espn_connect(season = 2020, league_id = 1178049)
+#'   ff_starters(conn, weeks = 1:3)
 #' }) # end try
 #' }
 #'
 #' @export
 ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
+  if (conn$season < 2018) stop("Starting lineups not available before 2018")
+
   checkmate::assert_numeric(weeks)
 
   max_week <- .espn_week_checkmax(conn)
 
   run_weeks <- weeks[weeks < max_week]
 
-  if(length(run_weeks)==0) {
-
+  if (length(run_weeks) == 0) {
     warning(
-        glue::glue("ESPN league_id {conn$league_id} does not have lineups for ",
-                   "{conn$season} weeks {paste(min(weeks),max(weeks), sep = '-')}."),
-        call. = FALSE
-      )
+      glue::glue(
+        "ESPN league_id {conn$league_id} does not have lineups for ",
+        "{conn$season} weeks {paste(min(weeks),max(weeks), sep = '-')}."
+      ),
+      call. = FALSE
+    )
 
-      return(NULL)
+    return(NULL)
   }
 
   starters <- purrr::map_dfr(run_weeks, .espn_week_starter, conn) %>%
@@ -53,6 +56,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
       "franchise_score",
       "lineup_slot",
       "player_score",
+      "projected_score",
       "player_id",
       "player_name",
       "pos",
@@ -78,7 +82,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   final_week <- settings %>%
     purrr::pluck("content", "status", "finalScoringPeriod")
 
-  max_week <- min(current_week,final_week, na.rm = TRUE)
+  max_week <- min(current_week, final_week, na.rm = TRUE)
 
   return(max_week)
 }
@@ -98,16 +102,27 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     dplyr::filter(.data$week == .env$week) %>%
     tidyr::pivot_longer(c(.data$home, .data$away), names_to = NULL, values_to = "team") %>%
     tidyr::hoist("team", "starting_lineup" = "rosterForCurrentScoringPeriod", "franchise_id" = "teamId") %>%
-    dplyr::select(-"team", -"x")
-
-  week_scores <- week_scores %>%
+    dplyr::select(-"team", -"x") %>%
     tidyr::hoist("starting_lineup", "franchise_score" = "appliedStatTotal", "entries") %>%
     tidyr::unnest_longer("entries") %>%
-    tidyr::hoist("entries", "player_id" = "playerId", "lineup_id" = "lineupSlotId", "player_data" = "playerPoolEntry", ) %>%
+    tidyr::hoist("entries", "player_id" = "playerId", "lineup_id" = "lineupSlotId", "player_data" = "playerPoolEntry") %>%
     tidyr::hoist("player_data", "player_score" = "appliedStatTotal", "player") %>%
     dplyr::select(-"player_data") %>%
-    tidyr::hoist("player", "eligible_lineup_slots" = "eligibleSlots", "player_name" = "fullName", "pos" = "defaultPositionId", "team" = "proTeamId") %>%
-    dplyr::select(-"player")
+    tidyr::hoist("player",
+                 "eligible_lineup_slots" = "eligibleSlots",
+                 "player_name" = "fullName",
+                 "pos" = "defaultPositionId",
+                 "team" = "proTeamId",
+                 ) %>%
+    dplyr::mutate(
+      projected_score = purrr::map_dbl(.data$player,
+                                       ~.x %>%
+                                         purrr::pluck("stats",
+                                                      2, # assume stats list col returns actual as first list and projected as second
+                                                      "appliedTotal",
+                                                      .default = NA_real_) %>%
+                                         round(1)),
+      player = NULL)
 
   return(week_scores)
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Specify the encoding of a string.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for str_conv {stringr}"><tr><td>str_conv {stringr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Specify the encoding of a string.</h2>
+
+<h3>Description</h3>
+
+<p>This is a convenient way to override the current encoding of a string.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+str_conv(string, encoding)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>String to re-encode.</p>
+</td></tr>
+<tr valign="top"><td><code>encoding</code></td>
+<td>
+<p>Name of encoding. See <code><a href="../../stringi/help/stri_enc_list.html">stringi::stri_enc_list()</a></code>
+for a complete list.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Example from encoding?stringi::stringi
+x &lt;- rawToChar(as.raw(177))
+x
+str_conv(x, "ISO-8859-2") # Polish "a with ogonek"
+str_conv(x, "ISO-8859-1") # Plus-minus
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>stringr</em> version 1.4.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

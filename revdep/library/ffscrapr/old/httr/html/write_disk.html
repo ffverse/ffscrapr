@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Control where the response body is written.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for write_disk {httr}"><tr><td>write_disk {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Control where the response body is written.</h2>
+
+<h3>Description</h3>
+
+<p>The default behaviour is to use <code>write_memory()</code>, which caches
+the response locally in memory. This is useful when talking to APIs as
+it avoids a round-trip to disk. If you want to save a file that's bigger
+than memory, use <code>write_disk()</code> to save it to a known path.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+write_disk(path, overwrite = FALSE)
+
+write_memory()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>path</code></td>
+<td>
+<p>Path to content to.</p>
+</td></tr>
+<tr valign="top"><td><code>overwrite</code></td>
+<td>
+<p>Will only overwrite existing <code>path</code> if TRUE.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+tmp &lt;- tempfile()
+r1 &lt;- GET("https://www.google.com", write_disk(tmp))
+readLines(tmp)
+
+# The default
+r2 &lt;- GET("https://www.google.com", write_memory())
+
+# Save a very large file
+## Not run: 
+GET(
+  "http://www2.census.gov/acs2011_5yr/pums/csv_pus.zip",
+  write_disk("csv_pus.zip"), progress()
+)
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

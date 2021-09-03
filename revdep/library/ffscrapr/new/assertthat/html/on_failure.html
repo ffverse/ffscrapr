@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Custom failure messages for assertions.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for on_failure {assertthat}"><tr><td>on_failure {assertthat}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Custom failure messages for assertions.</h2>
+
+<h3>Description</h3>
+
+<p>Custom failure messages for assertions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+on_failure(x)
+
+on_failure(x) &lt;- value
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a assertion function that returns <code>TRUE</code> if the assertion
+is met, <code>FALSE</code> otherwise.</p>
+</td></tr>
+<tr valign="top"><td><code>value</code></td>
+<td>
+<p>a function with parameters <code>call</code> and <code>env</code>
+that returns a custom error message as a string.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+is_odd &lt;- function(x) {
+  assert_that(is.numeric(x), length(x) == 1)
+  x %% 2 == 1
+}
+see_if(is_odd(2))
+
+on_failure(is_odd) &lt;- function(call, env) {
+  paste0(deparse(call$x), " is even")
+}
+see_if(is_odd(2))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>assertthat</em> version 0.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

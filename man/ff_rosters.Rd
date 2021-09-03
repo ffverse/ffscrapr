@@ -54,22 +54,22 @@ try({ # try only shown here because sometimes CRAN checks are weird
 }
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
+  joe_conn <- ff_connect(platform = "fleaflicker", league_id = 312861, season = 2020)
 
-ff_rosters(joe_conn)
+  ff_rosters(joe_conn)
 }) # end try
 }
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-ff_rosters(ssb_conn)
+  ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+  ff_rosters(ssb_conn)
 }) # end try
 }
 
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
-ff_rosters(jml_conn)
+  jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
+  ff_rosters(jml_conn)
 }) # end try
 }
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parse and print http dates.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for parse_http_date {httr}"><tr><td>parse_http_date {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Parse and print http dates.</h2>
+
+<h3>Description</h3>
+
+<p>As defined in RFC2616,
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3">http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3</a>, there are
+three valid formats:
+</p>
+
+<ul>
+<li><p> Sun, 06 Nov 1994 08:49:37 GMT  ; RFC 822, updated by RFC 1123
+</p>
+</li>
+<li><p> Sunday, 06-Nov-94 08:49:37 GMT ; RFC 850, obsoleted by RFC 1036
+</p>
+</li>
+<li><p> Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
+</p>
+</li></ul>
+
+
+
+<h3>Usage</h3>
+
+<pre>
+parse_http_date(x, failure = structure(NA_real_, class = "Date"))
+
+http_date(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>For <code>parse_http_date</code>, a character vector of strings to parse.
+All elements must be of the same type.
+</p>
+<p>For <code>http_date</code>, a <code>POSIXt</code> vector.</p>
+</td></tr>
+<tr valign="top"><td><code>failure</code></td>
+<td>
+<p>What to return on failure?</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A POSIXct object if succesful, otherwise <code>failure</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+parse_http_date("Sun, 06 Nov 1994 08:49:37 GMT")
+parse_http_date("Sunday, 06-Nov-94 08:49:37 GMT")
+parse_http_date("Sun Nov  6 08:49:37 1994")
+
+http_date(Sys.time())
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

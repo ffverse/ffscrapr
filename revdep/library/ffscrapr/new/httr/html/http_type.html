@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract the content type of a response</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for http_type {httr}"><tr><td>http_type {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extract the content type of a response</h2>
+
+<h3>Description</h3>
+
+<p>Extract the content type of a response
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+http_type(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A response</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A string giving the complete mime type, with all parameters
+stripped off.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+r1 &lt;- GET("http://httpbin.org/image/png")
+http_type(r1)
+headers(r1)[["Content-Type"]]
+
+r2 &lt;- GET("http://httpbin.org/ip")
+http_type(r2)
+headers(r2)[["Content-Type"]]
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

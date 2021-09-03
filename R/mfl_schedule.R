@@ -8,8 +8,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
-#' ff_schedule(ssb_conn)
+#'   ssb_conn <- ff_connect(platform = "mfl", league_id = 54040, season = 2020)
+#'   ff_schedule(ssb_conn)
 #' }) # end try
 #' }
 #'
@@ -64,7 +64,12 @@ ff_schedule.mfl_conn <- function(conn, ...) {
     )))
 
   full_schedule <- dplyr::bind_rows(home, away) %>%
-    dplyr::arrange(.data$week, .data$franchise_id)
+    dplyr::arrange(.data$week, .data$franchise_id) %>%
+    dplyr::filter(!is.na(.data$franchise_id))
+
+  if("spread" %in% names(full_schedule)){
+    full_schedule$result[!is.na(full_schedule$spread) && full_schedule$result == "T"] <- NA
+  }
 
   return(full_schedule)
 }

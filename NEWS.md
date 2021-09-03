@@ -1,8 +1,41 @@
+# ffscrapr 1.4.6
+
+The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.
+
+## New features
+
+- `ff_template()` adds a template connection for `ff_starter_positions()`, `ff_scoring()`, and `ff_scoringhistory()` to more easily pull common scoring templates.
+- Add kicker stat mappings for `ff_scoringhistory()` and support ~ most kicker scorings (MFL's may be weird.)
+
+## Minor changes
+
+- `ff_league()` for MFL now returns league type ("dynasty", "keeper", "redraft") if the field is set.
+- `ff_league()` for MFL now returns draft type (e.g. "email draft", "live auction") if the field is set.
+- `ff_league()` for MFL now returns draft player pool (e.g. "Rookie", "Veteran", "Both") if the field is set. (These three changes fix #311, thanks @maat7043!)
+- `ff_schedule()` for ESPN now credits a bye team with a win instead of causing an error.
+- `espn_getendpoint()` no longer returns an error for seasons prior to 2018. (Thanks, @JoeSydlowski!)
+- `nflfastr_weekly()` and `nflfastr_roster()` now use the [nflreadr](https://nflreadr.nflverse.com) package functions back-end
+- Added some names to the name database, c/o @scasanova via #320 - thank you, Santiago!
+- `ff_starters()` for ESPN now also tries to return a projected score for the week - thank you, @scottfrechette! Resolves #323.
+- `ff_schedule()` for Sleeper no longer broken - resolves #322.
+- `ff_schedule()` for MFL now returns NA as the result for unplayed games and becomes consistent with other platforms.
+- `ff_scoringhistory()` for MFL now parses decimal ranges correctly
+- Refactor `ff_scoringhistory()` into memoisable pieces (`.nflfastr_offense_long`, `.nflfastr_kicker_long`, `.nflfastr_roster`)
+- Update http error messages for user readability.
+- Minimum R version bumped to 3.6.0 - nflreadr uses RDS versions that require a minimum of R3.6.
+
+## Thanks
+
+Immensely grateful to: Joe Sydlowski, Matt Spencer, Santiago Casanova, Scott Frechette, and all others who raised issues and contributed code towards this release!
+
+---
+
 # ffscrapr 1.4.5
 
 The main goal of v1.4.5 is to comply with CRAN somehow testing our examples.
 
 ## Minor changes
+
 - `ff_league()` for ESPN now works for non-ppr leagues.
 - Include `try()` in all examples because apparently `\donttest` doesn't do anything anymore 😡 (fixes #308)
 

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check if an argument is a vector</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for checkVector {checkmate}"><tr><td>checkVector {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check if an argument is a vector</h2>
+
+<h3>Description</h3>
+
+<p>Check if an argument is a vector
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+checkVector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
+
+check_vector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
+
+assertVector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
+
+assert_vector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
+
+testVector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
+
+test_vector(
+  x,
+  strict = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[any]<br />
+Object to check.</p>
+</td></tr>
+<tr valign="top"><td><code>strict</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+May the vector have additional attributes? If <code>TRUE</code>, mimics the behavior of
+<code><a href="../../base/help/is.vector.html">is.vector</a></code>.
+Default is <code>FALSE</code> which allows e.g. <code>factor</code>s or <code>data.frame</code>s
+to be recognized as vectors.</p>
+</td></tr>
+<tr valign="top"><td><code>any.missing</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+Are vectors with missing values allowed? Default is <code>TRUE</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>all.missing</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+Are vectors with only missing values allowed? Default is <code>TRUE</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>len</code></td>
+<td>
+<p>[<code>integer(1)</code>]<br />
+Exact expected length of <code>x</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>min.len</code></td>
+<td>
+<p>[<code>integer(1)</code>]<br />
+Minimal length of <code>x</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>max.len</code></td>
+<td>
+<p>[<code>integer(1)</code>]<br />
+Maximal length of <code>x</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>unique</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+Must all values be unique? Default is <code>FALSE</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>names</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Check for names. See <code><a href="../../checkmate/help/checkNamed.html">checkNamed</a></code> for possible values.
+Default is &ldquo;any&rdquo; which performs no check at all.
+Note that you can use <code><a href="../../checkmate/help/checkSubset.html">checkSubset</a></code> to check for a specific set of names.</p>
+</td></tr>
+<tr valign="top"><td><code>null.ok</code></td>
+<td>
+<p>[<code>logical(1)</code>]<br />
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+<p>[<code>AssertCollection</code>]<br />
+Collection to store assertion messages. See <code><a href="../../checkmate/help/AssertCollection.html">AssertCollection</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Depending on the function prefix:
+If the check is successful, the functions 
+<code>assertVector</code>/<code>assert_vector</code> return 
+<code>x</code> invisibly, whereas
+<code>checkVector</code>/<code>check_vector</code> and 
+<code>testVector</code>/<code>test_vector</code> return 
+<code>TRUE</code>.
+If the check is not successful, 
+<code>assertVector</code>/<code>assert_vector</code>
+throws an error message, 
+<code>testVector</code>/<code>test_vector</code>
+returns <code>FALSE</code>,
+and <code>checkVector</code> returns a string with the error message.
+The function <code>expect_vector</code> always returns an
+<code><a href="../../testthat/help/expectation.html">expectation</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other basetypes: 
+<code><a href="../../checkmate/help/checkArray.html">checkArray</a>()</code>,
+<code><a href="../../checkmate/help/checkAtomicVector.html">checkAtomicVector</a>()</code>,
+<code><a href="../../checkmate/help/checkAtomic.html">checkAtomic</a>()</code>,
+<code><a href="../../checkmate/help/checkCharacter.html">checkCharacter</a>()</code>,
+<code><a href="../../checkmate/help/checkComplex.html">checkComplex</a>()</code>,
+<code><a href="../../checkmate/help/checkDataFrame.html">checkDataFrame</a>()</code>,
+<code><a href="../../checkmate/help/checkDate.html">checkDate</a>()</code>,
+<code><a href="../../checkmate/help/checkDouble.html">checkDouble</a>()</code>,
+<code><a href="../../checkmate/help/checkEnvironment.html">checkEnvironment</a>()</code>,
+<code><a href="../../checkmate/help/checkFactor.html">checkFactor</a>()</code>,
+<code><a href="../../checkmate/help/checkFormula.html">checkFormula</a>()</code>,
+<code><a href="../../checkmate/help/checkFunction.html">checkFunction</a>()</code>,
+<code><a href="../../checkmate/help/checkIntegerish.html">checkIntegerish</a>()</code>,
+<code><a href="../../checkmate/help/checkInteger.html">checkInteger</a>()</code>,
+<code><a href="../../checkmate/help/checkList.html">checkList</a>()</code>,
+<code><a href="../../checkmate/help/checkLogical.html">checkLogical</a>()</code>,
+<code><a href="../../checkmate/help/checkMatrix.html">checkMatrix</a>()</code>,
+<code><a href="../../checkmate/help/checkNull.html">checkNull</a>()</code>,
+<code><a href="../../checkmate/help/checkNumeric.html">checkNumeric</a>()</code>,
+<code><a href="../../checkmate/help/checkPOSIXct.html">checkPOSIXct</a>()</code>,
+<code><a href="../../checkmate/help/checkRaw.html">checkRaw</a>()</code>
+</p>
+<p>Other atomicvector: 
+<code><a href="../../checkmate/help/checkAtomicVector.html">checkAtomicVector</a>()</code>,
+<code><a href="../../checkmate/help/checkAtomic.html">checkAtomic</a>()</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+testVector(letters, min.len = 1L, any.missing = FALSE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Add a progress bar.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for progress {httr}"><tr><td>progress {httr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Add a progress bar.</h2>
+
+<h3>Description</h3>
+
+<p>Add a progress bar.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+progress(type = c("down", "up"), con = stdout())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>Type of progress to display: either number of bytes uploaded
+or downloaded.</p>
+</td></tr>
+<tr valign="top"><td><code>con</code></td>
+<td>
+<p>Connection to send output too. Usually <code>stdout()</code> or
+<code>stderr</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+cap_speed &lt;- config(max_recv_speed_large = 10000)
+
+# If file size is known, you get a progress bar:
+x &lt;- GET("http://httpbin.org/bytes/102400", progress(), cap_speed)
+# Otherwise you get the number of bytes downloaded:
+x &lt;- GET("http://httpbin.org/stream-bytes/102400", progress(), cap_speed)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>httr</em> version 1.4.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

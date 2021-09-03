@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Quick recursive arguments checks on lists and data frames</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for qassertr {checkmate}"><tr><td>qassertr {checkmate}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Quick recursive arguments checks on lists and data frames</h2>
+
+<h3>Description</h3>
+
+<p>These functions are the tuned counterparts of <code><a href="../../checkmate/help/qtest.html">qtest</a></code>,
+<code><a href="../../checkmate/help/qassert.html">qassert</a></code> and <code><a href="../../checkmate/help/qexpect.html">qexpect</a></code> tailored for recursive
+checks of list elements or data frame columns.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+qassertr(x, rules, .var.name = vname(x))
+
+qtestr(x, rules, depth = 1L)
+
+qexpectr(x, rules, info = NULL, label = vname(x))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>[<code>list</code> or <code>data.frame</code>]<br />
+List or data frame to check for compliance with at least one of <code>rules</code>.
+See details of <code><a href="../../checkmate/help/qtest.html">qtest</a></code> for rule explanation.</p>
+</td></tr>
+<tr valign="top"><td><code>rules</code></td>
+<td>
+<p>[<code>character</code>]<br />
+Set of rules. See <code><a href="../../checkmate/help/qtest.html">qtest</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>.var.name</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>depth</code></td>
+<td>
+<p>[<code>integer(1)</code>]<br />
+Maximum recursion depth. Defaults to &ldquo;1&rdquo; to directly check list elements or
+data frame columns. Set to a higher value to check lists of lists of elements.</p>
+</td></tr>
+<tr valign="top"><td><code>info</code></td>
+<td>
+<p>[character(1)]<br />
+Extra information to be included in the message for the testthat reporter.
+See <code><a href="../../testthat/help/expect_that.html">expect_that</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+<p>[<code>character(1)</code>]<br />
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href="../../checkmate/help/vname.html">vname</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>See <code><a href="../../checkmate/help/qassert.html">qassert</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../checkmate/help/qtest.html">qtest</a></code>, <code><a href="../../checkmate/help/qassert.html">qassert</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# All list elements are integers with length &gt;= 1?
+qtestr(as.list(1:10), "i+")
+
+# All list elements (i.e. data frame columns) are numeric?
+qtestr(iris, "n")
+
+# All list elements are numeric, w/o NAs?
+qtestr(list(a = 1:3, b = rnorm(1), c = letters), "N+")
+
+# All list elements are numeric OR character
+qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>checkmate</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

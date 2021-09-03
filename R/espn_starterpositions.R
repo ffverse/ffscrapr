@@ -10,8 +10,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#' conn <- espn_connect(season = 2020, league_id = 1178049)
-#' ff_starter_positions(conn)
+#'   conn <- espn_connect(season = 2020, league_id = 1178049)
+#'   ff_starter_positions(conn)
 #' }) # end try
 #' }
 #'
