@@ -33,7 +33,7 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:2020, ...) {
 
   ps <- .nflfastr_offense_long(season)
 
-  if("PK" %in% league_rules$pos){
+  if("K" %in% league_rules$pos){
     ps <- dplyr::bind_rows(
       ps,
       .nflfastr_kicking_long(season))
