@@ -12,8 +12,8 @@ articles:
   mfl_getendpoint: mfl_getendpoint.html
   sleeper_basics: sleeper_basics.html
   sleeper_getendpoint: sleeper_getendpoint.html
-last_built: 2021-09-08T13:47Z
+last_built: 2021-09-08T15:26Z
 urls:
-  reference: ffscrapr.ffverse.com/reference
-  article: ffscrapr.ffverse.com/articles
+  reference: https://ffscrapr.ffverse.com/reference
+  article: https://ffscrapr.ffverse.com/articles
 

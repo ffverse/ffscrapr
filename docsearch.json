@@ -2,21 +2,21 @@
   "index_name": "dynastyprocess",
   "start_urls": [
     {
-      "url": "ffscrapr.ffverse.com/index.html",
+      "url": "https://ffscrapr.ffverse.com/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "ffscrapr.ffverse.com/reference",
+      "url": "https://ffscrapr.ffverse.com/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "ffscrapr.ffverse.com/articles",
+      "url": "https://ffscrapr.ffverse.com/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "ffscrapr.ffverse.com/sitemap.xml"
+    "https://ffscrapr.ffverse.com/sitemap.xml"
   ],
   "selectors": {
     "homepage": {
