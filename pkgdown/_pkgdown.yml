@@ -1,4 +1,4 @@
-url: ffscrapr.ffverse.com
+url: https://ffscrapr.ffverse.com
 destination: docs
 
 reference:
@@ -56,10 +56,11 @@ navbar:
       text: "More"
       menu:
         - text: ffverse
+        - text: ffverse.com
           href: https://www.ffverse.com
-        - text: ffsimulator package
+        - text: ffsimulator
           href: https://ffsimulator.ffverse.com
-        - text: ffpros package
+        - text: ffpros
           href: https://ffpros.ffverse.com
         - text: ffverse GitHub
           href: https://www.github.com/ffverse
