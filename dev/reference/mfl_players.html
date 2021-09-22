@@ -57,7 +57,7 @@
 <meta property="og:title" content="MFL players library — mfl_players" />
 <meta property="og:description" content="A cached table of MFL players. Will store in memory for each session!
 (via memoise in zzz.R)" />
-<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg" />
+<meta property="og:image" content="https://ffscrapr.ffverse.com/reference/figures/logo.svg" />
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@_TanHo" />
@@ -177,14 +177,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">ffverse</li>
     <li>
-      <a href="https://www.ffverse.com">ffverse</a>
+      <a href="https://www.ffverse.com">ffverse.com</a>
     </li>
     <li>
-      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator</a>
     </li>
     <li>
-      <a href="https://ffpros.ffverse.com">ffpros package</a>
+      <a href="https://ffpros.ffverse.com">ffpros</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -258,15 +259,15 @@
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>player_list</span>, <span class='fl'>5</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 25</span>
-#&gt;   player_id player_name         pos     age team  status draft_year draft_team
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
-#&gt; <span style='color: #BCBCBC;'>1</span> 13179     Dieter, Gehrig      WR     28.5 FA    <span style='color: #BB0000;'>NA</span>     2017       FA        
-#&gt; <span style='color: #BCBCBC;'>2</span> 13635     Moore, D.J.         WR     24.4 CAR   <span style='color: #BB0000;'>NA</span>     2018       CAR       
-#&gt; <span style='color: #BCBCBC;'>3</span> 15367     Nasirildeen, Hamsah LB     22.6 NYJ   R      2021       NYJ       
-#&gt; <span style='color: #BCBCBC;'>4</span> 14861     Johnson, Juwan      TE     25   NOS   <span style='color: #BB0000;'>NA</span>     2020       FA        
-#&gt; <span style='color: #BCBCBC;'>5</span> 9940      Woods, Al           DT     34.5 SEA   <span style='color: #BB0000;'>NA</span>     2010       NOS       
+#&gt;   player_id player_name        pos     age team  status draft_year draft_team
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
+#&gt; <span style='color: #BCBCBC;'>1</span> 13167     Taylor, Taywan     WR     26.6 FA    <span style='color: #BB0000;'>NA</span>     2017       TEN       
+#&gt; <span style='color: #BCBCBC;'>2</span> 13630     Sutton, Courtland  WR     26   DEN   <span style='color: #BB0000;'>NA</span>     2018       DEN       
+#&gt; <span style='color: #BCBCBC;'>3</span> 15357     Barmore, Christian DT     22.2 NEP   R      2021       NEP       
+#&gt; <span style='color: #BCBCBC;'>4</span> 14852     Gibson, Antonio    RB     23.2 WAS   <span style='color: #BB0000;'>NA</span>     2020       WAS       
+#&gt; <span style='color: #BCBCBC;'>5</span> 9940      Woods, Al          DT     34.5 SEA   <span style='color: #BB0000;'>NA</span>     2010       NOS       
 #&gt; <span style='color: #949494;'># … with 17 more variables: draft_round &lt;chr&gt;, draft_pick &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;, cbs_id &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   stats_global_id &lt;chr&gt;, stats_id &lt;chr&gt;, cbs_id &lt;chr&gt;, fleaflicker_id &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   sportsdata_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, nfl_id &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   espn_id &lt;chr&gt;, twitter_username &lt;chr&gt;, college &lt;chr&gt;, height &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   weight &lt;chr&gt;, birthdate &lt;date&gt;, jersey &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>

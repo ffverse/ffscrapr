@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg">
+<meta property="og:image" content="https://ffscrapr.ffverse.com/reference/figures/logo.svg">
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
@@ -130,14 +130,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="https://www.ffverse.com">ffverse</a>
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://www.ffverse.com">ffverse.com</a>
     </li>
     <li>
-      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator</a>
     </li>
     <li>
-      <a href="https://ffpros.ffverse.com">ffpros package</a>
+      <a href="https://ffpros.ffverse.com">ffpros</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -182,7 +183,7 @@
       <h1 data-toc-skip>MFL: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-06</h4>
+            <h4 class="date">2021-09-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/mfl_basics.Rmd"><code>vignettes/mfl_basics.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_basics.Rmd</code></div>
@@ -228,7 +229,6 @@
 <code class="sourceCode R"><span class="va">ssb_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ssb_summary</span><span class="op">)</span>
 <span class="co">#&gt; tibble [1 × 17] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id        : chr "54040"</span>
@@ -257,12 +257,12 @@
 <span class="co">#&gt; # A tibble: 6 × 11</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name            pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan           TE    NYG    27  </span>
+<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan           TE    NYG    27.1</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.8</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan        WR    NOS    25.7</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron         TE    TBB    30.2</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh         WR    LAR    26.6</span>
-<span class="co">#&gt; 6 0001         Team Pikachu   13793     Valdes-Scantling, Mar… WR    GBP    26.9</span>
+<span class="co">#&gt; 6 0001         Team Pikachu   13793     Valdes-Scantling, Mar… WR    GBP    27  </span>
 <span class="co">#&gt; # … with 4 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
 <span class="co">#&gt; #   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span></code></pre></div>
 <div id="values" class="section level2">
@@ -292,11 +292,11 @@
 <span class="co">#&gt; # A tibble: 6 × 14</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name            pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.4</span>
-<span class="co">#&gt; 2 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.6</span>
+<span class="co">#&gt; 1 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.5</span>
+<span class="co">#&gt; 2 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.7</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.5</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    24.7</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    22.9</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    24.8</span>
+<span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    23  </span>
 <span class="co">#&gt; 6 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.8</span>
 <span class="co">#&gt; # … with 7 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
 <span class="co">#&gt; #   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
@@ -379,20 +379,20 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [14]</span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 0001         Team Pikachu         24.0   22.9   26.3   23.5        4        8</span>
-<span class="co">#&gt;  2 0002         Team Simon Belmont   25     25.6   24.9   24.6        8       11</span>
-<span class="co">#&gt;  3 0003         Team Donkey Kong     25.1   23.9   31.8   27.3        5        8</span>
-<span class="co">#&gt;  4 0004         Team Ice Climbers    28.8   25.6   26.9   27.2        5        9</span>
+<span class="co">#&gt;  1 0001         Team Pikachu         24.1   23.0   26.4   23.5        4        8</span>
+<span class="co">#&gt;  2 0002         Team Simon Belmont   25.1   25.7   24.9   24.7        8       11</span>
+<span class="co">#&gt;  3 0003         Team Donkey Kong     25.2   23.9   31.9   27.3        5        8</span>
+<span class="co">#&gt;  4 0004         Team Ice Climbers    28.9   25.7   26.9   27.2        5        9</span>
 <span class="co">#&gt;  5 0005         Team Dr. Mario       36.0   23.4   25.1   24.9        2        7</span>
-<span class="co">#&gt;  6 0006         Team King Dedede     26.0   26.0   26.7   25.3        3       10</span>
-<span class="co">#&gt;  7 0007         Team Kirby           24.7   25.4   29.0   28.9        4        9</span>
-<span class="co">#&gt;  8 0008         Team Bowser          26.4   27.0   33.3   28.5        4       11</span>
-<span class="co">#&gt;  9 0009         Team Link            27.5   26.4   28.7   28.5        3       11</span>
-<span class="co">#&gt; 10 0010         Team Yoshi           28.0   22.5   28.0   26.2        2        6</span>
+<span class="co">#&gt;  6 0006         Team King Dedede     26.0   26.1   26.8   25.4        3       10</span>
+<span class="co">#&gt;  7 0007         Team Kirby           24.7   25.4   29.1   29.0        4        9</span>
+<span class="co">#&gt;  8 0008         Team Bowser          26.4   27.0   33.4   28.6        4       11</span>
+<span class="co">#&gt;  9 0009         Team Link            27.6   26.4   28.7   28.6        3       11</span>
+<span class="co">#&gt; 10 0010         Team Yoshi           28.0   22.6   28.1   26.3        2        6</span>
 <span class="co">#&gt; 11 0011         Team Diddy Kong      31.7   27.1   24.3   23.7        4       12</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo          33.3   24.2   24.7   24.1        5        7</span>
-<span class="co">#&gt; 13 0013         Team Ness            33.0   23.9   23.8   25.5        5        9</span>
-<span class="co">#&gt; 14 0014         Team Luigi           32.8   25.5   23.9   27.3        3       10</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo          33.3   24.3   24.8   24.1        5        7</span>
+<span class="co">#&gt; 13 0013         Team Ness            33.1   23.9   23.8   25.6        5        9</span>
+<span class="co">#&gt; 14 0014         Team Luigi           32.8   25.6   23.9   27.4        3       10</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Sleeper: Get Endpoint">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg">
+<meta property="og:image" content="https://ffscrapr.ffverse.com/reference/figures/logo.svg">
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
@@ -130,14 +130,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="https://www.ffverse.com">ffverse</a>
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://www.ffverse.com">ffverse.com</a>
     </li>
     <li>
-      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator</a>
     </li>
     <li>
-      <a href="https://ffpros.ffverse.com">ffpros package</a>
+      <a href="https://ffpros.ffverse.com">ffpros</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -182,7 +183,7 @@
       <h1 data-toc-skip>Sleeper: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-06</h4>
+            <h4 class="date">2021-09-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/sleeper_getendpoint.Rmd"><code>vignettes/sleeper_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>sleeper_getendpoint.Rmd</code></div>
@@ -209,18 +210,15 @@
 <p>On first glance, you can see that it takes two parameters within the endpoint call itself (<code>sport</code> and <code>type</code>) and we can further adjust the query with HTTP parameters <code>lookback_hours</code> and <code>limit</code>. The sleeper_getendpoint function already has the <code>https://api.sleeper.app/v1/</code> part encoded, so all we’ll need to do is pass in the remaining part of the URL as the endpoint, and pass the HTTP parameters in as arguments to the function (these are case sensitive!)</p>
 <p>We can use the <code>glue</code> package to parameterise this, although you can also use base R’s paste function just as easily.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">type</span> <span class="op">&lt;-</span> <span class="st">"add"</span>
+<code class="sourceCode R"><span class="va">type</span> <span class="op">&lt;-</span> <span class="st">"add"</span>
 
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">'players/nfl/trending/{type}'</span><span class="op">)</span>
 
 <span class="va">query</span>
 <span class="co">#&gt; players/nfl/trending/add</span>
-
 <span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span>,lookback_hours <span class="op">=</span> <span class="fl">48</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">response_trending</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; List of 3</span>
 <span class="co">#&gt;  $ content :List of 10</span>
@@ -230,8 +228,7 @@
 <span class="co">#&gt;  - attr(*, "class")= chr "sleeper_api"</span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query and the response that was sent by the server. These are helpful for debugging, but we can turn the content into a dataframe with some careful application of the tidyverse.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">df_trending</span> <span class="op">&lt;-</span> <span class="va">response_trending</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">df_trending</span> <span class="op">&lt;-</span> <span class="va">response_trending</span> <span class="op">%&gt;%</span> 
   <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -247,11 +244,9 @@
 <span class="co">#&gt; 6 6271       5452</span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so let’s pull the players endpoint in as well - this one has a convenient function!</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_players.html">sleeper_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_players.html">sleeper_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">player_name</span>, <span class="va">pos</span>, <span class="va">team</span>, <span class="va">age</span><span class="op">)</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
-
 <span class="va">trending</span> <span class="op">&lt;-</span> <span class="va">df_trending</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">players</span>, by <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
 
@@ -264,7 +259,7 @@
 <span class="co">#&gt;  3 7703      11403 Jacob Harris      TE    LAR    NA  </span>
 <span class="co">#&gt;  4 4622       8548 Keelan Cole       WR    NYJ    28.4</span>
 <span class="co">#&gt;  5 2711       7165 Taylor Heinicke   QB    WAS    28.5</span>
-<span class="co">#&gt;  6 6271       5452 Olamide Zaccheaus WR    ATL    24.1</span>
+<span class="co">#&gt;  6 6271       5452 Olamide Zaccheaus WR    ATL    24.2</span>
 <span class="co">#&gt;  7 5199       4462 Byron Pringle     WR    KC     27.8</span>
 <span class="co">#&gt;  8 7622       4082 Sammis Reyes      TE    WAS    25.9</span>
 <span class="co">#&gt;  9 7530       3646 Frank Darby       WR    ATL    NA  </span>

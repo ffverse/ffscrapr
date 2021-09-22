@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Fleaflicker: Basics">
 <meta property="og:description" content="ffscrapr">
-<meta property="og:image" content="ffscrapr.ffverse.com/reference/figures/logo.svg">
+<meta property="og:image" content="https://ffscrapr.ffverse.com/reference/figures/logo.svg">
 <meta property="og:image:alt" content="ffscrapr - an R package for Fantasy Football APIs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@_TanHo">
@@ -130,14 +130,15 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="https://www.ffverse.com">ffverse</a>
+<li class="dropdown-header">ffverse</li>
+    <li>
+      <a href="https://www.ffverse.com">ffverse.com</a>
     </li>
     <li>
-      <a href="https://ffsimulator.ffverse.com">ffsimulator package</a>
+      <a href="https://ffsimulator.ffverse.com">ffsimulator</a>
     </li>
     <li>
-      <a href="https://ffpros.ffverse.com">ffpros package</a>
+      <a href="https://ffpros.ffverse.com">ffpros</a>
     </li>
     <li>
       <a href="https://www.github.com/ffverse">ffverse GitHub</a>
@@ -182,7 +183,7 @@
       <h1 data-toc-skip>Fleaflicker: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-06</h4>
+            <h4 class="date">2021-09-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/fleaflicker_basics.Rmd"><code>vignettes/fleaflicker_basics.Rmd</code></a></small>
       <div class="hidden name"><code>fleaflicker_basics.Rmd</code></div>
@@ -215,10 +216,8 @@
 <p>I’ve done this with the <code><a href="../reference/fleaflicker_connect.html">fleaflicker_connect()</a></code> function, although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call - they are equivalent. Most if not all of the remaining functions after this point are prefixed with “ff_”.</p>
 <p>Cool! Let’s have a quick look at what this league is like.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">aaa_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">aaa_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
-
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">aaa_summary</span><span class="op">)</span>
 <span class="co">#&gt; tibble [1 × 15] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id      : chr "312861"</span>
