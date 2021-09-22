@@ -1,3 +1,9 @@
+# ffscrapr (development version)
+
+## Changes
+- Fix `ff_scoringhistory.flea_conn()` kicking bug. (v1.4.6.01)
+- Fix `ff_schedule.mfl_conn()` NA bug. (v1.4.6.02)
+
 # ffscrapr 1.4.6
 
 The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.
