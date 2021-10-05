@@ -183,7 +183,7 @@
       <h1 data-toc-skip>MFL: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-22</h4>
+            <h4 class="date">2021-10-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/mfl_basics.Rmd"><code>vignettes/mfl_basics.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_basics.Rmd</code></div>
@@ -206,8 +206,7 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.2.0</span></code></pre></div>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
 <p>Set up the connection to the league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, 
@@ -229,6 +228,7 @@
 <code class="sourceCode R"><span class="va">ssb_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
 <span class="co">#&gt; Using request.R from "ffscrapr"</span>
 <span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">ssb_summary</span><span class="op">)</span>
 <span class="co">#&gt; tibble [1 × 17] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ league_id        : chr "54040"</span>
@@ -258,9 +258,9 @@
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name            pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan           TE    NYG    27.1</span>
-<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.8</span>
+<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.9</span>
 <span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan        WR    NOS    25.7</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron         TE    TBB    30.2</span>
+<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron         TE    TBB    30.3</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh         WR    LAR    26.6</span>
 <span class="co">#&gt; 6 0001         Team Pikachu   13793     Valdes-Scantling, Mar… WR    GBP    27  </span>
 <span class="co">#&gt; # … with 4 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
@@ -294,10 +294,10 @@
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.5</span>
 <span class="co">#&gt; 2 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.7</span>
-<span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.5</span>
+<span class="co">#&gt; 3 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.6</span>
 <span class="co">#&gt; 4 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    24.8</span>
 <span class="co">#&gt; 5 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    23  </span>
-<span class="co">#&gt; 6 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.8</span>
+<span class="co">#&gt; 6 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    28.9</span>
 <span class="co">#&gt; # … with 7 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span>
 <span class="co">#&gt; #   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   value_1qb &lt;int&gt;</span></code></pre></div>
@@ -381,18 +381,18 @@
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;</span>
 <span class="co">#&gt;  1 0001         Team Pikachu         24.1   23.0   26.4   23.5        4        8</span>
 <span class="co">#&gt;  2 0002         Team Simon Belmont   25.1   25.7   24.9   24.7        8       11</span>
-<span class="co">#&gt;  3 0003         Team Donkey Kong     25.2   23.9   31.9   27.3        5        8</span>
-<span class="co">#&gt;  4 0004         Team Ice Climbers    28.9   25.7   26.9   27.2        5        9</span>
-<span class="co">#&gt;  5 0005         Team Dr. Mario       36.0   23.4   25.1   24.9        2        7</span>
-<span class="co">#&gt;  6 0006         Team King Dedede     26.0   26.1   26.8   25.4        3       10</span>
-<span class="co">#&gt;  7 0007         Team Kirby           24.7   25.4   29.1   29.0        4        9</span>
-<span class="co">#&gt;  8 0008         Team Bowser          26.4   27.0   33.4   28.6        4       11</span>
-<span class="co">#&gt;  9 0009         Team Link            27.6   26.4   28.7   28.6        3       11</span>
-<span class="co">#&gt; 10 0010         Team Yoshi           28.0   22.6   28.1   26.3        2        6</span>
-<span class="co">#&gt; 11 0011         Team Diddy Kong      31.7   27.1   24.3   23.7        4       12</span>
-<span class="co">#&gt; 12 0012         Team Mewtwo          33.3   24.3   24.8   24.1        5        7</span>
-<span class="co">#&gt; 13 0013         Team Ness            33.1   23.9   23.8   25.6        5        9</span>
-<span class="co">#&gt; 14 0014         Team Luigi           32.8   25.6   23.9   27.4        3       10</span>
+<span class="co">#&gt;  3 0003         Team Donkey Kong     25.2   23.9   31.9   27.4        5        8</span>
+<span class="co">#&gt;  4 0004         Team Ice Climbers    28.9   25.7   26.9   27.3        5        9</span>
+<span class="co">#&gt;  5 0005         Team Dr. Mario       36.1   23.5   25.2   25.0        2        7</span>
+<span class="co">#&gt;  6 0006         Team King Dedede     26.1   26.1   26.8   25.4        3       10</span>
+<span class="co">#&gt;  7 0007         Team Kirby           24.8   25.5   29.1   29.0        4        9</span>
+<span class="co">#&gt;  8 0008         Team Bowser          26.4   27.1   33.4   28.6        4       11</span>
+<span class="co">#&gt;  9 0009         Team Link            27.6   26.5   28.8   28.6        3       11</span>
+<span class="co">#&gt; 10 0010         Team Yoshi           28.1   22.6   28.1   26.3        2        6</span>
+<span class="co">#&gt; 11 0011         Team Diddy Kong      31.8   27.2   24.4   23.7        4       12</span>
+<span class="co">#&gt; 12 0012         Team Mewtwo          33.4   24.3   24.8   24.2        5        7</span>
+<span class="co">#&gt; 13 0013         Team Ness            33.1   24.0   23.9   25.6        5        9</span>
+<span class="co">#&gt; 14 0014         Team Luigi           32.8   25.6   24.0   27.4        3       10</span>
 <span class="co">#&gt; # … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></code></pre></div>
 </div>
 <div id="next-steps" class="section level2">

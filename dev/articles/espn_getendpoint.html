@@ -183,7 +183,7 @@
       <h1 data-toc-skip>ESPN: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-22</h4>
+            <h4 class="date">2021-10-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/espn_getendpoint.Rmd"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>espn_getendpoint.Rmd</code></div>
@@ -277,7 +277,8 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
 <a href="#x-fantasy-filter" class="anchor"></a>X-Fantasy-Filter</h2>
 <p>Many of the endpoints are also affected by a JSON header, <code>X-Fantasy-Filter</code>, which can filter/sort/limit (or remove limits) from the API response. Here is an example of how to build up a valid JSON x-fantasy-filter, sourced from the code for <code>ff_playerscores</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">xff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>players <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+<code class="sourceCode R">
+<span class="va">xff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>players <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   limit <span class="op">=</span> <span class="fl">5</span>,
   sortPercOwned <span class="op">=</span> 
     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>sortAsc <span class="op">=</span> <span class="cn">FALSE</span>,
