@@ -64,7 +64,7 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
     purrr::set_names("x") %>%
     tidyr::hoist("x", "messages", "date") %>%
     dplyr::mutate(
-      timestamp = lubridate::as_datetime(.data$date / 1000),
+      timestamp = .as_datetime(.data$date / 1000),
       x = NULL
     ) %>%
     tidyr::unnest_longer("messages") %>%

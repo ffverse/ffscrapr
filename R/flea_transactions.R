@@ -32,7 +32,7 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     tidyr::unnest_wider("transactions") %>%
     tidyr::hoist("transaction", "type", "franchise" = "team") %>%
     dplyr::mutate(
-      timestamp = (as.numeric(.data$timeEpochMilli) / 1000) %>% lubridate::as_datetime(),
+      timestamp = (as.numeric(.data$timeEpochMilli) / 1000) %>% .as_datetime(),
       timeEpochMilli = NULL,
       type = stringr::str_remove(.data$type, "TRANSACTION_") %>% tidyr::replace_na("ADD")
     )
@@ -253,7 +253,7 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     tidyr::hoist("franchise", "franchise_id" = "id", "franchise_name" = "name") %>%
     dplyr::mutate(
       trade_id = .data$id,
-      timestamp = (as.numeric(.data$approvedOn) / 1000) %>% lubridate::as_datetime()
+      timestamp = (as.numeric(.data$approvedOn) / 1000) %>% .as_datetime()
     ) %>%
     dplyr::select(-"franchise", -"approvedOn")
 

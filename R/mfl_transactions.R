@@ -26,7 +26,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
     purrr::pluck("content", "transactions", "transaction") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    dplyr::mutate_at("timestamp", ~ as.numeric(.x) %>% lubridate::as_datetime())
+    dplyr::mutate_at("timestamp", ~ as.numeric(.x) %>% .as_datetime())
 
   if (nrow(df_transactions) == 0) {
     return(NULL)
