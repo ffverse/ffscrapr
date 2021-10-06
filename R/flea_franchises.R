@@ -35,7 +35,7 @@ ff_franchises.flea_conn <- function(conn) {
       "user_avatar" = "avatarUrl",
       "user_lastlogin" = "lastSeen"
     ) %>%
-    dplyr::mutate_at("user_lastlogin", ~ (as.numeric(.x) / 1000) %>% lubridate::as_datetime()) %>%
+    dplyr::mutate_at("user_lastlogin", ~ (as.numeric(.x) / 1000) %>% .as_datetime()) %>%
     dplyr::select(dplyr::any_of(c(
       dplyr::starts_with("division"),
       dplyr::starts_with("franchise"),

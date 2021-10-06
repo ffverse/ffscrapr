@@ -20,7 +20,7 @@ sleeper_players <- function() {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::mutate_at("fantasy_positions", ~ purrr::map(.x, as.character) %>% as.character()) %>%
-    dplyr::mutate_at("birth_date", lubridate::as_date) %>%
+    dplyr::mutate_at("birth_date", .as_date) %>%
     dplyr::mutate(
       age = round(as.numeric(Sys.Date() - .data$birth_date) / 365.25, 1),
       gsis_id = stringr::str_squish(gsis_id)

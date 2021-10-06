@@ -17,3 +17,16 @@ NULL
 #' @export
 #' @importFrom magrittr %>%
 NULL
+
+#' date utils
+#' @keywords internal
+.as_datetime <- function(x){
+  origin <- structure(0, class = c("POSIXct", "POSIXt"), tzone = "UTC")
+  as.POSIXct(x,origin = origin, tz = "UTC")
+}
+
+#' date utils
+#' @keywords internal
+.as_date <- function(x){
+  as.Date(x, tz = "UTC")
+}

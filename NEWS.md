@@ -3,6 +3,7 @@
 ## Changes
 - Fix `ff_scoringhistory.flea_conn()` kicking bug. (v1.4.6.01)
 - Fix `ff_schedule.mfl_conn()` NA bug. (v1.4.6.02)
+- Remove lubridate dep (v1.4.6.03)
 
 # ffscrapr 1.4.6
 
