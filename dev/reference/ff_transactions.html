@@ -311,20 +311,20 @@ Each trade is represented twice, once per each team.</p>
   <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>312861</span><span class='op'>)</span>
   <span class='fu'>ff_transactions</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 380 × 12</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 381 × 12</span>
 #&gt;    timestamp           type        type_desc franchise_id franchise_name player_id
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;glue&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>720 brosene's Team 14683    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 9114     
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16342    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16551    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 15107    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 15681    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-10-06 <span style='color: #949494;'>04:02:58</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>722 syd12nyjets's… 12499    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-09-29 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   13772    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-09-29 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   15069    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-09-29 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>578</span>553 Running Bear   16192    
-#&gt; <span style='color: #949494;'># … with 370 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-10-07 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>721 Mjenkyns2004'… 13029    
+#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>720 brosene's Team 14683    
+#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>720 brosene's Team 9114     
+#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16342    
+#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 16551    
+#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 15107    
+#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-10-06 <span style='color: #949494;'>10:00:00</span> waiver      added          1<span style='text-decoration: underline;'>581</span>753 fede_mndz's T… 15681    
+#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-10-06 <span style='color: #949494;'>04:02:58</span> free_agency dropped        1<span style='text-decoration: underline;'>581</span>722 syd12nyjets's… 12499    
+#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-09-29 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   13772    
+#&gt; <span style='color: #BCBCBC;'>10</span> 2021-09-29 <span style='color: #949494;'>10:00:00</span> free_agency dropped        1<span style='text-decoration: underline;'>578</span>553 Running Bear   15069    
+#&gt; <span style='color: #949494;'># … with 371 more rows, and 6 more variables: player_name &lt;glue&gt;, pos &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, trade_partner_id &lt;int&gt;, trade_partner_name &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   trade_id &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
 
