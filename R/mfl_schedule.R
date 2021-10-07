@@ -51,6 +51,7 @@ ff_schedule.mfl_conn <- function(conn, ...) {
       "opponent_id",
       "opponent_score"
     )))
+
   away <- schedule %>%
     dplyr::rename_at(dplyr::vars(dplyr::contains("away")), ~ stringr::str_remove(.x, "away_")) %>%
     dplyr::rename_at(dplyr::vars(dplyr::contains("home")), ~ stringr::str_replace(.x, "home_", "opponent_")) %>%
@@ -68,7 +69,7 @@ ff_schedule.mfl_conn <- function(conn, ...) {
     dplyr::filter(!is.na(.data$franchise_id))
 
   if("spread" %in% names(full_schedule)){
-    full_schedule$result[!is.na(full_schedule$spread) && full_schedule$result == "T"] <- NA
+    full_schedule$result[(!is.na(full_schedule$spread)|full_schedule$spread==0) && full_schedule$result == "T"] <- NA
   }
 
   return(full_schedule)

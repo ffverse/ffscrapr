@@ -33,7 +33,7 @@ ff_draft.espn_conn <- function(conn, ...) {
     tidyr::unnest_wider("picks") %>%
     dplyr::mutate_at(
       dplyr::vars(dplyr::contains("completeDate")),
-      ~ lubridate::as_datetime(.x / 1000)
+      ~ .as_datetime(.x / 1000)
     ) %>%
     dplyr::rename(
       "player_id" = "playerId",
