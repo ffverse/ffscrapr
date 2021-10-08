@@ -20,15 +20,12 @@
 ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
-  # Pull in scoring rules for that league
   league_rules <-
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "espn"),
       by = c("stat_name" = "ff_event")
     )
-
-  ## CHECK IF KICKING IS IN THE RULESET FOR THIS LEAGUE, IF SO, USE KICKER
 
   ros <- .nflfastr_roster(season)
 
@@ -40,28 +37,8 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
       .nflfastr_kicking_long(season))
   }
 
-  if("passing25Yards" %in% league_rules$stat_name){
-    ps <- dplyr::mutate(ps, value = ifelse(metric == "passing_yards", value %/% 25, value))
-
-    league_rules <- league_rules %>%
-      dplyr::mutate(stat_name = ifelse(stat_name == "passing25Yards", "passingYards", stat_name),
-             nflfastr_event = ifelse(nflfastr_event == "passing_25_yards", "passing_yards", nflfastr_event))
-  }
-
-  if("rushing10Yards" %in% league_rules$stat_name){
-    ps <- dplyr::mutate(ps, value = ifelse(metric == "rushing_yards", value %/% 10, value))
-
-    league_rules <- league_rules %>%
-      dplyr::mutate(stat_name = ifelse(stat_name == "rushing10Yards", "rushingYards", stat_name),
-                    nflfastr_event = ifelse(nflfastr_event == "rushing_10_yards", "rushing_yards", nflfastr_event))
-  }
-
-  if("receiving10Yards" %in% league_rules$stat_name){
-    ps <- dplyr::mutate(ps, value = ifelse(metric == "receiving_yards", value %/% 10, value))
-
-    league_rules <- league_rules %>%
-      dplyr::mutate(stat_name = ifelse(stat_name == "receiving10Yards", "receivingYards", stat_name),
-                    nflfastr_event = ifelse(nflfastr_event == "receiving_10_yards", "receiving_yards", nflfastr_event))
+  if(any(c("passing25Yards","rushing10Yards","receiving10Yards") %in% league_rules$stat_name)){
+    ps <- .espn_threshold_scoring(ps)
   }
 
   ros %>%
@@ -79,4 +56,18 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
       values_fn = max
     )
 
+}
+
+.espn_threshold_scoring <- function(ps){
+
+  thresholds <- ps %>%
+    dplyr::filter(.data$metric %in% c("passing_yards","rushing_yards","receiving_yards")) %>%
+    dplyr::mutate(
+      threshold = ifelse(.data$metric == "passing_yards",25,10),
+      metric = paste(.data$metric,.data$threshold,sep = "_"),
+      value = .data$value %/% .data$threshold,
+      threshold = NULL
+    )
+
+  dplyr::bind_rows(ps,thresholds)
 }
