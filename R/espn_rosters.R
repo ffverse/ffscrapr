@@ -59,7 +59,7 @@ ff_rosters.espn_conn <- function(conn, week = NULL, ...) {
       eligible_pos = purrr::map(.data$eligible_pos, ~ .espn_lineupslot_map()[as.character(.x)] %>% unname()),
       team = purrr::map_chr(as.character(.data$team), ~ .espn_team_map()[.x]),
       player = NULL,
-      acquisition_date = lubridate::as_datetime(.data$acquisition_date / 1000)
+      acquisition_date = .as_datetime(.data$acquisition_date / 1000)
     ) %>%
     dplyr::left_join(x = franchises, by = "franchise_id")
 
