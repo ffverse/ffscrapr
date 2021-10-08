@@ -40,6 +40,30 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
       .nflfastr_kicking_long(season))
   }
 
+  if("passing25Yards" %in% league_rules$stat_name){
+    ps <- dplyr::mutate(ps, value = ifelse(metric == "passing_yards", value %/% 25, value))
+
+    league_rules <- league_rules %>%
+      dplyr::mutate(stat_name = ifelse(stat_name == "passing25Yards", "passingYards", stat_name),
+             nflfastr_event = ifelse(nflfastr_event == "passing_25_yards", "passing_yards", nflfastr_event))
+  }
+
+  if("rushing10Yards" %in% league_rules$stat_name){
+    ps <- dplyr::mutate(ps, value = ifelse(metric == "rushing_yards", value %/% 10, value))
+
+    league_rules <- league_rules %>%
+      dplyr::mutate(stat_name = ifelse(stat_name == "rushing10Yards", "rushingYards", stat_name),
+                    nflfastr_event = ifelse(nflfastr_event == "rushing_10_yards", "rushing_yards", nflfastr_event))
+  }
+
+  if("receiving10Yards" %in% league_rules$stat_name){
+    ps <- dplyr::mutate(ps, value = ifelse(metric == "receiving_yards", value %/% 10, value))
+
+    league_rules <- league_rules %>%
+      dplyr::mutate(stat_name = ifelse(stat_name == "receiving10Yards", "receivingYards", stat_name),
+                    nflfastr_event = ifelse(nflfastr_event == "receiving_10_yards", "receiving_yards", nflfastr_event))
+  }
+
   ros %>%
     dplyr::inner_join(ps, by = c("gsis_id"="player_id","season")) %>%
     dplyr::inner_join(league_rules, by = c("metric"="nflfastr_event","pos")) %>%
