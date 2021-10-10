@@ -12,8 +12,8 @@
 #' @examples
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
-#'   conn <- espn_connect(season = 2020, league_id = 899513)
-#'   espn_potentialpoints(conn, weeks = 1:3)
+#'   conn <- espn_connect(season = 2021, league_id = 950665)
+#'   espn_potentialpoints(conn, weeks = 1)
 #' }) # end try
 #' }
 #' @export
@@ -102,7 +102,7 @@ espn_potentialpoints <- function(conn, weeks = 1:17) {
 .espn_pp_lineupkeys <- function() {
   tibble::tibble(
     lineup_id = c("0", "2", "3", "4", "5", "6", "7", "16", "17", "20", "21", "23", "8", "9", "10", "11", "24", "12", "13", "14", "15"),
-    priority = c(1, 2, 5, 3, 6, 4, 8, 9, 10, 0, 0, 11, 12, 13, 16, 14, 15, 17, 18, 19, 20)
+    priority = c(1, 2, 5, 3, 6, 4, 9, 10, 11, 0, 0, 8, 12, 13, 16, 14, 15, 17, 18, 19, 20)
   ) %>%
     dplyr::arrange(.data$priority) %>%
     dplyr::mutate(lineup_id = as.character(.data$lineup_id))
