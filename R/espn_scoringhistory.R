@@ -20,15 +20,12 @@
 ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
-  # Pull in scoring rules for that league
   league_rules <-
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "espn"),
       by = c("stat_name" = "ff_event")
     )
-
-  ## CHECK IF KICKING IS IN THE RULESET FOR THIS LEAGUE, IF SO, USE KICKER
 
   ros <- .nflfastr_roster(season)
 
@@ -38,6 +35,10 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
     ps <- dplyr::bind_rows(
       ps,
       .nflfastr_kicking_long(season))
+  }
+
+  if(any(c("passing25Yards","rushing10Yards","receiving10Yards") %in% league_rules$stat_name)){
+    ps <- .espn_threshold_scoring(ps)
   }
 
   ros %>%
@@ -55,4 +56,18 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
       values_fn = max
     )
 
+}
+
+.espn_threshold_scoring <- function(ps){
+
+  thresholds <- ps %>%
+    dplyr::filter(.data$metric %in% c("passing_yards","rushing_yards","receiving_yards")) %>%
+    dplyr::mutate(
+      threshold = ifelse(.data$metric == "passing_yards",25,10),
+      metric = paste(.data$metric,.data$threshold,sep = "_"),
+      value = .data$value %/% .data$threshold,
+      threshold = NULL
+    )
+
+  dplyr::bind_rows(ps,thresholds)
 }
