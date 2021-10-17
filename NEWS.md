@@ -6,6 +6,7 @@
 - Remove lubridate dep (v1.4.6.03)
 - Update `.espn_stat_map()` to add threshold-based scoring and fix a missing defensive scoring setting 
 - Update `ff_scoringhistory.espn_conn()` to add threshold calcs. (v1.4.6.04) (thank you, @scottfrechette!)
+- Fix `espn_potentialpoints()` to move regular flex ahead of superflex (v1.4.6.05)
 
 # ffscrapr 1.4.6
 
