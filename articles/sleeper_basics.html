@@ -182,7 +182,7 @@
       <h1 data-toc-skip>Sleeper: Basics</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-09-08</h4>
+            <h4 class="date">2021-10-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/sleeper_basics.Rmd"><code>vignettes/sleeper_basics.Rmd</code></a></small>
       <div class="hidden name"><code>sleeper_basics.Rmd</code></div>
@@ -197,8 +197,7 @@
 <code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.2.0</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'tidyr' was built under R version 4.2.0</span></code></pre></div>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
 <p>In Sleeper, unlike in other platforms, it’s very unlikely that you’ll remember the league ID - both because most people use the mobile app, and because it happens to be an 18 digit number! It’s a little more natural to start analyses from the username, so let’s start there!</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">solarpool_leagues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_userleagues.html">sleeper_userleagues</a></span><span class="op">(</span><span class="st">"solarpool"</span>,<span class="fl">2020</span><span class="op">)</span>
@@ -275,12 +274,12 @@
 <span class="co">#&gt; # A tibble: 6 × 7</span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
 <span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Fake News      1110      T.Y. Hilton     WR    IND    31.8</span>
-<span class="co">#&gt; 2 1            Fake News      1339      Zach Ertz       TE    PHI    30.8</span>
-<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopkins WR    ARI    29.3</span>
-<span class="co">#&gt; 4 1            Fake News      1825      Jarvis Landry   WR    CLE    28.8</span>
-<span class="co">#&gt; 5 1            Fake News      2025      Albert Wilson   WR    MIA    29.2</span>
-<span class="co">#&gt; 6 1            Fake News      2197      Brandin Cooks   WR    HOU    28</span></code></pre></div>
+<span class="co">#&gt; 1 1            Fake News      1110      T.Y. Hilton     WR    IND    32  </span>
+<span class="co">#&gt; 2 1            Fake News      1339      Zach Ertz       TE    PHI    31  </span>
+<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopkins WR    ARI    29.4</span>
+<span class="co">#&gt; 4 1            Fake News      1825      Jarvis Landry   WR    CLE    28.9</span>
+<span class="co">#&gt; 5 1            Fake News      2025      Albert Wilson   WR    MIA    29.3</span>
+<span class="co">#&gt; 6 1            Fake News      2197      Brandin Cooks   WR    HOU    28.1</span></code></pre></div>
 <div id="values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#values" class="anchor"></a>Values</h2>
@@ -306,14 +305,14 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">jml_values</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 10</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age ecr_1qb</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1            Fake News      4866      Saquon Barkley  RB    NYG    24.6     3.4</span>
-<span class="co">#&gt; 2 1            Fake News      4199      Aaron Jones     RB    GB     26.8    21  </span>
-<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopkins WR    ARI    29.3    21.1</span>
-<span class="co">#&gt; 4 1            Fake News      4037      Chris Godwin    WR    TB     25.5    33.7</span>
-<span class="co">#&gt; 5 1            Fake News      4098      Kareem Hunt     RB    CLE    26.1    63.7</span>
-<span class="co">#&gt; 6 1            Fake News      5022      Dallas Goedert  TE    PHI    26.2    83.2</span>
+<span class="co">#&gt;   franchise_id franchise_name player_id player_name    pos   team    age ecr_1qb</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 1            Fake News      4866      Saquon Barkley RB    NYG    24.7     3.4</span>
+<span class="co">#&gt; 2 1            Fake News      4199      Aaron Jones    RB    GB     26.9    21  </span>
+<span class="co">#&gt; 3 1            Fake News      1426      DeAndre Hopki… WR    ARI    29.4    21.1</span>
+<span class="co">#&gt; 4 1            Fake News      4037      Chris Godwin   WR    TB     25.7    33.7</span>
+<span class="co">#&gt; 5 1            Fake News      4098      Kareem Hunt    RB    CLE    26.2    63.7</span>
+<span class="co">#&gt; 6 1            Fake News      5022      Dallas Goedert TE    PHI    26.3    83.2</span>
 <span class="co">#&gt; # … with 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -390,18 +389,18 @@
 <span class="co">#&gt; # Groups:   franchise_id, franchise_name [12]</span>
 <span class="co">#&gt;    franchise_id franchise_name    age_QB age_RB age_TE age_WR age_FB count_QB</span>
 <span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 1            Fake News           29     25.5   25.8   27.7   NA          3</span>
-<span class="co">#&gt;  2 10           JMLarkin            28.7   27.4   26.1   25.3   30.4        3</span>
-<span class="co">#&gt;  3 11           Permian Panthers    24.3   23.3   31.8   25.7   NA          4</span>
-<span class="co">#&gt;  4 12           jaydk               32.4   25.8   26.3   28     NA          4</span>
-<span class="co">#&gt;  5 2            KingGabe            29.2   22.7   27.4   22.5   NA          5</span>
-<span class="co">#&gt;  6 3            solarpool           25.6   25.6   26.8   27.9   NA          5</span>
-<span class="co">#&gt;  7 4            The FANTom Menace   29     23.7   24     27.1   NA          5</span>
-<span class="co">#&gt;  8 5            Barbarians          25.3   24.8   29     26.5   NA          3</span>
-<span class="co">#&gt;  9 6            sox05syd            24     24.3   27.5   25.5   NA          3</span>
-<span class="co">#&gt; 10 7            Flipadelphia05      33.2   25.9   27.6   27     NA          2</span>
-<span class="co">#&gt; 11 8            Hocka Flocka        31.6   24.4   24.1   23.8   NA          3</span>
-<span class="co">#&gt; 12 9            ZPMiller97          24.7   24.1   26.9   25.4   NA          3</span>
+<span class="co">#&gt;  1 1            Fake News           29.1   25.7   25.9   28     NA          3</span>
+<span class="co">#&gt;  2 10           JMLarkin            28.8   27.5   26.3   25.6   30.5        3</span>
+<span class="co">#&gt;  3 11           Permian Panthers    24.4   23.4   32     25.9   NA          4</span>
+<span class="co">#&gt;  4 12           jaydk               32.5   26     26.3   28     NA          4</span>
+<span class="co">#&gt;  5 2            KingGabe            29.2   22.8   27.6   22.6   NA          5</span>
+<span class="co">#&gt;  6 3            solarpool           25.7   25.9   27     28     NA          5</span>
+<span class="co">#&gt;  7 4            The FANTom Menace   29     23.9   24.1   27.3   NA          5</span>
+<span class="co">#&gt;  8 5            Barbarians          25.4   25     29.1   26.6   NA          3</span>
+<span class="co">#&gt;  9 6            sox05syd            24.2   24.4   27.6   25.6   NA          3</span>
+<span class="co">#&gt; 10 7            Flipadelphia05      33.3   26     27.7   27     NA          2</span>
+<span class="co">#&gt; 11 8            Hocka Flocka        31.8   24.6   24.2   23.9   NA          3</span>
+<span class="co">#&gt; 12 9            ZPMiller97          24.8   24.3   26.9   25.5   NA          3</span>
 <span class="co">#&gt; # … with 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span>
 <span class="co">#&gt; #   count_FB &lt;int&gt;</span></code></pre></div>
 </div>
