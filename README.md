@@ -20,7 +20,7 @@ status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-che
 [![API
 status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions)
 [![nflverse
-discord](https://img.shields.io/discord/591914197219016707.svg?color=5865F2&label=nflverse%20discord&logo=discord&logoColor=5865F2&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
+discord](https://img.shields.io/discord/789805604076126219?color=7289da&label=nflverse%20discord&logo=discord&logoColor=fff&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
 
 <!-- badges: end -->
 
