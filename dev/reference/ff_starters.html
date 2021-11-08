@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.05</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.06</span>
       </span>
     </div>
 
@@ -288,77 +288,80 @@
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span>
-  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 714 × 12</span>
-#&gt;     week franchise_id franchise_name    franchise_score lineup_slot player_score
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     1            1 Rushin' Collusion             118 QB                  27.5
-#&gt; <span style='color: #BCBCBC;'> 2</span>     1            1 Rushin' Collusion             118 RB                   9.2
-#&gt; <span style='color: #BCBCBC;'> 3</span>     1            1 Rushin' Collusion             118 RB                   6.7
-#&gt; <span style='color: #BCBCBC;'> 4</span>     1            1 Rushin' Collusion             118 WR                  13.1
-#&gt; <span style='color: #BCBCBC;'> 5</span>     1            1 Rushin' Collusion             118 WR                   8.6
-#&gt; <span style='color: #BCBCBC;'> 6</span>     1            1 Rushin' Collusion             118 WR                  12.6
-#&gt; <span style='color: #BCBCBC;'> 7</span>     1            1 Rushin' Collusion             118 TE                  16.6
-#&gt; <span style='color: #BCBCBC;'> 8</span>     1            1 Rushin' Collusion             118 DST                  0  
-#&gt; <span style='color: #BCBCBC;'> 9</span>     1            1 Rushin' Collusion             118 K                    9  
-#&gt; <span style='color: #BCBCBC;'>10</span>     1            1 Rushin' Collusion             118 BE                   4.8
-#&gt; <span style='color: #949494;'># … with 704 more rows, and 6 more variables: projected_score &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_id &lt;int&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   eligible_lineup_slots &lt;list&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
-  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-<span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span>
-  <span class='fu'>ff_starters</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,371 × 11</span>
-#&gt;    franchise_id franchise_name          season  week starter_status should_start
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 2</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 3</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 4</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 5</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 6</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 7</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 8</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'> 9</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1
-#&gt; <span style='color: #BCBCBC;'>10</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 nonstarter                0
-#&gt; <span style='color: #949494;'># … with 6,361 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_id &lt;chr&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>jml_conn</span>, week <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 344 × 8</span>
-#&gt;    franchise_id franchise_name  week starter_status player_id player_name  pos  
-#&gt;           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>            1 Fake News          3 nonstarter     7082      Dalton Keene TE   
-#&gt; <span style='color: #BCBCBC;'> 2</span>            1 Fake News          3 nonstarter     6826      Cole Kmet    TE   
-#&gt; <span style='color: #BCBCBC;'> 3</span>            1 Fake News          3 nonstarter     6804      Jordan Love  QB   
-#&gt; <span style='color: #BCBCBC;'> 4</span>            1 Fake News          3 nonstarter     676       LeSean McCoy RB   
-#&gt; <span style='color: #BCBCBC;'> 5</span>            1 Fake News          3 nonstarter     6149      Darius Slay… WR   
-#&gt; <span style='color: #BCBCBC;'> 6</span>            1 Fake News          3 nonstarter     6068      Devine Ozig… RB   
-#&gt; <span style='color: #BCBCBC;'> 7</span>            1 Fake News          3 nonstarter     6001      Drew Sample  TE   
-#&gt; <span style='color: #BCBCBC;'> 8</span>            1 Fake News          3 nonstarter     5965      Miles Boykin WR   
-#&gt; <span style='color: #BCBCBC;'> 9</span>            1 Fake News          3 nonstarter     5068      Kerryon Joh… RB   
-#&gt; <span style='color: #BCBCBC;'>10</span>            1 Fake News          3 nonstarter     5022      Dallas Goed… TE   
-#&gt; <span style='color: #949494;'># … with 334 more rows, and 1 more variable: team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>1178049</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 714 × 12</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     week franchise_id franchise_name    franchise_score lineup_slot player_score</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>     1            1 Rushin' Collusion             118 QB                  27.5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>     1            1 Rushin' Collusion             118 RB                   9.2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>     1            1 Rushin' Collusion             118 RB                   6.7</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>     1            1 Rushin' Collusion             118 WR                  13.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>     1            1 Rushin' Collusion             118 WR                   8.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>     1            1 Rushin' Collusion             118 WR                  12.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>     1            1 Rushin' Collusion             118 TE                  16.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>     1            1 Rushin' Collusion             118 DST                  0  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>     1            1 Rushin' Collusion             118 K                    9  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>     1            1 Rushin' Collusion             118 BE                   4.8</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 704 more rows, and 6 more variables: projected_score &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   player_id &lt;int&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   eligible_lineup_slots &lt;list&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>dlf_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='mfl_connect.html'>mfl_connect</a></span><span class='op'>(</span><span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>37920</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_starters</span><span class='op'>(</span>conn <span class='op'>=</span> <span class='va'>dlf_conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 6,371 × 11</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    franchise_id franchise_name          season  week starter_status should_start</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 starter                   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 0013         Advance Reptilian Sola…   <span style='text-decoration: underline;'>2</span>020     1 nonstarter                0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 6,361 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   player_id &lt;chr&gt;, player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sleeper_connect.html'>sleeper_connect</a></span><span class='op'>(</span>league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_starters</span><span class='op'>(</span><span class='va'>jml_conn</span>, week <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 344 × 8</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    franchise_id franchise_name  week starter_status player_id player_name  pos  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>            1 Fake News          3 nonstarter     7082      Dalton Keene TE   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>            1 Fake News          3 nonstarter     6826      Cole Kmet    TE   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>            1 Fake News          3 nonstarter     6804      Jordan Love  QB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>            1 Fake News          3 nonstarter     676       LeSean McCoy RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>            1 Fake News          3 nonstarter     6149      Darius Slay… WR   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>            1 Fake News          3 nonstarter     6068      Devine Ozig… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>            1 Fake News          3 nonstarter     6001      Drew Sample  TE   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>            1 Fake News          3 nonstarter     5965      Miles Boykin WR   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>            1 Fake News          3 nonstarter     5068      Kerryon Joh… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>            1 Fake News          3 nonstarter     5022      Dallas Goed… TE   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 334 more rows, and 1 more variable: team &lt;chr&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

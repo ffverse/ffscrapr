@@ -93,7 +93,7 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.05</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.06</span>
       </span>
     </div>
 
@@ -282,93 +282,97 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 </ul>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
-  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 220 × 21</span>
-#&gt;    round  pick overall franchise_id franchise_name       user_nickname player_id
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     1     1       1            9 <span style='color: #949494;'>"</span>RAFI CUNADO<span style='color: #949494;'>"</span>        Brandon11598    3<span style='text-decoration: underline;'>120</span>348
-#&gt; <span style='color: #BCBCBC;'> 2</span>     1     2       2            5 <span style='color: #949494;'>"</span>The Juggernaut<span style='color: #949494;'>"</span>     longhorn0010    4<span style='text-decoration: underline;'>047</span>646
-#&gt; <span style='color: #BCBCBC;'> 3</span>     1     3       3            1 <span style='color: #949494;'>"</span>The Early GGod<span style='color: #949494;'>"</span>     dachosenJuan…   2<span style='text-decoration: underline;'>977</span>644
-#&gt; <span style='color: #BCBCBC;'> 4</span>     1     4       4            4 <span style='color: #949494;'>"</span>I'm Also Sad <span style='color: #949494;'>"</span>      Ciavalen5th     3<span style='text-decoration: underline;'>121</span>422
-#&gt; <span style='color: #BCBCBC;'> 5</span>     1     5       5            8 <span style='color: #949494;'>"</span>Big Coomers<span style='color: #949494;'>"</span>        Zarkoa           -<span style='color: #BB0000; text-decoration: underline;'>16</span><span style='color: #BB0000;'>033</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span>     1     6       6            3 <span style='color: #949494;'>"</span>PAKI STANS<span style='color: #949494;'>"</span>         erodriguezk     3<span style='text-decoration: underline;'>122</span>840
-#&gt; <span style='color: #BCBCBC;'> 7</span>     1     7       7            2 <span style='color: #949494;'>"</span>Coom  Dumpster<span style='color: #949494;'>"</span>     mfespinosaIV      <span style='text-decoration: underline;'>16</span>800
-#&gt; <span style='color: #BCBCBC;'> 8</span>     1     8       8            6 <span style='color: #949494;'>"</span>OBJ's Personal Por… drake iz yoda     <span style='text-decoration: underline;'>15</span>683
-#&gt; <span style='color: #BCBCBC;'> 9</span>     1     9       9           10 <span style='color: #949494;'>"</span>Austin 🐐Drew Lock… espn14856151      <span style='text-decoration: underline;'>14</span>880
-#&gt; <span style='color: #BCBCBC;'>10</span>     1    10      10            7 <span style='color: #949494;'>"</span>Tony El Tigre<span style='color: #949494;'>"</span>      anthon8821581   2<span style='text-decoration: underline;'>573</span>079
-#&gt; <span style='color: #949494;'># … with 210 more rows, and 14 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   team &lt;chr&gt;, bid_amount &lt;int&gt;, nominating_team_id &lt;int&gt;, is_keeper &lt;lgl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   can_keeper &lt;lgl&gt;, autodraft_type &lt;int&gt;, complete_date &lt;dttm&gt;,</span>
-#&gt; <span style='color: #949494;'>#   in_progress &lt;lgl&gt;, pick_id &lt;int&gt;, drafted &lt;lgl&gt;, lineupSlotId &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   tradeLocked &lt;lgl&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span>
-  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 × 9</span>
-#&gt;    round  pick overall franchise_id franchise_name  player_id player_name  pos  
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     1     1       1      1<span style='text-decoration: underline;'>373</span>970 Bamenda Herd        <span style='text-decoration: underline;'>15</span>539 Clyde Edwar… RB   
-#&gt; <span style='color: #BCBCBC;'> 2</span>     1     2       2      1<span style='text-decoration: underline;'>374</span>252 Central City C…     <span style='text-decoration: underline;'>15</span>604 Jonathan Ta… RB   
-#&gt; <span style='color: #BCBCBC;'> 3</span>     1     3       3      1<span style='text-decoration: underline;'>373</span>991 Top City Terro…     <span style='text-decoration: underline;'>15</span>523 CeeDee Lamb  WR   
-#&gt; <span style='color: #BCBCBC;'> 4</span>     1     4       4      1<span style='text-decoration: underline;'>374</span>315 Shanghai Commu…     <span style='text-decoration: underline;'>15</span>555 J.K. Dobbins RB   
-#&gt; <span style='color: #BCBCBC;'> 5</span>     1     5       5      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>601 D'Andre Swi… RB   
-#&gt; <span style='color: #BCBCBC;'> 6</span>     1     6       6      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>563 Cam Akers    RB   
-#&gt; <span style='color: #BCBCBC;'> 7</span>     1     7       7      1<span style='text-decoration: underline;'>373</span>883 Manitoba Marmo…     <span style='text-decoration: underline;'>15</span>540 Justin Jeff… WR   
-#&gt; <span style='color: #BCBCBC;'> 8</span>     1     8       8      1<span style='text-decoration: underline;'>373</span>973 Red River Land…     <span style='text-decoration: underline;'>15</span>544 Jerry Jeudy  WR   
-#&gt; <span style='color: #BCBCBC;'> 9</span>     1     9       9      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>537 Chase Young  EDR  
-#&gt; <span style='color: #BCBCBC;'>10</span>     1    10      10      1<span style='text-decoration: underline;'>373</span>535 Winterthur Ang…     <span style='text-decoration: underline;'>15</span>620 Ke'Shawn Va… RB   
-#&gt; <span style='color: #949494;'># … with 70 more rows, and 1 more variable: team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 90 × 11</span>
-#&gt;    timestamp           round pick  overall franchise_id franchise_name player_id
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span> 2021-02-08 <span style='color: #949494;'>18:52:22</span> 01    01          1 0014         Team Luigi     11244    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 2021-02-08 <span style='color: #949494;'>19:20:07</span> 01    02          2 0003         Team Donkey K… 14073    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 2021-02-08 <span style='color: #949494;'>20:01:16</span> 01    03          3 0008         Team Bowser    11678    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 2021-02-08 <span style='color: #949494;'>20:01:30</span> 02    01          4 0008         Team Bowser    13131    
-#&gt; <span style='color: #BCBCBC;'> 5</span> 2021-02-08 <span style='color: #949494;'>20:12:30</span> 02    02          5 0003         Team Donkey K… 11671    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 2021-02-09 <span style='color: #949494;'>02:55:39</span> 02    03          6 0012         Team Mewtwo    13593    
-#&gt; <span style='color: #BCBCBC;'> 7</span> 2021-02-09 <span style='color: #949494;'>03:09:50</span> 03    01          7 0014         Team Luigi     0829     
-#&gt; <span style='color: #BCBCBC;'> 8</span> 2021-02-09 <span style='color: #949494;'>03:12:44</span> 03    02          8 0003         Team Donkey K… 11222    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 2021-02-09 <span style='color: #949494;'>03:22:50</span> 03    03          9 0008         Team Bowser    14208    
-#&gt; <span style='color: #BCBCBC;'>10</span> 2021-02-09 <span style='color: #949494;'>03:23:01</span> 04    01         10 0008         Team Bowser    13156    
-#&gt; <span style='color: #949494;'># … with 80 more rows, and 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   age &lt;dbl&gt;, team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
-
-<span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span>
-  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 48 × 13</span>
-#&gt;    draft_id           status   type   season round  pick franchise_id franchise_name
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         
-#&gt; <span style='color: #BCBCBC;'> 1</span> 522458773321240576 complete linear 2020       1     1            4 The FANTom Me…
-#&gt; <span style='color: #BCBCBC;'> 2</span> 522458773321240576 complete linear 2020       1     2            5 Barbarians    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 522458773321240576 complete linear 2020       1     3           11 Permian Panth…
-#&gt; <span style='color: #BCBCBC;'> 4</span> 522458773321240576 complete linear 2020       1     4            2 KingGabe      
-#&gt; <span style='color: #BCBCBC;'> 5</span> 522458773321240576 complete linear 2020       1     5            8 Hocka Flocka  
-#&gt; <span style='color: #BCBCBC;'> 6</span> 522458773321240576 complete linear 2020       1     6            2 KingGabe      
-#&gt; <span style='color: #BCBCBC;'> 7</span> 522458773321240576 complete linear 2020       1     7            2 KingGabe      
-#&gt; <span style='color: #BCBCBC;'> 8</span> 522458773321240576 complete linear 2020       1     8            2 KingGabe      
-#&gt; <span style='color: #BCBCBC;'> 9</span> 522458773321240576 complete linear 2020       1     9            6 sox05syd      
-#&gt; <span style='color: #BCBCBC;'>10</span> 522458773321240576 complete linear 2020       1    10            9 ZPMiller97    
-#&gt; <span style='color: #949494;'># … with 38 more rows, and 5 more variables: player_id &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 220 × 21</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    round  pick overall franchise_id franchise_name       user_nickname player_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>     1     1       1            9 <span style='color: #949494;'>"</span>RAFI CUNADO<span style='color: #949494;'>"</span>        Brandon11598    3<span style='text-decoration: underline;'>120</span>348</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>     1     2       2            5 <span style='color: #949494;'>"</span>The Juggernaut<span style='color: #949494;'>"</span>     longhorn0010    4<span style='text-decoration: underline;'>047</span>646</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>     1     3       3            1 <span style='color: #949494;'>"</span>The Early GGod<span style='color: #949494;'>"</span>     dachosenJuan…   2<span style='text-decoration: underline;'>977</span>644</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>     1     4       4            4 <span style='color: #949494;'>"</span>I'm Also Sad <span style='color: #949494;'>"</span>      Ciavalen5th     3<span style='text-decoration: underline;'>121</span>422</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>     1     5       5            8 <span style='color: #949494;'>"</span>Big Coomers<span style='color: #949494;'>"</span>        Zarkoa           -<span style='color: #BB0000; text-decoration: underline;'>16</span><span style='color: #BB0000;'>033</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>     1     6       6            3 <span style='color: #949494;'>"</span>PAKI STANS<span style='color: #949494;'>"</span>         erodriguezk     3<span style='text-decoration: underline;'>122</span>840</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>     1     7       7            2 <span style='color: #949494;'>"</span>Coom  Dumpster<span style='color: #949494;'>"</span>     mfespinosaIV      <span style='text-decoration: underline;'>16</span>800</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>     1     8       8            6 <span style='color: #949494;'>"</span>OBJ's Personal Por… drake iz yoda     <span style='text-decoration: underline;'>15</span>683</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>     1     9       9           10 <span style='color: #949494;'>"</span>Austin 🐐Drew Lock… espn14856151      <span style='text-decoration: underline;'>14</span>880</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>     1    10      10            7 <span style='color: #949494;'>"</span>Tony El Tigre<span style='color: #949494;'>"</span>      anthon8821581   2<span style='text-decoration: underline;'>573</span>079</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 210 more rows, and 14 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   team &lt;chr&gt;, bid_amount &lt;int&gt;, nominating_team_id &lt;int&gt;, is_keeper &lt;lgl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   can_keeper &lt;lgl&gt;, autodraft_type &lt;int&gt;, complete_date &lt;dttm&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   in_progress &lt;lgl&gt;, pick_id &lt;int&gt;, drafted &lt;lgl&gt;, lineupSlotId &lt;int&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   tradeLocked &lt;lgl&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='fleaflicker_connect.html'>fleaflicker_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>206154</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 80 × 9</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    round  pick overall franchise_id franchise_name  player_id player_name  pos  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>     1     1       1      1<span style='text-decoration: underline;'>373</span>970 Bamenda Herd        <span style='text-decoration: underline;'>15</span>539 Clyde Edwar… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>     1     2       2      1<span style='text-decoration: underline;'>374</span>252 Central City C…     <span style='text-decoration: underline;'>15</span>604 Jonathan Ta… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>     1     3       3      1<span style='text-decoration: underline;'>373</span>991 Top City Terro…     <span style='text-decoration: underline;'>15</span>523 CeeDee Lamb  WR   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>     1     4       4      1<span style='text-decoration: underline;'>374</span>315 Shanghai Commu…     <span style='text-decoration: underline;'>15</span>555 J.K. Dobbins RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>     1     5       5      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>601 D'Andre Swi… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>     1     6       6      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>563 Cam Akers    RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>     1     7       7      1<span style='text-decoration: underline;'>373</span>883 Manitoba Marmo…     <span style='text-decoration: underline;'>15</span>540 Justin Jeff… WR   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>     1     8       8      1<span style='text-decoration: underline;'>373</span>973 Red River Land…     <span style='text-decoration: underline;'>15</span>544 Jerry Jeudy  WR   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>     1     9       9      1<span style='text-decoration: underline;'>374</span>271 Clutch City Ba…     <span style='text-decoration: underline;'>15</span>537 Chase Young  EDR  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>     1    10      10      1<span style='text-decoration: underline;'>373</span>535 Winterthur Ang…     <span style='text-decoration: underline;'>15</span>620 Ke'Shawn Va… RB   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 70 more rows, and 1 more variable: team &lt;chr&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>ssb_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"mfl"</span>, league_id <span class='op'>=</span> <span class='fl'>54040</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>ssb_conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 90 × 11</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    timestamp           round pick  overall franchise_id franchise_name player_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dttm&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 2021-02-08 <span style='color: #949494;'>18:52:22</span> 01    01          1 0014         Team Luigi     11244    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 2021-02-08 <span style='color: #949494;'>19:20:07</span> 01    02          2 0003         Team Donkey K… 14073    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 2021-02-08 <span style='color: #949494;'>20:01:16</span> 01    03          3 0008         Team Bowser    11678    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 2021-02-08 <span style='color: #949494;'>20:01:30</span> 02    01          4 0008         Team Bowser    13131    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 2021-02-08 <span style='color: #949494;'>20:12:30</span> 02    02          5 0003         Team Donkey K… 11671    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 2021-02-09 <span style='color: #949494;'>02:55:39</span> 02    03          6 0012         Team Mewtwo    13593    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 2021-02-09 <span style='color: #949494;'>03:09:50</span> 03    01          7 0014         Team Luigi     0829     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 2021-02-09 <span style='color: #949494;'>03:12:44</span> 03    02          8 0003         Team Donkey K… 11222    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 2021-02-09 <span style='color: #949494;'>03:22:50</span> 03    03          9 0008         Team Bowser    14208    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 2021-02-09 <span style='color: #949494;'>03:23:01</span> 04    01         10 0008         Team Bowser    13156    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 80 more rows, and 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   age &lt;dbl&gt;, team &lt;chr&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>jml_conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ff_connect.html'>ff_connect</a></span><span class='op'>(</span>platform <span class='op'>=</span> <span class='st'>"sleeper"</span>, league_id <span class='op'>=</span> <span class='st'>"522458773317046272"</span>, season <span class='op'>=</span> <span class='fl'>2020</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>ff_draft</span><span class='op'>(</span><span class='va'>jml_conn</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 48 × 13</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    draft_id       status   type  season round  pick franchise_id franchise_name </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 5224587733212… complete line… 2020       1     1            4 The FANTom Men…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 5224587733212… complete line… 2020       1     2            5 Barbarians     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 5224587733212… complete line… 2020       1     3           11 Permian Panthe…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 5224587733212… complete line… 2020       1     4            2 KingGabe       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 5224587733212… complete line… 2020       1     5            8 Hocka Flocka   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 5224587733212… complete line… 2020       1     6            2 KingGabe       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 5224587733212… complete line… 2020       1     7            2 KingGabe       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 5224587733212… complete line… 2020       1     8            2 KingGabe       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 5224587733212… complete line… 2020       1     9            6 sox05syd       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 5224587733212… complete line… 2020       1    10            9 ZPMiller97     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 38 more rows, and 5 more variables: player_id &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
