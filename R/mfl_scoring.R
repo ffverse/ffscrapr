@@ -38,10 +38,7 @@ ff_scoring.mfl_conn <- function(conn) {
         .data$vec_depth == 3 ~ purrr::map_depth(.data$rule, 2, `[[`, 1),
         .data$vec_depth == 4 ~ purrr::map_depth(.data$rule, -2, `[[`, 1)
       ),
-      rule = dplyr::case_when(
-        .data$vec_depth == 3 ~ purrr::map(.data$rule, dplyr::bind_rows),
-        .data$vec_depth == 4 ~ purrr::map(.data$rule, list_bind_rows)
-      )
+      rule = purrr::map(.data$rule, dplyr::bind_rows)
     ) %>%
     dplyr::select(-.data$vec_depth) %>%
     tidyr::unnest_wider("rule") %>%
@@ -66,10 +63,6 @@ ff_scoring.mfl_conn <- function(conn) {
     )
 
   return(df)
-}
-
-list_bind_rows <- function(x) {
-  dplyr::bind_rows(!!!x)
 }
 
 #' Parse the scoring rule chars into numeric.
