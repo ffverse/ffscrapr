@@ -1,10 +1,13 @@
 # ffscrapr (development version)
 
-## Minor changes
-
-- `ff_scoring()` for MFL gets some tweaks to support changes to tidyr (thanks, @DavisVaughan!) (v1.4.6.01)
-
----
+## Changes
+- Fix `ff_scoringhistory.flea_conn()` kicking bug. (v1.4.6.01)
+- Fix `ff_schedule.mfl_conn()` NA bug. (v1.4.6.02)
+- Remove lubridate dep (v1.4.6.03)
+- Update `.espn_stat_map()` to add threshold-based scoring and fix a missing defensive scoring setting 
+- Update `ff_scoringhistory.espn_conn()` to add threshold calcs. (v1.4.6.04) (thank you, @scottfrechette!)
+- Fix `espn_potentialpoints()` to move regular flex ahead of superflex (v1.4.6.05)
+- `ff_scoring()` for MFL gets some tweaks to support changes to tidyr (thanks, @DavisVaughan!) (v1.4.6.06)
 
 # ffscrapr 1.4.6
 
