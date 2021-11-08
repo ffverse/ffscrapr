@@ -1,3 +1,11 @@
+# ffscrapr (development version)
+
+## Minor changes
+
+- `ff_scoring()` for MFL gets some tweaks to support changes to tidyr (thanks, @DavisVaughan!) (v1.4.6.01)
+
+---
+
 # ffscrapr 1.4.6
 
 The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.
