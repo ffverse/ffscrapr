@@ -50,7 +50,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         by = c("player_id")
       ) %>%
       dplyr::transmute(
-        "timestamp" = lubridate::as_datetime(as.numeric(.data$timestamp)),
+        "timestamp" = .as_datetime(as.numeric(.data$timestamp)),
         .data$round,
         .data$pick,
         .data$overall,
@@ -59,7 +59,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         .data$player_id,
         .data$player_name,
         .data$pos,
-        age = round(as.numeric(lubridate::as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
+        age = round(as.numeric(.as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
         .data$team
       )
   } else {
@@ -80,7 +80,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         by = c("player_id")
       ) %>%
       dplyr::transmute(
-        "timestamp" = lubridate::as_datetime(as.numeric(.data$timestamp)),
+        "timestamp" = .as_datetime(as.numeric(.data$timestamp)),
         .data$division,
         .data$division_name,
         .data$round,
@@ -91,7 +91,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
         .data$player_id,
         .data$player_name,
         .data$pos,
-        age = round(as.numeric(lubridate::as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
+        age = round(as.numeric(.as_date(.data$timestamp) - .data$birthdate) / 365.25, 1),
         .data$team
       )
   }

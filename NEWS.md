@@ -1,3 +1,13 @@
+# ffscrapr (development version)
+
+## Changes
+- Fix `ff_scoringhistory.flea_conn()` kicking bug. (v1.4.6.01)
+- Fix `ff_schedule.mfl_conn()` NA bug. (v1.4.6.02)
+- Remove lubridate dep (v1.4.6.03)
+- Update `.espn_stat_map()` to add threshold-based scoring and fix a missing defensive scoring setting 
+- Update `ff_scoringhistory.espn_conn()` to add threshold calcs. (v1.4.6.04) (thank you, @scottfrechette!)
+- Fix `espn_potentialpoints()` to move regular flex ahead of superflex (v1.4.6.05)
+
 # ffscrapr 1.4.6
 
 The main goal of v1.4.6 is to patch some minor bugs, introduce a unified dependency on nflreadr, and add some support for kicker scoring.
