@@ -1,13 +1,21 @@
-# ffscrapr (development version)
+# ffscrapr 1.4.7
+
+The main goal of v1.4.7 is to patch some minor bugs and to pre-emptively correct issues related to upstream dependency `tidyr`.
 
 ## Changes
-- Fix `ff_scoringhistory.flea_conn()` kicking bug. (v1.4.6.01)
-- Fix `ff_schedule.mfl_conn()` NA bug. (v1.4.6.02)
-- Remove lubridate dep (v1.4.6.03)
+- Fix `ff_scoringhistory.flea_conn()` kicking bug.
+- Fix `ff_schedule.mfl_conn()` NA bug.
+- Remove lubridate dep
 - Update `.espn_stat_map()` to add threshold-based scoring and fix a missing defensive scoring setting 
-- Update `ff_scoringhistory.espn_conn()` to add threshold calcs. (v1.4.6.04) (thank you, @scottfrechette!)
-- Fix `espn_potentialpoints()` to move regular flex ahead of superflex (v1.4.6.05)
-- `ff_scoring()` for MFL gets some tweaks to support changes to tidyr (thanks, @DavisVaughan!) (v1.4.6.06)
+- Update `ff_scoringhistory.espn_conn()` to add threshold calcs. (thank you, @scottfrechette!)
+- Fix `espn_potentialpoints()` to move regular flex ahead of superflex 
+- `ff_scoring()` for MFL gets some tweaks to support changes to tidyr (thanks, @DavisVaughan!)
+
+## Thanks
+
+Grateful to [&#x0040;davisderodes](https://github.com/davisderodes),[&#x0040;DavisVaughan](https://github.com/DavisVaughan), [&#x0040;draftydesert277](https://github.com/draftydesert277),[&#x0040;scottfrechette](https://github.com/scottfrechette), and [&#x0040;TheMathNinja](https://github.com/TheMathNinja) for their contributions to this release - feedback, issues, and PRs!
+
+---
 
 # ffscrapr 1.4.6
 
