@@ -92,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.7</span>
       </span>
     </div>
 
@@ -255,27 +255,28 @@
     <p>a tibble with the best lineup for each team and whether they were started or not</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span>
-  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span>
-  <span class='fu'>espn_potentialpoints</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 666 × 11</span>
-#&gt;     week franchise_id franchise_name franchise_score optimal_slot actual_slot
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'> 1</span>     1            1 The Early GGod            102. QB           OP         
-#&gt; <span style='color: #BCBCBC;'> 2</span>     1            1 The Early GGod            102. RB           BE         
-#&gt; <span style='color: #BCBCBC;'> 3</span>     1            1 The Early GGod            102. RB           RB         
-#&gt; <span style='color: #BCBCBC;'> 4</span>     1            1 The Early GGod            102. WR           BE         
-#&gt; <span style='color: #BCBCBC;'> 5</span>     1            1 The Early GGod            102. WR           BE         
-#&gt; <span style='color: #BCBCBC;'> 6</span>     1            1 The Early GGod            102. TE           BE         
-#&gt; <span style='color: #BCBCBC;'> 7</span>     1            1 The Early GGod            102. OP           WR         
-#&gt; <span style='color: #BCBCBC;'> 8</span>     1            1 The Early GGod            102. DST          DST        
-#&gt; <span style='color: #BCBCBC;'> 9</span>     1            1 The Early GGod            102. K            K          
-#&gt; <span style='color: #BCBCBC;'>10</span>     1            1 The Early GGod            102. RB/WR/TE     BE         
-#&gt; <span style='color: #949494;'># … with 656 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   player_name &lt;chr&gt;, player_pos &lt;chr&gt;, team &lt;chr&gt;, player_id &lt;int&gt;</span></div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span> <span class='co'># try only shown here because sometimes CRAN checks are weird</span></span>
+<span class='r-in'>  <span class='va'>conn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='espn_connect.html'>espn_connect</a></span><span class='op'>(</span>season <span class='op'>=</span> <span class='fl'>2020</span>, league_id <span class='op'>=</span> <span class='fl'>899513</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>espn_potentialpoints</span><span class='op'>(</span><span class='va'>conn</span>, weeks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 666 × 11</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     week franchise_id franchise_name franchise_score optimal_slot actual_slot</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>     1            1 The Early GGod            102. QB           OP         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>     1            1 The Early GGod            102. RB           BE         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>     1            1 The Early GGod            102. RB           RB         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>     1            1 The Early GGod            102. WR           BE         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>     1            1 The Early GGod            102. WR           BE         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>     1            1 The Early GGod            102. TE           BE         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>     1            1 The Early GGod            102. RB/WR/TE     WR         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>     1            1 The Early GGod            102. OP           BE         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>     1            1 The Early GGod            102. DST          DST        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>     1            1 The Early GGod            102. K            K          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 656 more rows, and 5 more variables: player_score &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   player_name &lt;chr&gt;, player_pos &lt;chr&gt;, team &lt;chr&gt;, player_id &lt;int&gt;</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

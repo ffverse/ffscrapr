@@ -91,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.7</span>
       </span>
     </div>
 
@@ -229,6 +229,32 @@
       <small>Source: <a href='https://github.com/ffverse/ffscrapr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="ffscrapr-147" class="section level1">
+<h1 class="page-header" data-toc-text="1.4.7">
+<a href="#ffscrapr-147" class="anchor"></a>ffscrapr 1.4.7<small> Unreleased </small>
+</h1>
+<p>The main goal of v1.4.7 is to patch some minor bugs and to pre-emptively correct issues related to upstream dependency <code>tidyr</code>.</p>
+<div id="changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>Fix <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory.flea_conn()</a></code> kicking bug.</li>
+<li>Fix <code><a href="../reference/ff_schedule.html">ff_schedule.mfl_conn()</a></code> NA bug.</li>
+<li>Remove lubridate dep</li>
+<li>Update <code><a href="../reference/.espn_stat_map.html">.espn_stat_map()</a></code> to add threshold-based scoring and fix a missing defensive scoring setting</li>
+<li>Update <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory.espn_conn()</a></code> to add threshold calcs. (thank you, <a href='https://github.com/scottfrechette'>@scottfrechette</a>!)</li>
+<li>Fix <code><a href="../reference/espn_potentialpoints.html">espn_potentialpoints()</a></code> to move regular flex ahead of superflex</li>
+<li>
+<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> for MFL gets some tweaks to support changes to tidyr (thanks, <a href='https://github.com/DavisVaughan'>@DavisVaughan</a>!)</li>
+</ul>
+</div>
+<div id="thanks" class="section level2">
+<h2 class="hasAnchor">
+<a href="#thanks" class="anchor"></a>Thanks</h2>
+<p>Grateful to <a href="https://github.com/davisderodes">@davisderodes</a>,<a href="https://github.com/DavisVaughan">@DavisVaughan</a>, <a href="https://github.com/draftydesert277">@draftydesert277</a>,<a href="https://github.com/scottfrechette">@scottfrechette</a>, and <a href="https://github.com/TheMathNinja">@TheMathNinja</a> for their contributions to this release - feedback, issues, and PRs!</p>
+<hr>
+</div>
+</div>
     <div id="ffscrapr-146" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.6">
 <a href="#ffscrapr-146" class="anchor"></a>ffscrapr 1.4.6<small> 2021-09-02 </small>
@@ -273,9 +299,9 @@
 <li>Minimum R version bumped to 3.6.0 - nflreadr uses RDS versions that require a minimum of R3.6.</li>
 </ul>
 </div>
-<div id="thanks" class="section level2">
+<div id="thanks-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#thanks" class="anchor"></a>Thanks</h2>
+<a href="#thanks-1" class="anchor"></a>Thanks</h2>
 <p>Immensely grateful to: Joe Sydlowski, Matt Spencer, Santiago Casanova, Scott Frechette, and all others who raised issues and contributed code towards this release!</p>
 <hr>
 </div>

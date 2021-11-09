@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.7</span>
       </span>
     </div>
 
@@ -182,7 +182,7 @@
       <h1 data-toc-skip>ESPN: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-10-28</h4>
+            <h4 class="date">2021-11-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/espn_getendpoint.Rmd"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>espn_getendpoint.Rmd</code></div>
@@ -200,8 +200,7 @@
 <span class="co">#&gt; Warning: package 'httr' was built under R version 4.2.0</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
 <span class="co">#&gt; Warning: package 'jsonlite' was built under R version 4.2.0</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'glue' was built under R version 4.2.0</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span></code></pre></div>
 <p>Accessing the ESPN Fantasy API is a bit of an adventure into an undocumented abyss. This vignette will give you a bit of a rundown on how to use <code>espn_getendpoint</code> and the lower-level <code>espn_getendpoint_raw</code>, talk about the <code>x-fantasy-filter</code>, and detail some of the known view parameters that could be helpful.</p>
 </div>
 <div id="known-endpoints" class="section level2">
@@ -285,7 +284,7 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
   filterStatsForTopScoringPeriodIDs <span class="op">=</span> 
     <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">2</span>,
          additionalValue <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"00"</span>, <span class="va">conn</span><span class="op">$</span><span class="va">season</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">toJSON</a></span><span class="op">(</span>auto_unbox <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="va">xff</span>

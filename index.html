@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.7</span>
       </span>
     </div>
 
@@ -209,52 +209,13 @@
 <span class="va">ssb</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ff_connect.html">ff_connect</a></span><span class="op">(</span>platform <span class="op">=</span> <span class="st">"mfl"</span>, league_id <span class="op">=</span> <span class="st">"54040"</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span>
 
 <span class="co"># Get a summary of league settings</span>
-<span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 x 17] (S3: tbl_df/tbl/data.frame)</span>
-<span class="co">#&gt;  $ league_id        : chr "54040"</span>
-<span class="co">#&gt;  $ league_name      : chr "The Super Smash Bros Dynasty League"</span>
-<span class="co">#&gt;  $ season           : int 2020</span>
-<span class="co">#&gt;  $ league_type      : chr NA</span>
-<span class="co">#&gt;  $ franchise_count  : num 14</span>
-<span class="co">#&gt;  $ qb_type          : chr "1QB"</span>
-<span class="co">#&gt;  $ idp              : logi FALSE</span>
-<span class="co">#&gt;  $ scoring_flags    : chr "0.5_ppr, TEPrem, PP1D"</span>
-<span class="co">#&gt;  $ best_ball        : logi FALSE</span>
-<span class="co">#&gt;  $ salary_cap       : logi FALSE</span>
-<span class="co">#&gt;  $ player_copies    : num 1</span>
-<span class="co">#&gt;  $ years_active     : chr "2018-2021"</span>
-<span class="co">#&gt;  $ qb_count         : chr "1"</span>
-<span class="co">#&gt;  $ roster_size      : num 33</span>
-<span class="co">#&gt;  $ league_depth     : num 462</span>
-<span class="co">#&gt;  $ draft_type       : chr "email draft"</span>
-<span class="co">#&gt;  $ draft_player_pool: chr "Both"</span>
+<span class="fu"><a href="reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># Get rosters</span>
 <span class="fu"><a href="reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 442 x 11</span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    27  </span>
-<span class="co">#&gt; 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    28.8</span>
-<span class="co">#&gt; 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    25.7</span>
-<span class="co">#&gt; 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30.2</span>
-<span class="co">#&gt; 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    26.5</span>
-<span class="co">#&gt; # ... with 437 more rows, and 4 more variables: roster_status &lt;chr&gt;,</span>
-<span class="co">#&gt; #   drafted &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span>
 
 <span class="co"># Get transactions</span>
-<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1,145 x 12</span>
-<span class="co">#&gt;   timestamp           type  type_desc   franchise_id franchise_name</span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;         </span>
-<span class="co">#&gt; 1 2021-02-12 14:32:39 TRADE traded_away 0008         Team Bowser   </span>
-<span class="co">#&gt; 2 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
-<span class="co">#&gt; 3 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
-<span class="co">#&gt; 4 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
-<span class="co">#&gt; 5 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   </span>
-<span class="co">#&gt; # ... with 1,140 more rows, and 7 more variables: player_id &lt;chr&gt;,</span>
-<span class="co">#&gt; #   player_name &lt;chr&gt;, pos &lt;chr&gt;, team &lt;chr&gt;, bbid_spent &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   trade_partner &lt;chr&gt;, comments &lt;chr&gt;</span></code></pre></div>
+<span class="fu"><a href="reference/ff_transactions.html">ff_transactions</a></span><span class="op">(</span><span class="va">ssb</span><span class="op">)</span></code></pre></div>
 <p>Platform-specific guides on getting started with ffscrapr are here:</p>
 <ul>
 <li>
@@ -336,7 +297,7 @@
 <li><a href="https://CRAN.R-project.org/package=ffscrapr"><img src="https://img.shields.io/cran/v/ffscrapr?style=flat-square&amp;logo=R&amp;label=CRAN" alt="CRAN status"></a></li>
 <li><a href="https://ffscrapr.ffverse.com/dev/"><img src="https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&amp;style=flat-square&amp;logo=github" alt="Dev status"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square" alt="Lifecycle: stable"></a></li>
-<li><a href="https://codecov.io/gh/ffverse/ffscrapr?branch=main"><img src="https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&amp;style=flat-square&amp;logo=codecov" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/ffverse/ffscrapr?branch=main"><img src="https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&amp;style=flat-square&amp;logo=codecov" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/ffverse/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-check?label=R%20check&amp;style=flat-square&amp;logo=github" alt="R build status"></a></li>
 <li><a href="https://github.com/ffverse/ffscrapr/actions"><img src="https://img.shields.io/github/workflow/status/ffverse/ffscrapr/Test%20APIs?label=API%20check&amp;style=flat-square&amp;logo=github" alt="API status"></a></li>
 <li><a href="https://discord.com/invite/5Er2FBnnQa"><img src="https://img.shields.io/discord/789805604076126219?color=7289da&amp;label=nflverse%20discord&amp;logo=discord&amp;logoColor=fff&amp;style=flat-square" alt="nflverse discord"></a></li>

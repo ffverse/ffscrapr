@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.7</span>
       </span>
     </div>
 
@@ -182,7 +182,7 @@
       <h1 data-toc-skip>MFL: Get Endpoint</h1>
                         <h4 class="author">Tan Ho</h4>
             
-            <h4 class="date">2021-10-28</h4>
+            <h4 class="date">2021-11-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/master/vignettes/mfl_getendpoint.Rmd"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
       <div class="hidden name"><code>mfl_getendpoint.Rmd</code></div>
@@ -229,9 +229,9 @@
 <p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
 <p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://magrittr.tidyverse.org/reference/aliases.html">magrittr::extract2</a></code> for the same purpose.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op">%&gt;%</span> 
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">search_results</span><span class="op">)</span>
@@ -252,32 +252,31 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fog</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2019</span>, league_id <span class="op">=</span> <span class="fl">12608</span><span class="op">)</span>
 
-<span class="va">fog_tradebait</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">fog</span>, <span class="st">"tradeBait"</span>, INCLUDE_DRAFT_PICKS <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"tradeBaits"</span>,<span class="st">"tradeBait"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_rows.html">separate_rows</a></span><span class="op">(</span><span class="st">"willGiveUp"</span>,sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>timestamp <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">timestamp</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">fog_tradebait</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">fog</span>, <span class="st">"tradeBait"</span>, INCLUDE_DRAFT_PICKS <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"tradeBaits"</span>,<span class="st">"tradeBait"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_rows.html">separate_rows</a></span><span class="op">(</span><span class="st">"willGiveUp"</span>,sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/ff_franchises.html">ff_franchises</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"franchise_id"</span>,<span class="st">"franchise_name"</span><span class="op">)</span>,
+    <span class="fu"><a href="../reference/ff_franchises.html">ff_franchises</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"franchise_id"</span>,<span class="st">"franchise_name"</span><span class="op">)</span>,
     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"franchise_id"</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
+    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"willGiveUp"</span> <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
   <span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 × 9</span>
-<span class="co">#&gt;   timestamp           franchise_id willGiveUp inExchangeFor       franchise_name</span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;         </span>
-<span class="co">#&gt; 1 2019-11-23 14:49:15 0001         7394       "anyone need a QB?" @JohnBoschFF  </span>
-<span class="co">#&gt; 2 2019-11-23 14:49:15 0001         13128      "anyone need a QB?" @JohnBoschFF  </span>
-<span class="co">#&gt; 3 2020-02-01 05:43:29 0003         13319      ""                  The Accountant</span>
-<span class="co">#&gt; 4 2020-02-01 05:43:29 0003         13139      ""                  The Accountant</span>
-<span class="co">#&gt; 5 2020-02-01 05:43:29 0003         11675      ""                  The Accountant</span>
-<span class="co">#&gt; 6 2020-02-01 15:49:25 0004         12171      ""                  Kevin Cutillo </span>
-<span class="co">#&gt; # … with 4 more variables: player_name &lt;chr&gt;, pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt;   timestamp  franchise_id willGiveUp inExchangeFor   franchise_name player_name </span>
+<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 1574520555 0001         7394       "anyone need a… @JohnBoschFF   Rivers, Phi…</span>
+<span class="co">#&gt; 2 1574520555 0001         13128      "anyone need a… @JohnBoschFF   Cook, Dalvin</span>
+<span class="co">#&gt; 3 1580535809 0003         13319      ""              The Accountant Jones, Aaron</span>
+<span class="co">#&gt; 4 1580535809 0003         13139      ""              The Accountant Williams, J…</span>
+<span class="co">#&gt; 5 1580535809 0003         11675      ""              The Accountant Adams, Dava…</span>
+<span class="co">#&gt; 6 1580572165 0004         12171      ""              Kevin Cutillo  Johnson, Da…</span>
+<span class="co">#&gt; # … with 3 more variables: pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></code></pre></div>
 </div>
   </div>
 
