@@ -23,10 +23,10 @@ eval <- TRUE
 
 tryCatch(expr = {
   
-  download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip","f.zip")
+  download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip","f.zip")
   unzip('f.zip', exdir = ".")
   
-  httptest::.mockPaths(new = "ffscrapr-tests-main")},
+  httptest::.mockPaths(new = "ffscrapr-tests-1.4.7")},
   warning = function(e) eval <<- FALSE,
   error = function(e) eval <<- FALSE)
 
@@ -42,7 +42,7 @@ httptest::use_mock_api()
 [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
 [![Dev status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/) 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html) 
-[![Codecov test coverage](https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://codecov.io/gh/ffverse/ffscrapr?branch=main) 
+[![Codecov test coverage](https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://app.codecov.io/gh/ffverse/ffscrapr?branch=main) 
 [![R build status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions) 
 [![API status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/Test%20APIs?label=API%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions) 
 [![nflverse discord](https://img.shields.io/discord/789805604076126219?color=7289da&label=nflverse%20discord&logo=discord&logoColor=fff&style=flat-square)](https://discord.com/invite/5Er2FBnnQa)
@@ -120,5 +120,5 @@ The APIs and data accessed by this package belong to their respective owners, an
 
 ```{r include = FALSE}
 httptest::stop_mocking()
-unlink(c("ffscrapr-tests-main","f.zip"), recursive = TRUE, force = TRUE)
+unlink(c("ffscrapr-tests-1.4.7","f.zip"), recursive = TRUE, force = TRUE)
 ```
