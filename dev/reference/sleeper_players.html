@@ -93,7 +93,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ffscrapr</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.6.06</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.7.00</span>
       </span>
     </div>
 
@@ -251,20 +251,20 @@
 <span class='r-in'>  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_n</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>5</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span><span class='op'>)</span> <span class='co'># end try</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 5 × 34</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   player_id player_name     pos     age team  status   years_exp fantasy_data_id</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> 7979      Ryan Neuzil     OL     24.3 ATL   Active           0              <span style='color: #BB0000;'>NA</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> 5550      J.D. Moore      RB     26.4 <span style='color: #BB0000;'>NA</span>    Inactive         2           <span style='text-decoration: underline;'>20</span>501</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span> 4852      Bill Lazor      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>   <span style='color: #BB0000;'>NA</span>    Inactive         0           <span style='text-decoration: underline;'>19</span>753</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span> 4723      Justin Thomas   WR     27.7 <span style='color: #BB0000;'>NA</span>    Inactive         3           <span style='text-decoration: underline;'>19</span>633</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span> 5539      Derrick Willies WR     27.1 CLE   Inactive         3           <span style='text-decoration: underline;'>20</span>477</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 26 more variables: rotowire_id &lt;int&gt;, yahoo_id &lt;int&gt;, espn_id &lt;int&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   sportradar_id &lt;chr&gt;, rotoworld_id &lt;int&gt;, gsis_id &lt;chr&gt;, swish_id &lt;int&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   stats_id &lt;int&gt;, sport &lt;chr&gt;, number &lt;int&gt;, weight &lt;chr&gt;, active &lt;lgl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   birth_date &lt;date&gt;, fantasy_positions &lt;chr&gt;, height &lt;chr&gt;, college &lt;chr&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   hashtag &lt;chr&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   depth_chart_position &lt;chr&gt;, high_school &lt;chr&gt;, depth_chart_order &lt;int&gt;,</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_description &lt;chr&gt;, …</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   player_id player_name     pos     age team  status  years_exp espn_id yahoo_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> 7979      Ryan Neuzil     OL     24.3 ATL   Active          0      <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> 5550      J.D. Moore      RB     26.5 <span style='color: #BB0000;'>NA</span>    Inacti…         2 3<span style='text-decoration: underline;'>042</span>728    <span style='text-decoration: underline;'>31</span>493</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span> 4852      Bill Lazor      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>   <span style='color: #BB0000;'>NA</span>    Inacti…         0      <span style='color: #BB0000;'>NA</span>       <span style='color: #BB0000;'>NA</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span> 4723      Justin Thomas   WR     27.7 <span style='color: #BB0000;'>NA</span>    Inacti…         3 2<span style='text-decoration: underline;'>971</span>471    <span style='text-decoration: underline;'>30</span>869</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span> 5539      Derrick Willies WR     27.1 CLE   Inacti…         3 3<span style='text-decoration: underline;'>040</span>137    <span style='text-decoration: underline;'>31</span>462</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 25 more variables: sportradar_id &lt;chr&gt;, rotowire_id &lt;int&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   fantasy_data_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;, swish_id &lt;int&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   stats_id &lt;int&gt;, number &lt;int&gt;, height &lt;chr&gt;, hashtag &lt;chr&gt;, weight &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   sport &lt;chr&gt;, birth_date &lt;date&gt;, college &lt;chr&gt;, active &lt;lgl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   fantasy_positions &lt;chr&gt;, injury_status &lt;chr&gt;, news_updated &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   high_school &lt;chr&gt;, depth_chart_order &lt;int&gt;, depth_chart_position &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, practice_participation &lt;chr&gt;, …</span></span>
 <span class='r-in'><span class='co'># }</span></span>
 <span class='r-in'></span>
 </pre>
