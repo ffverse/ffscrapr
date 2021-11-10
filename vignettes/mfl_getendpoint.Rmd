@@ -22,10 +22,10 @@ eval <- TRUE
 
 tryCatch(expr = {
   
-  download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip","f.zip")
+  download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip","f.zip")
   unzip('f.zip', exdir = ".")
   
-  httptest::.mockPaths(new = "ffscrapr-tests-main")},
+  httptest::.mockPaths(new = "ffscrapr-tests-1.4.7")},
   warning = function(e) eval <<- FALSE,
   error = function(e) eval <<- FALSE)
 
@@ -89,7 +89,6 @@ fog_tradebait <- mfl_getendpoint(fog, "tradeBait", INCLUDE_DRAFT_PICKS = 1) %>%
   tibble::tibble() %>% 
   tidyr::unnest_wider(1) %>% 
   tidyr::separate_rows("willGiveUp",sep = ",") %>% 
-  dplyr::mutate(timestamp = lubridate::as_datetime(as.numeric(timestamp))) %>% 
   dplyr::left_join(
     ff_franchises(fog) %>% dplyr::select("franchise_id","franchise_name"),
     by = c("franchise_id")
@@ -105,5 +104,5 @@ head(fog_tradebait)
 ```{r include = FALSE}
 httptest::stop_mocking()
 
-unlink(c("ffscrapr-tests-main","f.zip"), recursive = TRUE, force = TRUE)
+unlink(c("ffscrapr-tests-1.4.7","f.zip"), recursive = TRUE, force = TRUE)
 ```

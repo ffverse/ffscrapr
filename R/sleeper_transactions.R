@@ -110,7 +110,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       dropped = purrr::map(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
       franchise_id = purrr::map_chr(.data$franchise_id, unlist),
       timestamp = .data$timestamp / 1000,
-      timestamp = lubridate::as_datetime(.data$timestamp)
+      timestamp = .as_datetime(.data$timestamp)
     ) %>%
     tidyr::pivot_longer(
       cols = c("added", "dropped"),
@@ -167,7 +167,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       dropped = purrr::map(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
       franchise_id = purrr::map_chr(.data$franchise_id, unlist),
       timestamp = .data$timestamp / 1000,
-      timestamp = lubridate::as_datetime(.data$timestamp),
+      timestamp = .as_datetime(.data$timestamp),
       comment = purrr::map_chr(.data$metadata, `[[`, "notes")
     ) %>%
     tidyr::pivot_longer(
@@ -238,7 +238,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       "waiver_budget"
     ))) %>%
     dplyr::mutate(
-      timestamp = (.data$timestamp / 1000) %>% lubridate::as_datetime(),
+      timestamp = (.data$timestamp / 1000) %>% .as_datetime(),
       adds = purrr::map(
         .data$adds,
         ~ tibble::enframe(.x,

@@ -28,9 +28,9 @@ ff_connect <- function(platform = "mfl", league_id = NULL, ...) {
     "fleaflicker" = ,
     "flea" = fleaflicker_connect(league_id = league_id, ...),
     "espn" = espn_connect(league_id = league_id, ...),
-    # 'yahoo' = yahoo_connect(league_id = league_id,...)
     "sleeper" = sleeper_connect(league_id = league_id, ...),
     "mfl" = mfl_connect(league_id = league_id, ...)
+    # 'yahoo' = stop("Y YOU YAHOO, YOU YAHOO?")
   )
 
   if (is.null(x)) stop("We can't connect to that platform yet!")
