@@ -45,6 +45,7 @@ home:
     data frames for easy analysis.
 
 navbar:
+  bg: dark
   structure:
     left:  [home, reference, articles, news]
     right: [discord,  github, more]
@@ -108,8 +109,9 @@ authors:
     href: https://twitter.com/TonyElHabr
 
 template:
+  bootstrap: 5
   params:
-    bootswatch: cosmo
+    bootswatch: zephyr
     docsearch:
       api_key: 7abddd2aa591d955b365235f35d75a38
       index_name: dynastyprocess
