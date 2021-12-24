@@ -1,222 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ffscrapr.ffverse.com/index.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-add_allplay.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-as_datetime.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-espn_activity_map.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-espn_lineupslot_map.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/espn_authentication.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-espn_pos_map.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/espn_basics.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-espn_stat_map.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/espn_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-espn_team_map.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/ffscrapr_caching.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-ff_clear_cache.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/fleaflicker_basics.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-fn_choose_season.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/fleaflicker_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-fn_drop_nulls.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-fn_set_ratelimit.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/mfl_basics.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-fn_set_useragent.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/mfl_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-mfl_logincookie.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/sleeper_basics.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-retry_get.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/articles/sleeper_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-retry_post.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-sleeper_matchup.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-sleeper_userid.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_clean_html.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-add_allplay.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_cleannames.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-as_datetime.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_name_mapping.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-espn_activity_map.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_playerids.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-espn_lineupslot_map.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_values.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-espn_pos_map.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/espn_connect.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-espn_stat_map.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/espn_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-espn_team_map.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/espn_getendpoint_raw.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-ff_clear_cache.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/espn_players.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-fn_choose_season.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/espn_potentialpoints.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-fn_drop_nulls.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_connect.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-fn_set_ratelimit.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_draft.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-fn_set_useragent.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_draftpicks.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-mfl_logincookie.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_franchises.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-retry_get.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_league.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-retry_post.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_playerscores.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-sleeper_matchup.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_rosters.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dot-sleeper_userid.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_schedule.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dp_clean_html.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_scoring.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dp_cleannames.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_scoringhistory.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dp_name_mapping.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_standings.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dp_playerids.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_starter_positions.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/dp_values.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_starters.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/espn_connect.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_template.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/espn_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_transactions.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/espn_getendpoint_raw.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ff_userleagues.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/espn_players.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/ffscrapr-package.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/espn_potentialpoints.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/fleaflicker_connect.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_connect.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/fleaflicker_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_draft.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/fleaflicker_players.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_draftpicks.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/fleaflicker_userleagues.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_franchises.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/mfl_allrules.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_league.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/mfl_connect.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_playerscores.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/mfl_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_rosters.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/mfl_players.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_schedule.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/nflfastr_rosters.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_scoring.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/nflfastr_stat_mapping.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_scoringhistory.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/nflfastr_weekly.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_standings.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/pipe.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_starter_positions.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/release_bullets.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_starters.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/set_unescaped_cookies.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_template.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/sleeper_connect.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_transactions.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/sleeper_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ff_userleagues.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/sleeper_players.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/ffscrapr-package.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/sleeper_userleagues.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/fleaflicker_connect.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_authentication.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/fleaflicker_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_basics.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/fleaflicker_players.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/fleaflicker_userleagues.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_basics.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/mfl_allrules.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/mfl_connect.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/mfl_basics.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/mfl_getendpoint.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/mfl_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/mfl_players.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/sleeper_basics.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/nflfastr_rosters.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/articles/sleeper_getendpoint.html</loc>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/nflfastr_stat_mapping.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/nflfastr_weekly.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/release_bullets.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/set_unescaped_cookies.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/sleeper_connect.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/sleeper_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/sleeper_players.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/dev/reference/sleeper_userleagues.html</loc>
   </url>
 </urlset>
