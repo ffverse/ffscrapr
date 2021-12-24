@@ -1,7 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ffscrapr.ffverse.com/404.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/espn_authentication.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/espn_basics.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/espn_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_basics.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/mfl_basics.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/mfl_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/sleeper_basics.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/articles/sleeper_getendpoint.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/authors.html</loc>
+  </url>
+  <url>
     <loc>https://ffscrapr.ffverse.com/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/news/index.html</loc>
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/dot-add_allplay.html</loc>
@@ -148,6 +202,9 @@
     <loc>https://ffscrapr.ffverse.com/reference/fleaflicker_userleagues.html</loc>
   </url>
   <url>
+    <loc>https://ffscrapr.ffverse.com/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://ffscrapr.ffverse.com/reference/mfl_allrules.html</loc>
   </url>
   <url>
@@ -188,35 +245,5 @@
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/sleeper_userleagues.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_authentication.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_basics.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/espn_getendpoint.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/ffscrapr_caching.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_basics.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/fleaflicker_getendpoint.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/mfl_basics.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/mfl_getendpoint.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/sleeper_basics.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/articles/sleeper_getendpoint.html</loc>
   </url>
 </urlset>

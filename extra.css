@@ -5,6 +5,14 @@ body{
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.page-header{
+  min-height: unset;
+}
+
+.template-home .page-header{
+  min-height: unset;
+}
+
 h1 {
   font-family: 'Fira Mono', sans-serif;
   font-weight: 700;
@@ -19,9 +27,14 @@ pre, code {
   font-family: 'Fira Mono', monospace;
 }
 
-.navbar-link {
+.navbar-brand {
   font-weight: 700;
+  font-size: 1.5rem;
   font-family: 'Fira Mono', sans-serif;
+}
+
+.navbar {
+  font-size: 1rem;
 }
 
 h4.author,h4.date {
