@@ -51,7 +51,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
@@ -121,12 +121,15 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="mfl_basics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>MFL: Basics</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2021-12-24</h4>
+            <h4 data-toc-skip class="date">2022-02-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/mfl_basics.Rmd" class="external-link"><code>vignettes/mfl_basics.Rmd</code></a></small>
       <div class="d-none name"><code>mfl_basics.Rmd</code></div>
@@ -199,12 +202,12 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 11</span></span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name            pos   team    age</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         Team Pikachu   13189     Engram, Evan           TE    NYG    27.3</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    29.1</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0001         Team Pikachu   13645     Smith, Tre'Quan        WR    NOS    26  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0001         Team Pikachu   12110     Brate, Cameron         TE    TBB    30.5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0001         Team Pikachu   13168     Reynolds, Josh         WR    LAR    26.9</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0001         Team Pikachu   13793     Valdes-Scantling, Mar… WR    GBP    27.2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         Team Pikachu   13189     Engram, Evan           TE    NYG    27.4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    29.2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0001         Team Pikachu   13645     Smith, Tre'Quan        WR    NOS    26.1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0001         Team Pikachu   12110     Brate, Cameron         TE    TBB    30.6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0001         Team Pikachu   13168     Reynolds, Josh         WR    LAR    27  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0001         Team Pikachu   13793     Valdes-Scantling, Mar… WR    GBP    27.3</span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 4 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span></span></code></pre></div>
 <div class="section level2">
@@ -234,12 +237,12 @@
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 14</span></span>
 <span class="co">#&gt;   franchise_id franchise_name player_id player_name            pos   team    age</span>
 <span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    22.9</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    25  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    23.2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    29.1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         Team Pikachu   14803     Edwards-Helaire, Clyde RB    KCC    22.8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         Team Pikachu   14835     Higgins, Tee           WR    CIN    23  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0001         Team Pikachu   14779     Herbert, Justin        QB    LAC    23.9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0001         Team Pikachu   14777     Burrow, Joe            QB    CIN    25.2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0001         Team Pikachu   14838     Shenault, Laviska      WR    JAC    23.3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0001         Team Pikachu   11680     Landry, Jarvis         WR    CLE    29.2</span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 7 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   draft_year &lt;chr&gt;, draft_round &lt;chr&gt;, ecr_1qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span></span>
 <span class="co">#&gt; <span style="color: #949494;">#   value_1qb &lt;int&gt;</span></span></code></pre></div>
@@ -321,20 +324,20 @@
 <span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [14]</span></span>
 <span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu         24.3   23.2   26.6   23.8        4        8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 0002         Team Simon Belmont   25.3   25.9   25.2   24.9        8       11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 0003         Team Donkey Kong     25.4   24.2   32.1   27.6        5        8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0004         Team Ice Climbers    29.1   25.9   27.2   27.5        5        9</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 0005         Team Dr. Mario       36.3   23.7   25.4   25.2        2        7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 0006         Team King Dedede     26.3   26.3   27.0   25.6        3       10</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 0007         Team Kirby           25.0   25.7   29.3   29.2        4        9</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 0008         Team Bowser          26.7   27.3   33.6   28.8        4       11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 0009         Team Link            27.8   26.7   29.0   28.8        3       11</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 0010         Team Yoshi           28.3   22.8   28.3   26.5        2        6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 0011         Team Diddy Kong      32.0   27.4   24.6   24.0        4       12</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 0012         Team Mewtwo          33.6   24.5   25.0   24.4        5        7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 0013         Team Ness            33.3   24.2   24.1   25.8        5        9</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 0014         Team Luigi           33.1   25.8   24.2   27.6        3       10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu         24.5   23.3   26.7   23.9        4        8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 0002         Team Simon Belmont   25.5   26.1   25.3   25.0        8       11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 0003         Team Donkey Kong     25.5   24.3   32.2   27.7        5        8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 0004         Team Ice Climbers    29.2   26.1   27.3   27.6        5        9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 0005         Team Dr. Mario       36.4   23.8   25.5   25.3        2        7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 0006         Team King Dedede     26.4   26.4   27.2   25.7        3       10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 0007         Team Kirby           25.1   25.8   29.4   29.4        4        9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 0008         Team Bowser          26.8   27.4   33.7   28.9        4       11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 0009         Team Link            28.0   26.8   29.1   28.9        3       11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 0010         Team Yoshi           28.4   22.9   28.4   26.7        2        6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 0011         Team Diddy Kong      32.1   27.5   24.7   24.1        4       12</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 0012         Team Mewtwo          33.7   24.6   25.1   24.5        5        7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 0013         Team Ness            33.4   24.3   24.2   25.9        5        9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 0014         Team Luigi           33.2   25.9   24.3   27.8        3       10</span>
 <span class="co">#&gt; <span style="color: #949494;"># … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -355,7 +358,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>

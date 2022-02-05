@@ -25,7 +25,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
@@ -119,21 +119,21 @@
 <span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sleeper_players</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 34</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name      pos     age team  status  years_exp fantasy_data_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 2929      Adrian Coxson    WR     <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>    Inacti…        <span style="color: #BB0000;">NA</span>           <span style="text-decoration: underline;">17</span>398</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4369      Kent Perkins     OT     27.1 <span style="color: #BB0000;">NA</span>    Inacti…         3           <span style="text-decoration: underline;">19</span>226</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 7568      Brevin Jordan    TE     21.4 HOU   Active          0              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6888      Antoine Winfield DB     23.4 TB    Active          1           <span style="text-decoration: underline;">21</span>940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 4187      Brian Hill       RB     26.1 SF    Active          4           <span style="text-decoration: underline;">19</span>033</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 26 more variables: espn_id &lt;int&gt;, rotowire_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sportradar_id &lt;chr&gt;, yahoo_id &lt;int&gt;, gsis_id &lt;chr&gt;, rotoworld_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   swish_id &lt;int&gt;, stats_id &lt;int&gt;, weight &lt;chr&gt;, height &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   birth_date &lt;date&gt;, hashtag &lt;chr&gt;, college &lt;chr&gt;, number &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   active &lt;lgl&gt;, sport &lt;chr&gt;, fantasy_positions &lt;chr&gt;, injury_status &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   news_updated &lt;dbl&gt;, high_school &lt;chr&gt;, depth_chart_position &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_order &lt;int&gt;, injury_notes &lt;chr&gt;, injury_body_part &lt;chr&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 39</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name      pos     age team  status   years_exp stats_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 7502      Dominique Dafney TE     24.7 GB    Active           2       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 6698      Casey Tucker     T      26.4 DEN   Active           3       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 3274      Nick Kwiatkoski  LB     28.7 LV    Inactive         6       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6644      Curtis Akins     OLB    26.4 <span style="color: #BB0000;">NA</span>    Active           3       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 1978      Tony Washington  WR     31.3 <span style="color: #BB0000;">NA</span>    Inactive         6   <span style="text-decoration: underline;">504</span>371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more variables: sportradar_id &lt;chr&gt;, rotowire_id &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   espn_id &lt;int&gt;, yahoo_id &lt;int&gt;, pandascore_id &lt;lgl&gt;, rotoworld_id &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   swish_id &lt;int&gt;, fantasy_data_id &lt;int&gt;, gsis_id &lt;chr&gt;, number &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   height &lt;chr&gt;, depth_chart_position &lt;chr&gt;, injury_status &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   injury_notes &lt;chr&gt;, sport &lt;chr&gt;, hashtag &lt;chr&gt;, depth_chart_order &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_participation &lt;chr&gt;, practice_description &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   injury_start_date &lt;lgl&gt;, injury_body_part &lt;chr&gt;, college &lt;chr&gt;, …</span></span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 </code></pre></div>
@@ -147,7 +147,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>
