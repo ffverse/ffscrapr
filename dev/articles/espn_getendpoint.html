@@ -45,14 +45,14 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.00</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.02</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
@@ -122,12 +122,16 @@
     
   </div>
 </nav><div class="container template-article">
-<script src="espn_getendpoint_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+
+
+
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>ESPN: Get Endpoint</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2021-12-24</h4>
+            <h4 data-toc-skip class="date">2022-03-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/espn_getendpoint.Rmd" class="external-link"><code>vignettes/espn_getendpoint.Rmd</code></a></small>
       <div class="d-none name"><code>espn_getendpoint.Rmd</code></div>
@@ -141,9 +145,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/" class="external-link">httr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'httr' was built under R version 4.2.0</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805" class="external-link">jsonlite</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'jsonlite' was built under R version 4.2.0</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue" class="external-link">glue</a></span><span class="op">)</span></code></pre></div>
 <p>Accessing the ESPN Fantasy API is a bit of an adventure into an undocumented abyss. This vignette will give you a bit of a rundown on how to use <code>espn_getendpoint</code> and the lower-level <code>espn_getendpoint_raw</code>, talk about the <code>x-fantasy-filter</code>, and detail some of the known view parameters that could be helpful.</p>
 </div>
@@ -269,7 +271,7 @@ https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={s
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
