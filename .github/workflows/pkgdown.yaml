@@ -23,9 +23,8 @@ jobs:
         with:
           cache-version: 1
           extra-packages: |
-            any::rcmdcheck
+            any::pkgdown
             local::.
-
 
       - name: Deploy package
         run: |

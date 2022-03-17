@@ -20,8 +20,8 @@ This function calculates the optimal starters for a given week, using some lineu
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
-  conn <- espn_connect(season = 2020, league_id = 899513)
-  espn_potentialpoints(conn, weeks = 1:3)
+  conn <- espn_connect(season = 2021, league_id = 950665)
+  espn_potentialpoints(conn, weeks = 1)
 }) # end try
 }
 }
