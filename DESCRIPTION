@@ -39,7 +39,7 @@ Imports:
     jsonlite (>= 1.6.0),
     lifecycle,
     magrittr (>= 1.5.0),
-    nflreadr (>= 1.1.0),
+    nflreadr (>= 1.2.0),
     memoise (>= 2.0.0),
     purrr (>= 0.3.0),
     rappdirs (>= 0.3.0),

@@ -3,6 +3,7 @@
 ## Fixes
 - Fix `ff_league.mfl_conn()` bug which created duplicate rows for leagues with both an email auction and email draft. (v1.4.7.01) (resolves #349)
 - Fix hardcoded league year in all `ff_scoringhistory()` default arguments, now uses `nflreadr::most_recent_season()` as the default upper bound. (v1.4.7.02) (resolves #347)
+- Require nflreadr v1.2.0+ due to data repository change.
 
 ---
 
