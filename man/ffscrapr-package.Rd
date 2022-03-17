@@ -6,10 +6,7 @@
 \alias{ffscrapr-package}
 \title{ffscrapr: API Client for Fantasy Football League Platforms}
 \description{
-Helps access various Fantasy Football APIs by handling
-    authentication and rate-limiting, forming appropriate calls, and
-    returning tidy dataframes which can be easily connected to other data
-    sources.
+Helps access various Fantasy Football APIs by handling authentication and rate-limiting, forming appropriate calls, and returning tidy dataframes which can be easily connected to other data sources.
 }
 \seealso{
 Useful links:
