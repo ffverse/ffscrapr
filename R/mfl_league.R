@@ -43,9 +43,9 @@ ff_league.mfl_conn <- function(conn) {
 .mfl_draft_type <- function(league_endpoint) {
   x <- NULL
 
-  if (!is.null(league_endpoint[["draft_kind"]])) x <- c(x, paste(league_endpoint[["draft_kind"]], "draft"))
+  if (!is.null(league_endpoint[["draft_kind"]])) x <- paste(x, paste(league_endpoint[["draft_kind"]], "draft"))
 
-  if (!is.null(league_endpoint[["auction_kind"]])) x <- c(x, paste(league_endpoint[["auction_kind"]], "auction"))
+  if (!is.null(league_endpoint[["auction_kind"]])) x <- paste(x, paste(league_endpoint[["auction_kind"]], "auction"))
 
   if (is.null(x)) x <- NA_character_
 

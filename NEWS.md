@@ -1,5 +1,8 @@
 # ffscrapr (development version)
 
+## Fixes
+- Fix `ff_league.mfl_conn()` bug which created duplicate rows for leagues with both an email auction and email draft. (v1.4.7.01) (resolves #349)
+
 ---
 
 # ffscrapr 1.4.7
