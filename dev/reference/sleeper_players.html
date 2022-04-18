@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.02</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.03</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,20 +120,20 @@
 <span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 39</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name   pos     age team  status years_exp rotowire_id gsis_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 7864      Artayvious L… TE     26   <span style="color: #BB0000;">NA</span>    Active         1       <span style="text-decoration: underline;">15</span>326 <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 8087      K.J. Costello QB     24.8 <span style="color: #BB0000;">NA</span>    Active         1       <span style="text-decoration: underline;">15</span>703 <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1737      Case Keenum   QB     34.1 BUF   Active        10        <span style="text-decoration: underline;">8</span>065 00-002…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4087      Teez Tabor    DB     26.2 ATL   Active         5       <span style="text-decoration: underline;">12</span>052 00-003…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 140       Erin Henders… LB     35.7 <span style="color: #BB0000;">NA</span>    Inact…        12        <span style="text-decoration: underline;">5</span>597 <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 30 more variables: espn_id &lt;int&gt;, pandascore_id &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   rotoworld_id &lt;int&gt;, fantasy_data_id &lt;int&gt;, stats_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sportradar_id &lt;chr&gt;, swish_id &lt;int&gt;, yahoo_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_description &lt;chr&gt;, sport &lt;chr&gt;, hashtag &lt;chr&gt;, birth_city &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_order &lt;int&gt;, depth_chart_position &lt;chr&gt;, college &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   news_updated &lt;dbl&gt;, fantasy_positions &lt;chr&gt;, weight &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   birth_state &lt;lgl&gt;, injury_status &lt;chr&gt;, injury_body_part &lt;chr&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name     pos     age team  status   years_exp sportradar_id  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 3327      Alex Collins    RB     27.6 SEA   Inactive         6 <span style="color: #949494;">"</span>990a689e-200b…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 3579      Marshall Morgan K      28.4 <span style="color: #BB0000;">NA</span>    Inactive         0 <span style="color: #949494;">"</span>8b8f9f11-fb57…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 4937      Al Riles        WR     28.6 IND   Active           1 <span style="color: #949494;">""</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4111      D'Onta Foreman  RB     26   CAR   Active           5 <span style="color: #949494;">"</span>02779042-2b4e…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 2996      Logan Stokes    TE     <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>    Inactive         0 <span style="color: #949494;">"</span>354dd3eb-d459…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more variables: yahoo_id &lt;int&gt;, swish_id &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pandascore_id &lt;lgl&gt;, rotowire_id &lt;int&gt;, stats_id &lt;int&gt;, rotoworld_id &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   fantasy_data_id &lt;int&gt;, espn_id &lt;int&gt;, gsis_id &lt;chr&gt;, birth_city &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   weight &lt;chr&gt;, birth_state &lt;lgl&gt;, injury_body_part &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   birth_country &lt;lgl&gt;, birth_date &lt;date&gt;, height &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_order &lt;int&gt;, hashtag &lt;chr&gt;, number &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_participation &lt;chr&gt;, college &lt;chr&gt;, injury_start_date &lt;lgl&gt;, …</span></span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 </code></pre></div>
