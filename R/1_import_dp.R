@@ -36,6 +36,8 @@ dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks
     utils::read.csv(text = ., stringsAsFactors = FALSE) %>%
     dplyr::mutate_at(dplyr::vars(dplyr::ends_with("id")), as.character) %>%
     tibble::tibble()
+
+  return(content)
 }
 
 #' Import latest DynastyProcess player IDs
