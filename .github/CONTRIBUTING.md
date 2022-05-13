@@ -21,13 +21,14 @@ You can find the `.R` file that generates the `.Rd` by reading the comment in th
 
 ### Project and branch strategy
 
+*   This project now uses [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow) as of v1.4.7+, rather than Git Flow as per previous. 
 *   Feature development for this package is organized with GitHub Projects, each of which track towards a **minor version release**.
 *   Each function/method is tracked as a GitHub Issue, and linked to/closed by Pull Requests.
-*   The `main` branch contains the code for the current CRAN version of the package.
-*   The `dev` branch reflects a fully-tested, linted, and documented version of the proposed release.
-*   Staging branches (e.g. `fleaflicker`, `espn`) contain reviewed/tested code for each GitHub Project.
-*   Feature branches are built off of the staging branch, add one function/method + documentation + testing, and then is squash-merged back onto the staging branch once developed. 
-*   The staging branch is periodically merged onto the `dev` branch, and the `dev` branch is merged onto the `main` branch only when released to CRAN.
+*   CRAN releases can be found on the [GitHub Releases](https://github.com/ffverse/ffscrapr/releases) page.
+*   The `main` branch contains the latest development version of the package, which is fully tested, linted, and documented.
+*   Development branches (e.g. `fleaflicker`, `espn`) contain in-progress code. These get squash-merged onto the main branch when tested and documented. 
+*   Sub-branches of development may be created as necessary for experimental purposes.
+
 
 ### Pull request process
 

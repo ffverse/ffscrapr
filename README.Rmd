@@ -40,7 +40,7 @@ httptest::use_mock_api()
 <!-- badges: start -->
 
 [![CRAN status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr) 
-[![Dev status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/) 
+[![Dev status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/main?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/) 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html) 
 [![Codecov test coverage](https://img.shields.io/codecov/c/github/ffverse/ffscrapr?label=codecov&style=flat-square&logo=codecov)](https://app.codecov.io/gh/ffverse/ffscrapr?branch=main) 
 [![R build status](https://img.shields.io/github/workflow/status/ffverse/ffscrapr/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/ffverse/ffscrapr/actions) 
@@ -53,17 +53,20 @@ Helps access various Fantasy Football APIs (currently MFL, Sleeper, Fleaflicker,
 
 ### Installation
 
-Install the stable version of this package from CRAN or the [ffverse r-universe repository](https://ffverse.r-universe.dev):
+Install the stable version of this package from CRAN:
 
 ```{r eval = FALSE}
-install.packages("ffscrapr") # CRAN
-install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
+install.packages("ffscrapr")
 ```
 
-Install the development version from GitHub with:
+Install the development version from either [r-universe](https://ffverse.r-universe.dev) or GitHub:
 
 ```{r eval = FALSE}
-remotes::install_github("ffverse/ffscrapr", ref = "dev")
+install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
+# pak is recommended, see https://github.com/r-lib/pak
+pak::pak("ffverse/ffscrapr")
+# can also use remotes
+remotes::install_github("ffverse/ffscrapr")
 ```
 
 The dev version has a [separate documentation site here](https://ffscrapr.ffverse.com/dev/).
