@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.03</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.04</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,6 +103,7 @@
 <li>Require nflreadr v1.2.0+ due to data repository change.</li>
 <li>
 <code><a href="../reference/dp_values.html">dp_values()</a></code> now explicitly returns rather than invisibly returns. (1.4.7.03)</li>
+<li>Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance. (1.4.7.04)</li>
 </ul><hr></div>
 </div>
     <div class="section level2">
@@ -243,8 +244,7 @@
 <div class="section level3">
 <h3 id="new-features-1-4-1">New features<a class="anchor" aria-label="anchor" href="#new-features-1-4-1"></a></h3>
 <ul><li>
-<code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li>
-</ul></div>
+<code>nflfastr_stat_mapping</code> is a dataframe that maps nflfastr columns to fantasy scoring rules, and is now exported for end-user usage. It is primarily used inside of <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code>.</li></ul></div>
 <div class="section level3">
 <h3 id="minor-changes-1-4-1">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-1-4-1"></a></h3>
 <ul><li>Added <code>release_questions</code> to help remind me to maintain test infrastructure</li>
@@ -298,8 +298,7 @@
 <div class="section level4">
 <h4 id="breaking-changes-1-3-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-3-0"></a></h4>
 <ul><li>
-<code>custom_players</code> arguments are deprecated for MFL - it will now return them by default.</li>
-</ul></div>
+<code>custom_players</code> arguments are deprecated for MFL - it will now return them by default.</li></ul></div>
 <div class="section level4">
 <h4 id="espn-details-1-3-0">ESPN Details<a class="anchor" aria-label="anchor" href="#espn-details-1-3-0"></a></h4>
 <p>ESPN is a tricky and undocumented API. Private leagues are accessible if you use the SWID/ESPN_S2 authentication arguments, which are a lot like API keys - see the ESPN authentication vignette.</p>
@@ -356,8 +355,7 @@
 <div class="section level4">
 <h4 id="breaking-changes-1-2-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-2-0"></a></h4>
 <ul><li>
-<code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.</li>
-</ul></div>
+<code><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint()</a></code> now behaves more like the other getendpoint functions - first argument is the endpoint and any further args are passed as query parameters.</li></ul></div>
 <div class="section level4">
 <h4 id="other-tweaks-to-existing-platformsmethods-1-2-0">Other tweaks to existing platforms/methods<a class="anchor" aria-label="anchor" href="#other-tweaks-to-existing-platformsmethods-1-2-0"></a></h4>
 <ul><li>Small copyedits to existing vignettes.</li>
@@ -451,7 +449,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>

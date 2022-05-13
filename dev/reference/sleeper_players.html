@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.03</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.04</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,20 +120,20 @@
 <span class="r-in">  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 39</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name     pos     age team  status   years_exp sportradar_id  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 3327      Alex Collins    RB     27.6 SEA   Inactive         6 <span style="color: #949494;">"</span>990a689e-200b…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 3579      Marshall Morgan K      28.4 <span style="color: #BB0000;">NA</span>    Inactive         0 <span style="color: #949494;">"</span>8b8f9f11-fb57…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 4937      Al Riles        WR     28.6 IND   Active           1 <span style="color: #949494;">""</span>             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4111      D'Onta Foreman  RB     26   CAR   Active           5 <span style="color: #949494;">"</span>02779042-2b4e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 2996      Logan Stokes    TE     <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>    Inactive         0 <span style="color: #949494;">"</span>354dd3eb-d459…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more variables: yahoo_id &lt;int&gt;, swish_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pandascore_id &lt;lgl&gt;, rotowire_id &lt;int&gt;, stats_id &lt;int&gt;, rotoworld_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   fantasy_data_id &lt;int&gt;, espn_id &lt;int&gt;, gsis_id &lt;chr&gt;, birth_city &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   weight &lt;chr&gt;, birth_state &lt;lgl&gt;, injury_body_part &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   birth_country &lt;lgl&gt;, birth_date &lt;date&gt;, height &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_order &lt;int&gt;, hashtag &lt;chr&gt;, number &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_participation &lt;chr&gt;, college &lt;chr&gt;, injury_start_date &lt;lgl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name     pos     age team  status   years_exp stats_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 506       David Nelson    WR     35.5 <span style="color: #BB0000;">NA</span>    Inactive         5   <span style="text-decoration: underline;">296</span>139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 4101      Chris Wormley   DT     28.5 PIT   Active           5       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 4357      Bryan Cox       DE     27.9 BUF   Active           5   <span style="text-decoration: underline;">694</span>610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 8435      Kwamie Lassiter WR     <span style="color: #BB0000;">NA</span>   <span style="color: #BB0000;">NA</span>    Active           0       <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 96        Aaron Rodgers   QB     38.4 GB    Active          17   <span style="text-decoration: underline;">213</span>957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more variables: fantasy_data_id &lt;int&gt;, pandascore_id &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   espn_id &lt;int&gt;, rotoworld_id &lt;int&gt;, yahoo_id &lt;int&gt;, rotowire_id &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sportradar_id &lt;chr&gt;, swish_id &lt;int&gt;, gsis_id &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_position &lt;chr&gt;, news_updated &lt;dbl&gt;, height &lt;chr&gt;, sport &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   weight &lt;chr&gt;, injury_body_part &lt;chr&gt;, birth_country &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   injury_notes &lt;chr&gt;, birth_state &lt;lgl&gt;, high_school &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_description &lt;chr&gt;, hashtag &lt;chr&gt;, injury_status &lt;chr&gt;, …</span></span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 </code></pre></div>
@@ -147,7 +147,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>
