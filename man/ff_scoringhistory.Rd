@@ -13,15 +13,15 @@
 \usage{
 ff_scoringhistory(conn, season, ...)
 
-\method{ff_scoringhistory}{espn_conn}(conn, season = 1999:2020, ...)
+\method{ff_scoringhistory}{espn_conn}(conn, season = 1999:nflreadr::most_recent_season(), ...)
 
-\method{ff_scoringhistory}{flea_conn}(conn, season = 1999:2020, ...)
+\method{ff_scoringhistory}{flea_conn}(conn, season = 1999:nflreadr::most_recent_season(), ...)
 
-\method{ff_scoringhistory}{mfl_conn}(conn, season = 1999:2020, ...)
+\method{ff_scoringhistory}{mfl_conn}(conn, season = 1999:nflreadr::most_recent_season(), ...)
 
-\method{ff_scoringhistory}{sleeper_conn}(conn, season = 1999:2020, ...)
+\method{ff_scoringhistory}{sleeper_conn}(conn, season = 1999:nflreadr::most_recent_season(), ...)
 
-\method{ff_scoringhistory}{template_conn}(conn, season = 1999:2020, ...)
+\method{ff_scoringhistory}{template_conn}(conn, season = 1999:nflreadr::most_recent_season(), ...)
 }
 \arguments{
 \item{conn}{a conn object created by \code{ff_connect()}}

@@ -10,7 +10,7 @@
 [![CRAN
 status](https://img.shields.io/cran/v/ffscrapr?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=ffscrapr)
 [![Dev
-status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/dev?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/)
+status](https://img.shields.io/github/r-package/v/ffverse/ffscrapr/main?label=dev&style=flat-square&logo=github)](https://ffscrapr.ffverse.com/dev/)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-green.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test
@@ -32,18 +32,21 @@ other data sources.
 
 ### Installation
 
-Install the stable version of this package from CRAN or the [ffverse
-r-universe repository](https://ffverse.r-universe.dev):
+Install the stable version of this package from CRAN:
 
 ``` r
-install.packages("ffscrapr") # CRAN
-install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
+install.packages("ffscrapr")
 ```
 
-Install the development version from GitHub with:
+Install the development version from either
+[r-universe](https://ffverse.r-universe.dev) or GitHub:
 
 ``` r
-remotes::install_github("ffverse/ffscrapr", ref = "dev")
+install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
+# pak is recommended, see https://github.com/r-lib/pak
+pak::pak("ffverse/ffscrapr")
+# can also use remotes
+remotes::install_github("ffverse/ffscrapr")
 ```
 
 The dev version has a [separate documentation site
@@ -62,12 +65,51 @@ ssb <- ff_connect(platform = "mfl", league_id = "54040", season = 2020)
 
 # Get a summary of league settings
 ff_league(ssb) %>% str()
+#> tibble [1 x 17] (S3: tbl_df/tbl/data.frame)
+#>  $ league_id        : chr "54040"
+#>  $ league_name      : chr "The Super Smash Bros Dynasty League"
+#>  $ season           : int 2020
+#>  $ league_type      : chr NA
+#>  $ franchise_count  : num 14
+#>  $ qb_type          : chr "1QB"
+#>  $ idp              : logi FALSE
+#>  $ scoring_flags    : chr "0.5_ppr, TEPrem, PP1D"
+#>  $ best_ball        : logi FALSE
+#>  $ salary_cap       : logi FALSE
+#>  $ player_copies    : num 1
+#>  $ years_active     : chr "2018-2021"
+#>  $ qb_count         : chr "1"
+#>  $ roster_size      : num 33
+#>  $ league_depth     : num 462
+#>  $ draft_type       : chr "email draft"
+#>  $ draft_player_pool: chr "Both"
 
 # Get rosters
 ff_rosters(ssb)
+#> # A tibble: 442 x 11
+#>   franchise_id franchise_name player_id player_name     pos   team    age
+#>   <chr>        <chr>          <chr>     <chr>           <chr> <chr> <dbl>
+#> 1 0001         Team Pikachu   13189     Engram, Evan    TE    NYG    27.7
+#> 2 0001         Team Pikachu   11680     Landry, Jarvis  WR    CLE    29.5
+#> 3 0001         Team Pikachu   13645     Smith, Tre'Quan WR    NOS    26.3
+#> 4 0001         Team Pikachu   12110     Brate, Cameron  TE    TBB    30.9
+#> 5 0001         Team Pikachu   13168     Reynolds, Josh  WR    LAR    27.2
+#> # ... with 437 more rows, and 4 more variables: roster_status <chr>,
+#> #   drafted <chr>, draft_year <chr>, draft_round <chr>
 
 # Get transactions
 ff_transactions(ssb)
+#> # A tibble: 1,145 x 12
+#>   timestamp           type  type_desc   franchise_id franchise_name
+#>   <dttm>              <chr> <chr>       <chr>        <chr>         
+#> 1 2021-02-12 14:32:39 TRADE traded_away 0008         Team Bowser   
+#> 2 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 3 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 4 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> 5 2021-02-12 14:32:39 TRADE traded_for  0008         Team Bowser   
+#> # ... with 1,140 more rows, and 7 more variables: player_id <chr>,
+#> #   player_name <chr>, pos <chr>, team <chr>, bbid_spent <dbl>,
+#> #   trade_partner <chr>, comments <chr>
 ```
 
 Platform-specific guides on getting started with ffscrapr are here:

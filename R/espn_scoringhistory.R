@@ -17,7 +17,7 @@
 #' @describeIn ff_scoringhistory ESPN: returns scoring history in a flat table, one row per player per week.
 #'
 #' @export
-ff_scoringhistory.espn_conn <- function(conn, season = 1999:2020, ...) {
+ff_scoringhistory.espn_conn <- function(conn, season = 1999:nflreadr::most_recent_season(), ...) {
   checkmate::assert_numeric(season, lower = 1999, upper = as.integer(format(Sys.Date(), "%Y")))
 
   league_rules <-
