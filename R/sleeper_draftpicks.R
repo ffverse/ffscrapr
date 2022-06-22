@@ -14,12 +14,24 @@
 #'   ff_draftpicks(jml_conn)
 #' }) # end try
 #' }
-#'
 #' @export
-ff_draftpicks.sleeper_conn <- function(conn, ...) {
-  current_picks <- .sleeper_currentpicks(conn)
 
-  future_picks <- .sleeper_futurepicks(conn)
+ff_draftpicks.sleeper_conn <- function(conn, ...) {
+
+  current_drafts <- glue::glue("league/{conn$league_id}/drafts") %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck("content") %>%
+    purrr::map(`[`, c("draft_id", "season", "status", "draft_order")) %>%
+    tibble::tibble() %>%
+    tidyr::unnest_wider(1) %>%
+    dplyr::filter(.data$status != "complete")
+
+  include_current <- nrow(current_drafts) > 0
+
+  # check on current drafts.
+  # if there are incomplete drafts, add current season to future pick seasons
+
+  future_picks <- .sleeper_futurepicks(conn, include_current = include_current)
 
   picks <- dplyr::bind_rows(current_picks, future_picks) %>%
     dplyr::left_join(
@@ -68,7 +80,7 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
   return(picks)
 }
 
-.sleeper_futurepicks <- function(conn) {
+.sleeper_futurepicks <- function(conn, include_current = FALSE) {
   league_settings <- glue::glue("league/{conn$league_id}") %>%
     sleeper_getendpoint() %>%
     purrr::pluck("content")

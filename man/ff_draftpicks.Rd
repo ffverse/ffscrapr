@@ -77,5 +77,4 @@ try({ # try only shown here because sometimes CRAN checks are weird
   ff_draftpicks(jml_conn)
 }) # end try
 }
-
 }
