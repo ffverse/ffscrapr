@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.04</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.7.05</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,28 +119,49 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>season</dt>
 <dd><p>Season to access on MFL - if missing, will guess based on system date (current year if March or later, otherwise previous year)</p></dd>
+
+
 <dt>league_id</dt>
 <dd><p>league_id Numeric ID parameter for each league, typically found in the URL</p></dd>
+
+
 <dt>APIKEY</dt>
 <dd><p>APIKEY - optional - allows access to private leagues. Key is unique for each league and accessible from Developer's API page (currently assuming one league at a time)</p></dd>
+
+
 <dt>user_name</dt>
 <dd><p>MFL user_name - optional - when supplied in conjunction with a password, will attempt to retrieve authentication token</p></dd>
+
+
 <dt>password</dt>
 <dd><p>MFL password - optional - when supplied in conjunction with user_name, will attempt to retrieve authentication token</p></dd>
+
+
 <dt>user_agent</dt>
 <dd><p>A string representing the user agent to be used to identify calls - may find improved rate_limits if verified token</p></dd>
+
+
 <dt>rate_limit</dt>
 <dd><p>TRUE by default, pass FALSE to turn off rate limiting</p></dd>
+
+
 <dt>rate_limit_number</dt>
 <dd><p>number of calls per <code>rate_limit_seconds</code>, suggested is 60 calls per 60 seconds</p></dd>
+
+
 <dt>rate_limit_seconds</dt>
 <dd><p>number of seconds as denominator for rate_limit</p></dd>
+
+
 <dt>...</dt>
 <dd><p>silently swallows up unused arguments</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a connection object to be used with <code>ff_*</code> functions</p>
+    
+
+<p>a connection object to be used with <code>ff_*</code> functions</p>
     </div>
 
     <div class="section level2">
@@ -176,7 +197,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>
