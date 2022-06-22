@@ -35,6 +35,7 @@ reference:
   contents:
   - starts_with(".ff")
   - "`%>%`"
+  - "ffverse_sitrep"
 
 home:
   title: ffscrapr • an R package for Fantasy Football APIs
