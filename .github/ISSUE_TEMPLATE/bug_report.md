@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Describe the bug**
@@ -21,7 +20,7 @@ For more on reprexes, check out https://reprex.tidyverse.org
 A clear and concise description of what you expected to happen.
 
 **Session information**
-Please copy the output of `sessionInfo()` into the box below.
+Please copy the output of `ffscrapr::ffverse_sitrep()` into the box below.
 ```r
 
 ```

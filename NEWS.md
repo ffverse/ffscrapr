@@ -6,6 +6,7 @@
 - Require nflreadr v1.2.0+ due to data repository change.
 - `dp_values()` now explicitly returns rather than invisibly returns. (1.4.7.03)
 - Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance. (1.4.7.04)
+- Re-export `nflreadr::ffverse_sitrep()` and encourage usage in bug reporting. (1.4.7.05)
 
 ---
 

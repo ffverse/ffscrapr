@@ -30,3 +30,13 @@ NULL
 .as_date <- function(x){
   as.Date(x, tz = "UTC")
 }
+
+#' ffverse sitrep
+#'
+#' See [`nflreadr::ffverse_sitrep`](https://nflreadr.nflverse.com/reference/sitrep.html) for details.
+#'
+#' @name ffverse_sitrep
+#' @rdname sitrep
+#' @export
+#' @importFrom nflreadr ffverse_sitrep
+NULL
