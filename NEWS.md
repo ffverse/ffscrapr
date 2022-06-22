@@ -7,6 +7,7 @@
 - `dp_values()` now explicitly returns rather than invisibly returns. (1.4.7.03)
 - Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance. (1.4.7.04)
 - Re-export `nflreadr::ffverse_sitrep()` and encourage usage in bug reporting. (1.4.7.05)
+- Fix `ff_transactions.mfl_conn()` bug that did not return auction bids, resolves #354 (1.4.7.06)
 
 ---
 

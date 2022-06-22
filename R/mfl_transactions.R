@@ -3,8 +3,8 @@
 #' Get full transactions table
 #'
 #' @param conn the list object created by `ff_connect()`
-#' @param custom_players `r lifecycle::badge("deprecated")` - now returns custom players by default
-#' @param ... additional args
+#' @param transaction_type parameter to return transactions of the specified type. Types are: `WAIVER`, `BBID_WAIVER`, `FREE_AGENT`, `TRADE`, `IR`, `TAXI`, `AUCTION_INIT`, `AUCTION_BID`, `AUCTION_WON`, or `*` for all. Can also pass a comma-separated string.  Defaults to `*`. Note that only the types listed above are actually cleaned and processed by ffscrapr - you will need to make a custom api request with `mfl_getendpoint()` to receive other things.
+#' @param ... other arguments passed the API request (case sensitive parameters such as FRANCHISE, DAYS, COUNT etc) - see <https://api.myfantasyleague.com/2022/api_info?STATE=test&CCAT=export&TYPE=transactions> for more details.
 #'
 #' @describeIn ff_transactions MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
 #'
@@ -17,12 +17,9 @@
 #' }
 #' @export
 
-ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
-  if (lifecycle::is_present(custom_players)) {
-    lifecycle::deprecate_soft("1.3.0", "ffscrapr::ff_draft.mfl_conn(custom_players=)")
-  }
+ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
-  df_transactions <- mfl_getendpoint(conn, "transactions") %>%
+  df_transactions <- mfl_getendpoint(conn, "transactions", TRANS_TYPE = transaction_type) %>%
     purrr::pluck("content", "transactions", "transaction") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
@@ -88,7 +85,7 @@ ff_transactions.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
       ),
       bid_amount = stringr::str_extract(.data$bid_amount, "[0-9,\\.]+") %>% as.numeric()
     ) %>%
-    dplyr::filter(is.na(.data$bid_amount))
+    dplyr::filter(!is.na(.data$bid_amount))
 }
 
 ## TRADE ##

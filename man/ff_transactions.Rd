@@ -15,7 +15,7 @@ ff_transactions(conn, ...)
 
 \method{ff_transactions}{flea_conn}(conn, franchise_id = NULL, ...)
 
-\method{ff_transactions}{mfl_conn}(conn, custom_players = deprecated(), ...)
+\method{ff_transactions}{mfl_conn}(conn, transaction_type = "*", ...)
 
 \method{ff_transactions}{sleeper_conn}(conn, week = 1:17, ...)
 }
@@ -28,7 +28,7 @@ ff_transactions(conn, ...)
 
 \item{franchise_id}{fleaflicker returns transactions grouped by franchise id, pass a list here to filter}
 
-\item{custom_players}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} - now returns custom players by default}
+\item{transaction_type}{parameter to return transactions of the specified type. Types are: \code{WAIVER}, \code{BBID_WAIVER}, \code{FREE_AGENT}, \code{TRADE}, \code{IR}, \code{TAXI}, \code{AUCTION_INIT}, \code{AUCTION_BID}, \code{AUCTION_WON}, or \code{*} for all. Can also pass a comma-separated string.  Defaults to \code{*}. Note that only the types listed above are actually cleaned and processed by ffscrapr - you will need to make a custom api request with \code{mfl_getendpoint()} to receive other things.}
 
 \item{week}{A week filter for transactions - 1 returns all offseason transactions. Default 1:17 returns all transactions.}
 }
