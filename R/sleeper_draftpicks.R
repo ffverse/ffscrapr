@@ -33,7 +33,7 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
 
   future_picks <- .sleeper_futurepicks(conn, include_current = include_current)
 
-  picks <- dplyr::bind_rows(current_picks, future_picks) %>%
+  picks <- dplyr::bind_rows(future_picks) %>%
     dplyr::left_join(
       ff_franchises(conn) %>% dplyr::select("franchise_id", "franchise_name"),
       by = "franchise_id"
