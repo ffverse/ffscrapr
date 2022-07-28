@@ -34,15 +34,15 @@ Returns all draft picks (current and future) that belong to a specific franchise
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: does not support future/draft pick trades - for draft results, please use ff_draft.
+\item \code{ff_draftpicks(espn_conn)}: ESPN: does not support future/draft pick trades - for draft results, please use ff_draft.
 
-\item \code{flea_conn}: Fleaflicker: retrieves current and future draft picks, potentially for a specified team.
+\item \code{ff_draftpicks(flea_conn)}: Fleaflicker: retrieves current and future draft picks, potentially for a specified team.
 
-\item \code{mfl_conn}: MFL: returns current and future picks
+\item \code{ff_draftpicks(mfl_conn)}: MFL: returns current and future picks
 
-\item \code{sleeper_conn}: Sleeper: retrieves current and future draft picks
+\item \code{ff_draftpicks(sleeper_conn)}: Sleeper: retrieves current and future draft picks
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

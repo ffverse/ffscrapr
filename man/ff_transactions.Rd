@@ -41,15 +41,15 @@ Each trade is represented twice, once per each team.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns adds, drops, and trades. Requires private/auth-cookie.
+\item \code{ff_transactions(espn_conn)}: ESPN: returns adds, drops, and trades. Requires private/auth-cookie.
 
-\item \code{flea_conn}: Fleaflicker: returns all transactions, including free agents, waivers, and trades.
+\item \code{ff_transactions(flea_conn)}: Fleaflicker: returns all transactions, including free agents, waivers, and trades.
 
-\item \code{mfl_conn}: MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
+\item \code{ff_transactions(mfl_conn)}: MFL: returns all transactions, including auction, free agents, IR, TS, waivers, and trades.
 
-\item \code{sleeper_conn}: Sleeper: returns all transactions, including free agents, waivers, and trades.
+\item \code{ff_transactions(sleeper_conn)}: Sleeper: returns all transactions, including free agents, waivers, and trades.
+
 }}
-
 \examples{
 \dontrun{
 # Marked as don't run because this endpoint requires private authentication

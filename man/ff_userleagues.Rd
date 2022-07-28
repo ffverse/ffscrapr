@@ -38,15 +38,15 @@ This function returns a tidy dataframe with one row for every league a user is i
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: does not support a lookup of user leagues by email or user ID at this time.
+\item \code{ff_userleagues(espn_conn)}: ESPN: does not support a lookup of user leagues by email or user ID at this time.
 
-\item \code{flea_conn}: flea: returns a listing of leagues for a given user_email
+\item \code{ff_userleagues(flea_conn)}: flea: returns a listing of leagues for a given user_email
 
-\item \code{mfl_conn}: MFL: With username/password, it will return a list of user leagues.
+\item \code{ff_userleagues(mfl_conn)}: MFL: With username/password, it will return a list of user leagues.
 
-\item \code{sleeper_conn}: Sleeper: returns a listing of leagues for a given user_id or user_name
+\item \code{ff_userleagues(sleeper_conn)}: Sleeper: returns a listing of leagues for a given user_id or user_name
+
 }}
-
 \seealso{
 \code{\link[=fleaflicker_userleagues]{fleaflicker_userleagues()}} to call this function for flea leagues without first creating a connection object.
 

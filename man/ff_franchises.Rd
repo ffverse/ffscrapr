@@ -30,15 +30,15 @@ Return franchise-level data (including divisions, usernames, etc) - available da
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns franchise and division information.
+\item \code{ff_franchises(espn_conn)}: ESPN: returns franchise and division information.
 
-\item \code{flea_conn}: Fleaflicker: returns franchise and division information.
+\item \code{ff_franchises(flea_conn)}: Fleaflicker: returns franchise and division information.
 
-\item \code{mfl_conn}: MFL: returns franchise and division information.
+\item \code{ff_franchises(mfl_conn)}: MFL: returns franchise and division information.
 
-\item \code{sleeper_conn}: Sleeper: retrieves a list of franchise information, including user IDs and co-owner IDs.
+\item \code{ff_franchises(sleeper_conn)}: Sleeper: retrieves a list of franchise information, including user IDs and co-owner IDs.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

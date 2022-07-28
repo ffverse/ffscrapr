@@ -35,15 +35,15 @@ Can handle MFL devy drafts or startup drafts by specifying the custom_players ar
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns the current year's draft/auction, including details on keepers
+\item \code{ff_draft(espn_conn)}: ESPN: returns the current year's draft/auction, including details on keepers
 
-\item \code{flea_conn}: Fleaflicker: returns a table of drafts for the current year
+\item \code{ff_draft(flea_conn)}: Fleaflicker: returns a table of drafts for the current year
 
-\item \code{mfl_conn}: MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)
+\item \code{ff_draft(mfl_conn)}: MFL: returns a table of drafts for the current year - can handle devy/startup-rookie-picks by specifying custom_players (slower!)
 
-\item \code{sleeper_conn}: Sleeper: returns a dataframe of all drafts and draft selections, if available.
+\item \code{ff_draft(sleeper_conn)}: Sleeper: returns a dataframe of all drafts and draft selections, if available.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird
