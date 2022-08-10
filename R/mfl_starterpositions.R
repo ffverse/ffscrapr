@@ -47,6 +47,17 @@ ff_starter_positions.mfl_conn <- function(conn, ...) {
         as.integer(.data$total_starters) - .data$defense_starters - .data$kdst_starters
       )
     ) %>%
+    tidyr::separate_rows("pos",sep = "\\+") %>%
+    dplyr::group_by(.data$pos,
+                    .data$offense_starters,
+                    .data$defense_starters,
+                    .data$kdst_starters,
+                    .data$total_starters) %>%
+    dplyr::summarise(
+      min = min(.data$min, na.rm = TRUE),
+      max = sum(.data$max, na.rm = TRUE)
+    ) %>%
+    dplyr::ungroup() %>%
     dplyr::select(
       "pos",
       "min",

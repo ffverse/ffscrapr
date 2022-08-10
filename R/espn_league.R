@@ -52,18 +52,23 @@ ff_league.espn_conn <- function(conn) {
 .espn_is_qbtype <- function(league_endpoint) {
   position_map <- .espn_lineupslot_map()
   qb_pos <- position_map["QB"]
+  tqb_pos <- position_map["TQB"]
   op_pos <- position_map["OP"]
+
   qb_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[qb_pos]]
+  tqb_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[tqb_pos]]
   op_count <- league_endpoint$content$settings$rosterSettings$lineupSlotCounts[[op_pos]]
 
   type <- dplyr::case_when(
     qb_count == 1 & op_count < 1 ~ "1QB",
     qb_count == 1 & op_count == 1 ~ "2QB/SF",
+    tqb_count == 1 ~ "1QB",
     TRUE ~ "2+QB/SF"
   )
+
   count <- dplyr::case_when(
-    op_count > 0 ~ paste(qb_count, qb_count + op_count, sep = "-"),
-    op_count == 0 ~ paste(qb_count)
+    op_count > 0 ~ paste(qb_count + tqb_count, qb_count + op_count + tqb_count, sep = "-"),
+    op_count == 0 ~ paste(qb_count + tqb_count)
   )
 
   list(
