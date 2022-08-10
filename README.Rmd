@@ -63,13 +63,13 @@ Install the development version from either [r-universe](https://ffverse.r-unive
 
 ```{r eval = FALSE}
 install.packages("ffscrapr", repos = "https://ffverse.r-universe.dev")
+
 # pak is recommended, see https://github.com/r-lib/pak
 pak::pak("ffverse/ffscrapr")
+
 # can also use remotes
 remotes::install_github("ffverse/ffscrapr")
 ```
-
-The dev version has a [separate documentation site here](https://ffscrapr.ffverse.com/dev/).
 
 ### Usage
 

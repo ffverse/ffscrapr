@@ -124,6 +124,3 @@ template:
       creator: "@_TanHo"
       site: "@DynastyProcess"
       card: summary
-
-development:
-  mode: auto
