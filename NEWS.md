@@ -11,6 +11,7 @@
 - `ff_league.espn_conn()` now counts TQB when evaluating qb_type and qb_count, resolves #367. (1.4.7.07)
 - `ff_starter_positions.mfl_conn()` now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises. (v1.4.7.08)
 - `sleeper_connect()` now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS. (1.4.7.09)
+- `ff_standings.mfl_conn()` changed to adapt to MFL API changes as documented in [2022 API release notes ](https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676), resolves #366. (1.4.7.10)
 
 ---
 
