@@ -9,6 +9,8 @@
 - Re-export `nflreadr::ffverse_sitrep()` and encourage usage in bug reporting. (1.4.7.05)
 - Fix `ff_transactions.mfl_conn()` bug that did not return auction bids, resolves #354 (1.4.7.06)
 - `ff_league.espn_conn()` now counts TQB when evaluating qb_type and qb_count, resolves #367. (1.4.7.07)
+- `ff_starter_positions.mfl_conn()` now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises. (v1.4.7.08)
+- `sleeper_connect()` now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS. (1.4.7.09)
 
 ---
 
