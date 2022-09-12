@@ -21,7 +21,7 @@ ff_starters.sleeper_conn <- function(conn, week = 1:17, ...) {
   checkmate::assert_numeric(week, lower = 1, upper = 21)
 
   max_week <- sleeper_getendpoint(glue::glue("league/{conn$league_id}")) %>%
-    purrr::pluck("content", "settings", "last_scored_leg")
+    purrr::pluck("content", "settings", "leg")
 
   week <- week[week <= max_week]
 
