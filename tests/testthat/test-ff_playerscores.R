@@ -1,6 +1,5 @@
 with_mock_api({
   test_that("ff_playerscores returns a tibble of player scores", {
-    skippy()
     sfb_conn <- mfl_connect(2020, 65443)
     sfb_playerscores <- ff_playerscores(sfb_conn, 2019, "AVG")
 

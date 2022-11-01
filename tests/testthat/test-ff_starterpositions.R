@@ -1,7 +1,5 @@
 with_mock_api({
   test_that("ff_starter_positions returns a tibble of starter positions", {
-    skippy()
-
     dlf <- mfl_connect(2020, 37920)
     dlf_starter_positions <- ff_starter_positions(dlf)
 

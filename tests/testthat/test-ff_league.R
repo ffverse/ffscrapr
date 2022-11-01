@@ -1,6 +1,5 @@
 with_mock_api({
   test_that("ff_league returns a tibble for each platform currently programmed", {
-    skippy()
     dlf_conn <- ff_connect("mfl", 37920, season = 2020)
     dlf_league <- ff_league(dlf_conn)
 

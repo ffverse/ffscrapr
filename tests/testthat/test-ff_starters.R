@@ -1,7 +1,5 @@
 with_mock_api({
   test_that("ff_starters returns a tibble of starters", {
-    skippy()
-
     dlf <- mfl_connect(2020, 37920)
     dlf_starters <- ff_starters(dlf, week = c(1:3), year = 2020)
 

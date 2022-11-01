@@ -4,31 +4,26 @@ suppressPackageStartupMessages({
   library(checkmate)
 })
 
-# Download test files and clean up afterwards, if running mocked tests
-
-if (identical(Sys.getenv("MOCK_BYPASS"), "true")) with_mock_api <- force
-
-download_mock <- !identical(Sys.getenv("MOCK_BYPASS"), "true") & !is.null(curl::nslookup("github.com", error = FALSE))
-
-skip <- FALSE
+# Download test files if running mocked tests
+download_mock <- !identical(Sys.getenv("MOCK_BYPASS"), "true")
 
 if (download_mock) {
-  tryCatch(
-    expr = {
-      download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip", "f.zip")
-      unzip("f.zip", exdir = ".")
+  cache_dir <- tools::R_user_dir("ffscrapr")
+  if (!file.exists(cache_dir)) {
+    dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
+  }
 
-      httptest::.mockPaths(new = "ffscrapr-tests-main")
+  cache_path <- file.path(cache_dir, "ffscrapr-tests-main")
 
-      withr::defer(
-        unlink(c("ffscrapr-tests-main", "f.zip"), recursive = TRUE, force = TRUE),
-        testthat::teardown_env()
-      )
-    },
-    warning = function(e) skip <<- TRUE,
-    error = function(e) skip <<- TRUE
-  )
+  # Cache for 24 hours
+  if (!file.exists(cache_path) || difftime(Sys.time(), file.mtime(cache_path), units = "days") > 1) {
+    path <- tempfile()
+    download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip", path)
+    unzip(path, exdir = cache_dir)
+    unlink(path)
+  }
+
+  httptest::.mockPaths(cache_path)
+} else {
+  with_mock_api <- force
 }
-
-skippy <- function() NULL
-if (skip) skippy <- function() testthat::skip(message = "Unable to download test data")

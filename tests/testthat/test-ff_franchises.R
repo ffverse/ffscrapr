@@ -1,7 +1,5 @@
 with_mock_api({
   test_that("ff_franchises returns a tibble of franchises", {
-    skippy()
-
     ssb <- mfl_connect(2019, 54040)
     ssb_franchises <- ff_franchises(ssb)
 

@@ -1,7 +1,5 @@
 with_mock_api({
   test_that("Cache clearing works", {
-    skippy()
-
     conn <- mfl_connect(2020, 54040)
     x <- mfl_players(conn)
     expect(memoise::has_cache(mfl_players)(conn), "Function wasn't memoised!")

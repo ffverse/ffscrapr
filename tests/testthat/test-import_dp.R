@@ -1,6 +1,5 @@
 with_mock_api({
   test_that("dp_values are fetched", {
-    skippy()
     values <- dp_values()
     player_values <- dp_values("values-players.csv")
     player_ids <- dp_playerids()
