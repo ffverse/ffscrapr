@@ -101,9 +101,10 @@ mfl_allrules <- function(conn) {
     purrr::pluck("content", "allRules", "rule") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    purrr::map_depth(-2, unname, 1, .ragged = TRUE) %>%
-    purrr::map_depth(2, `[[`, 1) %>%
-    dplyr::as_tibble() %>%
+    dplyr::mutate_if(is.list,
+                     ~replace(.x, lengths(.x) == 0, NA_character_) %>%
+                       unlist() %>%
+                       unname()) %>%
     dplyr::mutate_all(as.character) %>%
     dplyr::select(
       "abbrev" = "abbreviation",
