@@ -35,7 +35,7 @@ ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
     week = week
   ) %>%
     dplyr::mutate(starters = purrr::map2(week, season, .mfl_weeklystarters, conn)) %>%
-    tidyr::unnest(.data$starters) %>%
+    tidyr::unnest("starters") %>%
     dplyr::mutate(
       player_score = as.numeric(.data$player_score),
       should_start = as.numeric(.data$should_start)

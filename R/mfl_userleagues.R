@@ -26,9 +26,9 @@ ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
     df <- df_leagues %>%
       tibble::as_tibble() %>%
       dplyr::select("league_id",
-        "league_name" = .data$name,
+        "league_name" = "name",
         "franchise_id", "franchise_name",
-        "league_url" = .data$url
+        "league_url" = "url"
       )
   }
 

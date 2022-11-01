@@ -40,7 +40,7 @@ ff_scoring.mfl_conn <- function(conn) {
       ),
       rule = purrr::map(.data$rule, dplyr::bind_rows)
     ) %>%
-    dplyr::select(-.data$vec_depth) %>%
+    dplyr::select(-"vec_depth") %>%
     tidyr::unnest_wider("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
@@ -53,7 +53,7 @@ ff_scoring.mfl_conn <- function(conn) {
       points = as.double(.data$points)
     ) %>%
     dplyr::select(
-      "pos" = .data$positions,
+      "pos" = "positions",
       "points",
       "range",
       "event",

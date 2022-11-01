@@ -47,8 +47,8 @@ fleaflicker_userleagues <- function(user_email, season = NULL) {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::rename(
-      league_name = .data$name,
-      league_id = .data$id
+      league_name = "name",
+      league_id = "id"
     ) %>%
     tidyr::hoist("ownedTeam", "franchise_id" = "id", "franchise_name" = "name") %>%
     dplyr::select(-"ownedTeam")

@@ -27,7 +27,7 @@ ff_draft.sleeper_conn <- function(conn, ...) {
     purrr::pluck("content") %>%
     purrr::map_dfr(`[`, c("season", "draft_id", "league_id", "status", "type")) %>%
     dplyr::mutate(picks = purrr::map(.data$draft_id, .sleeper_currentdraft)) %>%
-    tidyr::unnest(.data$picks) %>%
+    tidyr::unnest("picks") %>%
     dplyr::left_join(franchise_endpoint, by = "franchise_id") %>%
     dplyr::left_join(players_endpoint, by = "player_id") %>%
     dplyr::select(dplyr::any_of(c(

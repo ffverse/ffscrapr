@@ -174,7 +174,7 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
       "pos" = "position",
       "team" = "proTeamAbbreviation"
     ) %>%
-    dplyr::select(-.data$player, -.data$franchise)
+    dplyr::select(-"player", -"franchise")
 
   if ("waiverResolutionTeams" %in% names(claims)) {
     claims <- claims %>%

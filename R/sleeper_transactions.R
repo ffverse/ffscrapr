@@ -272,7 +272,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
             "round",
             .data$round,
             "pick_from_franchise",
-            .data$roster_id,
+            roster_id,
             sep = "_"
           )) %>%
           dplyr::select(

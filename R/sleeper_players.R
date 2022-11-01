@@ -28,12 +28,12 @@ sleeper_players <- function() {
     dplyr::select(-dplyr::contains("search"), -dplyr::contains("first_name"), -dplyr::contains("last_name"), -dplyr::contains("metadata")) %>%
     dplyr::select(
       "player_id",
-      "player_name" = .data$full_name,
-      "pos" = .data$position,
-      .data$age,
-      .data$team,
-      .data$status,
-      .data$years_exp,
+      "player_name" = "full_name",
+      "pos" = "position",
+      "age",
+      "team",
+      "status",
+      "years_exp",
       dplyr::starts_with("draft_"),
       dplyr::ends_with("_id"),
       dplyr::everything()

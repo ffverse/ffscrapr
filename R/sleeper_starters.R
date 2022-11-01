@@ -35,7 +35,7 @@ ff_starters.sleeper_conn <- function(conn, week = 1:17, ...) {
     week = week
   ) %>%
     dplyr::mutate(starters = purrr::map(week, .sleeper_weeklystarters, conn)) %>%
-    tidyr::unnest(.data$starters) %>%
+    tidyr::unnest("starters") %>%
     dplyr::left_join(
       franchises_endpoint,
       by = "franchise_id"
