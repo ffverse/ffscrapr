@@ -1,11 +1,11 @@
-with_mock_api({
-  test_that("Cache clearing works", {
-    conn <- mfl_connect(2020, 54040)
-    x <- mfl_players(conn)
-    expect(memoise::has_cache(mfl_players)(conn), "Function wasn't memoised!")
+test_that("Cache clearing works", {
+  local_mock_api()
 
-    .ff_clear_cache()
+  conn <- mfl_connect(2020, 54040)
+  x <- mfl_players(conn)
+  expect(memoise::has_cache(mfl_players)(conn), "Function wasn't memoised!")
 
-    expect(!memoise::has_cache(mfl_players)(conn), "Cache has been cleared!")
-  })
+  .ff_clear_cache()
+
+  expect(!memoise::has_cache(mfl_players)(conn), "Cache has been cleared!")
 })

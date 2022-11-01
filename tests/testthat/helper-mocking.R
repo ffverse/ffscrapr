@@ -1,13 +1,11 @@
-suppressPackageStartupMessages({
-  library(testthat)
-  library(httptest)
-  library(checkmate)
-})
+library(checkmate)
 
 # Download test files if running mocked tests
-download_mock <- !identical(Sys.getenv("MOCK_BYPASS"), "true")
+needs_mocking <- function() {
+  !identical(Sys.getenv("MOCK_BYPASS"), "true")
+}
 
-if (download_mock) {
+if (needs_mocking()) {
   cache_dir <- tools::R_user_dir("ffscrapr")
   if (!file.exists(cache_dir)) {
     dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
@@ -24,6 +22,13 @@ if (download_mock) {
   }
 
   httptest::.mockPaths(cache_path)
-} else {
-  with_mock_api <- force
+}
+
+local_mock_api <- function(envir = parent.frame()) {
+  if (!needs_mocking()) {
+    return()
+  }
+
+  httptest::use_mock_api()
+  withr::defer(httptest::stop_mocking(), envir = envir)
 }
