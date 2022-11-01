@@ -31,16 +31,20 @@ ff_scoring.mfl_conn <- function(conn) {
     df <- df %>% tibble::as_tibble()
   }
 
+  extract_rule <- function(rule) {
+    depth <- purrr::vec_depth(rule)
+    if (depth == 3) {
+      purrr::map_depth(rule, 2, `[[`, 1)
+    } else if (depth == 4) {
+      purrr::map_depth(rule, -2, `[[`, 1)
+    }
+  }
+
   df <- df %>%
     dplyr::mutate(
-      vec_depth = purrr::map_dbl(.data$rule, purrr::vec_depth),
-      rule = dplyr::case_when(
-        .data$vec_depth == 3 ~ purrr::map_depth(.data$rule, 2, `[[`, 1),
-        .data$vec_depth == 4 ~ purrr::map_depth(.data$rule, -2, `[[`, 1)
-      ),
+      rule = purrr::map(.data$rule, extract_rule),
       rule = purrr::map(.data$rule, dplyr::bind_rows)
     ) %>%
-    dplyr::select(-"vec_depth") %>%
     tidyr::unnest_wider("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
