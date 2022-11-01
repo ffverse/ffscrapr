@@ -11,12 +11,12 @@ if (needs_mocking()) {
     dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
   }
 
-  cache_path <- file.path(cache_dir, "ffscrapr-tests-main")
+  cache_path <- file.path(cache_dir, "ffscrapr-tests-1.4.7")
 
   # Cache for 24 hours
   if (!file.exists(cache_path) || difftime(Sys.time(), file.mtime(cache_path), units = "days") > 1) {
     path <- tempfile()
-    download.file("https://github.com/ffverse/ffscrapr-tests/archive/main.zip", path)
+    download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip", path)
     unzip(path, exdir = cache_dir)
     unlink(path)
   }
