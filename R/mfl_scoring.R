@@ -31,21 +31,15 @@ ff_scoring.mfl_conn <- function(conn) {
     df <- df %>% tibble::as_tibble()
   }
 
-  extract_rule <- function(rule) {
-    depth <- purrr::vec_depth(rule)
-    if (depth == 3) {
-      purrr::map_depth(rule, 2, `[[`, 1)
-    } else if (depth == 4) {
-      purrr::map_depth(rule, -2, `[[`, 1)
-    }
-  }
 
   df <- df %>%
     dplyr::mutate(
-      rule = purrr::map(.data$rule, extract_rule),
+      # convert each nested list of rules to tibble by bind_rows
+      # so that it can be unnested nicely
+      # see ffscrapr#344 for history
       rule = purrr::map(.data$rule, dplyr::bind_rows)
     ) %>%
-    tidyr::unnest_wider("rule") %>%
+    tidyr::unnest("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
     dplyr::left_join(mfl_allrules(conn), by = c("event" = "abbrev")) %>%
