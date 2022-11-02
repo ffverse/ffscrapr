@@ -24,8 +24,8 @@ ff_franchises.mfl_conn <- function(conn) {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::rename(
-      "franchise_name" = .data$name,
-      "franchise_id" = .data$id
+      "franchise_name" = "name",
+      "franchise_id" = "id"
     ) %>%
     dplyr::select("franchise_id", "franchise_name", dplyr::everything())
 
@@ -34,8 +34,8 @@ ff_franchises.mfl_conn <- function(conn) {
       tibble::tibble() %>%
       tidyr::unnest_wider(1) %>%
       dplyr::rename(
-        "division_name" = .data$name,
-        "division_id" = .data$id
+        "division_name" = "name",
+        "division_id" = "id"
       )
 
     franchises <- franchises %>%

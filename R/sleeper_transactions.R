@@ -108,7 +108,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       added = purrr::map(.data$added, ~ replace(.x, is.null(.x), NA_character_)),
       dropped = purrr::map(.data$dropped, names),
       dropped = purrr::map(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
-      franchise_id = purrr::map_chr(.data$franchise_id, unlist),
+      franchise_id = purrr::map_chr(.data$franchise_id, ~as.character(unlist(.x))),
       timestamp = .data$timestamp / 1000,
       timestamp = .as_datetime(.data$timestamp)
     ) %>%
@@ -165,7 +165,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
       added = purrr::map(.data$added, ~ replace(.x, is.null(.x), NA_character_)),
       dropped = purrr::map(.data$dropped, names),
       dropped = purrr::map(.data$dropped, ~ replace(.x, is.null(.x), NA_character_)),
-      franchise_id = purrr::map_chr(.data$franchise_id, unlist),
+      franchise_id = purrr::map_chr(.data$franchise_id, ~as.character(unlist(.x))),
       timestamp = .data$timestamp / 1000,
       timestamp = .as_datetime(.data$timestamp),
       comment = purrr::map_chr(.data$metadata, `[[`, "notes")
@@ -272,7 +272,7 @@ ff_transactions.sleeper_conn <- function(conn, week = 1:17, ...) {
             "round",
             .data$round,
             "pick_from_franchise",
-            .data$roster_id,
+            roster_id,
             sep = "_"
           )) %>%
           dplyr::select(

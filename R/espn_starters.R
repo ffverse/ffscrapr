@@ -100,7 +100,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     purrr::set_names("x") %>%
     tidyr::hoist(1, "week" = "matchupPeriodId", "home", "away") %>%
     dplyr::filter(.data$week == .env$week) %>%
-    tidyr::pivot_longer(c(.data$home, .data$away), names_to = NULL, values_to = "team") %>%
+    tidyr::pivot_longer(c("home", "away"), names_to = NULL, values_to = "team") %>%
     tidyr::hoist("team", "starting_lineup" = "rosterForCurrentScoringPeriod", "franchise_id" = "teamId") %>%
     dplyr::select(-"team", -"x") %>%
     tidyr::hoist("starting_lineup", "franchise_score" = "appliedStatTotal", "entries") %>%

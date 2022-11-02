@@ -53,7 +53,7 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
     purrr::map_dfr(`[`, c("draft_id", "season", "status")) %>%
     dplyr::filter(.data$status != "complete") %>%
     dplyr::mutate(picks = purrr::map(.data$draft_id, .sleeper_currentdraft)) %>%
-    tidyr::unnest(.data$picks) %>%
+    tidyr::unnest("picks") %>%
     dplyr::select(dplyr::any_of(c(
       "season", "round", "pick", "franchise_id"
     )))

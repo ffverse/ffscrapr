@@ -113,19 +113,19 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
   df <- parsed_trades %>%
     dplyr::select(
-      .data$timestamp,
-      .data$type,
-      "franchise" = .data$franchise2,
-      "franchise2" = .data$franchise,
-      "franchise1_gave_up" = .data$franchise2_gave_up,
-      "franchise2_gave_up" = .data$franchise1_gave_up,
-      .data$comments
+      "timestamp",
+      "type",
+      "franchise" = "franchise2",
+      "franchise2" = "franchise",
+      "franchise1_gave_up" = "franchise2_gave_up",
+      "franchise2_gave_up" = "franchise1_gave_up",
+      "comments"
     ) %>%
     dplyr::bind_rows(parsed_trades) %>%
     dplyr::rename(
-      "trade_partner" = .data$franchise2,
-      "traded_for" = .data$franchise2_gave_up,
-      "traded_away" = .data$franchise1_gave_up
+      "trade_partner" = "franchise2",
+      "traded_for" = "franchise2_gave_up",
+      "traded_away" = "franchise1_gave_up"
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp)) %>%
     tidyr::pivot_longer(c("traded_away", "traded_for"),
@@ -160,12 +160,12 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
   parsed_fa %>%
     dplyr::select(
-      .data$timestamp,
-      .data$type,
-      .data$franchise,
-      .data$type_desc,
-      .data$player_id,
-      .data$comments
+      "timestamp",
+      "type",
+      "franchise",
+      "type_desc",
+      "player_id",
+      "comments"
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
@@ -192,12 +192,12 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
   parsed_ir %>%
     dplyr::select(
-      .data$timestamp,
-      .data$type,
-      .data$franchise,
-      .data$type_desc,
-      .data$player_id,
-      .data$comments
+      "timestamp",
+      "type",
+      "franchise",
+      "type_desc",
+      "player_id",
+      "comments"
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
@@ -224,12 +224,12 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
   parsed_ts %>%
     dplyr::select(
-      .data$timestamp,
-      .data$type,
-      .data$franchise,
-      .data$type_desc,
-      .data$player_id,
-      .data$comments
+      "timestamp",
+      "type",
+      "franchise",
+      "type_desc",
+      "player_id",
+      "comments"
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
@@ -263,13 +263,13 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
 
   parsed_bbid_drops %>%
     dplyr::select(
-      .data$timestamp,
-      .data$type,
-      .data$franchise,
-      .data$type_desc,
-      .data$player_id,
-      .data$bbid_spent,
-      .data$comments
+      "timestamp",
+      "type",
+      "franchise",
+      "type_desc",
+      "player_id",
+      "bbid_spent",
+      "comments"
     ) %>%
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }

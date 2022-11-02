@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.4.7.11
+Version: 1.4.7.12
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
@@ -33,6 +33,7 @@ Depends:
 Imports:
     cachem (>= 1.0.0),
     checkmate (>= 2.0.0),
+    cli,
     dplyr (>= 1.0.0),
     glue (>= 1.3.0),
     httr (>= 1.4.0),

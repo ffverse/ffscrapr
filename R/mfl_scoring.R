@@ -31,17 +31,15 @@ ff_scoring.mfl_conn <- function(conn) {
     df <- df %>% tibble::as_tibble()
   }
 
+
   df <- df %>%
     dplyr::mutate(
-      vec_depth = purrr::map_dbl(.data$rule, purrr::vec_depth),
-      rule = dplyr::case_when(
-        .data$vec_depth == 3 ~ purrr::map_depth(.data$rule, 2, `[[`, 1),
-        .data$vec_depth == 4 ~ purrr::map_depth(.data$rule, -2, `[[`, 1)
-      ),
+      # convert each nested list of rules to tibble by bind_rows
+      # so that it can be unnested nicely
+      # see ffscrapr#344 for history
       rule = purrr::map(.data$rule, dplyr::bind_rows)
     ) %>%
-    dplyr::select(-.data$vec_depth) %>%
-    tidyr::unnest_wider("rule") %>%
+    tidyr::unnest("rule") %>%
     tidyr::unnest(c("points", "event", "range")) %>%
     tidyr::separate_rows("positions", sep = "\\|") %>%
     dplyr::left_join(mfl_allrules(conn), by = c("event" = "abbrev")) %>%
@@ -53,7 +51,7 @@ ff_scoring.mfl_conn <- function(conn) {
       points = as.double(.data$points)
     ) %>%
     dplyr::select(
-      "pos" = .data$positions,
+      "pos" = "positions",
       "points",
       "range",
       "event",
@@ -97,9 +95,10 @@ mfl_allrules <- function(conn) {
     purrr::pluck("content", "allRules", "rule") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
-    purrr::map_depth(-2, unname, 1, .ragged = TRUE) %>%
-    purrr::map_depth(2, `[[`, 1) %>%
-    dplyr::as_tibble() %>%
+    dplyr::mutate_if(is.list,
+                     ~replace(.x, lengths(.x) == 0, NA_character_) %>%
+                       unlist() %>%
+                       unname()) %>%
     dplyr::mutate_all(as.character) %>%
     dplyr::select(
       "abbrev" = "abbreviation",

@@ -115,7 +115,7 @@ ff_draft.mfl_conn <- function(conn, custom_players = deprecated(), ...) {
       overall = dplyr::row_number()
     ) %>%
     dplyr::rename(
-      "franchise_id" = .data$franchise,
-      "player_id" = .data$player
+      "franchise_id" = "franchise",
+      "player_id" = "player"
     )
 }

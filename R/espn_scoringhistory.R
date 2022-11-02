@@ -50,8 +50,8 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:nflreadr::most_recen
     dplyr::ungroup() %>%
     tidyr::pivot_wider(
       id_cols = c("season", "week", "gsis_id", "sportradar_id", "espn_id", "player_name", "pos", "team", "points"),
-      names_from = .data$metric,
-      values_from = .data$value,
+      names_from = "metric",
+      values_from = "value",
       values_fill = 0,
       values_fn = max
     )

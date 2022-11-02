@@ -94,8 +94,8 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
     trade_transactions <- all_transactions %>%
       dplyr::filter(.data$type == "TRADE") %>%
       dplyr::select(
-        trade_partner = .data$franchise_id,
-        franchise_id = .data$trade_partner,
+        trade_partner = "franchise_id",
+        franchise_id = "trade_partner",
         "player_id",
         "timestamp"
       ) %>%

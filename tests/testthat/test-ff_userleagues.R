@@ -1,58 +1,52 @@
-with_mock_api({
-  test_that("ff_userleagues works for MFL", {
-    skippy()
-    conn <- mfl_connect(2020,
-      user_name = "dynastyprocesstest",
-      password = "test1234"
-    )
+test_that("ff_userleagues works for MFL", {
+  local_mock_api()
 
-    leagues <- ff_userleagues(conn)
+  conn <- mfl_connect(2020,
+    user_name = "dynastyprocesstest",
+    password = "test1234"
+  )
 
-    expect_tibble(leagues, min.rows = 1, any.missing = FALSE)
+  leagues <- ff_userleagues(conn)
 
-    edge <- mfl_connect(2020, 54040)
-    expect_error(ff_userleagues(edge), "No authentication cookie")
-  })
+  expect_tibble(leagues, min.rows = 1, any.missing = FALSE)
+
+  edge <- mfl_connect(2020, 54040)
+  expect_error(ff_userleagues(edge), "No authentication cookie")
 })
 
+test_that("ff_userleagues works for Sleeper", {
+  local_mock_api()
 
-with_mock_api({
-  test_that("ff_userleagues works for Sleeper", {
-    skippy()
-    conn <- sleeper_connect(2020,
-      user_name = "solarpool"
-    )
+  conn <- sleeper_connect(2020,
+    user_name = "solarpool"
+  )
 
-    full_call <- ff_userleagues(conn)
-    quick_call <- sleeper_userleagues("solarpool", 2020)
+  full_call <- ff_userleagues(conn)
+  quick_call <- sleeper_userleagues("solarpool", 2020)
 
-    expect_tibble(full_call, min.rows = 1)
-    expect_tibble(quick_call, min.rows = 1)
-  })
+  expect_tibble(full_call, min.rows = 1)
+  expect_tibble(quick_call, min.rows = 1)
 })
 
-with_mock_api({
-  test_that("ff_userleagues works for Fleaflicker", {
-    skippy()
-    conn <- fleaflicker_connect(
-      season = 2020,
-      user_email = "syd235@gmail.com"
-    )
+test_that("ff_userleagues works for Fleaflicker", {
+  local_mock_api()
 
-    full_call <- ff_userleagues(conn)
-    quick_call <- fleaflicker_userleagues("syd235@gmail.com", 2020)
+  conn <- fleaflicker_connect(
+    season = 2020,
+    user_email = "syd235@gmail.com"
+  )
 
-    expect_tibble(full_call, min.rows = 1)
-    expect_tibble(quick_call, min.rows = 1)
-  })
+  full_call <- ff_userleagues(conn)
+  quick_call <- fleaflicker_userleagues("syd235@gmail.com", 2020)
+
+  expect_tibble(full_call, min.rows = 1)
+  expect_tibble(quick_call, min.rows = 1)
 })
 
-with_mock_api({
-  test_that("ff_userleagues returns warning for ESPN", {
-    skippy()
+test_that("ff_userleagues returns warning for ESPN", {
+  local_mock_api()
 
-    espn_conn <- espn_connect(season = 2020)
+  espn_conn <- espn_connect(season = 2020)
 
-    expect_warning(ff_userleagues(espn_conn), regexp = "ESPN does not support")
-  })
+  expect_warning(ff_userleagues(espn_conn), regexp = "ESPN does not support")
 })

@@ -58,10 +58,10 @@ ff_schedule.espn_conn <- function(conn, ...) {
     dplyr::bind_rows(scores, scores2) %>%
     dplyr::arrange(.data$week, .data$home_id, .data$away_id) %>%
     dplyr::rename(
-      "franchise_id" = .data$home_id,
-      "opponent_id" = .data$away_id,
-      "franchise_score" = .data$home_points,
-      "opponent_score" = .data$away_points
+      "franchise_id" = "home_id",
+      "opponent_id" = "away_id",
+      "franchise_score" = "home_points",
+      "opponent_score" = "away_points"
     ) %>%
     dplyr::mutate(
       result = dplyr::case_when(
@@ -73,12 +73,12 @@ ff_schedule.espn_conn <- function(conn, ...) {
       )
     ) %>%
     dplyr::select(
-      .data$week,
-      .data$franchise_id,
-      .data$franchise_score,
-      .data$result,
-      .data$opponent_id,
-      .data$opponent_score
+      "week",
+      "franchise_id",
+      "franchise_score",
+      "result",
+      "opponent_id",
+      "opponent_score"
     ) %>%
     dplyr::filter(!is.na(.data$franchise_id))
   return(schedule)

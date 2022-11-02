@@ -35,8 +35,8 @@ ff_rosters.mfl_conn <- function(conn, custom_players = deprecated(), week = NULL
     dplyr::mutate("player" = purrr::map(.data$player, dplyr::bind_rows)) %>%
     tidyr::unnest("player") %>%
     dplyr::rename(
-      "player_id" = .data$id,
-      "roster_status" = .data$status
+      "player_id" = "id",
+      "roster_status" = "status"
     ) %>%
     dplyr::select("franchise_id", "player_id", dplyr::everything())
 
