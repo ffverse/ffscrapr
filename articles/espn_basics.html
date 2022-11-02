@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="ESPN: Basics">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.7.12</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,12 +124,13 @@
 
 
 
-<script src="espn_basics_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>ESPN: Basics</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2022-02-05</h4>
+            <h4 data-toc-skip class="date">2022-11-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/espn_basics.Rmd" class="external-link"><code>vignettes/espn_basics.Rmd</code></a></small>
       <div class="d-none name"><code>espn_basics.Rmd</code></div>
@@ -137,196 +138,213 @@
 
     
     
-<p>In this vignette, I’ll walk through how to get started with a basic dynasty value analysis on ESPN, pulling in roster data.</p>
+<p>In this vignette, I’ll walk through how to get started with a basic
+dynasty value analysis on ESPN, pulling in roster data.</p>
 <p>We’ll start by loading the packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'dplyr' was built under R version 4.2.0</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></code></pre></div>
-<p>In ESPN, you can find the league ID by looking in the URL - it’s the number immediately after ?leagueId in this example URL: <a href="https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020" class="external-link uri">https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020</a></p>
+<code class="sourceCode R"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></code></pre></div>
+<p>In ESPN, you can find the league ID by looking in the URL - it’s the
+number immediately after ?leagueId in this example URL: <a href="https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020" class="external-link uri">https://fantasy.espn.com/football/team?leagueId=899513&amp;seasonId=2020</a></p>
 <p>Let’s set up a connection to this league:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sucioboys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/espn_connect.html">espn_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">899513</span><span class="op">)</span>
-
-<span class="va">sucioboys</span>
-<span class="co">#&gt; &lt;ESPN connection 2020_899513&gt;</span>
-<span class="co">#&gt; List of 4</span>
-<span class="co">#&gt;  $ platform : chr "ESPN"</span>
-<span class="co">#&gt;  $ season   : chr "2020"</span>
-<span class="co">#&gt;  $ league_id: chr "899513"</span>
-<span class="co">#&gt;  $ cookies  : NULL</span>
-<span class="co">#&gt;  - attr(*, "class")= chr "espn_conn"</span></code></pre></div>
-<p>I’ve done this with the <code><a href="../reference/espn_connect.html">espn_connect()</a></code> function, although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call - they are equivalent. Most if not all of the remaining functions after this point are prefixed with “ff_”.</p>
+<code class="sourceCode R"><span><span class="va">sucioboys</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/espn_connect.html">espn_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">899513</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sucioboys</span></span>
+<span><span class="co">#&gt; &lt;ESPN connection 2020_899513&gt;</span></span>
+<span><span class="co">#&gt; List of 4</span></span>
+<span><span class="co">#&gt;  $ platform : chr "ESPN"</span></span>
+<span><span class="co">#&gt;  $ season   : chr "2020"</span></span>
+<span><span class="co">#&gt;  $ league_id: chr "899513"</span></span>
+<span><span class="co">#&gt;  $ cookies  : NULL</span></span>
+<span><span class="co">#&gt;  - attr(*, "class")= chr "espn_conn"</span></span></code></pre></div>
+<p>I’ve done this with the <code><a href="../reference/espn_connect.html">espn_connect()</a></code> function,
+although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call -
+they are equivalent. Most if not all of the remaining functions after
+this point are prefixed with “ff_”.</p>
 <p>Cool! Let’s have a quick look at what this league is like.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sucioboys_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
-<span class="co">#&gt; Using request.R from "ffscrapr"</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sucioboys_summary</span><span class="op">)</span>
-<span class="co">#&gt; tibble [1 × 16] (S3: tbl_df/tbl/data.frame)</span>
-<span class="co">#&gt;  $ league_id      : chr "899513"</span>
-<span class="co">#&gt;  $ league_name    : chr "Sucio Boys"</span>
-<span class="co">#&gt;  $ season         : int 2020</span>
-<span class="co">#&gt;  $ league_type    : chr "keeper"</span>
-<span class="co">#&gt;  $ franchise_count: int 10</span>
-<span class="co">#&gt;  $ qb_type        : chr "2QB/SF"</span>
-<span class="co">#&gt;  $ idp            : logi FALSE</span>
-<span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr"</span>
-<span class="co">#&gt;  $ best_ball      : logi FALSE</span>
-<span class="co">#&gt;  $ salary_cap     : logi FALSE</span>
-<span class="co">#&gt;  $ player_copies  : num 1</span>
-<span class="co">#&gt;  $ years_active   : chr "2018-2020"</span>
-<span class="co">#&gt;  $ qb_count       : chr "1-2"</span>
-<span class="co">#&gt;  $ roster_size    : int 24</span>
-<span class="co">#&gt;  $ league_depth   : num 240</span>
-<span class="co">#&gt;  $ keeper_count   : int 22</span></code></pre></div>
-<p>Okay, so it’s the Sucio Boys league, it’s a 2QB league with 12 teams, half ppr scoring, and rosters about 240 players.</p>
+<code class="sourceCode R"><span><span class="va">sucioboys_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sucioboys_summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [1 × 16] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ league_id      : chr "899513"</span></span>
+<span><span class="co">#&gt;  $ league_name    : chr "Sucio Boys"</span></span>
+<span><span class="co">#&gt;  $ season         : int 2020</span></span>
+<span><span class="co">#&gt;  $ league_type    : chr "keeper"</span></span>
+<span><span class="co">#&gt;  $ franchise_count: int 10</span></span>
+<span><span class="co">#&gt;  $ qb_type        : chr "2QB/SF"</span></span>
+<span><span class="co">#&gt;  $ idp            : logi FALSE</span></span>
+<span><span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr"</span></span>
+<span><span class="co">#&gt;  $ best_ball      : logi FALSE</span></span>
+<span><span class="co">#&gt;  $ salary_cap     : logi FALSE</span></span>
+<span><span class="co">#&gt;  $ player_copies  : num 1</span></span>
+<span><span class="co">#&gt;  $ years_active   : chr "2018-2020"</span></span>
+<span><span class="co">#&gt;  $ qb_count       : chr "1-2"</span></span>
+<span><span class="co">#&gt;  $ roster_size    : int 24</span></span>
+<span><span class="co">#&gt;  $ league_depth   : num 240</span></span>
+<span><span class="co">#&gt;  $ keeper_count   : int 22</span></span></code></pre></div>
+<p>Okay, so it’s the Sucio Boys league, it’s a 2QB league with 12 teams,
+half ppr scoring, and rosters about 240 players.</p>
 <p>Let’s grab the rosters now.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sucioboys_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_rosters</span><span class="op">)</span> <span class="co"># quick snapshot of rosters</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 10</span></span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span>
-<span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod   4<span style="text-decoration: underline;">036</span>348 Michael Gallup  DAL   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod   4<span style="text-decoration: underline;">036</span>131 Noah Fant       DEN   TE    <span style="color: #949494;">&lt;chr [6]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod    -<span style="color: #BB0000; text-decoration: underline;">16</span><span style="color: #BB0000;">003</span> Bears D/ST      CHI   DST   <span style="color: #949494;">&lt;chr [3]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod     <span style="text-decoration: underline;">15</span>920 Latavius Murray NOS   RB    <span style="color: #949494;">&lt;chr [6]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod   3<span style="text-decoration: underline;">055</span>899 Harrison Butker KCC   K     <span style="color: #949494;">&lt;chr [3]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod   4<span style="text-decoration: underline;">241</span>372 Marquise Brown  BAL   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 3 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   acquisition_date &lt;dttm&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sucioboys_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">sucioboys</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_rosters</span><span class="op">)</span> <span class="co"># quick snapshot of rosters</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 10</span></span></span>
+<span><span class="co">#&gt;   franchise_id franchise_name playe…¹ playe…² team  pos   eligi…³ status acqui…⁴</span></span>
+<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4<span style="text-decoration: underline;">036</span>348 Michae… DAL   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4<span style="text-decoration: underline;">036</span>131 Noah F… DEN   TE    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod  -<span style="color: #BB0000; text-decoration: underline;">16</span><span style="color: #BB0000;">003</span> Bears … CHI   DST   &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod   <span style="text-decoration: underline;">15</span>920 Latavi… NOS   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 3<span style="text-decoration: underline;">055</span>899 Harris… KCC   K     &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4<span style="text-decoration: underline;">241</span>372 Marqui… BAL   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: acquisition_date &lt;dttm&gt;, and abbreviated variable</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   names ¹​player_id, ²​player_name, ³​eligible_pos, ⁴​acquisition_type</span></span></span></code></pre></div>
 <div class="section level2">
 <h2 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a>
 </h2>
-<p>Cool! Let’s pull in some additional context by adding DynastyProcess player values.</p>
+<p>Cool! Let’s pull in some additional context by adding DynastyProcess
+player values.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span>
-
-<span class="co"># The values are stored by fantasypros ID since that's where the data comes from. </span>
-<span class="co"># To join it to our rosters, we'll need playerID mappings.</span>
-
-<span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">espn_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span>
-<span class="co"># to just IDs, age, and values</span>
-
-<span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">age</span>,<span class="va">ecr_2qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_2qb</span><span class="op">)</span>
-
-<span class="co"># we can join the roster's player_ids on the values' espn_id, with a bit of a type conversion first</span>
-<span class="va">sucioboys_values</span> <span class="op">&lt;-</span> <span class="va">sucioboys_rosters</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>player_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">player_id</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"player_id"</span><span class="op">=</span><span class="st">"espn_id"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_values</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 14</span></span>
-<span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span>
-<span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4242335   Jonathan Taylor IND   RB    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4241985   J.K. Dobbins    BAL   RB    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod 2976316   Michael Thomas  NOS   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    <span style="color: #949494;">&lt;chr [5]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 4239993   Tee Higgins     CIN   WR    <span style="color: #949494;">&lt;chr [8]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    <span style="color: #949494;">&lt;chr [5]&gt;</span>   </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 7 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span></span>
-<span class="co">#&gt; <span style="color: #949494;">#   value_2qb &lt;int&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_values.html">dp_values</a></span><span class="op">(</span><span class="st">"values-players.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The values are stored by fantasypros ID since that's where the data comes from. </span></span>
+<span><span class="co"># To join it to our rosters, we'll need playerID mappings.</span></span>
+<span></span>
+<span><span class="va">player_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dp_playerids.html">dp_playerids</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">fantasypros_id</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">espn_id</span><span class="op">)</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">fantasypros_id</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># We'll be joining it onto rosters, so we can trim down the values dataframe</span></span>
+<span><span class="co"># to just IDs, age, and values</span></span>
+<span></span>
+<span><span class="va">player_values</span> <span class="op">&lt;-</span> <span class="va">player_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">player_ids</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fp_id"</span> <span class="op">=</span> <span class="st">"fantasypros_id"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">espn_id</span>,<span class="va">age</span>,<span class="va">ecr_2qb</span>,<span class="va">ecr_pos</span>,<span class="va">value_2qb</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># we can join the roster's player_ids on the values' espn_id, with a bit of a type conversion first</span></span>
+<span><span class="va">sucioboys_values</span> <span class="op">&lt;-</span> <span class="va">sucioboys_rosters</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>player_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">player_id</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"player_id"</span><span class="op">=</span><span class="st">"espn_id"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_values</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 14</span></span></span>
+<span><span class="co">#&gt;   franchise_id franchise_name playe…¹ playe…² team  pos   eligi…³ status acqui…⁴</span></span>
+<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4242335 Jonath… IND   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4241985 J.K. D… BAL   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod 2976316 Michae… NOS   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod 4040715 Jalen … PHI   QB    &lt;chr&gt;   NORMAL ADD    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 4239993 Tee Hi… CIN   WR    &lt;chr&gt;   NORMAL ADD    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4241479 Tua Ta… MIA   QB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 5 more variables: acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ecr_pos &lt;dbl&gt;, value_2qb &lt;int&gt;, and abbreviated variable names ¹​player_id,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​player_name, ³​eligible_pos, ⁴​acquisition_type</span></span></span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>team_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">total_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>, values_from <span class="op">=</span> <span class="va">total_value</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span>
-
-<span class="va">value_summary</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span>
-<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">49</span>693  <span style="text-decoration: underline;">8</span>628 <span style="text-decoration: underline;">18</span>592 <span style="text-decoration: underline;">16</span>747  <span style="text-decoration: underline;">5</span>726</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            6 <span style="color: #949494;">"</span>OBJ's Personal Porta Potty<span style="color: #949494;">"</span>      <span style="text-decoration: underline;">46</span>447 <span style="text-decoration: underline;">20</span>424 <span style="text-decoration: underline;">22</span>738   997  <span style="text-decoration: underline;">2</span>288</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>                   <span style="text-decoration: underline;">44</span>547 <span style="text-decoration: underline;">15</span>508 <span style="text-decoration: underline;">17</span>020  <span style="text-decoration: underline;">5</span>921  <span style="text-decoration: underline;">6</span>098</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">41</span>599 <span style="text-decoration: underline;">13</span>314  <span style="text-decoration: underline;">2</span>329 <span style="text-decoration: underline;">24</span>668  <span style="text-decoration: underline;">1</span>288</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>                   <span style="text-decoration: underline;">37</span>216  <span style="text-decoration: underline;">1</span>467 <span style="text-decoration: underline;">15</span>597 <span style="text-decoration: underline;">16</span>565  <span style="text-decoration: underline;">3</span>587</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>                      <span style="text-decoration: underline;">32</span>697  <span style="text-decoration: underline;">6</span>048 <span style="text-decoration: underline;">11</span>980 <span style="text-decoration: underline;">12</span>829  <span style="text-decoration: underline;">1</span>840</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">32</span>247  <span style="text-decoration: underline;">6</span>642 <span style="text-decoration: underline;">13</span>916  <span style="text-decoration: underline;">9</span>406  <span style="text-decoration: underline;">2</span>283</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>                     <span style="text-decoration: underline;">31</span>958  <span style="text-decoration: underline;">6</span>878 <span style="text-decoration: underline;">10</span>726 <span style="text-decoration: underline;">13</span>365   989</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>                     <span style="text-decoration: underline;">21</span>493  <span style="text-decoration: underline;">7</span>416  <span style="text-decoration: underline;">1</span>453 <span style="text-decoration: underline;">12</span>408   216</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lock🐐<span style="color: #949494;">"</span>            <span style="text-decoration: underline;">20</span>832  <span style="text-decoration: underline;">7</span>153   276 <span style="text-decoration: underline;">13</span>324    79</span></code></pre></div>
-<p>So with that, we’ve got a team summary of values! I like applying some context, so let’s turn these into percentages - this helps normalise it to your league environment.</p>
+<code class="sourceCode R"><span><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>total_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>team_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">total_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>, values_from <span class="op">=</span> <span class="va">total_value</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">value_summary</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
+<span><span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span></span>
+<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">49</span>693  <span style="text-decoration: underline;">8</span>628 <span style="text-decoration: underline;">18</span>592 <span style="text-decoration: underline;">16</span>747  <span style="text-decoration: underline;">5</span>726</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            6 <span style="color: #949494;">"</span>OBJ's Personal Porta Potty<span style="color: #949494;">"</span>      <span style="text-decoration: underline;">46</span>447 <span style="text-decoration: underline;">20</span>424 <span style="text-decoration: underline;">22</span>738   997  <span style="text-decoration: underline;">2</span>288</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>                   <span style="text-decoration: underline;">44</span>547 <span style="text-decoration: underline;">15</span>508 <span style="text-decoration: underline;">17</span>020  <span style="text-decoration: underline;">5</span>921  <span style="text-decoration: underline;">6</span>098</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">41</span>599 <span style="text-decoration: underline;">13</span>314  <span style="text-decoration: underline;">2</span>329 <span style="text-decoration: underline;">24</span>668  <span style="text-decoration: underline;">1</span>288</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>                   <span style="text-decoration: underline;">37</span>216  <span style="text-decoration: underline;">1</span>467 <span style="text-decoration: underline;">15</span>597 <span style="text-decoration: underline;">16</span>565  <span style="text-decoration: underline;">3</span>587</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>                      <span style="text-decoration: underline;">32</span>697  <span style="text-decoration: underline;">6</span>048 <span style="text-decoration: underline;">11</span>980 <span style="text-decoration: underline;">12</span>829  <span style="text-decoration: underline;">1</span>840</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>                  <span style="text-decoration: underline;">32</span>247  <span style="text-decoration: underline;">6</span>642 <span style="text-decoration: underline;">13</span>916  <span style="text-decoration: underline;">9</span>406  <span style="text-decoration: underline;">2</span>283</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>                     <span style="text-decoration: underline;">31</span>958  <span style="text-decoration: underline;">6</span>878 <span style="text-decoration: underline;">10</span>726 <span style="text-decoration: underline;">13</span>365   989</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>                     <span style="text-decoration: underline;">21</span>493  <span style="text-decoration: underline;">7</span>416  <span style="text-decoration: underline;">1</span>453 <span style="text-decoration: underline;">12</span>408   216</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lock🐐<span style="color: #949494;">"</span>            <span style="text-decoration: underline;">20</span>832  <span style="text-decoration: underline;">7</span>153   276 <span style="text-decoration: underline;">13</span>324    79</span></span></code></pre></div>
+<p>So with that, we’ve got a team summary of values! I like applying
+some context, so let’s turn these into percentages - this helps
+normalise it to your league environment.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="op">~</span><span class="va">.x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="va">round</span>, <span class="fl">3</span><span class="op">)</span>
-
-<span class="va">value_summary_pct</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span>
-<span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span>
-<span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>                  0.139 0.092 0.162 0.133 0.235</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            6 <span style="color: #949494;">"</span>OBJ's Personal Porta Potty<span style="color: #949494;">"</span>      0.129 0.218 0.198 0.008 0.094</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>                   0.124 0.166 0.148 0.047 0.25 </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>                  0.116 0.142 0.02  0.195 0.053</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>                   0.104 0.016 0.136 0.131 0.147</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>                      0.091 0.065 0.105 0.102 0.075</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>                  0.09  0.071 0.121 0.075 0.094</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>                     0.089 0.074 0.094 0.106 0.041</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>                     0.06  0.079 0.013 0.098 0.009</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lock🐐<span style="color: #949494;">"</span>            0.058 0.077 0.002 0.106 0.003</span></code></pre></div>
-<p>Armed with a value summary like this, we can see team strengths and weaknesses pretty quickly, and figure out who might be interested in your positional surpluses and who might have a surplus at a position you want to look at.</p>
+<code class="sourceCode R"><span><span class="va">value_summary_pct</span> <span class="op">&lt;-</span> <span class="va">value_summary</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="op">~</span><span class="va">.x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="va">round</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">value_summary_pct</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
+<span><span class="co">#&gt;    franchise_id franchise_name               team_value    QB    RB    WR    TE</span></span>
+<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>                  0.139 0.092 0.162 0.133 0.235</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            6 <span style="color: #949494;">"</span>OBJ's Personal Porta Potty<span style="color: #949494;">"</span>      0.129 0.218 0.198 0.008 0.094</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>                   0.124 0.166 0.148 0.047 0.25 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>                  0.116 0.142 0.02  0.195 0.053</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>                   0.104 0.016 0.136 0.131 0.147</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>                      0.091 0.065 0.105 0.102 0.075</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>                  0.09  0.071 0.121 0.075 0.094</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>                     0.089 0.074 0.094 0.106 0.041</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>                     0.06  0.079 0.013 0.098 0.009</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lock🐐<span style="color: #949494;">"</span>            0.058 0.077 0.002 0.106 0.003</span></span></code></pre></div>
+<p>Armed with a value summary like this, we can see team strengths and
+weaknesses pretty quickly, and figure out who might be interested in
+your positional surpluses and who might have a surplus at a position you
+want to look at.</p>
 </div>
 <div class="section level2">
 <h2 id="age">Age<a class="anchor" aria-label="anchor" href="#age"></a>
 </h2>
-<p>Another question you might ask: what is the average age of any given team?</p>
-<p>I like looking at average age by position, but weighted by dynasty value. This helps give a better idea of age for each team - including who might be looking to offload an older veteran!</p>
+<p>Another question you might ask: what is the average age of any given
+team?</p>
+<p>I like looking at average age by position, but weighted by dynasty
+value. This helps give a better idea of age for each team - including
+who might be looking to offload an older veteran!</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">pos</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_2qb</span><span class="op">/</span><span class="va">position_value</span>,
-         weighted_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">weighted_age</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,
-            age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">weighted_age</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>,
-              values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">age_summary</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 10</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [10]</span></span>
-<span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span>
-<span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>     23.5   22.4   24.7   26          4        6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>     28.7   25.9   26.8   25.6        4        7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>         29.1   25.3   23.9   25.9        3        6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>      35.4   24.8   28.7   27.4        2        5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>     25     24.6   31.6   25.3        3        8</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            6 <span style="color: #949494;">"</span>OBJ's Personal P…   24.8   24.7   25.3   23.4        3        6</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>      24.8   25.3   27.8   26.6        3        5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>        23.5   26     27.2   27.1        3        7</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>        35.1   25.9   26.4   24.4        3        5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lo…   32.2   24.4   32.2   25.5        3        5</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">age_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">pos</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>position_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">value_2qb</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>weighted_age <span class="op">=</span> <span class="va">age</span><span class="op">*</span><span class="va">value_2qb</span><span class="op">/</span><span class="va">position_value</span>,</span>
+<span>         weighted_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">weighted_age</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">pos</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>            age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">weighted_age</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>,</span>
+<span>              values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">age_summary</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 10</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [10]</span></span></span>
+<span><span class="co">#&gt;    franchi…¹ franc…² age_QB age_RB age_TE age_WR count…³ count…⁴ count…⁵ count…⁶</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>         1 <span style="color: #949494;">"</span>The E…   23.5   22.4   24.7   26         4       6       3       7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>         2 <span style="color: #949494;">"</span>Coom …   28.7   25.9   26.8   25.6       4       7       3       6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>         3 <span style="color: #949494;">"</span>PAKI …   29.1   25.3   23.9   25.9       3       6       2       9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>         4 <span style="color: #949494;">"</span>I'm A…   35.4   24.8   28.7   27.4       2       5       2       8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>         5 <span style="color: #949494;">"</span>The J…   25     24.6   31.6   25.3       3       8       2       7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>         6 <span style="color: #949494;">"</span>OBJ's…   24.8   24.7   25.3   23.4       3       6       2       7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>         7 <span style="color: #949494;">"</span>Tony …   24.8   25.3   27.8   26.6       3       5       3       6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>         8 <span style="color: #949494;">"</span>Big C…   23.5   26     27.2   27.1       3       7       2       6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>         9 <span style="color: #949494;">"</span>RAFI …   35.1   25.9   26.4   24.4       3       5       3       8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>        10 <span style="color: #949494;">"</span>Austi…   32.2   24.4   32.2   25.5       3       5       3       5</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​franchise_id, ²​franchise_name, ³​count_QB,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​count_RB, ⁵​count_TE, ⁶​count_WR</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
 </h2>
-<p>In this vignette, I’ve used only a few functions: ff_connect, ff_league, ff_rosters, and dp_values. Now that you’ve gotten this far, why not check out some of the other possibilities?</p>
+<p>In this vignette, I’ve used only a few functions: ff_connect,
+ff_league, ff_rosters, and dp_values. Now that you’ve gotten this far,
+why not check out some of the other possibilities?</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
@@ -341,7 +359,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

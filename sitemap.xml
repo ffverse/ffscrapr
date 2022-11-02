@@ -61,6 +61,9 @@
     <loc>https://ffscrapr.ffverse.com/reference/dot-add_allplay.html</loc>
   </url>
   <url>
+    <loc>https://ffscrapr.ffverse.com/reference/dot-as_date.html</loc>
+  </url>
+  <url>
     <loc>https://ffscrapr.ffverse.com/reference/dot-as_datetime.html</loc>
   </url>
   <url>
@@ -233,6 +236,9 @@
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/set_unescaped_cookies.html</loc>
+  </url>
+  <url>
+    <loc>https://ffscrapr.ffverse.com/reference/sitrep.html</loc>
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/sleeper_connect.html</loc>

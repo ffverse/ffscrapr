@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Get Endpoint">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.7.12</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,12 +124,13 @@
 
 
 
-<script src="mfl_getendpoint_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>MFL: Get Endpoint</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2022-02-05</h4>
+            <h4 data-toc-skip class="date">2022-11-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/mfl_getendpoint.Rmd" class="external-link"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
       <div class="d-none name"><code>mfl_getendpoint.Rmd</code></div>
@@ -141,88 +142,114 @@
 <h2 id="creating-custom-mfl-api-calls">Creating custom MFL API calls<a class="anchor" aria-label="anchor" href="#creating-custom-mfl-api-calls"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span></code></pre></div>
-<p>The <a href="https://api.myfantasyleague.com/2020/api_info?STATE=details" class="external-link">MFL API is extensive</a>. If there is something you’d like to access beyond the current scope of ffscrapr, you can use the lower-level “<code>mfl_getendpoint</code>” function to create a GET request and access the data, while still using the authentication and rate-limiting features I’ve already created.</p>
-<p>Here is an example of how you can call one of the endpoints - in this case, let’s try searching for SFBX leagues through the leagueSearch endpoint.</p>
-<p>We’ll start by opening up this page, <a href="https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch" class="external-link uri">https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch</a>, which is the “test” page for this particular endpoint. From here, we can see that the only parameter required is “SEARCH”.</p>
-<p>We need a connection object to pass into the mfl_getendpoint function, although in this example we don’t need to give it much since the endpoint doesn’t need a leagueID or username/password or APIKEY.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ffscrapr.ffverse.com">ffscrapr</a></span><span class="op">)</span></span></code></pre></div>
+<p>The <a href="https://api.myfantasyleague.com/2020/api_info?STATE=details" class="external-link">MFL
+API is extensive</a>. If there is something you’d like to access beyond
+the current scope of ffscrapr, you can use the lower-level
+“<code>mfl_getendpoint</code>” function to create a GET request and
+access the data, while still using the authentication and rate-limiting
+features I’ve already created.</p>
+<p>Here is an example of how you can call one of the endpoints - in this
+case, let’s try searching for SFBX leagues through the leagueSearch
+endpoint.</p>
+<p>We’ll start by opening up this page, <a href="https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch" class="external-link uri">https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=leagueSearch</a>,
+which is the “test” page for this particular endpoint. From here, we can
+see that the only parameter required is “SEARCH”.</p>
+<p>We need a connection object to pass into the mfl_getendpoint
+function, although in this example we don’t need to give it much since
+the endpoint doesn’t need a leagueID or username/password or APIKEY.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span>
-
-<span class="va">conn</span>
-<span class="co">#&gt; &lt;MFL connection 2020_&gt;</span>
-<span class="co">#&gt; List of 5</span>
-<span class="co">#&gt;  $ platform   : chr "MFL"</span>
-<span class="co">#&gt;  $ season     : num 2020</span>
-<span class="co">#&gt;  $ league_id  : chr(0) </span>
-<span class="co">#&gt;  $ APIKEY     : NULL</span>
-<span class="co">#&gt;  $ auth_cookie: NULL</span>
-<span class="co">#&gt;  - attr(*, "class")= chr "mfl_conn"</span></code></pre></div>
-<p>The parameters of the mfl_getendpoint function are <code>conn</code>, <code>endpoint</code>, and any other optional parameters required by the API.</p>
-<p>The function will automatically insert the league_id, API key, and/or authentication cookies from the connection object, and will request JSON for you - so you do not need to add any of these parameters.</p>
-<p>It is safest to assume that everything is <em>case-sensitive</em>: the endpoint must match the case displayed by MFL (“league<em>S</em>earch”) and the SEARCH argument name must be provided in upper-case.</p>
+<code class="sourceCode R"><span><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">conn</span></span>
+<span><span class="co">#&gt; &lt;MFL connection 2020_&gt;</span></span>
+<span><span class="co">#&gt; List of 5</span></span>
+<span><span class="co">#&gt;  $ platform   : chr "MFL"</span></span>
+<span><span class="co">#&gt;  $ season     : num 2020</span></span>
+<span><span class="co">#&gt;  $ league_id  : chr(0) </span></span>
+<span><span class="co">#&gt;  $ APIKEY     : NULL</span></span>
+<span><span class="co">#&gt;  $ auth_cookie: NULL</span></span>
+<span><span class="co">#&gt;  - attr(*, "class")= chr "mfl_conn"</span></span></code></pre></div>
+<p>The parameters of the mfl_getendpoint function are <code>conn</code>,
+<code>endpoint</code>, and any other optional parameters required by the
+API.</p>
+<p>The function will automatically insert the league_id, API key, and/or
+authentication cookies from the connection object, and will request JSON
+for you - so you do not need to add any of these parameters.</p>
+<p>It is safest to assume that everything is <em>case-sensitive</em>:
+the endpoint must match the case displayed by MFL
+(“league<em>S</em>earch”) and the SEARCH argument name must be provided
+in upper-case.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sfb_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">conn</span>,endpoint <span class="op">=</span> <span class="st">"leagueSearch"</span>, SEARCH <span class="op">=</span> <span class="st">"sfbx conference"</span><span class="op">)</span>
-<span class="co">#&gt; Using request.R from "ffscrapr"</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sfb_search</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; List of 3</span>
-<span class="co">#&gt;  $ content :List of 3</span>
-<span class="co">#&gt;  $ query   : chr "https://api.myfantasyleague.com/2020/export?TYPE=leagueSearch&amp;SEARCH=sfbx%20conference&amp;JSON=1"</span>
-<span class="co">#&gt;  $ response:List of 9</span>
-<span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span>
-<span class="co">#&gt;  - attr(*, "class")= chr "mfl_api"</span></code></pre></div>
-<p>The function returns a list with the <code>query</code> that was sent, the <code>response</code> that was received, and the <code>content</code> that was parsed - this helps you debug the result of the function later, by inspecting the query that was sent and the response that was received.</p>
-<p>I like to extract the <code>content</code> with <code><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">purrr::pluck</a></code> and then convert it into a tibble and unnest the content from there, but you can use base R subsetting or <code><a href="https://magrittr.tidyverse.org/reference/aliases.html" class="external-link">magrittr::extract2</a></code> for the same purpose.</p>
+<code class="sourceCode R"><span><span class="va">sfb_search</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">conn</span>,endpoint <span class="op">=</span> <span class="st">"leagueSearch"</span>, SEARCH <span class="op">=</span> <span class="st">"sfbx conference"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">sfb_search</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 3</span></span>
+<span><span class="co">#&gt;  $ content :List of 3</span></span>
+<span><span class="co">#&gt;  $ query   : chr "https://api.myfantasyleague.com/2020/export?TYPE=leagueSearch&amp;SEARCH=sfbx%20conference&amp;JSON=1"</span></span>
+<span><span class="co">#&gt;  $ response:List of 9</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span></span>
+<span><span class="co">#&gt;  - attr(*, "class")= chr "mfl_api"</span></span></code></pre></div>
+<p>The function returns a list with the <code>query</code> that was
+sent, the <code>response</code> that was received, and the
+<code>content</code> that was parsed - this helps you debug the result
+of the function later, by inspecting the query that was sent and the
+response that was received.</p>
+<p>I like to extract the <code>content</code> with
+<code><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">purrr::pluck</a></code> and then convert it into a tibble and unnest
+the content from there, but you can use base R subsetting or
+<code><a href="https://magrittr.tidyverse.org/reference/aliases.html" class="external-link">magrittr::extract2</a></code> for the same purpose.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">search_results</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span>
-<span class="co">#&gt;   homeURL                                          name                id   </span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> http://www73.myfantasyleague.com/2020/home/13411 #SFBX Conference 12 13411</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> http://www73.myfantasyleague.com/2020/home/16428 #SFBX Conference 6  16428</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> http://www73.myfantasyleague.com/2020/home/17910 #SFBX Conference 11 17910</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> http://www73.myfantasyleague.com/2020/home/26453 #SFBX Conference 8  26453</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> http://www73.myfantasyleague.com/2020/home/27495 #SFBX Conference 2  27495</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> http://www73.myfantasyleague.com/2020/home/31492 #SFBX Conference 14 31492</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">search_results</span> <span class="op">&lt;-</span> <span class="va">sfb_search</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"leagues"</span>,<span class="st">"league"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">search_results</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">#&gt;   homeURL                                          name                id   </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> http://www73.myfantasyleague.com/2020/home/13411 #SFBX Conference 12 13411</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> http://www73.myfantasyleague.com/2020/home/16428 #SFBX Conference 6  16428</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> http://www73.myfantasyleague.com/2020/home/17910 #SFBX Conference 11 17910</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> http://www73.myfantasyleague.com/2020/home/26453 #SFBX Conference 8  26453</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> http://www73.myfantasyleague.com/2020/home/27495 #SFBX Conference 2  27495</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> http://www73.myfantasyleague.com/2020/home/31492 #SFBX Conference 14 31492</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="another-example-trade-bait">Another Example: Trade Bait<a class="anchor" aria-label="anchor" href="#another-example-trade-bait"></a>
 </h2>
 <p>Here’s another example, this time with the trade bait endpoint: <a href="https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=tradeBait" class="external-link uri">https://api.myfantasyleague.com/2020/api_info?STATE=test&amp;CCAT=export&amp;TYPE=tradeBait</a></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fog</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2019</span>, league_id <span class="op">=</span> <span class="fl">12608</span><span class="op">)</span>
-
-<span class="va">fog_tradebait</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">fog</span>, <span class="st">"tradeBait"</span>, INCLUDE_DRAFT_PICKS <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"tradeBaits"</span>,<span class="st">"tradeBait"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_rows.html" class="external-link">separate_rows</a></span><span class="op">(</span><span class="st">"willGiveUp"</span>,sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/ff_franchises.html">ff_franchises</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"franchise_id"</span>,<span class="st">"franchise_name"</span><span class="op">)</span>,
-    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"franchise_id"</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,
-    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"willGiveUp"</span> <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span>
-<span class="co">#&gt;   timestamp  franchise_id willGiveUp inExchangeFor    franchise_name player_name</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1574520555 0001         7394       <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Rivers, Ph…</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1574520555 0001         13128      <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Cook, Dalv…</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1580535809 0003         13319      <span style="color: #949494;">""</span>               The Accountant Jones, Aar…</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1580535809 0003         13139      <span style="color: #949494;">""</span>               The Accountant Williams, …</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1580535809 0003         11675      <span style="color: #949494;">""</span>               The Accountant Adams, Dav…</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1580572165 0004         12171      <span style="color: #949494;">""</span>               Kevin Cutillo  Johnson, D…</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 3 more variables: pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">fog</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_connect.html">mfl_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2019</span>, league_id <span class="op">=</span> <span class="fl">12608</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fog_tradebait</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mfl_getendpoint.html">mfl_getendpoint</a></span><span class="op">(</span><span class="va">fog</span>, <span class="st">"tradeBait"</span>, INCLUDE_DRAFT_PICKS <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span><span class="op">(</span><span class="st">"content"</span>,<span class="st">"tradeBaits"</span>,<span class="st">"tradeBait"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/hoist.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_rows.html" class="external-link">separate_rows</a></span><span class="op">(</span><span class="st">"willGiveUp"</span>,sep <span class="op">=</span> <span class="st">","</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/ff_franchises.html">ff_franchises</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"franchise_id"</span>,<span class="st">"franchise_name"</span><span class="op">)</span>,</span>
+<span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"franchise_id"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/mfl_players.html">mfl_players</a></span><span class="op">(</span><span class="va">fog</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"player_id"</span>,<span class="st">"player_name"</span>,<span class="st">"pos"</span>,<span class="st">"age"</span>,<span class="st">"team"</span><span class="op">)</span>,</span>
+<span>    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"willGiveUp"</span> <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span></span>
+<span><span class="co">#&gt;   timestamp  franchise_id willGiveUp inExcha…¹ franc…² playe…³ pos     age team </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1574520555 0001         7394       <span style="color: #949494;">"</span>anyone … @JohnB… Rivers… QB     40.9 LAC  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1574520555 0001         13128      <span style="color: #949494;">"</span>anyone … @JohnB… Cook, … RB     27.2 MIN  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1580535809 0003         13319      <span style="color: #949494;">""</span>        The Ac… Jones,… RB     27.9 GBP  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1580535809 0003         13139      <span style="color: #949494;">""</span>        The Ac… Willia… RB     27.6 GBP  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1580535809 0003         11675      <span style="color: #949494;">""</span>        The Ac… Adams,… WR     29.9 GBP  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1580572165 0004         12171      <span style="color: #949494;">""</span>        Kevin … Johnso… RB     30.9 ARI  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​inExchangeFor, ²​franchise_name,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ³​player_name</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
@@ -237,7 +264,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>
