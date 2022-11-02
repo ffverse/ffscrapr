@@ -90,7 +90,7 @@ df_scoreboard <- response_scoreboard %>%
   purrr::pluck("content","games") %>% 
   tibble::tibble() %>% 
   tidyr::unnest_wider(1) %>% 
-  dplyr::mutate_at(c("away","home"),purrr::map_chr,purrr::pluck,"franchise_name"="name") %>% 
+  dplyr::mutate_at(c("away","home"),purrr::map_chr,purrr::pluck,"name") %>% 
   dplyr::mutate_at(c("homeScore","awayScore"),purrr::map_dbl,purrr::pluck,"score","value")
 
 head(df_scoreboard)
