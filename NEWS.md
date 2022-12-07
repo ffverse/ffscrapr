@@ -14,6 +14,7 @@
 - `ff_standings.mfl_conn()` changed to adapt to MFL API changes as documented in [2022 API release notes ](https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676), resolves #366. (1.4.7.10)
 - `ff_starters.sleeper_conn()` bugfixed for API change (last-scored-leg -> leg) (1.4.7.11)
 - `ff_scoring()` fixed for dev purrr issues. (1.4.7.12)
+- `ff_transactions.flea_conn()` bugfixed for infinite loop problem, resolves #356 (thank you @jdegregorio!) (1.4.7.13)
 
 ---
 
