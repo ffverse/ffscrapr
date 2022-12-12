@@ -134,11 +134,11 @@
     <div class="section level2">
     <h2 id="methods-by-class-">Methods (by class)<a class="anchor" aria-label="anchor" href="#methods-by-class-"></a></h2>
     
-<ul><li><p><code>espn_conn</code>: ESPN: returns scoring settings in a flat table, override positions have their own scoring.</p></li>
-<li><p><code>flea_conn</code>: Fleaflicker: returns scoring settings in a flat table, one row per position per rule.</p></li>
-<li><p><code>mfl_conn</code>: MFL: returns scoring settings in a flat table, one row per position per rule.</p></li>
-<li><p><code>sleeper_conn</code>: Sleeper: returns scoring settings in a flat table, one row per position per rule.</p></li>
-<li><p><code>template_conn</code>: Template: returns MFL style scoring settings in a flat table, one row per position per rule.</p></li>
+<ul><li><p><code>ff_scoring(espn_conn)</code>: ESPN: returns scoring settings in a flat table, override positions have their own scoring.</p></li>
+<li><p><code>ff_scoring(flea_conn)</code>: Fleaflicker: returns scoring settings in a flat table, one row per position per rule.</p></li>
+<li><p><code>ff_scoring(mfl_conn)</code>: MFL: returns scoring settings in a flat table, one row per position per rule.</p></li>
+<li><p><code>ff_scoring(sleeper_conn)</code>: Sleeper: returns scoring settings in a flat table, one row per position per rule.</p></li>
+<li><p><code>ff_scoring(template_conn)</code>: Template: returns MFL style scoring settings in a flat table, one row per position per rule.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -195,18 +195,18 @@
 <span class="r-in"><span>  <span class="fu">ff_scoring</span><span class="op">(</span><span class="va">ssb_conn</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 71 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    pos   points range   event points_type short_desc                long_desc   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> QB      6    0-10    #P    each        Number of Passing TDs     <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> RB      6    0-10    #P    each        Number of Passing TDs     <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> WR      6    0-10    #P    each        Number of Passing TDs     <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> TE      6    0-10    #P    each        Number of Passing TDs     <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> QB      0.04 -50-999 PY    each        Passing Yards             <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> RB      0.04 -50-999 PY    each        Passing Yards             <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> WR      0.04 -50-999 PY    each        Passing Yards             <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> TE      0.04 -50-999 PY    each        Passing Yards             <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> QB     -<span style="color: #BB0000;">4</span>    0-10    IN    each        Pass Interceptions Thrown <span style="color: #949494;">"</span>This is th…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> RB     -<span style="color: #BB0000;">4</span>    0-10    IN    each        Pass Interceptions Thrown <span style="color: #949494;">"</span>This is th…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    pos   points range   event points_type short_desc            long_desc       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> TE      0.25 0-99    CC    each        Receptions            This is the num…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> TE      0.25 1-50    1R    each        Rushing First Downs   This is the num…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> TE      0.25 1-50    1C    each        Receiving First Downs This is the num…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> QB      6    0-10    #P    each        Number of Passing TDs This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> RB      6    0-10    #P    each        Number of Passing TDs This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> WR      6    0-10    #P    each        Number of Passing TDs This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> TE      6    0-10    #P    each        Number of Passing TDs This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> QB      0.04 -50-999 PY    each        Passing Yards         This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> RB      0.04 -50-999 PY    each        Passing Yards         This is the tot…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> WR      0.04 -50-999 PY    each        Passing Yards         This is the tot…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 61 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>

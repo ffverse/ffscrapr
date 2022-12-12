@@ -96,31 +96,44 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="ffscrapr-development-version">ffscrapr (development version)<a class="anchor" aria-label="anchor" href="#ffscrapr-development-version"></a></h2>
+<p>v1.4.8 formally publishes a host of bug fixes that have been lingering on devel for a little while. It also provides some patches to maintain compatibility with the latest version of purrr.</p>
 <div class="section level3">
-<h3 id="fixes-development-version">Fixes<a class="anchor" aria-label="anchor" href="#fixes-development-version"></a></h3>
-<ul><li>Fix <code><a href="../reference/ff_league.html">ff_league.mfl_conn()</a></code> bug which created duplicate rows for leagues with both an email auction and email draft. (v1.4.7.01) (resolves <a href="https://github.com/ffverse/ffscrapr/issues/349" class="external-link">#349</a>)</li>
-<li>Fix hardcoded league year in all <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> default arguments, now uses <code><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">nflreadr::most_recent_season()</a></code> as the default upper bound. (v1.4.7.02) (resolves <a href="https://github.com/ffverse/ffscrapr/issues/347" class="external-link">#347</a>)</li>
+<h3 id="function-updates-development-version">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-development-version"></a></h3>
+<ul><li>Re-export <code><a href="https://nflreadr.nflverse.com/reference/sitrep.html" class="external-link">nflreadr::ffverse_sitrep()</a></code> and encourage usage in bug reporting.</li>
+<li>
+<code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> now accepts a <code>scoring</code> argument to allow customizable scoring settings. (1.4.7.13)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<ul><li>Fix <code><a href="../reference/ff_league.html">ff_league.mfl_conn()</a></code> bug which created duplicate rows for leagues with both an email auction and email draft. (resolves <a href="https://github.com/ffverse/ffscrapr/issues/349" class="external-link">#349</a>)</li>
+<li>Fix hardcoded league year in all <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> default arguments, now uses <code><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">nflreadr::most_recent_season()</a></code> as the default upper bound. (resolves <a href="https://github.com/ffverse/ffscrapr/issues/347" class="external-link">#347</a>)</li>
 <li>Require nflreadr v1.2.0+ due to data repository change.</li>
 <li>
-<code><a href="../reference/dp_values.html">dp_values()</a></code> now explicitly returns rather than invisibly returns. (1.4.7.03)</li>
-<li>Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance. (1.4.7.04)</li>
-<li>Re-export <code><a href="https://nflreadr.nflverse.com/reference/sitrep.html" class="external-link">nflreadr::ffverse_sitrep()</a></code> and encourage usage in bug reporting. (1.4.7.05)</li>
-<li>Fix <code><a href="../reference/ff_transactions.html">ff_transactions.mfl_conn()</a></code> bug that did not return auction bids, resolves <a href="https://github.com/ffverse/ffscrapr/issues/354" class="external-link">#354</a> (1.4.7.06)</li>
+<code><a href="../reference/dp_values.html">dp_values()</a></code> now explicitly returns rather than invisibly returns.</li>
+<li>Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance.</li>
+<li>Fix <code><a href="../reference/ff_transactions.html">ff_transactions.mfl_conn()</a></code> bug that did not return auction bids, resolves <a href="https://github.com/ffverse/ffscrapr/issues/354" class="external-link">#354</a>.</li>
 <li>
-<code><a href="../reference/ff_league.html">ff_league.espn_conn()</a></code> now counts TQB when evaluating qb_type and qb_count, resolves <a href="https://github.com/ffverse/ffscrapr/issues/367" class="external-link">#367</a>. (1.4.7.07)</li>
+<code><a href="../reference/ff_league.html">ff_league.espn_conn()</a></code> now counts TQB when evaluating qb_type and qb_count, resolves <a href="https://github.com/ffverse/ffscrapr/issues/367" class="external-link">#367</a>.</li>
 <li>
-<code><a href="../reference/ff_starter_positions.html">ff_starter_positions.mfl_conn()</a></code> now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises. (v1.4.7.08)</li>
+<code><a href="../reference/ff_starter_positions.html">ff_starter_positions.mfl_conn()</a></code> now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises.</li>
 <li>
-<code><a href="../reference/sleeper_connect.html">sleeper_connect()</a></code> now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS. (1.4.7.09)</li>
+<code><a href="../reference/sleeper_connect.html">sleeper_connect()</a></code> now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS.</li>
 <li>
-<code><a href="../reference/ff_standings.html">ff_standings.mfl_conn()</a></code> changed to adapt to MFL API changes as documented in <a href="https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676" class="external-link">2022 API release notes</a>, resolves <a href="https://github.com/ffverse/ffscrapr/issues/366" class="external-link">#366</a>. (1.4.7.10)</li>
+<code><a href="../reference/ff_standings.html">ff_standings.mfl_conn()</a></code> changed to adapt to MFL API changes as documented in <a href="https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676" class="external-link">2022 API release notes</a>, resolves <a href="https://github.com/ffverse/ffscrapr/issues/366" class="external-link">#366</a></li>
 <li>
-<code><a href="../reference/ff_starters.html">ff_starters.sleeper_conn()</a></code> bugfixed for API change (last-scored-leg -&gt; leg) (1.4.7.11)</li>
+<code><a href="../reference/ff_starters.html">ff_starters.sleeper_conn()</a></code> bugfixed for API change (last-scored-leg -&gt; leg) resolves <a href="https://github.com/ffverse/ffscrapr/issues/379" class="external-link">#379</a></li>
 <li>
-<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> fixed for dev purrr issues. (1.4.7.12)</li>
+<code><a href="../reference/ff_scoring.html">ff_scoring()</a></code> fixed for dev purrr issues. resolved by <a href="https://github.com/ffverse/ffscrapr/issues/380" class="external-link">#380</a> (thank you <a href="https://github.com/hadley" class="external-link">@hadley</a>)</li>
+<li>
+<code><a href="../reference/ff_draftpicks.html">ff_draftpicks()</a></code> for sleeper now patched so that it has limited functionality, further work is required as detailed in <a href="https://github.com/ffverse/ffscrapr/issues/386" class="external-link">#386</a>.</li>
 <li>
 <code><a href="../reference/ff_transactions.html">ff_transactions.flea_conn()</a></code> bugfixed for infinite loop problem, resolves <a href="https://github.com/ffverse/ffscrapr/issues/356" class="external-link">#356</a> (thank you <a href="https://github.com/jdegregorio" class="external-link">@jdegregorio</a>!) (1.4.7.13)</li>
-</ul><hr></div>
+</ul></div>
+<div class="section level3">
+<h3 id="thanks-development-version">Thanks<a class="anchor" aria-label="anchor" href="#thanks-development-version"></a></h3>
+<p>Thank you to:</p>
+<p><a href="https://github.com/albtree" class="external-link">@albtree</a>, <a href="https://github.com/CaRdanski" class="external-link">@CaRdanski</a>, <a href="https://github.com/christianlohr9" class="external-link">@christianlohr9</a>, <a href="https://github.com/ganeshran" class="external-link">@ganeshran</a>, <a href="https://github.com/hadley" class="external-link">@hadley</a>, <a href="https://github.com/jdegregorio" class="external-link">@jdegregorio</a>, <a href="https://github.com/jdsdog10" class="external-link">@jdsdog10</a>, <a href="https://github.com/joeflan" class="external-link">@joeflan</a>, <a href="https://github.com/maatspencer" class="external-link">@maatspencer</a>, <a href="https://github.com/mcarman8" class="external-link">@mcarman8</a>, <a href="https://github.com/msavoca90" class="external-link">@msavoca90</a>, <a href="https://github.com/nickpietrantonio" class="external-link">@nickpietrantonio</a>, <a href="https://github.com/stranger9977" class="external-link">@stranger9977</a>, <a href="https://github.com/TheMathNinja" class="external-link">@TheMathNinja</a>, and <a href="https://github.com/WendiGhost" class="external-link">@WendiGhost</a> for their contributions to this release - feedback, issues, and PRs!</p>
+<hr></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.7" id="ffscrapr-147">ffscrapr 1.4.7<a class="anchor" aria-label="anchor" href="#ffscrapr-147"></a></h2><p class="text-muted">CRAN release: 2021-11-10</p>

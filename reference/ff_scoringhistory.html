@@ -107,19 +107,39 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, <span class="va">season</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for espn_conn</span></span>
-<span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">ff_scoringhistory</span><span class="op">(</span></span>
+<span>  <span class="va">conn</span>,</span>
+<span>  season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  scoring <span class="op">=</span> <span class="fu"><a href="ff_scoring.html">ff_scoring</a></span><span class="op">(</span><span class="va">conn</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for flea_conn</span></span>
 <span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for mfl_conn</span></span>
-<span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">ff_scoringhistory</span><span class="op">(</span></span>
+<span>  <span class="va">conn</span>,</span>
+<span>  season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  scoring <span class="op">=</span> <span class="fu"><a href="ff_scoring.html">ff_scoring</a></span><span class="op">(</span><span class="va">conn</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for sleeper_conn</span></span>
-<span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">ff_scoringhistory</span><span class="op">(</span></span>
+<span>  <span class="va">conn</span>,</span>
+<span>  season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  scoring <span class="op">=</span> <span class="fu"><a href="ff_scoring.html">ff_scoring</a></span><span class="op">(</span><span class="va">conn</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for template_conn</span></span>
-<span><span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">ff_scoringhistory</span><span class="op">(</span></span>
+<span>  <span class="va">conn</span>,</span>
+<span>  season <span class="op">=</span> <span class="fl">1999</span><span class="op">:</span><span class="fu">nflreadr</span><span class="fu">::</span><span class="fu"><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">most_recent_season</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  scoring <span class="op">=</span> <span class="fu"><a href="ff_scoring.html">ff_scoring</a></span><span class="op">(</span><span class="va">conn</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -135,6 +155,11 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <dt>...</dt>
 <dd><p>other arguments</p></dd>
 
+
+<dt>scoring</dt>
+<dd><p>a dataframe of scoring settings as created by <code><a href="ff_scoring.html">ff_scoring()</a></code>,
+default is to run <code><a href="ff_scoring.html">ff_scoring()</a></code> on the provided connection.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -145,11 +170,11 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
     <div class="section level2">
     <h2 id="methods-by-class-">Methods (by class)<a class="anchor" aria-label="anchor" href="#methods-by-class-"></a></h2>
     
-<ul><li><p><code>espn_conn</code>: ESPN: returns scoring history in a flat table, one row per player per week.</p></li>
-<li><p><code>flea_conn</code>: Fleaflicker: returns scoring history in a flat table, one row per player per week.</p></li>
-<li><p><code>mfl_conn</code>: MFL: returns scoring history in a flat table, one row per player per week.</p></li>
-<li><p><code>sleeper_conn</code>: Sleeper: returns scoring history in a flat table, one row per player per week.</p></li>
-<li><p><code>template_conn</code>: template: returns scoring history in a flat table, one row per player per week.</p></li>
+<ul><li><p><code>ff_scoringhistory(espn_conn)</code>: ESPN: returns scoring history in a flat table, one row per player per week.</p></li>
+<li><p><code>ff_scoringhistory(flea_conn)</code>: Fleaflicker: returns scoring history in a flat table, one row per player per week.</p></li>
+<li><p><code>ff_scoringhistory(mfl_conn)</code>: MFL: returns scoring history in a flat table, one row per player per week.</p></li>
+<li><p><code>ff_scoringhistory(sleeper_conn)</code>: Sleeper: returns scoring history in a flat table, one row per player per week.</p></li>
+<li><p><code>ff_scoringhistory(template_conn)</code>: template: returns scoring history in a flat table, one row per player per week.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
