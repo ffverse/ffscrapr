@@ -43,15 +43,15 @@ Please see \code{ff_scoringhistory()} for an alternative reconstruction.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns total points for season and average per game, for both current and previous season.
+\item \code{ff_playerscores(espn_conn)}: ESPN: returns total points for season and average per game, for both current and previous season.
 
-\item \code{flea_conn}: Fleaflicker: returns the season, season average, and standard deviation
+\item \code{ff_playerscores(flea_conn)}: Fleaflicker: returns the season, season average, and standard deviation
 
-\item \code{mfl_conn}: MFL: returns the player fantasy scores for each week (not the actual stats)
+\item \code{ff_playerscores(mfl_conn)}: MFL: returns the player fantasy scores for each week (not the actual stats)
 
-\item \code{sleeper_conn}: Sleeper: Deprecated their open API endpoint for player scores
+\item \code{ff_playerscores(sleeper_conn)}: Sleeper: Deprecated their open API endpoint for player scores
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

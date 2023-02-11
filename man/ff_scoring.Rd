@@ -33,17 +33,17 @@ This function returns a dataframe with detailed scoring settings for each league
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns scoring settings in a flat table, override positions have their own scoring.
+\item \code{ff_scoring(espn_conn)}: ESPN: returns scoring settings in a flat table, override positions have their own scoring.
 
-\item \code{flea_conn}: Fleaflicker: returns scoring settings in a flat table, one row per position per rule.
+\item \code{ff_scoring(flea_conn)}: Fleaflicker: returns scoring settings in a flat table, one row per position per rule.
 
-\item \code{mfl_conn}: MFL: returns scoring settings in a flat table, one row per position per rule.
+\item \code{ff_scoring(mfl_conn)}: MFL: returns scoring settings in a flat table, one row per position per rule.
 
-\item \code{sleeper_conn}: Sleeper: returns scoring settings in a flat table, one row per position per rule.
+\item \code{ff_scoring(sleeper_conn)}: Sleeper: returns scoring settings in a flat table, one row per position per rule.
 
-\item \code{template_conn}: Template: returns MFL style scoring settings in a flat table, one row per position per rule.
+\item \code{ff_scoring(template_conn)}: Template: returns MFL style scoring settings in a flat table, one row per position per rule.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

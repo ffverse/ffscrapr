@@ -38,15 +38,15 @@ This function returns a tidy dataframe with one row for every starter (and bench
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns who was started as well as what they scored.
+\item \code{ff_starters(espn_conn)}: ESPN: returns who was started as well as what they scored.
 
-\item \code{flea_conn}: Fleaflicker: returns who was started as well as what they scored.
+\item \code{ff_starters(flea_conn)}: Fleaflicker: returns who was started as well as what they scored.
 
-\item \code{mfl_conn}: MFL: returns the player fantasy scores for each week (not the actual stats)
+\item \code{ff_starters(mfl_conn)}: MFL: returns the player fantasy scores for each week (not the actual stats)
 
-\item \code{sleeper_conn}: Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.
+\item \code{ff_starters(sleeper_conn)}: Sleeper: returns only "who" was started, without any scoring/stats data. Only returns season specified in initial connection object.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

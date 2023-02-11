@@ -36,17 +36,17 @@ This function returns a tidy dataframe with positional lineup rules.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns min/max starters for each main player position
+\item \code{ff_starter_positions(espn_conn)}: ESPN: returns min/max starters for each main player position
 
-\item \code{flea_conn}: Fleaflicker: returns minimum and maximum starters for each player position.
+\item \code{ff_starter_positions(flea_conn)}: Fleaflicker: returns minimum and maximum starters for each player position.
 
-\item \code{mfl_conn}: MFL: returns minimum and maximum starters for each player position.
+\item \code{ff_starter_positions(mfl_conn)}: MFL: returns minimum and maximum starters for each player position.
 
-\item \code{sleeper_conn}: Sleeper: returns minimum and maximum starters for each player position.
+\item \code{ff_starter_positions(sleeper_conn)}: Sleeper: returns minimum and maximum starters for each player position.
 
-\item \code{template_conn}: Template: returns minimum and maximum starters for each player position.
+\item \code{ff_starter_positions(template_conn)}: Template: returns minimum and maximum starters for each player position.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

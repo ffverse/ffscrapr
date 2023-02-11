@@ -30,15 +30,15 @@ This function returns a tidy dataframe of common league settings, including deta
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns a summary of league features.
+\item \code{ff_league(espn_conn)}: ESPN: returns a summary of league features.
 
-\item \code{flea_conn}: Flea: returns a summary of league features.
+\item \code{ff_league(flea_conn)}: Flea: returns a summary of league features.
 
-\item \code{mfl_conn}: MFL: returns a summary of league features.
+\item \code{ff_league(mfl_conn)}: MFL: returns a summary of league features.
 
-\item \code{sleeper_conn}: Sleeper: returns a summary of league features.
+\item \code{ff_league(sleeper_conn)}: Sleeper: returns a summary of league features.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

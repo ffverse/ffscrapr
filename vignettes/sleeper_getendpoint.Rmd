@@ -41,11 +41,11 @@ library(purrr)
 library(glue)
 ```
 
-The [Sleeper API is pretty extensive](https://docs.sleeper.app). If there is something you'd like to access that's beyond the current scope of ffscrapr, you can use the lower-level "`sleeper_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
+The [Sleeper API is pretty extensive](https://docs.sleeper.com). If there is something you'd like to access that's beyond the current scope of ffscrapr, you can use the lower-level "`sleeper_getendpoint`" function to create a GET request and access the data, while still using the authentication and rate-limiting features I've already created. 
 
 Here is an example of how you can call one of the endpoints - in this case, let's pull Sleeper's trending players data! 
 
-We'll start by opening up this page, https://docs.sleeper.app/#trending-players, which is the documentation page for this particular endpoint. From here, we can see that Sleeper's documentation says the endpoint is: 
+We'll start by opening up this page, https://docs.sleeper.com/#trending-players, which is the documentation page for this particular endpoint. From here, we can see that Sleeper's documentation says the endpoint is: 
 
 `https://api.sleeper.app/v1/players/<sport>/trending/<type>?lookback_hours=<hours>&limit=<int>`
 

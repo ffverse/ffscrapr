@@ -101,7 +101,7 @@ print.sleeper_conn <- function(x, ...) {
 # DO NOT EXPORT
 #' Get Sleeper User ID
 #'
-#' Docs: https://docs.sleeper.app
+#' Docs: https://docs.sleeper.com
 #'
 #' @param user_name Sleeper username
 #'

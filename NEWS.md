@@ -158,8 +158,8 @@ The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also c
 The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to [Joe Sydlowski](https://twitter.com/JoeSydlowskiFF) for his contributions on scoring history (and everything else DynastyProcess!)
 
 ## New Features
-- `nflfastr_weekly()` imports weekly offensive statistics from nflfastR's [data repository](https://github.com/nflverse/nflfastR-data).
-- `nflfastr_rosters()` imports team rosters from nflfastR's [roster repository](https://github.com/nflverse/nflfastR-roster).
+- `nflfastr_weekly()` imports weekly offensive statistics from nflfastR's [data repository](https://github.com/nflverse/nflverse-data).
+- `nflfastr_rosters()` imports team rosters from nflfastR's [roster repository](https://github.com/nflverse/nflverse-rosters).
 - `ff_scoringhistory()` connects your league's scoring settings to the nflfastr data (c/o the functions above), and allows you to reconstruct historical scoring for your league!
 - `ff_starter_positions()` describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!
 
