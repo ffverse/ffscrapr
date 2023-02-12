@@ -36,15 +36,15 @@ This function returns a tidy dataframe of season-long fantasy team stats, includ
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns standings and points data.
+\item \code{ff_standings(espn_conn)}: ESPN: returns standings and points data.
 
-\item \code{flea_conn}: Fleaflicker: returns H2H/points/all-play/best-ball data in a table.
+\item \code{ff_standings(flea_conn)}: Fleaflicker: returns H2H/points/all-play/best-ball data in a table.
 
-\item \code{mfl_conn}: MFL: returns H2H/points/all-play/best-ball data in a table.
+\item \code{ff_standings(mfl_conn)}: MFL: returns H2H/points/all-play/best-ball data in a table.
 
-\item \code{sleeper_conn}: Sleeper: returns all standings and points data and manually calculates allplay results.
+\item \code{ff_standings(sleeper_conn)}: Sleeper: returns all standings and points data and manually calculates allplay results.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

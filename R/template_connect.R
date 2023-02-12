@@ -8,7 +8,7 @@
 #' - `half_ppr`: same as `ppr` but with 0.5 points per reception
 #' - `zero_ppr`: same as `ppr` but with 0 points per reception
 #' - `te_prem`: same as `ppr` but TEs get 1.5 points per reception
-#' - `sfb11`: scoring as defined here <https://scottfishbowl.com/2021/rules.php>
+#' - `sfb11`: SFB11 scoring as defined by <https://scottfishbowl.com>
 #'
 #' Roster settings defined here are:
 #'

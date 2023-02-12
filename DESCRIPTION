@@ -1,7 +1,7 @@
 Type: Package
 Package: ffscrapr
 Title: API Client for Fantasy Football League Platforms
-Version: 1.4.7.13
+Version: 1.4.8
 Authors@R: 
     c(person(given = "Tan",
              family = "Ho",
@@ -23,7 +23,7 @@ License: MIT + file LICENSE
 URL: https://ffscrapr.ffverse.com,
     https://github.com/ffverse/ffscrapr,
     https://api.myfantasyleague.com/2020/api_info,
-    https://docs.sleeper.app,
+    https://docs.sleeper.com,
     https://www.fleaflicker.com/api-docs/index.html,
     https://www.espn.com/fantasy/,
     https://www.nflfastr.com/reference/load_player_stats.html
@@ -61,5 +61,5 @@ LazyData: true
 VignetteBuilder:
     knitr
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)

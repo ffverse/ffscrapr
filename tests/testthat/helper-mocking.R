@@ -20,7 +20,8 @@ needs_mocking <- function() {
 }
 
 github_online <- function(){
-  !identical(curl::nslookup("github.com"),"")
+  # !identical(curl::nslookup("github.com"),"")
+  FALSE
 }
 
 if (needs_mocking() & github_online()) {

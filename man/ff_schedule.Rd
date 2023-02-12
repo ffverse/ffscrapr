@@ -34,15 +34,15 @@ This function returns a tidy dataframe with one row for every team for every wee
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: returns schedule data, one row for every franchise for every week. Completed games have result data.
+\item \code{ff_schedule(espn_conn)}: ESPN: returns schedule data, one row for every franchise for every week. Completed games have result data.
 
-\item \code{flea_conn}: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.
+\item \code{ff_schedule(flea_conn)}: Flea: returns schedule data, one row for every franchise for every week. Completed games have result data.
 
-\item \code{mfl_conn}: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
+\item \code{ff_schedule(mfl_conn)}: MFL: returns schedule data, one row for every franchise for every week. Completed games have result data.
 
-\item \code{sleeper_conn}: Sleeper: returns all schedule data
+\item \code{ff_schedule(sleeper_conn)}: Sleeper: returns all schedule data
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

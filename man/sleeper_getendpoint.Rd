@@ -21,7 +21,7 @@ The endpoint names and HTTP parameters (i.e. argument names) are CASE SENSITIVE 
 Check out the vignette for more details and example usage.
 }
 \seealso{
-\url{https://docs.sleeper.app}
+\url{https://docs.sleeper.com}
 
 \code{vignette("sleeper_getendpoint")}
 }

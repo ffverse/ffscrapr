@@ -13,6 +13,6 @@
 sleeper userID
 }
 \description{
-Docs: https://docs.sleeper.app
+Docs: https://docs.sleeper.com
 }
 \keyword{internal}

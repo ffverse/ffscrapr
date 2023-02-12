@@ -36,15 +36,15 @@ This function returns a tidy dataframe of team rosters
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{espn_conn}: ESPN: Returns all roster data.
+\item \code{ff_rosters(espn_conn)}: ESPN: Returns all roster data.
 
-\item \code{flea_conn}: Fleaflicker: Returns roster data (minus age as of right now)
+\item \code{ff_rosters(flea_conn)}: Fleaflicker: Returns roster data (minus age as of right now)
 
-\item \code{mfl_conn}: MFL: returns roster data
+\item \code{ff_rosters(mfl_conn)}: MFL: returns roster data
 
-\item \code{sleeper_conn}: Sleeper: Returns all roster data.
+\item \code{ff_rosters(sleeper_conn)}: Sleeper: Returns all roster data.
+
 }}
-
 \examples{
 \donttest{
 try({ # try only shown here because sometimes CRAN checks are weird

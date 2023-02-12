@@ -12,7 +12,7 @@
     date <- Sys.Date()
   }
 
-  if (class(date) != "Date") {
+  if (!inherits(date, "Date")) {
     date <- as.Date(date)
   }
 

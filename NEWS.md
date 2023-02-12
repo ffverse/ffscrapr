@@ -1,20 +1,23 @@
-# ffscrapr (development version)
+# ffscrapr 1.4.8
+
+An emergency patch to get this back onto CRAN, and packaging up some longstanding bugfixes also. Will need to revisit testing policy in future releases.
 
 ## Fixes
-- Fix `ff_league.mfl_conn()` bug which created duplicate rows for leagues with both an email auction and email draft. (v1.4.7.01) (resolves #349)
-- Fix hardcoded league year in all `ff_scoringhistory()` default arguments, now uses `nflreadr::most_recent_season()` as the default upper bound. (v1.4.7.02) (resolves #347)
+- Fix `ff_league.mfl_conn()` bug which created duplicate rows for leagues with both an email auction and email draft. (resolves #349)
+- Fix hardcoded league year in all `ff_scoringhistory()` default arguments, now uses `nflreadr::most_recent_season()` as the default upper bound.(resolves #347)
 - Require nflreadr v1.2.0+ due to data repository change.
-- `dp_values()` now explicitly returns rather than invisibly returns. (1.4.7.03)
-- Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance. (1.4.7.04)
-- Re-export `nflreadr::ffverse_sitrep()` and encourage usage in bug reporting. (1.4.7.05)
-- Fix `ff_transactions.mfl_conn()` bug that did not return auction bids, resolves #354 (1.4.7.06)
-- `ff_league.espn_conn()` now counts TQB when evaluating qb_type and qb_count, resolves #367. (1.4.7.07)
-- `ff_starter_positions.mfl_conn()` now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises. (v1.4.7.08)
-- `sleeper_connect()` now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS. (1.4.7.09)
-- `ff_standings.mfl_conn()` changed to adapt to MFL API changes as documented in [2022 API release notes ](https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676), resolves #366. (1.4.7.10)
-- `ff_starters.sleeper_conn()` bugfixed for API change (last-scored-leg -> leg) (1.4.7.11)
-- `ff_scoring()` fixed for dev purrr issues. (1.4.7.12)
-- `ff_transactions.flea_conn()` bugfixed for infinite loop problem, resolves #356 (thank you @jdegregorio!) (1.4.7.13)
+- `dp_values()` now explicitly returns rather than invisibly returns.
+- Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance.
+- Re-export `nflreadr::ffverse_sitrep()` and encourage usage in bug reporting.
+- Fix `ff_transactions.mfl_conn()` bug that did not return auction bids, resolves #354
+- `ff_league.espn_conn()` now counts TQB when evaluating qb_type and qb_count, resolves #367
+- `ff_starter_positions.mfl_conn()` now splits RB+WR and RB+WR+TE positions into their own positional rows and resummarises
+- `sleeper_connect()` now warns if you use a non-character league_id parameter - Sleeper league IDs are too long (18 characters) and longdouble support is inconsistent from OS to OS
+- `ff_standings.mfl_conn()` changed to adapt to MFL API changes as documented in [2022 API release notes ](https://api.myfantasyleague.com/2022/site_news?ARTICLE=1658765676), resolves #366
+- `ff_starters.sleeper_conn()` bugfixed for API change (last-scored-leg -> leg)
+- `ff_scoring()` fixed for dev purrr issues
+- `ff_transactions.flea_conn()` bugfixed for infinite loop problem, resolves #356 (thank you @jdegregorio!)
+- 
 
 ---
 
@@ -155,8 +158,8 @@ The main goal of v1.4.1 is to patch some issues raised by CRAN checks and also c
 The main goal of v1.4.0 is to add preliminary support for connecting ffscrapr to nflfastR weekly data, and to clean up bugs from v1.3.0. Huge thanks goes to [Joe Sydlowski](https://twitter.com/JoeSydlowskiFF) for his contributions on scoring history (and everything else DynastyProcess!)
 
 ## New Features
-- `nflfastr_weekly()` imports weekly offensive statistics from nflfastR's [data repository](https://github.com/nflverse/nflfastR-data).
-- `nflfastr_rosters()` imports team rosters from nflfastR's [roster repository](https://github.com/nflverse/nflfastR-roster).
+- `nflfastr_weekly()` imports weekly offensive statistics from nflfastR's [data repository](https://github.com/nflverse/nflverse-data).
+- `nflfastr_rosters()` imports team rosters from nflfastR's [roster repository](https://github.com/nflverse/nflverse-rosters).
 - `ff_scoringhistory()` connects your league's scoring settings to the nflfastr data (c/o the functions above), and allows you to reconstruct historical scoring for your league!
 - `ff_starter_positions()` describes the starter rules for each player/position, including min and max starters at each position accounting for flex spots. This should be useful for calculating things like value over replacement!
 

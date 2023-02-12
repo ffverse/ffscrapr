@@ -27,7 +27,7 @@ Scoring types defined here are:
 \item \code{half_ppr}: same as \code{ppr} but with 0.5 points per reception
 \item \code{zero_ppr}: same as \code{ppr} but with 0 points per reception
 \item \code{te_prem}: same as \code{ppr} but TEs get 1.5 points per reception
-\item \code{sfb11}: scoring as defined here \url{https://scottfishbowl.com/2021/rules.php}
+\item \code{sfb11}: SFB11 scoring as defined by \url{https://scottfishbowl.com}
 }
 
 Roster settings defined here are:
