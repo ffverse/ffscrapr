@@ -1,3 +1,8 @@
+# ffscrapr (devel)
+
+- `sleeper_draft()` introduced to retrieve Sleeper drafts by ID - this better 
+supports mock draft retrieval also. (#395) (v1.4.8.01)
+
 # ffscrapr 1.4.8
 
 An emergency patch to get this back onto CRAN, and packaging up some longstanding bugfixes also. Will need to revisit testing policy in future releases.

@@ -25,9 +25,11 @@ ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
   if (!is.null(df_leagues$franchise_id)) {
     df <- df_leagues %>%
       tibble::as_tibble() %>%
-      dplyr::select("league_id",
+      dplyr::select(
+        "league_id",
         "league_name" = "name",
-        "franchise_id", "franchise_name",
+        "franchise_id",
+        "franchise_name",
         "league_url" = "url"
       )
   }
@@ -37,10 +39,12 @@ ff_userleagues.mfl_conn <- function(conn, season = NULL, ...) {
   if (is.null(df_leagues$franchise_id)) {
     df <- df_leagues %>%
       tibble::tibble() %>%
-      tidyr::hoist(1,
-        "league_id",
+      tidyr::hoist(
+        .col = 1,
+        "league_id" = "league_id",
         "league_name" = "name",
-        "franchise_id", "franchise_name",
+        "franchise_id" = "franchise_id",
+        "franchise_name" = "franchise_name",
         "league_url" = "url"
       )
   }
