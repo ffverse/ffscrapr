@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.01</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>ESPN: Basics</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-02-12</h4>
+            <h4 data-toc-skip class="date">2023-06-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/espn_basics.Rmd" class="external-link"><code>vignettes/espn_basics.Rmd</code></a></small>
       <div class="d-none name"><code>espn_basics.Rmd</code></div>
@@ -194,16 +194,16 @@ half ppr scoring, and rosters about 240 players.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_rosters</span><span class="op">)</span> <span class="co"># quick snapshot of rosters</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 10</span></span></span>
-<span><span class="co">#&gt;   franchise_id franchise_name playe…¹ playe…² team  pos   eligi…³ status acqui…⁴</span></span>
-<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4<span style="text-decoration: underline;">036</span>348 Michae… DAL   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4<span style="text-decoration: underline;">036</span>131 Noah F… DEN   TE    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod  -<span style="color: #BB0000; text-decoration: underline;">16</span><span style="color: #BB0000;">003</span> Bears … CHI   DST   &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod   <span style="text-decoration: underline;">15</span>920 Latavi… NOS   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 3<span style="text-decoration: underline;">055</span>899 Harris… KCC   K     &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4<span style="text-decoration: underline;">241</span>372 Marqui… BAL   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 1 more variable: acquisition_date &lt;dttm&gt;, and abbreviated variable</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   names ¹​player_id, ²​player_name, ³​eligible_pos, ⁴​acquisition_type</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span></span>
+<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod   4<span style="text-decoration: underline;">036</span>348 Michael Gallup  DAL   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod   4<span style="text-decoration: underline;">036</span>131 Noah Fant       DEN   TE    <span style="color: #949494;">&lt;chr [6]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod    -<span style="color: #BB0000; text-decoration: underline;">16</span><span style="color: #BB0000;">003</span> Bears D/ST      CHI   DST   <span style="color: #949494;">&lt;chr [3]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod     <span style="text-decoration: underline;">15</span>920 Latavius Murray NOS   RB    <span style="color: #949494;">&lt;chr [6]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod   3<span style="text-decoration: underline;">055</span>899 Harrison Butker KCC   K     <span style="color: #949494;">&lt;chr [3]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod   4<span style="text-decoration: underline;">241</span>372 Marquise Brown  BAL   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   acquisition_date &lt;dttm&gt;</span></span></span></code></pre></div>
 <div class="section level2">
 <h2 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a>
 </h2>
@@ -234,17 +234,17 @@ player values.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sucioboys_values</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 14</span></span></span>
-<span><span class="co">#&gt;   franchise_id franchise_name playe…¹ playe…² team  pos   eligi…³ status acqui…⁴</span></span>
-<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4242335 Jonath… IND   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4241985 J.K. D… BAL   RB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod 2976316 Michae… NOS   WR    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod 4040715 Jalen … PHI   QB    &lt;chr&gt;   NORMAL ADD    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 4239993 Tee Hi… CIN   WR    &lt;chr&gt;   NORMAL ADD    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4241479 Tua Ta… MIA   QB    &lt;chr&gt;   NORMAL DRAFT  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 5 more variables: acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ecr_pos &lt;dbl&gt;, value_2qb &lt;int&gt;, and abbreviated variable names ¹​player_id,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​player_name, ³​eligible_pos, ⁴​acquisition_type</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   franchise_id franchise_name player_id player_name     team  pos   eligible_pos</span></span>
+<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>            1 The Early GGod 4242335   Jonathan Taylor IND   RB    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>            1 The Early GGod 4241985   J.K. Dobbins    BAL   RB    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>            1 The Early GGod 2976316   Michael Thomas  NOS   WR    <span style="color: #949494;">&lt;chr [7]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>            1 The Early GGod 4040715   Jalen Hurts     PHI   QB    <span style="color: #949494;">&lt;chr [5]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>            1 The Early GGod 4239993   Tee Higgins     CIN   WR    <span style="color: #949494;">&lt;chr [8]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>            1 The Early GGod 4241479   Tua Tagovailoa  MIA   QB    <span style="color: #949494;">&lt;chr [5]&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: status &lt;chr&gt;, acquisition_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   acquisition_date &lt;dttm&gt;, age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   value_2qb &lt;int&gt;</span></span></span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">sucioboys_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
@@ -324,20 +324,19 @@ who might be looking to offload an older veteran!</p>
 <span><span class="va">age_summary</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 10</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [10]</span></span></span>
-<span><span class="co">#&gt;    franchi…¹ franc…² age_QB age_RB age_TE age_WR count…³ count…⁴ count…⁵ count…⁶</span></span>
-<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>         1 <span style="color: #949494;">"</span>The E…   23.5   22.4   24.7   26         4       6       3       7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>         2 <span style="color: #949494;">"</span>Coom …   28.7   25.9   26.8   25.6       4       7       3       6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>         3 <span style="color: #949494;">"</span>PAKI …   29.1   25.3   23.9   25.9       3       6       2       9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>         4 <span style="color: #949494;">"</span>I'm A…   35.4   24.8   28.7   27.4       2       5       2       8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>         5 <span style="color: #949494;">"</span>The J…   25     24.6   31.6   25.3       3       8       2       7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>         6 <span style="color: #949494;">"</span>OBJ's…   24.8   24.7   25.3   23.4       3       6       2       7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>         7 <span style="color: #949494;">"</span>Tony …   24.8   25.3   27.8   26.6       3       5       3       6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>         8 <span style="color: #949494;">"</span>Big C…   23.5   26     27.2   27.1       3       7       2       6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>         9 <span style="color: #949494;">"</span>RAFI …   35.1   25.9   26.4   24.4       3       5       3       8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>        10 <span style="color: #949494;">"</span>Austi…   32.2   24.4   32.2   25.5       3       5       3       5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​franchise_id, ²​franchise_name, ³​count_QB,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​count_RB, ⁵​count_TE, ⁶​count_WR</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span></span>
+<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>            1 <span style="color: #949494;">"</span>The Early GGod<span style="color: #949494;">"</span>     23.5   22.4   24.7   26          4        6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>            2 <span style="color: #949494;">"</span>Coom  Dumpster<span style="color: #949494;">"</span>     28.7   25.9   26.8   25.6        4        7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>            3 <span style="color: #949494;">"</span>PAKI STANS<span style="color: #949494;">"</span>         29.1   25.3   23.9   25.9        3        6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>            4 <span style="color: #949494;">"</span>I'm Also Sad <span style="color: #949494;">"</span>      35.4   24.8   28.7   27.4        2        5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>            5 <span style="color: #949494;">"</span>The Juggernaut<span style="color: #949494;">"</span>     25     24.6   31.6   25.3        3        8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>            6 <span style="color: #949494;">"</span>OBJ's Personal P…   24.8   24.7   25.3   23.4        3        6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>            7 <span style="color: #949494;">"</span>Tony El Tigre<span style="color: #949494;">"</span>      24.8   25.3   27.8   26.6        3        5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>            8 <span style="color: #949494;">"</span>Big Coomers<span style="color: #949494;">"</span>        23.5   26     27.2   27.1        3        7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>            9 <span style="color: #949494;">"</span>RAFI CUNADO<span style="color: #949494;">"</span>        35.1   25.9   26.4   24.4        3        5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           10 <span style="color: #949494;">"</span>Austin 🐐Drew Lo…   32.2   24.4   32.2   25.5        3        5</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>

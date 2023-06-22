@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.01</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,12 +100,12 @@
 <div class="section level3">
 <h3 id="fixes-1-4-8">Fixes<a class="anchor" aria-label="anchor" href="#fixes-1-4-8"></a></h3>
 <ul><li>Fix <code><a href="../reference/ff_league.html">ff_league.mfl_conn()</a></code> bug which created duplicate rows for leagues with both an email auction and email draft. (resolves <a href="https://github.com/ffverse/ffscrapr/issues/349" class="external-link">#349</a>)</li>
-<li>Fix hardcoded league year in all <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> default arguments, now uses <code><a href="https://nflreadr.nflverse.com/reference/latest_season.html" class="external-link">nflreadr::most_recent_season()</a></code> as the default upper bound.(resolves <a href="https://github.com/ffverse/ffscrapr/issues/347" class="external-link">#347</a>)</li>
+<li>Fix hardcoded league year in all <code><a href="../reference/ff_scoringhistory.html">ff_scoringhistory()</a></code> default arguments, now uses <code><a href="https://rdrr.io/pkg/nflreadr/man/latest_season.html" class="external-link">nflreadr::most_recent_season()</a></code> as the default upper bound.(resolves <a href="https://github.com/ffverse/ffscrapr/issues/347" class="external-link">#347</a>)</li>
 <li>Require nflreadr v1.2.0+ due to data repository change.</li>
 <li>
 <code><a href="../reference/dp_values.html">dp_values()</a></code> now explicitly returns rather than invisibly returns.</li>
 <li>Simplified GitHub repo to a GitHub Flow structure rather than a Git Flow structure for ease of maintenance.</li>
-<li>Re-export <code><a href="https://nflreadr.nflverse.com/reference/sitrep.html" class="external-link">nflreadr::ffverse_sitrep()</a></code> and encourage usage in bug reporting.</li>
+<li>Re-export <code><a href="https://rdrr.io/pkg/nflreadr/man/sitrep.html" class="external-link">nflreadr::ffverse_sitrep()</a></code> and encourage usage in bug reporting.</li>
 <li>Fix <code><a href="../reference/ff_transactions.html">ff_transactions.mfl_conn()</a></code> bug that did not return auction bids, resolves <a href="https://github.com/ffverse/ffscrapr/issues/354" class="external-link">#354</a></li>
 <li>
 <code><a href="../reference/ff_league.html">ff_league.espn_conn()</a></code> now counts TQB when evaluating qb_type and qb_count, resolves <a href="https://github.com/ffverse/ffscrapr/issues/367" class="external-link">#367</a></li>

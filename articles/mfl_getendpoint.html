@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.01</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>MFL: Get Endpoint</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-02-12</h4>
+            <h4 data-toc-skip class="date">2023-06-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/mfl_getendpoint.Rmd" class="external-link"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
       <div class="d-none name"><code>mfl_getendpoint.Rmd</code></div>
@@ -240,16 +240,15 @@ the content from there, but you can use base R subsetting or
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span></span>
-<span><span class="co">#&gt;   timestamp  franchise_id willGiveUp inExcha…¹ franc…² playe…³ pos     age team </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1574520555 0001         7394       <span style="color: #949494;">"</span>anyone … @JohnB… Rivers… QB     41.2 LAC  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1574520555 0001         13128      <span style="color: #949494;">"</span>anyone … @JohnB… Cook, … RB     27.5 MIN  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1580535809 0003         13319      <span style="color: #949494;">""</span>        The Ac… Jones,… RB     28.2 GBP  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1580535809 0003         13139      <span style="color: #949494;">""</span>        The Ac… Willia… RB     27.9 GBP  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1580535809 0003         11675      <span style="color: #949494;">""</span>        The Ac… Adams,… WR     30.1 GBP  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1580572165 0004         12171      <span style="color: #949494;">""</span>        Kevin … Johnso… RB     31.2 ARI  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​inExchangeFor, ²​franchise_name,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ³​player_name</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   timestamp  franchise_id willGiveUp inExchangeFor    franchise_name player_name</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1574520555 0001         7394       <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Rivers, Ph…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1574520555 0001         13128      <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Cook, Dalv…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1580535809 0003         13319      <span style="color: #949494;">""</span>               The Accountant Jones, Aar…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1580535809 0003         13139      <span style="color: #949494;">""</span>               The Accountant Williams, …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1580535809 0003         11675      <span style="color: #949494;">""</span>               The Accountant Adams, Dav…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1580572165 0004         12171      <span style="color: #949494;">""</span>               Kevin Cutillo  Johnson, D…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

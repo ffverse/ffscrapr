@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.01</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,24 +147,23 @@
 <span class="r-in"><span>  <span class="fu">ff_franchises</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name     franc…¹ logo  waive…² user_id user_…³ user_…⁴</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1 Rushin' Collusion  RC      http…       3 {6CE35… Aaron … Jack_a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            2 Gurleys Gone Wild  GGW     http…       6 {74ADB… ian ja… ianjaap</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            3 The Name's Mage    Mage    http…      12 {141C9… Colin … tksdev…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            4 dlp:: thoriyan     thor    http…       5 {1E6BB… H Tan   tanho63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>            5 No Ultrasmurfs Al… ALH     http…       9 {E88F5… Alex Tu No Ult…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>            6 Dak Street Boys    DSB     http…      11 {441A5… I Guess Americ…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            7 Kung-Fu Kenny      KDOT    http…      10 {C6050… Raheel… PolarR…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>            8 Sticky Simians     LEL     http…       4 {599F7… Taylor… Monkey…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            9 The Wright Stuff   TWS     <span style="color: #BB0000;">NA</span>          8 {F831B… Adam K… Klaelm…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           10 Too Many Cooks     COOK    http…       7 {C9AE3… K R     eidolo…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>           11 Team Typhon        TYPH    http…      14 {070C0… Kade W… Typhon…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>           12 Homicidal Hicks    HH      http…       1 {CBF26… Travis… Kai Sh…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>           13 Baby You Can Driv… POKE    http…      13 {A5DC8… D R     phishc…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>           14 Boralus Booty      BB      http…       2 {1778D… Willia… Cephir…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​franchise_abbrev, ²​waiver_order,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ³​user_name, ⁴​user_nickname</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name       franchise_abbrev logo  waiver_order user_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1 Rushin' Collusion    RC               http…            3 {6CE35…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            2 Gurleys Gone Wild    GGW              http…            6 {74ADB…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            3 The Name's Mage      Mage             http…           12 {141C9…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            4 dlp:: thoriyan       thor             http…            5 {1E6BB…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>            5 No Ultrasmurfs Allo… ALH              http…            9 {E88F5…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>            6 Dak Street Boys      DSB              http…           11 {441A5…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            7 Kung-Fu Kenny        KDOT             http…           10 {C6050…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>            8 Sticky Simians       LEL              http…            4 {599F7…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>            9 The Wright Stuff     TWS              <span style="color: #BB0000;">NA</span>               8 {F831B…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           10 Too Many Cooks       COOK             http…            7 {C9AE3…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>           11 Team Typhon          TYPH             http…           14 {070C0…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>           12 Homicidal Hicks      HH               http…            1 {CBF26…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>           13 Baby You Can Drive … POKE             http…           13 {A5DC8…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span>           14 Boralus Booty        BB               http…            2 {1778D…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: user_name &lt;chr&gt;, user_nickname &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
@@ -173,23 +172,22 @@
 <span class="r-in"><span>  <span class="fu">ff_franchises</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 12 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    division_id divisio…¹ franc…² franc…³ franc…⁴ franc…⁵ user_id user_…⁶ user_…⁷</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      <span style="text-decoration: underline;">606</span>681 JDL North 1<span style="text-decoration: underline;">373</span>501 Midgar… https:… MG      1<span style="text-decoration: underline;">031</span>700 Darry   <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      <span style="text-decoration: underline;">606</span>681 JDL North 1<span style="text-decoration: underline;">371</span>776 Winter… https:… WH       <span style="text-decoration: underline;">894</span>210 Mitchw… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      <span style="text-decoration: underline;">606</span>681 JDL North 1<span style="text-decoration: underline;">373</span>973 Red Ri… https:… RR      1<span style="text-decoration: underline;">148</span>208 Ldub32  <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      <span style="text-decoration: underline;">606</span>681 JDL North 1<span style="text-decoration: underline;">373</span>991 Top Ci… https:… TC      1<span style="text-decoration: underline;">032</span>237 Sirhur… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      <span style="text-decoration: underline;">606</span>682 JDL East  1<span style="text-decoration: underline;">373</span>475 Winter… https:… WD       <span style="text-decoration: underline;">749</span>239 syd12n… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      <span style="text-decoration: underline;">606</span>682 JDL East  1<span style="text-decoration: underline;">373</span>480 Golden… https:… GC       <span style="text-decoration: underline;">752</span>341 DieNas… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      <span style="text-decoration: underline;">606</span>682 JDL East  1<span style="text-decoration: underline;">374</span>252 Centra… https:… CC       <span style="text-decoration: underline;">751</span>687 noelbo… https:…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      <span style="text-decoration: underline;">606</span>682 JDL East  1<span style="text-decoration: underline;">374</span>255 Mushro… https:… MC       <span style="text-decoration: underline;">749</span>720 Diabet… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      <span style="text-decoration: underline;">606</span>683 JDL South 1<span style="text-decoration: underline;">373</span>970 Bamend… https:… BH      1<span style="text-decoration: underline;">032</span>089 greate… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      <span style="text-decoration: underline;">606</span>683 JDL South 1<span style="text-decoration: underline;">373</span>993 Boomto… https:… BS      1<span style="text-decoration: underline;">142</span>313 Foxtro… https:…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>      <span style="text-decoration: underline;">606</span>683 JDL South 1<span style="text-decoration: underline;">374</span>315 Shangh… <span style="color: #BB0000;">NA</span>      SC      1<span style="text-decoration: underline;">032</span>619 Commie… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>      <span style="text-decoration: underline;">606</span>684 JDL West  1<span style="text-decoration: underline;">373</span>883 Manito… <span style="color: #BB0000;">NA</span>      MM      1<span style="text-decoration: underline;">000</span>915 Fonduc… <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: user_lastlogin &lt;dttm&gt;, and abbreviated variable names</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​division_name, ²​franchise_id, ³​franchise_name, ⁴​franchise_logo,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁵​franchise_abbrev, ⁶​user_name, ⁷​user_avatar</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    division_id division_name franchise_id franchise_name          franchise_logo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      <span style="text-decoration: underline;">606</span>681 JDL North          1<span style="text-decoration: underline;">373</span>501 Midgard Gallows         https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      <span style="text-decoration: underline;">606</span>681 JDL North          1<span style="text-decoration: underline;">371</span>776 Winter Hill Black Sham… https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      <span style="text-decoration: underline;">606</span>681 JDL North          1<span style="text-decoration: underline;">373</span>973 Red River Land Thunder  https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      <span style="text-decoration: underline;">606</span>681 JDL North          1<span style="text-decoration: underline;">373</span>991 Top City Terrors        https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      <span style="text-decoration: underline;">606</span>682 JDL East           1<span style="text-decoration: underline;">373</span>475 Winterfell Dire Wolves  https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      <span style="text-decoration: underline;">606</span>682 JDL East           1<span style="text-decoration: underline;">373</span>480 Goldenrod City Nightma… https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      <span style="text-decoration: underline;">606</span>682 JDL East           1<span style="text-decoration: underline;">374</span>252 Central City Crusaders  https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      <span style="text-decoration: underline;">606</span>682 JDL East           1<span style="text-decoration: underline;">374</span>255 Mushroom City Karts     https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      <span style="text-decoration: underline;">606</span>683 JDL South          1<span style="text-decoration: underline;">373</span>970 Bamenda Herd            https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      <span style="text-decoration: underline;">606</span>683 JDL South          1<span style="text-decoration: underline;">373</span>993 Boomtown Sly Foxes      https://s3.am…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>      <span style="text-decoration: underline;">606</span>683 JDL South          1<span style="text-decoration: underline;">374</span>315 Shanghai Communists     <span style="color: #BB0000;">NA</span>            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>      <span style="text-decoration: underline;">606</span>684 JDL West           1<span style="text-decoration: underline;">373</span>883 Manitoba Marmots        <span style="color: #BB0000;">NA</span>            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: franchise_abbrev &lt;chr&gt;, user_id &lt;int&gt;, user_name &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   user_avatar &lt;chr&gt;, user_lastlogin &lt;dttm&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
@@ -198,23 +196,23 @@
 <span class="r-in"><span>  <span class="fu">ff_franchises</span><span class="op">(</span><span class="va">ssb_conn</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name     bbidAvailableBal…¹ waive…² icon  logo  abbrev</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu       159.00             1       http… http… PIKA  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0002         Team Simon Belmont 99.00              7       http… http… SIMN  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0003         Team Donkey Kong   50.00              6       http… http… DK    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0004         Team Ice Climbers  0.00               5       http… http… ICE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0005         Team Dr. Mario     84.00              4       http… http… DRM   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0006         Team King Dedede   87.00              10      http… http… KDDD  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0007         Team Kirby         40.00              8       http… http… KRBY  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0008         Team Bowser        0.00               9       http… http… BWSR  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0009         Team Link          81.00              13      http… http… LINK  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0010         Team Yoshi         0.00               12      http… http… YSHI  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 0011         Team Diddy Kong    173.00             11      http… http… DDY   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 0012         Team Mewtwo        0.00               3       http… http… MEW2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 0013         Team Ness          0.00               2       http… http… NESS  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 0014         Team Luigi         0.00               14      http… http… LUIG  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​bbidAvailableBalance, ²​waiverSortOrder</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name  waiverSortOrder bbidAvailableBalance logo  icon </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu    1               159.00               http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0002         Team Simon Bel… 7               99.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0003         Team Donkey Ko… 6               50.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0004         Team Ice Climb… 5               0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0005         Team Dr. Mario  4               84.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0006         Team King Dede… 10              87.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0007         Team Kirby      8               40.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0008         Team Bowser     9               0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0009         Team Link       13              81.00                http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0010         Team Yoshi      12              0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 0011         Team Diddy Kong 11              173.00               http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 0012         Team Mewtwo     3               0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 0013         Team Ness       2               0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 0014         Team Luigi      14              0.00                 http… http…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: abbrev &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
