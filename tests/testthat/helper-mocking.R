@@ -16,7 +16,8 @@ library(checkmate)
 # as they change on CRAN (and hold API responses constant).
 
 needs_mocking <- function() {
-  !identical(Sys.getenv("MOCK_BYPASS"), "true")
+  # !identical(Sys.getenv("MOCK_BYPASS"), "true")
+  FALSE
 }
 
 github_online <- function(){

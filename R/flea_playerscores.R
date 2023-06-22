@@ -71,9 +71,8 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
     ) %>%
     dplyr::mutate(
       dplyr::across(
-        c("score_total", "score_avg", "score_sd"),
-        purrr::map_dbl,
-        ~ purrr::pluck(.x, "value", .default = NA) %>% round(2)
+        .cols = c("score_total", "score_avg", "score_sd"),
+        .fns = ~ purrr::map_dbl(.x, ~purrr::pluck(.x, "value", .default = NA) %>% round(2))
       ),
       games = (.data$score_total / .data$score_avg) %>% round()
     ) %>%

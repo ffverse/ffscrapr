@@ -1,17 +1,17 @@
 test_that("ff_scoringhistory returns a tibble of player scores", {
   local_mock_api()
-
-  if (!identical(Sys.getenv("MOCK_BYPASS"), "true")) {
-    testthat::local_mock(
-      nflfastr_weekly = function(seasons, type) {
-        if(type == "offense") return(readRDS(file.path(cache_path, "gh_nflfastr/player_stats.rds")))
-        if(type == "kicking") return(readRDS(file.path(cache_path, "gh_nflfastr/kicker_stats.rds")))
-        },
-      nflfastr_rosters = function(seasons) {
-        purrr::map_df(seasons, ~ readRDS(file.path(cache_path, glue::glue("gh_nflfastr/roster_{.x}.rds"))))
-      }
-    )
-  }
+#
+#   if (!identical(Sys.getenv("MOCK_BYPASS"), "true")) {
+#     testthat::local_mock(
+#       nflfastr_weekly = function(seasons, type) {
+#         if(type == "offense") return(readRDS(file.path(cache_path, "gh_nflfastr/player_stats.rds")))
+#         if(type == "kicking") return(readRDS(file.path(cache_path, "gh_nflfastr/kicker_stats.rds")))
+#         },
+#       nflfastr_rosters = function(seasons) {
+#         purrr::map_df(seasons, ~ readRDS(file.path(cache_path, glue::glue("gh_nflfastr/roster_{.x}.rds"))))
+#       }
+#     )
+#   }
 
   sfb_conn <- mfl_connect(2020, 65443)
   sfb_scoringhistory <- ff_scoringhistory(sfb_conn, 2019:2020)

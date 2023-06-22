@@ -1,7 +1,7 @@
 test_that("ff_userleagues works for MFL", {
   local_mock_api()
 
-  conn <- mfl_connect(2020,
+  conn <- mfl_connect(2023,
     user_name = "dynastyprocesstest",
     password = "test1234"
   )
