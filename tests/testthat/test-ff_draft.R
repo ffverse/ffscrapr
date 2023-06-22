@@ -30,3 +30,13 @@ test_that("ff_draft returns a tibble for each platform currently programmed", {
 
   expect_tibble(tony_draftresults, min.rows = 200)
 })
+
+test_that("sleeper_draft returns a tibble for given draft id",{
+
+  rivals_draft <- sleeper_draft("958065648918114304")
+  rivals_mock <- sleeper_draft("975149570965467136")
+
+  expect_tibble(rivals_draft, min.rows = 50)
+  expect_tibble(rivals_mock, min.rows = 50)
+
+})
