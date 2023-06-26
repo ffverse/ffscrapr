@@ -1,4 +1,4 @@
-# ffscrapr (devel)
+# ffscrapr (development version)
 
 - `sleeper_draft()` introduced to retrieve Sleeper drafts by ID - this better 
 supports mock draft retrieval also. (#395) (v1.4.8.01)
