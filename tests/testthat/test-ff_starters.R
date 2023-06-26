@@ -23,3 +23,12 @@ test_that("ff_starters returns a tibble of starters", {
   expect_tibble(tony_starters, min.rows = 100)
   expect_tibble(tony_potentialpoints, min.rows = 100)
 })
+
+test_that("ff_starters.espn finds the correct projected scores #397",{
+  league_conn <- espn_connect(season = 2022, league_id = 98743043)
+  s <- ff_starters(league_conn, weeks = 1:3)
+
+  # expect no projections to match actuals except for where they are both zero
+  n_projection_equal_actual <- sum(s$player_score == s$projected_score & s$player_score!=0)
+  expect_equal(n_projection_equal_actual, 0)
+})
