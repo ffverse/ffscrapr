@@ -9,7 +9,9 @@ test_that("ff_draftpicks returns a tibble of draft picks", {
 
   expect_tibble(ssb_picks, min.rows = 1)
   expect_tibble(sfb_picks, nrows = 0)
-#
+
+  warning("sleeper draft pick test is missing :( ")
+
 #   jml_conn <- ff_connect("sleeper", "522458773317046272", season = 2020)
 #   jml_picks <- ff_draftpicks(jml_conn)
 #
@@ -25,6 +27,5 @@ test_that("ff_draftpicks returns a tibble of draft picks", {
   expect_tibble(joe_picks, min.rows = 1)
 
   dlp <- ff_connect("espn", 1178049)
-
   expect_warning(ff_draftpicks(dlp), regexp = "ESPN does not support draft pick trades")
 })

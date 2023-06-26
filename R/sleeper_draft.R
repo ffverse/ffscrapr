@@ -49,3 +49,59 @@ ff_draft.sleeper_conn <- function(conn, ...) {
 
   return(df_drafts)
 }
+
+#' Get Sleeper Draft
+#'
+#' This function retrieves drafts by sleeper's draft ID. This better supports
+#' mock drafts.
+#'
+#' @param draft_id draft ID as found in URL e.g. "https://sleeper.com/draft/nfl/{draft_id}"
+#'
+#' @export
+#' @return draft dataframe
+sleeper_draft <- function(draft_id){
+
+  draft_id <- as.character(draft_id)
+
+  draft_endpoint <- glue::glue("draft/{draft_id}") %>%
+    sleeper_getendpoint()
+
+  players_endpoint <- sleeper_players() %>%
+    dplyr::select("player_id", "player_name", "pos", "team", "age")
+
+  franchise_endpoint <- data.frame(
+    franchise_id = character()
+  )
+
+  if(!is.null(draft_endpoint$content$league_id)){
+    franchise_endpoint <- sleeper_connect(
+      season = draft_endpoint$content$season,
+      league_id = as.character(draft_endpoint$content$league_id)
+    ) %>%
+      ff_franchises() %>%
+      dplyr::select("franchise_id", "franchise_name")
+  }
+
+  picks <- .sleeper_currentdraft(draft_id) %>%
+    dplyr::left_join(franchise_endpoint, by = "franchise_id") %>%
+    dplyr::left_join(players_endpoint, by = "player_id") %>%
+    dplyr::select(dplyr::any_of(c(
+      "draft_id",
+      "status",
+      "type",
+      "season",
+      "round",
+      "pick",
+      "auction_amount",
+      "franchise_id",
+      "franchise_name",
+      "player_id",
+      "player_name",
+      "pos",
+      "age",
+      "team"
+    )))
+
+  return(picks)
+
+}
