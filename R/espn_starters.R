@@ -101,28 +101,48 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     tidyr::hoist(1, "week" = "matchupPeriodId", "home", "away") %>%
     dplyr::filter(.data$week == .env$week) %>%
     tidyr::pivot_longer(c("home", "away"), names_to = NULL, values_to = "team") %>%
-    tidyr::hoist("team", "starting_lineup" = "rosterForCurrentScoringPeriod", "franchise_id" = "teamId") %>%
+    tidyr::hoist(
+      "team",
+      "starting_lineup" = "rosterForCurrentScoringPeriod",
+      "franchise_id" = "teamId"
+    ) %>%
     dplyr::select(-"team", -"x") %>%
     tidyr::hoist("starting_lineup", "franchise_score" = "appliedStatTotal", "entries") %>%
     tidyr::unnest_longer("entries") %>%
-    tidyr::hoist("entries", "player_id" = "playerId", "lineup_id" = "lineupSlotId", "player_data" = "playerPoolEntry") %>%
-    tidyr::hoist("player_data", "player_score" = "appliedStatTotal", "player") %>%
+    tidyr::hoist(
+      "entries",
+      "player_id" = "playerId",
+      "lineup_id" = "lineupSlotId",
+      "player_data" = "playerPoolEntry"
+    ) %>%
+    tidyr::hoist(
+      "player_data",
+      "player_score" = "appliedStatTotal",
+      "player"
+    ) %>%
     dplyr::select(-"player_data") %>%
     tidyr::hoist("player",
                  "eligible_lineup_slots" = "eligibleSlots",
                  "player_name" = "fullName",
                  "pos" = "defaultPositionId",
                  "team" = "proTeamId",
-                 ) %>%
+                 "stats" = "stats"
+    ) %>%
     dplyr::mutate(
-      projected_score = purrr::map_dbl(.data$player,
-                                       ~.x %>%
-                                         purrr::pluck("stats",
-                                                      2, # assume stats list col returns actual as first list and projected as second
-                                                      "appliedTotal",
-                                                      .default = NA_real_) %>%
-                                         round(1)),
-      player = NULL)
+      which_source_is_projection = purrr::map(
+        .data$stats,
+        # projections are statSourceId == 1
+        # per <https://github.com/ffverse/ffscrapr/issues/397>
+        ~ which(purrr::map(.x, "statSourceId") == 1)
+      ),
+      projected_score = purrr::map2_dbl(
+        .data$stats,
+        .data$which_source_is_projection,
+        ~ {if(length(.y)==0) return(NA_real_) else purrr::pluck(.x, .y, "appliedTotal", .default = NA_real_)}),
+      player = NULL,
+      stats = NULL,
+      which_source_is_projection = NULL
+    )
 
   return(week_scores)
 }
