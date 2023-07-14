@@ -30,8 +30,7 @@ ff_starter_positions.sleeper_conn <- function(conn, ...) {
     dplyr::mutate(
       pos = purrr::map_chr(.data$pos, unlist)
     ) %>%
-    dplyr::full_join(all_positions, by=dplyr::join_by(pos)) %>%
-    replace(is.na(.),0) %>%
+    tidyr::complete(pos = all_positions$pos, fill = list(min = 0)) %>%
     dplyr::mutate(
       total_starters = sum(.data$min, na.rm = TRUE)
     )

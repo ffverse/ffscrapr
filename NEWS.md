@@ -4,6 +4,9 @@
 supports mock draft retrieval also. (#395) (v1.4.8.01)
 - `ff_starters.espn_conn()` now retrieves projected scores by statSourceId which
 should be more robust (#397, thank you @logan-888!) (v1.4.8.02)
+- `ff_startpositions.sleeper_conn()` now properly handles leagues with flex
+positions that did not have dedicated posititions (#400, thank you @mcarman8!) 
+(v1.4.8.03)
 
 # ffscrapr 1.4.8
 
