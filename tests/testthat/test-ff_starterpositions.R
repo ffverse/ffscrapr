@@ -11,6 +11,12 @@ test_that("ff_starter_positions returns a tibble of starter positions", {
 
   expect_tibble(jml_starter_positions, min.rows = 4)
 
+  #Test for Issue 400
+  flx_conn <- sleeper_connect(league_id = "926025334582063104", season = 2023)
+  flx_starter_positions <- ff_starter_positions(flx_conn)
+
+  expect_tibble(flx_starter_positions, min.rows = 4)
+
   got_conn <- fleaflicker_connect(season = 2020, league_id = 206154)
   got_starter_positions <- ff_starter_positions(got_conn)
 

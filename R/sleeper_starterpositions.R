@@ -17,6 +17,8 @@
 #'
 #' @export
 ff_starter_positions.sleeper_conn <- function(conn, ...) {
+  all_positions <- data.frame(pos = c("QB", "RB", "WR", "TE", "DL", "LB", "CB"))
+
   df_positions <- sleeper_getendpoint(glue::glue("league/{conn$league_id}")) %>%
     purrr::pluck("content", "roster_positions") %>%
     tibble::tibble() %>%
@@ -26,8 +28,12 @@ ff_starter_positions.sleeper_conn <- function(conn, ...) {
     dplyr::count(name = "min") %>%
     dplyr::ungroup() %>%
     dplyr::mutate(
-      total_starters = sum(.data$min, na.rm = TRUE),
       pos = purrr::map_chr(.data$pos, unlist)
+    ) %>%
+    dplyr::full_join(all_positions, by=dplyr::join_by(pos)) %>%
+    replace(is.na(.),0) %>%
+    dplyr::mutate(
+      total_starters = sum(.data$min, na.rm = TRUE)
     )
 
   flex <- ifelse(length(df_positions$min[df_positions$pos == "FLEX"]) == 0, 0, df_positions$min[df_positions$pos == "FLEX"])
@@ -55,6 +61,7 @@ ff_starter_positions.sleeper_conn <- function(conn, ...) {
       kdef = sum(.data$pos %in% c("K", "DEF") * .data$min, na.rm = TRUE)
     ) %>%
     dplyr::filter(stringr::str_detect(.data$pos, "FLEX", negate = TRUE)) %>%
+    dplyr::filter(max > 0) %>%
     dplyr::select(
       "pos", "min", "max", "offense_starters", "defense_starters", "total_starters"
     )
