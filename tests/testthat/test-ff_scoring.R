@@ -3,6 +3,8 @@ test_that("ff_scoring returns a tibble", {
 
   dlf <- mfl_connect(2019, 37920)
   dlf_scoring <- ff_scoring(dlf)
+  wade <- mfl_connect(2023, 65804)
+  wade_scoring <- ff_scoring(wade)
 
   jml_conn <- sleeper_connect(league_id = "522458773317046272", season = 2020)
   jml_scoring <- ff_scoring(jml_conn)
@@ -17,6 +19,7 @@ test_that("ff_scoring returns a tibble", {
   expect_tibble(jml_scoring, min.rows = 10)
   expect_tibble(joe_scoring, min.rows = 10)
   expect_tibble(tony_scoring, min.rows = 10)
+  expect_tibble(wade_scoring, min.rows = 10)
 })
 
 test_that("ff_scoring for templates return tibbles", {
