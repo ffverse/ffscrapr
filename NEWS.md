@@ -8,6 +8,7 @@ should be more robust (#397, thank you @logan-888!) (v1.4.8.02)
 positions that did not have dedicated posititions (#400, thank you @mcarman8!) 
 (v1.4.8.03)
 - `ff_scoring.mfl_conn()` now works better with new dplyr versions (#402) (v1.4.8.04)
+- `ff_schedule.mfl_conn()` bug fixed re: removing bad spreads (#403) (v1.4.8.05)
 
 # ffscrapr 1.4.8
 
