@@ -25,6 +25,7 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
     endpoint = "FetchPlayerListing",
     sport = "NFL",
     league_id = conn$league_id,
+    sort_season = conn$season,
     external_id_type = "SPORTRADAR",
     result_offset = result_offset
   ) %>%
@@ -41,6 +42,7 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
       endpoint = "FetchPlayerListing",
       sport = "NFL",
       league_id = conn$league_id,
+      sort_season = conn$season,
       external_id_type = "SPORTRADAR",
       result_offset = result_offset
     ) %>%
@@ -71,8 +73,9 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
     ) %>%
     dplyr::mutate(
       dplyr::across(
-        .cols = c("score_total", "score_avg", "score_sd"),
-        .fns = ~ purrr::map_dbl(.x, ~purrr::pluck(.x, "value", .default = NA) %>% round(2))
+        c("score_total", "score_avg", "score_sd"),
+        purrr::map_dbl,
+        ~ purrr::pluck(.x, "value", .default = NA) %>% round(2)
       ),
       games = (.data$score_total / .data$score_avg) %>% round()
     ) %>%
