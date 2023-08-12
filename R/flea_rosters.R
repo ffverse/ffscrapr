@@ -19,7 +19,8 @@ ff_rosters.flea_conn <- function(conn, ...) {
   df_rosters <- fleaflicker_getendpoint("FetchLeagueRosters",
     sport = "NFL",
     external_id_type = "SPORTRADAR",
-    league_id = conn$league_id
+    league_id = conn$league_id,
+    season = conn$season
   ) %>%
     purrr::pluck("content", "rosters") %>%
     tibble::tibble() %>%
