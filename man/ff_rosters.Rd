@@ -13,7 +13,7 @@ ff_rosters(conn, ...)
 
 \method{ff_rosters}{espn_conn}(conn, week = NULL, ...)
 
-\method{ff_rosters}{flea_conn}(conn, ...)
+\method{ff_rosters}{flea_conn}(conn, ..., week = NULL)
 
 \method{ff_rosters}{mfl_conn}(conn, custom_players = deprecated(), week = NULL, ...)
 

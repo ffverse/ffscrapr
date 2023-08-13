@@ -16,7 +16,7 @@
 #' }
 #' @describeIn ff_rosters Fleaflicker: Returns roster data (minus age as of right now)
 #' @export
-ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
+ff_rosters.flea_conn <- function(conn, ..., week = NULL) {
 
   df_rosters <- fleaflicker_getendpoint(
     "FetchLeagueRosters",
