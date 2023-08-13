@@ -2,10 +2,11 @@
 
 #' Empty Function Cache
 #'
-#' This function will reset the cache for any and all ffscrapr cached functions.
+#' This function will reset the cache for any and all ffscrapr cached functions,
+#' as well as nflreadr's cached functions.
 #'
 #' @export
-.ff_clear_cache <- function() {
+clear_cache <- function() {
   functions <- list(
     dp_values,
     dp_playerids,
@@ -50,4 +51,22 @@
   )
 
   lapply(functions, memoise::forget)
+
+  suppressMessages(nflreadr::clear_cache())
+
+  cli::cli_alert_success("ffscrapr function cache cleared!")
+}
+
+#' @export
+.ff_clear_cache <- clear_cache
+
+.cache_fn <- function(function_name, duration = 86400, cache) {
+  fn <- get(function_name, envir = rlang::ns_env("ffscrapr"))
+  fn <- memoise::memoise(
+    fn,
+    ~ memoise::timeout(duration),
+    cache = cache
+  )
+  assign(function_name, fn, envir = rlang::ns_env("ffscrapr"))
+  return(invisible(TRUE))
 }

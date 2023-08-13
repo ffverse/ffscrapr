@@ -17,6 +17,7 @@ and keep NA data where a player is not in a slot.  (v1.4.8.07)
 - Silence a whack of tidyverse crap (v1.4.8.09)
 - Deprecate `nflfastr_weekly()` and `nflfastr_roster()` in favour of nflreadr 
 (v1.4.8.10)
+- Use rlang::ns_env rather than superassign in onLoad
 
 # ffscrapr 1.4.8
 
