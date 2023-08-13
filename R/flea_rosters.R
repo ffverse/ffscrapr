@@ -39,7 +39,9 @@ ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
       "team" = "proTeamAbbreviation",
       "externalIds"
     ) %>%
-    dplyr::mutate(sportradar_id = purrr::map_chr(.data$externalIds, purrr::pluck, 1, "id", .default = NA)) %>%
+    dplyr::mutate(
+      sportradar_id = purrr::map_chr(.data$externalIds, purrr::pluck, 1, "id", .default = NA)
+      ) %>%
     dplyr::select(dplyr::any_of(c(
       "franchise_id",
       "franchise_name",
