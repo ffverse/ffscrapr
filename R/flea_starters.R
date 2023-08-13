@@ -38,33 +38,31 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
                                scoring_period = week,
                                fantasy_game_id = game_id,
                                league_id = conn$league_id
-  ) |>
-    purrr::pluck("content", "lineups") |>
-    list() |>
-    tibble::tibble() |>
-    tidyr::unnest_longer(1) |>
-    tidyr::unnest_wider(1) |>
-    tidyr::unnest_longer("slots") |>
-    tidyr::unnest_wider("slots") |>
+  ) %>%
+    purrr::pluck("content", "lineups") %>%
+    list() %>%
+    tibble::tibble() %>%
+    tidyr::unnest_longer(1) %>%
+    tidyr::unnest_wider(1) %>%
+    tidyr::unnest_longer("slots") %>%
+    tidyr::unnest_wider("slots") %>%
     dplyr::mutate(
       position = purrr::map_chr(.data$position, purrr::pluck, "label"),
       positionColor = NULL
-    ) |>
-    tidyr::pivot_longer(c("home", "away"), names_to = "franchise", values_to = "player") |>
-    tidyr::hoist("player", "proPlayer", "owner", "points" = "viewingActualPoints") |>
+    ) %>%
+    tidyr::pivot_longer(c("home", "away"), names_to = "franchise", values_to = "player") %>%
+    tidyr::hoist("player", "proPlayer", "owner", "points" = "viewingActualPoints") %>%
     tidyr::hoist("proPlayer",
                  "player_id" = "id",
                  "player_name" = "nameFull",
                  "pos" = "position",
                  "team" = "proTeamAbbreviation",
                  "injury" = "injury"
-    ) |>
-    # dplyr::filter(!is.na(.data$player_id)) |>
-    tidyr::unnest_wider("injury", names_sep = "") |>
-    tidyr::hoist("owner", "franchise_id" = "id", "franchise_name" = "name") |>
-    tidyr::hoist("points", "player_score" = "value") |>
-    dplyr::mutate(group = dplyr::case_when(is.na(group) == TRUE ~ "BENCH", .default = group))
-  x = tibble::add_column(x, !!!cols[setdiff(names(cols), names(x))]) |>
+    ) %>%
+    # dplyr::filter(!is.na(.data$player_id)) %>%
+    tidyr::unnest_wider("injury", names_sep = "") %>%
+    tidyr::hoist("owner", "franchise_id" = "id", "franchise_name" = "name") %>%
+    tidyr::hoist("points", "player_score" = "value") %>%
     dplyr::select(dplyr::any_of(c(
       "group",
       "franchise",
