@@ -80,7 +80,8 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
       "injury_desc" = "injurydescription",
        "injury_severity" = "injuryseverity",
       "player_score"
-    )))
+    ))) %>%
+    dplyr::bind_rows(injury_cols)
 
   return(x)
 }
