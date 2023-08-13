@@ -18,7 +18,8 @@
 #' @export
 ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
 
-  df_rosters <- fleaflicker_getendpoint("FetchLeagueRosters",
+  df_rosters <- fleaflicker_getendpoint(
+    "FetchLeagueRosters",
     sport = "NFL",
     external_id_type = "SPORTRADAR",
     league_id = conn$league_id,
@@ -32,7 +33,8 @@ ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
     dplyr::select(-"team") %>%
     tidyr::unnest_longer("players") %>%
     tidyr::hoist("players", "proPlayer") %>%
-    tidyr::hoist("proPlayer",
+    tidyr::hoist(
+      "proPlayer",
       "player_id" = "id",
       "player_name" = "nameFull",
       "pos" = "position",
@@ -41,16 +43,18 @@ ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
     ) %>%
     dplyr::mutate(
       sportradar_id = purrr::map_chr(.data$externalIds, purrr::pluck, 1, "id", .default = NA)
-      ) %>%
-    dplyr::select(dplyr::any_of(c(
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos",
-      "team",
-      "sportradar_id"
-    )))
+    ) %>%
+    dplyr::select(
+      dplyr::any_of(c(
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos",
+        "team",
+        "sportradar_id"
+      ))
+    )
 
   return(df_rosters)
 }

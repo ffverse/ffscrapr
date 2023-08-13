@@ -12,6 +12,8 @@ positions that did not have dedicated posititions (#400, thank you @mcarman8!)
 - `ff_franchises()`, `ff_playerscores()`, `ff_rosters()` fleaflicker methods now 
 respect `season` in connection object (v1.4.8.06) (#408, thank you @RandalMorris!)
 - `ff_rosters()` fleaflicker method now accepts `week` argument (v1.4.8.06)
+- `ff_starters()` fleaflicker method expands to show injury data from box score 
+and keep NA data where a player is not in a slot.  (v1.4.8.07)
 
 # ffscrapr 1.4.8
 

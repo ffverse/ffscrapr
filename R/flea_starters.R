@@ -24,14 +24,16 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
     dplyr::mutate(starters = purrr::map2(.data$week, .data$game_id, .flea_starters, conn)) %>%
     tidyr::unnest("starters") %>%
     dplyr::arrange(.data$week, .data$franchise_id)
+
+  return(starters)
 }
 
 .flea_starters <- function(week, game_id, conn) {
   x <- fleaflicker_getendpoint("FetchLeagueBoxscore",
-    sport = "NFL",
-    scoring_period = week,
-    fantasy_game_id = game_id,
-    league_id = conn$league_id
+                               sport = "NFL",
+                               scoring_period = week,
+                               fantasy_game_id = game_id,
+                               league_id = conn$league_id
   ) %>%
     purrr::pluck("content", "lineups") %>%
     list() %>%
@@ -46,25 +48,40 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
     ) %>%
     tidyr::pivot_longer(c("home", "away"), names_to = "franchise", values_to = "player") %>%
     tidyr::hoist("player", "proPlayer", "owner", "points" = "viewingActualPoints") %>%
-    tidyr::hoist("proPlayer",
+    tidyr::hoist(
+      "proPlayer",
       "player_id" = "id",
       "player_name" = "nameFull",
       "pos" = "position",
-      "team" = "proTeamAbbreviation"
+      "team" = "proTeamAbbreviation",
+      "injury" = "injury"
     ) %>%
-    dplyr::filter(!is.na(.data$player_id)) %>%
+    tidyr::hoist(
+      "injury",
+      "injury_type" = "typeFull",
+      "injury_desc" = "description",
+      "injury_severity" = "severity"
+    ) %>%
     tidyr::hoist("owner", "franchise_id" = "id", "franchise_name" = "name") %>%
     tidyr::hoist("points", "player_score" = "value") %>%
-    dplyr::select(dplyr::any_of(c(
-      "franchise_id",
-      "franchise_name",
-      "starter_status" = "position",
-      "player_id",
-      "player_name",
-      "pos",
-      "team",
-      "player_score"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "group",
+        "franchise",
+        "franchise_id",
+        "franchise_name",
+        "starter_status" = "position",
+        "player_id",
+        "player_name",
+        "pos",
+        "team",
+        "injury_type",
+        "injury_desc",
+        "injury_severity",
+        "player_score"
+      ))
+    )
 
   return(x)
 }
+
