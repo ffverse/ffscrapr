@@ -3,6 +3,7 @@
 #' Get a dataframe of roster data
 #'
 #' @param conn a conn object created by `ff_connect()`
+#' @param week integer, optional: select week to return, otherwise returns latest
 #' @param ... arguments passed to other methods (currently none)
 #'
 #' @examples
@@ -15,11 +16,14 @@
 #' }
 #' @describeIn ff_rosters Fleaflicker: Returns roster data (minus age as of right now)
 #' @export
-ff_rosters.flea_conn <- function(conn, ...) {
+ff_rosters.flea_conn <- function(conn, week = NULL, ...) {
+
   df_rosters <- fleaflicker_getendpoint("FetchLeagueRosters",
     sport = "NFL",
     external_id_type = "SPORTRADAR",
-    league_id = conn$league_id
+    league_id = conn$league_id,
+    season = conn$season,
+    scoring_period = week
   ) %>%
     purrr::pluck("content", "rosters") %>%
     tibble::tibble() %>%
@@ -35,7 +39,9 @@ ff_rosters.flea_conn <- function(conn, ...) {
       "team" = "proTeamAbbreviation",
       "externalIds"
     ) %>%
-    dplyr::mutate(sportradar_id = purrr::map_chr(.data$externalIds, purrr::pluck, 1, "id", .default = NA)) %>%
+    dplyr::mutate(
+      sportradar_id = purrr::map_chr(.data$externalIds, purrr::pluck, 1, "id", .default = NA)
+      ) %>%
     dplyr::select(dplyr::any_of(c(
       "franchise_id",
       "franchise_name",

@@ -23,6 +23,6 @@ test_that("ff_franchises returns a tibble of franchises", {
   expect_tibble(dlf_franchises, nrows = 16)
   expect_tibble(jml_franchises, nrow = 12)
   expect_tibble(dlp_franchises, nrow = 12)
-  expect_tibble(joe_franchises, nrow = 12)
+  expect_tibble(joe_franchises, nrow = 16)
   expect_tibble(tony_franchises, nrow = 10)
 })

@@ -9,6 +9,9 @@ positions that did not have dedicated posititions (#400, thank you @mcarman8!)
 (v1.4.8.03)
 - `ff_scoring.mfl_conn()` now works better with new dplyr versions (#402) (v1.4.8.04)
 - `ff_schedule.mfl_conn()` bug fixed re: removing bad spreads (#403) (v1.4.8.05)
+- `ff_franchises()`, `ff_playerscores()`, `ff_rosters()` fleaflicker methods now 
+respect `season` in connection object (v1.4.8.06) (#408, thank you @RandalMorris!)
+- `ff_rosters()` fleaflicker method now accepts `week` argument (v1.4.8.06)
 
 # ffscrapr 1.4.8
 

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 options(dplyr.summarise.inform = FALSE,
         rmarkdown.html_vignette.check_title = FALSE)
 
-eval <- TRUE
+eval <- FALSE
 
 tryCatch(expr = {
   
