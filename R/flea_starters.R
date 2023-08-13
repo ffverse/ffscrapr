@@ -75,10 +75,10 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
       "player_name",
       "pos",
       "team",
-      "injurytypeAbbreviaition",
-      "injurytypeFull",
-      "injurydescription",
-      "injuryseverity",
+      "injury_type_abbr" = "injurytypeAbbreviaition",
+      "injury_type" = "injurytypeFull",
+      "injury_desc" = "injurydescription",
+       "injury_severity" = "injuryseverity",
       "player_score"
     )))
 
