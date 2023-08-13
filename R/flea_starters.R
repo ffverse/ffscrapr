@@ -27,7 +27,12 @@ ff_starters.flea_conn <- function(conn, week = 1:17, ...) {
 }
 
 .flea_starters <- function(week, game_id, conn) {
-  cols <- c(injurytypeAbbreviaition = NA, injurytypeFull = NA, injurydescription = NA, injuryseverity = NA)
+  injury_cols <- data.frame(
+    injury_type_abbr = character(),
+    injury_type = character(),
+    injury_desc = character(),
+    injury_severity = character()
+   )
   x <- fleaflicker_getendpoint("FetchLeagueBoxscore",
                                sport = "NFL",
                                scoring_period = week,
