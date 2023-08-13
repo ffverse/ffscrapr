@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.05</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.06</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>Fleaflicker: Get Endpoint</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-08-01</h4>
+            <h4 data-toc-skip class="date">2023-08-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/fleaflicker_getendpoint.Rmd" class="external-link"><code>vignettes/fleaflicker_getendpoint.Rmd</code></a></small>
       <div class="d-none name"><code>fleaflicker_getendpoint.Rmd</code></div>
@@ -190,15 +190,8 @@ function (these are case sensitive!)</p>
 <span>                                               league_id <span class="op">=</span> <span class="va">league_id</span>, </span>
 <span>                                               season <span class="op">=</span> <span class="va">season</span>, </span>
 <span>                                               scoring_period <span class="op">=</span> <span class="va">week</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">response_scoreboard</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of 3</span></span>
-<span><span class="co">#&gt;  $ content :List of 3</span></span>
-<span><span class="co">#&gt;  $ query   : chr "https://www.fleaflicker.com/api/FetchLeagueScoreboard?sport=NFL&amp;league_id=206154&amp;season=2020&amp;scoring_period=5"</span></span>
-<span><span class="co">#&gt;  $ response:List of 9</span></span>
-<span><span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span></span>
-<span><span class="co">#&gt;  - attr(*, "class")= chr "fleaflicker_api"</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">response_scoreboard</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query
 and the response that was sent by the server. These are helpful for
 debugging, but we can turn the content into a dataframe with some
@@ -211,16 +204,7 @@ careful application of the tidyverse.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"away"</span>,<span class="st">"home"</span><span class="op">)</span>,<span class="fu">purrr</span><span class="fu">::</span><span class="va"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span>,<span class="fu">purrr</span><span class="fu">::</span><span class="va"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span>,<span class="st">"name"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"homeScore"</span>,<span class="st">"awayScore"</span><span class="op">)</span>,<span class="fu">purrr</span><span class="fu">::</span><span class="va"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dbl</a></span>,<span class="fu">purrr</span><span class="fu">::</span><span class="va"><a href="https://purrr.tidyverse.org/reference/pluck.html" class="external-link">pluck</a></span>,<span class="st">"score"</span>,<span class="st">"value"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df_scoreboard</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
-<span><span class="co">#&gt;   id       away     home  awayScore homeScore homeResult awayResult isFinalScore</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 46301923 Winterf… Top …      207.      162. LOSE       WIN        TRUE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 46301919 Goldenr… Wint…      145.      157. WIN        LOSE       TRUE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 46301921 Wintert… Clut…      153.      192. WIN        LOSE       TRUE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 46301922 Manitob… Bame…      182.      183. WIN        LOSE       TRUE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 46301920 Springf… Shan…      176.      129. LOSE       WIN        TRUE        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 46301926 Boomtow… Phil…      199.      200. WIN        LOSE       TRUE</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df_scoreboard</span><span class="op">)</span></span></code></pre></div>
 <p>From here, we’ll be able to feed these IDs into the
 FetchLeagueBoxscore endpoint <a href="https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get" class="external-link uri">https://www.fleaflicker.com/api-docs/index.html#operation--FetchLeagueScoreboard-get</a>
 as the fantasy_game_id - and from here you’ll be able to get to
@@ -242,24 +226,7 @@ player-level points and actual stat data for each fantasy game!</p>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"home"</span>,<span class="st">"away"</span><span class="op">)</span>,names_to <span class="op">=</span> <span class="st">"franchise"</span>,values_to <span class="op">=</span> <span class="st">"player"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="st">'player'</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">onegame_lineups</span>,max.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [98 × 16] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ group               : chr [1:98] "START" "START" "START" "START" ...</span></span>
-<span><span class="co">#&gt;  $ position            :List of 98</span></span>
-<span><span class="co">#&gt;  $ positionColor       :List of 98</span></span>
-<span><span class="co">#&gt;  $ franchise           : chr [1:98] "home" "away" "home" "away" ...</span></span>
-<span><span class="co">#&gt;  $ proPlayer           :List of 98</span></span>
-<span><span class="co">#&gt;  $ requestedGames      :List of 98</span></span>
-<span><span class="co">#&gt;  $ viewingActualPoints :List of 98</span></span>
-<span><span class="co">#&gt;  $ viewingActualStats  :List of 98</span></span>
-<span><span class="co">#&gt;  $ requestedGamesPeriod:List of 98</span></span>
-<span><span class="co">#&gt;  $ viewingFormat       : chr [1:98] "TOTAL" "TOTAL" "TOTAL" "TOTAL" ...</span></span>
-<span><span class="co">#&gt;  $ viewingRange        :List of 98</span></span>
-<span><span class="co">#&gt;  $ owner               :List of 98</span></span>
-<span><span class="co">#&gt;  $ displayGroup        : chr [1:98] "PASSER" "PASSER" "RUSHER" "RUSHER" ...</span></span>
-<span><span class="co">#&gt;  $ rankFantasy         :List of 98</span></span>
-<span><span class="co">#&gt;  $ rankDraft           :List of 98</span></span>
-<span><span class="co">#&gt;  $ lastX               :List of 98</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">onegame_lineups</span>,max.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p>From here, you can keep unravelling - including the
 “viewingActualPoints” and “viewingActualStats” columns!</p>
 </div>

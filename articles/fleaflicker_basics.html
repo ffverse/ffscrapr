@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.05</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.06</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>Fleaflicker: Basics</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-08-01</h4>
+            <h4 data-toc-skip class="date">2023-08-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/fleaflicker_basics.Rmd" class="external-link"><code>vignettes/fleaflicker_basics.Rmd</code></a></small>
       <div class="d-none name"><code>fleaflicker_basics.Rmd</code></div>
@@ -151,14 +151,7 @@ it’s the number immediately after /league/ in this example URL: <a href="https
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aaa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fleaflicker_connect.html">fleaflicker_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">312861</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">aaa</span></span>
-<span><span class="co">#&gt; &lt;Fleaflicker connection 2020_312861&gt;</span></span>
-<span><span class="co">#&gt; List of 4</span></span>
-<span><span class="co">#&gt;  $ platform  : chr "Fleaflicker"</span></span>
-<span><span class="co">#&gt;  $ season    : chr "2020"</span></span>
-<span><span class="co">#&gt;  $ user_email: NULL</span></span>
-<span><span class="co">#&gt;  $ league_id : chr "312861"</span></span>
-<span><span class="co">#&gt;  - attr(*, "class")= chr "flea_conn"</span></span></code></pre></div>
+<span><span class="va">aaa</span></span></code></pre></div>
 <p>I’ve done this with the <code><a href="../reference/fleaflicker_connect.html">fleaflicker_connect()</a></code> function,
 although you can also do this from the <code><a href="../reference/ff_connect.html">ff_connect()</a></code> call -
 they are equivalent. Most if not all of the remaining functions after
@@ -167,41 +160,15 @@ this point are prefixed with “ff_”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">aaa_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">aaa_summary</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [1 × 15] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ league_id      : chr "312861"</span></span>
-<span><span class="co">#&gt;  $ league_name    : chr "Avid Auctioneers Alliance"</span></span>
-<span><span class="co">#&gt;  $ season         : int 2020</span></span>
-<span><span class="co">#&gt;  $ league_type    : chr "dynasty"</span></span>
-<span><span class="co">#&gt;  $ franchise_count: num 12</span></span>
-<span><span class="co">#&gt;  $ qb_type        : chr "2QB/SF"</span></span>
-<span><span class="co">#&gt;  $ idp            : logi FALSE</span></span>
-<span><span class="co">#&gt;  $ scoring_flags  : chr "0.5_ppr, PP1D"</span></span>
-<span><span class="co">#&gt;  $ best_ball      : logi FALSE</span></span>
-<span><span class="co">#&gt;  $ salary_cap     : logi FALSE</span></span>
-<span><span class="co">#&gt;  $ player_copies  : num 1</span></span>
-<span><span class="co">#&gt;  $ qb_count       : chr "1-2"</span></span>
-<span><span class="co">#&gt;  $ roster_size    : int 28</span></span>
-<span><span class="co">#&gt;  $ league_depth   : num 336</span></span>
-<span><span class="co">#&gt;  $ keeper_count   : int 31</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">aaa_summary</span><span class="op">)</span></span></code></pre></div>
 <p>Okay, so it’s the Avid Auctioneers Alliance, it’s a 2QB league with
 12 teams, half ppr scoring, and rosters about 340 players.</p>
 <p>Let’s grab the rosters now.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aaa_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">aaa</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aaa_rosters</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
-<span><span class="co">#&gt;   franchise_id franchise_name player_id player_name   pos   team  sportradar_id </span></span>
-<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">12</span>032 Carson Wentz  QB    IND   e9a5c16b-4472…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">12</span>159 Dak Prescott  QB    DAL   86197778-8d4b…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">13</span>325 Austin Ekeler RB    LAC   e5b8c439-a48a…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">12</span>926 Chris Godwin  WR    TB    baa61bb5-f8d0…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">16</span>250 Ja'Marr Chase WR    CIN   fa99e984-d63b…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear        <span style="text-decoration: underline;">6</span>660 Antonio Brown WR    TB    16e33176-b73e…</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aaa_rosters</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a>
 </h2>
@@ -230,17 +197,7 @@ player values.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">player_values</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sportradar_id"</span><span class="op">=</span><span class="st">"sportradar_id"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">value_2qb</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 11</span></span></span>
-<span><span class="co">#&gt;   franchise_id franchise_name player_id player_name   pos   team  sportradar_id </span></span>
-<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">12</span>159 Dak Prescott  QB    DAL   86197778-8d4b…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">16</span>250 Ja'Marr Chase WR    CIN   fa99e984-d63b…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">12</span>926 Chris Godwin  WR    TB    baa61bb5-f8d0…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">16</span>259 Trey Lance    QB    SF    676a508c-c65f…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">13</span>325 Austin Ekeler RB    LAC   e5b8c439-a48a…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear       <span style="text-decoration: underline;">15</span>531 Brandon Aiyuk WR    SF    c90471cc-fa60…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: age &lt;dbl&gt;, ecr_2qb &lt;dbl&gt;, ecr_pos &lt;dbl&gt;, value_2qb &lt;int&gt;</span></span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aaa_values</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">value_summary</span> <span class="op">&lt;-</span> <span class="va">aaa_values</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
@@ -254,22 +211,7 @@ player values.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">team_value</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">franchise_id</span>,<span class="va">franchise_name</span>,<span class="va">team_value</span>,<span class="va">QB</span>,<span class="va">RB</span>,<span class="va">WR</span>,<span class="va">TE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">value_summary</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 7</span></span></span>
-<span><span class="co">#&gt;    franchise_id franchise_name        team_value    QB    RB    WR    TE</span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      1<span style="text-decoration: underline;">581</span>722 syd12nyjets's Team         <span style="text-decoration: underline;">42</span>601 <span style="text-decoration: underline;">12</span>120 <span style="text-decoration: underline;">10</span>478 <span style="text-decoration: underline;">19</span>263   740</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      1<span style="text-decoration: underline;">581</span>719 Jmuthers's Team            <span style="text-decoration: underline;">42</span>502 <span style="text-decoration: underline;">12</span>069 <span style="text-decoration: underline;">19</span>213  <span style="text-decoration: underline;">3</span>641  <span style="text-decoration: underline;">7</span>579</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      1<span style="text-decoration: underline;">581</span>803 ZachFarni's Team           <span style="text-decoration: underline;">39</span>715  <span style="text-decoration: underline;">5</span>908 <span style="text-decoration: underline;">20</span>641 <span style="text-decoration: underline;">12</span>931   235</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      1<span style="text-decoration: underline;">582</span>416 Ray Jay Team               <span style="text-decoration: underline;">37</span>522  <span style="text-decoration: underline;">3</span>843  <span style="text-decoration: underline;">7</span>855 <span style="text-decoration: underline;">15</span>337 <span style="text-decoration: underline;">10</span>487</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      1<span style="text-decoration: underline;">582</span>423 The Verblanders            <span style="text-decoration: underline;">31</span>289 <span style="text-decoration: underline;">10</span>117  <span style="text-decoration: underline;">9</span>972 <span style="text-decoration: underline;">10</span>878   322</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      1<span style="text-decoration: underline;">581</span>721 Mjenkyns2004's Team        <span style="text-decoration: underline;">30</span>245 <span style="text-decoration: underline;">13</span>421  <span style="text-decoration: underline;">4</span>682 <span style="text-decoration: underline;">11</span>325   817</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      1<span style="text-decoration: underline;">581</span>718 Officially Rebuilding      <span style="text-decoration: underline;">29</span>336  <span style="text-decoration: underline;">6</span>340  <span style="text-decoration: underline;">7</span>124 <span style="text-decoration: underline;">12</span>921  <span style="text-decoration: underline;">2</span>951</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear               <span style="text-decoration: underline;">29</span>082 <span style="text-decoration: underline;">14</span>002  <span style="text-decoration: underline;">3</span>464 <span style="text-decoration: underline;">11</span>551    65</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      1<span style="text-decoration: underline;">581</span>988 The DK Crew                <span style="text-decoration: underline;">28</span>349 <span style="text-decoration: underline;">11</span>822  <span style="text-decoration: underline;">8</span>480  <span style="text-decoration: underline;">6</span>218  <span style="text-decoration: underline;">1</span>773</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      1<span style="text-decoration: underline;">581</span>726 SCJaguars's Team           <span style="text-decoration: underline;">26</span>596  <span style="text-decoration: underline;">6</span>999 <span style="text-decoration: underline;">10</span>538  <span style="text-decoration: underline;">8</span>510   549</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      1<span style="text-decoration: underline;">581</span>753 fede_mndz's Team           <span style="text-decoration: underline;">26</span>485  <span style="text-decoration: underline;">2</span>489 <span style="text-decoration: underline;">10</span>871 <span style="text-decoration: underline;">12</span>673   452</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      1<span style="text-decoration: underline;">581</span>720 brosene's Team             <span style="text-decoration: underline;">16</span>432    <span style="color: #BB0000;">NA</span>  <span style="text-decoration: underline;">8</span>277  <span style="text-decoration: underline;">6</span>190  <span style="text-decoration: underline;">1</span>965</span></span></code></pre></div>
+<span><span class="va">value_summary</span></span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying
 some context, so let’s turn these into percentages - this helps
 normalise it to your league environment.</p>
@@ -278,22 +220,7 @@ normalise it to your league environment.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="op">~</span><span class="va">.x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html" class="external-link">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"team_value"</span>,<span class="st">"QB"</span>,<span class="st">"RB"</span>,<span class="st">"WR"</span>,<span class="st">"TE"</span><span class="op">)</span>,<span class="va">round</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">value_summary_pct</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 7</span></span></span>
-<span><span class="co">#&gt;    franchise_id franchise_name        team_value    QB    RB    WR    TE</span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      1<span style="text-decoration: underline;">581</span>722 syd12nyjets's Team         0.112    <span style="color: #BB0000;">NA</span> 0.086 0.147 0.026</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      1<span style="text-decoration: underline;">581</span>719 Jmuthers's Team            0.112    <span style="color: #BB0000;">NA</span> 0.158 0.028 0.271</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      1<span style="text-decoration: underline;">581</span>803 ZachFarni's Team           0.104    <span style="color: #BB0000;">NA</span> 0.17  0.098 0.008</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      1<span style="text-decoration: underline;">582</span>416 Ray Jay Team               0.099    <span style="color: #BB0000;">NA</span> 0.065 0.117 0.375</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      1<span style="text-decoration: underline;">582</span>423 The Verblanders            0.082    <span style="color: #BB0000;">NA</span> 0.082 0.083 0.012</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      1<span style="text-decoration: underline;">581</span>721 Mjenkyns2004's Team        0.08     <span style="color: #BB0000;">NA</span> 0.039 0.086 0.029</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      1<span style="text-decoration: underline;">581</span>718 Officially Rebuilding      0.077    <span style="color: #BB0000;">NA</span> 0.059 0.098 0.106</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear               0.077    <span style="color: #BB0000;">NA</span> 0.028 0.088 0.002</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      1<span style="text-decoration: underline;">581</span>988 The DK Crew                0.075    <span style="color: #BB0000;">NA</span> 0.07  0.047 0.063</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      1<span style="text-decoration: underline;">581</span>726 SCJaguars's Team           0.07     <span style="color: #BB0000;">NA</span> 0.087 0.065 0.02 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      1<span style="text-decoration: underline;">581</span>753 fede_mndz's Team           0.07     <span style="color: #BB0000;">NA</span> 0.089 0.096 0.016</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      1<span style="text-decoration: underline;">581</span>720 brosene's Team             0.043    <span style="color: #BB0000;">NA</span> 0.068 0.047 0.07</span></span></code></pre></div>
+<span><span class="va">value_summary_pct</span></span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and
 weaknesses pretty quickly, and figure out who might be interested in
 your positional surpluses and who might have a surplus at a position you
@@ -321,24 +248,7 @@ who might be looking to offload an older veteran!</p>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">pos</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">age</span>,<span class="va">count</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">age_summary</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 10</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [12]</span></span></span>
-<span><span class="co">#&gt;    franchise_id franchise_name     age_QB age_RB age_TE age_WR count_QB count_RB</span></span>
-<span><span class="co">#&gt;           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      1<span style="text-decoration: underline;">578</span>553 Running Bear         26     26      8.4   23.5        6        5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      1<span style="text-decoration: underline;">581</span>718 Officially Rebuil…   31.4   24.5   21.1   26.4        3        8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      1<span style="text-decoration: underline;">581</span>719 Jmuthers's Team      24.7   24.8   26.7   28.4        4        5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      1<span style="text-decoration: underline;">581</span>720 brosene's Team       <span style="color: #BB0000;">NA</span>     25.7   24.6   26.3       <span style="color: #BB0000;">NA</span>        7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      1<span style="text-decoration: underline;">581</span>721 Mjenkyns2004's Te…   25.7   23     23.4   26.6        4        6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      1<span style="text-decoration: underline;">581</span>722 syd12nyjets's Team   24.4   23     25.5   22.5        5        5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      1<span style="text-decoration: underline;">581</span>726 SCJaguars's Team     22.2   24.3   26.3   24          5        7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      1<span style="text-decoration: underline;">581</span>753 fede_mndz's Team     30.3   24.9   23.5   27.7        5        9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      1<span style="text-decoration: underline;">581</span>803 ZachFarni's Team     28.3   22.3   26.7   24.3        4        6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      1<span style="text-decoration: underline;">581</span>988 The DK Crew          25.8   22.5   24.2   27.7        5        6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>      1<span style="text-decoration: underline;">582</span>416 Ray Jay Team         30.8   27.2   29.9   25.7        3        3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>      1<span style="text-decoration: underline;">582</span>423 The Verblanders      24.4   25.7   26.7   27.3        3        5</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: count_TE &lt;int&gt;, count_WR &lt;int&gt;</span></span></span></code></pre></div>
+<span><span class="va">age_summary</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>

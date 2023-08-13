@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.05</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.06</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>Sleeper: Basics</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-08-01</h4>
+            <h4 data-toc-skip class="date">2023-08-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/sleeper_basics.Rmd" class="external-link"><code>vignettes/sleeper_basics.Rmd</code></a></small>
       <div class="d-none name"><code>sleeper_basics.Rmd</code></div>
@@ -230,11 +230,11 @@ with 12 teams, half ppr scoring, and rosters about 300 players.</p>
 <span><span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      1110      T.Y. Hilton     WR    IND    33.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      1339      Zach Ertz       TE    PHI    32.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      1339      Zach Ertz       TE    PHI    32.8</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      1426      DeAndre Hopkins WR    ARI    31.2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      1825      Jarvis Landry   WR    CLE    30.7</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      2025      Albert Wilson   WR    MIA    31.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      2197      Brandin Cooks   WR    HOU    29.8</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      2197      Brandin Cooks   WR    HOU    29.9</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a>
 </h2>
@@ -266,7 +266,7 @@ player values.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      4866      Saquon Barkley RB    NYG    26.5     3.4</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      4199      Aaron Jones    RB    GB     28.7    21  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      1426      DeAndre Hopki… WR    ARI    31.2    21.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      4037      Chris Godwin   WR    TB     27.4    33.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      4037      Chris Godwin   WR    TB     27.5    33.7</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      4098      Kareem Hunt    RB    CLE    28      63.7</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      5022      Dallas Goedert TE    PHI    28.1    83.2</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></span></span></code></pre></div>
@@ -353,17 +353,17 @@ who might be looking to offload an older veteran!</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [12]</span></span></span>
 <span><span class="co">#&gt;    franchise_id franchise_name    age_QB age_RB age_TE age_WR age_FB count_QB</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1            Fake News           30.9   27.6   27.7   29.5   <span style="color: #BB0000;">NA</span>          3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 10           JMLarkin            30.6   29.3   27.9   27.3   32.3        3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers    26.2   25.1   33.6   27.6   <span style="color: #BB0000;">NA</span>          4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 12           jaydk               34.3   27.8   28.1   29.9   <span style="color: #BB0000;">NA</span>          4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe            31     24.6   29.2   24.4   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 3            solarpool           27.6   27.7   28.7   29.7   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 4            The FANTom Menace   30.9   25.6   25.9   29.1   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 5            Barbarians          27.2   26.6   30.8   28.4   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1            Fake News           30.9   27.6   27.7   29.6   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 10           JMLarkin            30.6   29.4   28     27.3   32.3        3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers    26.2   25.2   33.7   27.6   <span style="color: #BB0000;">NA</span>          4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 12           jaydk               34.3   27.8   28.1   30     <span style="color: #BB0000;">NA</span>          4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe            31.1   24.7   29.2   24.4   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 3            solarpool           27.6   27.8   28.7   29.8   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 4            The FANTom Menace   30.9   25.6   25.9   29.2   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 5            Barbarians          27.2   26.7   30.8   28.4   <span style="color: #BB0000;">NA</span>          3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 6            sox05syd            26     26.1   29.3   27.5   <span style="color: #BB0000;">NA</span>          3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 7            Flipadelphia05      35.1   27.8   29.5   28.9   <span style="color: #BB0000;">NA</span>          2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 8            Hocka Flocka        33.5   26.3   26     25.6   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 8            Hocka Flocka        33.5   26.3   26     25.7   <span style="color: #BB0000;">NA</span>          3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 9            ZPMiller97          26.5   26.1   28.8   27.2   <span style="color: #BB0000;">NA</span>          3</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   count_FB &lt;int&gt;</span></span></span></code></pre></div>
