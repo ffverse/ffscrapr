@@ -19,7 +19,8 @@
 #'
 #' @export
 ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potentialpoints = TRUE, ...) {
-  standings <- fleaflicker_getendpoint("FetchLeagueStandings",
+  standings <- fleaflicker_getendpoint(
+    "FetchLeagueStandings",
     league_id = conn$league_id,
     season = conn$season,
     sport = "NFL"
@@ -36,10 +37,15 @@ ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potenti
       "points_for" = "pointsFor",
       "points_against" = "pointsAgainst"
     ) %>%
-    dplyr::mutate(dplyr::across(c("points_for", "points_against"), purrr::map_dbl, purrr::pluck, "value")) %>%
+    dplyr::mutate(
+      dplyr::across(
+        c("points_for", "points_against"),
+        function(col) purrr::map_dbl(col, purrr::pluck, "value")
+      )
+    )%>%
     tidyr::hoist("recordOverall", "h2h_wins" = "wins", "h2h_losses" = "losses", "h2h_ties" = "ties") %>%
     dplyr::mutate(
-      dplyr::across(dplyr::starts_with("h2h"), tidyr::replace_na, 0),
+      dplyr::across(dplyr::starts_with("h2h"), ~tidyr::replace_na(.x,0)),
       h2h_winpct = (.data$h2h_wins / (.data$h2h_wins + .data$h2h_losses + .data$h2h_ties)) %>% round(3)
     ) %>%
     dplyr::select(
@@ -74,14 +80,15 @@ ff_standings.flea_conn <- function(conn, include_allplay = TRUE, include_potenti
     dplyr::filter(!is.na(.data$result)) %>%
     dplyr::distinct(.data$week, .data$game_id) %>%
     dplyr::mutate(potentialpoints = purrr::map2(.data$week, .data$game_id, .flea_potentialpointsweek, conn)) %>%
-    tidyr::unnest(.data$potentialpoints) %>%
+    tidyr::unnest("potentialpoints") %>%
     dplyr::group_by(.data$franchise_id) %>%
     dplyr::summarise(potential_points = sum(.data$potential_points)) %>%
     dplyr::ungroup()
 }
 
 .flea_potentialpointsweek <- function(week, game_id, conn) {
-  x <- fleaflicker_getendpoint("FetchLeagueBoxscore",
+  x <- fleaflicker_getendpoint(
+    "FetchLeagueBoxscore",
     sport = "NFL",
     scoring_period = week,
     fantasy_game_id = game_id,

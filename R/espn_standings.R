@@ -40,12 +40,12 @@ ff_standings.espn_conn <- function(conn, ...) {
 
   records <-
     standings_init %>%
-    dplyr::select(.data$record) %>%
+    dplyr::select("record") %>%
     tidyr::hoist(
       "record",
       "overall"
     ) %>%
-    dplyr::select(-.data$record) %>%
+    dplyr::select(-"record") %>%
     tidyr::hoist(
       "overall",
       "h2h_wins" = "wins",
@@ -55,7 +55,7 @@ ff_standings.espn_conn <- function(conn, ...) {
       "points_for" = "pointsFor",
       "points_against" = "pointsAgainst",
     ) %>%
-    dplyr::select(-.data$overall)
+    dplyr::select(-"overall")
 
   allplay <- ff_schedule(conn) %>%
     .add_allplay()
@@ -65,7 +65,7 @@ ff_standings.espn_conn <- function(conn, ...) {
 
   standings <-
     dplyr::bind_cols(
-      standings_init %>% dplyr::select(-.data$record),
+      standings_init %>% dplyr::select(-"record"),
       records
     ) %>%
     dplyr::left_join(allplay, by = c("franchise_id")) %>%

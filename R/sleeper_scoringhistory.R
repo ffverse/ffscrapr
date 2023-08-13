@@ -25,7 +25,8 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:nflreadr::most_re
     ff_scoring(conn) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "sleeper"),
-      by = c("event" = "ff_event")
+      by = c("event" = "ff_event"),
+      relationship = "many-to-many"
     )
 
   ros <- .nflfastr_roster(season)
@@ -39,8 +40,16 @@ ff_scoringhistory.sleeper_conn <- function(conn, season = 1999:nflreadr::most_re
   }
 
   ros %>%
-    dplyr::inner_join(ps, by = c("gsis_id"="player_id","season")) %>%
-    dplyr::inner_join(league_rules, by = c("metric"="nflfastr_event","pos")) %>%
+    dplyr::inner_join(
+      ps,
+      by = c("gsis_id"="player_id","season"),
+      relationship = "many-to-many"
+    ) %>%
+    dplyr::inner_join(
+      league_rules,
+      by = c("metric"="nflfastr_event","pos"),
+      relationship = "many-to-many"
+    ) %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$gsis_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%

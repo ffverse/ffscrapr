@@ -105,7 +105,12 @@ ff_schedule.flea_conn <- function(conn, week = 1:17, ...) {
       )),
       dplyr::starts_with("is")
     ) %>%
-    dplyr::mutate(dplyr::across(dplyr::contains("_score"), purrr::map_dbl, ~ replace(.x, is.null(.x), NA)))
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::contains("_score"),
+        function(col) purrr::map_dbl(col, ~ replace(.x, is.null(.x), NA))
+        )
+    )
 
   return(schedule)
 }

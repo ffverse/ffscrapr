@@ -45,11 +45,20 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
     purrr::pluck("content") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
+    dplyr::group_by(.data$matchup_id) %>%
+    dplyr::mutate(
+      opponent_id = purrr::map_int(
+        .data$roster_id,
+        ~ .data$roster_id[.data$roster_id != .x][[1]]
+      )
+    ) %>%
+    dplyr::ungroup() %>%
     dplyr::select(
       dplyr::any_of(
         c(
           "franchise_id" = "roster_id",
           "franchise_score" = "points",
+          "opponent_id",
           "matchup_id"
         )
       )
@@ -60,15 +69,14 @@ ff_schedule.sleeper_conn <- function(conn, ...) {
       dplyr::select(
         df_matchup,
         dplyr::any_of(c(
-          "opponent_id" = "franchise_id",
-          "opponent_score" = "franchise_score",
-          "matchup_id"
+          "matchup_id",
+          "franchise_id",
+          "opponent_score" = "franchise_score"
         ))
       ) %>%
         dplyr::filter(!is.na(.data$matchup_id)),
-      by = "matchup_id"
+      by = c("matchup_id", "opponent_id" = "franchise_id")
     ) %>%
-    dplyr::filter(.data$franchise_id != .data$opponent_id) %>%
     dplyr::mutate(week = week) %>%
     dplyr::select(dplyr::any_of(c("week", "franchise_id", "franchise_score", "opponent_id", "opponent_score")))
 

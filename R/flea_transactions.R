@@ -55,9 +55,9 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
 
 .flea_team_transactions <- function(franchise_id, conn) {
   initial_results <- fleaflicker_getendpoint("FetchLeagueTransactions",
-    league_id = conn$league_id,
-    team_id = franchise_id,
-    result_offset = 0
+                                             league_id = conn$league_id,
+                                             team_id = franchise_id,
+                                             result_offset = 0
   ) %>%
     purrr::pluck("content")
 
@@ -102,10 +102,10 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
       type_desc = "added"
     ) %>%
     tidyr::hoist("transaction",
-      "player_id" = "id",
-      "player_name" = "nameFull",
-      "pos" = "position",
-      "team" = "proTeamAbbreviation"
+                 "player_id" = "id",
+                 "player_name" = "nameFull",
+                 "pos" = "position",
+                 "team" = "proTeamAbbreviation"
     ) %>%
     dplyr::select(dplyr::any_of(c(
       "timestamp",
@@ -137,10 +137,10 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
       type_desc = "dropped"
     ) %>%
     tidyr::hoist("transaction",
-      "player_id" = "id",
-      "player_name" = "nameFull",
-      "pos" = "position",
-      "team" = "proTeamAbbreviation"
+                 "player_id" = "id",
+                 "player_name" = "nameFull",
+                 "pos" = "position",
+                 "team" = "proTeamAbbreviation"
     ) %>%
     dplyr::select(dplyr::any_of(c(
       "timestamp",
@@ -169,10 +169,10 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     tidyr::unnest_wider("transaction") %>%
     dplyr::mutate(player = purrr::map(.data$player, purrr::pluck, "proPlayer")) %>%
     tidyr::hoist("player",
-      "player_id" = "id",
-      "player_name" = "nameFull",
-      "pos" = "position",
-      "team" = "proTeamAbbreviation"
+                 "player_id" = "id",
+                 "player_name" = "nameFull",
+                 "pos" = "position",
+                 "team" = "proTeamAbbreviation"
     ) %>%
     dplyr::select(-"player", -"franchise")
 
@@ -182,8 +182,8 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
       tidyr::hoist("waiverResolutionTeams", "loser") %>%
       dplyr::filter(is.na(.data$loser) | !.data$loser) %>%
       dplyr::mutate(waiverResolutionTeams = purrr::map_dbl(.data$waiverResolutionTeams,
-        purrr::pluck, "team", "id",
-        .default = NA
+                                                           purrr::pluck, "team", "id",
+                                                           .default = NA
       )) %>%
       dplyr::filter(is.na(.data$waiverResolutionTeams) | .data$franchise_id == .data$waiverResolutionTeams)
   }
@@ -210,9 +210,9 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
 }
 .flea_transactions_trade <- function(conn) {
   initial_results <- fleaflicker_getendpoint("FetchTrades",
-    league_id = conn$league_id,
-    filter = "TRADES_COMPLETED",
-    result_offset = 0
+                                             league_id = conn$league_id,
+                                             filter = "TRADES_COMPLETED",
+                                             result_offset = 0
   ) %>%
     purrr::pluck("content")
 
@@ -248,9 +248,23 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     tidyr::unnest_longer("teams") %>%
-    tidyr::hoist("teams", "franchise" = "team", "playersObtained", "picksObtained", "playersReleased") %>%
-    dplyr::mutate_at(c("playersObtained", "picksObtained", "playersReleased"), purrr::map, as.list) %>%
-    tidyr::hoist("franchise", "franchise_id" = "id", "franchise_name" = "name") %>%
+    tidyr::hoist(
+      "teams",
+      "franchise" = "team",
+      "playersObtained",
+      "picksObtained",
+      "playersReleased"
+    ) %>%
+    dplyr::mutate_at(
+      c("playersObtained", "picksObtained", "playersReleased"),
+      purrr::map,
+      as.list
+    ) %>%
+    tidyr::hoist(
+      "franchise",
+      "franchise_id" = "id",
+      "franchise_name" = "name"
+    ) %>%
     dplyr::mutate(
       trade_id = .data$id,
       timestamp = (as.numeric(.data$approvedOn) / 1000) %>% .as_datetime()
@@ -258,26 +272,42 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     dplyr::select(-"franchise", -"approvedOn")
 
   player_trades <- trades %>%
-    dplyr::select("timestamp", "trade_id", "franchise_id", "franchise_name", "playersObtained") %>%
+    dplyr::select(
+      "timestamp",
+      "trade_id",
+      "franchise_id",
+      "franchise_name",
+      "playersObtained"
+    ) %>%
     tidyr::unnest_longer("playersObtained") %>%
-    dplyr::mutate(playersObtained = purrr::map(.data$playersObtained, purrr::pluck, "proPlayer")) %>%
-    tidyr::hoist("playersObtained", "player_id" = "id", "player_name" = "nameFull", "pos" = "position", "team" = "proTeamAbbreviation") %>%
+    dplyr::mutate(
+      playersObtained = purrr::map(.data$playersObtained, purrr::pluck, "proPlayer")
+    ) %>%
+    tidyr::hoist(
+      "playersObtained",
+      "player_id" = "id",
+      "player_name" = "nameFull",
+      "pos" = "position",
+      "team" = "proTeamAbbreviation"
+    ) %>%
     dplyr::filter(!is.na(.data$player_id)) %>%
     dplyr::mutate(
       type = "trade",
       player_id = as.character(.data$player_id)
     ) %>%
-    dplyr::select(dplyr::any_of(c(
-      "timestamp",
-      "type",
-      "trade_id",
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos",
-      "team"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "timestamp",
+        "type",
+        "trade_id",
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos",
+        "team"
+      ))
+    )
 
   if (nrow(player_trades) == 0) player_trades <- tibble::tibble()
 
@@ -296,16 +326,18 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
       pos = "PICK",
       type = "trade"
     ) %>%
-    dplyr::select(dplyr::any_of(c(
-      "timestamp",
-      "type",
-      "trade_id",
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "timestamp",
+        "type",
+        "trade_id",
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos"
+      ))
+    )
 
   if (nrow(pick_trades) == 0) trade_cuts <- tibble::tibble()
 
@@ -315,29 +347,43 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
     dplyr::mutate_at("playersReleased", purrr::map, as.list) %>%
     tidyr::hoist("playersReleased", "proPlayer") %>%
     dplyr::mutate_at(c("proPlayer"), purrr::map, as.list) %>%
-    tidyr::hoist("proPlayer", "player_id" = "id", "player_name" = "nameFull", "pos" = "position", "team" = "proTeamAbbreviation") %>%
+    tidyr::hoist(
+      "proPlayer",
+      "player_id" = "id",
+      "player_name" = "nameFull",
+      "pos" = "position",
+      "team" = "proTeamAbbreviation"
+    ) %>%
     dplyr::filter(!is.na(.data$player_id)) %>%
     dplyr::mutate(
       type = "free_agency",
       player_id = as.character(.data$player_id),
       type_desc = "dropped"
     ) %>%
-    dplyr::select(dplyr::any_of(c(
-      "timestamp",
-      "type",
-      "trade_id",
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos",
-      "team"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "timestamp",
+        "type",
+        "trade_id",
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos",
+        "team"
+      ))
+    )
 
   if (nrow(trade_cuts) == 0) trade_cuts <- tibble::tibble()
 
   df_trades <- dplyr::bind_rows(player_trades, pick_trades, trade_cuts) %>%
-    dplyr::group_by(.data$timestamp, .data$type, .data$trade_id, .data$franchise_id, .data$franchise_name) %>%
+    dplyr::group_by(
+      .data$timestamp,
+      .data$type,
+      .data$trade_id,
+      .data$franchise_id,
+      .data$franchise_name
+    ) %>%
     tidyr::nest() %>%
     dplyr::ungroup() %>%
     dplyr::rename("traded_for" = "data")
@@ -345,31 +391,49 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
   crossing <- df_trades %>%
     dplyr::left_join(
       df_trades %>%
-        dplyr::select("trade_id", "trade_partner_id" = "franchise_id", "trade_partner_name" = "franchise_name", "traded_away" = "traded_for"),
+        dplyr::select(
+          "trade_id",
+          "trade_partner_id" = "franchise_id",
+          "trade_partner_name" = "franchise_name",
+          "traded_away" = "traded_for"),
       by = "trade_id"
     ) %>%
     dplyr::filter(.data$franchise_id != .data$trade_partner_id) %>%
-    tidyr::pivot_longer(c("traded_for", "traded_away"), names_to = "type_desc", values_to = "player") %>%
+    tidyr::pivot_longer(
+      c("traded_for", "traded_away"),
+      names_to = "type_desc",
+      values_to = "player") %>%
     tidyr::unnest("player") %>%
-    dplyr::distinct(.data$trade_id, .data$franchise_id, .data$franchise_name, .data$type_desc, .data$player_id, .keep_all = TRUE) %>%
-    dplyr::mutate(type_desc = dplyr::case_when(
-      .data$type == "free_agency" ~ "dropped",
-      TRUE ~ .data$type_desc
-    )) %>%
-    dplyr::select(dplyr::any_of(c(
-      "timestamp",
-      "type",
-      "type_desc",
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos",
-      "team",
-      "trade_partner_id",
-      "trade_partner_name",
-      "trade_id"
-    )))
+    dplyr::distinct(
+      .data$trade_id,
+      .data$franchise_id,
+      .data$franchise_name,
+      .data$type_desc,
+      .data$player_id,
+      .keep_all = TRUE
+    ) %>%
+    dplyr::mutate(
+      type_desc = dplyr::case_when(
+        .data$type == "free_agency" ~ "dropped",
+        TRUE ~ .data$type_desc
+      )
+    ) %>%
+    dplyr::select(
+      dplyr::any_of(c(
+        "timestamp",
+        "type",
+        "type_desc",
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos",
+        "team",
+        "trade_partner_id",
+        "trade_partner_name",
+        "trade_id"
+      ))
+    )
 
   return(crossing)
 }

@@ -34,7 +34,8 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:nflreadr::most_r
     )) %>%
     dplyr::left_join(
       ffscrapr::nflfastr_stat_mapping %>% dplyr::filter(.data$platform == "mfl"),
-      by = c("event" = "ff_event")
+      by = c("event" = "ff_event"),
+      relationship = "many-to-many"
     ) %>%
     dplyr::select(
       "pos", "points", "lower_range", "upper_range", "event", "points_type", "nflfastr_event", "short_desc"
@@ -51,8 +52,16 @@ ff_scoringhistory.template_conn <- function(conn, season = 1999:nflreadr::most_r
   }
 
   fastr_weekly <- ros %>%
-    dplyr::inner_join(ps, by = c("gsis_id"="player_id","season")) %>%
-    dplyr::inner_join(league_rules, by = c("metric"="nflfastr_event","pos")) %>%
+    dplyr::inner_join(
+      ps,
+      by = c("gsis_id"="player_id","season"),
+      relationship = "many-to-many"
+    ) %>%
+    dplyr::inner_join(
+      league_rules,
+      by = c("metric"="nflfastr_event","pos"),
+      relationship = "many-to-many"
+    ) %>%
     dplyr::filter(.data$value >= .data$lower_range, .data$value <= .data$upper_range) %>%
     dplyr::mutate(
       value = dplyr::case_when(.data$points_type == "once" ~ 1, TRUE ~ .data$value),

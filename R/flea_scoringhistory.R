@@ -27,7 +27,8 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:nflreadr::most_recen
       ffscrapr::nflfastr_stat_mapping %>%
         dplyr::filter(.data$platform == "fleaflicker") %>%
         dplyr::mutate(ff_event = as.integer(.data$ff_event)),
-      by = c("event_id" = "ff_event")
+      by = c("event_id" = "ff_event"),
+      relationship = "many-to-many"
     )
   ros <- .nflfastr_roster(season)
 
@@ -40,8 +41,14 @@ ff_scoringhistory.flea_conn <- function(conn, season = 1999:nflreadr::most_recen
   }
 
   ros %>%
-    dplyr::inner_join(ps, by = c("gsis_id"="player_id","season")) %>%
-    dplyr::inner_join(league_rules, by = c("metric"="nflfastr_event","pos")) %>%
+    dplyr::inner_join(
+      ps,
+      by = c("gsis_id"="player_id","season"),
+      relationship = "many-to-many") %>%
+    dplyr::inner_join(
+      league_rules,
+      by = c("metric"="nflfastr_event","pos"),
+      relationship = "many-to-many") %>%
     dplyr::mutate(points = .data$value * .data$points) %>%
     dplyr::group_by(.data$season, .data$week, .data$gsis_id, .data$sportradar_id) %>%
     dplyr::mutate(points = round(sum(.data$points, na.rm = TRUE), 2)) %>%
