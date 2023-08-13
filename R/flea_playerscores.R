@@ -25,7 +25,7 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
     endpoint = "FetchPlayerListing",
     sport = "NFL",
     league_id = conn$league_id,
-    season = conn$season,
+    sort_season = conn$season,
     external_id_type = "SPORTRADAR",
     result_offset = result_offset
   ) %>%
