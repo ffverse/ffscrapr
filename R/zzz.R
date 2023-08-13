@@ -4,11 +4,6 @@
 
 .onLoad <- function(libname, pkgname) {
 
-  # nocov start
-
-  # Memoise specific functions
-  # Timeout lengths still up for discussion
-
   memoise_option <- getOption("ffscrapr.cache")
   # list of memoise options: "memory", "filesystem","off"
 
@@ -16,77 +11,95 @@
     memoise_option <- "memory"
   }
 
+  # nocov start
+  # not testing filesystem cache or cache off
   if (memoise_option == "filesystem") {
     cache_dir <- rappdirs::user_cache_dir(appname = "ffscrapr")
     dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
     cache <- cachem::cache_disk(dir = cache_dir)
   }
+  # nocov end
 
-  if (memoise_option == "memory") {
-    cache <- cachem::cache_mem()
-  }
+  if (memoise_option == "memory") cache <- cachem::cache_mem()
 
   if (memoise_option != "off") {
-    dp_values <<- memoise::memoise(dp_values, ~ memoise::timeout(86400), cache = cache)
-    dp_playerids <<- memoise::memoise(dp_playerids, ~ memoise::timeout(86400), cache = cache)
-
+  # Memoise specific functions
+    sapply(
+      c("dp_values", "dp_playerids"),
+      .cache_fn,
+      duration = 86400,
+      cache = cache
+    )
     # LONG TERM STORAGE
-
-    mfl_players <<- memoise::memoise(mfl_players, ~ memoise::timeout(604800), cache = cache)
-    sleeper_players <<- memoise::memoise(sleeper_players, ~ memoise::timeout(604800), cache = cache)
-    fleaflicker_players <<- memoise::memoise(fleaflicker_players, ~ memoise::timeout(604800), cache = cache)
-    espn_players <<- memoise::memoise(espn_players, ~ memoise::timeout(604800), cache = cache)
-
-    mfl_allrules <<- memoise::memoise(mfl_allrules, ~ memoise::timeout(604800), cache = cache)
+    sapply(
+      c(
+        "mfl_players",
+        "sleeper_players",
+        "fleaflicker_players",
+        "espn_players",
+        "mfl_allrules"
+      ),
+      .cache_fn,
+      duration = 604800,
+      cache = cache
+    )
 
     # MEDIUM TERM STORAGE
 
-    ff_franchises.mfl_conn <<- memoise::memoise(ff_franchises.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoring.mfl_conn <<- memoise::memoise(ff_scoring.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_league.mfl_conn <<- memoise::memoise(ff_league.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_starters.mfl_conn <<- memoise::memoise(ff_starters.mfl_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoringhistory.mfl_conn <<- memoise::memoise(ff_scoringhistory.mfl_conn, ~ memoise::timeout(86400), cache = cache)
+    sapply(
+      c(
+        "ff_franchises.mfl_conn",
+        "ff_scoring.mfl_conn",
+        "ff_league.mfl_conn",
+        "ff_starters.mfl_conn",
+        "ff_scoringhistory.mfl_conn",
 
-    ff_franchises.sleeper_conn <<- memoise::memoise(ff_franchises.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoring.sleeper_conn <<- memoise::memoise(ff_scoring.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_league.sleeper_conn <<- memoise::memoise(ff_league.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoringhistory.sleeper_conn <<- memoise::memoise(ff_scoringhistory.sleeper_conn, ~ memoise::timeout(86400), cache = cache)
+        "ff_franchises.sleeper_conn",
+        "ff_scoring.sleeper_conn",
+        "ff_league.sleeper_conn",
+        "ff_scoringhistory.sleeper_conn",
 
-    ff_franchises.flea_conn <<- memoise::memoise(ff_franchises.flea_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoring.flea_conn <<- memoise::memoise(ff_scoring.flea_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_league.flea_conn <<- memoise::memoise(ff_league.flea_conn, ~ memoise::timeout(86400), cache = cache)
-    .flea_potentialpointsweek <<- memoise::memoise(.flea_potentialpointsweek, ~ memoise::timeout(86400), cache = cache)
-    ff_scoringhistory.flea_conn <<- memoise::memoise(ff_scoringhistory.flea_conn, ~ memoise::timeout(86400), cache = cache)
+        "ff_franchises.flea_conn",
+        "ff_scoring.flea_conn",
+        "ff_league.flea_conn",
+        ".flea_potentialpointsweek",
+        "ff_scoringhistory.flea_conn",
 
-    ff_franchises.espn_conn <<- memoise::memoise(ff_franchises.espn_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoring.espn_conn <<- memoise::memoise(ff_scoring.espn_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_league.espn_conn <<- memoise::memoise(ff_league.espn_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_starters.espn_conn <<- memoise::memoise(ff_starters.espn_conn, ~ memoise::timeout(86400), cache = cache)
-    ff_scoringhistory.espn_conn <<- memoise::memoise(ff_scoringhistory.espn_conn, ~ memoise::timeout(86400), cache = cache)
+        "ff_franchises.espn_conn",
+        "ff_scoring.espn_conn",
+        "ff_league.espn_conn",
+        "ff_starters.espn_conn",
+        "ff_scoringhistory.espn_conn"
+      ),
+      .cache_fn,
+      duration = 86400,
+      cache = cache
+    )
 
     # SHORT TERM STORAGE
-
-    ff_starters.sleeper_conn <<- memoise::memoise(ff_starters.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_userleagues.sleeper_conn <<- memoise::memoise(ff_userleagues.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.sleeper_conn <<- memoise::memoise(ff_schedule.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_standings.sleeper_conn <<- memoise::memoise(ff_standings.sleeper_conn, ~ memoise::timeout(3600), cache = cache)
-
-    ff_standings.mfl_conn <<- memoise::memoise(ff_standings.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_playerscores.mfl_conn <<- memoise::memoise(ff_playerscores.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.mfl_conn <<- memoise::memoise(ff_schedule.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_userleagues.mfl_conn <<- memoise::memoise(ff_userleagues.mfl_conn, ~ memoise::timeout(3600), cache = cache)
-
-    ff_userleagues.flea_conn <<- memoise::memoise(ff_userleagues.flea_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.flea_conn <<- memoise::memoise(ff_schedule.flea_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_standings.flea_conn <<- memoise::memoise(ff_standings.flea_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_starters.flea_conn <<- memoise::memoise(ff_starters.flea_conn, ~ memoise::timeout(3600), cache = cache)
-
-    ff_standings.espn_conn <<- memoise::memoise(ff_standings.espn_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_playerscores.espn_conn <<- memoise::memoise(ff_playerscores.espn_conn, ~ memoise::timeout(3600), cache = cache)
-    ff_schedule.espn_conn <<- memoise::memoise(ff_schedule.espn_conn, ~ memoise::timeout(3600), cache = cache)
+    sapply(
+      c(
+        "ff_starters.sleeper_conn",
+        "ff_userleagues.sleeper_conn",
+        "ff_schedule.sleeper_conn",
+        "ff_standings.sleeper_conn",
+        "ff_standings.mfl_conn",
+        "ff_playerscores.mfl_conn",
+        "ff_schedule.mfl_conn",
+        "ff_userleagues.mfl_conn",
+        "ff_userleagues.flea_conn",
+        "ff_schedule.flea_conn",
+        "ff_standings.flea_conn",
+        "ff_starters.flea_conn",
+        "ff_standings.espn_conn",
+        "ff_playerscores.espn_conn",
+        "ff_schedule.espn_conn"
+      ),
+      .cache_fn,
+      duration = 3600,
+      cache = cache
+    )
   }
-
-  # if (memoise_option == "off") packageStartupMessage('Note: ffscrapr.cache is set to "off"')
 
   user_agent <- glue::glue(
     "ffscrapr/{utils::packageVersion('ffscrapr')} ",
@@ -109,8 +122,6 @@
   assign("get.flea", get.flea, envir = .ffscrapr_env)
   assign("get.espn", get.espn, envir = .ffscrapr_env)
   assign("post", post, envir = .ffscrapr_env)
-
-  # nocov end
 }
 
 .onAttach <- function(libname, pkgname) {
