@@ -1,14 +1,14 @@
 test_that("ff_transactions returns a tibble of transactions", {
   local_mock_api()
 
-  # ssb <- mfl_connect(2019, 54040)
-  # ssb_transactions <- ff_transactions(ssb)
+  ssb <- mfl_connect(2019, 54040)
+  ssb_transactions <- ff_transactions(ssb)
 
-  # dlf <- mfl_connect(2020, 37920)
-  # dlf_transactions <- ff_transactions(dlf)
+  dlf <- mfl_connect(2020, 37920)
+  dlf_transactions <- ff_transactions(dlf)
 
-  # expect_tibble(ssb_transactions, min.rows = 100)
-  # expect_tibble(dlf_transactions, min.rows = 100)
+  expect_tibble(ssb_transactions, min.rows = 100)
+  expect_tibble(dlf_transactions, min.rows = 100)
 
   jml_conn <- ff_connect(platform = "sleeper", league_id = "522458773317046272", season = 2020)
   jml_transactions <- ff_transactions(jml_conn, week = 1:9)
