@@ -9,6 +9,12 @@ positions that did not have dedicated posititions (#400, thank you @mcarman8!)
 (v1.4.8.03)
 - `ff_scoring.mfl_conn()` now works better with new dplyr versions (#402) (v1.4.8.04)
 - `ff_schedule.mfl_conn()` bug fixed re: removing bad spreads (#403) (v1.4.8.05)
+- `ff_franchises.flea_conn` add season parameter to return franchises for other years
+but current year (v1.4.8.06)
+- `ff_playerscores.flea_conn` add season parameter to return player scores for other years
+but current year (v1.4.8.06)
+- `ff_rosters.flea_conn` add season parameter to return rosters for other years
+but current year (v1.4.8.06)
 
 # ffscrapr 1.4.8
 
