@@ -28,14 +28,14 @@ ff_scoringhistory.espn_conn <- function(conn, season = 1999:nflreadr::most_recen
       relationship = "many-to-many"
     )
 
-  ros <- .nflfastr_roster(season)
+  ros <- .nflverse_roster(season)
 
-  ps <- .nflfastr_offense_long(season)
+  ps <- .nflverse_player_stats_long(season)
 
   if("K" %in% league_rules$pos){
     ps <- dplyr::bind_rows(
       ps,
-      .nflfastr_kicking_long(season))
+      .nflverse_kicking_long(season))
   }
 
   if(any(c("passing25Yards","rushing10Yards","receiving10Yards") %in% league_rules$stat_name)){

@@ -9,11 +9,6 @@
   functions <- list(
     dp_values,
     dp_playerids,
-    nflfastr_weekly,
-    nflfastr_rosters,
-    .nflfastr_kicking_long,
-    .nflfastr_offense_long,
-    .nflfastr_roster,
     mfl_players,
     sleeper_players,
     espn_players,

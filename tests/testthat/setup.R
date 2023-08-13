@@ -14,7 +14,7 @@ library(checkmate)
 
 # Goal of testing with mock is to test data cleaning/transformation dependencies
 # as they change on CRAN (and hold API responses constant).
-
+#
 needs_mocking <- function() {
   # !identical(Sys.getenv("MOCK_BYPASS"), "true")
   FALSE
@@ -25,25 +25,25 @@ github_online <- function(){
   FALSE
 }
 
-if (needs_mocking() & github_online()) {
-  cache_dir <- rappdirs::user_cache_dir("ffscrapr")
-  if (!file.exists(cache_dir)) {
-    dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
-  }
-
-  cache_path <- file.path(cache_dir, "ffscrapr-tests-1.4.7")
-
-  # Cache for 24 hours
-  if (!file.exists(cache_path) || difftime(Sys.time(), file.mtime(cache_path), units = "days") > 1) {
-
-    path <- tempfile()
-    download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip", path)
-    unzip(path, exdir = cache_dir)
-    unlink(path)
-  }
-
-  httptest::.mockPaths(cache_path)
-}
+# if (needs_mocking() & github_online()) {
+#   cache_dir <- rappdirs::user_cache_dir("ffscrapr")
+#   if (!file.exists(cache_dir)) {
+#     dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
+#   }
+#
+#   cache_path <- file.path(cache_dir, "ffscrapr-tests-1.4.7")
+#
+#   # Cache for 24 hours
+#   if (!file.exists(cache_path) || difftime(Sys.time(), file.mtime(cache_path), units = "days") > 1) {
+#
+#     path <- tempfile()
+#     download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip", path)
+#     unzip(path, exdir = cache_dir)
+#     unlink(path)
+#   }
+#
+#   httptest::.mockPaths(cache_path)
+# }
 
 local_mock_api <- function(envir = parent.frame()) {
   if (!needs_mocking()) return()
@@ -56,3 +56,6 @@ local_mock_api <- function(envir = parent.frame()) {
   httptest::use_mock_api()
   withr::defer(httptest::stop_mocking(), envir = envir)
 }
+cache_path <- here::here("tests","test_cache")
+httptest::start_capturing(simplify = FALSE)
+withr::defer(httptest::stop_capturing(), envir = testthat::teardown_env())

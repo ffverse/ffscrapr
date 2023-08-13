@@ -41,15 +41,15 @@ ff_scoringhistory.mfl_conn <- function(conn, season = 1999:nflreadr::most_recent
       "pos", "points", "lower_range", "upper_range", "event", "points_type", "nflfastr_event", "short_desc"
     )
 
-  ros <- .nflfastr_roster(season) %>%
+  ros <- .nflverse_roster(season) %>%
     dplyr::mutate(pos = replace(.data$pos,.data$pos=="K","PK"))
 
-  ps <- .nflfastr_offense_long(season)
+  ps <- .nflverse_player_stats_long(season)
 
   if("PK" %in% league_rules$pos){
     ps <- dplyr::bind_rows(
       ps,
-      .nflfastr_kicking_long(season))
+      .nflverse_kicking_long(season))
   }
 
   fastr_weekly <- ros %>%
