@@ -58,13 +58,15 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
 
   df_players <- players %>%
     tibble::tibble() %>%
-    tidyr::hoist(1,
+    tidyr::hoist(
+      1,
       "player" = "proPlayer",
       "score_total" = "seasonTotal",
       "score_avg" = "seasonAverage",
       "score_sd" = "seasonsStandartDeviation"
     ) %>%
-    tidyr::hoist("player",
+    tidyr::hoist(
+      "player",
       "player_id" = "id",
       "player_name" = "nameFull",
       "pos" = "position",
@@ -77,10 +79,12 @@ ff_playerscores.flea_conn <- function(conn, page_limit = NULL, ...) {
       ),
       games = (.data$score_total / .data$score_avg) %>% round()
     ) %>%
-    dplyr::select(dplyr::any_of(c(
-      "player_id", "player_name", "pos", "team", "games",
-      "score_total", "score_avg", "score_sd"
-    )))
+    dplyr::select(
+      dplyr::any_of(c(
+        "player_id", "player_name", "pos", "team", "games",
+        "score_total", "score_avg", "score_sd"
+      ))
+    )
 
   return(df_players)
 }
