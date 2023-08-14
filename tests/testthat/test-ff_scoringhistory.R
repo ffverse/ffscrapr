@@ -1,17 +1,20 @@
 test_that("ff_scoringhistory returns a tibble of player scores", {
   local_mock_api()
-#
-#   if (!identical(Sys.getenv("MOCK_BYPASS"), "true")) {
-#     testthat::local_mock(
-#       nflfastr_weekly = function(seasons, type) {
-#         if(type == "offense") return(readRDS(file.path(cache_path, "gh_nflfastr/player_stats.rds")))
-#         if(type == "kicking") return(readRDS(file.path(cache_path, "gh_nflfastr/kicker_stats.rds")))
-#         },
-#       nflfastr_rosters = function(seasons) {
-#         purrr::map_df(seasons, ~ readRDS(file.path(cache_path, glue::glue("gh_nflfastr/roster_{.x}.rds"))))
-#       }
-#     )
-#   }
+
+  rowcount_check <- FALSE
+
+  try({
+    test_ps <- nflreadr::load_player_stats(2019:2020, stat_type = "offense")
+    test_psk <- nflreadr::load_player_stats(2019:2020, stat_type = "kicking")
+    test_rosters <- nflreadr::load_rosters(2019:2020)
+    rowcount_check <- c(
+      nrow(test_ps) >= 10000,
+      nrow(test_psk) >= 1000,
+      nrow(test_rosters) >= 5000
+    )
+  })
+
+  if(!all(rowcount_check)) skip("nflverse data did not download correctly")
 
   sfb_conn <- mfl_connect(2020, 65443)
   sfb_scoringhistory <- ff_scoringhistory(sfb_conn, 2019:2020)
