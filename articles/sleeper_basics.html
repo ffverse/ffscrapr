@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.09</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.10</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,19 +152,14 @@ natural to start analyses from the username, so let’s start there!</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">solarpool_leagues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_userleagues.html">sleeper_userleagues</a></span><span class="op">(</span><span class="st">"solarpool"</span>,<span class="fl">2020</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">solarpool_leagues</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 4</span></span></span>
 <span><span class="co">#&gt;   league_name                         league_id      franchise_name franchise_id</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> The JanMichaelLarkin Dynasty League 5224587733170… solarpool      20289203836…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> DLP Dynasty League                  5213790203320… DLP::thoriyan  20289203836…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> z_dynastyprocess-test               6335017617761… solarpool      20289203836…</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> z_dynastyprocess-test               6335017617761… solarpool      20289203836…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> The JanMichaelLarkin Dynasty League 5224587733170… solarpool      20289203836…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> DLP Dynasty League                  5213790203320… DLP::thoriyan  20289203836…</span></span></code></pre></div>
 <p>Let’s pull the JML league ID from here for analysis, and set up a
 Sleeper connection object.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -193,9 +188,6 @@ this point are prefixed with “ff_”.</p>
 <p>Cool! Let’s have a quick look at what this league is like.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">jml_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_league.html">ff_league</a></span><span class="op">(</span><span class="va">jml</span><span class="op">)</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">jml_summary</span><span class="op">)</span></span>
 <span><span class="co">#&gt; tibble [1 × 16] (S3: tbl_df/tbl/data.frame)</span></span>
@@ -220,21 +212,17 @@ with 12 teams, half ppr scoring, and rosters about 300 players.</p>
 <p>Let’s grab the rosters now.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">jml_rosters</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ff_rosters.html">ff_rosters</a></span><span class="op">(</span><span class="va">jml</span><span class="op">)</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">jml_rosters</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   franchise_id franchise_name player_id player_name     pos   team    age</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      1110      T.Y. Hilton     WR    IND    33.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      1339      Zach Ertz       TE    PHI    32.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      1426      DeAndre Hopkins WR    ARI    31.2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      1825      Jarvis Landry   WR    CLE    30.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      2025      Albert Wilson   WR    MIA    31.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      2197      Brandin Cooks   WR    HOU    29.9</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      1110      T.Y. Hilton     WR    <span style="color: #BB0000;">NA</span>     33.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      1339      Zach Ertz       TE    ARI    32.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      1426      DeAndre Hopkins WR    TEN    31.2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      1825      Jarvis Landry   WR    <span style="color: #BB0000;">NA</span>     30.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      2025      Albert Wilson   WR    <span style="color: #BB0000;">NA</span>     31.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      2197      Brandin Cooks   WR    DAL    29.9</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="values">Values<a class="anchor" aria-label="anchor" href="#values"></a>
 </h2>
@@ -263,12 +251,12 @@ player values.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 10</span></span></span>
 <span><span class="co">#&gt;   franchise_id franchise_name player_id player_name    pos   team    age ecr_1qb</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      4866      Saquon Barkley RB    NYG    26.5     3.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      4199      Aaron Jones    RB    GB     28.7    21  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      1426      DeAndre Hopki… WR    ARI    31.2    21.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      4037      Chris Godwin   WR    TB     27.5    33.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      4098      Kareem Hunt    RB    CLE    28      63.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      5022      Dallas Goedert TE    PHI    28.1    83.2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1            Fake News      4866      Saquon Barkley RB    NYG    26.5    16.2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1            Fake News      4037      Chris Godwin   WR    TB     27.5    55.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1            Fake News      5022      Dallas Goedert TE    PHI    28.6    70.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1            Fake News      4199      Aaron Jones    RB    GB     28.7    78.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1            Fake News      1426      DeAndre Hopki… WR    TEN    31.2    86.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1            Fake News      4017      Deshaun Watson QB    CLE    27.9    87.7</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: ecr_pos &lt;dbl&gt;, value_1qb &lt;int&gt;</span></span></span></code></pre></div>
 <p>Let’s do some team summaries now!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -286,18 +274,18 @@ player values.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 8</span></span></span>
 <span><span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 3            solarpool              <span style="text-decoration: underline;">45</span>406  <span style="text-decoration: underline;">7</span>664 <span style="text-decoration: underline;">23</span>920   529 <span style="text-decoration: underline;">13</span>293    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 4            The FANTom Menace      <span style="text-decoration: underline;">41</span>754  <span style="text-decoration: underline;">3</span>051  <span style="text-decoration: underline;">7</span>594  <span style="text-decoration: underline;">1</span>820 <span style="text-decoration: underline;">29</span>289    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers       <span style="text-decoration: underline;">40</span>081  <span style="text-decoration: underline;">3</span>889  <span style="text-decoration: underline;">9</span>902  <span style="text-decoration: underline;">6</span>997 <span style="text-decoration: underline;">19</span>293    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1            Fake News              <span style="text-decoration: underline;">37</span>716  <span style="text-decoration: underline;">1</span>505 <span style="text-decoration: underline;">19</span>221  <span style="text-decoration: underline;">2</span>730 <span style="text-decoration: underline;">14</span>260    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 8            Hocka Flocka           <span style="text-decoration: underline;">37</span>314  <span style="text-decoration: underline;">1</span>234 <span style="text-decoration: underline;">20</span>459  <span style="text-decoration: underline;">2</span>511 <span style="text-decoration: underline;">13</span>110    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 12           jaydk                  <span style="text-decoration: underline;">33</span>981  <span style="text-decoration: underline;">1</span>696 <span style="text-decoration: underline;">17</span>692  <span style="text-decoration: underline;">2</span>936 <span style="text-decoration: underline;">11</span>657    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 5            Barbarians             <span style="text-decoration: underline;">32</span>614  <span style="text-decoration: underline;">3</span>770 <span style="text-decoration: underline;">19</span>492  <span style="text-decoration: underline;">4</span>629  <span style="text-decoration: underline;">4</span>723    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 6            sox05syd               <span style="text-decoration: underline;">30</span>780  <span style="text-decoration: underline;">4</span>329  <span style="text-decoration: underline;">5</span>614  <span style="text-decoration: underline;">8</span>136 <span style="text-decoration: underline;">12</span>701    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9            ZPMiller97             <span style="text-decoration: underline;">24</span>697  <span style="text-decoration: underline;">2</span>941 <span style="text-decoration: underline;">12</span>782   998  <span style="text-decoration: underline;">7</span>976    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2            KingGabe               <span style="text-decoration: underline;">19</span>931    41  <span style="text-decoration: underline;">6</span>327    15 <span style="text-decoration: underline;">13</span>548    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 7            Flipadelphia05         <span style="text-decoration: underline;">18</span>140  <span style="text-decoration: underline;">1</span>951  <span style="text-decoration: underline;">4</span>799   789 <span style="text-decoration: underline;">10</span>601    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 10           JMLarkin               <span style="text-decoration: underline;">14</span>197   336    67   884 <span style="text-decoration: underline;">12</span>908     2</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 3            solarpool              <span style="text-decoration: underline;">33</span>063 <span style="text-decoration: underline;">11</span>965 <span style="text-decoration: underline;">17</span>160   824  <span style="text-decoration: underline;">3</span>114    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 11           Permian Panthers       <span style="text-decoration: underline;">27</span>298  <span style="text-decoration: underline;">1</span>528  <span style="text-decoration: underline;">8</span>168  <span style="text-decoration: underline;">5</span>136 <span style="text-decoration: underline;">12</span>466    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 5            Barbarians             <span style="text-decoration: underline;">26</span>576  <span style="text-decoration: underline;">5</span>902 <span style="text-decoration: underline;">11</span>647   852  <span style="text-decoration: underline;">8</span>175    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 8            Hocka Flocka           <span style="text-decoration: underline;">24</span>354   981  <span style="text-decoration: underline;">5</span>781  <span style="text-decoration: underline;">3</span>442 <span style="text-decoration: underline;">14</span>150    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe               <span style="text-decoration: underline;">21</span>650     7  <span style="text-decoration: underline;">2</span>889     5 <span style="text-decoration: underline;">18</span>749    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 12           jaydk                  <span style="text-decoration: underline;">20</span>172  <span style="text-decoration: underline;">1</span>072  <span style="text-decoration: underline;">7</span>937  <span style="text-decoration: underline;">5</span>884  <span style="text-decoration: underline;">5</span>279    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1            Fake News              <span style="text-decoration: underline;">18</span>674  <span style="text-decoration: underline;">1</span>395 <span style="text-decoration: underline;">10</span>021  <span style="text-decoration: underline;">2</span>544  <span style="text-decoration: underline;">4</span>714    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 6            sox05syd               <span style="text-decoration: underline;">17</span>843  <span style="text-decoration: underline;">8</span>130  <span style="text-decoration: underline;">1</span>499  <span style="text-decoration: underline;">3</span>000  <span style="text-decoration: underline;">5</span>214    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 4            The FANTom Menace      <span style="text-decoration: underline;">15</span>267  <span style="text-decoration: underline;">1</span>260   374   162 <span style="text-decoration: underline;">13</span>471    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 9            ZPMiller97             <span style="text-decoration: underline;">11</span>344  <span style="text-decoration: underline;">3</span>416  <span style="text-decoration: underline;">2</span>692    41  <span style="text-decoration: underline;">5</span>195    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 7            Flipadelphia05          <span style="text-decoration: underline;">8</span>794   258   149   438  <span style="text-decoration: underline;">7</span>949    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 10           JMLarkin                <span style="text-decoration: underline;">5</span>911     5    51   101  <span style="text-decoration: underline;">5</span>753     1</span></span></code></pre></div>
 <p>So with that, we’ve got a team summary of values! I like applying
 some context, so let’s turn these into percentages - this helps
 normalise it to your league environment.</p>
@@ -310,18 +298,18 @@ normalise it to your league environment.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 8</span></span></span>
 <span><span class="co">#&gt;    franchise_id franchise_name    team_value    QB    RB    TE    WR    FB</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 3            solarpool              0.121 0.236 0.162 0.016 0.081    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 4            The FANTom Menace      0.111 0.094 0.051 0.055 0.179    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers       0.106 0.12  0.067 0.212 0.118    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1            Fake News              0.1   0.046 0.13  0.083 0.087    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 8            Hocka Flocka           0.099 0.038 0.138 0.076 0.08     <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 12           jaydk                  0.09  0.052 0.12  0.089 0.071    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 5            Barbarians             0.087 0.116 0.132 0.14  0.029    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 6            sox05syd               0.082 0.134 0.038 0.247 0.078    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9            ZPMiller97             0.066 0.091 0.086 0.03  0.049    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2            KingGabe               0.053 0.001 0.043 0     0.083    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 7            Flipadelphia05         0.048 0.06  0.032 0.024 0.065    <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 10           JMLarkin               0.038 0.01  0     0.027 0.079     2</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 3            solarpool              0.143 0.333 0.251 0.037 0.03     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 11           Permian Panthers       0.118 0.043 0.119 0.229 0.12     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 5            Barbarians             0.115 0.164 0.17  0.038 0.078    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 8            Hocka Flocka           0.105 0.027 0.085 0.153 0.136    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe               0.094 0     0.042 0     0.18     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 12           jaydk                  0.087 0.03  0.116 0.262 0.051    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1            Fake News              0.081 0.039 0.147 0.113 0.045    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 6            sox05syd               0.077 0.226 0.022 0.134 0.05     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 4            The FANTom Menace      0.066 0.035 0.005 0.007 0.129    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 9            ZPMiller97             0.049 0.095 0.039 0.002 0.05     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 7            Flipadelphia05         0.038 0.007 0.002 0.02  0.076    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 10           JMLarkin               0.026 0     0.001 0.005 0.055     1</span></span></code></pre></div>
 <p>Armed with a value summary like this, we can see team strengths and
 weaknesses pretty quickly, and figure out who might be interested in
 your positional surpluses and who might have a surplus at a position you
@@ -353,18 +341,18 @@ who might be looking to offload an older veteran!</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   franchise_id, franchise_name [12]</span></span></span>
 <span><span class="co">#&gt;    franchise_id franchise_name    age_QB age_RB age_TE age_WR age_FB count_QB</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1            Fake News           30.9   27.6   27.7   29.6   <span style="color: #BB0000;">NA</span>          3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 10           JMLarkin            30.6   29.4   28     27.3   32.3        3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers    26.2   25.2   33.7   27.6   <span style="color: #BB0000;">NA</span>          4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 12           jaydk               34.4   27.8   28.1   30     <span style="color: #BB0000;">NA</span>          4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe            31.1   24.7   29.2   24.4   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 3            solarpool           27.6   27.8   28.7   29.8   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 4            The FANTom Menace   30.9   25.6   25.9   29.2   <span style="color: #BB0000;">NA</span>          5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 5            Barbarians          27.2   26.7   30.8   28.4   <span style="color: #BB0000;">NA</span>          3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 6            sox05syd            26     26.1   29.3   27.5   <span style="color: #BB0000;">NA</span>          3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 7            Flipadelphia05      35.1   27.8   29.5   28.9   <span style="color: #BB0000;">NA</span>          2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 8            Hocka Flocka        33.5   26.3   26     25.7   <span style="color: #BB0000;">NA</span>          3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 9            ZPMiller97          26.5   26.1   28.8   27.2   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1            Fake News           28.2   27.2   27.9   28.8   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 10           JMLarkin            32.7   30.7   28.1   25.7   32.3        3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 11           Permian Panthers    26.9   25.2   33.8   26     <span style="color: #BB0000;">NA</span>          4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 12           jaydk               28.2   26.5   27.9   30.6   <span style="color: #BB0000;">NA</span>          4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2            KingGabe            26.7   25     27.1   24.4   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 3            solarpool           26.6   27.6   28.6   29.6   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 4            The FANTom Menace   29.7   27     26.6   28.6   <span style="color: #BB0000;">NA</span>          5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 5            Barbarians          27.1   25.8   30.9   28.5   <span style="color: #BB0000;">NA</span>          2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 6            sox05syd            26.1   26.2   28.9   26.2   <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 7            Flipadelphia05      34.7   28     27.1   29.2   <span style="color: #BB0000;">NA</span>          2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 8            Hocka Flocka        29.1   25.8   26.1   25     <span style="color: #BB0000;">NA</span>          3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 9            ZPMiller97          26.6   26.4   28.7   27.2   <span style="color: #BB0000;">NA</span>          3</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: count_RB &lt;int&gt;, count_TE &lt;int&gt;, count_WR &lt;int&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   count_FB &lt;int&gt;</span></span></span></code></pre></div>
 </div>

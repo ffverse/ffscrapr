@@ -58,6 +58,9 @@
     <loc>https://ffscrapr.ffverse.com/news/index.html</loc>
   </url>
   <url>
+    <loc>https://ffscrapr.ffverse.com/reference/clear_cache.html</loc>
+  </url>
+  <url>
     <loc>https://ffscrapr.ffverse.com/reference/dot-add_allplay.html</loc>
   </url>
   <url>
@@ -80,9 +83,6 @@
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/dot-espn_team_map.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dot-ff_clear_cache.html</loc>
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/dot-fn_choose_season.html</loc>
@@ -115,10 +115,7 @@
     <loc>https://ffscrapr.ffverse.com/reference/dp_clean_html.html</loc>
   </url>
   <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_cleannames.html</loc>
-  </url>
-  <url>
-    <loc>https://ffscrapr.ffverse.com/reference/dp_name_mapping.html</loc>
+    <loc>https://ffscrapr.ffverse.com/reference/dp_clean_names.html</loc>
   </url>
   <url>
     <loc>https://ffscrapr.ffverse.com/reference/dp_playerids.html</loc>

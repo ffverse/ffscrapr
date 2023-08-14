@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.09</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.10</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -207,15 +207,15 @@ the content from there, but you can use base R subsetting or
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">search_results</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
-<span><span class="co">#&gt;   homeURL                                          name                id   </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> http://www73.myfantasyleague.com/2020/home/13411 #SFBX Conference 12 13411</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> http://www73.myfantasyleague.com/2020/home/16428 #SFBX Conference 6  16428</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> http://www73.myfantasyleague.com/2020/home/17910 #SFBX Conference 11 17910</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> http://www73.myfantasyleague.com/2020/home/26453 #SFBX Conference 8  26453</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> http://www73.myfantasyleague.com/2020/home/27495 #SFBX Conference 2  27495</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> http://www73.myfantasyleague.com/2020/home/31492 #SFBX Conference 14 31492</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">#&gt;   id    year  name                homeURL                                       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 13411 2020  #SFBX Conference 12 https//www43.myfantasyleague.com/2020/home/13…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 16428 2020  #SFBX Conference 6  https//www43.myfantasyleague.com/2020/home/16…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 17910 2020  #SFBX Conference 11 https//www43.myfantasyleague.com/2020/home/17…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 26453 2020  #SFBX Conference 8  https//www43.myfantasyleague.com/2020/home/26…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 27495 2020  #SFBX Conference 2  https//www43.myfantasyleague.com/2020/home/27…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 31492 2020  #SFBX Conference 14 https//www43.myfantasyleague.com/2020/home/31…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="another-example-trade-bait">Another Example: Trade Bait<a class="anchor" aria-label="anchor" href="#another-example-trade-bait"></a>
@@ -240,14 +240,14 @@ the content from there, but you can use base R subsetting or
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span></span>
-<span><span class="co">#&gt;   timestamp  franchise_id willGiveUp inExchangeFor    franchise_name player_name</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1574520555 0001         7394       <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Rivers, Ph…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 1574520555 0001         13128      <span style="color: #949494;">"</span>anyone need a … @JohnBoschFF   Cook, Dalv…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 1580535809 0003         13319      <span style="color: #949494;">""</span>               The Accountant Jones, Aar…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 1580535809 0003         13139      <span style="color: #949494;">""</span>               The Accountant Williams, …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 1580535809 0003         11675      <span style="color: #949494;">""</span>               The Accountant Adams, Dav…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 1580572165 0004         12171      <span style="color: #949494;">""</span>               Kevin Cutillo  Johnson, D…</span></span>
+<span><span class="co">#&gt;   franchise_id willGiveUp inExchangeFor     timestamp franchise_name player_name</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         7394       <span style="color: #949494;">"</span>anyone need a Q… 15745205… @JohnBoschFF   Rivers, Ph…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         13128      <span style="color: #949494;">"</span>anyone need a Q… 15745205… @JohnBoschFF   Cook, Dalv…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0003         13319      <span style="color: #949494;">""</span>                15805358… The Accountant Jones, Aar…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0003         13139      <span style="color: #949494;">""</span>                15805358… The Accountant Williams, …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0003         11675      <span style="color: #949494;">""</span>                15805358… The Accountant Adams, Dav…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0004         12171      <span style="color: #949494;">""</span>                15805721… Kevin Cutillo  Johnson, D…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

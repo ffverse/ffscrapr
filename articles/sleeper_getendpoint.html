@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.09</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.10</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -180,13 +180,12 @@ although you can also use base R’s paste function just as easily.</p>
 <span></span>
 <span><span class="va">response_trending</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_getendpoint.html">sleeper_getendpoint</a></span><span class="op">(</span><span class="va">query</span>,lookback_hours <span class="op">=</span> <span class="fl">48</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using request.R from "ffscrapr"</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">response_trending</span>, max.level <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of 3</span></span>
 <span><span class="co">#&gt;  $ content :List of 10</span></span>
 <span><span class="co">#&gt;  $ query   : chr "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=48&amp;limit=10"</span></span>
-<span><span class="co">#&gt;  $ response:List of 8</span></span>
+<span><span class="co">#&gt;  $ response:List of 9</span></span>
 <span><span class="co">#&gt;   ..- attr(*, "class")= chr "response"</span></span>
 <span><span class="co">#&gt;  - attr(*, "class")= chr "sleeper_api"</span></span></code></pre></div>
 <p>Along with the parsed content, the function also returns the query
@@ -201,14 +200,14 @@ careful application of the tidyverse.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df_trending</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
-<span><span class="co">#&gt;   player_id count</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 6002      <span style="text-decoration: underline;">14</span>287</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 7904      <span style="text-decoration: underline;">11</span>553</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 7703      <span style="text-decoration: underline;">11</span>403</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4622       <span style="text-decoration: underline;">8</span>548</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2711       <span style="text-decoration: underline;">7</span>165</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6271       <span style="text-decoration: underline;">5</span>452</span></span></code></pre></div>
+<span><span class="co">#&gt;   player_id  count</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 11114     <span style="text-decoration: underline;">114</span>605</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 11435      <span style="text-decoration: underline;">64</span>073</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 10860      <span style="text-decoration: underline;">49</span>747</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 8125       <span style="text-decoration: underline;">45</span>698</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 10862      <span style="text-decoration: underline;">23</span>311</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 10866      <span style="text-decoration: underline;">19</span>570</span></span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so
 let’s pull the players endpoint in as well - this one has a convenient
 function!</p>
@@ -216,25 +215,24 @@ function!</p>
 <code class="sourceCode R"><span></span>
 <span><span class="va">players</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sleeper_players.html">sleeper_players</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">player_id</span>, <span class="va">player_name</span>, <span class="va">pos</span>, <span class="va">team</span>, <span class="va">age</span><span class="op">)</span></span>
-<span><span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span></span>
 <span></span>
 <span><span class="va">trending</span> <span class="op">&lt;-</span> <span class="va">df_trending</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">players</span>, by <span class="op">=</span> <span class="st">"player_id"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">trending</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
-<span><span class="co">#&gt;    player_id count player_name       pos   team    age</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 6002      <span style="text-decoration: underline;">14</span>287 Qadree Ollison    RB    ATL    26.9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 7904      <span style="text-decoration: underline;">11</span>553 Stevie Scott      RB    NO     <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 7703      <span style="text-decoration: underline;">11</span>403 Jacob Harris      TE    LAR    <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 4622       <span style="text-decoration: underline;">8</span>548 Keelan Cole       WR    NYJ    30.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2711       <span style="text-decoration: underline;">7</span>165 Taylor Heinicke   QB    WAS    30.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 6271       <span style="text-decoration: underline;">5</span>452 Olamide Zaccheaus WR    ATL    26.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 5199       <span style="text-decoration: underline;">4</span>462 Byron Pringle     WR    KC     29.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 7622       <span style="text-decoration: underline;">4</span>082 Sammis Reyes      TE    WAS    27.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 7530       <span style="text-decoration: underline;">3</span>646 Frank Darby       WR    ATL    <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2583       <span style="text-decoration: underline;">3</span>201 Tyrell Williams   WR    DET    31.5</span></span></code></pre></div>
+<span><span class="co">#&gt;    player_id  count player_name              pos   team    age</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 11114     <span style="text-decoration: underline;">114</span>605 Elijah Dotson            RB    LAC    24.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 11435      <span style="text-decoration: underline;">64</span>073 Emanuel Wilson           RB    GB     24.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 10860      <span style="text-decoration: underline;">49</span>747 Malik Cunningham         QB    NE     24.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 8125       <span style="text-decoration: underline;">45</span>698 Calvin Austin            WR    PIT    24.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 10862      <span style="text-decoration: underline;">23</span>311 Dorian Thompson-Robinson QB    CLE    23.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 10866      <span style="text-decoration: underline;">19</span>570 Aidan O'Connell          QB    LV     25  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 10863      <span style="text-decoration: underline;">18</span>964 A.T. Perry               WR    NO     23.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 7794       <span style="text-decoration: underline;">18</span>531 Chris Evans              RB    CIN    25.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 7021       <span style="text-decoration: underline;">16</span>644 Rico Dowdle              RB    DAL    25.2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 6869       <span style="text-decoration: underline;">16</span>144 Adam Trautman            TE    DEN    26.5</span></span></code></pre></div>
 <p>There - this means something to us now! As of this writing
 (2020-11-10), Kalen Ballage was the most added player. Haven’t we been
 bitten by this before?</p>
