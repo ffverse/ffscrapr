@@ -18,16 +18,11 @@ knitr::opts_chunk$set(
 options(dplyr.summarise.inform = FALSE,
         rmarkdown.html_vignette.check_title = FALSE)
 
-eval <- TRUE
+eval <- FALSE
 
-tryCatch(expr = {
-  
-  download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip","f.zip")
-  unzip('f.zip', exdir = ".")
-  
-  httptest::.mockPaths(new = "ffscrapr-tests-1.4.7")},
-  warning = function(e) eval <<- FALSE,
-  error = function(e) eval <<- FALSE)
+ffscrapr::.download_cache()
+
+if (dir.exists(ffscrapr::.cache_path())) eval <- TRUE
 
 httptest::use_mock_api()
 ```
@@ -94,7 +89,5 @@ There - this means something to us now! As of this writing (2020-11-10), Kalen B
 
 ```{r include = FALSE, eval = eval}
 httptest::stop_mocking()
-
-unlink(c("ffscrapr-tests-1.4.7","f.zip"), recursive = TRUE, force = TRUE)
 ```
 

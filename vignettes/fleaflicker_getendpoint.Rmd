@@ -20,14 +20,9 @@ options(dplyr.summarise.inform = FALSE,
 
 eval <- FALSE
 
-tryCatch(expr = {
-  
-  download.file("https://github.com/ffverse/ffscrapr-tests/archive/1.4.7.zip","f.zip")
-  unzip('f.zip', exdir = ".")
-  
-  httptest::.mockPaths(new = "ffscrapr-tests-1.4.7")},
-  warning = function(e) eval <<- FALSE,
-  error = function(e) eval <<- FALSE)
+ffscrapr::.download_cache()
+
+if (dir.exists(ffscrapr::.cache_path())) eval <- TRUE
 
 httptest::use_mock_api()
 ```
@@ -122,7 +117,5 @@ From here, you can keep unravelling - including the "viewingActualPoints" and "v
 
 ```{r include = FALSE}
 httptest::stop_mocking()
-
-unlink(c("ffscrapr-tests-1.4.7","f.zip"), recursive = TRUE, force = TRUE)
 ```
 

@@ -6,6 +6,9 @@
 \usage{
 nflfastr_weekly(...)
 }
+\arguments{
+\item{...}{deprecated}
+}
 \description{
 Deprecated in favour of \code{\link[nflreadr:load_player_stats]{nflreadr::load_player_stats()}}
 }

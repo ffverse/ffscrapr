@@ -4,7 +4,10 @@
 \alias{nflfastr_rosters}
 \title{Import nflfastr roster data}
 \usage{
-nflfastr_rosters(seasons)
+nflfastr_rosters(...)
+}
+\arguments{
+\item{...}{deprecated}
 }
 \description{
 Deprecated in favour of \code{\link[nflreadr:load_rosters]{nflreadr::load_rosters()}}
