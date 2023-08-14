@@ -396,7 +396,8 @@ ff_transactions.flea_conn <- function(conn, franchise_id = NULL, ...) {
           "trade_partner_id" = "franchise_id",
           "trade_partner_name" = "franchise_name",
           "traded_away" = "traded_for"),
-      by = "trade_id"
+      by = "trade_id",
+      relationship = "many-to-many"
     ) %>%
     dplyr::filter(.data$franchise_id != .data$trade_partner_id) %>%
     tidyr::pivot_longer(
