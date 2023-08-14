@@ -93,4 +93,16 @@ sleeper_rule_mapping <-
   dplyr::select(-"points")
 
 
-use_data(scoring_sfb11, starterpositions_sfb11, scoring_ppr, scoring_hppr, scoring_zeroppr, starterpositions_1qb, starterpositions_sf, starterpositions_idp, sleeper_rule_mapping, internal = TRUE, overwrite = TRUE)
+use_data(
+  scoring_sfb11,
+  starterpositions_sfb11,
+  scoring_ppr,
+  scoring_hppr,
+  scoring_zeroppr,
+  starterpositions_1qb,
+  starterpositions_sf,
+  starterpositions_idp,
+  sleeper_rule_mapping,
+  internal = TRUE,
+  overwrite = TRUE
+)

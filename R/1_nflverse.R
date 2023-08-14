@@ -1,34 +1,5 @@
-#### NFLFASTR IMPORT ####
-
-#' Import latest nflfastr weekly stats
-#'
-#' Deprecated in favour of [`nflreadr::load_player_stats()`]
-#'
-#' @export
-nflfastr_weekly <- function(...) {
-  lifecycle::deprecate_stop(
-    when = "1.4.8",
-    what = "ffscrapr::nflfastr_weekly()",
-    with = "nflreadr::load_player_stats()"
-  )
-}
-
-#' Import nflfastr roster data
-#'
-#' Deprecated in favour of [`nflreadr::load_rosters()`]
-#'
-#' @export
-
-nflfastr_rosters <- function(seasons) {
-  lifecycle::deprecate_stop(
-    when = "1.4.8",
-    what = "ffscrapr::nflfastr_rosters()",
-    with = "nflreadr::load_rosters()"
-  )
-}
-
 .nflverse_player_stats_long <- function(season){
-  ps <- nflreadr::load_player_stats(season = season, type = "offense") %>%
+  ps <- nflreadr::load_player_stats(season = season, stat_type = "offense") %>%
     dplyr::select(dplyr::any_of(c(
       "season", "week","player_id",
       "attempts", "carries", "completions", "interceptions", "passing_2pt_conversions", "passing_first_downs",
@@ -48,7 +19,7 @@ nflfastr_rosters <- function(seasons) {
 }
 
 .nflverse_kicking_long <- function(season){
-  psk <- nflreadr::load_player_stats(season = season, type = "kicking") %>%
+  psk <- nflreadr::load_player_stats(season = season, stat_type = "kicking") %>%
     dplyr::select(
       dplyr::any_of(c(
         "season","week","player_id",

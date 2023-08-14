@@ -18,7 +18,6 @@
 #' @return a tibble of trade values from DynastyProcess
 #'
 #' @export
-
 dp_values <- function(file = c("values.csv", "values-players.csv", "values-picks.csv")) {
   file_name <- match.arg(file)
 
@@ -75,18 +74,7 @@ dp_playerids <- function() {
   return(content)
 }
 
-#' Clean Names
-#'
-#' Applies some name-cleaning heuristics to facilitate joins. These heuristics may include:
-#'  - removing periods and apostrophes
-#'  - removing common suffixes, such as Jr, Sr, II, III, IV
-#'  - converting to lowercase
-#'  - using `dp_name_mapping` to do common name substitutions, such as Mitch Trubisky to Mitchell Trubisky
-#'
-#' @param player_name a character (or character vector)
-#' @param lowercase defaults to FALSE - if TRUE, converts to lowercase
-#' @param convert_lastfirst converts names from "Last, First" to "First Last" (i.e. MFL style)
-#' @param use_name_database uses internal name database to do common substitutions (Mitchell Trubisky to Mitch Trubisky etc)
+#' Clean Player Names
 #'
 #' @examples
 #' \donttest{
@@ -99,53 +87,30 @@ dp_playerids <- function() {
 #' )
 #' }
 #'
-#' @seealso `dp_name_mapping`
+#' @seealso `nflreadr::clean_player_names()`
 #'
 #' @return a character vector of cleaned names
 #'
 #' @export
+dp_clean_names <- function(player_name, lowercase = FALSE, convert_lastfirst = TRUE, use_name_database = TRUE) {
 
-dp_cleannames <- function(player_name, lowercase = FALSE, convert_lastfirst = TRUE, use_name_database = TRUE) {
-  checkmate::assert_character(player_name)
-  checkmate::assert_flag(lowercase)
-  checkmate::assert_flag(convert_lastfirst)
-  checkmate::assert_flag(use_name_database)
+  lifecycle::deprecate_soft(
+    when = "1.4.8",
+    "ffscrapr::dp_clean_names",
+    "nflreadr::clean_player_names"
+  )
 
-  n <- player_name
-
-  if (convert_lastfirst) n <- stringr::str_replace_all(n, "^(.+), (.+)$", "\\2 \\1")
-
-  n <- stringr::str_remove_all(n, "( Jr\\.$)|( Sr\\.$)|( III$)|( II$)|( IV$)|( V$)|(\\')|(\\.)")
-
-  n <- stringr::str_squish(n)
-
-  if (use_name_database) n <- unname(dplyr::coalesce(ffscrapr::dp_name_mapping[n], n))
-
-  if (lowercase) n <- tolower(n)
-
-  return(n)
+  nflreadr::clean_player_names(
+    player_name,
+    lowercase = lowercase,
+    convert_lastfirst = convert_lastfirst,
+    use_name_database = use_name_database
+  )
 }
 
 #' @export
-#' @rdname dp_cleannames
-dp_clean_names <- dp_cleannames
-
-#' Alternate name mappings
-#'
-#' A named character vector mapping common alternate names
-#'
-#' @examples
-#' \donttest{
-#' dp_name_mapping[c("Chatarius Atwell", "Robert Kelley")]
-#' }
-#'
-#' @format A named character vector
-#' \describe{
-#'   \item{name attribute}{The "alternate" name.}
-#'   \item{value attribute}{The "correct" name.}
-#' }
-#'
-"dp_name_mapping"
+#' @rdname dp_clean_names
+dp_cleannames <- dp_clean_names
 
 #' Remove HTML from string
 #'
