@@ -1,12 +1,5 @@
 #### UTILS ####
-# External functions imported and sometimes re-exported
-
-#' @keywords internal
-#' @importFrom rlang .data `%||%` .env
-#' @importFrom utils str
-#' @importFrom lifecycle deprecated
-
-NULL
+# External functions re-exported
 
 #' Pipe operator
 #'
