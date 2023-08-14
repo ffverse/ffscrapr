@@ -26,16 +26,14 @@ reference:
   desc: Functions to interface with DynastyProcess data
   contents:
   - starts_with("dp_")
-- title: nflfastR
-  desc: Functions to interface with nflfastR data
-  contents:
-  - starts_with("nflfastr_")
 - title: Miscellaneous
   desc: Additional helper functions
   contents:
   - starts_with(".ff")
+  - "clear_cache"
   - "`%>%`"
   - "ffverse_sitrep"
+  - starts_with("nflfastr_")
 
 home:
   title: ffscrapr • an R package for Fantasy Football APIs
