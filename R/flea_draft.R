@@ -33,7 +33,7 @@ ff_draft.flea_conn <- function(conn, ...) {
                  "player_name" = "nameFull",
                  "pos" = "position",
                  "team" = "proTeamAbbreviation") %>%
-    tidyr::hoist("slot", "pick_no" = "slot", "overall") %>%
+    tidyr::hoist("slot", "pick" = "slot", "overall") %>%
     dplyr::select(dplyr::any_of(c(
       "round",
       "pick",
