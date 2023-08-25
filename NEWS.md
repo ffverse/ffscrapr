@@ -19,6 +19,7 @@ and keep NA data where a player is not in a slot.  (v1.4.8.07)
 (v1.4.8.10)
 - Use rlang::ns_env rather than superassign in onLoad
 - Refactor testing
+- `ff_draft.flea_conn` is fixed to pull draft data again (v1.4.8.11)
 
 # ffscrapr 1.4.8
 

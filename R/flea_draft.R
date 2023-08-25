@@ -18,22 +18,22 @@
 #' @export
 ff_draft.flea_conn <- function(conn, ...) {
   draftboard <- fleaflicker_getendpoint("FetchLeagueDraftBoard",
-    sport = "NFL",
-    season = conn$season,
-    league_id = conn$league_id
-  ) %>%
-    purrr::pluck("content", "orderedSelections") %>%
+                                        sport = "NFL",
+                                        season = conn$season,
+                                        league_id = conn$league_id) %>%
+    purrr::pluck("content", "rows") %>%
     tibble::tibble() %>%
-    tidyr::hoist(1, "franchise" = "team", "player", "slot") %>%
-    tidyr::hoist("slot", "round", "pick" = "slot", "overall") %>%
-    tidyr::hoist("franchise", "franchise_id" = "id", "franchise_name" = "name") %>%
-    dplyr::mutate(player = purrr::map(.data$player, purrr::pluck, "proPlayer")) %>%
-    tidyr::hoist("player",
-      "player_id" = "id",
-      "player_name" = "nameFull",
-      "pos" = "position",
-      "team" = "proTeamAbbreviation"
-    ) %>%
+    tidyr::hoist(1,"round", "cells") %>%
+    tidyr::unnest_longer("cells") %>%
+    tidyr::hoist("cells", "team", "player", "slot") %>%
+    tidyr::hoist("team", "franchise_id" = "id",
+                 "franchise_name" = "name") %>%
+    tidyr::hoist("player", "proPlayer") %>%
+    tidyr::hoist("proPlayer", "player_id" = "id",
+                 "player_name" = "nameFull",
+                 "pos" = "position",
+                 "team" = "proTeamAbbreviation") %>%
+    tidyr::hoist("slot", "pick" = "slot", "overall") %>%
     dplyr::select(dplyr::any_of(c(
       "round",
       "pick",
