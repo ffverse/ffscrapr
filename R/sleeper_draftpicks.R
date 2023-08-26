@@ -61,25 +61,6 @@ ff_draftpicks.sleeper_conn <- function(conn, ...) {
   return(current_drafts)
 }
 
-.sleeper_currentdraft <- function(draft_id) {
-  picks <- glue::glue("draft/{draft_id}/picks") %>%
-    sleeper_getendpoint() %>%
-    purrr::pluck("content") %>%
-    purrr::map(`[`, c("round", "draft_slot", "roster_id", "player_id", "metadata")) %>%
-    tibble::tibble() %>%
-    tidyr::unnest_wider(1) %>%
-    tidyr::hoist("metadata", "auction_amount" = "amount") %>%
-    dplyr::select(dplyr::any_of(c("round", "pick" = "draft_slot", "franchise_id" = "roster_id", "player_id", "auction_amount")))
-
-  if (all(is.na(picks$auction_amount))) {
-    picks$auction_amount <- NULL
-  } else {
-    picks$auction_amount <- as.numeric(picks$auction_amount)
-  }
-
-  return(picks)
-}
-
 .sleeper_futurepicks <- function(conn, include_current = FALSE) {
   league_settings <- glue::glue("league/{conn$league_id}") %>%
     sleeper_getendpoint() %>%

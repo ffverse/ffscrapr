@@ -50,6 +50,32 @@ ff_draft.sleeper_conn <- function(conn, ...) {
   return(df_drafts)
 }
 
+.sleeper_currentdraft <- function(draft_id) {
+  picks <- glue::glue("draft/{draft_id}/picks") %>%
+    sleeper_getendpoint() %>%
+    purrr::pluck("content") %>%
+    tibble::tibble() %>%
+    tidyr::hoist(1, "round","pick_no", "draft_slot", "roster_id", "player_id", "metadata") %>%
+    tidyr::hoist("metadata", "auction_amount" = "amount") %>%
+    dplyr::mutate(
+      auction_amount = if(all(is.na(.data$auction_amount))) NULL else as.numeric(.data$auction_amount),
+      roster_id = ifelse(!is.na(.data$roster_id), .data$roster_id, .data$draft_slot)
+    ) %>%
+    dplyr::select(
+      dplyr::any_of(
+        c(
+          "round",
+          "pick" = "pick_no",
+          "franchise_id" = "roster_id",
+          "player_id",
+          "auction_amount"
+        )
+      )
+    )
+
+  return(picks)
+}
+
 #' Get Sleeper Draft
 #'
 #' This function retrieves drafts by sleeper's draft ID. This better supports
@@ -70,7 +96,8 @@ sleeper_draft <- function(draft_id){
     dplyr::select("player_id", "player_name", "pos", "team", "age")
 
   franchise_endpoint <- data.frame(
-    franchise_id = character()
+    franchise_id = integer(),
+    franchise_name = character()
   )
 
   if(!is.null(draft_endpoint$content$league_id)){
@@ -85,22 +112,30 @@ sleeper_draft <- function(draft_id){
   picks <- .sleeper_currentdraft(draft_id) %>%
     dplyr::left_join(franchise_endpoint, by = "franchise_id") %>%
     dplyr::left_join(players_endpoint, by = "player_id") %>%
-    dplyr::select(dplyr::any_of(c(
-      "draft_id",
-      "status",
-      "type",
-      "season",
-      "round",
-      "pick",
-      "auction_amount",
-      "franchise_id",
-      "franchise_name",
-      "player_id",
-      "player_name",
-      "pos",
-      "age",
-      "team"
-    )))
+    dplyr::mutate(
+      draft_id = draft_id,
+      status = draft_endpoint$content$status,
+      type = draft_endpoint$content$metadata$type,
+      franchise_name = ifelse(is.na(franchise_name), paste("Team",franchise_id), franchise_name)
+    ) %>%
+    dplyr::select(
+      dplyr::any_of(c(
+        "draft_id",
+        "status",
+        "type",
+        "season",
+        "round",
+        "pick",
+        "auction_amount",
+        "franchise_id",
+        "franchise_name",
+        "player_id",
+        "player_name",
+        "pos",
+        "age",
+        "team"
+      ))
+    )
 
   return(picks)
 
