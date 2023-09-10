@@ -30,9 +30,9 @@ ff_starter_positions.espn_conn <- function(conn, ...) {
         "LB", "CB", "S",
         "K", "P", "DST", "HC"
       ), .data$count, NA_integer_),
-      offense_starters = sum(.data$min * stringr::str_detect(.data$pos, "QB|RB|WR|TE|OP"), na.rm = TRUE),
-      defense_starters = sum(.data$min * stringr::str_detect(.data$pos, "DE|DT|DL|LB|CB|^S$|ER|DP"), na.rm = TRUE),
-      kdst_starters = sum(.data$min * .data$pos %in% c("K", "P", "DST", "HC"), na.rm = TRUE),
+      offense_starters = sum(.data$count * stringr::str_detect(.data$pos, "QB|RB|WR|TE|OP"), na.rm = TRUE),
+      defense_starters = sum(.data$count * stringr::str_detect(.data$pos, "DE|DT|DL|LB|CB|^S$|ER|DP"), na.rm = TRUE),
+      kdst_starters = sum(.data$count * .data$pos %in% c("K", "P", "DST", "HC"), na.rm = TRUE),
       total_starters = .data$offense_starters + .data$defense_starters + .data$kdst_starters
     )
 
