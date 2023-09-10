@@ -48,6 +48,10 @@
         "player_name"="full_name","pos"="position","team"
       ))
     ) %>%
+    dplyr::group_by(season, gsis_id, sportradar_id) %>%
+    dplyr::summarise(
+      dplyr::across(dplyr::everything(), dplyr::last)
+    ) %>%
     dplyr::left_join(
       dp_playerids() %>%
         dplyr::select("sportradar_id","mfl_id","sleeper_id","espn_id","fleaflicker_id"),
