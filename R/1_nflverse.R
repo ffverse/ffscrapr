@@ -48,7 +48,7 @@
         "player_name"="full_name","pos"="position","team"
       ))
     ) %>%
-    dplyr::group_by(season, gsis_id, sportradar_id) %>%
+    dplyr::group_by(.data$season, .data$gsis_id, .data$sportradar_id) %>%
     dplyr::summarise(
       dplyr::across(dplyr::everything(), dplyr::last),
       .groups="drop"
