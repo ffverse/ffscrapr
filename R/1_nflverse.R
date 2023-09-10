@@ -50,7 +50,8 @@
     ) %>%
     dplyr::group_by(season, gsis_id, sportradar_id) %>%
     dplyr::summarise(
-      dplyr::across(dplyr::everything(), dplyr::last)
+      dplyr::across(dplyr::everything(), dplyr::last),
+      .groups="drop"
     ) %>%
     dplyr::left_join(
       dp_playerids() %>%
