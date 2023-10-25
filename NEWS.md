@@ -19,10 +19,11 @@ and keep NA data where a player is not in a slot.  (v1.4.8.07)
 (v1.4.8.10)
 - Use rlang::ns_env rather than superassign in onLoad
 - Refactor testing
-- Bugfix sleeper draft picks using the wrong pick number (v1.4.8.11)
-- Bugfix espn starter positions to have proper total starters (v1.4.8.12) (#415)
+- Bugfix sleeper `ff_draft()` using the wrong pick number (v1.4.8.11)
+- Bugfix espn `ff_starterpositions()` to have proper total starters (v1.4.8.12) (#415)
 - Bugfix ff_scoringhistory to handle new-format `load_rosters()` now that it returns
 row per player-team-season (v1.4.8.13) (thanks @john-b-edwards!)
+- Bugfix espn `ff_franchises()` to return coalesce of name/nickname (v1.4.8.14)
 
 # ffscrapr 1.4.8
 

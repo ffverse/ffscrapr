@@ -37,6 +37,7 @@ ff_franchises.espn_conn <- function(conn) {
       "franchise_id" = "id",
       "franchise_abbrev" = "abbrev",
       "franchise_location" = "location",
+      "franchise_name" = "name",
       "franchise_nickname" = "nickname",
       "logo" = "logo",
       "waiver_order" = "waiverRank",
@@ -44,7 +45,8 @@ ff_franchises.espn_conn <- function(conn) {
     ) %>%
     dplyr::left_join(members, by = c("user_id" = "user_id")) %>%
     dplyr::mutate(
-      franchise_name = paste(.data$franchise_location, .data$franchise_nickname)
+      franchise_nickname = paste(.data$franchise_location, .data$franchise_nickname),
+      franchise_name = dplyr::coalesce(.data$franchise_name, .data$franchise_nickname),
     ) %>%
     dplyr::select(
       dplyr::any_of(c(
