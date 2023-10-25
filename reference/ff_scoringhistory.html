@@ -163,7 +163,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <span class="r-in"><span>  <span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu"><a href="espn_connect.html">espn_connect</a></span><span class="op">(</span>season <span class="op">=</span> <span class="fl">2020</span>, league_id <span class="op">=</span> <span class="fl">899513</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,405 × 24</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,957 × 37</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    season  week gsis_id    sportradar_id  espn_id player_name pos   team  points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>   <span style="text-decoration: underline;">2</span>020     1 00-0019596 41c44740-d0f6… 2330    Tom Brady   QB    TB     20.5 </span>
@@ -176,13 +176,13 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>   <span style="text-decoration: underline;">2</span>020     8 00-0019596 41c44740-d0f6… 2330    Tom Brady   QB    TB     19.1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>   <span style="text-decoration: underline;">2</span>020     9 00-0019596 41c44740-d0f6… 2330    Tom Brady   QB    TB      2.36</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>   <span style="text-decoration: underline;">2</span>020    10 00-0019596 41c44740-d0f6… 2330    Tom Brady   QB    TB     31.8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5,395 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15 more variables: interceptions &lt;dbl&gt;, passing_2pt_conversions &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5,947 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 28 more variables: interceptions &lt;dbl&gt;, passing_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   passing_tds &lt;dbl&gt;, passing_yards &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   receiving_fumbles_lost &lt;dbl&gt;, receiving_tds &lt;dbl&gt;, receiving_yards &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   receptions &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   rushing_fumbles_lost &lt;dbl&gt;, rushing_tds &lt;dbl&gt;, rushing_yards &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sack_fumbles_lost &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sack_fumbles_lost &lt;dbl&gt;, special_teams_tds &lt;dbl&gt;, fg_made_0_19 &lt;dbl&gt;, …</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
@@ -244,7 +244,7 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <span class="r-in"><span>  <span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu"><a href="ff_connect.html">ff_connect</a></span><span class="op">(</span>platform <span class="op">=</span> <span class="st">"sleeper"</span>, league_id <span class="op">=</span> <span class="st">"522458773317046272"</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">ff_scoringhistory</span><span class="op">(</span><span class="va">conn</span>, season <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,425 × 23</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,962 × 32</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    season  week gsis_id  sportradar_id sleeper_id player_name pos   team  points</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>   <span style="text-decoration: underline;">2</span>020     1 00-0019… 41c44740-d0f… 167        Tom Brady   QB    TB     20.5 </span>
@@ -257,13 +257,13 @@ Not all of the scoring rules from your league may have nflfastr equivalents, but
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>   <span style="text-decoration: underline;">2</span>020     8 00-0019… 41c44740-d0f… 167        Tom Brady   QB    TB     19.1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>   <span style="text-decoration: underline;">2</span>020     9 00-0019… 41c44740-d0f… 167        Tom Brady   QB    TB      2.36</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>   <span style="text-decoration: underline;">2</span>020    10 00-0019… 41c44740-d0f… 167        Tom Brady   QB    TB     31.8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5,415 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: interceptions &lt;dbl&gt;, passing_2pt_conversions &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5,952 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more variables: interceptions &lt;dbl&gt;, passing_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   passing_tds &lt;dbl&gt;, passing_yards &lt;dbl&gt;, receiving_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   receiving_fumbles_lost &lt;dbl&gt;, receiving_tds &lt;dbl&gt;, receiving_yards &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   receptions &lt;dbl&gt;, rushing_2pt_conversions &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   rushing_fumbles_lost &lt;dbl&gt;, rushing_tds &lt;dbl&gt;, rushing_yards &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sack_fumbles_lost &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sack_fumbles_lost &lt;dbl&gt;, fg_made_0_19 &lt;dbl&gt;, fg_made_20_29 &lt;dbl&gt;, …</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
