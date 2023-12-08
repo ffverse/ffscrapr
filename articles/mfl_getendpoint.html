@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="MFL: Get Endpoint">
@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.14</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.15</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
       <img src="../logo.svg" class="logo" alt=""><h1>MFL: Get Endpoint</h1>
                         <h4 data-toc-skip class="author">Tan Ho</h4>
             
-            <h4 data-toc-skip class="date">2023-10-25</h4>
+            <h4 data-toc-skip class="date">2023-12-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ffverse/ffscrapr/blob/HEAD/vignettes/mfl_getendpoint.Rmd" class="external-link"><code>vignettes/mfl_getendpoint.Rmd</code></a></small>
       <div class="d-none name"><code>mfl_getendpoint.Rmd</code></div>
@@ -208,14 +208,14 @@ the content from there, but you can use base R subsetting or
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">search_results</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
-<span><span class="co">#&gt;   id    year  name                homeURL                                       </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 13411 2020  #SFBX Conference 12 https//www43.myfantasyleague.com/2020/home/13…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 16428 2020  #SFBX Conference 6  https//www43.myfantasyleague.com/2020/home/16…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 17910 2020  #SFBX Conference 11 https//www43.myfantasyleague.com/2020/home/17…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 26453 2020  #SFBX Conference 8  https//www43.myfantasyleague.com/2020/home/26…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 27495 2020  #SFBX Conference 2  https//www43.myfantasyleague.com/2020/home/27…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 31492 2020  #SFBX Conference 14 https//www43.myfantasyleague.com/2020/home/31…</span></span></code></pre></div>
+<span><span class="co">#&gt;   homeURL                                          name              id    year </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> https//www43.myfantasyleague.com/2020/home/13411 #SFBX Conference… 13411 2020 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> https//www43.myfantasyleague.com/2020/home/16428 #SFBX Conference… 16428 2020 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> https//www43.myfantasyleague.com/2020/home/17910 #SFBX Conference… 17910 2020 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> https//www43.myfantasyleague.com/2020/home/26453 #SFBX Conference… 26453 2020 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> https//www43.myfantasyleague.com/2020/home/27495 #SFBX Conference… 27495 2020 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> https//www43.myfantasyleague.com/2020/home/31492 #SFBX Conference… 31492 2020</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="another-example-trade-bait">Another Example: Trade Bait<a class="anchor" aria-label="anchor" href="#another-example-trade-bait"></a>
@@ -240,14 +240,14 @@ the content from there, but you can use base R subsetting or
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fog_tradebait</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span></span>
-<span><span class="co">#&gt;   franchise_id willGiveUp inExchangeFor     timestamp franchise_name player_name</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 0001         7394       <span style="color: #949494;">"</span>anyone need a Q… 15745205… @JohnBoschFF   Rivers, Ph…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 0001         13128      <span style="color: #949494;">"</span>anyone need a Q… 15745205… @JohnBoschFF   Cook, Dalv…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 0003         13319      <span style="color: #949494;">""</span>                15805358… The Accountant Jones, Aar…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 0003         13139      <span style="color: #949494;">""</span>                15805358… The Accountant Williams, …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 0003         11675      <span style="color: #949494;">""</span>                15805358… The Accountant Adams, Dav…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 0004         12171      <span style="color: #949494;">""</span>                15805721… Kevin Cutillo  Johnson, D…</span></span>
+<span><span class="co">#&gt;   willGiveUp timestamp  inExchangeFor    franchise_id franchise_name player_name</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 7394       1574520555 <span style="color: #949494;">"</span>anyone need a … 0001         @JohnBoschFF   Rivers, Ph…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 13128      1574520555 <span style="color: #949494;">"</span>anyone need a … 0001         @JohnBoschFF   Cook, Dalv…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 13319      1580535809 <span style="color: #949494;">""</span>               0003         The Accountant Jones, Aar…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 13139      1580535809 <span style="color: #949494;">""</span>               0003         The Accountant Williams, …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 11675      1580535809 <span style="color: #949494;">""</span>               0003         The Accountant Adams, Dav…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 12171      1580572165 <span style="color: #949494;">""</span>               0004         Kevin Cutillo  Johnson, D…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: pos &lt;chr&gt;, age &lt;dbl&gt;, team &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
