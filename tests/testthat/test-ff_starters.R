@@ -32,3 +32,11 @@ test_that("ff_starters.espn finds the correct projected scores #397",{
   n_projection_equal_actual <- sum(s$player_score == s$projected_score & s$player_score!=0)
   expect_equal(n_projection_equal_actual, 0)
 })
+
+test_that("ff_starters.espn understands multi-week playoff formats #421",{
+  local_mock_api()
+  tony_conn <- espn_connect(season = 2022, league_id = 899513)
+  tony_starters <- ff_starters(tony_conn, weeks = 15:18)
+  expect_tibble(tony_starters, min.rows = 100)
+})
+

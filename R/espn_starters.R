@@ -22,9 +22,19 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
 
   checkmate::assert_numeric(weeks)
 
-  max_week <- .espn_week_checkmax(conn)
+  settings_url_query <- glue::glue(
+    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+    "{conn$season}/segments/0/leagues/{conn$league_id}",
+    "?scoringPeriodId=0&view=mSettings"
+  )
+
+  settings <- espn_getendpoint_raw(conn, settings_url_query)
+
+  week_matchup_periods_mapping <- .espn_week_matchup_periods_mapping(settings)
+  max_week <- .espn_week_checkmax(settings)
 
   run_weeks <- weeks[weeks < max_week]
+  named_run_weeks <- week_matchup_periods_mapping[run_weeks]
 
   if (length(run_weeks) == 0) {
     warning(
@@ -38,7 +48,16 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     return(NULL)
   }
 
-  starters <- purrr::map_dfr(run_weeks, .espn_week_starter, conn) %>%
+  starters <- purrr::imap_dfr(
+    named_run_weeks,
+    function(.x, .y) {
+      .espn_week_starter(
+        matchup_period = .x,
+        nfl_week = .y,
+        conn = conn
+      )
+    }
+  ) %>%
     dplyr::mutate(
       lineup_slot = .espn_lineupslot_map()[as.character(.data$lineup_id)] %>% unname(),
       pos = .espn_pos_map()[as.character(.data$pos)] %>% unname(),
@@ -67,14 +86,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   return(starters)
 }
 
-.espn_week_checkmax <- function(conn) {
-  url_query <- glue::glue(
-    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
-    "{conn$season}/segments/0/leagues/{conn$league_id}",
-    "?scoringPeriodId=0&view=mSettings"
-  )
-
-  settings <- espn_getendpoint_raw(conn, url_query)
+.espn_week_checkmax <- function(settings) {
 
   current_week <- settings %>%
     purrr::pluck("content", "status", "latestScoringPeriod")
@@ -87,11 +99,36 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   return(max_week)
 }
 
-.espn_week_starter <- function(week, conn) {
+.espn_week_matchup_periods_mapping <- function(settings) {
+
+  matchup_periods <- settings %>%
+    purrr::pluck("content", "settings", "scheduleSettings", "matchupPeriods")
+
+  ## first, flatten out the values.
+  mapping <- matchup_periods %>%
+    purrr::map(
+      function(.x) {
+        unlist(.x)
+      }
+    )
+
+  ## then, invert the mapping such that the NFL week is the name and the matchupPeriod
+  ##   (whic is always <= NFL week) is the value.
+  inverted_mapping <- list()
+  for (name in names(mapping)) {
+    values <- mapping[[name]]
+    for (value in values) {
+      inverted_mapping[[as.character(value)]] <- as.integer(name)
+    }
+  }
+  return(inverted_mapping)
+}
+
+.espn_week_starter <- function(matchup_period, nfl_week, conn) {
   url_query <- glue::glue(
     "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
     "{conn$season}/segments/0/leagues/{conn$league_id}",
-    "?scoringPeriodId={week}&view=mMatchupScore&view=mBoxscore&view=mSettings&view=mRosterSettings"
+    "?scoringPeriodId={nfl_week}&view=mMatchupScore&view=mBoxscore&view=mSettings&view=mRosterSettings"
   )
 
   week_scores <- espn_getendpoint_raw(conn, url_query) %>%
@@ -99,7 +136,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
     tibble::tibble() %>%
     purrr::set_names("x") %>%
     tidyr::hoist(1, "week" = "matchupPeriodId", "home", "away") %>%
-    dplyr::filter(.data$week == .env$week) %>%
+    dplyr::filter(.data$week == .env$matchup_period) %>%
     tidyr::pivot_longer(c("home", "away"), names_to = NULL, values_to = "team") %>%
     tidyr::hoist(
       "team",

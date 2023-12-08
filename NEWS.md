@@ -24,6 +24,8 @@ and keep NA data where a player is not in a slot.  (v1.4.8.07)
 - Bugfix ff_scoringhistory to handle new-format `load_rosters()` now that it returns
 row per player-team-season (v1.4.8.13) (thanks @john-b-edwards!)
 - Bugfix espn `ff_franchises()` to return coalesce of name/nickname (v1.4.8.14)
+- Bugfix espn `ff_starters()` to return handle multi-week formats (v1.4.8.15) (#421)
+(h/t @tonyelhabr 🤠)
 
 # ffscrapr 1.4.8
 
