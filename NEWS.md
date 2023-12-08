@@ -26,6 +26,7 @@ row per player-team-season (v1.4.8.13) (thanks @john-b-edwards!)
 - Bugfix espn `ff_franchises()` to return coalesce of name/nickname (v1.4.8.14)
 - Bugfix espn `ff_starters()` to return handle multi-week formats (v1.4.8.15) (#421)
 (h/t @tonyelhabr 🤠)
+- Bugfix espn `ff_starters()` to return less than or equal to max week (v1.4.8.16)
 
 # ffscrapr 1.4.8
 
