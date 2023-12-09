@@ -191,21 +191,20 @@
 <span class="r-in"><span>  <span class="fu">ff_rosters</span><span class="op">(</span><span class="va">ssb_conn</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 417 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name player_id player_name           pos   team    age</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu   13189     Engram, Evan          TE    NYG    29.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0001         Team Pikachu   11680     Landry, Jarvis        WR    CLE    31  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0001         Team Pikachu   13645     Smith, Tre'Quan       WR    NOS    27.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0001         Team Pikachu   12110     Brate, Cameron        TE    TBB    32.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0001         Team Pikachu   13168     Reynolds, Josh        WR    LAR    28.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0001         Team Pikachu   13793     Valdes-Scantling, Ma… WR    GBP    29.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0001         Team Pikachu   13377     Patrick, Tim          WR    DEN    30  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0001         Team Pikachu   13254     Shaheen, Adam         TE    MIA    29.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0001         Team Pikachu   14803     Edwards-Helaire, Cly… RB    KCC    24.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0001         Team Pikachu   14838     Shenault, Laviska     WR    JAC    25.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    franchise_id franchise_name player_id player_name   pos   team    age drafted</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 0001         Team Pikachu   13189     Engram, Evan  TE    NYG    29.3 3.04   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 0001         Team Pikachu   11680     Landry, Jarv… WR    CLE    31   4.02   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 0001         Team Pikachu   13645     Smith, Tre'Q… WR    NOS    27.9 18.02  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0001         Team Pikachu   12110     Brate, Camer… TE    TBB    32.4 19.04  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 0001         Team Pikachu   13168     Reynolds, Jo… WR    LAR    28.8 20.02  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0001         Team Pikachu   13793     Valdes-Scant… WR    GBP    29.2 21.04  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 0001         Team Pikachu   13377     Patrick, Tim  WR    DEN    30   25.04  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 0001         Team Pikachu   13254     Shaheen, Adam TE    MIA    29.9 26.02  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0001         Team Pikachu   14803     Edwards-Hela… RB    KCC    24.7 1.01   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0001         Team Pikachu   14838     Shenault, La… WR    JAC    25.2 2.02   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 407 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: roster_status &lt;chr&gt;, drafted &lt;chr&gt;, draft_year &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   draft_round &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: roster_status &lt;chr&gt;, draft_year &lt;chr&gt;, draft_round &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
