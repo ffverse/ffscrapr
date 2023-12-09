@@ -44,7 +44,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.15</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.16</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,12 +202,12 @@ careful application of the tidyverse.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
 <span><span class="co">#&gt;   player_id  count</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> HOU       <span style="text-decoration: underline;">725</span>016</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 9487      <span style="text-decoration: underline;">596</span>549</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> GB        <span style="text-decoration: underline;">594</span>238</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 3164      <span style="text-decoration: underline;">482</span>909</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> NO        <span style="text-decoration: underline;">342</span>536</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 4127      <span style="text-decoration: underline;">294</span>315</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 6820      <span style="text-decoration: underline;">521</span>768</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2161      <span style="text-decoration: underline;">374</span>758</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 7045      <span style="text-decoration: underline;">235</span>794</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 3164      <span style="text-decoration: underline;">205</span>688</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> GB        <span style="text-decoration: underline;">203</span>645</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> HOU       <span style="text-decoration: underline;">154</span>698</span></span></code></pre></div>
 <p>This isn’t very helpful without knowing who these players are, so
 let’s pull the players endpoint in as well - this one has a convenient
 function!</p>
@@ -221,18 +221,18 @@ function!</p>
 <span></span>
 <span><span class="va">trending</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
-<span><span class="co">#&gt;    player_id  count player_name       pos   team    age</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> HOU       <span style="text-decoration: underline;">725</span>016 <span style="color: #BB0000;">NA</span>                DEF   HOU    <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 9487      <span style="text-decoration: underline;">596</span>549 Parker Washington WR    JAX    21.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> GB        <span style="text-decoration: underline;">594</span>238 <span style="color: #BB0000;">NA</span>                DEF   GB     <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 3164      <span style="text-decoration: underline;">482</span>909 Ezekiel Elliott   RB    NE     28.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> NO        <span style="text-decoration: underline;">342</span>536 <span style="color: #BB0000;">NA</span>                DEF   NO     <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 4127      <span style="text-decoration: underline;">294</span>315 C.J. Beathard     QB    JAX    30.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 3976      <span style="text-decoration: underline;">265</span>356 Mitch Trubisky    QB    PIT    29.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 10235     <span style="text-decoration: underline;">247</span>353 Roschon Johnson   RB    CHI    22.9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 10225     <span style="text-decoration: underline;">243</span>814 Jonathan Mingo    WR    CAR    22.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 6111      <span style="text-decoration: underline;">218</span>546 Jake Browning     QB    CIN    27.7</span></span></code></pre></div>
+<span><span class="co">#&gt;    player_id  count player_name           pos   team    age</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 6820      <span style="text-decoration: underline;">521</span>768 Clyde Edwards-Helaire RB    KC     24.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2161      <span style="text-decoration: underline;">374</span>758 Jerick McKinnon       RB    KC     31.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 7045      <span style="text-decoration: underline;">235</span>794 Joshua Kelley         RB    LAC    26.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 3164      <span style="text-decoration: underline;">205</span>688 Ezekiel Elliott       RB    NE     28.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> GB        <span style="text-decoration: underline;">203</span>645 <span style="color: #BB0000;">NA</span>                    DEF   GB     <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> HOU       <span style="text-decoration: underline;">154</span>698 <span style="color: #BB0000;">NA</span>                    DEF   HOU    <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 10235     <span style="text-decoration: underline;">140</span>729 Roschon Johnson       RB    CHI    22.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 9487      <span style="text-decoration: underline;">137</span>447 Parker Washington     WR    JAX    21.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> NO        <span style="text-decoration: underline;">132</span>410 <span style="color: #BB0000;">NA</span>                    DEF   NO     <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 4089      <span style="text-decoration: underline;">108</span>768 Gerald Everett        TE    LAC    29.5</span></span></code></pre></div>
 <p>There - this means something to us now! As of this writing
 (2020-11-10), Kalen Ballage was the most added player. Haven’t we been
 bitten by this before?</p>
