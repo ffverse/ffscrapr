@@ -33,7 +33,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   week_matchup_periods_mapping <- .espn_week_matchup_periods_mapping(settings)
   max_week <- .espn_week_checkmax(settings)
 
-  run_weeks <- weeks[weeks < max_week]
+  run_weeks <- weeks[weeks <= max_week]
   named_run_weeks <- week_matchup_periods_mapping[run_weeks]
 
   if (length(run_weeks) == 0) {
