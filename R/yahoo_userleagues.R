@@ -40,12 +40,12 @@ ff_userleagues.yahoo_conn <- function(conn, ...) {
         franchise_name <- xml2::xml_text(xml2::xml_find_first(league_node, ".//team/name"))
         # Add a new row to the result dataframe
         result_df <- rbind(result_df, list(
-            league_name = league_name,
-            league_id = league_id,
-            franchise_name = franchise_name,
-            franchise_id = user_id,
-            game_id = game_id,
-            season = season
+          league_name = league_name,
+          league_id = league_id,
+          franchise_name = franchise_name,
+          franchise_id = user_id,
+          game_id = game_id,
+          season = season
         ))
       }
     }

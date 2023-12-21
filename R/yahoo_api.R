@@ -10,22 +10,22 @@
 #' @export
 yahoo_getendpoint <- function(conn, endpoint) {
   # Construct API request headers with authentication token
-  headers <- c('Authorization' = paste("Bearer", conn$token))
-  
+  headers <- c("Authorization" = paste("Bearer", conn$token))
+
   # Construct the API URL with the provided endpoint and query parameters
   url_query <- httr::modify_url(
     url = glue::glue("https://fantasysports.yahooapis.com/fantasy/v2/{endpoint}"),
   )
-  
+
   # Perform the API request
   response <- httr::GET(url_query, httr::add_headers(headers))
-  
+
   # Check the API response for errors
   if (httr::http_error(response)) {
     stop(glue::glue("Yahoo Fantasy Football API request failed with error: <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
-  
+
   # Return an S3 object
   structure(
     list(

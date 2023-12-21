@@ -19,7 +19,6 @@
 yahoo_connect <- function(league_id = NULL,
                           token = NULL,
                           ...) {
-  
   conn <- structure(
     list(
       platform = "Yahoo Fantasy Sports",
@@ -34,18 +33,18 @@ yahoo_connect <- function(league_id = NULL,
     print(conn$user_leagues)
     stop("league_id is a required field.  Try again using one of your league_ids shown.", call. = FALSE)
   }
-  
+
   if (!league_id %in% conn$user_leagues$league_id) {
     stop(glue::glue("league_id <{league_id}> not in userleagues"), call. = FALSE)
   }
-  
+
   return(conn)
 }
 
 # Define a separate function for get_league_key
-get_league_key <- function(conn) { 
+get_league_key <- function(conn) {
   subset_df <- subset(conn$user_leagues, league_id == conn$league_id)
-  
+
   if (nrow(subset_df) == 0) {
     stop(glue::glue("user doesn't have access to league_id <{conn$league_id}>"), call. = FALSE)
   } else {
