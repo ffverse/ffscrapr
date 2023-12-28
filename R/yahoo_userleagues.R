@@ -13,10 +13,11 @@
 #' @export
 ff_userleagues.yahoo_conn <- function(conn, ...) {
   response <- yahoo_getendpoint(conn, glue::glue("users;use_login=1/games/leagues/teams"))
-  xml_doc <- xml2::read_xml(response$response$content)
-  xml2::xml_ns_strip(xml_doc)
+  return(process_yahoo_userleagues_response(response$xml_doc))
+}
 
-  result_df <- data.frame(
+process_yahoo_userleagues_response <- function(xml_doc) {
+  result_df <- tibble::tibble(
     league_name = character(),
     league_id = character(),
     franchise_name = character(),
@@ -39,7 +40,7 @@ ff_userleagues.yahoo_conn <- function(conn, ...) {
         league_name <- xml2::xml_text(xml2::xml_find_first(league_node, "./name"))
         franchise_name <- xml2::xml_text(xml2::xml_find_first(league_node, ".//team/name"))
         # Add a new row to the result dataframe
-        result_df <- rbind(result_df, list(
+        result_df <- dplyr::bind_rows(result_df, list(
           league_name = league_name,
           league_id = league_id,
           franchise_name = franchise_name,

@@ -25,12 +25,15 @@ yahoo_getendpoint <- function(conn, endpoint) {
     stop(glue::glue("Yahoo Fantasy Football API request failed with error: <{httr::http_status(response)$message}> \n
                     while calling <{url_query}>"), call. = FALSE)
   }
+  xml_doc <- xml2::read_xml(response$content)
+  xml2::xml_ns_strip(xml_doc)
 
   # Return an S3 object
   structure(
     list(
       query = url_query,
-      response = response
+      response = response,
+      xml_doc = xml_doc
     ),
     class = "yahoo_api"
   )

@@ -15,6 +15,7 @@ library(checkmate)
 # Goal of testing with mock is to test data cleaning/transformation dependencies
 # as they change on CRAN (and hold API responses constant).
 local_mock_api <- function(envir = parent.frame()) {
+  return()
   if (.bypass_mocks()) return()
   if (.rebuild_mocks()) return()
   if (!github_online()) testthat::skip("GitHub offline!")
