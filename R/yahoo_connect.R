@@ -19,6 +19,7 @@
 yahoo_connect <- function(league_id = NULL,
                           token = NULL,
                           ...) {
+  stopifnot(length(token) == 1 && nchar(token) > 0)
   conn <- structure(
     list(
       platform = "Yahoo Fantasy Sports",
@@ -41,16 +42,15 @@ yahoo_connect <- function(league_id = NULL,
   return(conn)
 }
 
-# Define a separate function for get_league_key
-get_league_key <- function(conn) {
+# Define a separate function for .yahoo_league_key
+.yahoo_league_key <- function(conn) {
   subset_df <- subset(conn$user_leagues, league_id == conn$league_id)
 
   if (nrow(subset_df) == 0) {
     stop(glue::glue("user doesn't have access to league_id <{conn$league_id}>"), call. = FALSE)
-  } else {
-    game_id <- subset_df$game_id[1]
-    return(glue::glue("{game_id}.l.{conn$league_id}"))
   }
+  game_id <- subset_df$game_id[1]
+  return(glue::glue("{game_id}.l.{conn$league_id}"))
 }
 
 # nocov start

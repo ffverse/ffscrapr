@@ -1,14 +1,14 @@
 #' GET any Yahoo Fantasy Football API endpoint
 #'
-#' The endpoint names and HTTP parameters (i.e., argument names) are CASE SENSITIVE and should be passed in exactly as required by the Yahoo Fantasy Football API.
-#'
 #' @param endpoint a string defining which endpoint to return from the Yahoo API
-#' @param token Yahoo Fantasy Football API token for authentication
-#' @param ... Arguments which will be passed as "argumentname = argument" in an HTTP query parameter
+#' @param conn Yahoo ff_connect object
 #'
-#' @return A list object containing the query, response, and parsed content.
+#' @return A list object containing the query, response, and parsed content as an xml_doc.
+#'
+#' @seealso <https://developer.yahoo.com/fantasysports/guide/>
+#'
 #' @export
-yahoo_getendpoint <- function(conn, endpoint) {
+yahoo_getendpoint <- function(endpoint, conn) {
   # Construct API request headers with authentication token
   headers <- c("Authorization" = paste("Bearer", conn$token))
 
@@ -22,8 +22,12 @@ yahoo_getendpoint <- function(conn, endpoint) {
 
   # Check the API response for errors
   if (httr::http_error(response)) {
-    stop(glue::glue("Yahoo Fantasy Football API request failed with error: <{httr::http_status(response)$message}> \n
-                    while calling <{url_query}>"), call. = FALSE)
+    cli::cli_abort(
+      c(
+        "Yahoo FF API request failed with error <{httr::http_status(response)$message}>",
+        "while calling {.url {url_query}}"
+      )
+    )
   }
   xml_doc <- xml2::read_xml(response$content)
   xml2::xml_ns_strip(xml_doc)

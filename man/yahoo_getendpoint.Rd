@@ -4,18 +4,19 @@
 \alias{yahoo_getendpoint}
 \title{GET any Yahoo Fantasy Football API endpoint}
 \usage{
-yahoo_getendpoint(conn, endpoint)
+yahoo_getendpoint(endpoint, conn)
 }
 \arguments{
 \item{endpoint}{a string defining which endpoint to return from the Yahoo API}
 
-\item{token}{Yahoo Fantasy Football API token for authentication}
-
-\item{...}{Arguments which will be passed as "argumentname = argument" in an HTTP query parameter}
+\item{conn}{Yahoo ff_connect object}
 }
 \value{
-A list object containing the query, response, and parsed content.
+A list object containing the query, response, and parsed content as an xml_doc.
 }
 \description{
-The endpoint names and HTTP parameters (i.e., argument names) are CASE SENSITIVE and should be passed in exactly as required by the Yahoo Fantasy Football API.
+GET any Yahoo Fantasy Football API endpoint
+}
+\seealso{
+\url{https://developer.yahoo.com/fantasysports/guide/}
 }

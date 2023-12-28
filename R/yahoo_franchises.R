@@ -12,28 +12,32 @@
 #' @describeIn ff_franchises Yahoo: Returns franchise data.
 #' @export
 ff_franchises.yahoo_conn <- function(conn) {
-  response <- yahoo_getendpoint(conn, glue::glue("leagues;league_keys={get_league_key(conn)}/teams"))
-  return(process_yahoo_franchises_response(response$xml_doc))
+  glue::glue("leagues;league_keys={.yahoo_league_key(conn)}/teams") %>%
+    yahoo_getendpoint(conn) %>%
+    .yahoo_process_franchises_response(.$xml_doc)
 }
 
-process_yahoo_franchises_response <- function(xml_doc) {
+.yahoo_process_franchises_response <- function(xml_doc) {
   # extract franchise data
-  franchise_id <- xml2::xml_integer(xml2::xml_find_all(xml_doc, "//team/team_id"))
-  franchise_name <- xml2::xml_text(xml2::xml_find_all(xml_doc, "//team/name"))
+  franchise_id <- xml_doc %>%
+    xml2::xml_find_all("//team/team_id") %>%
+    xml2::xml_integer()
+  franchise_name <- xml_doc %>%
+    xml2::xml_find_all("//team/name") %>%
+    xml2::xml_text()
 
   # extract manager data
-  managers_nodes <- xml2::xml_find_all(xml_doc, "//managers")
-  first_user_name <- xml2::xml_text(xml2::xml_find_first(managers_nodes, "./manager/nickname"))
-  first_user_id <- xml2::xml_text(xml2::xml_find_first(managers_nodes, "./manager/guid"))
+  managers_nodes <- xml_doc %>%
+    xml2::xml_find_all("//managers")
+  first_user_name <- managers_nodes %>%
+    xml2::xml_find_first("./manager/nickname") %>%
+    xml2::xml_text()
+  first_user_id <- managers_nodes %>%
+    xml2::xml_find_first("./manager/guid") %>%
+    xml2::xml_text()
   # this still isn't quite right but it's close.  Need to test with 3 co-owners
-  co_owner_ids <- purrr::map(managers_nodes, function(x) {
-    all_user_ids <- xml2::xml_text(xml2::xml_find_all(x, "./manager/guid"))
-    if (length(all_user_ids) > 1) {
-      return(as.list(all_user_ids[-1]))
-    } else {
-      return(NULL)
-    }
-  })
+  co_owner_ids <- managers_nodes %>%
+    purrr::map(.yahoo_get_co_owners)
 
   # Create a data frame
   df <- tibble::tibble(
@@ -44,4 +48,14 @@ process_yahoo_franchises_response <- function(xml_doc) {
     co_owners = co_owner_ids
   )
   return(df)
+}
+
+.yahoo_get_co_owners <- function(managers_node) {
+  all_user_ids <- managers_node %>%
+    xml2::xml_find_all("./manager/guid") %>%
+    xml2::xml_text()
+  if (length(all_user_ids) > 1) {
+    return(as.list(all_user_ids[-1]))
+  }
+  return(NULL)
 }
