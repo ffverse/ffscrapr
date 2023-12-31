@@ -6,7 +6,7 @@
 #' \donttest{
 #' try({ # try only shown here because sometimes CRAN checks are weird
 #'   yahoo_conn <- ff_connect(platform = "yahoo", league_id = "77275", token = NULL)
-#'   ff_userleagues(yahoo_conn)
+#'   ff_franchises(yahoo_conn)
 #' }) # end try
 #' }
 #' @describeIn ff_franchises Yahoo: Returns franchise data.

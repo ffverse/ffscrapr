@@ -39,13 +39,13 @@ yahoo_connect <- function(league_id = NULL,
 
   # Set league_id and league_key
   conn$league_id <- as.character(league_id)
-  game_id <- .yahoo_game_id(season)
+  game_id <- .yahoo_game_id(conn, season)
   conn$league_key <- as.character(glue::glue("{game_id}.l.{conn$league_id}"))
 
   return(conn)
 }
 
-.yahoo_game_id <- function(season) {
+.yahoo_game_id <- function(conn, season) {
   # get the game_id for the season. 
   # game_ids are the same for all Yahoo users but it's easier to make the api call then maintain a static dictionary in this repo.
   glue::glue("games;game_codes=nfl;seasons={season}") %>%
