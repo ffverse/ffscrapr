@@ -17,40 +17,44 @@
 #'
 #' @return A list that stores Yahoo Fantasy Sports connection objects
 yahoo_connect <- function(league_id = NULL,
+                          season = NULL,
                           token = NULL,
                           ...) {
-  stopifnot(length(token) == 1 && nchar(token) > 0)
+  if (length(token) == 0 || nchar(token) == 0) {
+    stop("token is a required field.  Visit https://lemon-dune-0cd4b231e.azurestaticapps.net/ to get a token.", call. = FALSE)
+  }
   conn <- structure(
     list(
       platform = "Yahoo Fantasy Sports",
-      league_id = as.character(league_id),
       token = as.character(token)
     ),
     class = "yahoo_conn"
   )
 
-  conn$user_leagues <- ff_userleagues(conn)
-  if (missing(league_id)) {
-    print(conn$user_leagues)
-    stop("league_id is a required field.  Try again using one of your league_ids shown.", call. = FALSE)
+  if (missing(league_id) | missing(season)) {
+    user_leagues <- ff_userleagues(conn)
+    print(user_leagues, n = Inf)
+    stop("league_id and season are required.  You can use one of your leagues shown.", call. = FALSE)
   }
 
-  if (!league_id %in% conn$user_leagues$league_id) {
-    stop(glue::glue("league_id <{league_id}> not in userleagues"), call. = FALSE)
-  }
+  # Set league_id and league_key
+  conn$league_id <- as.character(league_id)
+  game_id <- .yahoo_game_id(season)
+  conn$league_key <- as.character(glue::glue("{game_id}.l.{conn$league_id}"))
 
   return(conn)
 }
 
-# Define a separate function for .yahoo_league_key
-.yahoo_league_key <- function(conn) {
-  subset_df <- subset(conn$user_leagues, league_id == conn$league_id)
-
-  if (nrow(subset_df) == 0) {
-    stop(glue::glue("user doesn't have access to league_id <{conn$league_id}>"), call. = FALSE)
-  }
-  game_id <- subset_df$game_id[1]
-  return(glue::glue("{game_id}.l.{conn$league_id}"))
+.yahoo_game_id <- function(season) {
+  # .yahoo_season_to_game_id is populated from 1999 - 2023.
+  # Can make a call to "https://fantasysports.yahooapis.com/fantasy/v2/games;game_codes=nfl" and get the game_id from the response instead
+  # glue::glue("games;game_codes=nfl;seasons={season}") %>%
+  #   yahoo_getendpoint(conn) %>%
+  #   {
+  #     xml2::xml_find_first(.$xml_doc, "//game_id")
+  #   } %>%
+  #   xml2::xml_text()
+  .yahoo_season_to_game_id()[as.character(season)]
 }
 
 # nocov start
@@ -62,3 +66,33 @@ print.yahoo_conn <- function(x, ...) {
   invisible(x)
 }
 # nocov end
+
+.yahoo_season_to_game_id <- function() {
+  c(
+    "2002" = "49",
+    "1999" = "50",
+    "2000" = "53",
+    "2001" = "57",
+    "2003" = "79",
+    "2004" = "101",
+    "2005" = "124",
+    "2006" = "153",
+    "2007" = "175",
+    "2008" = "199",
+    "2009" = "222",
+    "2010" = "242",
+    "2011" = "257",
+    "2012" = "273",
+    "2013" = "314",
+    "2014" = "331",
+    "2015" = "348",
+    "2016" = "359",
+    "2017" = "371",
+    "2018" = "380",
+    "2019" = "390",
+    "2020" = "399",
+    "2021" = "406",
+    "2022" = "414",
+    "2023" = "423"
+  )
+}

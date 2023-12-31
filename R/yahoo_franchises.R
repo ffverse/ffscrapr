@@ -12,19 +12,19 @@
 #' @describeIn ff_franchises Yahoo: Returns franchise data.
 #' @export
 ff_franchises.yahoo_conn <- function(conn) {
-  glue::glue("leagues;league_keys={.yahoo_league_key(conn)}/teams") %>%
+  glue::glue("leagues;league_keys={conn$league_key}/teams") %>%
     yahoo_getendpoint(conn) %>%
-    .yahoo_process_franchises_response(.$xml_doc)
+    { .yahoo_process_franchises_response(.$xml_doc) }
 }
 
 .yahoo_process_franchises_response <- function(xml_doc) {
   # extract franchise data
   franchise_id <- xml_doc %>%
-    xml2::xml_find_all("//team/team_id") %>%
-    xml2::xml_integer()
+      xml2::xml_find_all("//team/team_id") %>%
+      xml2::xml_integer()
   franchise_name <- xml_doc %>%
-    xml2::xml_find_all("//team/name") %>%
-    xml2::xml_text()
+      xml2::xml_find_all("//team/name") %>%
+      xml2::xml_text()
 
   # extract manager data
   managers_nodes <- xml_doc %>%
@@ -35,7 +35,6 @@ ff_franchises.yahoo_conn <- function(conn) {
   first_user_id <- managers_nodes %>%
     xml2::xml_find_first("./manager/guid") %>%
     xml2::xml_text()
-  # this still isn't quite right but it's close.  Need to test with 3 co-owners
   co_owner_ids <- managers_nodes %>%
     purrr::map(.yahoo_get_co_owners)
 
