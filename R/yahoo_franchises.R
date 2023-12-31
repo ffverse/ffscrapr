@@ -14,17 +14,19 @@
 ff_franchises.yahoo_conn <- function(conn) {
   glue::glue("leagues;league_keys={conn$league_key}/teams") %>%
     yahoo_getendpoint(conn) %>%
-    { .yahoo_process_franchises_response(.$xml_doc) }
+    {
+      .yahoo_process_franchises_response(.$xml_doc)
+    }
 }
 
 .yahoo_process_franchises_response <- function(xml_doc) {
   # extract franchise data
   franchise_id <- xml_doc %>%
-      xml2::xml_find_all("//team/team_id") %>%
-      xml2::xml_integer()
+    xml2::xml_find_all("//team/team_id") %>%
+    xml2::xml_integer()
   franchise_name <- xml_doc %>%
-      xml2::xml_find_all("//team/name") %>%
-      xml2::xml_text()
+    xml2::xml_find_all("//team/name") %>%
+    xml2::xml_text()
 
   # extract manager data
   managers_nodes <- xml_doc %>%
