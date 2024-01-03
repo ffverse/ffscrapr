@@ -51,9 +51,16 @@ ff_draft.sleeper_conn <- function(conn, ...) {
 }
 
 .sleeper_currentdraft <- function(draft_id) {
-  picks <- glue::glue("draft/{draft_id}/picks") %>%
+  picks_content <- glue::glue("draft/{draft_id}/picks") %>%
     sleeper_getendpoint() %>%
-    purrr::pluck("content") %>%
+    purrr::pluck("content")
+
+  # Check length of picks_content object to filter out empty drafts
+  if(length(picks_content) == 0) return(data.frame(franchise_id = integer(),
+                                                   player_id = character()))
+
+  picks <-
+    picks_content %>%
     tibble::tibble() %>%
     tidyr::hoist(1, "round","pick_no", "draft_slot", "roster_id", "player_id", "metadata") %>%
     tidyr::hoist("metadata", "auction_amount" = "amount") %>%
