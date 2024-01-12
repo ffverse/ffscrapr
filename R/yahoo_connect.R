@@ -50,9 +50,8 @@ yahoo_connect <- function(league_id = NULL,
   # game_ids are the same for all Yahoo users but it's easier to make the api call then maintain a static dictionary in this repo.
   glue::glue("games;game_codes=nfl;seasons={season}") %>%
     yahoo_getendpoint(conn) %>%
-    {
-      xml2::xml_find_first(.$xml_doc, "//game_id")
-    } %>%
+    getElement("xml_doc") %>%
+    xml2::xml_find_first("//game_id") %>%
     xml2::xml_text()
 }
 
