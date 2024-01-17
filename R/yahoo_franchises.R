@@ -14,9 +14,8 @@
 ff_franchises.yahoo_conn <- function(conn) {
   glue::glue("leagues;league_keys={conn$league_key}/teams") %>%
     yahoo_getendpoint(conn) %>%
-    {
-      .yahoo_process_franchises_response(.$xml_doc)
-    }
+    getElement("xml_doc") %>%
+    .yahoo_process_franchises_response()
 }
 
 .yahoo_process_franchises_response <- function(xml_doc) {
