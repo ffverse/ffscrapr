@@ -14,9 +14,8 @@
 ff_userleagues.yahoo_conn <- function(conn, ...) {
   glue::glue("users;use_login=1/games/leagues/teams") %>%
     yahoo_getendpoint(conn) %>%
-    {
-      .yahoo_process_userleagues_response(.$xml_doc)
-    }
+    getElement("xml_doc") %>%
+    .yahoo_process_userleagues_response()
 }
 
 .yahoo_process_userleagues_response <- function(xml_doc) {
