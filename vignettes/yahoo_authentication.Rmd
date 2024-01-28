@@ -1,0 +1,27 @@
+---
+title: "Yahoo Fantasy Sports: Connecting with League ID and Token"
+output: 
+  rmarkdown::html_vignette
+author: Your Name
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{Yahoo Fantasy Sports: Connecting with League ID and Token}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette provides instructions on how to connect to Yahoo Fantasy Sports by obtaining a league_id and token from a specific source and using them with the `yahoo_connect` function.
+
+### Instructions
+
+1. Obtain your league_id from any yahoo URL in your leagues.  In this link it's 77275: https://football.fantasysports.yahoo.com/f1/77275/10
+
+2. Get your read_only auth token by signing into Yahoo here https://lemon-dune-0cd4b231e.azurestaticapps.net/.
+
+3. In your R environment, call the `yahoo_connect` function using the obtained league_id and token as follows:
+
+```r
+library(ffscrapr)
+
+# Replace "{league_id}" and "{token}" with your values
+conn <- yahoo_connect(league_id = "{league_id}", token = "{token}")

@@ -4,6 +4,7 @@ httptest::set_redactor(
       httptest::gsub_response("https\\://api.myfantasyleague.com/","mfl/") %>%
       httptest::gsub_response("https\\://api.sleeper.app/","sleeper/") %>%
       httptest::gsub_response("https\\://www.fleaflicker.com/","flea/") %>%
-      httptest::gsub_response("https\\://github.com/DynastyProcess/data/raw/master/files/","gh_dynastyprocess/")
+      httptest::gsub_response("https\\://github.com/DynastyProcess/data/raw/master/files/","gh_dynastyprocess/") %>%
+      httptest::gsub_response("https\\://fantasysports.yahooapis.com/fantasy/v2/","yahoo/")
   }
 )
