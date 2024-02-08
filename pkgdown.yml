@@ -1,6 +1,6 @@
 pandoc: 2.19.2
 pkgdown: 2.0.7.9000
-pkgdown_sha: bbb1ee2e6bf2e20b15a4e747ddca6d47acbb213f
+pkgdown_sha: 3979e7c0afbba4503248dc8a6d04fe0a2e03f26f
 articles:
   espn_authentication: espn_authentication.html
   espn_basics: espn_basics.html
@@ -12,7 +12,7 @@ articles:
   mfl_getendpoint: mfl_getendpoint.html
   sleeper_basics: sleeper_basics.html
   sleeper_getendpoint: sleeper_getendpoint.html
-last_built: 2024-01-18T16:38Z
+last_built: 2024-02-08T13:16Z
 urls:
   reference: https://ffscrapr.ffverse.com/reference
   article: https://ffscrapr.ffverse.com/articles
