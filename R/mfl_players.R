@@ -26,17 +26,21 @@ mfl_players <- function(conn = NULL) {
     conn <- mfl_connect(.fn_choose_season())
   }
 
-  conn %>%
+  df_players <- conn %>%
     mfl_getendpoint("players", DETAILS = 1) %>%
     purrr::pluck("content", "players", "player") %>%
     tibble::tibble() %>%
     tidyr::unnest_wider(1) %>%
     dplyr::mutate_at(
-      "birthdate", ~ as.numeric(.x) %>%
+      "birthdate",
+      ~ as.numeric(.x) %>%
         .as_datetime() %>%
         .as_date()
     ) %>%
-    dplyr::mutate("age" = round(as.numeric(Sys.Date() - .data$birthdate) / 365.25, 1)) %>%
+    dplyr::mutate(
+      age = round(as.numeric(Sys.Date() - .data$birthdate) / 365.25, 1),
+      draft_year = as.integer(.data$draft_year)
+    ) %>%
     dplyr::select(
       dplyr::any_of(c(
         "player_id" = "id",
@@ -50,4 +54,39 @@ mfl_players <- function(conn = NULL) {
       dplyr::ends_with("_id"),
       dplyr::everything()
     )
+
+  df_players <- dplyr::bind_rows(.mfl_players_template(), df_players)
+
+  return(df_players)
+}
+
+
+.mfl_players_template <- function(){
+  tibble::tibble(
+    player_id = character(0),
+    player_name = character(0),
+    pos = character(0),
+    age = numeric(0),
+    team = character(0),
+    status = character(0),
+    draft_year = integer(0),
+    draft_team = character(0),
+    draft_round = character(0),
+    draft_pick = character(0),
+    stats_global_id = character(0),
+    fleaflicker_id = character(0),
+    stats_id = character(0),
+    cbs_id = character(0),
+    sportsdata_id = character(0),
+    rotowire_id = character(0),
+    rotoworld_id = character(0),
+    espn_id = character(0),
+    nfl_id = character(0),
+    jersey = character(0),
+    height = character(0),
+    weight = character(0),
+    college = character(0),
+    twitter_username = character(0),
+    birthdate = as.Date(character(0))
+  )
 }
