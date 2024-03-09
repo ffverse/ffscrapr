@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ffscrapr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.16</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.8.17</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,20 +122,20 @@
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span> <span class="co"># end try</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 41</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name       pos     age team  status years_exp fantasy_data_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 2093      Ryan Grant        WR     33.1 <span style="color: #BB0000;">NA</span>    Active         8           <span style="text-decoration: underline;">16</span>411</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 8415      Haggai Ndubuisi   T      23.3 DEN   Active         1              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 8110      Jake Ferguson     TE     25.1 DAL   Active         2              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 3276      De'Vondre Campbe… LB     30.6 GB    Active         8           <span style="text-decoration: underline;">18</span>037</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 11265     Robert Haskins    OL     25.2 <span style="color: #BB0000;">NA</span>    Active         0              <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 33 more variables: rotowire_id &lt;int&gt;, swish_id &lt;int&gt;, oddsjam_id &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pandascore_id &lt;lgl&gt;, sportradar_id &lt;chr&gt;, dl_trading_id &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   gsis_id &lt;chr&gt;, stats_id &lt;int&gt;, rotoworld_id &lt;int&gt;, espn_id &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   yahoo_id &lt;int&gt;, sport &lt;chr&gt;, birth_city &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   practice_participation &lt;chr&gt;, number &lt;int&gt;, depth_chart_position &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   injury_start_date &lt;lgl&gt;, weight &lt;chr&gt;, birth_country &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   injury_status &lt;chr&gt;, depth_chart_order &lt;int&gt;, fantasy_positions &lt;chr&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   player_id player_name      pos     age team  status  active years_exp swish_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 5282      Duplicate Player WR     <span style="color: #BB0000;">NA</span>   CHI   Inacti… FALSE          0 <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 6036      Ryan Davis       WR     26.9 <span style="color: #BB0000;">NA</span>    Active  TRUE           3 <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1305      Patrick DiMarco  FB     34.9 <span style="color: #BB0000;">NA</span>    Injure… TRUE          11 <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 6400      Ryan Bee         DE     28.3 ARI   Active  TRUE           3 <span style="color: #BB0000;">NA</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 6544      Aaron Adeoye     LB     30.5 <span style="color: #BB0000;">NA</span>    Active  TRUE           3 875479  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 32 more variables: espn_id &lt;chr&gt;, fantasy_data_id &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pandascore_id &lt;chr&gt;, rotowire_id &lt;chr&gt;, sportradar_id &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   yahoo_id &lt;chr&gt;, oddsjam_id &lt;chr&gt;, dl_trading_id &lt;chr&gt;, rotoworld_id &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   stats_id &lt;chr&gt;, gsis_id &lt;chr&gt;, height &lt;chr&gt;, weight &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   fantasy_positions &lt;chr&gt;, number &lt;int&gt;, depth_chart_order &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   depth_chart_position &lt;chr&gt;, practice_description &lt;chr&gt;, birth_date &lt;date&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   birth_city &lt;chr&gt;, birth_state &lt;chr&gt;, birth_country &lt;chr&gt;, …</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
