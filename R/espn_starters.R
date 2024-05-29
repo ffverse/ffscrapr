@@ -23,7 +23,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
   checkmate::assert_numeric(weeks)
 
   settings_url_query <- glue::glue(
-    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+    "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/",
     "{conn$season}/segments/0/leagues/{conn$league_id}",
     "?scoringPeriodId=0&view=mSettings"
   )
@@ -126,7 +126,7 @@ ff_starters.espn_conn <- function(conn, weeks = 1:17, ...) {
 
 .espn_week_starter <- function(matchup_period, nfl_week, conn) {
   url_query <- glue::glue(
-    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+    "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/",
     "{conn$season}/segments/0/leagues/{conn$league_id}",
     "?scoringPeriodId={nfl_week}&view=mMatchupScore&view=mBoxscore&view=mSettings&view=mRosterSettings"
   )
