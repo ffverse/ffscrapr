@@ -39,14 +39,14 @@ espn_getendpoint <- function(conn, ..., x_fantasy_filter = NULL) {
 
   if (as.numeric(conn$season) < 2018) {
     url_query <- httr::modify_url(
-      url = glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{conn$league_id}?seasonId={conn$season}"),
+      url = glue::glue("https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{conn$league_id}?seasonId={conn$season}"),
       query = list(...)
     )
   }
 
   if (as.numeric(conn$season) >= 2018) {
     url_query <- httr::modify_url(
-      url = glue::glue("https://fantasy.espn.com/apis/v3/games/ffl/seasons/{conn$season}/segments/0/leagues/{conn$league_id}"),
+      url = glue::glue("https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{conn$season}/segments/0/leagues/{conn$league_id}"),
       query = list(...)
     )
   }

@@ -32,7 +32,7 @@ espn_players <- function(conn = NULL, season = NULL) {
   xff <- httr::add_headers(`x-fantasy-filter` = xff)
 
   url_query <- glue::glue(
-    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+    "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/",
     "{season}/players?scoringPeriodId=0&view=players_wl"
   )
 

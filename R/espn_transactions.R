@@ -41,7 +41,7 @@ ff_transactions.espn_conn <- function(conn, limit = 1000, ...) {
   xff <- httr::add_headers(`x-fantasy-filter` = xff)
 
   url_query <- glue::glue(
-    "https://fantasy.espn.com/apis/v3/games/ffl/seasons/",
+    "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/",
     "{conn$season}/segments/0/leagues/{conn$league_id}/",
     "communication/?view=kona_league_communication"
   )

@@ -43,8 +43,8 @@ Accessing the ESPN Fantasy API is a bit of an adventure into an undocumented aby
 The ESPN Fantasy API is typically accessed from two endpoints: 
 
 ```
-https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/segments/0/leagues/{league_id} # for 2018 onward
-https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={season} # for 2017 or earlier
+https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/segments/0/leagues/{league_id} # for 2018 onward
+https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/leagueHistory/{league_id}?seasonId={season} # for 2017 or earlier
 ```
 
 Here's a non-exhaustive list of view endpoints that I know of:
@@ -70,7 +70,7 @@ Alternatively, you can consult the source code of other API packages (including 
 
 ESPN's API is mostly structured as making requests of different views against the main league endpoint.
 
-For example, [https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail](https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail)
+For example, [https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail](https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail)
 
 will pull up draft details for the 2020 league ID 899513. `espn_getendpoint` helps facilitate this request by allowing you to instead write:
 
@@ -89,7 +89,7 @@ You can also use the lower-level equivalent, `espn_getendpoint_raw`, which does 
 ```{r message = FALSE, eval = eval}
 draft_details_raw <- espn_getendpoint_raw(
   conn,
-  "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail")
+  "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=mDraftDetail")
 
 draft_details_raw
 ```
@@ -129,7 +129,7 @@ player_scores <- espn_getendpoint(conn, view = "kona_player_info", x_fantasy_fil
 
 player_scores_2 <- espn_getendpoint_raw(
   conn,
-  "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=kona_player_info",
+  "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2020/segments/0/leagues/899513?view=kona_player_info",
   httr::add_headers(`X-Fantasy-Filter` = xff))
 
 ```
