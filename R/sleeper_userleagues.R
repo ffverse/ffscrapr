@@ -37,7 +37,8 @@ ff_userleagues.sleeper_conn <- function(conn = NULL, user_name = NULL, season = 
     dplyr::mutate(
       league_id = as.character(league_id),
       franchise_name = purrr::map_chr(.data$league_id, .sleeper_userteams, user_id),
-      franchise_id = user_id
+      franchise_id = user_id,
+      roster_id = purrr::map_int(.data$league_id, .sleeper_rosterid, user_id)
     )
 
   return(df_leagues)
@@ -72,6 +73,20 @@ sleeper_userleagues <- function(user_name, season = NULL) {
     dplyr::mutate("franchise_name" = dplyr::coalesce(.data$franchise_name, .data$display_name)) %>%
     dplyr::filter(.data$franchise_id == user_id) %>%
     dplyr::pull("franchise_name")
+
+  return(df_teams)
+}
+
+#' Get Roster ID
+#' @noRd
+
+.sleeper_rosterid <- function(league_id, user_id) {
+  df_teams <- sleeper_getendpoint(glue::glue("league/{league_id}/rosters")) %>%
+    purrr::pluck("content") %>%
+    tibble::tibble() %>%
+    tidyr::hoist(1, "owner_id", "roster_id") %>%
+    dplyr::filter(.data$owner_id == user_id) %>%
+    dplyr::pull("roster_id")
 
   return(df_teams)
 }
