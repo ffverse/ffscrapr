@@ -29,6 +29,7 @@ row per player-team-season (v1.4.8.13) (thanks @john-b-edwards!)
 - Bugfix espn `ff_starters()` to return less than or equal to max week (v1.4.8.16)
 - [BREAKING] `mfl_players()` and `sleeper_players()` outputs now try to return
 more standardized column types (v1.4.8.17)
+- `sleeper_userleagues()` output has a new column roster_id which is the same ID as franchise_id in `sleeper_rosters()` (1.4.8.19) (#436)
 
 # ffscrapr 1.4.8
 
