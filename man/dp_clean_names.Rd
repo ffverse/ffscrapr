@@ -17,6 +17,8 @@ dp_cleannames(...)
     \item{\code{lowercase}}{defaults to FALSE - if TRUE, converts to lowercase}
     \item{\code{convert_lastfirst}}{defaults to TRUE - converts names from "Last, First" to "First Last"}
     \item{\code{use_name_database}}{uses internal name database to do common substitutions (Mitchell Trubisky to Mitch Trubisky etc)}
+    \item{\code{convert_to_ascii}}{If \code{TRUE}, will transliterate to latin-ascii via the
+stringi package. Defaults to \code{TRUE} if the stringi package is installed.}
   }}
 }
 \value{

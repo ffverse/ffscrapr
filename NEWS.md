@@ -30,6 +30,7 @@ row per player-team-season (v1.4.8.13) (thanks @john-b-edwards!)
 - [BREAKING] `mfl_players()` and `sleeper_players()` outputs now try to return
 more standardized column types (v1.4.8.17)
 - `sleeper_userleagues()` output has a new column roster_id which is the same ID as franchise_id in `sleeper_rosters()` (1.4.8.19) (#436)
+- `mfl_transactions()` now processes `transaction_type = "WAIVER"` (1.4.8.20) (#438)
 
 # ffscrapr 1.4.8
 

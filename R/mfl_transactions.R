@@ -37,7 +37,8 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
     injured_reserve = .mfl_transactions_injuredreserve,
     taxi_squad = .mfl_transactions_taxisquad,
     bbid_waiver = .mfl_transactions_bbid_waiver,
-    trade = .mfl_transactions_trade
+    trade = .mfl_transactions_trade,
+    fcfs_waiver = .mfl_transactions_fcfs_waiver
   )
 
   players_endpoint <- mfl_players(conn) %>%
@@ -274,8 +275,39 @@ ff_transactions.mfl_conn <- function(conn, transaction_type = "*", ...) {
     dplyr::arrange(dplyr::desc(.data$timestamp))
 }
 
+## WAIVER - FCFS ##
+# Create a tibble where each waiver fcfs transaction is represented on one line
+#' @noRd
+#' @keywords internal
+
+.mfl_transactions_fcfs_waiver <- function(df_transactions) {
+  fcfs_transactions <- df_transactions %>%
+    dplyr::filter(.data$type == "WAIVER")
+
+  if (nrow(fcfs_transactions) == 0) {
+    return(NULL)
+  }
+
+  parsed_fcfs <- fcfs_transactions %>%
+    dplyr::select("timestamp", "type", "dropped", "added", "franchise", "comments") %>%
+    dplyr::mutate_at(c("added", "dropped"), ~ stringr::str_replace(.x, ",$", "")) %>%
+    tidyr::pivot_longer(c("added", "dropped"), names_to = "type_desc", values_to = "player_id") %>%
+    tidyr::separate_rows("player_id", sep = ",") %>%
+    dplyr::filter(.data$player_id != "")
+
+  parsed_fcfs %>%
+    dplyr::select(
+      "timestamp",
+      "type",
+      "franchise",
+      "type_desc",
+      "player_id",
+      "comments"
+    ) %>%
+    dplyr::arrange(dplyr::desc(.data$timestamp))
+}
+
 ## Will need to write functions to parse each of these, then row bind them back together afterwards.
-# WAIVER - FCFS
 # BBID_AUTO_PROCESS_WAIVERS
 # WAIVER_REQUEST
 # BBID_WAIVER_REQUEST
