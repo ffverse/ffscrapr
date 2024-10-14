@@ -53,15 +53,12 @@ ff_league.mfl_conn <- function(conn) {
 }
 
 .mfl_league_type <- function(league_endpoint) {
-  x <- league_endpoint[["keeperType"]]
-  if (is.null(x)) {
-    x <- league_endpoint[["loadRosters"]]
+  x <- league_endpoint[["load_rosters"]]
+  if (x == "contest") return(x)
 
-    if (x != "contest") {
-      return(NA_character_)
-    }
-  }
+  x <- league_endpoint[["keeperType"]]
   if (x == "none") x <- "redraft"
+
   x
 }
 
