@@ -44,7 +44,7 @@ ff_playerscores.espn_conn <- function(conn, limit = 1000, ...) {
     tidyr::hoist("x", "player_id" = "id", "franchise_id" = "onTeamId", "player") %>%
     tidyr::hoist("player", "player_name" = "fullName", "pos_id" = "defaultPositionId", "stats") %>%
     dplyr::mutate(
-      pos = .espn_pos_map()[.data$pos_id],
+      pos = .espn_pos_map()[as.character(.data$pos_id)],
       stats = purrr::map(
         .data$stats,
         ~ tibble::tibble(.x) %>%
