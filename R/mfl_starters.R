@@ -67,7 +67,7 @@ ff_starters.mfl_conn <- function(conn, week = 1:17, season = NULL, ...) {
 }
 
 .mfl_weeklystarters <- function(week, year, conn) {
-  weekly_result <- mfl_getendpoint(conn, "weeklyResults", W = week, YEAR = year) %>%
+  weekly_result <- mfl_getendpoint(conn, "weeklyResults", W = week, YEAR = year, MISSING_AS_BYE = 1) %>%
     purrr::pluck("content", "weeklyResults", "matchup") %>%
     purrr::map("franchise") %>%
     tibble::tibble()
